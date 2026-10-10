@@ -1,0 +1,33 @@
+# G0 独立评审（kimi-k3-2，非作者，只读）
+
+**精确候选**：856614abccc85790d653f65dd6c2f859b6e003c2。范围：新增 `reuse-decision.md`、`implementation-plan.md`、`interfaces.md`，改 `docs/roadmap.md` 当前切片段。本轮为首轮评审，请求目录无既往评审/监督件，我未读取任何其他席位意见。
+
+## W1–W8 逐项
+
+- **W1 通过**：reuse-decision 对 OMA be0bff0/Symphony be10a1b/DSH d743267 按固定 commit 核验并声明"仅静态核验、未安装运行"；许可证列出；不复制业务 ACP、不启用上游 scheduler；unknown 显式保留（CodeBuddy 注册能力、max-turns 硬计数、Kimi 实际模型、OpenCode 未探针）。底座 Python 3.12 标准库+SQLite 与 roadmap P0 出口一致。
+- **W2 通过（计划层）**：interfaces.md:7-11 单一 SQLite 权威、同事务事件表、publish 同 revision 投影；runner 持 OS 文件锁互斥、done 跳过、未知 running 置 `reconciliation_required` 不重复派发，与 design §7.2 一致。
+- **W3 通过（计划层）**：implementation-plan.md:30 固定四调用预算、600s/8MiB/工具白名单、禁 fallback；interfaces.md:17 独立性由 runtime 返回 session 检验、不采信自报 actor，exit0 不足以通过；interfaces.md:31 accept 重验三 session 互异且异于实现者。
+- **W4 通过（计划层）**：pause 持久、resume 不解除 failed/不明 running；Web 只读 127.0.0.1 直读 SQLite；明确不启用 OS 定时任务；fake adapter 仅测试且明示。
+- **W5 通过（计划层）**：subject_digest 绑定源码 hash+验证器版本+config_digest，评审/监督提示携带同一 digest，缺 digest/PASS/空 blocking 即阻断。
+- **W6 通过（计划层）**：archive/backup 逐文件 SHA256、读回+隔离恢复验证、`scope='local_only'` 显式，重入仅完全相同内容接受。
+- **W7 通过（计划层）**：清理限固定 `scratch/fixture.log`，authority 由可信代码从 SQLite+证据重建，hold 不可由模型输出解除，apply 前重查权威/摘要/清单，链接/junction 经 paths.checked 阻断，部分失败逐对象回执；retention=0 明确不推广到生产 30 天策略。
+- **W8 通过（计划层）**：先写失败测试、单一 `python -m agent_coop verify` 供本地与 CI、规模阈值沿用 AGENTS；roadmap 当前段如实标注"审核中、未写产品源码"。
+
+## Blocking
+
+**g0-kimi-B1** — `docs/roadmap.md:61` 与 `docs/roadmap.md:63`（"按依赖推进"表后段落）。
+- 触发：本候选已将当前切片改为"P0 复用裁定与隔离纵向样例（审核中）"，并明确样例在 G1 后构建 runner/executor 与只读 Web；但同文件 line 61 仍称"完成评审后再编写 P1 的精确实施计划"、line 63 仍称"下一个产品实施切片仍为 P0，不提前搭建执行器或前端底座"。两份相互矛盾的"当前状态"并存于同一文件，违反 AGENTS「当前状态维护」"不得持续追加相互冲突的当前状态"，命中本票防过时状态检查项。
+- 最小修正：在同一候选内更新或注解该两段——注明 2026-10-10 用户授权的隔离样例（G0 审核中）在样例范围内取代"不提前搭建执行器/前端底座"的限制，P0 裁定已形成候选待接收；不改写历史交付入口。
+
+## Advisory
+
+- reuse-decision.md:9-12 的上游缺陷论断均附固定 commit 链接，建议 G1 前无需重验，但若上游指针被 force-push 应记录核验时点（已部分覆盖，仅提示）。
+- interfaces.md:31 已如实标注 reviewer 隔离"本轮非 OS 强隔离"，建议在实跑回执中同样保留该限定语，避免被读成强隔离证据。
+
+## 结论
+
+**CHANGES_REQUESTED**（仅 g0-kimi-B1 一项，文档级小修；W1–W8 计划与边界本身无阻断）。
+
+## 未验证范围
+
+上游三仓源码与许可证实际内容、本机 CLI 能力/版本/Python 3.12.14、Git 状态与候选内容完整性（无 shell/网络权限）；计划未来是否被忠实执行不属于 G0 判断范围；G1 需以实际代码与测试证据重验 W2–W8。

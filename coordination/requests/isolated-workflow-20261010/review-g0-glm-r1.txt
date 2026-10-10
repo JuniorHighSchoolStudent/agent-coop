@@ -1,0 +1,34 @@
+## G0 独立评审（glm-5.3，只读，非作者）
+
+**精确候选**：856614abccc85790d653f65dd6c2f859b6e003c2。本票只对该候选生效；已核对 diff 与仓内三份新文件及 roadmap 修改内容一致。
+
+**W1 复用裁定**：PASS。固定来源带 commit 与许可证（OMA/Symphony/DSH/既有ACP），静态核验边界、未运行不外推、OMA no-checkout 读取均如实声明；不复制 ACP 八模块、不启用上游 scheduler；unknown（CodeBuddy 任意CLI注册、max-turns 硬计数、Kimi 实际模型、OpenCode）全部保留；底座选 Python 3.12 标准库+SQLite 无许可证义务，未先自研再比较。
+
+**W2 持久状态**：PASS。SQLite 单行状态+同事务事件即 outbox，同 revision 投影、可重放；文件锁整轮互斥+done 跳过；启动见 running 置 reconciliation_required 不重派。与 §5.1/§7.2 意图一致。
+
+**W3 身份与预算**：PASS。profile 固化并绑摘要，四次调用预算先持久递增、600s/8MiB/max-turns20、禁 fallback；exit0/正文 PASS/自报 actor 均不足以通过；两 reviewer+supervisor 独立 session 且非作者，与 roadmap 团队表一致。
+
+**W4 暂停与状态面**：PASS。pause 持久请求、resume 不解除 failed/不明 running；已 done 不重跑；Web 只读 127.0.0.1 读 SQLite、fake 与 live 分开、无定时任务。
+
+**W5 精确候选门禁**：PASS。subject_digest 绑定源码 hash+验证器版本+config_digest，三票与 accept 重验 digest、session 与源码；缺件/改候选/异常输出阻断。
+
+**W6 归档备份**：PASS（计划级）。白名单清单+SHA256+逐文件读回+独立恢复验证，backup 明确 local_only 不冒充异机，损坏/恢复失败阻断删除。
+
+**W7 清理授权**：PASS。仅固定 `scratch/fixture.log`，policy 固定字段纳入 config_digest，plan/apply 分离、执行前重查 hold/到期/源 hash/归档备份清单读回，意图先落盘、部分失败如实回执；不删 SQLite/evidence/源码；retention=0 显式限定样例不推广生产。
+
+**W8 验证与状态准确**：PASS（计划级）。失败测试先行、`python -m agent_coop verify` 单一命令供 CI；roadmap 如实标注“审核中、未写产品源码”，不把计划当成功，三阶段证据分开。
+
+**SSOT/权限/独立/可信状态**：新文件归请求目录、文件名合规、interfaces 四项元信息齐全；roadmap 只引用不复制；新增 4 个仓内相对链接已逐一核对存在；G0 两席非作者、监督不兼任；预算与 roadmap 临时上限一致；无重复状态台账，防过时处置符合 §7.6 意图。
+
+**Blocking**：无。
+
+**Advisory**：
+- g0-glm-A1：archive/backup receipt 相对 design §5.2.3 最小字段集（policy id/revision/digest、验证者与核验时间、权限等级、未决承接引用）未列全。建议 G1 前声明样例裁剪清单，收尾按计划步骤6分清样例完成与产品出口，防误读合同已满足。
+- g0-glm-A2：§5.1 的 publication_pending 消费者语义（投影 revision 不一致时的显示与阻断）未写入 interfaces.md:7；G1 合同测试应覆盖 DB 提交后文件发布失败的重放。
+- g0-glm-A3：interfaces.md:11 “整轮持有文件锁”与“允许另一CLI写pause”并存，建议明确 pause 经 Store 短事务递增 revision、写后由谁调用 publish，消除双写路径歧义。
+- g0-glm-A4：hold 仅为清理阻断条件，样例内设置/释放权限未定义；建议声明本轮只校验不演示设置，或指明可信设置者。
+- g0-glm-A5：implementation-plan.md:21 复制 AGENTS 规模阈值数值，建议改为引用 AGENTS 或注明系冻结候选时点快照；步骤2名“P1”与产品切片 P1 同名易混，建议样例阶段改名或加注。
+
+**结论：PASS**（advisory 不阻断，可在 G1 收敛）。
+
+**未验证范围**：无 shell/网络权限，未做候选 commit 与基线 6d99eee 的 git 对象级核验（仅核对 diff 与工作树内容一致）；上游仓库链接、既有项目 ACP 层（db382c9）、现机 Python 3.12.14 按候选固定引用采信，未独立复核；未读取另一席评审或监督意见。
