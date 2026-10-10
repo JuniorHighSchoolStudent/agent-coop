@@ -1,0 +1,24 @@
+{
+  "Base": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "ExitCode": 0,
+  "InputsUnchanged": true,
+  "FinishedUtc": "2026-10-10T14:38:16.1767661+00:00",
+  "Files": [
+    {
+      "Path": "agent_coop/verification.py",
+      "Sha256": "5f356d870d9d38a07bb053db83d7e6a0b645ff3b2c265c46767757d5123ca41b"
+    },
+    {
+      "Path": "agent_coop/__init__.py",
+      "Sha256": "65441ba72d4454be3c62913469ec6d2bca72b100f06b09907062cf383d67e10c"
+    },
+    {
+      "Path": ".github/workflows/verify.yml",
+      "Sha256": "0ff723cf4eca9c944d4e092145bb95026097f653e66c14feb03c97648aba8295"
+    },
+    {
+      "Path": "tests/test_verification.py",
+      "Sha256": "674d29d609d5be0a9151099abc6e156a6ad4080a474ec290989082c0f896f4d4"
+    }
+  ]
+}

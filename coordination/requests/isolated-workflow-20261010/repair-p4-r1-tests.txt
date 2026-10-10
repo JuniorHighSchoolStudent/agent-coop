@@ -1,0 +1,21 @@
+test_apply_cleanup_allows_changed_now_if_still_due (tests.test_archive.ArchiveTests.test_apply_cleanup_allows_changed_now_if_still_due) ... ok
+test_apply_cleanup_deletes_only_fixture_and_persists (tests.test_archive.ArchiveTests.test_apply_cleanup_deletes_only_fixture_and_persists) ... ok
+test_apply_cleanup_permission_error_keeps_failure_receipt (tests.test_archive.ArchiveTests.test_apply_cleanup_permission_error_keeps_failure_receipt) ... ok
+test_apply_cleanup_rejects_authority_variations (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_authority_variations) ... ok
+test_apply_cleanup_rejects_changed_archive_or_backup (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_changed_archive_or_backup) ... ok
+test_apply_cleanup_rejects_junctioned_archive_parent (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_junctioned_archive_parent) ... ok
+test_apply_cleanup_rejects_junctioned_backup_parent (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_junctioned_backup_parent) ... ok
+test_apply_cleanup_rejects_rebound_source (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_rebound_source) ... ok
+test_apply_cleanup_rejects_receipt_metadata_change (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_receipt_metadata_change) ... ok
+test_apply_cleanup_rejects_source_and_plan_changes (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_source_and_plan_changes) ... ok
+test_apply_cleanup_source_changed_by_authorize_not_deleted (tests.test_archive.ArchiveTests.test_apply_cleanup_source_changed_by_authorize_not_deleted) ... ok
+test_plan_cleanup_fixed_target_and_persisted (tests.test_archive.ArchiveTests.test_plan_cleanup_fixed_target_and_persisted) ... ok
+test_plan_cleanup_rejects_corrupt_target (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_corrupt_target) ... ok
+test_plan_cleanup_rejects_fixture_not_backed_up (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_fixture_not_backed_up) ... ok
+test_plan_cleanup_rejects_invalid_authority (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_invalid_authority) ... ok
+test_plan_cleanup_rejects_subject_mismatch (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_subject_mismatch) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 2.206s
+
+OK

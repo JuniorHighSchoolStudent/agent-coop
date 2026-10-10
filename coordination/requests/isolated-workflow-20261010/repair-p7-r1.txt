@@ -1,0 +1,38 @@
+已按最小读集完成定位与接管，实际只新增一个测试文件，未无目的改写既有实现。
+
+## 实际改动
+
+- 新增 `tests/test_verification.py`（唯一写集项，约 66 行，无超规模风险），含 5 个有意义失败/边界用例：
+  - `test_flags_file_exceeding_hard_line_limit`：构造 501 行临时源，验证 `source_limits` 检出 `> 500` 硬规模 FAIL；
+  - `test_flags_function_exceeding_hard_line_limit`：构造 85 行函数，验证 `source_limits` 检出 `> 80` 硬上限 FAIL；
+  - `test_reports_moderate_oversize_as_review_target_not_failure`：301 行落入 `> target 300` 软目标而非硬失败，验证软/硬区分不被混淆；
+  - `test_flags_missing_relative_link`：非法相对文档路径被 `documentation` 检出 `missing link`；
+  - `test_ignores_remote_urls_and_existing_targets`：远端 URL 与存在目标不误报，防门禁过度拦截。
+
+## 复用 owner 与消费者（未改，保留理由）
+
+- **owner**：`agent_coop/verification.py` 是唯一 verify 实现与三门禁（`source_limits`/`documentation`/`git-diff --check`）唯一维护入口，逻辑正确，保留原样。
+- **消费者**：CLI verify 经 `cli.py:33-35`（`execute` 中 `from .verification import verify`）→ `verification.verify()`；本地与 CI 均走同一命令 `python -m agent_coop verify`（`__main__.py`→`cli.main()`，`.github/workflows/verify.yml:14`）。
+- `__init__.py` 仅含 docstring，verify 经 cli 暴露无需导出，未改；`verify.yml` 本地/CI 同命令已满足，未改。
+
+## 按原 finding 逐项处置
+
+- **GLM B08 / Kimi P7 接管准入（scope_supported，非代码预先通过）**：实际 session 身份为 CodeBuddy deepseek-v4-pro（本会话），已完成检索读取唯一 verify 实现与 CI 现有调用；保留正确内容并新增有意义失败用例；三门禁未弱化、唯一入口与 CI 同命令未变。此为**接管证据**，B08/W8「P7 未真实接管」子项待原两席第 2 轮审本 final + 协调验证记录后关闭，**本席不自签关闭**。
+- **三门禁不弱化**：`source_limits`/`documentation`/`git-diff --check` 在 `verify()` 中均保留且未改动。
+- **P2/P3/P4 其他包源码错误**：不在本包修复，未触碰 `runtime.py`/`paths.py`/`archive.py`/`cleanup.py`/`cli.py` 等。
+
+## 未改内容 / 未解
+
+- 未改 `verification.py`、`__init__.py`、`verify.yml`（理由见上）。
+- browser JS、live 实跑、云 CI 实跑保持 **UNKNOWN**，不冒称；配置文件存在不当作云端实跑。
+- 未读凭据/私有原流，未执行任何 git/push/清理/定时器操作。
+
+## 建议协调验证命令（作者不可执行）
+
+- `python -m unittest tests.test_verification`（新增用例）
+- `python -m agent_coop verify`（唯一入口；全仓其余包 20F/2E 已知失败未修，若全仓红须如实解释，不得假报通过）
+
+## 作者声明
+
+- 未运行任何测试、未执行 git/commit/hash 命令（本席仅 Read/Glob/Grep/Write/Edit 五项）。
+- 所有修改仍为未接收候选，未自签 finding 关闭，未声称验证通过。

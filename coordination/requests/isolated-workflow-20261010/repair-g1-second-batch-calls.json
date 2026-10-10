@@ -1,0 +1,271 @@
+{
+  "scope": "Second dispatched batch; candidate-only, P1 diagnostic delivery rejected for two unauthorized host memory writes",
+  "attempt_count": 4,
+  "calls": [
+    {
+      "attempt": "repair-g1-log-p2-r1",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p2",
+        "candidate": "8183c5d1fddba73ff1ae6f9e978f6dde0acc33e7",
+        "model": "deepseek-v4-pro",
+        "seat": "p2",
+        "requested_session": "agent-coop-g1-fix-p2-scale-r1-replacement-20261010",
+        "resume": "agent-coop-g1-fix-p2-scale-r1-replacement-20261010",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p2-log-r1.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "6958049a5e44dd379949e777ca940ad75956bcc871bf0a3b7799662417293246",
+        "started_at": "2026-10-10T14:33:11.5572481+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "handoff_manifest": "",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "8183c5d1fddba73ff1ae6f9e978f6dde0acc33e7",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:39:02.4105749+00:00",
+        "wall_seconds": 350.8533268,
+        "final_head": "8183c5d1fddba73ff1ae6f9e978f6dde0acc33e7",
+        "final_status": [
+          " M agent_coop/runtime.py",
+          " M tests/test_runtime.py"
+        ]
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-fix-p2-scale-r1-replacement-20261010"
+        ]
+      ],
+      "actual_tools": {
+        "Read": 8,
+        "Grep": 2,
+        "Edit": 3
+      },
+      "actual_writes": [
+        {
+          "tool": "Edit",
+          "path": "D:/project/agent-coop-g1-fix-p2/agent_coop/runtime.py",
+          "tool_use_id": "call_00_kgf411ljMNQB7Pq4WBcY1096"
+        },
+        {
+          "tool": "Edit",
+          "path": "D:/project/agent-coop-g1-fix-p2/tests/test_runtime.py",
+          "tool_use_id": "call_00_chpxkVKfFBEIKCmBybKl4193"
+        },
+        {
+          "tool": "Edit",
+          "path": "D:/project/agent-coop-g1-fix-p2/tests/test_runtime.py",
+          "tool_use_id": "call_01_e3KeFxQzxesqVLMPt8Je4991"
+        }
+      ],
+      "tool_error_count": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "9bd6c3a197f99bd4aab1860be8e7ea0a8ab79869a0e556de50e5e6c07a6e2890",
+      "receipt_sha256": "5b05ebe9b3fdcbc8c977c9a69232d567ef4ed213c019f320e21791237d470493",
+      "delivery_rejected_for_host_memory_writes": false
+    },
+    {
+      "attempt": "repair-g1-p4-r1",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p4",
+        "candidate": "972891513e8387d761dfa3415199ecb57b18d745",
+        "model": "deepseek-v4-pro",
+        "seat": "p4",
+        "requested_session": "agent-coop-g1-fix-p4-cleanup-r1-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p4-r1.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "a68b7761d1f9eccb503a497d3ea28307731e3bdc94aa672c432a082f6c524292",
+        "started_at": "2026-10-10T14:33:11.5723732+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "handoff_manifest": "",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "972891513e8387d761dfa3415199ecb57b18d745",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:38:02.9776859+00:00",
+        "wall_seconds": 291.4053127,
+        "final_head": "972891513e8387d761dfa3415199ecb57b18d745",
+        "final_status": [
+          " M agent_coop/cleanup.py"
+        ]
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-fix-p4-cleanup-r1-20261010"
+        ]
+      ],
+      "actual_tools": {
+        "Read": 11,
+        "Grep": 2,
+        "Edit": 4,
+        "Glob": 1
+      },
+      "actual_writes": [
+        {
+          "tool": "Edit",
+          "path": "D:/project/agent-coop-g1-fix-p4/agent_coop/cleanup.py",
+          "tool_use_id": "call_00_AvnDpDAQcnJRf92TKLPH6585"
+        },
+        {
+          "tool": "Edit",
+          "path": "D:/project/agent-coop-g1-fix-p4/agent_coop/cleanup.py",
+          "tool_use_id": "call_00_PyAb1dodtZJ6xnMz25Q78420"
+        },
+        {
+          "tool": "Edit",
+          "path": "D:/project/agent-coop-g1-fix-p4/agent_coop/cleanup.py",
+          "tool_use_id": "call_00_ET_dPST7rwH5KJ30zBJxIXH7350"
+        },
+        {
+          "tool": "Edit",
+          "path": "D:/project/agent-coop-g1-fix-p4/agent_coop/cleanup.py",
+          "tool_use_id": "call_00_ET_e2srgBYXuMVLbUCt6AP79794"
+        }
+      ],
+      "tool_error_count": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "b4355891e0feed095778407c50456dc8822d55cb07cd15b9a0555f8687beb629",
+      "receipt_sha256": "83427b2fb8bd154481e328d922b84d4661af1530fb6e26914e1c45fc1b419668",
+      "delivery_rejected_for_host_memory_writes": false
+    },
+    {
+      "attempt": "repair-g1-p7-r1",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p7",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "deepseek-v4-pro",
+        "seat": "p7",
+        "requested_session": "agent-coop-g1-takeover-p7-verification-r1-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p7-r1.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "991001247b6512dc20be3e3043cdc759d0ad7f70cc2599a3d086f08151ca1315",
+        "started_at": "2026-10-10T14:33:11.5734707+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "handoff_manifest": "",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:36:08.0954584+00:00",
+        "wall_seconds": 176.5219877,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": [
+          "?? tests/test_verification.py"
+        ]
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-takeover-p7-verification-r1-20261010"
+        ]
+      ],
+      "actual_tools": {
+        "Read": 11,
+        "Glob": 4,
+        "Write": 1
+      },
+      "actual_writes": [
+        {
+          "tool": "Write",
+          "path": "D:/project/agent-coop-g1-fix-p7/tests/test_verification.py",
+          "tool_use_id": "call_00_tSVoquJiYjwucbZzRKn97496"
+        }
+      ],
+      "tool_error_count": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "9345c3203d2f41764217fa808ca479eb01ff76b3ca77d364126823b76527d5f6",
+      "receipt_sha256": "ee689ac11d76acf7eb151d7647a3ce13e203365f48ca427f5f27e3fbd8d0750c",
+      "delivery_rejected_for_host_memory_writes": false
+    },
+    {
+      "attempt": "repair-g1-diagnostic-p1-r1",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-diagnostic-p1",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "deepseek-v4-pro",
+        "seat": "p1",
+        "requested_session": "agent-coop-g1-p1-publication-diagnostic-r1-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\diagnostic-p1-r1.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "092d39f328ba3eaf7f291317b9340de31963484ce891b1cef24eb79bb1af037b",
+        "started_at": "2026-10-10T14:35:33.0258649+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "handoff_manifest": "",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:40:44.5916262+00:00",
+        "wall_seconds": 311.5657613,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": [
+          "?? tests/test_publication_diagnostic.py"
+        ]
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-p1-publication-diagnostic-r1-20261010"
+        ]
+      ],
+      "actual_tools": {
+        "Read": 7,
+        "Grep": 2,
+        "Write": 3
+      },
+      "actual_writes": [
+        {
+          "tool": "Write",
+          "path": "D:/project/agent-coop-g1-diagnostic-p1/tests/test_publication_diagnostic.py",
+          "tool_use_id": "call_00_mEaAY8WniUw0c901qg9i4512"
+        },
+        {
+          "tool": "Write",
+          "path": "C:\\Users\\june\\.codebuddy\\projects\\d-project-agent-coop-g1-diagnostic-p1\\memory\\project-p1-publication-winerror5.md",
+          "tool_use_id": "call_00_0IYOY8NXU9ERiOb4nKmJ3445"
+        },
+        {
+          "tool": "Write",
+          "path": "C:\\Users\\june\\.codebuddy\\projects\\d-project-agent-coop-g1-diagnostic-p1\\memory\\MEMORY.md",
+          "tool_use_id": "call_01_zRKvgU63mtaUQ0WbUkIB5309"
+        }
+      ],
+      "tool_error_count": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "7cd90f13f71178a99b8fc6bba6b480c80ff9c4ad7b619d2d03ca48d5ff438f2d",
+      "receipt_sha256": "6d1c1a0d7af31304d423aca1fdc8192945fbed9f59b405ad979cf09b8a0326e2",
+      "delivery_rejected_for_host_memory_writes": true
+    }
+  ]
+}

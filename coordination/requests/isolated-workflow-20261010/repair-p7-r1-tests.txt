@@ -1,0 +1,10 @@
+test_flags_missing_relative_link (tests.test_verification.DocumentationGateTests.test_flags_missing_relative_link) ... ok
+test_ignores_remote_urls_and_existing_targets (tests.test_verification.DocumentationGateTests.test_ignores_remote_urls_and_existing_targets) ... ok
+test_flags_file_exceeding_hard_line_limit (tests.test_verification.SourceLimitsGateTests.test_flags_file_exceeding_hard_line_limit) ... ok
+test_flags_function_exceeding_hard_line_limit (tests.test_verification.SourceLimitsGateTests.test_flags_function_exceeding_hard_line_limit) ... ok
+test_reports_moderate_oversize_as_review_target_not_failure (tests.test_verification.SourceLimitsGateTests.test_reports_moderate_oversize_as_review_target_not_failure) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.051s
+
+OK

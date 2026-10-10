@@ -1,0 +1,48 @@
+# P1 发布诊断交接 — g1-p1-publication-diagnostic-r1
+
+## 1. Base 与作者来源
+- Base：`34bce56b624cf521b33dc5b4916bd1c8e7711536`（候选，未变）。
+- 工作树：`D:/project/agent-coop-g1-diagnostic-p1`；分支 `codex/g1-p1-publication-diagnostic-r1`；session `agent-coop-g1-p1-publication-diagnostic-r1-20261010`。
+- 实际作者：CodeBuddy `deepseek-v4-pro`（本包全部文本由我产出；未执行任何 shell/git/hash/测试）。
+- 未独立核验任何 SHA。回执中出现的 861e38bb（冻结树）/85311d1c（旧工作树）为回执陈述事实，非本包计算。
+
+## 2. 已检索的既有机制/消费者
+- 唯一写入口：`agent_coop/store.py:365` `_write_status(root/'STATUS', state)` → `:399-402` `_atomic_write`（固定 `.tmp` 兄弟名 + `os.replace`）。
+- `STATUS` 在 `agent_coop/` 内**零读取者**（Grep 全仓仅命中 store.py:365）。无内部代码路径持有 STATUS 句柄。
+- 发布同步：`store.py:340-366` `publish()` 以 `file_lock(publish.lock, blocking=False)` 串行化；`_mutate`(`:189-193`)/`initialize`(`:229-232`) 对 `BlockingIOError` 吞掉仅延后投影。lock 句柄指向 `publish.lock`，与 STATUS 无关。
+- 另有一处独立 `os.replace`：`paths.py:97`（`write_json`）。冻结树 20F/2E 属该处 junction/symlink 拒绝与 flow/gates 边界问题，**与本 WinError5 无关**，不得混同。
+
+## 3. 观察事实 vs 根因假设（分开）
+
+**观察事实（原件）：**
+1. `PermissionError: [WinError 5] 拒绝访问` 发生于 `store.py:402` `os.replace(tmp, path)`，替换 `STATUS.tmp → STATUS`，调用链 `publish → _write_status → _atomic_write`。
+2. 复现于 3 次可用运行中的 2 次：`p1-state-validation.txt`（33 项 32ok/1E，`test_pause_persists_and_stops_after_current_step`，resume→publish）；`working-tree-verify-r1-output.txt`（131 tests/20F/3E，第三 ERROR `test_run_publishes_projections`，finish→publish）。
+3. `frozen-verify-r1.txt`（131 tests/20F/2E/2skip）无此 STATUS 错误——**不等于关闭**，仅说明间歇性/环境相关。
+4. 两处失败均在**单进程单线程**测试内，publish 由 `publish.lock` 串行化。
+
+**代码分析（推断，已标注）：**
+- `_atomic_write` 无重试、无句柄纪律、无错误包装；`tmp.write_text` 自身句柄在 `os.replace` 前已关闭（CPython 同步关闭）。
+- Windows 上 `os.replace`（MoveFileEx `MOVEFILE_REPLACE_EXISTING`）在目标或源被“无 FILE_SHARE_DELETE 的句柄”持有时返回 ERROR_ACCESS_DENIED(5)。CPython `open()`/`write_text` 的 CRT 共享模式不含 FILE_SHARE_DELETE。
+- **推断：** 单进程内无任何代码路径持有 STATUS/STATUS.tmp 句柄，故 WinError5 必然来自进程外瞬时句柄（AV 实时扫描/索引/同步）或文件系统级竞态。
+
+**根因假设（未验证）：**
+- H1（外部位瞬时句柄）：AV/索引/同步短暂持有 STATUS 或 STATUS.tmp → WinError5。**最吻合但未证实**，需外部句柄证据，禁止直接断言为根因。
+- H2（固定 `.tmp` 名的跨进程竞态）：并发发布共享 `STATUS.tmp`，但会得 WinError 2/损坏而非 WinError 5，且失败测试为单进程 → **不解释观察**，仅列为潜在缺陷。
+- H3（自身句柄未释放）：write_text 同步关闭 → 不支持。
+
+## 4. 新测试 / 实际写集及理由
+- **写集：仅 `tests/test_publication_diagnostic.py`**（新建，1 个测试）。
+- 理由：现有测试不覆盖“目标文件被无 FILE_SHARE_DELETE 句柄持有”这一失败模式。该测试用真实句柄（非 mock）持有 `STATUS`，断言 `store.update()` 沿 `publish→_write_status→_atomic_write` 抛 `PermissionError`，把“间歇 WinError5”钉死为“store.py:402 在目标被持有时的确切错误签名”。
+- **明确标注为「机制示例」**：它只证明失败机制，**不等于历史根因**；不修改任何现有文件；Windows 专属（`skipUnless(os.name=='nt')`）。未运行、未验证其通过。
+
+## 5. 建议协调者最小复现/后续证据
+- 协调者已按原两用例顺序 ≤20 轮、首复发即停：请保留轮数/堆栈/源码 SHA（我未运行、不假设结果）。
+- 若复发：在 `tearDown` 清理 temp 目录**之前**，对 `STATUS`/`STATUS.tmp` 抓取打开句柄（Sysinternals `handle.exe -a` 或 ProcMon File Activity 过滤 `*STATUS*`），记录持柄进程 PID/镜像名与共享模式——这是唯一能把 H1 从“猜测”升级为“有据”的外部证据。
+- 若 20 轮未复发：仅报告未复现；**不得**据此自签关闭 B09/B11，不得批准重试；H1 仍缺外部句柄证据。
+- 收到稳定复现即返回发包人，另立根因审核/修复包；本包局部诊断**不计 G1 接收**。
+
+## 6. 未运行 / 未验证 / 未闭合
+- 未运行任何测试、未计算 hash、未执行 git/shell（工具仅 Read/Glob/Grep/Write/Edit）。
+- 新测试 `test_publication_diagnostic.py` 未经我验证，需协调者运行确认。
+- finding B09（Kimi）/B11（GLM）**保持开放**；生产修复 UNKNOWN；冻结树“本次无 STATUS 错误”不构成关闭。
+- 停止条件未满足（无稳定复现证据，亦无非复现的闭合授权）。

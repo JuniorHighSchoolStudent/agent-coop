@@ -1,0 +1,43 @@
+已完成最小修改，仅改动唯一写集 `agent_coop/cleanup.py`。
+
+## 实际改动
+
+**复用 owner（不复制校验器）**
+- `checked`/`digest`/`write_json` 复用 `agent_coop/paths.py` 公开合同（`checked` 本 base 已含 root 内 junction 叶检测）。
+- `canonical_digest` 经既有 `from .store import canonical_digest`。
+- 复用既有 `read_evidence`、`validate_authority`、`_fixture_manifest_entry`、`_stable_fields`、`_cleanup_receipt`、`_verify_manifest_targets`，无新增 helper、无新抽象。
+
+**消费者**：`archive.py` 的 `plan_cleanup`/`apply_cleanup` 薄转发、`sample.py` `retain()` 经 `evidence(root,state,'cleanup_plan')` 消费，二者不直接访问 plan 字段，结构变更无影响；`tests/test_archive.py` 现有 cleanup 回归为组合验收消费者。
+
+## 按原 finding 逐项处置
+
+| Finding | 处置 | 位置 |
+|---|---|---|
+| Kimi B01 / GLM B06a① FIXTURE 唯一源 | `plan['source'] != FIXTURE` 即拒；核验/删除均改走常量 `FIXTURE`，不再取 `plan['source']` | cleanup.py:177、183 |
+| Kimi B05b / GLM B06a② plan 期清单读回 + subject 绑定 | `plan_cleanup` 增加 archive/backup `subject_digest` 与 `authority['subject_digest']` 绑定（111-114），并 `_verify_manifest_targets` 读回 archive/backup 全部目标（121-122） | cleanup.py:111-122 |
+| Kimi B05a / GLM B06a③ 完整 receipt 稳定字段重核 | plan 改存 `archive_receipt`/`backup_receipt` 完整回执；apply 由 `.get('files')` 改为整体 `!=` 比对（含 subject/policy/verifier/permissions/files 等稳定字段） | cleanup.py:132-133、187-190 |
+| Kimi B04 cleanup 侧 / GLM B06b 目标经 checked | `_verify_manifest_targets` 由 `Path(root)/entry['target']` 改为 `checked(root, entry['target'])`；移除随之失效的 `from pathlib import Path` 导入 | cleanup.py:143、9 |
+| Kimi B05d / GLM B06a④ authorize 后立即重核 source 再删 | 最终 `authorize()` 之后立即重核 `digest(fixture)`，失配写 failed 回执、保留源，不抛异常伪成功 | cleanup.py:197-200 |
+
+## 未改内容 / 未解
+
+- `tests/test_archive.py` 完全只读，未迁出、未拆分、未复制；`paths.py`/`archive.py` 及其公开签名冻结未动。
+- 未新增 `tests/test_cleanup.py`：既有 `test_archive.py` 已覆盖 `rebound_source`、`receipt_metadata_change`×2、`subject_mismatch`、`corrupt_target`×2、`source_changed_by_authorize`、`junctioned_archive/backup_parent` 全部组件级场景，无同义重复。
+- 未改 docs/当前状态/其他包写集/行政输入副本。
+- **依赖未解**：`junctioned_archive/backup_parent` 两用例最终转绿仍依赖 P3（`archive.py` 目标父链预建 junction 属 P3 写集；本包仅负责 cleanup 侧经 `checked` 拒绝）；B06 各子项须按 P3 归入后组合验证逐项关闭，不得局部通过关闭整项。
+- 接口共享签名未变，未触发 `scope_request`。
+
+## 规模说明
+
+`apply_cleanup` 现为 42 物理行（>40 目标、<80 硬限）：新增行全为 plan 完整性、receipt 完整性、authority 重核与安全删除的顺序性检查，无分支复杂度或内聚下降，非压行/凑数。
+
+## 建议协调验证（作者不可执行）
+
+```
+python -m unittest tests.test_archive -k cleanup -v
+```
+重点核对：`test_apply_cleanup_rejects_rebound_source`、`test_apply_cleanup_rejects_receipt_metadata_change`（archive/backup）、`test_plan_cleanup_rejects_subject_mismatch`、`test_plan_cleanup_rejects_corrupt_target`（archive/backup）、`test_apply_cleanup_source_changed_by_authorize_not_deleted`、`test_apply_cleanup_rejects_junctioned_archive_parent`/`backup_parent`（后两者依赖 P3 合并组合验证）。
+
+## 声明
+
+作者（CodeBuddy deepseek-v4-pro）**未运行任何测试或 hash 命令，未执行 git，未自签关闭任何 finding**。所有修改仍为未接收候选，B06a/B06b 与 Kimi B01/B05a-d/B04 清理侧须由原两席第 2 轮按子项绑定新候选后复审关闭，最终组合候选及原生监督尚待发生。

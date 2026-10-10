@@ -1,0 +1,57 @@
+test_command_is_structured_argv_carrying_identity (tests.test_runtime.AdapterCommandTests.test_command_is_structured_argv_carrying_identity) ... ok
+test_command_requires_positive_max_turns (tests.test_runtime.AdapterCommandTests.test_command_requires_positive_max_turns) ... ok
+test_codebuddy_allowed_tool_error_is_counted_not_fatal (tests.test_runtime.AdapterParseTests.test_codebuddy_allowed_tool_error_is_counted_not_fatal) ... ok
+test_codebuddy_raw_text_is_final_result_only (tests.test_runtime.AdapterParseTests.test_codebuddy_raw_text_is_final_result_only) ... ok
+test_codebuddy_rejects_error_and_non_json_result (tests.test_runtime.AdapterParseTests.test_codebuddy_rejects_error_and_non_json_result) ... ok
+test_codebuddy_reports_requested_and_actual_identity (tests.test_runtime.AdapterParseTests.test_codebuddy_reports_requested_and_actual_identity) ... ok
+test_codebuddy_requires_matching_init_model_and_session (tests.test_runtime.AdapterParseTests.test_codebuddy_requires_matching_init_model_and_session) ... ok
+test_codebuddy_tool_outside_profile_is_blocked (tests.test_runtime.AdapterParseTests.test_codebuddy_tool_outside_profile_is_blocked) ... ok
+test_codebuddy_uses_result_event_not_trailing_hook (tests.test_runtime.AdapterParseTests.test_codebuddy_uses_result_event_not_trailing_hook) ... ok
+test_kimi_blocks_without_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_blocks_without_resume_hint) ... ok
+test_kimi_rejects_tool_calls_and_non_json_content (tests.test_runtime.AdapterParseTests.test_kimi_rejects_tool_calls_and_non_json_content) ... ok
+test_kimi_uses_final_assistant_content_and_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_uses_final_assistant_content_and_resume_hint) ... ok
+test_parse_rejects_bad_jsonl_line (tests.test_runtime.AdapterParseTests.test_parse_rejects_bad_jsonl_line) ... ok
+test_parse_rejects_dict_result (tests.test_runtime.AdapterParseTests.test_parse_rejects_dict_result) ... ok
+test_rejects_wrong_agent_file_hash (tests.test_runtime.InvokeTests.test_rejects_wrong_agent_file_hash) ... ok
+test_success_returns_receipt (tests.test_runtime.InvokeTests.test_success_returns_receipt) ... ok
+test_verifies_executable_and_entry_hashes (tests.test_runtime.InvokeTests.test_verifies_executable_and_entry_hashes) ... ok
+test_log_bytes_are_bounded_on_disk (tests.test_runtime.RunBoundedTests.test_log_bytes_are_bounded_on_disk) ... ok
+test_log_dir_accepts_runtime_and_its_descendants (tests.test_runtime.RunBoundedTests.test_log_dir_accepts_runtime_and_its_descendants) ... ok
+test_log_dir_inside_root_but_outside_runtime_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_inside_root_but_outside_runtime_is_rejected) ... ok
+test_log_dir_junction_escape_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_junction_escape_is_rejected) ... ERROR
+test_log_dir_outside_root_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_outside_root_is_rejected) ... ok
+test_nonzero_exit_raises (tests.test_runtime.RunBoundedTests.test_nonzero_exit_raises) ... ok
+test_output_limit_raises (tests.test_runtime.RunBoundedTests.test_output_limit_raises) ... ok
+test_parent_exit_with_child_holding_pipe_is_bounded_failure (tests.test_runtime.RunBoundedTests.test_parent_exit_with_child_holding_pipe_is_bounded_failure) ... ok
+test_success_leaves_no_resource_warning (tests.test_runtime.RunBoundedTests.test_success_leaves_no_resource_warning) ... ok
+test_success_returns_text_hashes_and_timing (tests.test_runtime.RunBoundedTests.test_success_returns_text_hashes_and_timing) ... ok
+test_timeout_terminates_process_tree (tests.test_runtime.RunBoundedTests.test_timeout_terminates_process_tree) ... ok
+test_verifier_checks_boundary_hold_and_negative_retention (tests.test_gates.GateTests.test_verifier_checks_boundary_hold_and_negative_retention) ... ERROR
+test_pause_resume_archive_backup_and_cleanup_share_one_state (tests.test_flow.FlowTests.test_pause_resume_archive_backup_and_cleanup_share_one_state) ... ok
+test_review_wrong_verdict_saves_receipt_and_keeps_budget (tests.test_flow.FlowTests.test_review_wrong_verdict_saves_receipt_and_keeps_budget) ... ok
+
+======================================================================
+ERROR: test_log_dir_junction_escape_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_junction_escape_is_rejected)
+----------------------------------------------------------------------
+FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'C:\\Users\\june\\AppData\\Local\\Temp\\tmpqc2d38bs\\sample\\.runtime\\escape'
+
+======================================================================
+ERROR: test_verifier_checks_boundary_hold_and_negative_retention (tests.test_gates.GateTests.test_verifier_checks_boundary_hold_and_negative_retention)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-g1-fix-p2\tests\test_gates.py", line 42, in test_verifier_checks_boundary_hold_and_negative_retention
+    result = validate_feature(root)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-g1-fix-p2\agent_coop\checks.py", line 39, in validate_feature
+    receipt = run_bounded(
+              ^^^^^^^^^^^^
+  File "D:\project\agent-coop-g1-fix-p2\agent_coop\runtime.py", line 61, in run_bounded
+    _write_logs(log_path, out_bytes, err_bytes)
+  File "D:\project\agent-coop-g1-fix-p2\agent_coop\runtime.py", line 212, in _write_logs
+    raise ValueError(
+ValueError: refusing to overwrite existing log files in C:\Users\june\AppData\Local\Temp\tmpx6rwana3\sample\.runtime\verification
+
+----------------------------------------------------------------------
+Ran 31 tests in 22.203s
+
+FAILED (errors=2)

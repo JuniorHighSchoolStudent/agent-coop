@@ -1,0 +1,24 @@
+{
+  "Base": "972891513e8387d761dfa3415199ecb57b18d745",
+  "ExitCode": 0,
+  "InputsUnchanged": true,
+  "FinishedUtc": "2026-10-10T14:41:19.5393030+00:00",
+  "Files": [
+    {
+      "Path": "agent_coop/cleanup.py",
+      "Sha256": "209d2bb5b4d511c0008c06ef8429ab6e249921346852d69696f5eda821d870b4"
+    },
+    {
+      "Path": "agent_coop/paths.py",
+      "Sha256": "13050fbf2e5afdf843da1e7cb3c31c3ff50235bb1171f1454bd523781142ec67"
+    },
+    {
+      "Path": "agent_coop/archive.py",
+      "Sha256": "d3559da8369bf4c0af07c323b14253f62d39b5fb26fd9e1211b4f684f510d8bb"
+    },
+    {
+      "Path": "tests/test_archive.py",
+      "Sha256": "ab91c1755ea8ce29d9c85d0e52b160784caf1f6edd231172803700cf1542ef4d"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+test_atomic_write_destination_held_open_raises_permission_error (tests.test_publication_diagnostic.PublicationDiagnosticTests.test_atomic_write_destination_held_open_raises_permission_error) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.061s
+
+OK

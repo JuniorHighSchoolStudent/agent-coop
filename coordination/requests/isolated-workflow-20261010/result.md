@@ -2,7 +2,7 @@
 
 范围：本请求整体交付；维护者：Codex集成者；状态：离线实现中，G1与live均未通过；来源：用户隔离样例选择、[G0接收](result-g0.md)及[职责纠偏](role-correction.md)。这是本请求当前结果入口，各门禁原件按链接引用，不从文件名猜最新。
 
-## 当前派发控制：首审未通过，按审核范围派修
+## 当前派发控制：作者冻结，准备原席第二轮复审
 
 2026-10-10用户再次明确：已有候选发现缺陷，也必须多轮审核，由专门发包人依据审核派发。根此前把静态检查/测试失败直接派成修复包，缺少这条链，属于流程偏离；不以后来的通过倒填此前批准。
 
@@ -13,6 +13,15 @@
 待审候选已固定为`34bce56b624cf521b33dc5b4916bd1c8e7711536`，独立detached审核树已创建且clean。两席只读首轮审核已完成并要求修改；新实现/修复仍须正式审核后的具名包。共享目录在途写集隔离及此前未按审核先派修均提交审核，不冒充已完成产品资源隔离。
 
 准确候选checkout又做一次组合验证，见[原始输出](verification-g1-frozen-r1-output.txt)、[内容清单](verification-g1-frozen-r1-manifest.json)、[绑定元数据](verification-g1-frozen-r1-metadata.json)：131项、20失败/2错误/2跳过及85行硬限失败，41文件前后清单一致，清单SHA256为`9ab421ccb7f21506a5b39b38180bf702eb3a0053fddf0d54ed476af41b6071d5`。本次为首轮正式审核的主验证证据；先前工作树的3个error保留为历史异常，不能用复验较少错误数抹除。复验原因是Git对历史文本的换行规整，未改产品代码来获得不同结果。
+
+本轮后继P2日志、P4清理、P7接管及P1诊断的四次调用已全部退出，当前writer为0：[实际调用归档](repair-g1-second-batch-calls.json)。只在候选feature分支汇集P2/P3/P4/P5/P7代码供组合验证，未接收、未合入main，禁止新的writer调用，剩余工作是只读复审与监督。
+
+- P2日志：作者[原件](repair-p2-log-r1.txt)，分支候选`ec9e9d5cdf48cdaa62e57e8c2a21f3d23cf6a325`；[31项限定验证](repair-p2-log-r1-tests.txt)为29通过/2错误，[摘要](repair-p2-log-r1-test-metadata.json)稳定。新增junction测试清理阶段WinError3、重复验证碰到既有日志拒绝覆盖仍待原席判断；flow与review预算两跨包用例通过，不可写成三个跨包全绿。
+- P4清理：作者[原件](repair-p4-r1.txt)，候选`544c5dd1b7fb66ed28e6bdab9975b897190c308d`；[16项清理回归](repair-p4-r1-tests.txt)全部通过、[摘要](repair-p4-r1-test-metadata.json)稳定。只改cleanup.py，未复制或搬动旧测试；待组合复审。
+- P7接管：作者[原件](repair-p7-r1.txt)，候选`0e4e32cee37991d47fc8ef617d2465057a7e3b9a`；[5项门禁边界测试](repair-p7-r1-tests.txt)通过、[摘要](repair-p7-r1-test-metadata.json)稳定。保留正确的Codex草稿实现及作者事实，新增有意义测试；云CI未知。
+- P1诊断：实际调用越界新建两份宿主记忆，交付拒收；两新增文件已按原Write内容核对、备份并撤回，其他记忆未变。详情及本机权限能力静态证据见[宿主记忆边界记录](runtime-memory-boundary-evidence.md)。控制文件句柄机制测试通过，只是机制示例；历史根因仍未知，未经原席允许不得改Store或加重试。
+
+作者退出、局部测试、候选commit均不替代原席复审。第二轮需绑定相同组合候选逐finding关闭/保留，并明确两次派发边界偏离；原生Kimi监督也必须核验这些事实。当前没有G1 PASS、无live、无main合入。
 
 ## 首轮审核与证据归属
 
@@ -28,7 +37,7 @@
 
 P2/P3/P5本批三次被回收尝试及三次替代调用的实际身份、工具、退出、原流摘要与P2部分产物交接见[调用归档](repair-g1-r1-calls.json)。P2替代作者明确接管被回收调用的既有改动，没有把它伪称替代调用新写；三包均由实际CodeBuddy产生/接管，根只运行验证、冻结候选与整理证据。
 
-|当前修复候选|实际局部验证|接收边界|
+|首批修复候选（P2已由上方日志候选承接）|实际局部验证|接收边界|
 |---|---|---|
 |P2规模 `8183c5d1fddba73ff1ae6f9e978f6dde0acc33e7`；[作者](repair-p2-r1.txt)|[25项runtime通过](repair-p2-r1-tests.txt)；[摘要](repair-p2-r1-test-metadata.json)；规模hard_failures为空|日志目录问题仍须同包续作，未原席关闭|
 |P3路径/归档 `972891513e8387d761dfa3415199ecb57b18d745`；[作者](repair-p3-r1.txt)|[13项路径](repair-p3-r1-path-tests.txt)+[10项归档/备份](repair-p3-r1-archive-tests.txt)，共21通过/2权限跳过；[摘要](repair-p3-r1-test-metadata.json)|仅paths/archive改动，cleanup及旧test_archive未改；待组合复审|

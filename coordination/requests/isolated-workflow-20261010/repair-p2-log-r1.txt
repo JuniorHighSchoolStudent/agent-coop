@@ -1,0 +1,46 @@
+已完成本包实现。以下是作为 replacement 作者的交付交接。
+
+---
+
+## 交付交接（P2 同包后继日志修复 · 单 writer）
+
+**身份与会话**
+- requested model: deepseek-v4-pro（CodeBuddy）
+- actual model: 由外部核验（续用 session `agent-coop-g1-fix-p2-scale-r1-replacement-20261010`）
+- 精确 base: `8183c5d1fddba73ff1ae6f9e978f6dde0acc33e7`（规模候选已冻结，本调用从该版本继续，未回退 `_collect` 拆分）
+- worktree: `D:/project/agent-coop-g1-fix-p2`；branch: `codex/g1-p2-scale-r1`
+
+**实际修改（唯一写集：`agent_coop/runtime.py`、`tests/test_runtime.py`）**
+
+1. `agent_coop/runtime.py` `_resolve_log_dir`（L27–42，17 行，签名不变）：
+   - 复用既有 owner `paths.checked(cwd, '.runtime')` 得到 `.runtime` 权威基路径（`runtime_base`）。
+   - 接受 `log_dir` 为 `.runtime` 本身或后代（覆盖 `.runtime/verification`、`.runtime/<role>`、`.runtime/logs`）。
+   - 拒绝三类逃逸：cwd 外（`relative_to(root)` 失败）、`.runtime` 外（`runtime_base not in target.parents`）、链接/junction/reparse 逃逸（`checked` 内 lstat 级 `_is_reparse_point` 检测）。
+   - 不再先 `.resolve()` 抹链接证据；用 `.absolute()` + 词法 `relative_to` + `checked`，不复制第二套校验器。
+   - 返回词法绝对路径，未改身份/进程/超时/输出/日志落盘语义。
+
+2. `tests/test_runtime.py`：新增 `import os`、`import subprocess`；新增 3 项回归（不放宽原 25 项）：
+   - `test_log_dir_inside_root_but_outside_runtime_is_rejected`（`.runtime` 外根内 workspace 拒绝）
+   - `test_log_dir_junction_escape_is_rejected`（junction 逃逸拒绝，Windows 用 mklink /J、非 Windows 用目录符号链接，不可用则 skipTest）
+   - `test_log_dir_accepts_runtime_and_its_descendants`（正向锁定 `.runtime` 本身与 `.runtime/verification` 可接受）
+
+**复用 owner 与受影响消费者**
+- 复用 `paths.checked` / `paths._is_reparse_point`（路径守卫唯一 owner），未复制校验器。
+- 受影响消费者：`run_bounded`（`_resolve_log_dir` 唯一调用点，已 grep 确认无其他源码调用者）、`invoke`、P6——均只读契约，未改 `adapters` / `sample` / `checks` / P3 / 合同。
+- 未改 `_resolve_log_dir` 外的 `_collect` 拆分（保留冻结规模候选）。
+
+**finding 处置（均未自签关闭）**
+- `g1-glm-B02` / `g1-kimi-B06`（日志目录边界）：按 `interface-log-directory.md` v1 实现 `.runtime` 本身或后代为权威边界，保留 cwd 外/`.runtime` 外/链接逃逸拒绝；待协调者测试 + 原席复审关闭。
+- `g1-glm-B03` / `g1-kimi-B07`（`_collect` 85 行硬限）：继承冻结规模候选的拆分，本次未回退、未改动；仍为前置候选，待复审关闭。
+
+**建议协调者执行的限定命令与预期**
+1. `python -m unittest tests.test_runtime -v` → 预期 28 项全绿（25 既有 + 3 新增）。
+2. source_limits（`agent_coop/verification.py`）→ 预期 `runtime.py` 无硬失败；`tests/test_runtime.py` >300 为既有软目标，非硬失败。
+3. 组合验收三跨包测试（我未改这些文件，如实待验）：`test_verifier_checks_boundary_hold_and_negative_retention`、`test_pause_resume_archive_backup_and_cleanup_share_one_state`、`test_review_wrong_verdict_saves_receipt_and_keeps_budget`。
+4. `test_log_dir_outside_root_is_rejected` 保持绿。
+5. `git diff --check` 通过；并核验当前改动未触碰 `_collect` 拆分与 `.runtime/verification`、`.runtime/<role>` 消费路径。
+
+**边界与免责**
+- 作者未运行任何测试/命令（仅 Read/Glob/Grep/Write/Edit），未自称已跑、未测/仍失败如实说明。
+- 未 git add / commit / 操作分支；交付 commit 由协调者冻结并关联真实作者原件，不合入、不 push。
+- 若三跨包测试仍遇别包失败，如实交接、不扩大修复；本包局部绿不算独立接收，finding 关闭由独立审核，我不自签。

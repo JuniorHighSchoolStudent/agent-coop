@@ -1,0 +1,17 @@
+{
+  "Candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "ExitCode": 0,
+  "InputsUnchanged": true,
+  "Files": [
+    {
+      "Path": "agent_coop/store.py",
+      "Sha256": "ed14743e5136c24b18b2e6bd10991e4aef642398f0fd18f6ca3fb8bf5f33fbd2"
+    },
+    {
+      "Path": "tests/test_publication_diagnostic.py",
+      "Sha256": "ea4ec264408aa1e9d3bbf48c71bfa6130cf3a9f8402de59621387034a28bcddd"
+    }
+  ],
+  "Purpose": "Controlled held-open-file mechanism only; diagnostic delivery rejected for unauthorized host writes; does not establish historical root cause or acceptance",
+  "FinishedUtc": "2026-10-10T14:44:40.0920140+00:00"
+}

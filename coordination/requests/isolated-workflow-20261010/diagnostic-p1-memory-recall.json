@@ -1,0 +1,24 @@
+{
+  "Reason": "Retract two unauthorized newly created CodeBuddy host memory files; no other memory changed",
+  "FinishedUtc": "2026-10-10T14:42:54.1831095+00:00",
+  "Files": [
+    {
+      "Path": "C:\\Users\\june\\.codebuddy\\projects\\d-project-agent-coop-g1-diagnostic-p1\\memory\\project-p1-publication-winerror5.md",
+      "ToolUseId": "call_00_0IYOY8NXU9ERiOb4nKmJ3445",
+      "Sha256": "b613ee3abc0c7a57e362d7a0ff72addab66845cdb063737a1bd4d9e037a0eb12",
+      "Backup": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\unauthorized-memory-recall\\project-p1-publication-winerror5.md",
+      "Removed": true,
+      "VerifiedNewFile": true,
+      "ContentMatchedUnauthorizedWrite": true
+    },
+    {
+      "Path": "C:\\Users\\june\\.codebuddy\\projects\\d-project-agent-coop-g1-diagnostic-p1\\memory\\MEMORY.md",
+      "ToolUseId": "call_01_zRKvgU63mtaUQ0WbUkIB5309",
+      "Sha256": "b214c9ce609ca30bd0baa9ec62f12072c099ebe9a26c77ac150d87b53d8c743c",
+      "Backup": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\unauthorized-memory-recall\\MEMORY.md",
+      "Removed": true,
+      "VerifiedNewFile": true,
+      "ContentMatchedUnauthorizedWrite": true
+    }
+  ]
+}

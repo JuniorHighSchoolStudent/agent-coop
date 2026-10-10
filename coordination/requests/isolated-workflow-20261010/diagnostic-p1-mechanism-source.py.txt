@@ -1,0 +1,41 @@
+"""P1 发布诊断：机制示例测试（非根因证明）。
+
+本文件属于 g1-p1-publication-diagnostic-r1 诊断交付，只证明一件事：
+store._atomic_write 的 `os.replace(tmp, path)` 在“目标文件被一个不含
+FILE_SHARE_DELETE 的句柄持有”时，于 Windows 上会抛 PermissionError(WinError 5)。
+
+这是受控文件句柄注入的「机制示例」——它复现的是失败机制，不等于历史根因。
+历史根因（外部句柄来源，如 AV/索引/同步）需要外部句柄证据，本包未闭合。
+不修改 store.py / 发布合同，不是产品修复。
+"""
+import os
+import tempfile
+import unittest
+from pathlib import Path
+
+from agent_coop.store import Store
+
+
+@unittest.skipUnless(os.name == 'nt', 'Windows 句柄共享语义机制示例')
+class PublicationDiagnosticTests(unittest.TestCase):
+    """机制示例：持有目标 STATUS 句柄会触发 _atomic_write 的 WinError5。"""
+
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self._tmp.name) / 'sample'
+        (self.root / '.runtime').mkdir(parents=True)
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def test_atomic_write_destination_held_open_raises_permission_error(self):
+        store = Store(self.root)
+        store.initialize({}, ['a'])
+        status = self.root / 'STATUS'
+        self.assertTrue(status.exists())
+        # Windows 下 CPython open() 的共享模式不含 FILE_SHARE_DELETE，
+        # 目标 STATUS 被持有期间 os.replace 无法覆盖它 → PermissionError。
+        with status.open('r', encoding='utf-8') as held:
+            self.assertIsNotNone(held)
+            with self.assertRaises(PermissionError):
+                store.update(data={'k': 'v'})
