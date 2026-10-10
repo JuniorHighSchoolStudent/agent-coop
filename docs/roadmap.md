@@ -14,8 +14,8 @@
 
 | 角色 | 绑定 | 职责与独立性约束 |
 |---|---|---|
-| 集成者 / 派发者 | Codex | 负责拆分、排序、工作树分配、派发 CodeBuddy、收集交付、组织评审、验证与集成；维护准确的当前工作状态；参与作者时不能算独立评审票 |
-| 实现 / 执行 | CodeBuddy + `deepseek-v4-pro` | 负责受派实现；本轮规范初稿由其修订，不能占用独立评审席位 |
+| 集成者 / 派发者 | Codex | 负责拆分、排序、工作树分配、派发 CodeBuddy、收集交付、组织评审、运行验证与受审集成；维护计划、证据和当前状态；不直接编写产品逻辑、测试实现或代码修复 |
+| 实现 / 执行 | CodeBuddy + `deepseek-v4-pro` | 负责全部受派产品实现、测试实现和代码修复；不能占用独立评审席位 |
 | 项目适配 / SSOT / SOLID 主审 | CodeBuddy + `glm-5.3` | 独立 actor/session，不得是作者 |
 | 执行可靠性 / 边界 / 验证主审 | CodeBuddy + `kimi-k3-2` | 独立 actor/session，不得是作者 |
 | 独立监督者 | Kimi Code CLI | 监督派发、实现、评审、集成的边界及证据；核对当前状态并推动过时/矛盾项处置；使用独立会话，不兼任本轮作者或必需评审席位 |
@@ -30,7 +30,7 @@
 
 ## 当前产品切片：隔离纵向样例（G0已接收，离线实现中）
 
-用户于2026-10-10授权继续实现，并选定仅隔离样例跑通多agent、归档、本机副本与清理。Codex集成，CodeBuddy实现/双席评审、原生Kimi监督。当前为 [复用裁定](../coordination/requests/isolated-workflow-20261010/reuse-decision.md) 与 [具体计划](../coordination/requests/isolated-workflow-20261010/implementation-plan.md) 的G0已接收，证据见[接收记录](../coordination/requests/isolated-workflow-20261010/result-g0.md)；当前进入测试先行的离线实现，尚未通过G1或实跑。计划先验证只读/模拟层，再经G1审核开放有界实跑；不宣称完整P1/P2/P3已交付，不启用OS定时任务。
+用户于2026-10-10授权继续实现，并选定仅隔离样例跑通多agent、归档、本机副本与清理。Codex集成，CodeBuddy实现/双席评审、原生Kimi监督。当前为 [复用裁定](../coordination/requests/isolated-workflow-20261010/reuse-decision.md) 与 [具体计划](../coordination/requests/isolated-workflow-20261010/implementation-plan.md) 的G0已接收，证据见[接收记录](../coordination/requests/isolated-workflow-20261010/result-g0.md)；当前进入测试先行的离线实现，尚未通过G1或实跑。用户再次明确全部实现交给CodeBuddy + deepseek-v4-pro，Codex停止直接编码，职责纠偏与草稿接管见[交接记录](../coordination/requests/isolated-workflow-20261010/role-correction.md)。计划先验证只读/模拟层，再经G1审核开放有界实跑；不宣称完整P1/P2/P3已交付，不启用OS定时任务。
 
 最近交付的接收与 Git 集成证据见下方历史入口；本节只维护有效下一步，不复制回执或另建状态台账。
 
@@ -63,4 +63,6 @@ P0 复用裁定、能力证据与隔离样例的具体计划已形成候选，�
 2026-10-10 用户授权的隔离纵向样例在限定范围内承接 runner、执行适配与只读 Web；它不代表上述完整产品切片均已完成。先选型/计划审核、再离线验证、再受审实跑的依赖顺序保持有效。
 
 “最终执行者推荐 CodeBuddy + DeepSeek V4-Pro”不意味着设计、集成和审核全部交给它。团队角色按用户配置，各项身份独立性及项目原 owner 合同保持有效。
+
+
 
