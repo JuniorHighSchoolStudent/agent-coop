@@ -1,0 +1,131 @@
+{
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "administrative_commit": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+  "actual_model": "glm-5.3",
+  "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+  "raw_sha256": "a2eb61e7040134678263bb2fc3c2535602620acabbabebd22707e39e95b50325",
+  "receipt_sha256": "cdc79452c8c536e0f1f44902317f5e39ee2160dbc31facb34ffffd9670bcc752",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "model": "glm-5.3",
+    "seat": "glm",
+    "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\continuation-confirm-glm.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "d6c85d054739b3b02afa354b3b0150347ab8abd2dcd6aeafc1dc61d6ef05650d",
+    "started_at": "2026-10-10T23:38:18.9365672+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "continuation-confirm",
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "administrative_commit": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-confirm/glm/input-index.json",
+      "input_index_sha256": "d6186d181a1cb53e9d3982329abc1813a8630287190d1a93688481b81a93591a",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1
+      },
+      "previous_resident_codebuddy_processes": {
+        "pids": [
+          21932,
+          21624
+        ],
+        "active_model_occupancy": "unknown; resident serve is not a model attempt"
+      },
+      "permission": "existing read-only Read,Glob,Grep; no writer",
+      "authorization": "root explicit confirm admission after administrative freeze"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "你是原独立审核席glm，模型glm-5.3，续接本人原session。产品候选2e9f192c8127956f09c619ff640d763b62369e30仍未变；本次行政/证据候选3d49adc11cb46c8228beb8f9fab27580f43b8a0d，cwd仍D:/project/agent-coop-g1-review。只读20turn/600秒、一次确认，不含另一席本次新意见。\n\n先读D:/project/agent-coop-g1-review/coordination/.runtime/continuation-confirm/glm/input-index.json及read-first.md。按其中主题读取小文件，不整读大型嵌套JSON；每个派生主题明确标注原始Gitblob/hash，原件均可按需分段核对。不能把未读写成已读。\n\n核对唯一已批准probe-02：argv allow5/deny2独立token，其余dontAsk/none/五工具/严格空MCP/四memory开关/无session持久化/矩阵与停止条件不变；实际deepseek/session和数组SHA绑定。3次Read及9次Edit/Write原生配对齐全：P1/P2精确内容成功，N1–N7真实权限拒绝且不存在/字节不变，N4前置Read已成功，N7工具input含规范化逃逸。T1执行能力未测、init非有效白名单；num_turns31与请求12只记录差异，不作硬轮数保证。\n\n你已批准+3至18次CodeBuddy/2native，本次是两席结果确认中的本人一次。首次probe-01失败完整保留，源码静态主因与本次修正实测分开；不要凭exit0/model final关闭finding。\n\n请明确：本次是否接受受信宿主上的限定bootstrap开发profile；本人权限finding可关闭哪些、哪些因真实memory/hook/alias未覆盖继续保留；g1-glm-B18/g1-kimi-B11产品adapters/sample权限问题仍open且live禁，不能由bootstrap通过代关。通用hook先行allow、CLI/session/scoped-hook和宿主自身副作用未排除；“宿主无hook配置”是unknown不是前提已证。\n\n同时确认本批R-log（checks.py+test_gates.py，/2合同六类验收含并发、旧日志不变）、R-junction（test_runtime.py，仅生命周期及原逃逸断言/哨兵/child未执行证据补强，不skip/吞全部异常）、R-publication（仅TEMP，30轮×2/120秒首失败停的诊断，不改产品/不重试/不宣称历史根因）是否在native计划监督通过、各独立writer文件及全祖先非reparse/link_count1、精确allow/身份/版本/写集绑定后可派发。此确认不直接启动writer、不代监督，不预支产品G1/合入/live。\n\n中文输出精确实读范围、逐格判断、本人finding状态、限定profile是否接受与三个作者包的具体准入条件。若不满足给具名阻断，禁止自行追加探针、改规则、换模型/权限或读取另一席当前票。仅Read/Glob/Grep，不写文件/memory、不shell、不子agent；本次不自动续调。\n",
+      "--model",
+      "glm-5.3",
+      "--resume",
+      "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "42d9fd9d0c236a5fe206f64782039df2ffb9ba1d5f802ae6fca38f2c6595c304",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-g1-review"
+  },
+  "completion": {
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "exit_code": 0,
+    "finished_at": "2026-10-10T23:39:49.0003834+00:00",
+    "wall_seconds": 90.0638162,
+    "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "call_0ecc93c838d0404bad58933e",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-confirm\\glm\\input-index.json"
+      }
+    },
+    {
+      "id": "call_8b4228dc856142c182296e53",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-confirm\\glm\\read-first.md"
+      }
+    },
+    {
+      "id": "call_cffe39c374024eaca50439c3",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-confirm\\glm\\identity-and-profile.json"
+      }
+    },
+    {
+      "id": "call_94ccf0fb661e473898b204c8",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-confirm\\glm\\matrix-and-bytes.json"
+      }
+    },
+    {
+      "id": "call_427ce59487814c8f9fcfb6ed",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-confirm\\glm\\native-call-map.json"
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 213
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

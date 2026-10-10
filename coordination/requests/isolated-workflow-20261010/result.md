@@ -1,31 +1,38 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：修正探针限定矩阵实测满足，待原席确认及native监督，产品writer/G1/live仍阻断；来源：用户隔离样例选择、[G0接收](result-g0.md)及[职责纠偏](role-correction.md)。这是本请求当前结果入口，各门禁原件按链接引用，不从文件名猜最新。
+范围：本请求整体交付；维护者：Codex集成者；状态：开发权限profile已获双原席确认，三个作者包待原生Kimi计划监督；产品G1/live/合入仍阻断。本文件是唯一当前结果入口，旧过程保留为历史，不能从原件中的旧待办推断当前状态。
 
-## 当前派发控制：probe-02已完成，待原席结果确认及计划监督
+## 当前派发控制（2026-10-11）
 
-2026-10-11用户明确继续：先使用多agent协作调查实施问题，再继续分包开发。当前唯一专门发包人为`dispatcher_next`（旧协调实例已结束）；Codex根与只读助手并行调查，实际实现仍由CodeBuddy + deepseek-v4-pro承担。新批次按[后继计划](continuation-plan-20261011.md)具名审核，旧两轮停止记录保留为历史，不阻断用户新授权；权限profile和探针未获审核前禁止产品writer。当前产品候选仍为2e9f192，feature行政基线b45cc17；没有新增产品/测试/CI修改。
+用户已授权“先使用多agent协作调查实施问题，然后继续分包开发”。dispatcher_next为本批唯一专门发包人；CodeBuddy + deepseek-v4-pro承担产品/测试实现，Codex只调查、协调、验证、文档及受审集成。实现容量默认4且用户可配，评审共享CodeBuddy容量；本批3个就绪小包，不为凑并行数扩大范围。
 
-已实测确认日志目录复用与junction重复清理两缺陷，可独立分包；P1历史故障根因仍未知。后继权限方案、写集、预算、逐项验收与B10b证据定位见上述计划；当前阶段不复用旧acceptEdits宽权限作者入口。
+产品仍为2e9f192c8127956f09c619ff640d763b62369e30；尚无本批产品/测试/CI修改。最新准确统一验证仍为139项、135通过/2错误/2跳过、exit1。旧两轮停止点因用户本次明确继续而由[后继有界计划](continuation-plan-20261011.md)承接，不抹除历史偏离、失败和成本。
 
-S0两原席已正常返回并支持一次12turn/300秒TEMP权限探针：[GLM原票](review-continuation-s0-glm.txt)/[调用](review-continuation-s0-glm-calls.json)、[Kimi原票](review-continuation-s0-kimi.txt)/[调用](review-continuation-s0-kimi-calls.json)，各2次Read、0工具错误。两席支持三个小包范围但未准入产品作者。GLM已按新输入自行关闭B10b；两席接受绑定2e9f192的软目标内聚说明，非永久豁免。代码finding及权限finding仍开放。
+| 阶段 | 当前事实与下一准入 |
+|---|---|
+| 并行调查 | 日志目录复用与junction重复清理均已实测确认；P1历史发布异常根因仍unknown。详见[运行调查](investigation-runtime-20261011-causal.json)及后继计划 |
+| S0/S1审核 | 原席支持三包范围、日志/2合同和一次argv修正。首次probe-01正例失败保留，不算能力通过；参数静态原因已定位 |
+| probe-02及结果确认 | 两正例成功、七负例真实权限拒绝、文件字节核对满足；两原席接受受信宿主上的限定bootstrap开发profile。不是产品adapter修复或OS沙箱 |
+| 原生Kimi计划监督 | 待一次只读监督；通过且各包启动前准确路径/写集/身份/版本核验齐全后，发包人才可启动作者 |
+| 三包实现与组合接收 | 尚未启动。独立工作区已准备；作者退出后局部验收、冻结准确组合候选、原席内容复审、最终native监督；不预支G1、main或live |
 
-根据双席S0裁定，接口owner发布[验证调用日志集合合同](interface-log-invocations-20261011.md)，旧合同不改写。专门发包人获准按冻结矩阵执行唯一探针；正负原生工具结果与文件摘要均须验证，失败停止，不扩权。新增静态核查发现hooks/tool.check可在通用权限检查前返回allow，将随S1证据复核明确限制；不把S0未见的新证据冒充已获审核。产品writer须继续等待S1双席及原生计划监督。
+分包与唯一写集：R-log仅checks.py/test_gates.py，执行[验证日志集合/2合同](interface-log-invocations-20261011.md)；R-junction仅test_runtime.py，修生命周期并保留逃逸/哨兵/未执行证据；R-publication仅TEMP具名harness，最多30轮×2项或120秒，首失败停止，不改Store/Runner、不加重试，未复现保持unknown。实际作者均由专门发包人正式派出，不由集成者补写。
 
-首次权限探针已按停止规则结束：[作者原件](permission-probe-s1-20261011.txt)、[原生调用/逐格/前后摘要元数据](permission-probe-s1-20261011-metadata.json)。真实deepseek-v4-pro/session正确，38.565秒、exit0且final success，但能力结果为FAILED_PROFILE：工作区2次Read成功，兄弟Read拒绝，P1精确授权Edit也拒绝，3种子摘要未变。P2及N1–N7均未执行，不算负例通过。CLI报告num_turns=13而请求max-turns=12，记录字段差异，不冒充已验证硬轮数门禁。原件关于allowlist的模型推断不作为根因。
+## 本批审核与能力证据
 
-后继仅做只读参数/权限决策链调查，禁止自动重试或扩权；调查结论及失败证据交S1两原席。新发现的[hook先行allow静态证据](permission-hook-static-evidence-20261011.json)与产品adapters仍使用acceptEdits的事实均列为限制：bootstrap权限验证不等于产品RuntimeAdapter已迁移，也不开放live。
+- S0：[GLM原票](review-continuation-s0-glm.txt)/[调用](review-continuation-s0-glm-calls.json)、[Kimi原票](review-continuation-s0-kimi.txt)/[调用](review-continuation-s0-kimi-calls.json)。GLM自行关闭B10b；两席接受绑定原候选及未变符号的软目标内聚说明，不是永久豁免。
+- 首次探针：[原件](permission-probe-s1-20261011.txt)/[逐格元数据](permission-probe-s1-20261011-metadata.json)，P1精确Edit拒绝，P2/N1–N7未执行。静态原因见[规则解析链](permission-s1-static-investigation.json)；作者关于allowlist的推断不代替根因证据。
+- S1：[GLM原票](review-continuation-s1-glm.txt)/[调用](review-continuation-s1-glm-calls.json)、[Kimi原票](review-continuation-s1-kimi.txt)/[调用](review-continuation-s1-kimi-calls.json)。两席各一次整包Read超限后改分段取证，工具错误保留；明确批准[唯一argv修正及预算变更](permission-argv-amendment-20261011.md)，不预批第三探针。
+- 修正探针：[原件](permission-probe-argv02-20261011.txt)/[元数据](permission-probe-argv02-20261011-metadata.json)，37.462秒，实际deepseek-v4-pro/session正确，Read3/Edit3/Write6；P1/P2成功，N1–N7权限拒绝且目标不存在或种子摘要不变，N4先读成功，N7实际input含../。无额外fixture文件；只证明限定矩阵。
+- 结果确认：[GLM原票](review-continuation-confirm-glm.txt)/[调用](review-continuation-confirm-glm-calls.json)、[Kimi原票](review-continuation-confirm-kimi.txt)/[调用](review-continuation-confirm-kimi-calls.json)。GLM90.064秒、Kimi140.347秒，各Read5/0工具错误、原模型/原session；两席接受限定profile，支持监督通过后派三个包。GLM自行关闭B17/B15/B16；Kimi自行关闭B10限定范围，历史违规及撤回记录永久保留。
 
-[权限规则静态调查](permission-s1-static-investigation.json)证实本机CLI将allow/deny按独立argv token收集，旧逗号整串不能匹配工具名；--tools另有逗号拆分。与探针拒绝事实一致，但不代替修正后的动态能力验证。[唯一argv修正提案](permission-argv-amendment-20261011.md)只把原规则分成独立argv，不增权限；提议新具名单次probe-02及双席结果确认、显式上限18次CodeBuddy/2次native，尚待S1双席支持。旧失败仍计成本，未自动再试。
+常备限制：每包逐文件绝对allow=批准写集、全祖先非reparse、已有目标link_count1，准确CLI版本/身份绑定，事后核对写集，越界即收回。T1执行能力、hook先行allow、CLI/session/scoped-hook、真实宿主memory全域隔离、未测路径别名仍unknown；宿主无hook配置不是已证前提。CLI报告num_turns（probe-01为13、probe-02为31）与请求12分别保留，不声称硬轮数保证；N7拒绝的内部decisionReason未动态观测。静态[hook证据](permission-hook-static-evidence-20261011.json)不扩大实测结论。
 
-S1两原席已正常返回：[GLM原票](review-continuation-s1-glm.txt)/[调用](review-continuation-s1-glm-calls.json)、[Kimi原票](review-continuation-s1-kimi.txt)/[调用](review-continuation-s1-kimi-calls.json)。各一次整包Read因长度上限失败，随后分段取证；不隐去工具错误。两席明确支持唯一probe-02：仅拆allow/deny argv、新TEMP根及session、原矩阵与12turn/300秒上限、首异常停、旧失败保留。显式预算修订已获两席支持：18次CodeBuddy/2次native，上调的3次只用于本次修正探针及两席结果确认，不预批第三探针。
+产品未决项：GLM B13/B14/B02及Kimi B06待代码修复与原席关闭；GLM B11/Kimi B09根因unknown；GLM B18/Kimi B11是产品adapters+sample权限及写集来源缺陷，须后继跨包对齐，不混入本批已审三包。bootstrap探针不代关产品finding。浏览器JS、云CI、live四角色均未验证。
 
-专门发包人获准在本行政检查点后启动该探针，产品作者仍须等待逐格证据、两席结果确认及native计划监督。GLM新增B17绑定bootstrap序列化；GLM B18/Kimi B11绑定产品adapters+sample权限及写集来源，须后继跨包对齐，不并入R-log/R-junction，live继续禁止。CLI/session/scoped hook是否实际配置仍unknown；不能把GLM条件中的“默认无hook”表述当成已验证宿主事实。旧权限finding不由集成者关闭。
+预算：经S1两席明确批准，本后继批次最多18次CodeBuddy/2次native；当前已发8次CodeBuddy、native0次。新增的3次仅用于修正探针及两席确认，现已使用；不转换未用额度，不追加第三探针。原失败和全部审核计成本。当前唯一下一步是原生计划监督，产品作者仍冻结。
 
-probe-02已结束：[原件](permission-probe-argv02-20261011.txt)、[逐格原生结果与字节元数据](permission-probe-argv02-20261011-metadata.json)。37.462秒，真实deepseek-v4-pro与新session正确；12次native调用为Read3/Edit3/Write6。P1/P2实际成功且精确字节满足；N1–N7各有权限拒绝，目标不存在或种子摘要保持，N4已先读成功，N7实际使用含../的路径。没有额外fixture文件。CLI报告num_turns31而请求12，继续不声称硬轮数保证；T1未实测、hook/真实memory全域边界未知。该结果仅为限定fixture能力证据，产品作者仍冻结。
-
-下一准入仅为两原席各一次probe-02结果确认；无新探针、无代码作者、无live。两席确认后交原生Kimi计划监督，再判断已审三个包的作者准入。产品权限B18/B11仍开放，后继范围调查不扩大本批写集。
-
+以下为2026-10-10冻结历史，包含当时的状态和停止决定；有效待办以本页当前段为准。
 ## 2026-10-10已冻结过程与结论
 
 2026-10-10用户再次明确：已有候选发现缺陷，也必须多轮审核，由专门发包人依据审核派发。根此前把静态检查/测试失败直接派成修复包，缺少这条链，属于流程偏离；不以后来的通过倒填此前批准。

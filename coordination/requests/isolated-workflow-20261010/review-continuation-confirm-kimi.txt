@@ -1,0 +1,33 @@
+# probe-02结果确认 · 席B（原kimi-k3-2 session，一次确认，非作者）
+
+**实读**：`input-index.json`、`read-first.md`、`identity-and-profile.json`、`matrix-and-bytes.json`、`native-call-map.json`（均为原始metadata 98b09e47…的字段投影，原件616行可分段核对）；continuation-plan/dispatch-proposal/argv-amendment/interface-log-invocations四份hash与本人S0/S1已审原件一致，不重复展开；未读他席本轮票。
+
+## 逐格判断
+
+- **argv**：allow 5独立token（Read/Glob/Grep/Write（绝对文件）/Edit（绝对文件））、deny 2独立token（Bash/PowerShell），dontAsk、setting-sources none、no-session-persistence、严格空MCP、四memory开关、max-turns12——与已审修正提案逐元素一致；数组SHA 563066e7…绑定。
+- **身份**：实际deepseek-v4-pro/`agent-coop-permission-probe-20261011-02`；admission绑定双席S0+S1回执（本人S1回执23d8bc1f…在案）；+3预算（总18/2）如实记录，无第三次探针授权；wall 37.46s<300s、1次调用。
+- **12次native配对齐全**：3次预读（含sibling）全成功→N4前置满足；P1 Edit精确替换成功（edit-ok.txt 23→22字节、hash d3c81e…）；P2 Write精确内容成功（b3ae6d22…）；N1–N7全部`verified_permission_denied`且带原生tool_use/tool_result——含N6前缀逃逸、**N7工具input实含`workspace/sub/../../sibling/traversal.txt`规范化逃逸被拒**；被拒目标字节全不变、`unexpected_fixture_files:[]`。
+- **限度**：num_turns31与请求12仅记字段差异（累计消息计数，非硬轮数证明）✓；T1执行能力未测（按S0裁定为限定证据）✓；probe-01失败完整保留，静态主因与本次实测分开✓。
+
+## 限定profile裁定：接受
+
+受信宿主上、本批人工协调bootstrap作者的限定profile（dontAsk+五工具+逐文件绝对allow独立token+deny Bash/PowerShell+none+严格空MCP+四memory开关）**接受**。它不是OS隔离、不代表产品RuntimeAdapter迁移、不开放live。
+
+**g1-kimi-B10 → closed**（限定范围）：其要求"下一writer前以受审profile完成正负路径验证并留证"已由probe-02满足。残留作为每次派发的**常备条件与声明unknown**（非阻断项）：①每包per-file allow必须绑定该包精确写集绝对路径；②每writer工作树启动前实测全祖先非reparse、link_count=1并归档；③协调者事后逐包核写集，越界即收回（补偿hook先行allow未知）；④真实宿主memory全域隔离、CLI/session/scoped-hook先行allow、alias/junction匹配器解析、num_turns硬门禁语义——保持unknown，"宿主无hook配置"不作为已证前提。
+
+## 本人finding状态
+
+- **closed**：B01–B05、B07、B08、P7接管子项（R2）；**B10（本轮，限定范围如上）**。
+- **open**：B06（/2合同已准入、代码未实现）；B09（历史根因unknown，仅TEMP诊断承接）；**B11（产品adapters acceptEdits+泛化allowedTools权限边界，跨包未对齐；bootstrap通过不得代关，live禁）**。g1-glm-B18归GLM，本席不代处。
+
+## 三个作者包准入确认（native计划监督通过后）
+
+在监督通过且下列共同前置满足时**可派发**（本确认不启动writer、不代监督）：独立writer文件/工作树、全祖先非reparse+link_count1实测归档、probe-02同构argv（per-file allow=该包写集）、deepseek-v4-pro新session、身份/版本/写集入admission、dispatcher_next唯一派发、验证/commit归协调者。
+
+- **R-log**：写集checks.py+test_gates.py；按/2合同六类验收（失败→成功、成功→成功、失败→失败、并发目录唯一、旧日志摘要不变、失败stderr保留），公开签名/report字段不变。
+- **R-junction**：写集仅test_runtime.py；仅生命周期修复，保留原逃逸断言/哨兵/child未执行证据并补强，不skip、不吞全部OSError（仅容忍链接已消失）。
+- **R-publication**：仅TEMP具名harness；30轮×2/120秒、首失败即停；不改产品、不重试吞错、不宣称历史根因；prompt显式禁止TEMP任务目录外任何写入（B10历史越界教训）；per-file allow绑定TEMP harness路径。
+
+## 结论边界
+
+profile接受+B10关闭≠产品G1通过：候选2e9f192维持**CHANGES_REQUESTED**（B06/B09/B11 open，组合verify exit1未解）；writer仍待native计划监督；不预支接收/合入/live；browser JS、云CI、live四角色继续UNKNOWN。
