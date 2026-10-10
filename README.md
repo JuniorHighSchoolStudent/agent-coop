@@ -33,6 +33,10 @@
 
 具体见 [运行时接入约定](docs/runtime-adapters.md) 和 [推荐配置草案](examples/executor-profile.proposed.yaml)。配置草案尚无解析器，不会自动启动 agent。
 
+## 工程规范与当前开发安排
+
+工程开发规则（SSOT、SOLID 审查项、代码/函数规模、质量门禁）以 [AGENTS.md](AGENTS.md) 为唯一维护入口，本文件不复制阈值。当前开发团队角色绑定、临时调用上限与治理文档切片步骤见 [docs/roadmap.md](docs/roadmap.md)。
+
 ## 从哪里开始
 
 1. [完整设计](docs/design.md)：功能、状态协议、多方评审、知识闭环和验收场景。
