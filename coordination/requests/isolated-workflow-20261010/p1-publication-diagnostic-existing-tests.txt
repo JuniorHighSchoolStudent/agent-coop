@@ -1,0 +1,160 @@
+round=1 started_utc=2026-10-10T14:35:16.4031669+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.269s
+
+OK
+round=2 started_utc=2026-10-10T14:35:16.7783233+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.222s
+
+OK
+round=3 started_utc=2026-10-10T14:35:17.0895589+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.210s
+
+OK
+round=4 started_utc=2026-10-10T14:35:17.3895559+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.210s
+
+OK
+round=5 started_utc=2026-10-10T14:35:17.6903224+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.216s
+
+OK
+round=6 started_utc=2026-10-10T14:35:17.9967357+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.210s
+
+OK
+round=7 started_utc=2026-10-10T14:35:18.2971497+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.209s
+
+OK
+round=8 started_utc=2026-10-10T14:35:18.5943490+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.217s
+
+OK
+round=9 started_utc=2026-10-10T14:35:18.9014251+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.216s
+
+OK
+round=10 started_utc=2026-10-10T14:35:19.2096531+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.221s
+
+OK
+round=11 started_utc=2026-10-10T14:35:19.5173414+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.212s
+
+OK
+round=12 started_utc=2026-10-10T14:35:19.8251110+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.208s
+
+OK
+round=13 started_utc=2026-10-10T14:35:20.1233994+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.206s
+
+OK
+round=14 started_utc=2026-10-10T14:35:20.4205582+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.211s
+
+OK
+round=15 started_utc=2026-10-10T14:35:20.7210840+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.217s
+
+OK
+round=16 started_utc=2026-10-10T14:35:21.0301575+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.211s
+
+OK
+round=17 started_utc=2026-10-10T14:35:21.3344734+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.209s
+
+OK
+round=18 started_utc=2026-10-10T14:35:21.6311089+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.211s
+
+OK
+round=19 started_utc=2026-10-10T14:35:21.9290135+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.212s
+
+OK
+round=20 started_utc=2026-10-10T14:35:22.2321053+00:00
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.207s
+
+OK

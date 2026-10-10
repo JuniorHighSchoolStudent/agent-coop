@@ -1,0 +1,28 @@
+{
+  "Base": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "ExitCode": 0,
+  "InputsUnchanged": true,
+  "FinishedUtc": "2026-10-10T14:27:13.1021461+00:00",
+  "Files": [
+    {
+      "Path": "agent_coop/cli.py",
+      "Sha256": "b7b1784e5a361639bb314d3890e2c5d495b60eea61606091ebb13702685a1fc0"
+    },
+    {
+      "Path": "agent_coop/web.py",
+      "Sha256": "ddd4c56d3513f7eba1491b340127fe0eb55357b426b9a515c62bca1b1eb7eb35"
+    },
+    {
+      "Path": "agent_coop/__main__.py",
+      "Sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "Path": "tests/test_cli.py",
+      "Sha256": "ebf3a32845b73ef8498621465cc217c238636aff5c189f9d6a8501b649bac347"
+    },
+    {
+      "Path": "tests/test_web.py",
+      "Sha256": "3cd9903aa6d2cf9f9555f397e7a9da8ef38c586c2bf9ad81a46e3e14e2ce56a6"
+    }
+  ]
+}

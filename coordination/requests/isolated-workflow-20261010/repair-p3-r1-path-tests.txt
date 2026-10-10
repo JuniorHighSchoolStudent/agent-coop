@@ -1,0 +1,18 @@
+test_checked_rejects_absolute_and_bad_relative (tests.test_paths.PathsTests.test_checked_rejects_absolute_and_bad_relative) ... ok
+test_checked_rejects_junction (tests.test_paths.PathsTests.test_checked_rejects_junction) ... ok
+test_checked_rejects_junction_ancestor (tests.test_paths.PathsTests.test_checked_rejects_junction_ancestor) ... ok
+test_checked_rejects_symlink (tests.test_paths.PathsTests.test_checked_rejects_symlink) ... skipped "symlink 不可用: [WinError 1314] 客户端没有所需的特权。: 'C:\\\\Users\\\\june\\\\AppData\\\\Local\\\\Temp\\\\tmp47138o1n\\\\outside\\\\x.txt' -> 'C:\\\\Users\\\\june\\\\AppData\\\\Local\\\\Temp\\\\tmp47138o1n\\\\sample\\\\link.txt'"
+test_checked_requires_root_marker (tests.test_paths.PathsTests.test_checked_requires_root_marker) ... ok
+test_checked_returns_path_within_root (tests.test_paths.PathsTests.test_checked_returns_path_within_root) ... ok
+test_create_root_layout_marker_and_empty_dir (tests.test_paths.PathsTests.test_create_root_layout_marker_and_empty_dir) ... ok
+test_create_root_rejects_junction_ancestor (tests.test_paths.PathsTests.test_create_root_rejects_junction_ancestor) ... ok
+test_create_root_rejects_junction_root (tests.test_paths.PathsTests.test_create_root_rejects_junction_root) ... ok
+test_create_root_rejects_non_empty (tests.test_paths.PathsTests.test_create_root_rejects_non_empty) ... ok
+test_digest_matches_sha256 (tests.test_paths.PathsTests.test_digest_matches_sha256) ... ok
+test_write_json_rejects_junction_parent (tests.test_paths.PathsTests.test_write_json_rejects_junction_parent) ... ok
+test_write_json_roundtrip (tests.test_paths.PathsTests.test_write_json_roundtrip) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.161s
+
+OK (skipped=1)

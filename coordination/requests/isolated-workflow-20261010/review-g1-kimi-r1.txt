@@ -1,0 +1,42 @@
+# G1首轮审核 · 独立席B（CodeBuddy kimi-k3-2，非作者/非监督/非发包人）
+
+**候选与输入**：candidate `34bce56b624cf521b33dc5b4916bd1c8e7711536`，基线 `2f230191`。已读仓内 `coordination/.runtime/review-inputs/kimi/inputs.txt` 与 `frozen-manifest-before.json`（41文件），并与 `verification-g1-r1-manifest.json` 逐项比对：39文件SHA完全一致；`role-correction.md` 差异inputs已说明为CRLF→LF；**`runtime-tool-evidence.md` 差异无说明（未决）**。上轮"输入不可达"阻断经实测可达，按原ID精神关闭。只读工具无法自算SHA，树↔manifest绑定采发包人逐字节证实。外部frozen-verify-r1.txt未实测读取。已独立通读P1–P7全部源码及test_paths/test_archive/test_flow/test_cli/test_runner关键段，失败用例均自行核实为有效反例，非测试造假。
+
+## Blocking findings
+
+**g1-kimi-B01**（P4，cleanup.py:176,190,197）：`apply_cleanup`删除对象取`plan['source']`而非FIXED常量；攻击者/错误可写入自洽plan_digest的篡改plan把删除重定向到`workspace/feature.py`。test_apply_cleanup_rejects_rebound_source红。触发=plan重写；后果=删源码；合同="只删除固定scratch对象"。最小修复：强制`plan['source']==FIXTURE`并以常量执行核验/删除。验收：该测试+全量绿。owner=P4作者；写集cleanup.py；无跨包依赖。**scope_supported**。
+
+**g1-kimi-B02**（P3，archive.py:90-92,123-125）：幂等重入仅凭receipt相等直接返回，不读回既有目标；目标被改/缺件仍伪成功（test_create_archive/backup_rejects_changed_target_content红）。修复：重入逐文件验存在+hash+非链接，不符即拒且不覆写。**scope_supported**。
+
+**g1-kimi-B03**（P3，archive.py:93-95,126-128）：无receipt时静默覆写已存在目标（test_..._existing_target_without_receipt红），违反"拒绝前不能破坏旧证据"。修复：目标已存在且无匹配持久receipt即拒。**scope_supported**。
+
+**g1-kimi-B04**（P3主，paths.py:37-49,52-76,83-100；连带archive.py目标父链、cleanup.py:135-142 `_verify_manifest_targets`）：root本身/祖先junction、write_json父链、归档/备份预建junction、清单目标reparse均未拒（8项相关测试红）。修复：root祖先链reparse拒绝、写/复制前父链检查、清单核验走checked+链接检测。owner=P3（paths/archive），P4仅清单核验调用点。**scope_supported**。
+
+**g1-kimi-B05**（P4，cleanup.py）：四项子缺口——180-183行apply仅比对receipts的files清单，metadata篡改不阻断；plan阶段不读回清单目标（corrupt不拒）；plan不绑定receipts的subject_digest与authority一致；193-197行最终authorize晚于末次source核验，authorize侧改源后仍被删（对应4组红测）。修复：完整receipt比对/元数据重验、plan期读回、subject绑定、删除前最后重核source并对失配记failed回执。**scope_supported**。
+
+**g1-kimi-B06**（P2×P6跨包，runtime.py:27-35 vs sample.py:83、checks.py:41）：`_resolve_log_dir`强制`.runtime/logs`子树，消费方传`.runtime/<role>`与`.runtime/verification`；任何真实verify/dispatch必败——这是冻结验证2项ERROR及flow失败、review预算断言失败的共同根因。interfaces.md未规定该子目录，双方实现各自推断。需集成者先裁定log_dir权威合同再单写集修改。**scope_needs_alignment**（边界未对齐，暂不派发）。
+
+**g1-kimi-B07**（P2，runtime.py:67-151）：`_collect`85行>80硬上限，无批准例外，verify门禁实测FAIL。修复：语义不变拆分。**scope_supported**。
+
+**g1-kimi-B08**（P5，cli.py:51-54,68-70；test_cli.py:98,103）：blocked/reconciliation下resume经异常返回2，测试合同要求返回1且状态保留。按"接口与测试不匹配由集成者统一收敛"裁定方向（倾向代码对状态拒绝返回1）。**scope_supported**。
+
+**g1-kimi-B09**（P1，store.py:399-402）：Windows下STATUS原子替换PermissionError，P1局部与冻结运行各复现一次，非单纯瞬态；publish在COMMIT后抛错使已done步骤表面失败。修复：AccessDenied有界重试或等价替换策略；验收含test_run_publishes_projections Windows全绿。若frozen-verify-r1.txt证其绿，凭原件复审关闭。**scope_supported**。
+
+## W1–W8
+
+- **W1 CHANGES_REQUESTED**：reuse-decision未覆盖（预算尽）；runtime-tool-evidence.md manifest差异未解释；tools目录非OS沙箱已如实声明（adapters.py:4)✓。
+- **W2 CHANGES_REQUESTED**：短事务保留并发pause/hold/calls_used✓、running先对账✓、互斥锁✓、revision防回退✓（均亲核）；B09阻断。
+- **W3 PASS（代码层）**：固化hash重验✓、init实际model/session严格相等✓、Kimi resume_hint缺失阻断✓、非零退出/协议错/result非对象均抛✓、工具白名单与unknown保留✓、四席session独立强制✓；非live证据。
+- **W4 CHANGES_REQUESTED**：暂停持久/续作跳过✓、Web只读127.0.0.1禁缓存✓、无定时任务✓；B08阻断；browser JS未验证=UNKNOWN。
+- **W5 CHANGES_REQUESTED**：subject绑定源码/验证器/config/implementation_digest、原件重hash、变更使旧票失效✓；B01/B05清理端绑定缺口。
+- **W6 CHANGES_REQUESTED**：逐文件读回+独立恢复验证✓、local_only✓；B02/B03/B04。
+- **W7 CHANGES_REQUESTED**：hold/authority/稳定字段/tampered-plan重核、意图落盘、失败回执✓；B01/B04/B05（本轮最严重面）。
+- **W8 CHANGES_REQUESTED**：统一verify+双OS CI、规模门禁实际生效✓；组合验证exit1（20F/3E）、P7仍Codex草稿未真实接管、live四回执未发生。
+
+## Advisory
+
+store.py:402行超300目标（内聚可接受，复审说明）；STATUS投影无state.json式防回退（发布锁串行下风险低，建议对齐）；archive从cleanup导入helper的写集归属需发包人明确；P1超时exit1无final、历史直派修缺口在result.md如实记录不追认✓；默认并发4与样例4次调用区分✓；shared tree无worktree/claim证明如实声明✓，后续writer须独立worktree。
+
+## 总票：**CHANGES_REQUESTED**
+
+9项blocking（B06跨包未对齐暂不派发，余8项scope_supported）。未验证/未决：live实跑、browser JS、frozen-verify-r1.txt原件、reuse-decision、runtime-tool-evidence差异说明、本席无hash自核。本票不代表监督/接收/合入/live。复审由原席逐ID关闭/保留并绑定新候选，最多2轮。

@@ -1,0 +1,392 @@
+{
+  "scope": "First reviewed-scope P2/P3/P5 repair batch only; no acceptance or mainline merge",
+  "attempt_count": 6,
+  "calls": [
+    {
+      "attempt": "repair-g1-p2-r1",
+      "package": "p2",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p2",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "deepseek-v4-pro",
+        "seat": "p2",
+        "requested_session": "agent-coop-g1-fix-p2-scale-r1-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p2-r1.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "1ed4062b40d9f0e43da80f6dcd2144b0b7e2f2dc571d6d25a623af9ae417d53d",
+        "started_at": "2026-10-10T14:18:19.2555022+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit,PowerShell",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 1,
+        "finished_at": "2026-10-10T14:20:13.8902236+00:00",
+        "wall_seconds": 114.6347214,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": [
+          " M agent_coop/runtime.py"
+        ]
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-fix-p2-scale-r1-20261010"
+        ]
+      ],
+      "actual_tool_calls": {
+        "Read": 8,
+        "Grep": 1,
+        "Glob": 2,
+        "PowerShell": 4,
+        "Edit": 1
+      },
+      "tool_error_count": 2,
+      "result_subtype": null,
+      "result_is_error": null,
+      "raw_stream_sha256": "e0c5292b0ef63f5b86b24e073b18263b43cd127f76750dda6bac500338502950",
+      "unreviewed_tool_expansion_recalled": true,
+      "recall": {
+        "package": "p2",
+        "reason": "dispatcher added unreviewed PowerShell and author git commit; root ordered recall",
+        "owned_pid": 44676,
+        "expected_creation": "2026-10-10T14:18:19.307802Z",
+        "observed_at": "2026-10-10T14:20:13.3263080+00:00",
+        "actual_tool_names": [
+          "Edit:1",
+          "Glob:2",
+          "Grep:1",
+          "PowerShell:3",
+          "Read:8"
+        ],
+        "powershell_calls": 3,
+        "final_result_present": false,
+        "taskkill_exit": 0
+      },
+      "handoff": {
+        "base": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "root": "D:/project/agent-coop-g1-fix-p2",
+        "status": [
+          " M agent_coop/runtime.py"
+        ],
+        "changed_files": {
+          "agent_coop/runtime.py": "4be71f735900d8f21e5f719d892e157b64e6c94cd6b98d454c833864f5f60775"
+        },
+        "diff_path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/repair-g1-p2-r1.recalled.diff",
+        "diff_sha256": "37e3f00c9ef37771996872a658c95d6c231e8d8e1bb07f8a1f1db8c7ce7f3139",
+        "source_attempt": "repair-g1-p2-r1",
+        "state": "recalled_without_final_unaccepted",
+        "snapshotted_at": "2026-10-10T14:21:39.3578692+00:00"
+      }
+    },
+    {
+      "attempt": "repair-g1-p3-r1",
+      "package": "p3",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p3",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "deepseek-v4-pro",
+        "seat": "p3",
+        "requested_session": "agent-coop-g1-fix-p3-paths-archive-r1-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p3-r1.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "25f8d58b9a82d6c2187581d0488c333a25a86b836183ee881a7fba88e282da4a",
+        "started_at": "2026-10-10T14:18:19.2563877+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit,PowerShell",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 1,
+        "finished_at": "2026-10-10T14:20:14.4570397+00:00",
+        "wall_seconds": 115.200652,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": []
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-fix-p3-paths-archive-r1-20261010"
+        ]
+      ],
+      "actual_tool_calls": {
+        "Read": 8,
+        "Glob": 2,
+        "PowerShell": 1
+      },
+      "tool_error_count": 0,
+      "result_subtype": null,
+      "result_is_error": null,
+      "raw_stream_sha256": "c864dcb12e2c96a8e7f12237f21242e277bb9bf90ef5cde11f50bfd655c67c47",
+      "unreviewed_tool_expansion_recalled": true,
+      "recall": {
+        "package": "p3",
+        "reason": "dispatcher added unreviewed PowerShell and author git commit; root ordered recall",
+        "owned_pid": 34792,
+        "expected_creation": "2026-10-10T14:18:19.306109Z",
+        "observed_at": "2026-10-10T14:20:13.9060279+00:00",
+        "actual_tool_names": [
+          "Glob:2",
+          "PowerShell:1",
+          "Read:8"
+        ],
+        "powershell_calls": 1,
+        "final_result_present": false,
+        "taskkill_exit": 0
+      },
+      "handoff": {
+        "base": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "root": "D:/project/agent-coop-g1-fix-p3",
+        "status": [],
+        "changed_files": {},
+        "diff_path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/repair-g1-p3-r1.recalled.diff",
+        "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_attempt": "repair-g1-p3-r1",
+        "state": "recalled_without_final_unaccepted",
+        "snapshotted_at": "2026-10-10T14:21:53.4393166+00:00"
+      }
+    },
+    {
+      "attempt": "repair-g1-p5-r1",
+      "package": "p5",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p5",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "deepseek-v4-pro",
+        "seat": "p5",
+        "requested_session": "agent-coop-g1-fix-p5-cli-exit-r1-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p5-r1.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "de0522717cb1ea8a37baf374a4a5ef0cd19dc2824384190d6476205bc385c62b",
+        "started_at": "2026-10-10T14:18:19.2554298+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit,PowerShell",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 1,
+        "finished_at": "2026-10-10T14:20:14.9761244+00:00",
+        "wall_seconds": 115.7206946,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": []
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-fix-p5-cli-exit-r1-20261010"
+        ]
+      ],
+      "actual_tool_calls": {
+        "PowerShell": 6,
+        "Read": 6,
+        "Glob": 2
+      },
+      "tool_error_count": 3,
+      "result_subtype": null,
+      "result_is_error": null,
+      "raw_stream_sha256": "6731cf5bc1a6b75f40df4205b8ac77351e2e1a1c86f875894d99148d9477cbfa",
+      "unreviewed_tool_expansion_recalled": true,
+      "recall": {
+        "package": "p5",
+        "reason": "dispatcher added unreviewed PowerShell and author git commit; root ordered recall",
+        "owned_pid": 45952,
+        "expected_creation": "2026-10-10T14:18:19.307035Z",
+        "observed_at": "2026-10-10T14:20:14.4593191+00:00",
+        "actual_tool_names": [
+          "Glob:2",
+          "PowerShell:6",
+          "Read:6"
+        ],
+        "powershell_calls": 6,
+        "final_result_present": false,
+        "taskkill_exit": 0
+      },
+      "handoff": {
+        "base": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "root": "D:/project/agent-coop-g1-fix-p5",
+        "status": [],
+        "changed_files": {},
+        "diff_path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/repair-g1-p5-r1.recalled.diff",
+        "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_attempt": "repair-g1-p5-r1",
+        "state": "recalled_without_final_unaccepted",
+        "snapshotted_at": "2026-10-10T14:21:53.5396841+00:00"
+      }
+    },
+    {
+      "attempt": "repair-g1-replacement-p2-r1",
+      "package": "p2",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p2",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "deepseek-v4-pro",
+        "seat": "p2",
+        "requested_session": "agent-coop-g1-fix-p2-scale-r1-replacement-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p2-r1-replacement.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "745603ef9130f8366e46e78f2ad109e31b4caf776f3d12ab2ccbaf4fdb229ef0",
+        "started_at": "2026-10-10T14:22:11.6207273+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "handoff_manifest": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/repair-g1-p2-r1.handoff.json",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:28:00.0041569+00:00",
+        "wall_seconds": 348.3834296,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": [
+          " M agent_coop/runtime.py"
+        ]
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-fix-p2-scale-r1-replacement-20261010"
+        ]
+      ],
+      "actual_tool_calls": {
+        "Read": 6,
+        "Glob": 4,
+        "Grep": 2
+      },
+      "tool_error_count": 1,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "c05066e70710f32f056db6afd2ebbe7923221d9b4a1c925a2b534f04eec76037",
+      "unreviewed_tool_expansion_recalled": false,
+      "receipt_sha256": "6a5d4f2e13c4bcd381591fbc3422be9adf773df8a3173137388a50a4839cc09f"
+    },
+    {
+      "attempt": "repair-g1-replacement-p3-r1",
+      "package": "p3",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p3",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "deepseek-v4-pro",
+        "seat": "p3",
+        "requested_session": "agent-coop-g1-fix-p3-paths-archive-r1-replacement-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p3-r1-replacement.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "f5cc1bc9d70ee5e813984212391521338c1815d12522d121610d141295b560ce",
+        "started_at": "2026-10-10T14:22:11.5889706+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "handoff_manifest": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/repair-g1-p3-r1.handoff.json",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:28:01.5235980+00:00",
+        "wall_seconds": 349.9346274,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": [
+          " M agent_coop/archive.py",
+          " M agent_coop/paths.py"
+        ]
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-fix-p3-paths-archive-r1-replacement-20261010"
+        ]
+      ],
+      "actual_tool_calls": {
+        "Read": 18,
+        "Glob": 5,
+        "Grep": 3,
+        "Edit": 5
+      },
+      "tool_error_count": 5,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "d11dc66fd847375d7ac8f43b6f8be29835a1167033ee1a91b8632197f6a3d7c6",
+      "unreviewed_tool_expansion_recalled": false,
+      "receipt_sha256": "fa79b98dea2b168e4bc086a41ca1e38dda378e0364204350be26a219615423dc"
+    },
+    {
+      "attempt": "repair-g1-replacement-p5-r1",
+      "package": "p5",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-fix-p5",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "deepseek-v4-pro",
+        "seat": "p5",
+        "requested_session": "agent-coop-g1-fix-p5-cli-exit-r1-replacement-20261010",
+        "resume": "",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\repair-p5-r1-replacement.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "e56eef4e0a9092c66fe01fa9dffc40464148e9a3192e7700520d423bc8cea998",
+        "started_at": "2026-10-10T14:22:11.5888883+00:00",
+        "max_turns": 20,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "handoff_manifest": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/repair-g1-p5-r1.handoff.json",
+        "purpose": "repair",
+        "permission_mode": "acceptEdits",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:26:11.4985672+00:00",
+        "wall_seconds": 239.9096789,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": [
+          " M agent_coop/cli.py",
+          " M tests/test_cli.py"
+        ]
+      },
+      "actual_identity": [
+        [
+          "deepseek-v4-pro",
+          "agent-coop-g1-fix-p5-cli-exit-r1-replacement-20261010"
+        ]
+      ],
+      "actual_tool_calls": {
+        "Read": 17,
+        "Glob": 3,
+        "Grep": 1,
+        "Edit": 2
+      },
+      "tool_error_count": 6,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "ed386e9656f316a55b8edf540545cdc66cea28726a852c78e740e364704cd7c8",
+      "unreviewed_tool_expansion_recalled": false,
+      "receipt_sha256": "3d0bad3d8b0c08afed2ea748181e2c035eeca78af7ea908c093d5acacae6f913"
+    }
+  ]
+}

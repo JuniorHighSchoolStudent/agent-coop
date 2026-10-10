@@ -1,0 +1,27 @@
+# 席B范围对齐附录裁定（候选34bce56b，首轮补充，非G1票）
+
+已读alignment-b-input/evidence两份及内嵌原件（frozen-verify-r1、p1-state-validation、reuse-decision、crlf-byte-evidence、旧工作树verify摘录）。未触在途writer/他席新票。所有未修代码finding保持开放。
+
+## 四项裁定
+
+**1. P2×P6日志边界（B06）→ scope_supported（附条件）**
+`.runtime`子树为log_dir权威边界与两消费方（`.runtime/<role>`、`.runtime/verification`）一致，方向认可。最小写集：`agent_coop/runtime.py`、`tests/test_runtime.py`；P6不改。条件：①集成者须在同一派发中出具interfaces具名后继澄清（集成者写集，不由writer代笔）；②`_resolve_log_dir`改经`checked(cwd,'.runtime')`并验provided为其自身或后代，保留cwd外/`.runtime`外/链接逃逸拒绝；③**B07（_collect85行硬限）同写集runtime.py，必须并入本包一次派发**，不得两包同文件。复审验收：冻结树2E（test_verifier_checks_boundary_hold_and_negative_retention、test_pause_resume_archive_backup_and_cleanup_share_one_state）及test_review_wrong_verdict_saves_receipt_and_keeps_budget转绿（本人原票所指精确现名即此），test_log_dir_outside_root_is_rejected保持绿并新增`.runtime`外根内（如workspace）与junction逃逸用例。
+
+**2. P4清理（B01、B05a–d、B04清理侧）→ scope_supported（附两点补齐）**
+唯一写集cleanup.py+tests/test_cleanup.py、复用P3 checked原签名、不复制校验器，认可；与P3并行、最终验收依赖P3归入，认可。两点必须先补齐进包范围：①提案漏列**B05b（plan期清单目标读回）**，对应test_plan_cleanup_rejects_corrupt_target，须显式纳入；②既有清理回归现居tests/test_archive.py（P3写集），迁出须由集成者/P3在P3分支同批收敛，writer不得改P3文件。复审按子项逐个关闭：rebound_source、receipt_metadata_change×2、subject_mismatch、corrupt_target×2、source_changed_by_authorize、junctioned_archive/backup_parent（后两者依赖P3合并后组合验证）。不接受局部通过关整项。
+
+**3. P7接管 → scope_supported（准入）**
+保留Codex草稿作者事实、writer仅5工具不执行shell/git/测试、协调者验证/commit、限本轮样例，均符合职责纠偏与用户指令。验收：verify唯一入口与CI同命令不变；source_limits/documentation/git-diff-check三项门禁不弱化；test_verification.py含有意义失败用例（如构造超限文件触发FAIL）；交付含实际init/result/session、检索说明、未执行验证声明；云CI未实跑保持unknown。W8"P7未真实接管"子项待交付复审关闭。
+
+**4. P1争议（B09）→ 诊断包scope_supported；finding保持开放**
+两份WinError5原件（p1-state-validation：test_pause_persists_and_stops_after_current_step；旧工作树verify：test_run_publishes_projections）保留；冻结树无此异常**不构成关闭**。诊断包：只读上列原件+store.py:399-402+相关测试；写集仅P1测试侧最小复现（禁改store.py/发布合同）。停止条件：①根因复现成功→回发包人另立修复包裁定；②冻结候选≥20次复现不复发且外部原因（索引/AV句柄）有据→B09可提关闭候选，仍须双席复审，且按AGENTS例外规则单独批准任何重试/合同变更。
+
+## 证据纠正与W1
+
+- 本人原票口径纠正（原文不改）：P1局部=33项**32ok/1E**（非全绿）；旧工作树verify=20F/**3E**（含STATUS）；**准确冻结树=131 tests/20F/2E/2skip/exit1**。GLM"33局部绿"与p1-state-validation.txt原件矛盾，以原件为准。
+- crlf-byte-evidence.json逐字节证明role-correction与runtime-tool-evidence原始SHA匹配旧manifest、CRLF→LF匹配冻结SHA，机制可核；本人原票"runtime-tool-evidence差异无说明"未决项据此关闭。限度声明：该复算为发包人确定性产出，本席只读工具未独立重算SHA。
+- reuse-decision经证据包补齐：固定来源/许可证/能力矩阵/unknown保留齐全，静态核验界限如实。**W1由CHANGES_REQUESTED升为PASS**（含上述复算口径声明）。
+
+## 未决
+
+B01–B05、B08全部未修，冻结树20F/2E原样保持；B09诊断中；live四调用、browser JS、云CI实跑仍UNKNOWN。本附录无候选PASS、无实现接收、无作者自签；finding第2轮由原席按子项绑定新候选关闭。

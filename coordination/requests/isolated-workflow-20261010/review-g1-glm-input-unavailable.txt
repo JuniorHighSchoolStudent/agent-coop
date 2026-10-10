@@ -1,0 +1,32 @@
+无法开始本轮审核，需要先解决一个环境权限阻断。情况如下：
+
+## 阻断报告
+
+**finding_id: g1-glm-B01（环境/输入缺件，具名阻断）**
+
+- **触发**：按审核指令第一步尝试读取独立输入清单
+  `C:\Users\june\AppData\Local\Temp\agent-coop-isolated-workflow-20261010\review-g1-glm-r1.inputs.txt`
+  及冻结 manifest
+  `C:\Users\june\AppData\Local\Temp\agent-coop-g1-freeze-20261010\frozen-manifest-before.json`
+  时，`Read` 与 `Glob` 工具对 Temp 目录均返回权限拒绝（非交互模式下无法弹出授权确认）。工作目录 `d:\project\agent-coop-g1-review` 内的读取正常。
+
+- **后果**：这两份文件是本轮审核的准入前提——输入清单定义最小 readset 与 P1–P7 精确路径，manifest（SHA256=9ab421cc…）用于核验候选 `34bce56b` 的固定文件集合。没有它们，我无法：
+  1. 确认允许读取哪些规范/实现/测试原件；
+  2. 核验候选冻结组合与 manifest 一致；
+  3. 按 W1–W8 逐项给出有证据的 PASS/CHANGES_REQUESTED/UNKNOWN。
+
+  按审核协议"若文件不属于固定候选或输入缺件，报告具名阻断，不自行补全事实"，我不应绕过清单自行在仓内猜测 readset 并出票——那样产出的票缺乏准入证据，且会消耗两轮审核之一。
+
+- **最小修复**（任选其一，由用户/发包人决定）：
+  1. 重新运行时授权对上述两个 Temp 路径的 `Read`/`Glob`（如 `codebuddy -p --permission-mode bypassPermissions`，或在 settings 的 `permissions.allow` 中加入 `Read`）；
+  2. 或将输入清单与 frozen manifest 复制到本仓工作目录内可读路径（注意：manifest 属冻结证据，复制件需保持字节一致以支持 SHA256 核验），并在指令中更新路径。
+
+- **是否跨包**：否。这是审核席输入访问问题，不涉及任何候选包的写集。
+
+## 当前状态
+
+- 票型：本轮**尚未出票**（不是 PASS，也不是 CHANGES_REQUESTED）。
+- W1–W8：全部 **UNKNOWN**（输入缺件，未读取任何候选实现内容；仅确认了 AGENTS.md 工作目录可读）。
+- 未决项：g1-glm-B01 待环境修复后，在同一 session 指令下重新开始完整首轮审核，从读取输入清单起步。
+
+请处理后重新发起本轮审核；我未读取另一席票、G0 历史审核原票或任何候选实现文件，无污染。

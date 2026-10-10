@@ -1,0 +1,20 @@
+{
+  "Base": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "ExitCode": 0,
+  "InputsUnchanged": true,
+  "FinishedUtc": "2026-10-10T14:29:57.8419041+00:00",
+  "Files": [
+    {
+      "Path": "agent_coop/runtime.py",
+      "Sha256": "4be71f735900d8f21e5f719d892e157b64e6c94cd6b98d454c833864f5f60775"
+    },
+    {
+      "Path": "agent_coop/adapters.py",
+      "Sha256": "3039f1c954865c53f780452e0ded8bc3ce31afe6a88e24dc9e15f33a25bf9a27"
+    },
+    {
+      "Path": "tests/test_runtime.py",
+      "Sha256": "6b218140ede6e35e67df8c8a7fa83480c9497f413ea1954162324415508c963d"
+    }
+  ]
+}

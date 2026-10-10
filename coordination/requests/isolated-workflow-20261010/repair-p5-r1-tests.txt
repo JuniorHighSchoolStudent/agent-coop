@@ -1,0 +1,19 @@
+test_blocked_and_reconciliation_are_nonzero_and_not_cleared (tests.test_cli.CliTests.test_blocked_and_reconciliation_are_nonzero_and_not_cleared) ... ok
+test_corrupt_store_yields_clean_nonzero_result (tests.test_cli.CliTests.test_corrupt_store_yields_clean_nonzero_result) ... ok
+test_help_exposes_explicit_lifecycle_commands (tests.test_cli.CliTests.test_help_exposes_explicit_lifecycle_commands) ... ok
+test_init_refuses_incomplete_profiles_without_creating_root (tests.test_cli.CliTests.test_init_refuses_incomplete_profiles_without_creating_root) ... ok
+test_run_accepts_zero_max_steps (tests.test_cli.CliTests.test_run_accepts_zero_max_steps) ... ok
+test_run_rejects_negative_max_steps_without_side_effects (tests.test_cli.CliTests.test_run_rejects_negative_max_steps_without_side_effects) ... ok
+test_self_reported_readonly_profile_cannot_load_shell_agent (tests.test_cli.CliTests.test_self_reported_readonly_profile_cannot_load_shell_agent) ... ok
+test_serve_rejects_out_of_range_port (tests.test_cli.CliTests.test_serve_rejects_out_of_range_port) ... ok
+test_status_pause_resume_persist_same_store (tests.test_cli.CliTests.test_status_pause_resume_persist_same_store) ... ok
+test_page_marks_mode_local_only_and_unavailable (tests.test_web.WebTests.test_page_marks_mode_local_only_and_unavailable) ... ok
+test_read_failure_returns_error_and_no_cache (tests.test_web.WebTests.test_read_failure_returns_error_and_no_cache) ... ok
+test_status_exposes_config_mode (tests.test_web.WebTests.test_status_exposes_config_mode) ... ok
+test_status_tracks_pause_and_rejects_write (tests.test_web.WebTests.test_status_tracks_pause_and_rejects_write) ... ok
+test_status_tracks_revision_across_updates (tests.test_web.WebTests.test_status_tracks_revision_across_updates) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 5.338s
+
+OK

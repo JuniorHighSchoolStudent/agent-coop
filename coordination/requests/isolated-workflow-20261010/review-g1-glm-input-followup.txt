@@ -1,0 +1,28 @@
+输入阻断仍未解除，本轮依旧无法开始实质审核。情况如下：
+
+## g1-glm-B01 保持开启（输入仍不可达）
+
+**实测结果**：对以下两个路径，`Read`、`Glob`、`Grep` 三个只读工具全部返回权限拒绝（非交互模式无法弹授权确认）：
+
+- 输入清单：`C:\Users\june\AppData\Local\Temp\agent-coop-isolated-workflow-20261010\review-g1-glm-r1.inputs.txt`
+- 新 manifest 路径：`C:/Users/june/AppData/Local/Temp/agent-coop-g1-read-glm-20261010/frozen-manifest-before.json`
+
+工作目录 `d:\project\agent-coop-g1-review` 内读取正常（AGENTS.md 已确认可读，与上轮一致）。
+
+**原因判断**：你提到已显式 `--add-dir` 本席隔离 readset 目录，但本 session 的工具权限层并未生效——尤其是"原 session 接续"的情况下，`--add-dir` 很可能需要在**全新 CLI 进程启动参数**中传入才会进入权限上下文；对已续接的 session 追加声明不会刷新当前工具的许可判定。工具报错本身给出的三条可行路径也印证这一点：
+
+1. 重新运行：`codebuddy -p -y "<prompt>"`（自动批准）；
+2. 或 `codebuddy -p --permission-mode bypassPermissions`（全量放行，含 TEMP 读取）；
+3. 或在 settings 的 `permissions.allow` 中持久加入 `Read`（以及 `Glob`/`Grep`）。
+
+**为何不能绕过**：输入清单是本轮 readset 的权威边界，manifest 是候选 `34bce56b` 冻结组合的核验依据。没有它们，我无法确认允许读取哪些规范/实现/测试原件，也无法核对候选文件集合；按协议"输入缺件报告具名阻断，不自行补全事实"，我不应在仓内自行猜测 readset 出票——那会消耗两轮审核之一且缺乏准入证据。我也没有 shell/写入/子 agent 可用，不存在其他合规取件途径。
+
+## 当前状态与所需动作
+
+- **票型**：仍未出票（非 PASS 亦非 CHANGES_REQUESTED）；W1–W8 全部 **UNKNOWN**。
+- **g1-glm-B01 处置**：未关闭——关闭条件是输入清单与 manifest 实际可读，本轮实测不满足。不是改编号，而是同一 ID 持续开启。
+- **请你二选一**：
+  1. **重启新 session**（不是续接）并以 `--add-dir` 指向 `agent-coop-g1-read-glm-20261010`（及输入清单所在目录），或直接用 `-y` / `bypassPermissions` 模式，重发本轮完整审核指令；
+  2. 或将输入清单与 manifest **复制进工作目录** `d:\project\agent-coop-g1-review\` 内的临时路径并在指令中给出新路径（manifest 需字节级一致副本；SHA256=9ab421cc… 的核验结论因我无 shell 无法自算，须由根/发包人出具，我只做内容读取）。
+
+处理完成后我将按原指令完成首轮全部检查（W1–W8、逐包边界裁定、finding 编号从 g1-glm-B01 起依实际缺陷递增）。本轮未读取任何他席意见、G0 历史审核原票或候选实现文件，无污染。

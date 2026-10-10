@@ -1,0 +1,29 @@
+{
+  "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "verified_at": "2026-10-10T14:23:59.1025466+00:00",
+  "verifier": "dispatcher deterministic byte normalization; not reviewer approval",
+  "files": [
+    {
+      "path": "coordination/requests/isolated-workflow-20261010/role-correction.md",
+      "source_path": "D:\\project\\agent-coop-isolated-workflow\\coordination\\requests\\isolated-workflow-20261010\\role-correction.md",
+      "operation": "UTF8 decode; CRLF -> LF only; UTF8 encode",
+      "raw_sha256": "4689caa20035b1d066fb0a0a950a21accdadfe5bcb19af24b93a5c6797978ae9",
+      "original_manifest_sha256": "4689caa20035b1d066fb0a0a950a21accdadfe5bcb19af24b93a5c6797978ae9",
+      "raw_matches_original": true,
+      "normalized_sha256": "d4bd5e764b30198bb6011f896398c216b9c50402baea6ee1fdd0110de0f50c60",
+      "frozen_sha256": "d4bd5e764b30198bb6011f896398c216b9c50402baea6ee1fdd0110de0f50c60",
+      "normalized_matches_frozen": true
+    },
+    {
+      "path": "coordination/requests/isolated-workflow-20261010/runtime-tool-evidence.md",
+      "source_path": "D:\\project\\agent-coop-isolated-workflow\\coordination\\requests\\isolated-workflow-20261010\\runtime-tool-evidence.md",
+      "operation": "UTF8 decode; CRLF -> LF only; UTF8 encode",
+      "raw_sha256": "99e409c50812e77abe543671ce2575ed007b557a461407a64024585a143b32f5",
+      "original_manifest_sha256": "99e409c50812e77abe543671ce2575ed007b557a461407a64024585a143b32f5",
+      "raw_matches_original": true,
+      "normalized_sha256": "169c2217345d0f757975be3a080decd5058bce5f927cd75f5fd04391f90ed9f1",
+      "frozen_sha256": "169c2217345d0f757975be3a080decd5058bce5f927cd75f5fd04391f90ed9f1",
+      "normalized_matches_frozen": true
+    }
+  ]
+}

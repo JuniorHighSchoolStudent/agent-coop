@@ -1,0 +1,97 @@
+{
+  "scope": "G1 first-round scope alignment supplement only, not post-repair second-round review or acceptance",
+  "supplement_attempt_count": 2,
+  "cumulative_first_round_review_calls": 8,
+  "calls": [
+    {
+      "attempt": "review-g1-boundary-b-glm-r1",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-review",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "glm-5.3",
+        "seat": "glm",
+        "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+        "resume": "agent-coop-g1-glm-r1-34bce56b-20261010",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\review-b-glm.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "428b7f3e3335ef17a952fe2b081e750c2623155077dc0c764cea8f6c61f881c8",
+        "started_at": "2026-10-10T14:25:27.3999084+00:00",
+        "max_turns": 10,
+        "tools": "Read,Glob,Grep",
+        "handoff_manifest": "",
+        "purpose": "review",
+        "permission_mode": "default",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 300s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:27:05.2736074+00:00",
+        "wall_seconds": 97.873699,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": []
+      },
+      "actual_identity": [
+        [
+          "glm-5.3",
+          "agent-coop-g1-glm-r1-34bce56b-20261010"
+        ]
+      ],
+      "actual_tools": {
+        "Read": 2
+      },
+      "tool_errors": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "82d7053d6c33638e751d9216985096c76ea70b9e704222589d9a2d194d7f0888",
+      "receipt_sha256": "215af00c0df74a2c2925406fe16e77d7e7a711eb12f182c3b2f91e372d281f74"
+    },
+    {
+      "attempt": "review-g1-boundary-b-kimi-r1",
+      "invocation": {
+        "root": "D:\\project\\agent-coop-g1-review",
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "model": "kimi-k3-2",
+        "seat": "kimi",
+        "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+        "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+        "round": "1",
+        "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\review-b-kimi.prompt.txt",
+        "additional_read_directory": "",
+        "prompt_sha256": "428b7f3e3335ef17a952fe2b081e750c2623155077dc0c764cea8f6c61f881c8",
+        "started_at": "2026-10-10T14:26:52.8032561+00:00",
+        "max_turns": 10,
+        "tools": "Read,Glob,Grep",
+        "handoff_manifest": "",
+        "purpose": "review",
+        "permission_mode": "default",
+        "strict_mcp_empty": true,
+        "wall_clock_watchdog": "dispatcher 300s; not enforced by this wrapper"
+      },
+      "completion": {
+        "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "exit_code": 0,
+        "finished_at": "2026-10-10T14:29:29.4994296+00:00",
+        "wall_seconds": 156.6961735,
+        "final_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+        "final_status": []
+      },
+      "actual_identity": [
+        [
+          "kimi-k3-2",
+          "agent-coop-g1-kimi-r1-34bce56b-20261010"
+        ]
+      ],
+      "actual_tools": {
+        "Read": 2
+      },
+      "tool_errors": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "raw_stream_sha256": "85d3ade61355c1716038be0da016eb9dcd4c4800ed4da0f19a729248f92a4505",
+      "receipt_sha256": "5bc775a83faa815d0c9ed08c103d5485e26d8a0f875572f2b6767dd6f3195471"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+我已完成只读定位与核验。以下是作为 replacement 作者的交付交接。
+
+---
+
+## 交付交接（replacement 作者）
+
+**身份与会话**
+- requested model: deepseek-v4-pro（CodeBuddy）
+- actual model: 由外部核验（本 session = `agent-coop-g1-fix-p2-scale-r1-replacement-20261010`）
+- 精确 base: `34bce56b624cf521b33dc5b4916bd1c8e7711536`；package_id = `g1-fix-p2-scale-r1`；branch = `codex/g1-p2-scale-r1`
+
+**实际修改与接管（重点）**
+- 我**未新增任何代码修改**。worktree 中 `agent_coop/runtime.py` 已含原作者部分 Edit（handoff.json `changed_files` hash = `4be71f735900d8f21e5f719d892e157b64e6c94cd6b98d454c833864f5f60775`，状态 `recalled_without_final_unaccepted`）。该 Edit 已把超行 `_collect`（原 85 行 >80）按真实职责拆分完毕。我按该精确 hash 明确接管：只读核验，未 reset、未抹除、未改写、未追加，原样保留。
+- 拆分结果（复用 owner = runtime.py 内部私有辅助函数，非新抽象）：
+  - `_collect` L67–95 = 29 行（编排：起 pump 线程 → supervise → classify → 关管道 → 返回 `(out, err, failure)`）
+  - `_pump_stream` L98–119 = 22 行（有界读取/限流）
+  - `_supervise` L122–151 = 30 行（超时/退出监督 + 进程树终止）
+  - `_classify_failure` L154–169 = 16 行（失败分类）
+  - 全部 ≤40（硬 80 未触）；文件全文 ≤300 行
+- 签名与语义不变：`run_bounded` / `invoke` / `_collect(proc, timeout_seconds, output_limit_bytes)` 返回三元组均未变；`_resolve_log_dir` 的 `.runtime/logs` 边界**未动**；adapters / sample / checks / interfaces / 消费者（run_bounded、invoke、P6）均只读未改。
+
+**finding 处置（均未自签关闭）**
+- `g1-glm-B03`（_collect 85 行 >80，scope_supported）：原作者已拆分，我核验各函数规模与进程/超时/输出/身份/日志语义一致，确认不再超行。
+- `g1-kimi-B07`（scope_supported，同一 _collect 超行范围）：统一处置。
+- 两席原文及冻结证据位于 `coordination/.runtime/repair-input/`（Glob 因点目录未列出，Temp 侧 `.recalled.diff` 读取被权限拒绝），我未读取私有 CLI 流/凭据，仅依据派发陈述的 finding 范围处置。
+
+**建议协调者执行的限定命令与预期**
+1. `python -m unittest tests.test_runtime -v` → 预期既有 25 项全绿。
+2. source_limits（`agent_coop/verification.py` 的 `source_limits`）→ 预期 runtime.py 无硬失败；`tests/test_runtime.py` 约 418 行 >300 为软目标（REVIEW TARGET），非硬失败，属既有、保留。
+3. `git diff --check` → 预期通过。
+4. 核验当前 `agent_coop/runtime.py` hash 仍等于 `4be71f735900d8f21e5f719d892e157b64e6c94cd6b98d454c833864f5f60775`（确认未被 reset/抹除；我无法本地计算 SHA256，此项由协调者落实）。
+
+**边界与免责**
+- 作者未运行任何测试/命令（无 shell，仅 Read/Glob/Grep/Write/Edit），未自称已跑。
+- 未 git add / commit / 操作分支；交付 commit 由协调者固定并关联真实作者原件，不合入、不 push。
+- 全仓其他包（store/runner 等）既有失败、软目标与硬规模不在本包范围；本包局部绿不算独立接收，finding 关闭由独立审核，我不自签。

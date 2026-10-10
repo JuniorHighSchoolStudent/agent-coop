@@ -1,0 +1,24 @@
+# 首轮边界对齐B · 席A裁定（候选34bce56b不变，非G1 PASS、不闭合未修代码finding）
+
+## 1. P2×P6 日志边界：scope_supported（附条件）
+`.runtime`（cwd下）作为log_dir允许边界是interfaces未明确处的最小具名补充，覆盖`.runtime/verification`、`.runtime/<role>`、`.runtime/logs`三种既有消费者，窄于“root任意目录”，且保住`test_log_dir_outside_root_is_rejected`与链接逃逸拒绝——本人背书此边界。条件：①补充须先由接口owner（集成者）落interface-amendment后继条目再派修；②**B02与B03同写runtime.py，必须合并为单一P2包一个writer**，写集=`runtime.py`+`tests/test_runtime.py`，避免双写者；③复审=三跨包测试（test_verifier_checks_boundary_hold…、test_pause_resume_archive_backup…、test_review_wrong_verdict_saves_receipt…）转绿+新增cwd外/`.runtime`外拒绝覆盖+`_collect`≤80（B03同票关闭）。不要求P6改动。
+
+## 2. P4 清理：scope_supported
+拟议写集`cleanup.py`+新`tests/test_cleanup.py`与我票B06子项一致，裁定拆分：
+- **g1-glm-B06a**（cleanup.py）：FIXTURE唯一源、authority↔archive/backup subject绑定、完整receipt稳定字段比对、authorize回调后再核source hash才可删——纯cleanup.py，可即派。
+- **g1-glm-B06b**（cleanup.py）：`_verify_manifest_targets`/目标路径改经`checked(root,relative)`——现有checked已覆盖root内junction叶（test_checked_rejects_junction绿），可并行；root祖先逃逸部分由P3的B04完成，属P3写集。
+条件：test_cleanup.py只放组件级新回归，不复制test_archive既有跨包回归（后者留作组合验收）；B06各子项到第2轮按P3归入后的组合验证逐项关闭，不得以局部通过关闭整项。边界足以正式发包。
+
+## 3. P7 接管：scope_supported（接管准入，非代码预先通过）
+与B08最小修复一致：真实deepseek-v4-pro、5工具、不执行shell/git/测试、协调者代验证并commit、保留Codex草稿作者事实、不强求重写。写集=`verification.py`、`__init__.py`、`verify.yml`、必要`tests/test_verification.py`。B08关闭条件=实际session身份+final+检索/修改理由+协调验证记录（唯一入口、CI同命令、有意义失败检查），第2轮审证据后关闭；云CI实跑保持UNKNOWN、不得冒称。
+
+## 4. P1 争议：证据包scope_supported；代码修复UNKNOWN
+- **g1-glm-B11**（新ID，原advisory升格）：`_atomic_write` os.replace WinError5根因未明；两原件（p1-state-validation 32/33+1E、working-tree-verify第三ERROR同store.py:402）均保留，冻结树无此异常≠已关闭。最小复现包：读集=两原件+store.py相关节；写集=`tests/test_store.py`（或具名复现测试）受控复现；停止条件=稳定复现或N次有界尝试后给出书面根因假设。不预批重试、不改Store/发布合同；根因明确前代码修复保持UNKNOWN。
+- **g1-glm-B12**（本人原票自纠）：原票W2“33+13局部测试绿”口径错误，准确为**33项中32通过、1错误（WinError5）**，13项runner绿；原文不改写，以本附录纠正为准。
+
+## 5. 证据纠正与W1
+- **B10拆分**：**B10a关闭**——role-correction与runtime-tool-evidence两文件差异经crlf-byte-evidence.json逐字节证明为纯CRLF→LF，raw匹配原manifest、normalized匹配冻结SHA，与我直接读到的两份manifest哈希链一致，非源码变化；**B10b保留**——verification-g1-r1.md“3 errors”未区分运行归属：冻结树=2E（frozen-verify，SHA 861e38bb）、旧工作树=3E（其链接output，SHA 85311d1c，第三ERROR为WinError5），最小修复=给每个计数标注所属运行与原件。
+- W1维持**PASS**：reuse-decision原件本人首轮已完整读取，本轮证据包内容与所读一致，无新事实；未读上游运行验证的界限不变。
+
+## 未决
+B02/B03（待P2单包修复）、B04/B05（P3）、B06a/b（P4）、B07（P5）、B08（P7接管证据）、B09（修复派发须独立worktree）、B10b（记录标注）、B11（根因）、B12（已自纠登记）。无候选PASS、无实现接收、无作者自签；本轮仅1次附录，不再续读。

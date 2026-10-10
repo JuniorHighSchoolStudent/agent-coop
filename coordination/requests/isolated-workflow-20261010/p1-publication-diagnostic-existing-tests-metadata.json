@@ -1,0 +1,151 @@
+{
+  "Candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "Rounds": [
+    {
+      "Round": 1,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:16.4031669+00:00",
+      "FinishedUtc": "2026-10-10T14:35:16.7755039+00:00"
+    },
+    {
+      "Round": 2,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:16.7783233+00:00",
+      "FinishedUtc": "2026-10-10T14:35:17.0894626+00:00"
+    },
+    {
+      "Round": 3,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:17.0895589+00:00",
+      "FinishedUtc": "2026-10-10T14:35:17.3894804+00:00"
+    },
+    {
+      "Round": 4,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:17.3895559+00:00",
+      "FinishedUtc": "2026-10-10T14:35:17.6902436+00:00"
+    },
+    {
+      "Round": 5,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:17.6903224+00:00",
+      "FinishedUtc": "2026-10-10T14:35:17.9966572+00:00"
+    },
+    {
+      "Round": 6,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:17.9967357+00:00",
+      "FinishedUtc": "2026-10-10T14:35:18.2970849+00:00"
+    },
+    {
+      "Round": 7,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:18.2971497+00:00",
+      "FinishedUtc": "2026-10-10T14:35:18.5942955+00:00"
+    },
+    {
+      "Round": 8,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:18.5943490+00:00",
+      "FinishedUtc": "2026-10-10T14:35:18.9013681+00:00"
+    },
+    {
+      "Round": 9,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:18.9014251+00:00",
+      "FinishedUtc": "2026-10-10T14:35:19.2095778+00:00"
+    },
+    {
+      "Round": 10,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:19.2096531+00:00",
+      "FinishedUtc": "2026-10-10T14:35:19.5172721+00:00"
+    },
+    {
+      "Round": 11,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:19.5173414+00:00",
+      "FinishedUtc": "2026-10-10T14:35:19.8250427+00:00"
+    },
+    {
+      "Round": 12,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:19.8251110+00:00",
+      "FinishedUtc": "2026-10-10T14:35:20.1233363+00:00"
+    },
+    {
+      "Round": 13,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:20.1233994+00:00",
+      "FinishedUtc": "2026-10-10T14:35:20.4204932+00:00"
+    },
+    {
+      "Round": 14,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:20.4205582+00:00",
+      "FinishedUtc": "2026-10-10T14:35:20.7210239+00:00"
+    },
+    {
+      "Round": 15,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:20.7210840+00:00",
+      "FinishedUtc": "2026-10-10T14:35:21.0301022+00:00"
+    },
+    {
+      "Round": 16,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:21.0301575+00:00",
+      "FinishedUtc": "2026-10-10T14:35:21.3343175+00:00"
+    },
+    {
+      "Round": 17,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:21.3344734+00:00",
+      "FinishedUtc": "2026-10-10T14:35:21.6310397+00:00"
+    },
+    {
+      "Round": 18,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:21.6311089+00:00",
+      "FinishedUtc": "2026-10-10T14:35:21.9289512+00:00"
+    },
+    {
+      "Round": 19,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:21.9290135+00:00",
+      "FinishedUtc": "2026-10-10T14:35:22.2320555+00:00"
+    },
+    {
+      "Round": 20,
+      "ExitCode": 0,
+      "StartedUtc": "2026-10-10T14:35:22.2321053+00:00",
+      "FinishedUtc": "2026-10-10T14:35:22.5289923+00:00"
+    }
+  ],
+  "MaximumRounds": 20,
+  "StopOnFirstFailure": true,
+  "InputsUnchanged": true,
+  "Files": [
+    {
+      "Path": "agent_coop/store.py",
+      "Sha256": "ed14743e5136c24b18b2e6bd10991e4aef642398f0fd18f6ca3fb8bf5f33fbd2"
+    },
+    {
+      "Path": "agent_coop/runner.py",
+      "Sha256": "4eb09191e37b88241c364b3e2ddbf7f0de94f003701a6722779f9817c5cb0ce6"
+    },
+    {
+      "Path": "agent_coop/paths.py",
+      "Sha256": "600c9a459487592b49237f6975caf6b8608845f4eab1f27d5077deb4d0c7695c"
+    },
+    {
+      "Path": "tests/test_runner.py",
+      "Sha256": "5b41059cc665df3887eac682145ebf136884d9e79605fdf353bef5445e94020d"
+    },
+    {
+      "Path": "tests/test_store.py",
+      "Sha256": "0bba844f91c77b563f784954ad60d82b1994f88e646e287e21caca77a9652d2f"
+    }
+  ],
+  "Conclusion": "Not reproduced in bounded run; no historical root cause or closure established"
+}

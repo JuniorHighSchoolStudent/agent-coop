@@ -1,0 +1,51 @@
+# G1首轮正式审核意见（席A · glm-5.3 · 只读）
+
+## 1. 候选与读取范围
+候选 `34bce56b624cf521b33dc5b4916bd1c8e7711536`；41文件manifest（仓内副本）已读，前后一致（frozen metadata `manifest_unchanged=true`）；SHA256相等性依发包人逐文件证词+冻结元数据，我无shell不可自算（保留此限）。已读：输入清单、frozen-verify（131 tests/20F/2E/2skip、exit1、`_collect`85>80）、7份合同/请求原件、core证据、P5/P6元数据、agent_coop除supervisor-agent.md外全部16个源文件、test_flow全量+test_paths/test_archive/test_cli关键段、verify.yml。未读：design/roadmap相关节、supervisor-agent.md、其余测试全文、p1/p2/p5/p6作者原件txt、archive-evidence、invocation-metadata、verify-output；browser JS/live/四模型实跑未验证。
+
+**g1-glm-B01：关闭**——输入清单、manifest及4份冻结副本已在仓内实测可读（本人前两轮实测拒绝、本轮实测成功，证据充分）。
+
+## 2. W1–W8
+- W1 复用/底座：**PASS**（reuse-decision/runtime-tool-evidence已读；代码中单一Runner/Store/verify入口，无复制调度器或台账；unknown保留）。
+- W2 Store/Runner：**PASS**（代码符合接口；33+13局部测试绿；advisory见下）。
+- W3 运行时/协议：**CHANGES_REQUESTED**（B02、B03）。
+- W4 暂停/续作/Web：**CHANGES_REQUESTED**（B07）。
+- W5 精确digest门禁：**PASS**（gates.py逻辑+test_sample 11项绿；链路级验证被B02阻断，live未证）。
+- W6 归档/备份：**CHANGES_REQUESTED**（B04、B05，test_archive 14F中约6项）。
+- W7 清理：**CHANGES_REQUESTED**（B06，其余8项）。
+- W8 验证/CI/状态准确：**CHANGES_REQUESTED**（B03硬限、B08、B10）。
+
+## 3. Blocking findings
+
+**g1-glm-B02｜跨包 P2↔P6｜runtime.py:27-35**：`_resolve_log_dir`单边限定`.runtime/logs`，而checks.py:41用`.runtime/verification`、sample.py:83用`.runtime/<role>`。触发：verify步run_bounded抛错→blocked，级联test_gates ERROR、test_flow pause_resume ERROR（store.py:325自blocked resume）、review_wrong_verdict F（calls_used 1≠2）。合同：interfaces.md运行时/样例组合节未限定logs子目录。最小修复：发包人先裁定合同（runtime接受root内任意checked路径，或消费者统一迁`.runtime/logs`），再派修；验收=三测试转绿。**scope_needs_alignment**（P2与P6双方对齐后方可派修）。
+
+**g1-glm-B03｜P2｜runtime.py:67-151**：`_collect`85行>80硬限，verify实际FAIL，无独立例外记录。最小修复：抽pump/监督逻辑至≤80行并保持test_runtime 25项绿。合同：implementation-plan规模表、AGENTS。**scope_supported**（写集runtime.py）。
+
+**g1-glm-B04｜P3｜paths.py:28-49,83-86**：create_root无reparse检查、`_require_clean_root`只查root叶子不查祖先、write_json不查父目录junction。触发：test_paths.py:134/146/159/170四FAIL；隔离根可经junction逃逸。合同：interfaces.md paths节、W7“链接/junction不可清理”。最小修复：root及其祖先逐级reparse核验+回归。**scope_supported**（paths.py）。
+
+**g1-glm-B05｜P3｜archive.py:90-95,112-128**：归档/备份目标用裸`Path(root)/target`绕过checked（prebuilt junction未检出）；`_existing_receipt`幂等返回前不复核既有目标内容。触发：test_archive.py:296-349五FAIL（含覆写篡改目标风险）。合同：interfaces“重入仅完全相同内容…不覆盖有差异证据”、W6。最小修复：目标路径过checked+幂等前逐文件hash读回。**scope_supported**（archive.py）。
+
+**g1-glm-B06｜P4（依赖P3）｜cleanup.py:102-203**：①plan_cleanup不校验manifest目标读回（138行裸Path）与authority↔receipt subject绑定→corrupt_target/subject_mismatch FAIL；②apply只比对`files`不比对回执稳定字段→metadata_change FAIL；③接受任意`plan['source']`→rebound source可删workspace/feature.py（:176）；④**最终authorize()在源hash复核之后执行**（:190-197），回调内改源仍被删除——删除安全缺陷。合同：interfaces apply_cleanup“执行前重新读权威…重核对…源hash及全部清单读回；只删除固定scratch对象”、W7。最小修复：源限定FIXTURE、全回执比对、目标经checked、authorize后立即复检源hash再删；验收=对应9项测试绿。**scope_needs_alignment**（与P3共享receipt/checked边界，需P3/P4对齐后派修）。
+
+**g1-glm-B07｜P5｜cli.py:53-54,68-70**：blocked态resume抛ValueError→exit 2，自测test_cli.py:98要求1。最小修复：CLI将状态性拒绝映射为清洁非零1（或修正测试并给出依据）。**scope_supported**（cli.py/test_cli.py同写集）。
+
+**g1-glm-B08｜P7｜verification.py/__init__.py/verify.yml**：result.md P7行“待槽位派发”，无真实CodeBuddy接管session证据。合同：用户后继指令“产品/测试/CI编码由实际CodeBuddy deepseek-v4-pro”、role-correction.md。最小修复：发包人派真实作者接管并出实际调用回执；静态正确不替代。**scope_needs_alignment**（先派发接管，暂不支持修复准入）。
+
+**g1-glm-B09｜流程（发包人）**：本候选产生于共享树人工写集隔离，无独立worktree/claim证明；且此前Codex曾未经审核直派修复（result.md已自认）。对候选内容：冻结manifest前后一致，内容完整性已证，**不阻断本候选评审**；对后续修复派发：**阻断**——发包人必须按用户指令为每个writer建独立worktree并依据本票stable finding派发，不得伪称产品资源隔离已实现。
+
+**g1-glm-B10｜记录准确性（Codex维护，非41文件内）**：verification-g1-r1.md称"3 errors"，冻结树实测frozen-verify-r1.txt为**2 errors**（旧工作树3E应保留为前置历史、不得混写）；另verification-g1-r1-manifest.json与冻结manifest在runtime-tool-evidence.md哈希不一致且输入清单未解释（仅解释了role-correction CRLF→LF）。合同：W8“当前状态准确”、AGENTS状态分别举证。最小修复：更正错误数归属并解释哈什差异。**scope_supported**（记录文件，经发包人更新）。
+
+## 4. 拟修复包边界裁定
+- P1：scope_supported（无blocking；仅advisory）。
+- P2：B03 scope_supported；B02 scope_needs_alignment。
+- P3：scope_supported（B04/B05）。
+- P4：subject绑定/顺序/回执比对 scope_supported；junction/checked部分 scope_needs_alignment（依赖P3）。
+- P5：scope_supported（B07）。
+- P6：scope_needs_alignment（B02对齐后随动）。
+- P7：scope_needs_alignment（B08接管未发生，不支持完整修复准入）。
+
+## 5. Advisory
+软目标超出未附内聚解释：store.py 402行、adapters `_parse_codebuddy`57/`_parse_kimi`49、cleanup `apply_cleanup`41、runner `_run_locked`44、test_archive 465/test_runtime 417/test_runner:225 47——修复轮须书面解释；P1 STATUS.tmp WinError5间歇未查明根因；P1超时看护超差20.4秒已如实保留；browser JS、live、四模型样例、云CI保持未验证；四模型总调用4≠并发4，记录未混淆；W5链路待B02修复后复验。
+
+## 总票：CHANGES_REQUESTED
+未决：B02–B10待原席按ID复审关闭；B01已关闭。本票仅为G1首轮审核意见，不代表监督、接收、合入或live通过。

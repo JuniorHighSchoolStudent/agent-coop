@@ -1,0 +1,179 @@
+{
+  "scope": "G1 first-round review calls only; no repair or supplement calls included",
+  "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "attempt_count": 6,
+  "effective_final_reviews": 2,
+  "calls": [
+    {
+      "attempt": "review-g1-glm-r1",
+      "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+      "requested_model": "glm-5.3",
+      "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "actual_init_identities": [
+        [
+          "glm-5.3",
+          "agent-coop-g1-glm-r1-34bce56b-20261010"
+        ]
+      ],
+      "started_at": "2026-10-10T13:56:38.4359550+00:00",
+      "finished_at": "2026-10-10T13:57:28.2747433+00:00",
+      "wall_seconds": 49.8387883,
+      "process_exit_code": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "requested_max_turns": 20,
+      "actual_tool_calls": {
+        "Read": 3,
+        "Glob": 1
+      },
+      "actual_tool_error_count": 3,
+      "prompt_sha256": "a585eb4dfac3a11753645fc6b4156d1448f9eef6e16954e02e68eea40b5db72a",
+      "raw_stream_sha256": "dbfffa638445494ec32b232049d7385a8c5ff8ac700d6ebfc83581ba7bebff1e",
+      "receipt_sha256": "85acba3286dd3848fabf58bbbd98c7f2f7fa8cba62085309024db66549118e0b",
+      "effective_implementation_review": false,
+      "final_worktree_status": []
+    },
+    {
+      "attempt": "review-g1-kimi-r1",
+      "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+      "requested_model": "kimi-k3-2",
+      "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "actual_init_identities": [
+        [
+          "kimi-k3-2",
+          "agent-coop-g1-kimi-r1-34bce56b-20261010"
+        ]
+      ],
+      "started_at": "2026-10-10T13:56:38.4369485+00:00",
+      "finished_at": "2026-10-10T14:04:58.9631496+00:00",
+      "wall_seconds": 500.5262011,
+      "process_exit_code": 0,
+      "result_subtype": "error_during_execution",
+      "result_is_error": true,
+      "requested_max_turns": 20,
+      "actual_tool_calls": {
+        "Read": 33,
+        "Glob": 5
+      },
+      "actual_tool_error_count": 4,
+      "prompt_sha256": "e9eae05d6762e101e3b85effefc0d616e6c0eb10523e8f97f9e5c700f6f8e239",
+      "raw_stream_sha256": "e6f026986bf39b9e820e4875c2db8f76a74141d005d30537c8a46062036e7d74",
+      "receipt_sha256": null,
+      "effective_implementation_review": false,
+      "final_worktree_status": []
+    },
+    {
+      "attempt": "review-g1-input-followup-glm-r1",
+      "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+      "requested_model": "glm-5.3",
+      "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "actual_init_identities": [
+        [
+          "glm-5.3",
+          "agent-coop-g1-glm-r1-34bce56b-20261010"
+        ]
+      ],
+      "started_at": "2026-10-10T14:00:08.4525745+00:00",
+      "finished_at": "2026-10-10T14:01:07.3092654+00:00",
+      "wall_seconds": 58.8566909,
+      "process_exit_code": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "requested_max_turns": 20,
+      "actual_tool_calls": {
+        "Read": 2,
+        "Glob": 1,
+        "Grep": 1
+      },
+      "actual_tool_error_count": 4,
+      "prompt_sha256": "b3f031d11241c6616c90213d30c1c89be7e788cb21a4f74426e67e1cebf713e3",
+      "raw_stream_sha256": "9da8475ccc5312230a95ff8b62e18afc4db840e8d9af8aad39a58b90492293ba",
+      "receipt_sha256": "a07c538c1f2496c4d64ceac2d5a07eff04393c6be90f94b5e089d0553009e0ab",
+      "effective_implementation_review": false,
+      "final_worktree_status": []
+    },
+    {
+      "attempt": "review-g1-local-input-glm-r1",
+      "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+      "requested_model": "glm-5.3",
+      "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "actual_init_identities": [
+        [
+          "glm-5.3",
+          "agent-coop-g1-glm-r1-34bce56b-20261010"
+        ]
+      ],
+      "started_at": "2026-10-10T14:03:00.1834133+00:00",
+      "finished_at": "2026-10-10T14:07:22.9409899+00:00",
+      "wall_seconds": 262.7575766,
+      "process_exit_code": 0,
+      "result_subtype": "error_during_execution",
+      "result_is_error": true,
+      "requested_max_turns": 20,
+      "actual_tool_calls": {
+        "Read": 38,
+        "Glob": 2
+      },
+      "actual_tool_error_count": 0,
+      "prompt_sha256": "f77b47673ae0b3afc9ba2f5265dac93bd98ecbf7b363908625191fc3e0284a6f",
+      "raw_stream_sha256": "e45412cd3fe17d763821cdb3052c4ae6e3e72b6dfa912d408fd898cae88ee817",
+      "receipt_sha256": null,
+      "effective_implementation_review": false,
+      "final_worktree_status": []
+    },
+    {
+      "attempt": "review-g1-local-input-kimi-r1",
+      "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+      "requested_model": "kimi-k3-2",
+      "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "actual_init_identities": [
+        [
+          "kimi-k3-2",
+          "agent-coop-g1-kimi-r1-34bce56b-20261010"
+        ]
+      ],
+      "started_at": "2026-10-10T14:06:46.0355298+00:00",
+      "finished_at": "2026-10-10T14:11:48.9077762+00:00",
+      "wall_seconds": 302.8722464,
+      "process_exit_code": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "requested_max_turns": 20,
+      "actual_tool_calls": {
+        "Read": 6
+      },
+      "actual_tool_error_count": 0,
+      "prompt_sha256": "9c039a161a85b48ebf83a66a609c6adc0700a154d9e35e356247712f2e9e9f94",
+      "raw_stream_sha256": "679cce4f8eaae465139a344ff4220c2e6f54075a3c0da1a91bc0fcd627baef31",
+      "receipt_sha256": "fa86fdf6a6b0a26a286c776dc22d794db0cf7709e2046c73bbd2d558bef0d8d4",
+      "effective_implementation_review": true,
+      "final_worktree_status": []
+    },
+    {
+      "attempt": "review-g1-conclusion-glm-r1",
+      "candidate": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+      "requested_model": "glm-5.3",
+      "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "actual_init_identities": [
+        [
+          "glm-5.3",
+          "agent-coop-g1-glm-r1-34bce56b-20261010"
+        ]
+      ],
+      "started_at": "2026-10-10T14:11:17.0229770+00:00",
+      "finished_at": "2026-10-10T14:13:53.0222094+00:00",
+      "wall_seconds": 155.9992324,
+      "process_exit_code": 0,
+      "result_subtype": "success",
+      "result_is_error": false,
+      "requested_max_turns": 3,
+      "actual_tool_calls": {},
+      "actual_tool_error_count": 0,
+      "prompt_sha256": "3284c9242864e2645fe086caac2d01a984c5bd47e0c3cd41c39744538ced7b2c",
+      "raw_stream_sha256": "b8bcac40cc310a9c7c0cae320bca85d3951c0782991bd6ddae66dac24464a39c",
+      "receipt_sha256": "0d01b10a290f862fa7e9d81048dd734e8bf48f56ee783ee1cee7fdd58b6a33dc",
+      "effective_implementation_review": true,
+      "final_worktree_status": []
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+修复已完成。以下为作者文字交接（作者未运行任何测试，未 git 操作）。
+
+## 交接报告
+
+**requested 模型会话**：CodeBuddy `deepseek-v4-pro`
+**actual 模型会话**：由外部核验（本作者不自行核验）
+**精确 base_commit**：`34bce56b624cf521b33dc5b4916bd1c8e7711536`
+
+### 实际修改（仅具名写集，未越界）
+1. `agent_coop/paths.py`
+   - 新增 `_reject_reparse_chain(path)`：从 `path` 自身逐级向上（直到 anchor）检查 reparse point（symlink/junction），命中即 `ValueError`。
+   - `_require_clean_root`：把原来只查 root 叶子的 `_is_reparse_point(root)` 替换为 `_reject_reparse_chain(root)`（root 自身 + 全部祖先）。
+   - `create_root`：在 `target = Path(path).absolute()` 后立即 `_reject_reparse_chain(target)`，创建前拒绝 root/祖先 reparse。
+   - `write_json`：把原来只查目标文件自身的 `_is_reparse_point(path)` 替换为 `_reject_reparse_chain(path)`（文件 + 父链），在 `mkdir`/写临时文件前拒绝。
+   - 公开签名 `checked(root, relative)` / `write_json(path, value)` 未变。
+
+2. `agent_coop/archive.py`
+   - 新增 `_verify_target(root, entry)`：经 `checked` 取目标并核验 `is_file` + 尺寸 + hash，兼拒绝 reparse。
+   - `create_archive`/`create_backup`：
+     - 目标路径由裸 `Path(root) / entry['target']` 全部改为 `checked(root, entry['target'])`（幂等/复制前父链检查）。
+     - 幂等重入（`_existing_receipt` 命中）返回前逐文件 `_verify_target`，目标被改/缺件/链接即拒且不覆写。
+     - 无 receipt 时先遍历确认 `checked(root, entry['target']).exists()` 为假，否则拒绝，不覆盖旧证据。
+     - `create_backup` 中归档目标读回由裸 `Path(root)` 改为 `checked(root, archive_target_rel)`。
+
+**复用 owner**：复用现有 `paths.checked` 与 `paths._is_reparse_point`，未复制第二套校验器。**受影响消费者**：P4 `cleanup.py`（读 `checked`/`write_json`）与 P6 `sample.py`（读 `create_root`/`checked`/`write_json`）均仅消费公开签名，签名未变。
+
+### finding 处置（仅 P3 范围）
+- `g1-glm-B04`（paths root/祖先/write_json 父链）→ 已修（`_reject_reparse_chain` 接入三处）。
+- `g1-glm-B05`（archive 目标裸 Path 绕过 checked + 幂等不复核）→ 已修（`checked` 化 + `_verify_target`）。
+- `g1-kimi-B02`（幂等重入不读回目标）→ 已修（重入前逐文件 `_verify_target`）。
+- `g1-kimi-B03`（无 receipt 静默覆写既有目标）→ 已修（复制前存在性拒绝）。
+- `g1-kimi-B04`（P3 主：root/祖先 junction、write_json 父链、归档/备份预建 junction）→ P3 部分已修；其中 `cleanup.py:135-142 _verify_manifest_targets` 的「清单核验走 checked」属 P4 调用点，按包边界未改（见下）。
+
+### 未测/仍失败/越界说明
+- 作者**未运行**任何测试（本替代包仅 5 工具，无 shell）。
+- 未改 `cleanup.py`、`test_archive.py`；`test_paths.py` 无需改动（回归测试已在基线内）。
+- 已知 P4 失败（`test_plan_cleanup*`/`test_apply_cleanup*`，含 `_verify_manifest_targets` reparse 与 source/subject/receipt/authorize 顺序）**不在本包闭合**，非本包改动范围，未越界处理。
+- 源码规模：`paths.py`≈112 行、`archive.py`≈160 行，新增函数均 <40 行，无新硬失败；软目标下 `create_backup`≈36 行在目标内。
+
+### 建议协调者执行（作者未执行，请勿据此视为已通过）
+```
+python -m unittest tests.test_paths -v
+python -m unittest tests.test_archive -k create_ -v
+```
+预期：`test_paths` 全绿（含 4 项 junction 用例）；`test_archive -k create_` 的 `test_create_archive*` 与 `test_create_backup*` 全绿，symlink/junction 权限 skip 如实保留。全量 `tests.test_archive` 仍会暴露 P4 失败（不在本包）。
+
+**未交付候选声明**：本次仅为写集内最小修复 + 文字交接，作者未 git add/commit，未运行验证，未自签任何 finding 关闭；请协调者独立验证并固定交付 commit、关联真实作者原件。

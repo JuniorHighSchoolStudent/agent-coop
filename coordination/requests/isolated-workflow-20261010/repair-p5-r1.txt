@@ -1,0 +1,36 @@
+已完成最小修复并提交文字交接。以下为交付记录。
+
+## 交付记录（package g1-fix-p5-cli-exit-r1）
+
+**requested/actual 模型会话**
+- requested：`deepseek-v4-pro`（CodeBuddy 实际实现者）
+- actual：由外部核验，作者不自证模型身份。
+
+**精确 base**
+- `34bce56b624cf521b33dc5b4916bd1c8e7711536`（当前 worktree 与 frozen-manifest 逐 hash 一致，本轮未改动其它文件）
+
+**实际修改（仅具名写集内）**
+
+1. `agent_coop/cli.py:53-59` — `resume` 分支：调用 `store.resume()` 前先 `store.read()`，若 `phase` 为 `blocked`/`reconciliation_required`，向 stderr 打印 `agent-coop: cannot resume from phase <phase>` 并 `return 1`，**不触发任何 Store 变更**；否则走原 `store.resume()`。参数错误路径（`_validate_args`）保持 `ValueError` → `main` 返回 `2` 不变。
+2. `tests/test_cli.py:98-110` — 仅**收紧**既有 `test_blocked_and_reconciliation_are_nonzero_and_not_cleared`：把 `resume` 结果捕获并断言 `returncode==1`、stderr 无 `Traceback` 且非空。未放宽任何既有断言，未新增测试方法（既有测试已覆盖「区分 1 vs 2」的真实区分）。
+
+**复用 owner / 受影响消费者**
+- 复用并仅修改 owner=P5 CLI（`agent_coop/cli.py`）与对应测试（`tests/test_cli.py`）。
+- 消费者：命令行调用者（`python -m agent_coop resume <root>`）。
+- 未触碰 `store.py`/`runner.py`/`sample.py`/`web.py`/P6；未修改 Store/Runner 状态机（`resume` 的 domain 拒绝逻辑仍由 `Store.resume()` 权威保留，CLI 仅做只读 phase 判定决定退出码）。
+
+**finding 处置（均 scope_supported）**
+- `g1-glm-B07`：处置=修复。blocked/reconciliation 下 `resume` 拒绝保持状态 + 干净错误输出 + 退出码 1。
+- `g1-kimi-B08`：处置=修复。同一最小修复；参数错误仍 2。
+
+**建议协调者执行的限定命令与预期**
+- `python -m unittest tests.test_cli.CliTests.test_blocked_and_reconciliation_are_nonzero_and_not_cleared -v` → 预期 PASS（修复前为红：resume 返回 2）。
+- `python -m unittest tests.test_cli tests.test_web -v` → 预期全绿。
+- 确认参数错误仍 2 且无副作用：`test_run_rejects_negative_max_steps_without_side_effects`、`test_serve_rejects_out_of_range_port` → 预期 PASS（exit 2）。
+- `test_status_pause_resume_persist_same_store`（resume 正常路径）、`test_corrupt_store_yields_clean_nonzero_result` → 预期不受影响 PASS。
+
+**作者边界声明**
+- 作者未运行任何测试、未执行任何 shell/git/验证命令；「先红后绿」「全绿」「参数错误仍 2」均为预期，未经作者实测。
+- 未读取私有 CLI 流或凭据；未在 `coordination/.runtime/repair-input/` 中找到 `g1-glm-B07`/`g1-kimi-B08` 原文（仅 `handoff.json`、`package-replacement.txt`、`frozen-manifest-before.json` 存在），据此包级最小修复说明执行，未自签 finding 关闭。
+- 未 `git add/commit`、未操作分支、未 push；P2 runtime.py 部分 Edit 与本包（P5）无关，未触碰。
+- 越界请求：无。若协调者要求超出 `cli.py`/`test_cli.py` 写集（如改 Store/Runner/web），请按 scope_request 反馈。
