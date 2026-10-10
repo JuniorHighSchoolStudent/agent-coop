@@ -1,0 +1,52 @@
+{
+  "validation_sequence": [
+    {
+      "attempt": 1,
+      "exception": "RuntimeError: exit code 1",
+      "spawn_count": 1,
+      "child_exit_code": 1,
+      "logs": {
+        "stderr.log": {
+          "sha256": "a413a1917141bc48e948e609a0c8a6be5d23755e5903846c44dd79104d6af2dd",
+          "bytes": 92
+        },
+        "stdout.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    },
+    {
+      "attempt": 2,
+      "exception": "ValueError: refusing to overwrite existing log files in C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-runtime-investigation-613edb8065994468a5c307d056e414e6\\validation-sequence\\.runtime\\verification",
+      "spawn_count": 2,
+      "child_exit_code": 0,
+      "logs": {
+        "stderr.log": {
+          "sha256": "a413a1917141bc48e948e609a0c8a6be5d23755e5903846c44dd79104d6af2dd",
+          "bytes": 92
+        },
+        "stdout.log": {
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    }
+  ],
+  "junction_cleanup_sequence": [
+    {
+      "stage": "test_body_completed",
+      "junction_lexists": true,
+      "registered_cleanup_count": 1
+    },
+    {
+      "stage": "tearDown_completed",
+      "junction_lexists": false
+    },
+    {
+      "stage": "registered_cleanup",
+      "callback": "rmdir",
+      "exception": "FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'C:\\\\Users\\\\june\\\\AppData\\\\Local\\\\Temp\\\\agent-coop-runtime-investigation-613edb8065994468a5c307d056e414e6\\\\tmp52777e1k\\\\sample\\\\.runtime\\\\escape'"
+    }
+  ]
+}

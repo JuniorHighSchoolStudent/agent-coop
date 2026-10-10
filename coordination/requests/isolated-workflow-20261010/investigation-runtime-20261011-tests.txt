@@ -1,0 +1,28 @@
+test_verifier_checks_boundary_hold_and_negative_retention (tests.test_gates.GateTests.test_verifier_checks_boundary_hold_and_negative_retention) ... ERROR
+test_log_dir_junction_escape_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_junction_escape_is_rejected) ... ERROR
+
+======================================================================
+ERROR: test_verifier_checks_boundary_hold_and_negative_retention (tests.test_gates.GateTests.test_verifier_checks_boundary_hold_and_negative_retention)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_gates.py", line 42, in test_verifier_checks_boundary_hold_and_negative_retention
+    result = validate_feature(root)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\checks.py", line 39, in validate_feature
+    receipt = run_bounded(
+              ^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\runtime.py", line 61, in run_bounded
+    _write_logs(log_path, out_bytes, err_bytes)
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\runtime.py", line 212, in _write_logs
+    raise ValueError(
+ValueError: refusing to overwrite existing log files in C:\Users\june\AppData\Local\Temp\agent-coop-runtime-investigation-613edb8065994468a5c307d056e414e6\tmpf7s5c1y1\sample\.runtime\verification
+
+======================================================================
+ERROR: test_log_dir_junction_escape_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_junction_escape_is_rejected)
+----------------------------------------------------------------------
+FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-runtime-investigation-613edb8065994468a5c307d056e414e6\\tmpk68scitz\\sample\\.runtime\\escape'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.276s
+
+FAILED (errors=2)
