@@ -28,13 +28,15 @@
 - Kimi Code 与 CodeBuddy 的 `kimi-k3-2` 是不同 runtime/session，分别核验能力和实际模型身份；当前 Kimi Code 使用宿主已配置的默认 profile，调用时记录可观测的模型信息，未知保持 unknown，不静默替换。监督并发 1、单次最长 10 分钟，由 Codex 手工看护和在超时后停止本次调用；CLI 未提供 turns/token 硬限时明确记为未实施，不宣称产品预算门禁已实现。
 - 当前分配仅适用于本仓，不继承 ABM owner。
 
-## 当前工作：图集审核后的修订（2026-10-10）
+## 当前产品切片：P0 复用裁定（待启动）
 
-用户在图集退回修订后要求继续多 agent 开发。本轮仅修正需求放行条件、握手超时出口、证据发布方向，并改善原图入口；沿既有正文合同，不实现产品、不安装依赖、不启用定时任务。实现由 CodeBuddy/deepseek-v4-pro 承担，Codex 集成与渲染核查，两组独立 CodeBuddy 评审和原生 Kimi Code 监督沿上表。
+图集修订已完成多方复审与监督接收，退出当前工作视图。下一步仍是按下表形成 P0 复用裁定和运行时能力证据，完成评审后才编写 P1 精确实施计划；本轮未启动该后继工作，未固定依赖或启用产品/定时任务。
 
-实施计划见 [图集修订计划](../coordination/requests/diagrams-review-20261010/implementation-plan.md)，候选、阻断和唯一当前结论见 [当前结果](../coordination/requests/diagrams-review-20261010/result.md)。本次图集修订不改变 P0 复用裁定前置，不把旧候选通过票沿用到新图。
+最近交付的接收与 Git 集成证据见下方历史入口；本节只维护有效下一步，不复制回执或另建状态台账。
 
 ## 历史交付入口
+
+- 图集修订（diagrams-review-20261010）：新候选已接收，首轮 B1–B3 已闭合，候选、实现、两席复审、独立监督与合入状态统一见 [结果](../coordination/requests/diagrams-review-20261010/result.md)；未实现产品功能。
 
 - 阶段角色、触发与经验吸收（role-experience-review-20261010）：已接收并在 main cb0793d 合入，证据见 [结果](../coordination/requests/role-experience-review-20261010/result.md)；design §4.2/§7.1/§7.4/§7.5/§7.6/§9.1 及验收47–54继续有效。Jev 仍沿 P0 调研→P4 离线评测→P5 受控激活，未启用。
 

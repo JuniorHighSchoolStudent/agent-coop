@@ -1,0 +1,36 @@
+# 独立只读审核报告（第二轮）
+
+**版本与范围**：固定候选 `0ce0bf038045230094e25bc33e96406a000d6328`；对照 main `cb0793d` 合同。审查 `diagrams.diff` 四文件（图1/3/4、index）与 `main-navigation.diff` 正文导航增量；候选清单 GitBlob 与工作树一致（依 manifest 记录，非我重算）。图2/5 本轮未改，抽查语义。渲染与点击证据引用 Codex `validation-r2.md`，非我本人执行。
+
+## D1–D8 逐项
+
+| ID | 结论 | 依据 |
+|---|---|---|
+| D1 | PASS | design.md:21/158 明确"图是审阅辅助，不是规范正文"；README:46 标注辅助阅读；图未自立规则 owner |
+| D2 | PASS | 图1：Scheduler"派发权威/唯一写入者"(svg:61,69)、三类 adapter(94-106)、入口"Codex Desktop · Claude Code 插件"(34) 与 design §5 ASCII(141) 对齐，不再把 CodeBuddy 列为薄插件；SQLite 标"建议（P0 未定）"(81) |
+| D3 | PASS | 图3：校验→gate①→gate②→apply 串行，①注明"可与②同时适用"(74)；"否→直接下行"保留 §8.1 常规任务直接入队；校验失败→rejected(114-116)、拒绝→blocked/awaiting_owner(123-125)、未全通过→awaiting_review(132-134)，均不进入 apply；§8.5 框"≥2 独立评审（作者不计票）·所有必需槽位通过·无 blocking·具权限集成者接收"(129-130) 与 design:666-668 一致 |
+| D4 | PASS | 图4：offered(129) 与 acknowledged(130) 各有虚线汇入 cancelled/expired；标签"超时/撤回·不生成 accepted"(134)；框内"不证明旧进程已停止"(115)；注"Scheduler 不代评审者接受"(138)，合 §7.7:338,345,353；epoch/fencing 注保留 |
+| D5 | PASS | 图5未改；抽查八步闭环、三层证据边界、"未经激活不改变运行"与 §9.1:698-708 一致，无扩权表述 |
+| D6 | PASS | main-navigation.diff 对 design.md 为纯增量（仅加图示导航段），无合同删改；54 项验收编号连续性经 Codex 链接检查（validation-r2:10），我未重算 |
+| D7 | PASS | index 五图均增 `<a href="./0X-*.svg">打开原图</a>` 且有 `:focus-visible` 焦点样式（diff 360-362,371 等），alt/无脚本保留；图3画布 930、分支标签齐全。限制：我本人未渲染、未点击，依赖共享证据 |
+| D8 | PASS | request/plan/manifest/validation-r2 一致；Codex 公开其为图3留白/图4行距的作者性修改且不占独立席位；无产品测试/已合入虚假声称；num_turns 与硬限限制如实标注 |
+
+## B1–B3 能否闭合
+
+- **B1（图3）**：图面满足全部闭合条件——授权 gate 与 §8.5 评审 gate 串于 apply 前且可同时适用；待批准/待评审/校验失败均有具名出口，无沿成功线进 apply 的旁路；必需非作者席位、无 blocking、校验与具权限接收俱全。**本票认定图面达标**；按 §8.5 与 roadmap，闭合须另一必需独立席位同过、监督核对、集成者接收后方成立，非我单票可闭。
+- **B2（图4）**：offered 与 acknowledged 均可超时/撤回入 cancelled/expired，且明示不等于进程停止、不生成 accepted。图面达标，闭环条件同上。
+- **B3（图1）**：图例三行（实线控制流/紫实线=执行回传/虚线=单写发布 coordinator→证据栏）与图内唯一虚线（svg:123, 920→970 指向证据栏）方向一致；紫色实线回传由执行环上行至 coordinator(121)；入口品牌已对齐正文。图例自洽，达标。
+
+## 发现的实际问题（均不阻断）
+
+1. 图1 svg:121 回传箭头终点 x=926，距 coordinator 右缘 920 留 6px 间隙，箭头未贴边（外观小瑕）。
+2. 图3 底部说明删去"请求记录落在 coordination/requests/<id>/ 四文件"细节；该合同在 §8.1:515 正文保留，图为非穷尽，不影响。
+3. 图4 旋转标签 x=1250 紧贴右面板边界（1250），画布内但视觉贴边。
+
+## 总判定
+
+**PASS（无阻断项）**。B1–B3 在图面与 index 摘要层面均满足关闭条件；正式闭合待 glm-5.3 独立票、Kimi Code 监督与集成者接收流程完成。
+
+## 未验证范围
+
+未自行渲染 SVG/浏览器点击/重算哈希与 54 项编号（采用 Codex 共享证据）；未做屏幕阅读器与多浏览器矩阵核查；未读 result.md 本轮状态、result-r1 及另一 reviewer 意见；产品实现与合入不在本范围。

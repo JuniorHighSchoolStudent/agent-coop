@@ -1,0 +1,23 @@
+## 原生 Kimi Code 独立只读监督报告（第二轮，新会话）
+
+模型身份：本会话未暴露实际模型，记 unknown。仅使用 Read/Glob/Grep，未改文件、未重算 Git/哈希、未渲染；Git 核验与渲染为 Codex 证据，不冒充为本监督独立执行。
+
+**S1 授权/范围/版本**：首轮退回后用户授权续作，request.md:3 与 implementation-plan.md:3 如实记录。候选 `0ce0bf038045230094e25bc33e96406a000d6328`、基线 main `cb0793d` 在 request/result/manifest 三处一致；manifest 14 份输入 GitBlob==WorkingBlob（我未重算，依 Codex 记录）。实现者只改四个图集文件（01/03/04 SVG + index.html），Codex 只改协调记录与排版；无产品代码、无 P0 越级声明，validation-r2.md:11 明确"未固定 P0 依赖、未启动产品"。PASS。
+
+**S2 实现与评审独立性**：implementation-r2.txt 为 CodeBuddy/deepseek-v4-pro 实际交付，自报未渲染并声明非独立票，诚实。两席新独立 reviewer（glm-5.3、kimi-k3-2，各自新 session）均声明未读对方意见、旧票与 result.md。Codex 补图3画布930与图4行距已公开作者身份且不占票，符合 design.md:668。两份 R2 票对同一候选逐项 D1–D8 全 PASS、B1–B3 明确判定，定位到具体行号；result-r1.md 保留首轮原票原文，无篡改痕迹。PASS（会话内部元数据我无法独立核验，按记录采信）。
+
+**S3 B1–B3 图面核查**（我亲自读 SVG 源）：
+- B1：图3 主链 校验→gate①(460)→gate②(620)→apply(736)，gate①注明"可与②同时适用"、各有"否·跳过"下行与绿色批准回接（03:144-145）；rejected、blocked·awaiting_owner、awaiting_review 三个红色具名出口均不进入 apply（03:114-134）；§8.5 框列必需席位/作者不计票/无 blocking/具权限接收，与 design.md:666-668 一致。达标。
+- B2：图4 offered（965,205）与 acknowledged（965,275）两虚线均汇入 x=1235 再进 cancelled/expired（04:129-133），框内"不证明旧进程已停止"，注"Scheduler 不代评审者接受"。超时出口完整，达标。
+- B3：图1 图例三行（实线控制流/紫实线回传/紫虚线单写发布 coordinator→证据栏，01:20-22）与图内走向一致；入口品牌已改为"Codex Desktop · Claude Code 插件"，与正文对齐。闭合条件满足。
+
+**S4 验证证据边界**：渲染、点击、链接检查均为 validation-r2.md 的 Codex 证据，两席 reviewer 与本监督均如实声明依赖共享证据、未冒充独立渲染。num_turns 不证明预算硬限，记录如实。预算硬限实际生效与否记 unknown。PASS。
+
+**S5 状态/历史**：plan 两项未勾已明示冻结于候选时点，result.md 为唯一当前入口，当前状态"awaiting_supervision、尚未接收或合入"准确；result-r1 归档保留，B1–B3 未被提前宣布闭合；未混入 P0 或产品完成声称。PASS。GLM 关于 design:21/158 定位不精确一处，result.md 已单独更正且不改编原票，处置得当。
+
+**GLM advisory 专项核对**：awaiting_review/awaiting_owner 在 design.md:251 确为 attempt 状态枚举，而 §8.1:515 的 result.json 枚举只有 applied/queued/blocked/rejected。但 awaiting_owner 同时是 §7.1（design.md:243）的具名未派发原因，awaiting_review 在 design.md:295 也用于接收等待；图3 仅将其作等待提示标注在 blocked 出口旁，且 design.md:32 明确图非规范、冲突以正文为准，本轮未向正文新增任何枚举。语义方向一致、不构成实际合同冲突，维持**非阻断**；集成者"记录取舍、不改合同、提交监督核对"的处理合理，我确认。
+
+**阻断项**：无。
+**非阻断项**：图1箭头 6px 留白、图4旋转标签贴边、图3省略请求文件清单（§8.1:515 正文保留）——均不改冻结候选，合理。
+
+**结论**：S1–S5 全部 PASS，B1–B3 具备新候选原件与两席独立闭合意见，本监督核对属实。建议 Codex **接收候选 0ce0bf0** 并正式闭合 B1–B3。注意：截至本报告，候选**未合入** main，合入须另行举证；接收后 result.md 应更新为已接收并保留本监督记录。

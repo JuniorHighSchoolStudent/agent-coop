@@ -1,0 +1,35 @@
+# 图集修订独立审核报告（CodeBuddy / glm-5.3）
+
+**版本与范围**：候选 `0ce0bf0`（Git 核查由 Codex 完成，本审核不冒充执行）；参照 main `cb0793d` 合同。审阅 request.md D1–D8 矩阵、implementation-plan.md、validation-r2.md（共享证据）、`.review-inputs/` 两 diff 与 candidate-manifest.json、五份 SVG 与 index.html、design.md §5/7.2/7.7/8.1/8.5/9.1、roadmap 团队规则。未读旧票、result-r1.md、result.md 及另一 reviewer 本轮意见。实现者为 CodeBuddy/deepseek-v4-pro；Codex 追加图 3 画布 930 与图 4 行距并已公开作者身份，两者均不占独立席位，与 roadmap:17-21 一致。
+
+## D1–D8
+
+| ID | 判定 | 依据 |
+|---|---|---|
+| D1 | PASS | 图集各处标注“辅助、非规范正文”（index.html:91,212；design.md 导航增量）；图未新增规则 owner，内容均可回溯 §5/§7/§8/§9 |
+| D2 | PASS | 图1：coordinator“唯一的工具状态写入者”、Scheduler“派发权威”（01:61,69）；三类 adapter（01:93-106）；角色/runtime/provider 分离见图2 卡06 |
+| D3 | PASS | 图3 双 gate 串在 apply 前（03:68-90），“可与②同时适用”，否→跳过，apply 注明“仅在校验通过且全部必要 gate 通过后执行”（03:90）；失败/等待均有具名红色出口、无进入 apply 的旁路（03:112-146） |
+| D4 | PASS | 图4 状态集与 §7.2:251 完全一致；握手链与 §7.7:334-339 逐字对应；epoch/fencing/outbox 条件保留（04:78-84,146-176） |
+| D5 | PASS | 图5 八步闭环、三层证据、评测者/改进者分离与 §9.1:698-741 一致，无权限扩张暗示 |
+| D6 | PASS | main-navigation.diff 仅 5 处导航/图示链接增量，正文合同未改；验收 1–54 连续在位（design.md:776-829）；阶段角色/触发/ABM/Jev 保留于正文，图非穷尽不苛求 |
+| D7 | PASS（结构层面） | index 无脚本、五图均加可键盘访问原图链接与 focus-visible 样式（index.html:66-68,121-198），alt 保留；图3 分支箭头几何核算无穿字；渲染/点击证据仅依赖 Codex 共享记录 |
+| D8 | PASS | manifest 全部 Working==GitBlob（Codex 核对）；validation-r2 如实披露 Codex 属作者、未冒充产品测试或合入；implementation-plan 两项未勾与本审核角色一致 |
+
+## B1–B3 闭合判定
+
+- **B1 可闭合**：授权 gate ①与 workflow 评审 gate ②串行且可同时适用（03:73-82）；§8.5 框注明“≥2 独立评审身份（作者不计票）· 所有必需槽位通过 · 无未解决 blocking · 校验通过 · 具权限集成者接收”（03:128-130），与 design.md:666-668 一致；rejected/blocked·awaiting_owner/awaiting_review 均为终止出口，仅“批准/通过”绿线回流，无等待失败放行捷径。
+- **B2 可闭合**：offered（04:129）与 acknowledged（04:130）均经 x=1235 汇入 cancelled/expired（04:131-133），标注“超时/撤回·不生成 accepted”“不证明旧进程已停止”“Scheduler 不代评审者接受”（04:114-115,134,138），与 §7.7:345,353 一致。
+- **B3 可闭合**：执行回传（实线紫，执行环→coordinator，01:121）与单写发布（虚线紫，coordinator→证据栏，01:123）方向区分，图例三行覆盖全部线型（01:20-22）；入口改为“Codex Desktop · Claude Code 插件”（01:34）与 §5:141 及 README 对齐，CodeBuddy 不再冒充薄插件；“SQLite 为建议（P0 未定）”（01:81）。
+
+## 非阻断观察
+
+1. 图3 将 awaiting_review/awaiting_owner 用于请求级出口，而 design §7.2 中二者为 attempt 状态；语义方向一致且图非规范正文，仅提示读者勿直接当请求态枚举。
+2. 图1 执行回传箭头尖距 coordinator 边框约 6px（01:121），纯视觉留白，不影响含义。
+
+## 总判定
+
+**通过（approved，无阻断）**。D1–D8 全 PASS；B1–B3 在本候选上均具备原件与独立闭合依据，本轮意见支持闭合。
+
+## 未验证范围
+
+本人未执行浏览器渲染、链接点击、哈希与 Git 核算，上述均依赖 validation-r2.md 共享证据；图2/5 未变性依据 diff 范围、manifest 与共享验证；未读旧票、result.md、result-r1.md 与另一 reviewer 意见，独立形成判断；未做屏幕阅读器与产品功能验证。
