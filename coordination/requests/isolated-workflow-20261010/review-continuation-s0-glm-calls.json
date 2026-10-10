@@ -1,0 +1,85 @@
+{
+  "administrative_commit": "6cf9f0fa1701fe74db90f997b7b407364540d301",
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "actual_model": "glm-5.3",
+  "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+  "raw_sha256": "9529345c4dba453d6d2fae77122bd94c4341aba21b74984462b82d609ae5f9f1",
+  "receipt_sha256": "74b98ef94cdfc8fbbf1257e16fceddaabdc90e258bd5a91def0b33d553f56181",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "model": "glm-5.3",
+    "seat": "glm",
+    "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\continuation-s0-glm.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "15eac6d7e2e3d76848ec6dca0050f1e65e840832910890d68cb9ac74477c2456",
+    "started_at": "2026-10-10T23:12:46.6415973+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "continuation-s0",
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "administrative_commit": "6cf9f0fa1701fe74db90f997b7b407364540d301",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-s0/glm/input-index.json",
+      "input_index_sha256": "26055059b9c3475eb5de58d64640939e85c3524f155d728b06fd3f5c49345568",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1
+      },
+      "previous_resident_codebuddy_processes": {
+        "pids": [
+          21932,
+          21624
+        ],
+        "active_model_occupancy": "unknown; resident serve is not a model attempt"
+      },
+      "permission": "existing read-only Read,Glob,Grep; no writer",
+      "authorization": "root explicit S0 admission after administrative freeze"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+  },
+  "completion": {
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "exit_code": 0,
+    "finished_at": "2026-10-10T23:14:51.1343198+00:00",
+    "wall_seconds": 124.4927225,
+    "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "final_status": []
+  },
+  "tools": [
+    {
+      "name": "Read",
+      "id": "call_bf7af8771e6a45c8b66967cd",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-s0\\glm\\input-index.json"
+      }
+    },
+    {
+      "name": "Read",
+      "id": "call_ae4eb6acc8c04c6689a84faa",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-s0\\glm\\review-packet.txt"
+      }
+    }
+  ],
+  "tool_errors": 0,
+  "result": {
+    "subtype": "success",
+    "is_error": false
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

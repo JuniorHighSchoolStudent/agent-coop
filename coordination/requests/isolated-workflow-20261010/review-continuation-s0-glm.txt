@@ -1,0 +1,40 @@
+# S0 后继批次审核意见（GLM原席 · glm-5.3 · 只读续接）
+
+## 0. 输入与实读范围
+已读：`input-index.json`（字节hash固定）+ `review-packet.txt` 全文，含9份原件：后继计划、派发提案、result.md（前65行摘录+独立索引）、runtime两项调查原件（tests/causal.json）、宿主记忆边界证据、interface-log-directory/1、verification-g1-r1.md、本席R2原票（仅本人）。产品树=2e9f192未变，本轮无需重读产品代码；行政候选6cf9f0fa与产品分离成立。未读另一席S0意见（索引确认未包含）。哈希链依赖发包人Git blob声明；调查原件内容与本席R2对B13/B14的静态推断（runtime.py:212拒覆写×checks.py:39；tearDown先于addCleanup删junction后WinError3）逐点吻合，机制已由causal.json实测限定。
+
+## 1. 权限profile与TEMP探针准入
+**裁定：scope_supported，准入一次S1探针（12turn/300s），附条件。**
+- dontAsk+逐绝对文件Write/Edit allow（源码L1929/L2159/L2428/L2565静态证据）+`--setting-sources none`（L911）+严格空MCP+`--disallowedTools Bash,PowerShell`+四memory禁用子进程环境开关+探针`--no-session-persistence`：组合合理，且明确不用于续接审核会话。旧wrapper的acceptEdits+泛化Write/Edit正确禁用于新作者。
+- **Shell问题明示**：允许以init可用工具集合+零实际越界调用+全程tool_use记录作为**CLI层限定证据**，不保持阻断；前提是T1如实标注“执行能力未测”、任何集合外调用立即停止。此证据只支撑本次有界批次的权限验证，**不得表述为OS沙箱或全面无shell证明**。
+- 剩余边界如实保留：dontAsk不承诺读路径限制；hooks/插件/宿主cache/session写入不在Write/Edit规则保证范围，仅按观测范围报告。可接受，因fixture全为新建TEMP哨兵、前后manifest可检出观测范围内变化，且探针不具产品写权。
+- 条件C1：探针argv/矩阵在S0冻结（含占位符替换一次+最终数组hash），失败后不得追加格目；探针仅准入一次，双席S1证据复核+计划监督通过前不启动产品writer。
+
+## 2. fixture矩阵与junction/alias
+**裁定：scope_supported；不必须补junction/alias探针例，接受前置限定。**
+- P1/P2/N1–N7/T1覆盖逐文件正例、未授权新建/编辑、兄弟目录、假memory、前缀误配（N6）、规范化逃逸（N7）；负例必须实际native tool_use/tool_result拒绝记录、正例必须真实内容核验、任一负例写成功即停——符合“未调用不算通过、不自动改权限或重试”。
+- **junction明示**：探针本身不创建junction（且无shell无法创建），矩阵明示“未覆盖路径别名”（已含）；以writer启动前置限定承接——写集文件及全祖先链非reparse、link count为1、无shell工具；任一不可证明则该writer保持blocked。此为可接受的最小替代，不得在任何输出中宣称“已验证路径别名拒绝”。
+
+## 3. R-log（g1-glm-B13/B02）
+**裁定：scope_needs_alignment已解除→scope_supported。**
+B13在R2要求接口owner先裁定重复调用日志策略；现裁定明确：`.runtime/verification`为调用集合命名空间、checks（P6）作为调用owner每次调用原子分配唯一子目录（mkdtemp/独占mkdir，不建第二allocator、不用TemporaryDirectory自动删除、不以digest/时间戳单独保证唯一）、runtime拒覆写保持不改。唯一写集`checks.py`+`test_gates.py`与本人R2裁定一致。验收须含：失败→成功（收紧保留）、成功→成功、失败→失败、并发不共享目录、旧日志字节不变。调查原件（首次exit1留stderr、二次exit0被拒覆写、旧hash不变）支持范围界定但不是修复交付。**B13维持open，待实现后原席复审关闭**；R-log实现不得顺手改runtime/sample/gates/Store。
+
+## 4. R-junction（g1-glm-B14/B02）
+**裁定：scope_supported，单包即发。**
+仅`tests/test_runtime.py`生命周期修复，复用既有LIFO/try-finally模式、只清链接自身、不吞所有OSError、不削弱断言或skip、不为456行软目标无需求重构。causal.json证实本人R2机制推断（test_body完成时junction存在→tearDown删除→addCleanup rmdir WinError3）。验收：Windows原用例无skip转绿、拒绝时无外目标写入、失败路径也能清理；POSIX分支未实跑标unknown。**B14维持open，待实现后关闭。**
+
+## 5. R-publication（g1-glm-B11）
+**裁定：scope_supported（仅TEMP诊断harness），代码修复保持blocked。**
+必要性成立：B11根因unknown，仅有界采集新观测证据是通往根因或可辩护“观测下未复现”记录的唯一路径。最小性满足：不改Store/Runner、不加重试/吞错、30轮×2或120秒、首失败停止、每轮独立fixture、观测限本进程发布阶段/os.replace前后/winerror/errno/属性/本进程句柄计数、不枚举他进程句柄、包装须finally还原、既有20轮×2结果复用不重算。**明示：诊断未复现则B11保持unknown，受控PermissionError机制演示不可归因历史两次故障；外部持有者无证据时字段为unknown。**P1诊断作者必须在第1节新profile下运行（B16前车之鉴）。
+
+## 6. B10b与软目标说明
+- **B10b：closed。**关闭依据：本固定输入已提供双运行精确归属表（13:48:41Z工作树=20F/3E/2skip，绑定6544db89清单；13:53:54Z准确checkout=20F/2E/2skip，绑定9ab421cc清单，与本席R1所读冻结manifest一致），且result.md现文已分别标注、历史原件正确不改写。本人原诉求（每个计数标注所属运行与原件）在当前入口+计划表中实质满足；条件：后续修订不得丢失该区分。
+- **软目标内聚说明：accepted（advisory解除，非永久豁免）。**store.py 402（生命周期内聚、不拆第二Store）、adapters 57/49（单扫描协议解析+共享helper边界）、runner 44（同锁状态机可读性）、test_archive 465（共享fixture/receipt链+接近硬限须先裁定拆分）、test_runtime 456（既有分组）、test_runner:225 47（同一因果反例）——逐项理由成立，绑定2e9f192且符号变化即失效。W8因此项解除仍为CHANGES_REQUESTED（verify 2E未绿）。
+
+## B15/B16（流程）
+维持**open**，预期在S1探针证据复核时随profile实际验证（逐文件allow生效、无shell、无宿主memory写入）一并关闭；两次偏离记录永久保留，撤回不抹除。
+
+## 结论（三分）
+1. **S0计划/profile/探针准入：支持**——按上述条件C1及各项明示裁定，准入一次12turn/300秒探针；探针后须双席S1证据复核+原生Kimi计划监督，方可准入后继writer。
+2. **产品G1（候选2e9f192）：维持CHANGES_REQUESTED**——B02/B13/B14未闭合、B11 unknown、B15/B16 open；本意见不构成G1通过、live许可或接收。
+3. **后继writer：仍冻结**——R-log/R-junction/R-publication仅获范围与合同准入，未获执行授权；执行由dispatcher_next按本票与两席S0结论派发，预算上限（整批15次CodeBuddy+2次native Kimi）不得转换用途。本席不代另一席或监督签字；输入充足，无具名停止项。

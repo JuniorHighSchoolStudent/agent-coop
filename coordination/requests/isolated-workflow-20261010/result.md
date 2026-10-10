@@ -1,12 +1,16 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：用户授权后继调查与分包，权限准入待审，产品G1/live仍阻断；来源：用户隔离样例选择、[G0接收](result-g0.md)及[职责纠偏](role-correction.md)。这是本请求当前结果入口，各门禁原件按链接引用，不从文件名猜最新。
+范围：本请求整体交付；维护者：Codex集成者；状态：S0支持隔离权限探针，产品作者仍冻结，G1/live仍阻断；来源：用户隔离样例选择、[G0接收](result-g0.md)及[职责纠偏](role-correction.md)。这是本请求当前结果入口，各门禁原件按链接引用，不从文件名猜最新。
 
-## 当前派发控制：2026-10-11后继调查与分包，作者准入待审
+## 当前派发控制：2026-10-11隔离权限探针，产品writer冻结
 
 2026-10-11用户明确继续：先使用多agent协作调查实施问题，再继续分包开发。当前唯一专门发包人为`dispatcher_next`（旧协调实例已结束）；Codex根与只读助手并行调查，实际实现仍由CodeBuddy + deepseek-v4-pro承担。新批次按[后继计划](continuation-plan-20261011.md)具名审核，旧两轮停止记录保留为历史，不阻断用户新授权；权限profile和探针未获审核前禁止产品writer。当前产品候选仍为2e9f192，feature行政基线b45cc17；没有新增产品/测试/CI修改。
 
 已实测确认日志目录复用与junction重复清理两缺陷，可独立分包；P1历史故障根因仍未知。后继权限方案、写集、预算、逐项验收与B10b证据定位见上述计划；当前阶段不复用旧acceptEdits宽权限作者入口。
+
+S0两原席已正常返回并支持一次12turn/300秒TEMP权限探针：[GLM原票](review-continuation-s0-glm.txt)/[调用](review-continuation-s0-glm-calls.json)、[Kimi原票](review-continuation-s0-kimi.txt)/[调用](review-continuation-s0-kimi-calls.json)，各2次Read、0工具错误。两席支持三个小包范围但未准入产品作者。GLM已按新输入自行关闭B10b；两席接受绑定2e9f192的软目标内聚说明，非永久豁免。代码finding及权限finding仍开放。
+
+根据双席S0裁定，接口owner发布[验证调用日志集合合同](interface-log-invocations-20261011.md)，旧合同不改写。专门发包人获准按冻结矩阵执行唯一探针；正负原生工具结果与文件摘要均须验证，失败停止，不扩权。新增静态核查发现hooks/tool.check可在通用权限检查前返回allow，将随S1证据复核明确限制；不把S0未见的新证据冒充已获审核。产品writer须继续等待S1双席及原生计划监督。
 
 ## 2026-10-10已冻结过程与结论
 

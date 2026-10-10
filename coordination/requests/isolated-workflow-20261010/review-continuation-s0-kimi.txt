@@ -1,0 +1,26 @@
+# S0范围/合同/profile独立审核 · 席B（原kimi-k3-2 session续接，非作者）
+
+**实读**：`continuation-s0/kimi/input-index.json`（13项固定输入及hash）、`review-packet.txt`全文（continuation-plan、dispatch-proposal、result.md前65行+索引、causal.json、两项调查测试输出、runtime-memory-boundary-evidence、interface-log-directory.md、verification-g1-r1.md、本人R2原票）。产品候选`2e9f192`与行政`6cf9f0f`分开记录✓；未读他席S0意见。本次不关闭任何代码finding。
+
+## 逐项裁定
+
+**1+2. profile与探针准入（关联g1-kimi-B10）→ scope_supported（附条件，仅准入一次探针）**
+dontAsk+逐绝对文件Write/Edit allow+五工具+严格空MCP+`--setting-sources none`+四个memory禁用开关，方向正确且诚实声明残余边界（dontAsk预批准语义、无读路径沙箱、hooks/plugin/宿主自身写入不在模型规则保证范围、none可能失provider即blocked不回退）——符合"工具白名单不冒充OS沙箱"。**T1裁定**：Shell不存在时，init工具集合+`--disallowedTools Bash,PowerShell`+全程零shell tool_use可作**限定证据**接受，但必须标注"不存在工具的执行能力=未测"，不得升级为OS隔离证明。**junction/alias裁定**：不必在probe内新增链接正负例；CLI匹配器是否先解析链接属真实unknown，模型行为探针无法回答——以协调者前置控制补偿：每writer工作树启动前实测祖先链无reparse、目标文件link count=1并归档，无法满足即blocked。fixture矩阵（P1/P2正例+N1–N7含前缀/规范化逃逸）充分；判据"native tool_use/tool_result拒绝记录、未调用不算通过、任一负例成功即停不扩权不重试"与我B10要求一致。**B10保持open**：S0只准入探针，实际正负证据经S1双席复核后才可由我关闭。条件：fixture预备须先验非reparse祖先、目录已存在即停；memory开关维持"静态证据、观测不断言"；宿主写入只报告观测范围。
+
+**3. R-log（承接g1-kimi-B06残余①）→ scope_supported（附前置）**
+调查原件确证因果：首次exit1日志已留、二次exit0但后置拒覆盖致输出丢失、旧日志hash不变。调用方（checks）在`.runtime/verification`内每次原子分配唯一子目录（mkdtemp/exclusive mkdir），保住runtime拒覆写不变量，是唯一写集checks.py+test_gates.py的最小正确方向。前置：集成者须先发布该调用集合合同的具名接口澄清（沿isolated-log-directory/1后继，不改写旧件）。验收须含失败→成功、成功→成功、失败→失败重入、并发不共享目录、旧日志字节不变、失败stderr留存、公开签名/report字段不变、不动runtime/sample/gates/Store。禁止TemporaryDirectory自动删失败日志✓、禁止timestamp/digest单独保证唯一✓。
+
+**4. R-junction（承接B06残余②）→ scope_supported**
+因果链已由调查限定：断言通过后tearDown删根、addCleanup再rmdir报WinError3。仅tests/test_runtime.py生命周期修复（LIFO/try-finally或断言前移除链接自身），不削弱断言、不skip、不递归删目标、不吞全部OSError（仅容忍已消失）。验收：Windows原junction用例无skip转绿、逃逸拒绝仍成立（外目标哨兵完整、无越界写入）、25+项runtime回归不退化；POSIX未实跑标unknown。修后行数仍受500硬限约束。
+
+**5. R-publication诊断（g1-kimi-B09）→ scope_supported（有界诊断，非修复）**
+满足我R2停止条件的设计：仅独立TEMP具名harness、不改Store/Runner、不预批重试/吞错；30轮×2或120秒、首失败即停、逐轮独立fixture；观测限本进程发布阶段/os.replace前后/winerror/属性/本进程句柄计数；wrapper须finally还原；不枚举他进程句柄。条件：①必须使用S1验证后的profile；②提示显式禁止TEMP任务目录外任何写入（B10越界正发生在P1诊断包，须针对性防范）；③未复现→B09保留unknown，无人可宣布可靠性通过；④若复现并采集到区分性证据→回发包人另立具名修复包+AGENTS例外程序，我不预批。既有20轮×2不重算新证据✓。
+
+**6. GLM B10b归属与软目标说明**
+B10b两次运行归属（13:48工作树20F/3E/manifest 6544db…；13:53准确34bce56b 20F/2E/manifest 9ab421…）与我独立读过的verification-g1-r1.md及冻结原件一致，归属准确；B10b归GLM自关，本席无异议。软目标内聚说明（store402/adapters57+49/_run_locked44/test_archive465/test_runtime456/test_publish_failure47/apply_cleanup42）逐项可接受：绑定2e9f192、非永久、符号/职责变化即失效；test_archive"下次相关修改先裁定fixture owner拆分"与test_runtime修后仍受硬限两项条件须随包执行。
+
+## 结论
+
+- **S0计划/profile/三包范围：准入支持**——探针一次（12turn/300s）可按上列条件启动；R-log/R-junction/R-publication范围获准作为后继具名包候选，实现仍须等S1双席复核+原生计划监督通过。
+- **本人finding状态**：B06（R-log+R-junction承接）、B09（诊断承接）、B10（探针承接）全部**保持open**，S0无一关闭。
+- **产品G1：维持CHANGES_REQUESTED**（候选2e9f192，组合verify exit1、2 ERROR未解）；**产品writer仍冻结**；本意见不构成监督/接收/合入/live；browser JS、云CI、live四角色继续UNKNOWN；计划接受≠G1或live通过。

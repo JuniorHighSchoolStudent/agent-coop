@@ -1,0 +1,85 @@
+{
+  "administrative_commit": "6cf9f0fa1701fe74db90f997b7b407364540d301",
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "actual_model": "kimi-k3-2",
+  "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+  "raw_sha256": "df6b1e98a026d58f940fc64cb973f518d1e9c047f86f6a43f69626230b221480",
+  "receipt_sha256": "a7f6e8362ae038789a839457d4226ef46ead5577b634dadeaad61f4dc4e24eeb",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "model": "kimi-k3-2",
+    "seat": "kimi",
+    "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\continuation-s0-kimi.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "73d4b6cd6689ee3c37d00e3674d5439047a37e0bf361a38f2370eb8d88aab167",
+    "started_at": "2026-10-10T23:12:46.6416115+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "continuation-s0",
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "administrative_commit": "6cf9f0fa1701fe74db90f997b7b407364540d301",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-s0/kimi/input-index.json",
+      "input_index_sha256": "a9196184bb536717a9bb2b592ffed757733c958c30d3b3fdcc9b9b1278cb5d10",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1
+      },
+      "previous_resident_codebuddy_processes": {
+        "pids": [
+          21932,
+          21624
+        ],
+        "active_model_occupancy": "unknown; resident serve is not a model attempt"
+      },
+      "permission": "existing read-only Read,Glob,Grep; no writer",
+      "authorization": "root explicit S0 admission after administrative freeze"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+  },
+  "completion": {
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "exit_code": 0,
+    "finished_at": "2026-10-10T23:15:14.1479431+00:00",
+    "wall_seconds": 147.5063316,
+    "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "final_status": []
+  },
+  "tools": [
+    {
+      "name": "Read",
+      "id": "Read_49_2696c39c",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-s0/kimi/input-index.json"
+      }
+    },
+    {
+      "name": "Read",
+      "id": "Read_50_88a90c0e",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-s0/kimi/review-packet.txt"
+      }
+    }
+  ],
+  "tool_errors": 0,
+  "result": {
+    "subtype": "success",
+    "is_error": false
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}
