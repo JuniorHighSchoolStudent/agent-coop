@@ -1,0 +1,414 @@
+{
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "administrative_commit": "0c2cb0b66ab11d9696443d956bdb9348f523a060",
+  "actual_model": "deepseek-v4-pro",
+  "actual_session": "agent-coop-continuation-r-junction-20261011",
+  "raw_sha256": "246ef05bf18aa1d4e432a203395eb303b06b9086c4832498a0672a926bcf347f",
+  "receipt_sha256": "3602f9be8df4cae3cba05d2dcf7db438123dc45a065015a988ce5b550150524d",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-continuation-r-junction",
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "model": "deepseek-v4-pro",
+    "seat": "p3",
+    "requested_session": "agent-coop-continuation-r-junction-20261011",
+    "resume": "",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\author-r-junction.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "95d790951575bde3b26b092b50c17beb8b41116f6add6efddada7cee0c7e35a8",
+    "started_at": "2026-10-10T23:52:00.1981800+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep,Write,Edit",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "package": "r-junction",
+      "seat": "p3",
+      "root": "D:/project/agent-coop-continuation-r-junction",
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "administrative_evidence": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+      "session": "agent-coop-continuation-r-junction-20261011",
+      "model": "deepseek-v4-pro",
+      "write_files": [
+        "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py"
+      ],
+      "existing_files": [
+        {
+          "path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+          "sha256": "8fa8456df048ef5c133f51d53749c336bb485e976f9b329d26eb6f1c44905e78"
+        }
+      ],
+      "path_checks": [
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-junction\\tests\\test_runtime.py",
+          "nlink": 1,
+          "is_file": true
+        },
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-junction\\tests",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-junction",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\project",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\",
+          "nlink": 1,
+          "is_file": false
+        }
+      ],
+      "originals": [
+        {
+          "name": "continuation-plan-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "651d36555e0bfd3ba47cf41f530603d783b60b777a9d12f71a9f5e49d292bf30"
+        },
+        {
+          "name": "interface-log-invocations-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "27a8c7005edb21b3f3b58f2b45e8a8699d90a3ae9f70071ca8b6a982337cc8de"
+        },
+        {
+          "name": "permission-argv-amendment-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "64f673b4d992a16357c589a2403a4dc31ea6f4b8d365354635149e43d1884058"
+        }
+      ],
+      "environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "calls": 1,
+        "max_turns": 20,
+        "wall_seconds": 600
+      },
+      "status": "admitted after dual confirmation and native plan supervision",
+      "permission": {
+        "mode": "dontAsk",
+        "setting_sources": "none",
+        "no_session_persistence": true,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "allow": [
+          "Read",
+          "Glob",
+          "Grep",
+          "Write(D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py)",
+          "Edit(D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py)"
+        ],
+        "deny": [
+          "Bash",
+          "PowerShell"
+        ],
+        "strict_mcp_empty": true
+      },
+      "limitations": [
+        "trusted host only",
+        "hooks/session/global memory unknown",
+        "T1 execution untested",
+        "no path alias guarantee; reparse ancestors checked before launch",
+        "not product adapter migration"
+      ],
+      "admitted_at": "2026-10-11T07:51:59.5257735+08:00",
+      "glm_confirmation_sha256": "cdc79452c8c536e0f1f44902317f5e39ee2160dbc31facb34ffffd9670bcc752",
+      "gate": "continuation-author",
+      "supervision_receipt_sha256": "c761caab7fd2755f304f4e5e5c62597bda5e0e9c894e1ee332444c13b177a73a",
+      "launch_preflight": {
+        "checked_utc": "2026-10-11T07:51:01.0706596+08:00",
+        "checks": [
+          {
+            "path": "C:/Program Files/nodejs/node.exe",
+            "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+            "matches": true
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+            "sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6",
+            "matches": true
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js",
+            "sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65",
+            "matches": true
+          },
+          {
+            "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1",
+            "sha256": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed",
+            "matches": true
+          }
+        ],
+        "gate": "continuation-author",
+        "round": "1",
+        "receipt_prefixes_absent": true,
+        "publication_outside_cwd_positive_geometry": "unverified; first denial stops; no add-dir or expanded allow"
+      },
+      "prompt_sha256": "95d790951575bde3b26b092b50c17beb8b41116f6add6efddada7cee0c7e35a8",
+      "runtime_version_preflight": {
+        "captured_utc": "2026-10-11T07:43:20.0547465+08:00",
+        "node_version": "v24.14.0",
+        "codebuddy_package_version": "2.164.0",
+        "files": [
+          {
+            "path": "C:/Program Files/nodejs/node.exe",
+            "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+            "sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6"
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js",
+            "sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65"
+          },
+          {
+            "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1",
+            "sha256": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed"
+          }
+        ],
+        "must_recheck_before_author_launch": true,
+        "enforcement": "dispatcher manual preflight, not wrapper automatic binary version enforcement",
+        "package_owner": {
+          "r-log": "P6 checks",
+          "r-publication": "P1 TEMP diagnostic",
+          "r-junction": "P2 test_runtime"
+        },
+        "legacy_seat_alias": {
+          "p3": "r-junction transport alias only, no P3 scope",
+          "p7": "r-log transport alias only, no P7 ownership transfer",
+          "p1": "r-publication"
+        }
+      },
+      "publication_outside_cwd_positive_geometry": "unverified; first denial stops; no add-dir",
+      "round": "1",
+      "prepared_sha256": "34a88be387cbab0a6019cecb7fea79b800807c926a576b8dc2b5620d96211293",
+      "kimi_confirmation_sha256": "6e3b86bd12f7c621fd22025309899c4b8a0dadb38bfa5c7376fd861cf44dc725",
+      "administrative_commit": "0c2cb0b66ab11d9696443d956bdb9348f523a060",
+      "role_identity": "package+write_files authoritative; seat only legacy transport alias"
+    },
+    "purpose": "repair",
+    "permission_mode": "dontAsk",
+    "exact_write_files": [
+      "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py"
+    ],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "你是真实CodeBuddy deepseek-v4-pro作者，本包r-junction。产品基线2e9f192c8127956f09c619ff640d763b62369e30，独立cwd=D:/project/agent-coop-continuation-r-junction，会话=agent-coop-continuation-r-junction-20261011。\n先读AGENTS/README和本包相关既有实现、测试，再读D:/project/agent-coop-continuation-r-junction/coordination/.runtime/continuation-author/continuation-plan-20261011.md及interface-log-invocations-20261011.md。实施范围已经独立审核；仅允许写：D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py。\n只修SubprocessTests临时目录与junction清理生命周期，复用test_paths/test_archive现有addCleanup LIFO或局部try/finally。原junction断言已成功、tearDown先删根导致cleanup WinError3；不得删测试/skip/吞所有OSError/放宽边界。原测试内补足或保留外部哨兵、子进程marker证据，证明拒绝逃逸后child未运行、外目标无写入、只删除link自身且失败路径也收回link。文件现456行，避免无关重构、硬上限500不变；POSIX无实跑保持unknown。\n只用Read/Glob/Grep/Write/Edit；每个Edit先Read。不调用shell/子agent/写memory/设置/其他路径、不提交git、不擅自扩大范围。权限拒绝或身份漂移即停并报告，不换工具绕过。不要在正文模拟tool结果。当前profile只限定受信宿主上的本次作者，不是OS沙箱，产品adapters权限仍未修，live禁止。\n20turn/600秒一次预算，实际测试由根执行，不能自报通过。最终中文说明实际变更、责任与消费者、复用结果、风险和未测试项；证据以真实工具及文件diff为准。",
+      "--model",
+      "deepseek-v4-pro",
+      "--session-id",
+      "agent-coop-continuation-r-junction-20261011",
+      "--tools",
+      "Read,Glob,Grep,Write,Edit",
+      "--allowedTools",
+      "Read",
+      "Glob",
+      "Grep",
+      "Write(D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py)",
+      "Edit(D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py)",
+      "--disallowedTools",
+      "Bash",
+      "PowerShell",
+      "--permission-mode",
+      "dontAsk",
+      "--setting-sources",
+      "none",
+      "--no-session-persistence",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "a6d16b6886241c1818c82ac30d43cd72ad51148c76614805aeacaebcb96e8eca",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-continuation-r-junction"
+  },
+  "completion": {
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "exit_code": 0,
+    "finished_at": "2026-10-10T23:54:51.4243876+00:00",
+    "wall_seconds": 171.2262076,
+    "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "final_status": [
+      " M tests/test_runtime.py"
+    ]
+  },
+  "native_tool_calls": [
+    {
+      "id": "call_00_NG5qS4voAzSOOuCzlR6l7215",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/AGENTS.md"
+      }
+    },
+    {
+      "id": "call_01_ejG9pHa7DCKGK3r0ko0x9541",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/README.md"
+      }
+    },
+    {
+      "id": "call_02_syM48a3afI16GHfzvAbl0753",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/coordination/.runtime/continuation-author/continuation-plan-20261011.md"
+      }
+    },
+    {
+      "id": "call_03_J4wVdjr003rw4vtYZZib3993",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/coordination/.runtime/continuation-author/interface-log-invocations-20261011.md"
+      }
+    },
+    {
+      "id": "call_00_r6SVQ9FgMrfBzvkgsJ4s3088",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py"
+      }
+    },
+    {
+      "id": "call_01_BZ2PouZUB6S4sTfcQrQH0564",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_paths.py"
+      }
+    },
+    {
+      "id": "call_02_5rGCeaOMhO9eWrr301QB0019",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_archive.py"
+      }
+    },
+    {
+      "id": "call_00_GcAIPaHPpnsuumc1filI0883",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/agent_coop/runtime.py"
+      }
+    },
+    {
+      "id": "call_01_4VRYa6uEnOgJdlhDHvIr3965",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/agent_coop/paths.py"
+      }
+    },
+    {
+      "id": "call_00_M5WsmtzWcSEmFiR2RXWd2726",
+      "name": "Edit",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "old_string": "def _sha256_text(text):\n    return hashlib.sha256(text.encode('utf-8')).hexdigest()\n\n\ndef _parse(profile, stdout, session_id):",
+        "new_string": "def _sha256_text(text):\n    return hashlib.sha256(text.encode('utf-8')).hexdigest()\n\n\ndef remove_link(path):\n    \"\"\"仅移除 junction/符号链接自身，不递归其目标。\"\"\"\n    path = Path(path)\n    for cleaner in (os.rmdir, os.unlink):\n        try:\n            cleaner(path)\n            return\n        except OSError:\n            continue\n\n\ndef _parse(profile, stdout, session_id):"
+      }
+    },
+    {
+      "id": "call_00_ET_NuK2lrOQOMcRIdPHrpnx7056",
+      "name": "Edit",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "new_string": "    def setUp(self):\n        self._tmp = tempfile.TemporaryDirectory()\n        self.addCleanup(self._tmp.cleanup)\n        base = Path(self._tmp.name)",
+        "old_string": "    def setUp(self):\n        self._tmp = tempfile.TemporaryDirectory()\n        base = Path(self._tmp.name)"
+      }
+    },
+    {
+      "id": "call_00_ET_dYQvJ8qSjAKHJLoUH5CW5884",
+      "name": "Edit",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "new_string": "        self.log_dir.mkdir(parents=True)\n\n    def _write_script(self, body, name='fixture.py'):",
+        "old_string": "        self.log_dir.mkdir(parents=True)\n\n    def tearDown(self):\n        self._tmp.cleanup()\n\n    def _write_script(self, body, name='fixture.py'):"
+      }
+    },
+    {
+      "id": "call_00_ET_pDDstt36qWhlABllaMLm6033",
+      "name": "Edit",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "new_string": "    def test_log_dir_junction_escape_is_rejected(self):\n        outside = Path(self._tmp.name) / 'outside'\n        outside.mkdir()\n        sentinel = outside / 'sentinel.txt'\n        sentinel.write_text('untouched', encoding='utf-8')\n        marker = Path(self._tmp.name) / 'child_ran.txt'\n        script = self._write_script(\n            'import sys\\n'\n            'open(sys.argv[1], \"w\").write(\"ran\")\\n',\n            'escape_child.py',\n        )\n        junction = self.root / '.runtime' / 'escape'\n        if sys.platform == 'win32':\n            proc = subprocess.run(\n                ['cmd', '/c', 'mklink', '/J', str(junction), str(outside)],\n                capture_output=True, text=True)\n            if proc.returncode != 0:\n                self.skipTest(f'mklink /J 不可用: {proc.stderr.strip()}')\n        else:\n            try:\n                junction.symlink_to(outside, target_is_directory=True)\n            except OSError as exc:\n                self.skipTest(f'symlink 不可用: {exc}')\n        self.addCleanup(remove_link, junction)\n        with self.assertRaisesRegex(ValueError, 'junction|symlink'):\n            self._run_bounded([sys.executable, str(script), str(marker)],\n                              log_dir=str(junction))\n        self.assertFalse(marker.exists())\n        self.assertEqual(sentinel.read_text(encoding='utf-8'), 'untouched')\n        self.assertEqual([p.name for p in outside.iterdir()], ['sentinel.txt'])",
+        "old_string": "    def test_log_dir_junction_escape_is_rejected(self):\n        script = self._write_script('import sys\\nsys.stdout.write(\"x\")\\n')\n        outside = Path(self._tmp.name) / 'outside'\n        outside.mkdir()\n        junction = self.root / '.runtime' / 'escape'\n        if sys.platform == 'win32':\n            proc = subprocess.run(\n                ['cmd', '/c', 'mklink', '/J', str(junction), str(outside)],\n                capture_output=True, text=True)\n            if proc.returncode != 0:\n                self.skipTest(f'mklink /J 不可用: {proc.stderr.strip()}')\n            self.addCleanup(os.rmdir, junction)\n        else:\n            try:\n                junction.symlink_to(outside, target_is_directory=True)\n            except OSError as exc:\n                self.skipTest(f'symlink 不可用: {exc}')\n            self.addCleanup(junction.unlink)\n        with self.assertRaisesRegex(ValueError, 'junction|symlink'):\n            self._run_bounded([sys.executable, str(script)],\n                              log_dir=str(junction))"
+      }
+    },
+    {
+      "id": "call_00_lFsdBpqQ3TwuwwidSg8W3325",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "offset": 1,
+        "limit": 40
+      }
+    },
+    {
+      "id": "call_01_jA5gaFTn3ikFygbTvkoN1844",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "offset": 210,
+        "limit": 140
+      }
+    },
+    {
+      "id": "call_00_2LjoD7GJ0jk5JbpLniMV3252",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "offset": 349,
+        "limit": 40
+      }
+    },
+    {
+      "id": "call_00_EfYsUhQ5PgGUERfgw1nY9726",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "offset": 440
+      }
+    },
+    {
+      "id": "call_00_sFjqT0YqVhfpCPoSzg2W8683",
+      "name": "Grep",
+      "input": {
+        "pattern": "\\bos\\.",
+        "path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "output_mode": "content",
+        "-n": true
+      }
+    },
+    {
+      "id": "call_01_Lg1hUvaTOe4ji3tmzbR55216",
+      "name": "Grep",
+      "input": {
+        "pattern": "tearDown|addCleanup|remove_link",
+        "path": "D:/project/agent-coop-continuation-r-junction/tests/test_runtime.py",
+        "output_mode": "content",
+        "-n": true
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 50
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

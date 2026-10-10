@@ -1,0 +1,30 @@
+test_verdict_rejects_non_object_result (tests.test_gates.GateTests.test_verdict_rejects_non_object_result) ... ok
+test_verdict_requires_exact_digest_and_empty_blocking_list (tests.test_gates.GateTests.test_verdict_requires_exact_digest_and_empty_blocking_list) ... ok
+test_verifier_checks_boundary_hold_and_negative_retention (tests.test_gates.GateTests.test_verifier_checks_boundary_hold_and_negative_retention) ... ok
+test_concurrent_calls_allocate_distinct_directories (tests.test_gates.ValidateFeatureIsolationTests.test_concurrent_calls_allocate_distinct_directories) ... ok
+test_failure_then_failure_retains_each_stderr (tests.test_gates.ValidateFeatureIsolationTests.test_failure_then_failure_retains_each_stderr) ... ok
+test_failure_then_success_uses_distinct_directories (tests.test_gates.ValidateFeatureIsolationTests.test_failure_then_success_uses_distinct_directories) ... ok
+test_same_source_repeated_allocates_independent_directories (tests.test_gates.ValidateFeatureIsolationTests.test_same_source_repeated_allocates_independent_directories) ... ok
+test_success_then_success_keeps_prior_output_bytes (tests.test_gates.ValidateFeatureIsolationTests.test_success_then_success_keeps_prior_output_bytes) ... ok
+test_all_codebuddy_cannot_replace_native_supervisor (tests.test_flow.FlowTests.test_all_codebuddy_cannot_replace_native_supervisor) ... ok
+test_bad_delivery_keeps_receipt_and_budget_without_redispatch (tests.test_flow.FlowTests.test_bad_delivery_keeps_receipt_and_budget_without_redispatch) ... ok
+test_pause_resume_archive_backup_and_cleanup_share_one_state (tests.test_flow.FlowTests.test_pause_resume_archive_backup_and_cleanup_share_one_state) ... ok
+test_review_wrong_verdict_saves_receipt_and_keeps_budget (tests.test_flow.FlowTests.test_review_wrong_verdict_saves_receipt_and_keeps_budget) ... ok
+test_verification_evidence_write_failure_blocks (tests.test_flow.FlowTests.test_verification_evidence_write_failure_blocks) ... ok
+test_verification_failure_blocks_without_verification_evidence (tests.test_flow.FlowTests.test_verification_failure_blocks_without_verification_evidence) ... ok
+test_authority_rereads_hold_and_does_not_use_stale_snapshot (tests.test_sample.SampleGateTests.test_authority_rereads_hold_and_does_not_use_stale_snapshot) ... ok
+test_changed_review_original_invalidates_acceptance (tests.test_sample.SampleGateTests.test_changed_review_original_invalidates_acceptance) ... ok
+test_frozen_config_tamper_is_traceable (tests.test_sample.SampleGateTests.test_frozen_config_tamper_is_traceable) ... ok
+test_missing_receipt_adapter_is_traceable (tests.test_sample.SampleGateTests.test_missing_receipt_adapter_is_traceable) ... ok
+test_missing_session_identity_is_traceable (tests.test_sample.SampleGateTests.test_missing_session_identity_is_traceable) ... ok
+test_old_validator_result_cannot_bind_to_new_subject (tests.test_sample.SampleGateTests.test_old_validator_result_cannot_bind_to_new_subject) ... ok
+test_review_receipt_without_result_is_traceable (tests.test_sample.SampleGateTests.test_review_receipt_without_result_is_traceable) ... ok
+test_same_actual_session_cannot_count_as_two_reviewers (tests.test_sample.SampleGateTests.test_same_actual_session_cannot_count_as_two_reviewers) ... ok
+test_source_change_invalidates_existing_acceptance (tests.test_sample.SampleGateTests.test_source_change_invalidates_existing_acceptance) ... ok
+test_version_change_prevents_further_acceptance (tests.test_sample.SampleGateTests.test_version_change_prevents_further_acceptance) ... ok
+test_wrong_digest_in_review_result_blocks (tests.test_sample.SampleGateTests.test_wrong_digest_in_review_result_blocks) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 4.412s
+
+OK

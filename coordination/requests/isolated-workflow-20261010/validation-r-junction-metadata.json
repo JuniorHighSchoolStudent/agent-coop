@@ -1,0 +1,13 @@
+{
+  "root": "D:/project/agent-coop-continuation-r-junction",
+  "candidate": "893e8d837f1ae5b4a6374ab7c5dc48b306e83cd1",
+  "command": "python -m unittest tests.test_runtime -v",
+  "started_at": "2026-10-10T23:56:16.6945124+00:00",
+  "finished_at": "2026-10-10T23:56:37.4591198+00:00",
+  "wall_seconds": 20.7646074,
+  "exit_code": 0,
+  "before_sha256": "59a9e6d7916485ca2e774813e98faa543a5c32022e1dcf77482d6895b1df8db2",
+  "after_sha256": "59a9e6d7916485ca2e774813e98faa543a5c32022e1dcf77482d6895b1df8db2",
+  "output_sha256": "785d42b3ca68a46561de8fb12991398be1fdc8fadfbdb9174bd7847303482a57",
+  "status": []
+}

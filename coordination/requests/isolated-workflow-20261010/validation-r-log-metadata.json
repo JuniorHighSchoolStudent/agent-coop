@@ -1,0 +1,13 @@
+{
+  "root": "D:/project/agent-coop-continuation-r-log",
+  "candidate": "dac73d9ba6660c072d82682e523514a0a73685ce",
+  "command": "python -m unittest tests.test_gates tests.test_flow tests.test_sample -v",
+  "started_at": "2026-10-10T23:56:16.6948346+00:00",
+  "finished_at": "2026-10-10T23:56:21.5072257+00:00",
+  "wall_seconds": 4.8123911,
+  "exit_code": 0,
+  "before_sha256": "29172aaa512a7f9a006ed88fd2371c2ec8958e1974928055c2a67eb242ac838e",
+  "after_sha256": "29172aaa512a7f9a006ed88fd2371c2ec8958e1974928055c2a67eb242ac838e",
+  "output_sha256": "03aa3f5759ad4baf12cfbbd883ac461b75995c49353c98fb17cc7291e84d3024",
+  "status": []
+}

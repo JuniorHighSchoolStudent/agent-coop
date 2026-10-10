@@ -1,0 +1,498 @@
+{
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "administrative_commit": "0c2cb0b66ab11d9696443d956bdb9348f523a060",
+  "actual_model": "deepseek-v4-pro",
+  "actual_session": "agent-coop-continuation-r-log-20261011",
+  "raw_sha256": "50a68cdfa107ff055fe8210d5be5bb9ee1fe664430c4e90431235f3c5003fd1e",
+  "receipt_sha256": "b43a290f46f1abd325f59f575b69145500efc3b22573524155eb051c2048e2de",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-continuation-r-log",
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "model": "deepseek-v4-pro",
+    "seat": "p7",
+    "requested_session": "agent-coop-continuation-r-log-20261011",
+    "resume": "",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\author-r-log.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "ad8c34ef9b014a26f07009b97c0705b1bce182c8059fc1db8d9352d4437ce7c6",
+    "started_at": "2026-10-10T23:52:00.3590708+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep,Write,Edit",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "package": "r-log",
+      "seat": "p7",
+      "root": "D:/project/agent-coop-continuation-r-log",
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "administrative_evidence": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+      "session": "agent-coop-continuation-r-log-20261011",
+      "model": "deepseek-v4-pro",
+      "write_files": [
+        "D:/project/agent-coop-continuation-r-log/agent_coop/checks.py",
+        "D:/project/agent-coop-continuation-r-log/tests/test_gates.py"
+      ],
+      "existing_files": [
+        {
+          "path": "D:/project/agent-coop-continuation-r-log/agent_coop/checks.py",
+          "sha256": "03fc45005ea02c91a51fa1f0cb80c64dbda37468a81edf217095677f39b50eac"
+        },
+        {
+          "path": "D:/project/agent-coop-continuation-r-log/tests/test_gates.py",
+          "sha256": "903d7dab46b1387774670bffc9d942a52cb4f8ba3218b54108b872f653b72c6f"
+        }
+      ],
+      "path_checks": [
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-log\\agent_coop\\checks.py",
+          "nlink": 1,
+          "is_file": true
+        },
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-log\\agent_coop",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-log",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\project",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-log\\tests\\test_gates.py",
+          "nlink": 1,
+          "is_file": true
+        },
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-log\\tests",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\project\\agent-coop-continuation-r-log",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\project",
+          "nlink": 1,
+          "is_file": false
+        },
+        {
+          "path": "D:\\",
+          "nlink": 1,
+          "is_file": false
+        }
+      ],
+      "originals": [
+        {
+          "name": "continuation-plan-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "651d36555e0bfd3ba47cf41f530603d783b60b777a9d12f71a9f5e49d292bf30"
+        },
+        {
+          "name": "interface-log-invocations-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "27a8c7005edb21b3f3b58f2b45e8a8699d90a3ae9f70071ca8b6a982337cc8de"
+        },
+        {
+          "name": "permission-argv-amendment-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "64f673b4d992a16357c589a2403a4dc31ea6f4b8d365354635149e43d1884058"
+        }
+      ],
+      "environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "calls": 1,
+        "max_turns": 20,
+        "wall_seconds": 600
+      },
+      "status": "admitted after dual confirmation and native plan supervision",
+      "permission": {
+        "mode": "dontAsk",
+        "setting_sources": "none",
+        "no_session_persistence": true,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "allow": [
+          "Read",
+          "Glob",
+          "Grep",
+          "Write(D:/project/agent-coop-continuation-r-log/agent_coop/checks.py)",
+          "Edit(D:/project/agent-coop-continuation-r-log/agent_coop/checks.py)",
+          "Write(D:/project/agent-coop-continuation-r-log/tests/test_gates.py)",
+          "Edit(D:/project/agent-coop-continuation-r-log/tests/test_gates.py)"
+        ],
+        "deny": [
+          "Bash",
+          "PowerShell"
+        ],
+        "strict_mcp_empty": true
+      },
+      "limitations": [
+        "trusted host only",
+        "hooks/session/global memory unknown",
+        "T1 execution untested",
+        "no path alias guarantee; reparse ancestors checked before launch",
+        "not product adapter migration"
+      ],
+      "admitted_at": "2026-10-11T07:51:59.5016722+08:00",
+      "glm_confirmation_sha256": "cdc79452c8c536e0f1f44902317f5e39ee2160dbc31facb34ffffd9670bcc752",
+      "gate": "continuation-author",
+      "supervision_receipt_sha256": "c761caab7fd2755f304f4e5e5c62597bda5e0e9c894e1ee332444c13b177a73a",
+      "launch_preflight": {
+        "checked_utc": "2026-10-11T07:51:01.0706596+08:00",
+        "checks": [
+          {
+            "path": "C:/Program Files/nodejs/node.exe",
+            "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+            "matches": true
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+            "sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6",
+            "matches": true
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js",
+            "sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65",
+            "matches": true
+          },
+          {
+            "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1",
+            "sha256": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed",
+            "matches": true
+          }
+        ],
+        "gate": "continuation-author",
+        "round": "1",
+        "receipt_prefixes_absent": true,
+        "publication_outside_cwd_positive_geometry": "unverified; first denial stops; no add-dir or expanded allow"
+      },
+      "prompt_sha256": "ad8c34ef9b014a26f07009b97c0705b1bce182c8059fc1db8d9352d4437ce7c6",
+      "runtime_version_preflight": {
+        "captured_utc": "2026-10-11T07:43:20.0547465+08:00",
+        "node_version": "v24.14.0",
+        "codebuddy_package_version": "2.164.0",
+        "files": [
+          {
+            "path": "C:/Program Files/nodejs/node.exe",
+            "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+            "sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6"
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js",
+            "sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65"
+          },
+          {
+            "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1",
+            "sha256": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed"
+          }
+        ],
+        "must_recheck_before_author_launch": true,
+        "enforcement": "dispatcher manual preflight, not wrapper automatic binary version enforcement",
+        "package_owner": {
+          "r-log": "P6 checks",
+          "r-publication": "P1 TEMP diagnostic",
+          "r-junction": "P2 test_runtime"
+        },
+        "legacy_seat_alias": {
+          "p3": "r-junction transport alias only, no P3 scope",
+          "p7": "r-log transport alias only, no P7 ownership transfer",
+          "p1": "r-publication"
+        }
+      },
+      "publication_outside_cwd_positive_geometry": "unverified; first denial stops; no add-dir",
+      "round": "1",
+      "prepared_sha256": "43504c6f42435ab3f7849853af314e62f3fab0e29d53dbd37f41183a9b6ca375",
+      "kimi_confirmation_sha256": "6e3b86bd12f7c621fd22025309899c4b8a0dadb38bfa5c7376fd861cf44dc725",
+      "administrative_commit": "0c2cb0b66ab11d9696443d956bdb9348f523a060",
+      "role_identity": "package+write_files authoritative; seat only legacy transport alias"
+    },
+    "purpose": "repair",
+    "permission_mode": "dontAsk",
+    "exact_write_files": [
+      "D:/project/agent-coop-continuation-r-log/agent_coop/checks.py",
+      "D:/project/agent-coop-continuation-r-log/tests/test_gates.py"
+    ],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "你是真实CodeBuddy deepseek-v4-pro作者，本包r-log。产品基线2e9f192c8127956f09c619ff640d763b62369e30，独立cwd=D:/project/agent-coop-continuation-r-log，会话=agent-coop-continuation-r-log-20261011。\n先读AGENTS/README和本包相关既有实现、测试，再读D:/project/agent-coop-continuation-r-log/coordination/.runtime/continuation-author/continuation-plan-20261011.md及interface-log-invocations-20261011.md。实施范围已经独立审核；仅允许写：D:/project/agent-coop-continuation-r-log/agent_coop/checks.py、D:/project/agent-coop-continuation-r-log/tests/test_gates.py。\n实现 isolated-log-directory/2：checks.py validate_feature 作为唯一调用目录owner，在.runtime/verification下为每次调用原子分配独占新目录。复用标准库mkdtemp/exclusive mkdir与paths.checked，不复制allocator，不用TemporaryDirectory自动删证据，不用源码digest或时间戳单独保证唯一。签名/report关键字段不变；runtime拒覆盖不改。测试覆盖失败→成功、成功→成功、失败→失败、同源码重复与并发，各调用目录独立、实际输出可定位、历史stdout/stderr字节不变、失败stderr保留，边界拒绝不退化。修改仅两文件；不改runtime/sample/Store/gates或新增协议。\n只用Read/Glob/Grep/Write/Edit；每个Edit先Read。不调用shell/子agent/写memory/设置/其他路径、不提交git、不擅自扩大范围。权限拒绝或身份漂移即停并报告，不换工具绕过。不要在正文模拟tool结果。当前profile只限定受信宿主上的本次作者，不是OS沙箱，产品adapters权限仍未修，live禁止。\n20turn/600秒一次预算，实际测试由根执行，不能自报通过。最终中文说明实际变更、责任与消费者、复用结果、风险和未测试项；证据以真实工具及文件diff为准。",
+      "--model",
+      "deepseek-v4-pro",
+      "--session-id",
+      "agent-coop-continuation-r-log-20261011",
+      "--tools",
+      "Read,Glob,Grep,Write,Edit",
+      "--allowedTools",
+      "Read",
+      "Glob",
+      "Grep",
+      "Write(D:/project/agent-coop-continuation-r-log/agent_coop/checks.py)",
+      "Edit(D:/project/agent-coop-continuation-r-log/agent_coop/checks.py)",
+      "Write(D:/project/agent-coop-continuation-r-log/tests/test_gates.py)",
+      "Edit(D:/project/agent-coop-continuation-r-log/tests/test_gates.py)",
+      "--disallowedTools",
+      "Bash",
+      "PowerShell",
+      "--permission-mode",
+      "dontAsk",
+      "--setting-sources",
+      "none",
+      "--no-session-persistence",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "b419880a817773b6fe54c788efcde8d1faffccfb0992ccc8deaead12ab36ae3d",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-continuation-r-log"
+  },
+  "completion": {
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "exit_code": 0,
+    "finished_at": "2026-10-10T23:54:38.4381636+00:00",
+    "wall_seconds": 158.0790928,
+    "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "final_status": [
+      " M agent_coop/checks.py",
+      " M tests/test_gates.py"
+    ]
+  },
+  "native_tool_calls": [
+    {
+      "id": "call_00_ewAi6MOMFibhzBIhe83k4175",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/AGENTS.md"
+      }
+    },
+    {
+      "id": "call_01_WytvZ6i8cgszzIB07rHh0993",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/README.md"
+      }
+    },
+    {
+      "id": "call_02_9K8RUU3xIfWmpdwfHEI22415",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/coordination/.runtime/continuation-author/continuation-plan-20261011.md"
+      }
+    },
+    {
+      "id": "call_03_FFih9ByD6u6UmBGovw7q6551",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/coordination/.runtime/continuation-author/interface-log-invocations-20261011.md"
+      }
+    },
+    {
+      "id": "call_00_SCvEuTMuxa9UCld2sSDs1768",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/checks.py"
+      }
+    },
+    {
+      "id": "call_01_OSxSoJzIkrd9x3zT1g3X3847",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_gates.py"
+      }
+    },
+    {
+      "id": "call_02_Wl7Eb6YuNsVwMHM0wAwY7920",
+      "name": "Glob",
+      "input": {
+        "pattern": "agent_coop/**/*.py"
+      }
+    },
+    {
+      "id": "call_03_OaZMuGbEdxmQEMAh2ymL5075",
+      "name": "Glob",
+      "input": {
+        "pattern": "tests/**/*.py"
+      }
+    },
+    {
+      "id": "call_00_aHEhHCEUglCiNKT589gr1815",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/paths.py"
+      }
+    },
+    {
+      "id": "call_01_sRDSwmGb2YaYNZCSKaTS3237",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/runtime.py"
+      }
+    },
+    {
+      "id": "call_02_6PGUWBDfZKqO4fJDNGHA8621",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/verification.py"
+      }
+    },
+    {
+      "id": "call_03_GmlkYyUDN8ztHNQIkqPD3464",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_runtime.py"
+      }
+    },
+    {
+      "id": "call_00_7lahkxvf3EbxG8Jpa6fo6633",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/sample.py"
+      }
+    },
+    {
+      "id": "call_01_0xttAyrY3CcjU0xuCWrx8464",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_sample.py"
+      }
+    },
+    {
+      "id": "call_02_VI160ywtTkxFXVFnkjAb9208",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/gates.py"
+      }
+    },
+    {
+      "id": "call_03_9zbPYt91NEk66ywnx6fH8145",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/store.py"
+      }
+    },
+    {
+      "id": "call_00_9RJ2tgrV32T1trBorW130816",
+      "name": "Edit",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/checks.py",
+        "old_string": "import json\nimport sys\nfrom pathlib import Path",
+        "new_string": "import json\nimport sys\nimport tempfile\nfrom pathlib import Path"
+      }
+    },
+    {
+      "id": "call_00_ET_9SZ0cUnXNQvgUN70ctgs9449",
+      "name": "Edit",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/checks.py",
+        "old_string": "    source = checked(root, 'workspace/feature.py')\n    before = digest(source)\n    receipt = run_bounded(\n        [sys.executable, '-I', '-c', SCRIPT, str(source)], root,\n        checked(root, '.runtime/verification'), 10, 65536,\n    )",
+        "new_string": "    source = checked(root, 'workspace/feature.py')\n    before = digest(source)\n    verification = checked(root, '.runtime/verification')\n    verification.mkdir(parents=True, exist_ok=True)\n    log_dir = Path(tempfile.mkdtemp(prefix='verification-', dir=str(verification)))\n    receipt = run_bounded(\n        [sys.executable, '-I', '-c', SCRIPT, str(source)], root,\n        log_dir, 10, 65536,\n    )"
+      }
+    },
+    {
+      "id": "call_00_Z37JU7HauQ8nVwHPmUW77283",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/agent_coop/checks.py"
+      }
+    },
+    {
+      "id": "call_00_lLVd6xX9w5LlUU70WfGv9800",
+      "name": "Edit",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_gates.py",
+        "old_string": "\"\"\"门禁不采信 PASS 文字或旧候选。\"\"\"\nimport tempfile\nimport unittest\nfrom pathlib import Path",
+        "new_string": "\"\"\"门禁不采信 PASS 文字或旧候选。\"\"\"\nimport json\nimport tempfile\nimport unittest\nfrom pathlib import Path\n\n\nGOOD_SOURCE = (\n    'def due_for_review(terminal_epoch, retention_seconds, '\n    'now_epoch, hold=False):\\n'\n    '    if retention_seconds < 0:\\n        raise ValueError()\\n'\n    '    return not hold and now_epoch >= terminal_epoch + retention_seconds\\n'\n)\n\nBAD_SOURCE = (\n    'def due_for_review(terminal_epoch, retention_seconds, '\n    'now_epoch, hold=False):\\n    return True\\n'\n)\n\n\ndef _verification_dirs(root):\n    verification = root / '.runtime' / 'verification'\n    if not verification.exists():\n        return []\n    return sorted(path for path in verification.iterdir() if path.is_dir())"
+      }
+    },
+    {
+      "id": "call_00_7RWLuEAySno8pPl9RRDx4144",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_gates.py"
+      }
+    },
+    {
+      "id": "call_00_XS5qK20sQMMTvimkZwiR7160",
+      "name": "Edit",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_gates.py",
+        "old_string": "            result = validate_feature(root)\n            self.assertTrue(result['passed'])\n            self.assertGreaterEqual(result['cases'], 7)\n\n\nif __name__ == '__main__':\n    unittest.main()",
+        "new_string": "            result = validate_feature(root)\n            self.assertTrue(result['passed'])\n            self.assertGreaterEqual(result['cases'], 7)\n\n\nclass ValidateFeatureIsolationTests(unittest.TestCase):\n    def _write_source(self, root, text):\n        (root / 'workspace' / 'feature.py').write_text(text, encoding='utf-8')\n\n    def _call(self, root, expect_failure):\n        from agent_coop.checks import validate_feature\n        if expect_failure:\n            with self.assertRaises(Exception):\n                validate_feature(root)\n            return None\n        return validate_feature(root)\n\n    def test_failure_then_success_uses_distinct_directories(self):\n        from agent_coop.paths import create_root\n        with tempfile.TemporaryDirectory() as directory:\n            root = create_root(Path(directory) / 'sample')\n            self._write_source(root, BAD_SOURCE)\n            self._call(root, expect_failure=True)\n            failed = _verification_dirs(root)[0]\n            failed_stdout = (failed / 'stdout.log').read_bytes()\n            failed_stderr = (failed / 'stderr.log').read_bytes()\n            self.assertTrue(failed_stderr)\n            self._write_source(root, GOOD_SOURCE)\n            result = self._call(root, expect_failure=False)\n            self.assertTrue(result['passed'])\n            dirs = _verification_dirs(root)\n            self.assertEqual(len(dirs), 2)\n            self.assertEqual(len({d for d in dirs}), 2)\n            self.assertEqual((failed / 'stdout.log').read_bytes(), failed_stdout)\n            self.assertEqual((failed / 'stderr.log').read_bytes(), failed_stderr)\n            success = next(d for d in dirs if d != failed)\n            self.assertEqual(\n                json.loads((success / 'stdout.log').read_text(encoding='utf-8')),\n                {'passed': True, 'cases': 7})\n\n    def test_success_then_success_keeps_prior_output_bytes(self):\n        from agent_coop.paths import create_root\n        with tempfile.TemporaryDirectory() as directory:\n            root = create_root(Path(directory) / 'sample')\n            self._write_source(root, GOOD_SOURCE)\n            self.assertTrue(self._call(root, expect_failure=False)['passed'])\n            first = _verification_dirs(root)[0]\n            first_stdout = (first / 'stdout.log').read_bytes()\n            first_stderr = (first / 'stderr.log').read_bytes()\n            self.assertTrue(self._call(root, expect_failure=False)['passed'])\n            dirs = _verification_dirs(root)\n            self.assertEqual(len(dirs), 2)\n            self.assertEqual(len({d for d in dirs}), 2)\n            self.assertEqual((first / 'stdout.log').read_bytes(), first_stdout)\n            self.assertEqual((first / 'stderr.log').read_bytes(), first_stderr)\n\n    def test_failure_then_failure_retains_each_stderr(self):\n        from agent_coop.paths import create_root\n        with tempfile.TemporaryDirectory() as directory:\n            root = create_root(Path(directory) / 'sample')\n            self._write_source(root, BAD_SOURCE)\n            self._call(root, expect_failure=True)\n            self._call(root, expect_failure=True)\n            dirs = _verification_dirs(root)\n            self.assertEqual(len(dirs), 2)\n            self.assertEqual(len({d for d in dirs}), 2)\n            for path in dirs:\n                stderr = (path / 'stderr.log').read_bytes()\n                self.assertTrue(stderr)\n                self.assertTrue((path / 'stdout.log').exists())\n\n    def test_same_source_repeated_allocates_independent_directories(self):\n        from agent_coop.paths import create_root\n        with tempfile.TemporaryDirectory() as directory:\n            root = create_root(Path(directory) / 'sample')\n            self._write_source(root, GOOD_SOURCE)\n            for _ in range(3):\n                self.assertTrue(self._call(root, expect_failure=False)['passed'])\n            dirs = _verification_dirs(root)\n            self.assertEqual(len(dirs), 3)\n            self.assertEqual(len({d for d in dirs}), 3)\n            outputs = {(d / 'stdout.log').read_bytes() for d in dirs}\n            self.assertEqual(len(outputs), 1)\n\n    def test_concurrent_calls_allocate_distinct_directories(self):\n        from concurrent.futures import ThreadPoolExecutor\n        from agent_coop.checks import validate_feature\n        from agent_coop.paths import create_root\n        with tempfile.TemporaryDirectory() as directory:\n            root = create_root(Path(directory) / 'sample')\n            self._write_source(root, GOOD_SOURCE)\n            with ThreadPoolExecutor(max_workers=4) as pool:\n                results = list(pool.map(\n                    lambda _: validate_feature(root), range(4)))\n            self.assertTrue(all(r['passed'] for r in results))\n            dirs = _verification_dirs(root)\n            self.assertEqual(len(dirs), 4)\n            self.assertEqual(len({d for d in dirs}), 4)\n            for path in dirs:\n                self.assertEqual(\n                    json.loads((path / 'stdout.log').read_text(encoding='utf-8')),\n                    {'passed': True, 'cases': 7})\n\n\nif __name__ == '__main__':\n    unittest.main()"
+      }
+    },
+    {
+      "id": "call_00_HAYrrsHD6vH4dB2NTCUL9450",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_gates.py"
+      }
+    },
+    {
+      "id": "call_00_ZwM0QqdSM1iD9DbpQRsh2113",
+      "name": "Grep",
+      "input": {
+        "pattern": "implementation_digest|verifier_digest|subject_digest|[0-9a-f]{64}",
+        "path": "D:/project/agent-coop-continuation-r-log/tests",
+        "output_mode": "files_with_matches"
+      }
+    },
+    {
+      "id": "call_01_GOoNGnS8sdFQuLcOxsI88344",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_flow.py"
+      }
+    },
+    {
+      "id": "call_00_fXYq4jgFmwz6Et8fdI9q5208",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-r-log/tests/test_cli.py"
+      }
+    },
+    {
+      "id": "call_00_a8PEsywmgGHgZUTbXoeA2781",
+      "name": "Grep",
+      "input": {
+        "pattern": "verification",
+        "path": "D:/project/agent-coop-continuation-r-log",
+        "output_mode": "content",
+        "-n": true
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 71
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

@@ -1,0 +1,44 @@
+实现完成。两个文件已按合同 `isolated-log-directory/2` 修改，未运行测试（由根执行），未提交 git，未改其他文件。
+
+## 实际变更
+
+**`agent_coop/checks.py`**（唯一写集项之一）
+- 新增 `import tempfile`。
+- `validate_feature` 不再把 `.runtime/verification` 目录本身直接当 `log_dir`，而是：
+  1. `checked(root, '.runtime/verification')` 取集合命名空间（继续走 `paths.checked` 校验）；
+  2. `verification.mkdir(parents=True, exist_ok=True)` 确保集合目录存在；
+  3. `log_dir = Path(tempfile.mkdtemp(prefix='verification-', dir=str(verification)))` 复用标准库原子独占目录分配，每次调用分配全新子目录；
+  4. 将专属 `log_dir` 传给 `run_bounded`（runtime 维持既有 `_write_logs` 拒覆写规则，未改动）。
+
+签名 `validate_feature(root)` 与返回字段 `passed/cases/source_digest/verifier_digest` 不变；未用 `TemporaryDirectory`（失败日志不自动删除），未用时间戳或源码 digest 保证唯一，未新增 allocator/注册表/台账。
+
+**`tests/test_gates.py`**（唯一写集项之二）
+- 新增 `import json`、`GOOD_SOURCE`/`BAD_SOURCE` 常量、`_verification_dirs(root)` 辅助函数。
+- 新增 `ValidateFeatureIsolationTests` 类，5 个用例：
+  - `test_failure_then_success_uses_distinct_directories`（失败→成功，断言失败目录 stderr 保留、成功目录 stdout 可解析定位、失败目录字节不变）
+  - `test_success_then_success_keeps_prior_output_bytes`（成功→成功，前次 stdout/stderr 字节不变）
+  - `test_failure_then_failure_retains_each_stderr`（失败→失败，两个目录各自保留非空 stderr）
+  - `test_same_source_repeated_allocates_independent_directories`（同源码重复 3 次，目录独立且 stdout 字节一致）
+  - `test_concurrent_calls_allocate_distinct_directories`（4 线程并发，目录唯一且输出可定位）
+
+## 责任与消费者
+
+- 责任方：`checks.validate_feature` 是验证调用集合 `.runtime/verification` 的唯一调用 owner；本改动只在该 owner 内部分配专属子目录。
+- 消费者：`sample.verify`（经 `sample.py:102`）与 `tests/test_gates.py` 既有用例直接调用 `validate_feature`，签名/返回字段不变，不受影响；`run_bounded`/`_write_logs` 作为下游继续接收专属目录，拒覆写逻辑未触碰。
+
+## 复用结果
+
+- 复用 `tempfile.mkdtemp`（标准库原子独占目录分配），满足“不复制 allocator、不依赖时间戳/digest 保证唯一”。
+- 复用 `paths.checked` 做路径校验（集合目录与 `run_bounded` 内部的 `_resolve_log_dir` 双重校验）。
+- 复用 `runtime.run_bounded`/`_write_logs` 的既有落盘与拒覆写，未改 `runtime.py`、`sample.py`、`gates.py`、`store.py`。
+- 检索确认：除新增测试外无其他代码依赖 `.runtime/verification/stdout.log` 直写位置；历史 `repair-p2-log-r1-tests.txt` 中 `refusing to overwrite existing log files in ...\.runtime\verification` 即本改动所修复的重复调用冲突。
+
+## 风险
+
+- `mkdtemp` 依赖 `paths.checked` 已确保集合目录及祖先无 reparse point，但未新增 OS 沙箱；产品 adapters 权限仍未修（按你要求 live 禁止，本改动不涉及）。
+- 未处理“通用 runtime 任意并发调用同一 log_dir”的原子性——合同明确不宣称该能力，仅由调用 owner 避开冲突，未知保持可见。
+
+## 未测试项
+
+- 本作者未运行任何测试（约束为根执行），不能自报通过；`python -m agent_coop verify` 与各用例是否通过以根实际执行为准。
+- “边界拒绝不退化”（`test_runtime.py` 中 log_dir 出根/越出 `.runtime`/junction 逃逸等用例）依赖既有 `runtime.py` 未改动，未在 `test_gates.py` 内重复实现，需根在组合验证中确认其仍通过。

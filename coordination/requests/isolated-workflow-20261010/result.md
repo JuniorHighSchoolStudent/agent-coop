@@ -1,12 +1,12 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：双原席及原生Kimi计划监督已通过，三个作者包获条件准入；产品G1/live/合入仍阻断。本文件是唯一当前结果入口，旧过程保留为历史，不能从原件中的旧待办推断当前状态。
+范围：本请求整体交付；维护者：Codex集成者；状态：双原席及原生Kimi计划监督已通过，三个实际CodeBuddy作者已交付退出，待准确组合候选内容审核；产品G1/live/合入仍阻断。本文件是唯一当前结果入口，旧过程保留为历史，不能从原件中的旧待办推断当前状态。
 
 ## 当前派发控制（2026-10-11）
 
 用户已授权“先使用多agent协作调查实施问题，然后继续分包开发”。dispatcher_next为本批唯一专门发包人；CodeBuddy + deepseek-v4-pro承担产品/测试实现，Codex只调查、协调、验证、文档及受审集成。实现容量默认4且用户可配，评审共享CodeBuddy容量；本批3个就绪小包，不为凑并行数扩大范围。
 
-产品仍为2e9f192c8127956f09c619ff640d763b62369e30；尚无本批产品/测试/CI修改。最新准确统一验证仍为139项、135通过/2错误/2跳过、exit1。旧两轮停止点因用户本次明确继续而由[后继有界计划](continuation-plan-20261011.md)承接，不抹除历史偏离、失败和成本。
+产品仍为2e9f192c8127956f09c619ff640d763b62369e30；两个代码包已形成独立候选、尚未接收；诊断脚本未执行。最新准确统一验证仍为139项、135通过/2错误/2跳过、exit1。旧两轮停止点因用户本次明确继续而由[后继有界计划](continuation-plan-20261011.md)承接，不抹除历史偏离、失败和成本。
 
 | 阶段 | 当前事实与下一准入 |
 |---|---|
@@ -14,7 +14,7 @@
 | S0/S1审核 | 原席支持三包范围、日志/2合同和一次argv修正。首次probe-01正例失败保留，不算能力通过；参数静态原因已定位 |
 | probe-02及结果确认 | 两正例成功、七负例真实权限拒绝、文件字节核对满足；两原席接受受信宿主上的限定bootstrap开发profile。不是产品adapter修复或OS沙箱 |
 | 原生Kimi计划监督 | 已完成并通过，仅限本次计划准备；各包启动前准确路径/写集/身份/版本条件仍须逐项核验 |
-| 三包实现与组合接收 | 本检查点准入发包人按监督条件启动各一次作者。独立工作区已准备；作者退出后局部验收、冻结准确组合候选、原席内容复审、最终native监督；不预支G1、main或live |
+| 三包实现与组合接收 | 三个实际deepseek-v4-pro作者已全部退出；局部验收已完成，下一步冻结准确组合候选、原席内容复审、最终native监督；不预支G1、main或live |
 
 分包与唯一写集：R-log仅checks.py/test_gates.py，执行[验证日志集合/2合同](interface-log-invocations-20261011.md)；R-junction仅test_runtime.py，修生命周期并保留逃逸/哨兵/未执行证据；R-publication仅TEMP具名harness，最多30轮×2项或120秒，首失败停止，不改Store/Runner、不加重试，未复现保持unknown。实际作者均由专门发包人正式派出，不由集成者补写。
 
@@ -30,11 +30,11 @@
 
 产品未决项：GLM B13/B14/B02及Kimi B06待代码修复与原席关闭；GLM B11/Kimi B09根因unknown；GLM B18/Kimi B11是产品adapters+sample权限及写集来源缺陷，须后继跨包对齐，不混入本批已审三包。bootstrap探针不代关产品finding。后继只读[写集权威调查](product-permission-scope-investigation-20261011.json)与[范围方案提案](product-permission-scope-proposal-20261011.md)已准备，尚未审核、不是派发许可；它们不扩大当前三个包。浏览器JS、云CI、live四角色均未验证。
 
-预算：经S1两席明确批准，本后继批次最多18次CodeBuddy/2次native；当前已发8次CodeBuddy、native1次。新增的3次仅用于修正探针及两席确认，现已使用；不转换未用额度，不追加第三探针。原失败和全部审核计成本。当前唯一下一步是专门发包人完成启动前核验并正式并行派发三个作者，各一次20turn/600秒。
+预算：经S1两席明确批准，本后继批次最多18次CodeBuddy/2次native；当前已发11次CodeBuddy、native1次。新增的3次仅用于修正探针及两席确认，现已使用；不转换未用额度，不追加第三探针。原失败和全部审核计成本。三个作者已全部正常退出；R-log25项/R-junction28项局部验证通过，诊断脚本因执行边界问题未运行。下一步冻结准确组合候选、运行唯一verify并交两原席首轮内容审核，不自动派修。
 
 [原生Kimi计划监督原票](supervision-continuation-plan.txt)、[调用](supervision-continuation-plan-calls.json)及[准确输入索引](supervision-continuation-plan-input-index.json)已归档。422.360秒、35次tool与35次result、exit0，实际session_a75b547a-13c5-4740-b07f-f3d4ccc93704，runtime0.43.0、模型unknown；PASS仅表示准备充分，不是产品接收。启动条件：逐包独立admission（不改prepared历史），四个memory子进程环境值、node/bin/dist/wrapper四摘要人工复核；显式Gate=continuation-author/Round=1避免历史回执前缀冲突；每包启动前重新核路径与已有文件摘要。人工版本核查和600秒看护不冒充wrapper自动门禁。
 
-R-publication跨盘且cwd外的精确允许Write尚未正向实证，保持unknown；首次拒绝即停止，禁止加add-dir或扩大allow。脚本首次创建后核nlink1与完整写集。R-log/R-junction均为cwd内目标，沿已测规则；p7/p3只是旧wrapper传输seat别名，真实owner仍P6 checks/P2 test_runtime。三个作者包完成后才有代码验收与原席内容复审。
+R-publication跨盘且cwd外的精确允许Write尚未正向实证，保持unknown；首次拒绝即停止，禁止加add-dir或扩大allow。脚本首次创建后核nlink1与完整写集。R-log/R-junction均为cwd内目标，沿已测规则；p7/p3只是旧wrapper传输seat别名，真实owner仍P6 checks/P2 test_runtime。三个作者交付与局部实测已完成，详见[集成检查线索](integration-observations-continuation-r1.md)及其原件链接。junction helper复制/吞异常与诊断TEMP/失败现场/证据失效问题仍待原席裁定；没有原席finding前不派修，根不补写。
 以下为2026-10-10冻结历史，包含当时的状态和停止决定；有效待办以本页当前段为准。
 ## 2026-10-10已冻结过程与结论
 

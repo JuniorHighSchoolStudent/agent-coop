@@ -1,0 +1,35 @@
+实现完成。仅写入一个 TEMP 文件，未运行、未改仓库、未调用 Shell/子 agent/其他路径。
+
+## 实际变更
+
+只新增一个文件：
+`C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py`（381 物理行，纯诊断脚本，不在仓库内）。
+
+它是有界诊断 harness：
+- **复用历史用例**：`tests.test_runner.RunnerTests` 的两个方法
+  - `test_pause_persists_and_stops_after_current_step`（resume→publish 路径）
+  - `test_run_publishes_projections`（finish→publish 路径）
+- **观测点**（临时包装 `os.replace`，`main` 的 `finally` 里 `_restore_wrapper()` 还原）：按目标文件名派生发布阶段（`STATUS` / `state.json` / `outbox/<rev>.json`），记录 `os.replace` 前后源/目标属性（存在性、类型、大小、mtime/ctime、inode、NT `st_file_attributes`）、本进程句柄计数（`GetProcessHandleCount`，仅计数不枚举）、失败时 `exc_type/winerror/errno/strerror`。
+- **边界**：最多 `MAX_ROUNDS=30` 轮 × 2 用例或 `WALL_LIMIT_SECONDS=120` 秒墙钟，首失败/超限即停；每轮独立 fixture（每次实例化新 `TestCase` 并 `setUp` 新建 `TemporaryDirectory`）；失败时 `shutil.copytree` 保留 fixture 到 `failed-fixtures/`；观测代码自身绝不抛异常、不吞被测异常、不加任何重试；不枚举其他进程句柄、不装驱动、不改系统设置。
+- **输出**（运行时写于同 TEMP 目录，非本作者写）：`diagnose_publication-output.jsonl`、`diagnose_publication-summary.json`、`failed-fixtures/`（仅失败时）；未复现时 `conclusion=not_reproduced_root_cause_unknown`。
+
+## 责任与消费者
+
+- 责任方：CodeBuddy deepseek-v4-pro（本包作者），仅产出诊断 harness；实际执行与验收由协调者/根完成。
+- 消费者：协调者（审查后运行）、原席 GLM/Kimi（据输出复核 B11/B09）。不改任何产品/测试，`agent_coop/store.py`、`runner.py`、`paths.py`、`tests/test_runner.py` 均未触碰。
+- 运行方式：`python diagnose_publication.py <repo_root>`；摘要内嵌 `inputs_sha256`（store/runner/paths/test_runner）供核对输入未变。
+
+## 复用结果
+
+- 复用原两个历史用例，不复制新验证权威；20 轮×2 无观测旧循环未重算，本批只跑新观测循环。
+- 复用 `diagnostic-p1-mechanism-source.py.txt` 的机制事实（`store.py:402` `os.replace(STATUS.tmp→STATUS)` 被无 `FILE_SHARE_DELETE` 句柄持有时抛 `WinError 5`），只做机制参照，未把“受控持柄”当作历史根因。
+
+## 风险与未测试项
+
+- **未运行**：本会话无 Shell 工具，harness 未执行，不声称通过、不宣称复现或关闭 B09/B11。
+- 句柄计数是进程级总数（`GetProcessHandleCount`），不枚举具体句柄/外部进程；若失败，仍需协调者按计划用外部句柄工具补外部持有者证据。
+- 墙钟上限在每次用例前后检查，未做子进程级硬超时看门狗（两个目标用例均为进程内非阻塞，挂起风险低）。
+- 规模：文件 381 行、`_observed_replace`(43)/`_run_one`(53) 超过 40 行软目标但均 <80 硬上限；二者内聚（分别是单一 os.replace 观测、单一用例运行），属 TEMP 一次性诊断脚本，不在仓库源码规模门禁范围内。
+- 权限拒绝或身份漂移：本会话未遇到；如协调者执行时发生，应即停并报告，不换工具绕过。
+
+证据：以本次 `Write`/`Edit` 工具实际产出与上述 `Read` 回读为准；仓库 `git` 状态未被本包改动。

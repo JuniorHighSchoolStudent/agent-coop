@@ -1,0 +1,34 @@
+已完成 `tests/test_runtime.py` 的修改，未触碰其他路径。以下是实际变更说明。
+
+## 实际变更
+
+仅 `tests/test_runtime.py`，4 处编辑，文件 456→474 行（仍 <500）：
+
+1. **新增模块级 `remove_link` helper**（27–35 行）：逐字复用 `tests/test_paths.py:28-36` 与 `tests/test_archive.py:28-36` 的既有实现，`os.rmdir`→`os.unlink` 仅移除 junction/符号链接自身，不递归目标。
+2. **`SubprocessTests.setUp` 改用 `addCleanup` 生命周期**（218 行）：`self.addCleanup(self._tmp.cleanup)`，与 `test_paths.py:42`、`test_archive.py:52` 相同；同时删除 `tearDown`（原 214–216 行）。
+3. **junction 清理改为 `self.addCleanup(remove_link, junction)`**（354 行）：替代原 win32 分支 `os.rmdir(junction)` / POSIX 分支 `junction.unlink` 两处分散注册，置于 if/else 之后统一适用两平台。
+4. **补足 `test_log_dir_junction_escape_is_rejected` 证据**（331–360 行）：
+   - 外部哨兵 `outside/sentinel.txt`（内容 `untouched`）；
+   - 子进程 marker `child_ran.txt`（child 若运行会 `open(argv[1],"w").write("ran")`）；
+   - 原 `assertRaisesRegex(ValueError, 'junction|symlink')` 断言保持不变（未删除/未 skip/未放宽）；
+   - 拒绝后新增三处断言：`marker` 不存在（child 未运行）、`sentinel` 内容不变、`outside.iterdir()` 仅剩 `sentinel.txt`（外目标无写入）。
+
+修复机制：`addCleanup` LIFO 顺序——setUp 先注册 `_tmp.cleanup`，测试后注册 `remove_link`，`doCleanups` 时先删 link 再删临时根，消除原「tearDown 先删根 → cleanup `os.rmdir` 报 WinError3(ERROR_PATH_NOT_FOUND)」。`remove_link` 的 `os.rmdir`/`os.unlink` 只删 link 自身；addCleanup 在 `assertRaisesRegex` 抛出 ValueError 后仍执行，覆盖「失败路径也收回 link」。
+
+## 责任与消费者
+
+- 责任方：本包 `tests/test_runtime.py` 测试维护者（R-junction 分包写集）。
+- 受影响消费者：`RunBoundedTests`/`InvokeTests` 均继承 `SubprocessTests`，共享该 setUp/清理生命周期；其余测试无 addCleanup，行为不变。
+- 未改产品代码（`runtime.py`/`paths.py` 等）与其它测试文件。
+
+## 复用结果
+
+已检索并复用：`tests/test_paths.py` 的 `make_link`/`remove_link`/`addCleanup(self._tmp.cleanup)` 模式，`tests/test_archive.py` 同款 `remove_link` 与「addCleanup + 断言外目标未变」证据写法。未复制新调度器/台账/协议，未新增维护入口。
+
+## 风险与未测试项
+
+- 实际测试由根执行，本次不运行、不自报通过；无 Git diff 命令可用，以上以真实 Read/Edit 结果为准。
+- 本机为 Windows，`remove_link` 的 `os.rmdir` 分支与 junction 路径可测；POSIX 分支（`symlink_to`/`os.unlink`）未实跑，状态保持 **unknown**。
+- 未变更产品 adapters 权限合同；live 仍禁止。
+
+建议根按计划执行 `python -m agent_coop verify`（或对应测试入口）验收后复写状态，我不代签通过。

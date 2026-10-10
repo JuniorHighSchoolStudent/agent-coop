@@ -1,0 +1,380 @@
+"""R-publication 有界诊断 harness（仅本 TEMP 文件，不改仓库产品/测试）。
+
+复用两个历史用例（tests.test_runner.RunnerTests）：
+- test_pause_persists_and_stops_after_current_step
+- test_run_publishes_projections
+
+观察当前 Python 进程发布阶段的 os.replace 前后：
+- 发布阶段：按目标文件名派生（STATUS / state.json / outbox/<rev>.json）
+- 源/目标属性：存在性、类型、大小、mtime/ctime、inode、NT file_attributes
+- 本进程句柄计数：ctypes GetProcessHandleCount（仅计数，不枚举句柄）
+- 失败时：exc_type / winerror / errno / strerror
+
+边界（与已审计划一致）：
+- 仅诊断，不改产品/测试；临时包装 os.replace，finally 恢复，
+  不改变返回/异常/重试行为，观测代码自身绝不抛异常。
+- 首失败或超限即停：最多 MAX_ROUNDS 轮 x 2 用例，或 WALL_LIMIT 秒墙钟。
+- 每轮独立 fixture；失败 fixture 复制保留到 failed-fixtures/。
+- 不枚举其他进程私有句柄、不装驱动、不改系统安全设置、不加重试/吞错。
+- 未复现保持历史根因 unknown，本文件不宣称根因。
+
+运行：python diagnose_publication.py <repo_root>
+输出写于本文件同目录：
+- diagnose_publication-output.jsonl（逐事件）
+- diagnose_publication-summary.json（最终摘要）
+- failed-fixtures/（仅失败时）
+"""
+import hashlib
+import json
+import os
+import shutil
+import sys
+import time
+from pathlib import Path
+
+MAX_ROUNDS = 30
+WALL_LIMIT_SECONDS = 120.0
+TEST_NAMES = (
+    'test_pause_persists_and_stops_after_current_step',
+    'test_run_publishes_projections',
+)
+
+DIAG_DIR = Path(__file__).resolve().parent
+OUTPUT_LOG = DIAG_DIR / 'diagnose_publication-output.jsonl'
+SUMMARY_FILE = DIAG_DIR / 'diagnose_publication-summary.json'
+FIXTURE_DIR = DIAG_DIR / 'failed-fixtures'
+
+_original_replace = os.replace
+_CTX = {'round': 0, 'test': None}
+_log_handle = None
+
+
+def _process_handle_count():
+    """当前进程句柄总数（仅计数，不枚举句柄、不触碰其他进程）。"""
+    if os.name != 'nt':
+        return None
+    try:
+        import ctypes
+        from ctypes import wintypes
+        k32 = ctypes.WinDLL('kernel32', use_last_error=True)
+        k32.GetCurrentProcess.restype = wintypes.HANDLE
+        k32.GetProcessHandleCount.argtypes = (
+            wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD))
+        k32.GetProcessHandleCount.restype = wintypes.BOOL
+        count = wintypes.DWORD()
+        if k32.GetProcessHandleCount(
+                k32.GetCurrentProcess(), ctypes.byref(count)):
+            return int(count.value)
+        return None
+    except Exception:
+        return None
+
+
+def _path_attrs(path):
+    """源/目标属性；任何异常都降级为字典，绝不抛出。"""
+    if path is None:
+        return None
+    p = Path(path)
+    try:
+        st = os.lstat(p)
+    except OSError as exc:
+        return {
+            'exists': False,
+            'error': type(exc).__name__,
+            'errno': getattr(exc, 'errno', None),
+            'winerror': getattr(exc, 'winerror', None),
+        }
+    info = {
+        'exists': True,
+        'size': st.st_size,
+        'mtime_ns': st.st_mtime_ns,
+        'ctime_ns': getattr(st, 'st_ctime_ns', None),
+        'inode': getattr(st, 'st_ino', None),
+    }
+    try:
+        if os.path.isdir(p):
+            info['type'] = 'dir'
+        elif os.path.islink(p):
+            info['type'] = 'link'
+        else:
+            info['type'] = 'file'
+    except OSError:
+        info['type'] = 'unknown'
+    if os.name == 'nt':
+        info['file_attributes'] = getattr(st, 'st_file_attributes', None)
+    return info
+
+
+def _stage_of(target):
+    """按目标文件名派生发布阶段；非发布目标返回 None。"""
+    try:
+        name = target.name
+    except AttributeError:
+        return None
+    if name == 'STATUS':
+        return 'STATUS'
+    if name == 'state.json':
+        return 'state.json'
+    try:
+        if target.parent.name == 'outbox':
+            return 'outbox/' + name
+    except AttributeError:
+        return None
+    return None
+
+
+def _capture(source, target):
+    return {
+        'source': _path_attrs(source) if source is not None else None,
+        'target': _path_attrs(target),
+        'handle_count': _process_handle_count(),
+    }
+
+
+def _emit(record):
+    """追加一条 JSONL 事件；失败静默，不干扰被测代码。"""
+    global _log_handle
+    try:
+        if _log_handle is None:
+            DIAG_DIR.mkdir(parents=True, exist_ok=True)
+            _log_handle = open(OUTPUT_LOG, 'a', encoding='utf-8')
+        _log_handle.write(
+            json.dumps(record, ensure_ascii=False, sort_keys=True) + '\n')
+        _log_handle.flush()
+    except Exception:
+        pass
+
+
+def _observed_replace(src, dst, *args, **kwargs):
+    """包装 os.replace：仅观测发布目标，行为与异常完全透传。"""
+    try:
+        target = Path(os.fsdecode(os.fspath(dst)))
+        source = Path(os.fsdecode(os.fspath(src)))
+    except Exception:
+        return _original_replace(src, dst, *args, **kwargs)
+    stage = _stage_of(target)
+    if stage is None:
+        return _original_replace(src, dst, *args, **kwargs)
+    rec = {
+        'kind': 'replace',
+        'round': _CTX['round'],
+        'test': _CTX['test'],
+        'stage': stage,
+        'source': str(source),
+        'target': str(target),
+    }
+    try:
+        rec['before'] = _capture(source, target)
+    except Exception:
+        rec['before'] = {'capture_error': True}
+    try:
+        result = _original_replace(src, dst, *args, **kwargs)
+    except BaseException as exc:
+        rec['outcome'] = 'error'
+        rec['exc_type'] = type(exc).__name__
+        rec['winerror'] = getattr(exc, 'winerror', None)
+        rec['errno'] = getattr(exc, 'errno', None)
+        rec['strerror'] = getattr(exc, 'strerror', None)
+        try:
+            rec['after'] = _capture(source, target)
+        except Exception:
+            rec['after'] = {'capture_error': True}
+        _emit(rec)
+        raise
+    rec['outcome'] = 'ok'
+    try:
+        rec['after'] = _capture(source, target)
+    except Exception:
+        rec['after'] = {'capture_error': True}
+    _emit(rec)
+    return result
+
+
+def _install_wrapper():
+    os.replace = _observed_replace
+
+
+def _restore_wrapper():
+    os.replace = _original_replace
+
+
+def _preserve_fixture(case, round_idx, test_name):
+    """复制失败 fixture 到 FIXTURE_DIR；失败返回说明，不抛出。"""
+    try:
+        src = getattr(case, 'root', None)
+        if src is None or not Path(src).exists():
+            return 'no-fixture-root'
+        FIXTURE_DIR.mkdir(parents=True, exist_ok=True)
+        dest = FIXTURE_DIR / f'round{round_idx:02d}-{test_name}'
+        if dest.exists():
+            dest = FIXTURE_DIR / (
+                f'round{round_idx:02d}-{test_name}-'
+                f'{int(time.time() * 1000)}')
+        shutil.copytree(src, dest)
+        return str(dest)
+    except Exception as exc:
+        return f'preserve-failed: {type(exc).__name__}'
+
+
+def _file_sha256(path):
+    try:
+        return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    except Exception:
+        return None
+
+
+def _run_one(case_cls, test_name, round_idx):
+    """跑一个历史用例；返回 (ok, error_dict)。首失败保留 fixture。"""
+    _CTX['round'] = round_idx
+    _CTX['test'] = test_name
+    case = case_cls(methodName=test_name)
+    t0 = time.monotonic()
+    error = None
+    preserved = None
+    fixture_temp = None
+    try:
+        case.setUp()
+    except BaseException as exc:
+        # setUp 失败也记为失败，保留 fixture 路径信息。
+        error = {
+            'phase': 'setUp',
+            'type': type(exc).__name__,
+            'winerror': getattr(exc, 'winerror', None),
+            'errno': getattr(exc, 'errno', None),
+            'strerror': getattr(exc, 'strerror', None),
+        }
+        tmp = getattr(case, '_tmp', None)
+        fixture_temp = str(tmp.name) if tmp is not None else None
+    else:
+        try:
+            getattr(case, test_name)()
+        except BaseException as exc:
+            error = {
+                'phase': 'test',
+                'type': type(exc).__name__,
+                'winerror': getattr(exc, 'winerror', None),
+                'errno': getattr(exc, 'errno', None),
+                'strerror': getattr(exc, 'strerror', None),
+            }
+            tmp = getattr(case, '_tmp', None)
+            fixture_temp = str(tmp.name) if tmp is not None else None
+            preserved = _preserve_fixture(case, round_idx, test_name)
+    finally:
+        try:
+            case.tearDown()
+        except Exception:
+            pass  # 清理失败不掩盖诊断结果，不重试。
+    duration = time.monotonic() - t0
+    _emit({
+        'kind': 'round',
+        'round': round_idx,
+        'test': test_name,
+        'outcome': 'error' if error else 'ok',
+        'duration': duration,
+        'error': error,
+        'fixture_temp': fixture_temp,
+        'preserved': preserved,
+    })
+    return (error is None), error
+
+
+def _run_batch(case_cls, start):
+    """跑有界批次；返回 (failures, rounds_run, tests_run, stop_reason)。"""
+    failures = []
+    rounds_run = 0
+    tests_run = 0
+    stop_reason = 'no_failure'
+    for round_idx in range(1, MAX_ROUNDS + 1):
+        if time.monotonic() - start >= WALL_LIMIT_SECONDS:
+            stop_reason = 'wall_limit'
+            break
+        for test_name in TEST_NAMES:
+            if time.monotonic() - start >= WALL_LIMIT_SECONDS:
+                stop_reason = 'wall_limit'
+                break
+            ok, error = _run_one(case_cls, test_name, round_idx)
+            tests_run += 1
+            if not ok:
+                failures.append({
+                    'round': round_idx,
+                    'test': test_name,
+                    'error': error,
+                })
+                stop_reason = 'first_failure'
+                break
+        rounds_run += 1
+        if stop_reason == 'first_failure':
+            break
+    else:
+        stop_reason = ('round_limit' if rounds_run >= MAX_ROUNDS
+                       else 'no_failure')
+    return failures, rounds_run, tests_run, stop_reason
+
+
+def _build_summary(repo_root, failures, rounds_run, tests_run, stop_reason,
+                   wall, inputs):
+    return {
+        'scope': 'R-publication bounded diagnostic',
+        'repo_root': str(repo_root),
+        'conclusion': (
+            'not_reproduced_root_cause_unknown'
+            if not failures else 'failure_observed_see_output_log'),
+        'stop_reason': stop_reason,
+        'rounds_run': rounds_run,
+        'tests_run': tests_run,
+        'failures': failures,
+        'wall_seconds': wall,
+        'max_rounds': MAX_ROUNDS,
+        'wall_limit_seconds': WALL_LIMIT_SECONDS,
+        'inputs_sha256': inputs,
+        'output_log': str(OUTPUT_LOG),
+        'fixture_dir': str(FIXTURE_DIR),
+    }
+
+
+def main(argv):
+    if len(argv) >= 2:
+        repo_root = Path(argv[1]).resolve()
+    else:
+        repo_root = Path.cwd().resolve()
+    if not (repo_root / 'agent_coop').is_dir():
+        print(f'not a repo root: {repo_root}', file=sys.stderr)
+        return 2
+    sys.path.insert(0, str(repo_root))
+    from tests.test_runner import RunnerTests
+
+    inputs = {
+        'agent_coop/store.py': _file_sha256(repo_root / 'agent_coop/store.py'),
+        'agent_coop/runner.py': _file_sha256(repo_root / 'agent_coop/runner.py'),
+        'agent_coop/paths.py': _file_sha256(repo_root / 'agent_coop/paths.py'),
+        'tests/test_runner.py': _file_sha256(repo_root / 'tests/test_runner.py'),
+    }
+
+    _install_wrapper()
+    start = time.monotonic()
+    try:
+        failures, rounds_run, tests_run, stop_reason = _run_batch(
+            RunnerTests, start)
+    finally:
+        _restore_wrapper()
+        wall = time.monotonic() - start
+
+    summary = _build_summary(
+        repo_root, failures, rounds_run, tests_run, stop_reason, wall, inputs)
+    try:
+        SUMMARY_FILE.write_text(
+            json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True)
+            + '\n', encoding='utf-8')
+    except Exception:
+        pass
+    if _log_handle is not None:
+        try:
+            _log_handle.close()
+        except Exception:
+            pass
+    print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
+    return 1 if failures else 0
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))
