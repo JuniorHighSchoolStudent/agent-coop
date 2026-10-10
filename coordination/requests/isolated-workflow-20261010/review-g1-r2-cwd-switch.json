@@ -1,0 +1,11 @@
+{
+  "root": "D:/project/agent-coop-g1-review",
+  "before_head": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "before_status": [],
+  "before_tracked_manifest_sha256": "084c9edd57ce6f5675e60ba0f53d7a871d6a0a7d5842cb694e42603421049268",
+  "after_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "after_status": [],
+  "after_manifest_sha256": "c4fc78655129d96e8729f3a45cd7fa9eb63b8cb57653b91f49a1b6294877418c",
+  "private_history_read_or_copied": false,
+  "changed_utc": "2026-10-10T14:57:00.2269472+00:00"
+}

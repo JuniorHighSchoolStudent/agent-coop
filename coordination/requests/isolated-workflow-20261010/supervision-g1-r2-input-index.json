@@ -1,0 +1,35 @@
+{
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "root": "D:/project/agent-coop-g1-review",
+  "product_manifest_sha256": "c4fc78655129d96e8729f3a45cd7fa9eb63b8cb57653b91f49a1b6294877418c",
+  "files": [
+    {
+      "path": "coordination/.runtime/supervision-g1-r2/current-status-checkpoint.txt",
+      "bytes": 21022,
+      "sha256": "8c6317f06adaa905989625f50c59e64f8ab5787b213c06c934965b48604ad15a"
+    },
+    {
+      "path": "coordination/.runtime/supervision-g1-r2/process-evidence.txt",
+      "bytes": 47477,
+      "sha256": "4b01b6bdf4919416d1d82acb1c8a4e2b406fa869ba7d98e990593844f2fcf60c"
+    },
+    {
+      "path": "coordination/.runtime/supervision-g1-r2/r2-verification-metadata.json",
+      "bytes": 279,
+      "sha256": "e2024ceeaeb504d46fa55240027fe97161e5ace62213b8adca6272ca0472a5b6"
+    },
+    {
+      "path": "coordination/.runtime/supervision-g1-r2/review-glm-r2.txt",
+      "bytes": 6920,
+      "sha256": "711e7a1802656fc0e080f3862974c3d195a2fc3188d65d71c56c889f2cc75986"
+    },
+    {
+      "path": "coordination/.runtime/supervision-g1-r2/review-kimi-r2.txt",
+      "bytes": 5247,
+      "sha256": "81474146f3754d6f7f8d8269810ff70a93b4ad51e3b18ff8113151c1491ba65c"
+    }
+  ],
+  "independent_native_supervision": true,
+  "model": "unknown until actual evidence",
+  "not_acceptance": true
+}

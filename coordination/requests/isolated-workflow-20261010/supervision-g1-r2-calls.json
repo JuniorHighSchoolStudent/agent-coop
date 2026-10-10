@@ -1,0 +1,66 @@
+{
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "engine": "native-kimi",
+    "model": "unknown",
+    "session": "unknown until actual resume_hint",
+    "agent_file": "C:/Users/june/AppData/Local/Temp/agent-coop-role-review-20261010/kimi-supervisor-agent.md",
+    "agent_sha256": "5d6e863c325e95763f7b6492be35638f33224a9b138181589ed8ee39c918ab0d",
+    "tools": "Read,Glob,Grep",
+    "prompt": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/supervision-g1-r2.prompt.txt",
+    "prompt_sha256": "437a1cbad3df336a205c01e492e0cbee48ba0bb87cc292e6ce2d7f7887d50e25",
+    "started_at": "2026-10-10T23:04:51.5472005+08:00",
+    "watchdog": "dispatcher 600 seconds, not enforced by wrapper",
+    "permission_bypass": false
+  },
+  "completion": {
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "exit_code": 0,
+    "finished_at": "2026-10-10T23:07:31.7468764+08:00",
+    "wall_seconds": 160.1996759,
+    "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "final_status": []
+  },
+  "actual_meta": [
+    {
+      "role": "meta",
+      "type": "system.version",
+      "version": "0.43.0"
+    },
+    {
+      "role": "meta",
+      "type": "session.resume_hint",
+      "session_id": "session_01c9e97b-7bac-46b6-8db5-71e73d9d68cf",
+      "command": "kimi -r session_01c9e97b-7bac-46b6-8db5-71e73d9d68cf",
+      "content": "To resume this session: kimi -r session_01c9e97b-7bac-46b6-8db5-71e73d9d68cf"
+    }
+  ],
+  "actual_model": "unknown",
+  "actual_tool_counts": [
+    {
+      "Name": "Read",
+      "Count": 6
+    }
+  ],
+  "actual_tool_names": [
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read"
+  ],
+  "tool_result_count": 6,
+  "raw_sha256": "4f20664219b5d9454034f6ace02f3ad9f65b2638e3da470f8006d271c90f9cab",
+  "receipt_sha256": "fde7e2a7acab477c75ac9c46d11f5ce4d7183b4ed8d5e7ef5706333117d996c9",
+  "interpretation": "Supervision PASS only for accurately remaining blocked; no product G1 approval, finding closure or new writer authorization",
+  "tool_error_count": 0,
+  "tool_result_check": "All 6 Read results contain normal line-numbered requested file content; no tool error result observed",
+  "admission_input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/supervision-g1-r2/input-index.json",
+  "admission_input_index_sha256": "7f02647601eea1a69f36e15247b58e1e68482035e783ab284960eb89e82e23ae",
+  "administrative_checkpoint_sha256": "8c6317f06adaa905989625f50c59e64f8ab5787b213c06c934965b48604ad15a",
+  "administrative_source_result_sha256": "95f67531169050d7f58dc3063d786511e77c52c505dae830ddcc0edbf9d88515",
+  "administrative_checkpoint_capture_utc": "2026-10-10T15:04:51.4202013+00:00",
+  "owned_process_confirmed_exited": true
+}

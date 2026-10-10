@@ -1,0 +1,34 @@
+# G1第二轮内容复审 · 席B（原独立session续审，非作者/非集成/非监督）
+
+## 1. 绑定与读取范围
+
+候选 `2e9f192c8127956f09c619ff640d763b62369e30`，基线 `34bce56b`。实读：`input-index.json`、`finding-review-packet.txt`（含精确diff与六份作者回执）、`candidate-evidence.txt`（含r2-verify全文、双manifest、interface-log-directory.md、P1诊断/撤回/权限边界证据、调用元数据摘录）。manifest前后SHA一致（c4fc…，43文件）为我逐项自核一致；各文件SHA本身与新增interface-log-directory.md内容未独立重算，依赖协调者冻结原件（声明限度）。相对基线变更：archive/cleanup/cli/paths/runtime.py、test_cli/test_runtime.py，新增test_verification.py与interface-log-directory.md，与diff一致。
+
+## 2. 原finding逐项复审
+
+| finding_id | 结论 | 证据/位置 | 残余阻断 | owner |
+|---|---|---|---|---|
+| g1-kimi-B01 | **closed** | cleanup.py plan['source']!=FIXTURE即拒、核验/删除走常量；test_apply_cleanup_rejects_rebound_source绿（r2-verify) | 无 | P4 |
+| g1-kimi-B02 | **closed** | archive.py `_verify_target`幂等重入逐文件读回；两项changed_target_content测试绿 | 无 | P3 |
+| g1-kimi-B03 | **closed** | 无receipt预存目标拒绝；existing_target_without_receipt绿 | 无 | P3 |
+| g1-kimi-B04 | **closed** | paths `_reject_reparse_chain`接入root/create_root/write_json；archive/cleanup清单目标全走checked；8项junction测试全绿 | 无 | P3(P4调用点） |
+| g1-kimi-B05a–d | **closed** | plan存完整receipt、apply整体比对；subject绑定（111-114)；plan期读回（121-122)；authorize后立即重核source失配记failed。四组对应测试全绿 | 无 | P4 |
+| g1-kimi-B06 | **open** | `_resolve_log_dir`按isolated-log-directory/1接受`.runtime`自身及后代✓、25项回归绿✓；但组合验收仍2 ERROR：①test_verifier_checks_boundary…：`refusing to overwrite existing log files in .runtime\verification`（checks多次调用同一固定目录×runtime拒覆写，跨包冲突未解）；②test_log_dir_junction_escape_is_rejected：FileNotFoundError WinError3（新回归自身错误，截断堆栈不足以定产品/测试缺陷） | 两项ERROR未绿；①属P2×P6边界需集成者再裁定owner（疑似P6 checks按调用唯一子目录，须先具名补充，未对齐暂不派发）；②归P2同包诊断修复 | P2/集成者 |
+| g1-kimi-B07 | **closed** | _collect拆为_collect29/_pump_stream22/_supervise30/_classify_failure16行；r2-verify无>80硬失败，语义diff逐行核对不变 | 无 | P2 |
+| g1-kimi-B08 | **closed** | cli.py状态拒绝先read返回1+stderr、参数错误仍2；test_blocked_and_reconciliation…绿且断言收紧 | 无 | P5 |
+| g1-kimi-B09 | **open** | 机制测试仅证"人为持有目标文件可触发PermissionError"，不证历史根因；20轮×2用例无复发=未复现；作者"必然外部句柄"无证；r2-verify两项原失败用例现绿不构成关闭 | 根因未定；任何重试/合同变更须具名AGENTS例外+双席批准，我不预批 | P1/集成者 |
+| P7接管子项（W8) | **closed** | 实际session `agent-coop-g1-takeover-p7-verification-r1-20261010`，仅Write×1新增test_verification.py（5项有意义失败用例，r2全绿），verification.py/__init__.py/verify.yml有理由保留，无目的改写未发生；协调者test-metadata exit0 | 无（云CI实跑仍UNKNOWN) | P7 |
+
+作者/写集核验：首批p2/p3/p5误配PowerShell被收回（无final未接收）；替换批次5工具、实际deepseek-v4-pro逐session记录、写集与final_status一致；P4依赖P3归入后组合转绿符合附录条件；apply_cleanup42行内聚说明可接受。
+
+## 3. 本轮新增发现（仅报告，不授权自修）
+
+**g1-kimi-B10**（治理/权限边界，非产品写集）：触发=首批三作者工具误配PowerShell（已收回）+P1诊断作者越界写宿主memory两文件（已撤回留证，不回填合规）+静态证据示acceptEdits下精确allow不能约束写路径、候选profile(dontAsk+逐文件allow、--setting-sources none）未做正负路径实测。后果=writer可越写集/写宿主，违反"工具仅Read/Glob/Grep/Write/Edit"与profile固定合同。最小处置：下一writer派发前以独立审核批准的profile完成正负路径验证并留证；owner=发包人/集成者；scope=派发前置条件，非代码包。
+
+## 4. W1–W8（静态G1范围）
+
+W1 PASS（沿附录，reuse/CRLF证据齐）。W2 CHANGES_REQUESTED（仅B09悬置；Store/Runner未动、投影/暂停/对账测试全绿）。W3 PASS（静态）。W4 PASS（B08已闭；browser JS=UNKNOWN）。W5 PASS（静态）。W6 PASS（静态）。W7 PASS（静态）。W8 CHANGES_REQUESTED（组合verify exit1、2 ERROR属B06残余；P7子项已闭；云CI/live四角色实跑=UNKNOWN）。
+
+## 5. 停止结论
+
+**整体：CHANGES_REQUESTED（具名停止）**。阻断=B06两项ERROR（含一项跨包未对齐，须集成者具名裁定后单写集修复）+B09根因未定+B10派发前置。本票不授权第三轮修复自动派发，不构成监督/接收/合入/live；browser JS、云CI、live四角色保持UNKNOWN；原生Kimi监督仍缺席待补。

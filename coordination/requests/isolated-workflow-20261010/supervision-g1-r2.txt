@@ -1,0 +1,34 @@
+# 原生 Kimi 独立监督意见（G1 R2，非内容票/非接收/非 live 许可）
+
+候选 `2e9f192c8127956f09c619ff640d763b62369e30`；本席模型元数据无实证保持 unknown，session 仅为本次实际 resume 上下文。已只读核对 input-index 声明的 5 份输入及其中内嵌原件（调用归档、记忆撤回、R2 调用/恢复元数据、诊断元数据、接口澄清），未重读整仓。
+
+## S1 两席独立与 R2 绑定：准确
+- 两次 14:54Z CLI 尝试在 `agent-coop-g1-review-r2` 树返回 `No conversation found`，无 init/无 result/无工具调用，入口明确"exit0 不算审核成功"，未计票。
+- 14:57:43Z 恢复调用 root 为原 `agent-coop-g1-review`，actual_init 绑定原 session（glm-5.3 / kimi-k3-2，session id 与首轮一致），未见新会话伪称原 session；恢复成功未抹除两次失败原件。GLM Read9+Grep1、Kimi Read3，与两票自述读集一致，工具零错误。会话定位机制为源码+stat 静态证据，`history_read_or_copied=false`。
+
+## S2 逐项关闭与分级：准确
+- 关闭均由各原席在各自票内逐项作出（GLM B01–B12 表、Kimi B01–B09 表），无集成者代关。
+- 仍开放如实保留：日志重复目录（GLM B13/Kimi B06①，跨包 owner 未裁定）、junction 清理 WinError3（GLM B14/Kimi B06②，两席归因确信度不同，各按原票保留，未挑乐观结论）、历史 P1 WinError5 根因（GLM B11/Kimi B09 open/unknown）。20 轮未复现与人为持柄机制演示在两票及入口中均未当作根因关闭，正确。
+- 局部绿/exit0/作者交付/候选 commit/接收/main 合入/live 在入口与两票中均分开举证。
+
+## S3 过程边界：准确
+- 首批三调用擅加 PowerShell+允许 commit 已按 PID 核对收回（`unreviewed_tool_expansion_recalled=true`），原件保留、不从成本删除、不由测试通过追认。
+- P1 诊断越界写两份宿主记忆：撤回证据含 `VerifiedNewFile`/`ContentMatchedUnauthorizedWrite`/`Removed`，交付拒收，仅撤回两新增文件，违规不抹除。
+- auto-memory 开关与 dontAsk 候选 profile 仅静态证据、无正负路径验证，未被当作 OS 沙箱或已生效限制；Kimi B10/GLM B15/B16 均如实开放。未见以猜测回宽权限。
+
+## S4 成本/预算/停止点：准确
+- 首轮审核 8 次、修复 6+4 次、R2 失败 2 次+恢复 2 次全部保留计数；默认账户并发 cap4 与样例总调用 4 明确分开；R2 到两轮停止点，未自动发第三轮；当前 writer=0，无 live、无 main 合入、无 push、无业务清理、无定时器。R2 元数据（exit1、manifest 未变、SHA c4fc7865…）与 input-index 及入口一致。
+
+## S5 入口质量：准确
+- 当前入口与两席原件无矛盾；过时包状态均标注历史范围（34bce56b 首轮候选、首批/替代批次各有归属）。剩余阻断 owner 明确：B13/B14（发包人派发、原席关闭）、B06① owner 待集成者具名裁定、B09/B11（P1/发包人）、B10/B15/B16（发包人/集成者，下一 writer 前置）。
+- "待原生监督"标注本身正确，本票不构成循环阻断。
+
+## GLM B10b 专项
+- 事实：GLM 复审称未见 verification-g1-r1.md 的 2E/3E 运行归属标注修正，且该文件不在候选 manifest 内；入口已声明历史原件不改写、区分绑定在结果入口、输入未使该席确认，故保持 open、owner=Codex 集成者。此处置正确。
+- 输入可见性判断：属证据可见性缺口（同前次导航漏解释同类），非该席失职；关闭证据应为集成者在后继可维护入口提供明确 2E/3E 标注指针（历史原件不改写），并由 GLM 原席在受权流程内确认。两轮预算已用尽，该确认路径须由发包人/用户显式授权，任何人不得代关或自动关。
+
+## 监督 blocking
+无新增 g1-native-S 阻断。剩余风险（非本轮纠正项）：宿主记忆越界处置已完成但写路径 profile 未验证（B10 前置）；junction WinError3 两席归因差异保留；WinError5 根因 unknown。历史偏离（PowerShell 扩权、宿主记忆写入）不可追认，入口现状符合。
+
+## 总评
+**PASS**（监督意见）——监督认可"继续 blocked"这一状态、责任人及后继权限记录准确。此 PASS 仅为监督核验意见，不是 G1 内容票、不是接收、不是 main 合入、不是 live 许可；不关闭任何原席 finding，不授权第三轮修复或新 writer。

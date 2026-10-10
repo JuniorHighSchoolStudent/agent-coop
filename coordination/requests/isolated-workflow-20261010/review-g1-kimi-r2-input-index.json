@@ -1,0 +1,52 @@
+{
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "root": "D:/project/agent-coop-g1-review",
+  "seat": "kimi",
+  "baseline": "34bce56b624cf521b33dc5b4916bd1c8e7711536",
+  "manifest_sha256": "c4fc78655129d96e8729f3a45cd7fa9eb63b8cb57653b91f49a1b6294877418c",
+  "generated_from_exact_originals": true,
+  "files": [
+    {
+      "path": "coordination/.runtime/review-r2/kimi/candidate-evidence.txt",
+      "bytes": 61943,
+      "sha256": "9352ce3ebefe1a730718b1240ae7ac6517cf60f803c575822ea7a33f924b24f9"
+    },
+    {
+      "path": "coordination/.runtime/review-r2/kimi/finding-review-packet.txt",
+      "bytes": 48245,
+      "sha256": "a494a2479dd958a0164616b5e5f8a65a4d3b6a4007dc3930f784f1ff77edcf9b"
+    },
+    {
+      "path": "coordination/.runtime/review-r2/kimi/original-boundary-addendum.txt",
+      "bytes": 4472,
+      "sha256": "5bc775a83faa815d0c9ed08c103d5485e26d8a0f875572f2b6767dd6f3195471"
+    },
+    {
+      "path": "coordination/.runtime/review-r2/kimi/original-review.txt",
+      "bytes": 6552,
+      "sha256": "fa86fdf6a6b0a26a286c776dc22d794db0cf7709e2046c73bbd2d558bef0d8d4"
+    },
+    {
+      "path": "coordination/.runtime/review-r2/kimi/r2-manifest-after.json",
+      "bytes": 4415,
+      "sha256": "c4fc78655129d96e8729f3a45cd7fa9eb63b8cb57653b91f49a1b6294877418c"
+    },
+    {
+      "path": "coordination/.runtime/review-r2/kimi/r2-manifest-before.json",
+      "bytes": 4415,
+      "sha256": "c4fc78655129d96e8729f3a45cd7fa9eb63b8cb57653b91f49a1b6294877418c"
+    },
+    {
+      "path": "coordination/.runtime/review-r2/kimi/r2-verification-metadata.json",
+      "bytes": 279,
+      "sha256": "e2024ceeaeb504d46fa55240027fe97161e5ace62213b8adca6272ca0472a5b6"
+    },
+    {
+      "path": "coordination/.runtime/review-r2/kimi/r2-verify.txt",
+      "bytes": 20905,
+      "sha256": "ec1317d56c6bfae3df37d5e8c1680f21c026b12a88b90585c93484ff9a339680"
+    }
+  ],
+  "other_seat_opinion_included": false,
+  "status": "review input only, not acceptance"
+}

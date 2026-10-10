@@ -1,0 +1,73 @@
+{
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "model": "kimi-k3-2",
+    "seat": "kimi",
+    "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "round": "2",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\review-g1-kimi-r2.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "f5bb2d866e5c111b4428111223b25ccd3d01850a63d87b0fc90dff1845913040",
+    "started_at": "2026-10-10T22:57:43.1376736+08:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "prior_attempts": [
+        "review-g1-glm-r2",
+        "review-g1-kimi-r2"
+      ],
+      "prior_result": "No conversation found; no init or content review",
+      "mechanism": "CodeBuddy 2.164.0 SessionAdmission.findExistingSession L2809/12938208 -> SessionStore.get L2817/13125553 current project; getStorageDir L2817/13110000 -> getHomeProjectDir L2565/10547822 -> compressed realpath cwd",
+      "source_sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65",
+      "original_session_stat": {
+        "glm_bytes": 735176,
+        "kimi_bytes": 729734,
+        "directory": "C:/Users/june/.codebuddy/projects/d-project-agent-coop-g1-review"
+      },
+      "history_read_or_copied": false,
+      "switch_receipt": "C:/Users/june/AppData/Local/Temp/agent-coop-g1-freeze-20261010/r2-original-cwd-switch.json",
+      "manifest_sha256": "c4fc78655129d96e8729f3a45cd7fa9eb63b8cb57653b91f49a1b6294877418c",
+      "scope": "static mechanism plus file-stat evidence; one recovery per original session, same candidate/read-only tools"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+  },
+  "completion": {
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "exit_code": 0,
+    "finished_at": "2026-10-10T23:01:53.5179738+08:00",
+    "wall_seconds": 250.3803002,
+    "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "final_status": []
+  },
+  "actual_init": [
+    {
+      "model": "kimi-k3-2",
+      "session_id": "agent-coop-g1-kimi-r1-34bce56b-20261010"
+    },
+    {
+      "model": "kimi-k3-2",
+      "session_id": "agent-coop-g1-kimi-r1-34bce56b-20261010"
+    }
+  ],
+  "actual_tools": [
+    {
+      "Name": "Read",
+      "Count": 3
+    }
+  ],
+  "tool_error_count": 0,
+  "result": [
+    {
+      "subtype": "success",
+      "is_error": false
+    }
+  ],
+  "raw_sha256": "d1c3dba04b9c6be186b4ece16975be3abe9e0b617e0477730501f06491b250cf",
+  "receipt_sha256": "81474146f3754d6f7f8d8269810ff70a93b4ad51e3b18ff8113151c1491ba65c"
+}

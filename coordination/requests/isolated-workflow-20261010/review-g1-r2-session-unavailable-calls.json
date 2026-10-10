@@ -1,0 +1,74 @@
+[
+  {
+    "seat": "glm",
+    "invocation": {
+      "root": "D:\\project\\agent-coop-g1-review-r2",
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "model": "glm-5.3",
+      "seat": "glm",
+      "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "resume": "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "round": "2",
+      "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\review-g1-glm-r2.prompt.txt",
+      "additional_read_directory": "",
+      "prompt_sha256": "75771faa30f7a92d244b410d4af05ae14a706376ecb88d257241a0e0ad53c1cf",
+      "started_at": "2026-10-10T22:54:12.6435401+08:00",
+      "max_turns": 20,
+      "tools": "Read,Glob,Grep",
+      "handoff_manifest": "",
+      "purpose": "review",
+      "permission_mode": "default",
+      "strict_mcp_empty": true,
+      "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+    },
+    "completion": {
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "exit_code": 0,
+      "finished_at": "2026-10-10T22:54:14.4194736+08:00",
+      "wall_seconds": 1.7759335,
+      "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "final_status": []
+    },
+    "error_sha256": "43c8fa66068fe9e2f9caa735a74f2b2202f7d4304f0ad6f1bbaa47b43d70bd1e",
+    "actual_model": null,
+    "actual_session": null,
+    "valid_review_final": false,
+    "disposition": "session unavailable; not a content review or approval"
+  },
+  {
+    "seat": "kimi",
+    "invocation": {
+      "root": "D:\\project\\agent-coop-g1-review-r2",
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "model": "kimi-k3-2",
+      "seat": "kimi",
+      "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "round": "2",
+      "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\review-g1-kimi-r2.prompt.txt",
+      "additional_read_directory": "",
+      "prompt_sha256": "e9e9e27f3e65c6f137090dbf67e5bddc43019f3f8fb36917240be3cd82f3354f",
+      "started_at": "2026-10-10T22:54:12.6472138+08:00",
+      "max_turns": 20,
+      "tools": "Read,Glob,Grep",
+      "handoff_manifest": "",
+      "purpose": "review",
+      "permission_mode": "default",
+      "strict_mcp_empty": true,
+      "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper"
+    },
+    "completion": {
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "exit_code": 0,
+      "finished_at": "2026-10-10T22:54:14.4015515+08:00",
+      "wall_seconds": 1.7543377,
+      "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "final_status": []
+    },
+    "error_sha256": "783711af707b4531fe5a30d68d7064d644fc939d6c47de1bd0cf92ac1f68a585",
+    "actual_model": null,
+    "actual_session": null,
+    "valid_review_final": false,
+    "disposition": "session unavailable; not a content review or approval"
+  }
+]

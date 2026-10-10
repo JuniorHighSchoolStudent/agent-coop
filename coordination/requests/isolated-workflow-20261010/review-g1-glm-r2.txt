@@ -1,0 +1,48 @@
+# G1 第二轮内容复审（席A · glm-5.3 · 原session续）
+
+## 1. 候选绑定与证据口径
+候选 `2e9f192c8127956f09c619ff640d763b62369e30`（基线34bce56b）；43文件manifest前后一致、`manifest_unchanged=true`、SHA256链（c4fc7865…）**依赖协调者证据**（本人无shell不可复算，input-index声明`generated_from_exact_originals=true`，与冻结元数据自洽）。**本人直接核对**：r2-verify全文（139 tests/2E/2skip/exit1）、修复diff全文、paths.py/cleanup.py/runtime.py(部分)/test_runtime.py(部分)/test_gates.py当前树内实读与diff一致；作者回执、repair调用元数据、P1诊断证据、interface-log-directory/1为包内原件。r2准入恢复（两次"No conversation found"后cwd切换）已披露，本席即原席续审。
+
+## 2. 原finding逐项
+
+| ID | 状态 | 证据/位置 | 残余 | owner |
+|---|---|---|---|---|
+| B01 | closed（维持） | 输入可达性已证 | 无 | — |
+| B02 | **open**（部分修复） | 边界按isolated-log-directory/1实现（runtime.py:27-42，`.runtime`本身及后代；根外/`.runtime`外/链接拒绝）；pause_resume、review_wrong_verdict转绿 | 验收三跨包测试仅2/3绿：test_verifier仍ERROR（B13）；junction逃逸测试ERROR（B14） | P2 |
+| B03 | **closed** | `_collect`拆为29/22/30/16行，r2-verify无runtime硬限FAIL、无软目标项；行为语义未变 | 无 | P2 |
+| B04 | **closed** | paths.py:28-37 `_reject_reparse_chain`接入`_require_clean_root`/`create_root`/`write_json`（本人实读核验）；4项junction测试绿 | 无 | P3 |
+| B05 | **closed** | archive.py `_verify_target`+目标全过`checked`+无receipt存在性拒绝+幂等前读回（diff核验）；5项原失败全绿 | 无 | P3 |
+| B06a | **closed** | cleanup.py:111-122 subject绑定+plan读回、132-133/187-190完整receipt比对、177-183 FIXTURE唯一、197-204 authorize后源再核（本人实读核验）；对应5项测试绿 | 无 | P4 |
+| B06b | **closed** | cleanup.py:143 `checked(root,entry['target'])`；junctioned_archive/backup_parent绿 | 无 | P4 |
+| B07 | **closed** | cli.py resume预检→干净stderr+exit 1；参数错误保持2；测试收紧未放宽；测试绿 | 无 | P5 |
+| B08 | **closed** | 真实接管证据：deepseek-v4-pro/session `agent-coop-g1-takeover-p7-verification-r1-20261010`、exit0、5工具、唯一写test_verification.py（5测试绿）；verification.py/__init__/verify.yml哈希未变（无目的重写未发生）；不自签 | 无 | P7/协调者 |
+| B09 | **closed**（本轮修复派发已用独立worktree：fix-p2/p3/p4/p5/p7/diagnostic-p1各自独立树） | 新偏离另立B15/B16；产品级资源隔离仍属后继，不因本项关闭而宣称 | — | 发包人 |
+| B10a | closed（维持，CRLF已证） | — | 无 | — |
+| B10b | **open** | verification-g1-r1.md的2E/3E运行归属标注修正未见证据（该文件不在候选manifest内） | 集成者补标注 | Codex集成者 |
+| B11 | **open/unknown** | 20轮未复现+受控句柄机制演示≠历史根因；作者"必然外部句柄"无证断言不采信；诊断测试未入候选（正确） | 根因未明；不批准重试修复跳过审核 | P1/发包人 |
+| B12 | closed（自纠记录） | 33项=32通过/1错误已登记 | 无 | 本席 |
+
+## 3. 本轮新增发现（仅报告，不授权自修）
+
+**g1-glm-B13｜跨包P2×P6｜runtime.py:207-215 × checks.py:39-42**：`_write_logs`禁止覆写既有日志 × checks固定`.runtime/verification`目录。触发：test_gates.py:33首次validate_feature失败时已写日志，:42同根二次调用即`ValueError: refusing to overwrite`（r2-verify ERROR）。此为B02修复后暴露的潜在跨包合同缺口——isolated-log-directory/1未定义重复调用日志命名/覆写策略。最小修复：接口owner裁定策略（每次调用唯一子目录或显式覆写/追加语义）后单owner落码；复审=test_verifier转绿且25+3 runtime回归不回退。**scope_needs_alignment**。
+
+**g1-glm-B14｜P2｜tests/test_runtime.py:333**：junction逃逸测试`addCleanup(os.rmdir, junction)`——unittest中tearDown先于addCleanup回调执行，tearDown的`self._tmp.cleanup()`已删junction，随后rmdir抛FileNotFoundError(WinError 3)（两次运行确定性复现，ERROR路径吻合）。断言本身已通过（junction拒绝实际生效），但测试按ERROR计红，阻断B02验收证据。最小修复：测试体内try/finally删junction或守卫rmdir；写集仅tests/test_runtime.py。**scope_supported**（机制为本人静态高置信推断，缺陷确定性成立）。
+
+**g1-glm-B15｜流程/发包人**：首批repair调用（p2/p3/p5-r1）工具含PowerShell，超出5工具边界；均exit1收回、无final、`unreviewed_tool_expansion_recalled=true`。合同：runtime-tool-evidence“不放宽权限”、对齐B各包5工具。处置：过程记录+后续派发强制执行；不改代码。**scope_supported**（流程）。
+
+**g1-glm-B16｜流程/发包人**：P1诊断作者以Write越界写宿主memory两文件；已逐字节备份并撤回、交付拒收、证据保留——撤回不抹除违规。后续P1工作须先过根因+合同审核，不得以此事件批准重试。**scope_supported**（流程记录）。
+
+## 4. W1–W8
+- W1 复用/底座：**PASS**（证据未变）。
+- W2 Store/Runner：**PASS**（store/runner哈希与r1一致无新改动；test_store/test_runner全绿；B11根因unknown作为可靠性未决保留，不虚称已解）。
+- W3 运行时/协议：**CHANGES_REQUESTED**（B02未闭合：B13、B14）。
+- W4 暂停/续作/Web：**PASS**（B07关闭；CLI/Web测试绿）。
+- W5 精确门禁：**CHANGES_REQUESTED**（test_verifier ERROR即B13阻断验证门禁链）。
+- W6 归档/备份：**PASS**（B04/B05关闭，test_archive全绿）。
+- W7 清理：**PASS**（B06a/b关闭，cleanup相关全绿）。
+- W8 验证/CI/规模/状态：**CHANGES_REQUESTED**（verify exit1=2E未绿；B08已关闭；软目标内聚说明仍缺：store.py 402、adapters 57/49、runner 44、test_archive 465、test_runtime 456、test_runner:225 47——P4的apply_cleanup 42与P2拆分已附说明）。
+
+## 5. 结论与停止点
+**整体：CHANGES_REQUESTED**（仅限本受审静态G1范围）。剩余阻断：**B13、B14**（B02待其转绿后关闭）、B10b、B11(unknown)、B15/B16（流程记录）。browser JS、云CI实跑、live四角色实跑：**UNKNOWN**，不虚称完成；静态G1与live许可分开，原生Kimi监督未发生、非可选。
+
+具名停止结论：第二轮内容复审到此为止。按“最多两轮”规则，**不自动发第三轮修复**；B13/B14的修复包须由专门发包人按本票stable finding_id派发（B13先边界对齐、B14单包即发），修复后是否重新出票由发包人/监督按流程决定，不由本席预支。局部关闭不构成独立监督、接收、合入或发布。
