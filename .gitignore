@@ -1,0 +1,26 @@
+# Local credentials and host configuration
+.env
+.env.*
+!.env.example
+*.local.yaml
+*.local.json
+
+# Python / frontend build artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+node_modules/
+dist/
+build/
+
+# Local collaboration runtime and projections
+coordination/.runtime/
+coordination/state/
+coordination/STATUS.md
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

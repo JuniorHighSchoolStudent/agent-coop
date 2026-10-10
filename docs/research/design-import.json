@@ -1,0 +1,16 @@
+{
+  "source_project": "trading_system",
+  "source_path": "docs/plans/specs/2026-10-10-multi-agent-coordination-tool-design.md",
+  "source_sha256": "191afe036f64a5180d80ba010cf6c5189592f53b5eafa093033d3d85c523fa09",
+  "imported_on": "2026-10-10",
+  "destination": "docs/design.md",
+  "scope": "通用设计提取到独立仓库；原项目仅保留接入待办，不声明实施或架构吸收完成",
+  "authorization": "用户要求开始新建仓库，并指定 CodeBuddy + DeepSeek V4-Pro 为可替换的推荐执行者",
+  "changes": [
+    "移除交易系统专属 frontmatter 与全仓验证状态",
+    "明确独立仓库设计 owner",
+    "增加推荐执行者与 OpenCode 扩展边界",
+    "公开设计保留业务实践的通用结论，移除本机绝对路径、业务代码清单及无关环境快照",
+    "确认 glm-5.3、kimi-k3-2 评审配置及按宿主清单推荐模型的要求"
+  ]
+}

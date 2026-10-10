@@ -1,0 +1,39 @@
+# 设计示例，尚无配置解析器；不会启动任何 agent。
+schema_status: proposed
+profiles:
+  recommended_executor:
+    runtime: codebuddy
+    model: deepseek-v4-pro
+    permission_policy_ref: project-writer
+    account_group: user-configured-codebuddy
+    fallback_policy: disabled
+  glm_reviewer:
+    runtime: codebuddy
+    requested_model_label: glm3
+    model: glm-5.3
+    resolution_status: user_confirmed_not_live_verified
+    permission_policy_ref: project-reviewer
+    account_group: user-configured-codebuddy
+    fallback_policy: disabled
+  kimi_reviewer:
+    runtime: codebuddy
+    requested_model_label: kimi-k3
+    model: kimi-k3-2
+    resolution_status: user_confirmed_not_live_verified
+    permission_policy_ref: project-reviewer
+    account_group: user-configured-codebuddy
+    fallback_policy: disabled
+roles:
+  executor:
+    description: 在获准项目范围内完成受派任务并提供可验证交付物
+    profile: recommended_executor
+  project_reviewer:
+    description: 独立核对项目规则、需求覆盖、消费者和验收证据
+    profile: glm_reviewer
+  reliability_reviewer:
+    description: 独立核对调度、握手、取消、恢复及版本边界
+    profile: kimi_reviewer
+
+# 切换为 OpenCode 时先注册和验证该 runtime，创建用户实际可用的
+# provider/model profile，再改变 executor.profile；不修改 workflow 拓扑。
+# 权限策略、账号组与凭证均由用户环境显式配置，本例不授予权限。
