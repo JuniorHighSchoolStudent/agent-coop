@@ -72,35 +72,54 @@ def _collect(proc, timeout_seconds, output_limit_bytes):
     exceeded = [False]
     reader_errors = []
 
-    def pump(stream, buf):
-        try:
-            while True:
-                chunk = stream.read(65536)
-                if not chunk:
-                    return
-                with lock:
-                    if exceeded[0]:
-                        return
-                    room = output_limit_bytes - total[0]
-                    if room <= 0:
-                        exceeded[0] = True
-                        return
-                    take = chunk[:room]
-                    buf.extend(take)
-                    total[0] += len(take)
-                    if len(chunk) > room:
-                        exceeded[0] = True
-                        return
-        except Exception as exc:
-            reader_errors.append(exc)
-
-    out_thread = threading.Thread(target=pump, args=(proc.stdout, out),
-                                  daemon=True)
-    err_thread = threading.Thread(target=pump, args=(proc.stderr, err),
-                                  daemon=True)
+    out_thread = threading.Thread(
+        target=_pump_stream,
+        args=(proc.stdout, out, lock, total, exceeded, reader_errors,
+              output_limit_bytes), daemon=True)
+    err_thread = threading.Thread(
+        target=_pump_stream,
+        args=(proc.stderr, err, lock, total, exceeded, reader_errors,
+              output_limit_bytes), daemon=True)
     out_thread.start()
     err_thread.start()
 
+    timed_out, parent_alive, readers_alive = _supervise(
+        proc, out_thread, err_thread, exceeded, timeout_seconds)
+
+    failure = _classify_failure(
+        reader_errors, exceeded[0], parent_alive, timed_out, readers_alive,
+        proc.returncode)
+
+    _close(proc.stdout)
+    _close(proc.stderr)
+    return bytes(out), bytes(err), failure
+
+
+def _pump_stream(stream, buf, lock, total, exceeded, reader_errors,
+                 output_limit_bytes):
+    try:
+        while True:
+            chunk = stream.read(65536)
+            if not chunk:
+                return
+            with lock:
+                if exceeded[0]:
+                    return
+                room = output_limit_bytes - total[0]
+                if room <= 0:
+                    exceeded[0] = True
+                    return
+                take = chunk[:room]
+                buf.extend(take)
+                total[0] += len(take)
+                if len(chunk) > room:
+                    exceeded[0] = True
+                    return
+    except Exception as exc:
+        reader_errors.append(exc)
+
+
+def _supervise(proc, out_thread, err_thread, exceeded, timeout_seconds):
     timed_out = False
     deadline = time.monotonic() + timeout_seconds
     while True:
@@ -129,26 +148,25 @@ def _collect(proc, timeout_seconds, output_limit_bytes):
         time.sleep(0.02)
     readers_alive = out_thread.is_alive() or err_thread.is_alive()
 
-    if reader_errors:
-        failure = f'output reader error: {reader_errors[0]}'
-    elif exceeded[0]:
-        failure = 'output limit exceeded'
-    elif parent_alive:
-        failure = 'termination failed (process still alive)'
-    elif timed_out or readers_alive:
-        if readers_alive and proc.returncode is not None:
-            failure = ('timeout exceeded (parent exited, '
-                       'output readers still alive)')
-        else:
-            failure = 'timeout exceeded'
-    elif proc.returncode != 0:
-        failure = f'exit code {proc.returncode}'
-    else:
-        failure = None
+    return timed_out, parent_alive, readers_alive
 
-    _close(proc.stdout)
-    _close(proc.stderr)
-    return bytes(out), bytes(err), failure
+
+def _classify_failure(reader_errors, exceeded, parent_alive, timed_out,
+                      readers_alive, returncode):
+    if reader_errors:
+        return f'output reader error: {reader_errors[0]}'
+    if exceeded:
+        return 'output limit exceeded'
+    if parent_alive:
+        return 'termination failed (process still alive)'
+    if timed_out or readers_alive:
+        if readers_alive and returncode is not None:
+            return ('timeout exceeded (parent exited, '
+                    'output readers still alive)')
+        return 'timeout exceeded'
+    if returncode != 0:
+        return f'exit code {returncode}'
+    return None
 
 
 def _terminate_tree(proc):
