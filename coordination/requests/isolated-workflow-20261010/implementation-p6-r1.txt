@@ -1,0 +1,45 @@
+已完成本包检查与实现。以下为最终交付说明。
+
+## 实际修改
+
+**`agent_coop/gates.py`**（2 处实际代码修复，其余为已接受的 Codex 草稿）
+
+1. `evidence()`（gates.py:46）— 原文对缺失/不可读证据会抛裸 `FileNotFoundError`。现捕获 `OSError` 转为 `ValueError: evidence missing or unreadable: <name>`，使证据缺件成为清晰可追踪失败。
+2. `verify_gate` 重构（gates.py:67-109）— 原实现对 `receipt['adapter']`、`receipt['actual_model']`、`receipt['result']` 用下标访问，缺字段会抛 `KeyError`（非门禁语义）。抽出私有 `_receipt_identity(role, receipt, profile, current)`，对回执缺字段/身份给出带角色名的明确 `ValueError`：
+   - 缺/`unknown` session → `missing runtime session identity: {role}`
+   - `exit_code != 0` → `non-zero exit code: {role}`
+   - adapter 不符 → `adapter mismatch for {role}`
+   - model 不符 → `actual model differs from pinned profile: {role}`
+   - 评审回执缺 `result` 对象 → `review receipt missing result object: {role}`
+
+   公共门禁接口（`verify_gate`/`evidence`/`check_verdict`/`subject`/`validate_binding`/`cleanup_authority` 等）签名与语义均未变。
+
+**测试**（新增 9 条，聚焦你点名的缺口）
+
+- `tests/test_gates.py:17` `test_verdict_rejects_non_object_result` — 非对象评审结果被拒。
+- `tests/test_sample.py` 5 条（新增 `_mutate_evidence` 辅助）：
+  - 回执缺 adapter、评审回执缺 result、review 错误 subject_digest、session 身份缺失、冻结 config 被篡改 → 各自断言清晰 `ValueError` 文本。
+- `tests/test_flow.py` 3 条：
+  - `test_verification_failure_blocks_without_verification_evidence` — 验证器（真实子进程）语义失败 → blocked at verify，无 verification.json 落盘。
+  - `test_verification_evidence_write_failure_blocks` — 补丁 `write_json` 仅对 verification.json 抛 OSError → blocked，calls_used=1。
+  - `test_review_wrong_verdict_saves_receipt_and_keeps_budget` — 评审 CHANGES_REQUESTED 仍先落 review_a.json、calls_used=2、不重派。
+
+## 接受的草稿（未无目的重写）
+
+- `sample.py`、`checks.py`、`supervisor-agent.md`：全部接受，未改。它们已正确实现合同：steps 固定、`dispatch` 调用前扣费、实现/评审错误先 `record` 正式回执再判、`verify` 用 `run_bounded` 有界执行、`subject_digest` 绑定 source/verifier/config、`cleanup_authority` 从 Store.data 取 hold、archive/backup/cleanup 走提供方 API 固定 `scratch/fixture.log`。
+- `gates.py` 的 `check_verdict`/`validate_binding`/`subject`/`subject_digest`/`verified_subject`/`cleanup_authority`：逻辑正确，接受；仅改了 `evidence` 与 `verify_gate` 两处。
+
+## 公共接口
+
+无变更。`sample.initialize(path, profiles)`、`sample.handlers(root)` 及 `gates` 全部门禁接口保持稳定；新增 `_receipt_identity` 为私有辅助，不改提供方任何契约。
+
+## 需验证（Codex 执行）
+
+- 运行 `python -m agent_coop verify`（或 pytest）跑全部测试；预期原 11 + 新增 9 共 20 条。
+- 我无 Shell，不能自报通过/RED，未声称已实跑。
+
+## 未决问题
+
+1. `verify_gate` 未复核回执的 `requested_session_id == session_id`（CodeBuddy 严格相等在 `adapters.parse` 已强制，此处为纵深防御）。加该检查会破坏 test_sample 的 fixture 回执（无该字段），故未加。若要求门禁层复核，需先补全 fixture 字段。
+2. `validate_profiles` 对调用方 profile 缺字段（如 `tools`）仍抛 `KeyError` 而非明确 `ValueError`。这属于调用方契约而非「模型交付」，本轮未改，建议按需另立小项。
+3. 验证器语义失败经 `run_bounded` 的 `RuntimeError('exit code N')` 传播，message 未含更细断言位置；属 P2 运行时可观测性，不影响阻断正确性。

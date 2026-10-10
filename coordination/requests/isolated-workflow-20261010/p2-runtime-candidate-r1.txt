@@ -1,0 +1,32 @@
+修复完成，三文件已更新（runtime.py、adapters.py、tests/test_runtime.py），未触碰 Store/Runner/其它路径。
+
+## 修复要点
+
+**tests/test_runtime.py（唯一 error）**
+- `test_success_returns_receipt` 的临时 Python 脚本 `"is_error":false` → `"is_error":False`（脚本内是 Python 布尔，原 `false` 触发 NameError/exit1）；JSONL fixture 的 `false` 未动。
+
+**runtime.py**
+- `_resolve_log_dir`：`from .paths import checked`，`checked(root, '.runtime/logs')` 重验 root 标识与 `.runtime` 内 log 目标，`resolve()` 比对拒绝绝对逃逸/links/junction/root 外；不修改 paths.py。
+- `_validate_budget`：`timeout_seconds` 正有限、`output_limit_bytes` 正整数，否则 ValueError。
+- `_collect` 重写：合并总字节在读时截断到预算（非两流各 cap）；主循环同时看父进程与 reader 完成，统一 wall-clock deadline 覆盖到 EOF；父退出而 reader 仍活（孤儿持 pipe）→ 显式 `timeout exceeded (parent exited, output readers still alive)` 受限失败，不伪成功；仅本次 Popen 父仍活才 `taskkill /T`；终止后 5s 有界 grace，仍活/termination 失败显式报错；正常与失败都 `_close` 回收 pipe 句柄（消除 ResourceWarning）。
+- `_write_logs`：分离 `stdout.log`/`stderr.log` 原始字节、无拼头、合计<=limit、拒绝覆盖既有历史文件、写失败直接抛（不吞）。
+- decode 用严格 `utf-8`（不再 `errors='replace'` 伪成功）；hash 对精确字节。
+- `_verify_file_hash`：必需字段、绝对路径、常规文件、真实 SHA；Kimi `agent_file` 必需；无 fallback。
+
+**adapters.py**
+- `raw_text`：CB=`result_event['result']` 最终纯文本、Kimi=`final_content`，不整段 stdout。
+- CB `tool_errors` 读 `type='user'/message.content/type='tool_result'/is_error`；Kimi `role='tool'` 缺 `is_error` 记 `tool_errors_unknown` 不硬 0；`tool_summary` 只计数摘要。
+- `_check_tools`：越 profile.tools 阻断；`tools` 缺失按空集处理不默许无限权限。
+- `_events`：坏 JSONL/非对象行抛 `ValueError('invalid JSONL line')`/`('not a json object')`，仅空白行跳过。
+- `_result_object`：只收字符串解为对象，dict 假协议拒绝。
+- CB `is_error` 必须显式 `False`（`is not False` 判 missing）；Kimi `resume_hint` 非空字符串；model unknown 保持 None。
+- `command`：`max_turns` 必须正整数，缺失/0/负/字符串抛 ValueError，无静默默认。
+
+## 新增回归测试
+raw_text 仅 final、允许工具错误计数不丢、越工具名阻断、坏 JSONL/非 string result 拒绝、缺 max_turns 拒绝、日志不出 root、合并落盘 <=limit、父退出+child 持 pipe 有界失败（ready 标识证明场景，子 3s 自结束）、无 ResourceWarning 成功。
+
+## 边界说明
+- `tests/test_runtime.py` 现约 416 行（超 300 软目标、<500 硬限）：因单文件聚合 adapter 协议正负例 + run_bounded 真实子进程边界 + invoke 收据三类内聚场景，未压行/无语义拆分。
+- `checked(root,'.runtime/logs')` 依赖 paths 作者已提供的多组件相对路径校验语义；若其仅支持单组件，由集成者统一收敛。
+
+未运行测试（无 shell），不声称通过；请集成者 `python -m unittest discover -s tests` 实际运行。

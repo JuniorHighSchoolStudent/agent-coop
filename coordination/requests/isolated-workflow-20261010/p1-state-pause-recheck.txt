@@ -1,0 +1,6 @@
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.137s
+
+OK

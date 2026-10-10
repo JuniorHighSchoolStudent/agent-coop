@@ -1,0 +1,30 @@
+已完成五文件小包。以下是原始回执。
+
+## 回执
+
+**接手声明**：本实现是接手现有 Codex 未接收草稿（`coordination/requests/isolated-workflow-20261010/` 的 interfaces.md 与 interface-amendment.md 所定义的 G0 冻结接口）并按其修补，非从零自研，也非为改写而改写。
+
+**实际修改文件与行为/测试**：
+
+1. `agent_coop/cli.py`
+   - 新增 `_validate_args`：`run --max-steps` 为负时报 `--max-steps must be non-negative`；`serve --port` 不在 0..65535 报错。校验在 `checked`/`Store`/`Runner`/`serve` 之前执行，非法参数不创建任何文件、不动 Store。`--max-steps 0` 保留 Runner 现有语义（零步返回）。
+   - `main` 的异常捕获补充 `sqlite3.Error`，把 Store 损坏等可预期数据库错误转成简洁 `agent-coop: …` 到 stderr、退出码 2，不留 traceback。CLI 仍只调用 Store/Runner/sample，不自行创建调度器、不改预算、不投模型；`resume` 只走 `Store.resume()`（仅解除正常暂停），blocked/reconciliation 退出码 1 且不被清除。
+
+2. `agent_coop/web.py`
+   - `/api/status` 对 `RuntimeError/ValueError/OSError/sqlite3.Error` 返回 503 JSON（`error: unavailable` + `detail`），带 `Cache-Control: no-store`，不再掉连接。
+   - 前端 `refresh()` 失败时把 phase 置 `unavailable`、meta 置 `stale`、mode 置 `unknown`、清空步骤与错误，不再保留旧成功态。新增 `mode` 展示：读 `state.config.mode`，缺失或非字符串显示 `unknown`，不假报 live。保留 `local_only`/「未合入或发布」/「无 OS 定时任务」提示，仍监听 127.0.0.1、只读、无写 API（POST 仍 501）。
+
+3. `tests/test_cli.py`（新增，保留原有 3 项有用测试）
+   - `test_status_pause_resume_persist_same_store`：真实子进程 status/pause/resume 持久同一 Store，revision 递增、paused 翻转。
+   - `test_blocked_and_reconciliation_are_nonzero_and_not_cleared`：两态 status/resume 均非零且 phase 不被 resume 清除。
+   - `test_run_rejects_negative_max_steps_without_side_effects`：负值拒绝且 revision 不变、不产生 run.lock。
+   - `test_run_accepts_zero_max_steps`、`test_serve_rejects_out_of_range_port`、`test_corrupt_store_yields_clean_nonzero_result`（无 traceback）。
+
+4. `tests/test_web.py`（新增，保留原有 `test_status_tracks_pause_and_rejects_write`）
+   - `test_status_exposes_config_mode`、`test_status_tracks_revision_across_updates`（SQLite 实时 revision）、`test_read_failure_returns_error_and_no_cache`（损坏 SQLite → ≥400 + no-store + unavailable）、`test_page_marks_mode_local_only_and_unavailable`。fixture 全部 `{'mode':'test'}`，无 fake live 入口。
+
+**未修改而保留的合理实现**：`agent_coop/__main__.py` 无需改动（`raise SystemExit(main())` 已正确传递退出码）；`Store`/`Runner`/`sample`/`paths`/`verification` 等上游文件未动，`resume` 与 `Runner` 的 0 步语义沿用冻结接口。
+
+**未执行测试的事实、依赖与建议验收**：我无 Shell，未运行 `python -m unittest tests.test_cli tests.test_web -v`，因此不能声称观察到 RED 或测试通过；亦未运行 `git diff --check` 与 source_limits（这些由协调者执行）。建议验收顺序：先由协调者运行上述 unittest（失败用例应已由新实现覆盖），再跑 `python -m agent_coop verify` 核对源码规模与文档检查。本回执不含自审 PASS，也未声称合入；是否接收由独立评审与监督者判定。
+
+**潜在上游提示（供 owner，未越界修）**：`Store.read()` 在 SQLite 损坏时抛 `sqlite3.DatabaseError`（非 `OperationalError`），现由 CLI/Web 各自捕获 `sqlite3.Error` 兜底；若 owner 希望统一语义，可在 Store 层归一为 RuntimeError，但不影响本切片。

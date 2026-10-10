@@ -1,0 +1,26 @@
+纠正完成，仅改 `tests/test_runtime.py`（重写）+ `tests/test_store.py` 的 digest 导入。
+
+## test_runtime.py（重写，291 行）
+
+**实测协议 fixture（替代此前虚构格式）**
+- CodeBuddy：`{"type":"system","subtype":"init","session_id":"s1","model":"deepseek-v4-pro"}` + `{"type":"result","is_error":false,"result":"{\"ok\":true}"}`。result 是 JSON 字符串，parse 后 `{'ok':True}`；错误由 `is_error:true` 判定，不猜 result.body；末尾 hook 不当作结果。
+- 原生 Kimi：`{"role":"assistant","content":"{\"ok\":true}"}` 无 tool_calls；身份取 `{"role":"meta","type":"session.resume_hint","session_id":"session_native1"}`（通常最后到达），`system.version` meta 被忽略；缺 resume_hint 严格阻断；`actual_model=None`，`requested_session_id` 保留 caller，`session_id=session_native1`。
+
+**负例不再吞 ImportError**
+- 所有 parse 负例用 `assertRaisesRegex(ValueError, 'model'|'session'|'error'|'json'|'resume_hint'|'tool')`，ImportError 非 ValueError 会直接冒泡。
+- run_bounded 边界用 `assertRaisesRegex(Exception, '(?i)exit|exceed|timeout')`；sha 校验用 `'(?i)sha|hash'` 且断言 marker 不出现。
+
+**新增 run_bounded 接口测试（真实临时 Python 子进程，不复制监督器）**
+- `run_bounded(argv, cwd, log_dir, timeout_seconds, output_limit_bytes)`：成功回执断言 stdout/stderr 文本、`exit_code=0`、`stdout_sha256`/`stderr_sha256`（对 UTF-8 文本 hash）、`wall_seconds>=0`。
+- 非零退出 → 'exit'；合并 stdout+stderr 超限 → 'exceed'。
+- 超时进程树终止：`parent.py` 取 child=`sys.argv[1]`、markers=`sys.argv[2..3]`，`Popen([python, child, ready, survived])` 后睡 30s；`child.py` 立即写 `ready`（证明已启动），睡 10s 再写 `survived`。`timeout_seconds=2`，断言异常含 'timeout'、`ready` 存在、等 11s 后 `survived` 不存在。argv 精确对齐，避免 IndexError 非零退出伪通过。
+
+**invoke 复用 run_bounded**
+- 成功回执用真实协议 fixture（system/init + result 字符串），断言 adapter/actual_model/session_id/requested_session_id/result。
+- SHA 重验：executable/entry 与 Kimi agent_file 错误 hash → `'sha|hash'` 且 marker 不出现。
+- `log_dir` 移到 `root/.runtime/logs`；cwd 隔离根含 `.agent-coop-sample` marker。
+
+## test_store.py（小幅）
+- `canonical_digest` 改用模块级导入 `from agent_coop.store import canonical_digest`（两处），不再 `Store.canonical_digest`；`Store` 仍用于实例化。
+
+未写产品实现、未运行测试、未读其它文件。待集成者跑 RED（当前 `agent_coop` 缺包，正例冒 ImportError，负例 assertRaisesRegex 不匹配会正确失败而非伪通过）。

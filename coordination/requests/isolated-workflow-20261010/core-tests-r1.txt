@@ -1,0 +1,42 @@
+三个 RED 测试文件已完成，均未触碰产品实现、未改动其它路径、未用 shell。
+
+## 已写文件
+
+| 文件 | 行数 | 内容 |
+|---|---|---|
+| `tests/test_store.py` | 194 | Store 持久状态合同 |
+| `tests/test_runner.py` | 182 | Runner 唯一驱动合同 |
+| `tests/test_runtime.py` | 260 | adapter 解析 + runtime 子进程边界 |
+
+## 覆盖的关键失败路径（W2/W3）
+
+**test_store.py**
+- `initialize` 初始字段（schema/phase/paused/data/error/calls_used/steps/config_digest）与 `initialize` 拒绝重置已有 DB
+- `canonical_digest` 精确验证：sorted + compact(`,:`) + `ensure_ascii=False` UTF8 sha256（含非 ASCII 与默认转义对比）
+- `update(data=...)` 合并而非覆盖；每次变更 revision 递增
+- `finish` 只合并 data 指定键，且**保留另一连接并发写入的 pause/hold/calls_used**（双 Store 实例模拟 CLI 与 writer）
+- `fail` → blocked；`resume` 不解除 failed
+- `publish` 双投影同 revision、重放不回退
+
+**test_runner.py**
+- 顺序执行/全部 done/`phase=complete`；已 done 不重跑
+- `max_steps` 有界派发
+- pause 持久且在当前动作交付后生效（handler 内另一连接 pause）
+- handler 异常 → failed/blocked 且不自动重试
+- 残余 running → `reconciliation_required` 不重复派发
+- 双 runner 互斥（handler 内嵌套 run 被拒）
+- handler 的 calls_used 增量经 finish 保留
+
+**test_runtime.py**
+- CodeBuddy parse：从事件流定位 result（不信末尾 hook）、init.model/session 严格匹配、result 必须 JSON 对象且非 error、requested/actual 身份区分
+- Kimi parse：最终 assistant.content 取 result、`actual_model=unknown`、`resume_hint` 缺失阻断、拒绝 tool_calls/非 JSON content
+- `command` 结构化 argv 携带 identity（非 shell 字符串）
+- invoke：成功回执（exit_code/adapter/actual_model/session/requested_session_id/result/wall_seconds）
+- 重验 executable/entry/agent_file sha256（错误 hash 前不运行，marker 证明）
+- 非零退出、合并 stdout+stderr 超限、超时终止进程树（父进程 spawn 孙进程，marker 证明孙进程被清）
+
+## 说明与待集成者收敛
+
+- 测试内 import 落在具体方法（沿用 `test_gates.py` 约定）；当前 `agent_coop` 包不存在，运行即 ImportError/assert 失败，属预期 red，未用 skip 掩盖。
+- publish 投影路径我按 `root/STATUS` 与 `root/state.json` 编写（interfaces 只写「STATUS/state.json」未定路径），由集成者统一收敛；如落在 `.runtime/` 下请知会调整。
+- 未声称测试通过，未运行任何测试。请集成者以 `python -m unittest discover -s tests`（或统一 verify 命令）跑 red 观察失败。

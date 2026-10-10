@@ -1,0 +1,31 @@
+已完成测试阶段交付，仅写了约定的三个文件，未运行 shell、未提交、未调用模型、未实现产品功能。
+
+## 写入文件
+
+1. `agent_coop/paths.py` — 四个同名空接口占位（`create_root`/`checked`/`digest`/`write_json`，均返回 `None`）
+2. `agent_coop/archive.py` — 四个同名空接口占位（`create_archive`/`create_backup`/`plan_cleanup`/`apply_cleanup`，均返回 `None`）
+3. `tests/test_archive.py` — 350 行，20 个用例
+
+## 已写测试
+
+**PathsTests（9 个，不依赖 Store，独立可红）**
+- `create_root` 布局 + marker + 空目录接受、拒绝非空且不改动既有内容
+- `checked` 拒绝 absolute/空/`.`/`..`/逃逸、符号链接（文件+目录+嵌套）、Windows junction（`mklink /J`，非 win32 跳过）、缺 marker 根、正向返回根内路径
+- `digest` 对齐 SHA256、`write_json` 往返
+
+**ArchiveTests（11 个，`@skipUnless(STORE_AVAILABLE)`）**
+- 归档白名单：拒绝 `.runtime` 敏感库、重复、符号链接条目；receipt 形状（`files=[{source,target,size,sha256}]` + 顶层 `subject_digest/policy_id/policy_revision/policy_digest/verifier/permissions/unresolved_obligations/verified_epoch`）+ 复制读回 + `archive.json` 持久化
+- 独立 backup 校验 + `scope='local_only'` + `backup.json` 持久化
+- 幂等（同内容重入相等）+ 异内容拒绝（archive 与 backup 各一）
+- cleanup plan：固定 `scratch/fixture.log`、`plan_digest` 64hex、稳定字段、`cleanup-plan.json` 持久化；plan_cleanup 拒绝缺字段/hold/not_accepted/未到期/错误 policy
+- apply_cleanup：只删 fixture 且保留源码/evidence/SQLite/archive/backup、now 变化但仍到期允许、表驱动拒绝（hold/not_accepted/未到期/变更 subject/config/policy）、表驱动拒绝（变更 source/archive/backup/篡改计划/未持久计划）、权限错误保留失败 receipt（POSIX 去父目录写权限 / Windows 只读属性）
+
+## 等待 Store 的部分
+
+`ArchiveTests` 全部用例依赖 `agent_coop.store.Store.initialize(config, steps)`（另一作者实现中）。当前 `Store` 不存在 → 整类跳过，跳过原因保留缺件说明；未复写 Store。`PathsTests` 不依赖 Store，当前已可 import 并行为变红（`create_root` 返回 `None` 使断言失败，`checked`/`digest` 等随之报错），红因明确是缺功能而非缺 Store。
+
+## 需说明的边界
+
+- 文件 350 行，超 300 软目标、远低于 500 硬上限；超出源于任务本身要求的 13 类清理场景与路径/归档矩阵，已用表驱动压缩。函数均 ≤40 行。
+- 未运行任何测试、未声称任何用例通过；当前为 red 阶段（Store 缺、接口为空占位）。
+- 假定 `Store.initialize(config, steps)` 的 `steps` 传固定步骤名字符串、`config` 最小为 `{'policy': POLICY}`（archive 只读 `config['policy']`），已在代码注释标注，供集成者收敛。

@@ -1,0 +1,33 @@
+test_create_root_layout_and_marker (tests.test_archive.PathsTests.test_create_root_layout_and_marker) ... FAIL
+test_create_root_rejects_non_empty (tests.test_archive.PathsTests.test_create_root_rejects_non_empty) ... FAIL
+test_digest_matches_sha256 (tests.test_archive.PathsTests.test_digest_matches_sha256) ... FAIL
+
+======================================================================
+FAIL: test_create_root_layout_and_marker (tests.test_archive.PathsTests.test_create_root_layout_and_marker)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 61, in test_create_root_layout_and_marker
+    self.assertEqual(result, target)
+AssertionError: None != WindowsPath('C:/Users/june/AppData/Local/Temp/tmp60l7_s6p/sample')
+
+======================================================================
+FAIL: test_create_root_rejects_non_empty (tests.test_archive.PathsTests.test_create_root_rejects_non_empty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 78, in test_create_root_rejects_non_empty
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_digest_matches_sha256 (tests.test_archive.PathsTests.test_digest_matches_sha256)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 138, in test_digest_matches_sha256
+    self.assertEqual(paths.digest(path),
+AssertionError: None != 'a948904f2f0f479b8f8197694b30184b0d2ed1c1cd2a1ec0fb85d299a192a447'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+FAILED (failures=3)

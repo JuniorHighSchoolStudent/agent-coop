@@ -1,0 +1,422 @@
+test_begin_marks_step_running (tests.test_store.StoreTests.test_begin_marks_step_running) ... ERROR
+test_canonical_digest_is_sorted_compact_utf8_sha256 (tests.test_store.StoreTests.test_canonical_digest_is_sorted_compact_utf8_sha256) ... ERROR
+test_fail_marks_blocked (tests.test_store.StoreTests.test_fail_marks_blocked) ... ERROR
+test_finish_merges_updates_and_marks_done (tests.test_store.StoreTests.test_finish_merges_updates_and_marks_done) ... ERROR
+test_finish_preserves_concurrent_pause_hold_and_calls_used (tests.test_store.StoreTests.test_finish_preserves_concurrent_pause_hold_and_calls_used) ... ERROR
+test_initialize_refuses_to_reset_existing_db (tests.test_store.StoreTests.test_initialize_refuses_to_reset_existing_db) ... ERROR
+test_initialize_sets_initial_fields (tests.test_store.StoreTests.test_initialize_sets_initial_fields) ... ERROR
+test_pause_resume_roundtrip (tests.test_store.StoreTests.test_pause_resume_roundtrip) ... ERROR
+test_publish_republish_does_not_regress_revision (tests.test_store.StoreTests.test_publish_republish_does_not_regress_revision) ... ERROR
+test_publish_writes_two_projections_at_same_revision (tests.test_store.StoreTests.test_publish_writes_two_projections_at_same_revision) ... ERROR
+test_resume_does_not_clear_failure (tests.test_store.StoreTests.test_resume_does_not_clear_failure) ... ERROR
+test_update_increments_revision (tests.test_store.StoreTests.test_update_increments_revision) ... ERROR
+test_update_merges_data_field (tests.test_store.StoreTests.test_update_merges_data_field) ... ERROR
+test_already_done_steps_are_not_rerun (tests.test_runner.RunnerTests.test_already_done_steps_are_not_rerun) ... ERROR
+test_handler_budget_updates_survive_finish (tests.test_runner.RunnerTests.test_handler_budget_updates_survive_finish) ... ERROR
+test_handler_failure_blocks_without_auto_retry (tests.test_runner.RunnerTests.test_handler_failure_blocks_without_auto_retry) ... ERROR
+test_max_steps_bounds_dispatch (tests.test_runner.RunnerTests.test_max_steps_bounds_dispatch) ... ERROR
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ERROR
+test_residual_running_requires_reconciliation (tests.test_runner.RunnerTests.test_residual_running_requires_reconciliation) ... ERROR
+test_runs_steps_in_order_and_completes (tests.test_runner.RunnerTests.test_runs_steps_in_order_and_completes) ... ERROR
+test_second_runner_is_refused_while_first_runs (tests.test_runner.RunnerTests.test_second_runner_is_refused_while_first_runs) ... ERROR
+test_command_is_structured_argv_carrying_identity (tests.test_runtime.AdapterCommandTests.test_command_is_structured_argv_carrying_identity) ... ERROR
+test_codebuddy_rejects_error_and_non_json_result (tests.test_runtime.AdapterParseTests.test_codebuddy_rejects_error_and_non_json_result) ... ERROR
+test_codebuddy_reports_requested_and_actual_identity (tests.test_runtime.AdapterParseTests.test_codebuddy_reports_requested_and_actual_identity) ... ERROR
+test_codebuddy_requires_matching_init_model_and_session (tests.test_runtime.AdapterParseTests.test_codebuddy_requires_matching_init_model_and_session) ... ERROR
+test_codebuddy_uses_result_event_not_trailing_hook (tests.test_runtime.AdapterParseTests.test_codebuddy_uses_result_event_not_trailing_hook) ... ERROR
+test_kimi_blocks_without_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_blocks_without_resume_hint) ... ERROR
+test_kimi_rejects_tool_calls_and_non_json_content (tests.test_runtime.AdapterParseTests.test_kimi_rejects_tool_calls_and_non_json_content) ... ERROR
+test_kimi_uses_final_assistant_content_and_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_uses_final_assistant_content_and_resume_hint) ... ERROR
+test_rejects_wrong_agent_file_hash (tests.test_runtime.InvokeTests.test_rejects_wrong_agent_file_hash) ... ERROR
+test_success_returns_receipt (tests.test_runtime.InvokeTests.test_success_returns_receipt) ... ERROR
+test_verifies_executable_and_entry_hashes (tests.test_runtime.InvokeTests.test_verifies_executable_and_entry_hashes) ... ERROR
+test_nonzero_exit_raises (tests.test_runtime.RunBoundedTests.test_nonzero_exit_raises) ... FAIL
+test_output_limit_raises (tests.test_runtime.RunBoundedTests.test_output_limit_raises) ... FAIL
+test_success_returns_text_hashes_and_timing (tests.test_runtime.RunBoundedTests.test_success_returns_text_hashes_and_timing) ... ERROR
+test_timeout_terminates_process_tree (tests.test_runtime.RunBoundedTests.test_timeout_terminates_process_tree) ... FAIL
+
+======================================================================
+ERROR: test_begin_marks_step_running (tests.test_store.StoreTests.test_begin_marks_step_running)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 95, in test_begin_marks_step_running
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_canonical_digest_is_sorted_compact_utf8_sha256 (tests.test_store.StoreTests.test_canonical_digest_is_sorted_compact_utf8_sha256)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 65, in test_canonical_digest_is_sorted_compact_utf8_sha256
+    from agent_coop.store import canonical_digest
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_fail_marks_blocked (tests.test_store.StoreTests.test_fail_marks_blocked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 131, in test_fail_marks_blocked
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_finish_merges_updates_and_marks_done (tests.test_store.StoreTests.test_finish_merges_updates_and_marks_done)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 105, in test_finish_merges_updates_and_marks_done
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_finish_preserves_concurrent_pause_hold_and_calls_used (tests.test_store.StoreTests.test_finish_preserves_concurrent_pause_hold_and_calls_used)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 116, in test_finish_preserves_concurrent_pause_hold_and_calls_used
+    writer = _make_store(self.root)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_initialize_refuses_to_reset_existing_db (tests.test_store.StoreTests.test_initialize_refuses_to_reset_existing_db)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 55, in test_initialize_refuses_to_reset_existing_db
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_initialize_sets_initial_fields (tests.test_store.StoreTests.test_initialize_sets_initial_fields)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 34, in test_initialize_sets_initial_fields
+    from agent_coop.store import canonical_digest
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_pause_resume_roundtrip (tests.test_store.StoreTests.test_pause_resume_roundtrip)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 142, in test_pause_resume_roundtrip
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_publish_republish_does_not_regress_revision (tests.test_store.StoreTests.test_publish_republish_does_not_regress_revision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 175, in test_publish_republish_does_not_regress_revision
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_publish_writes_two_projections_at_same_revision (tests.test_store.StoreTests.test_publish_writes_two_projections_at_same_revision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 160, in test_publish_writes_two_projections_at_same_revision
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_resume_does_not_clear_failure (tests.test_store.StoreTests.test_resume_does_not_clear_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 150, in test_resume_does_not_clear_failure
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_update_increments_revision (tests.test_store.StoreTests.test_update_increments_revision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 84, in test_update_increments_revision
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_update_merges_data_field (tests.test_store.StoreTests.test_update_merges_data_field)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 76, in test_update_merges_data_field
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_store.py", line 20, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_already_done_steps_are_not_rerun (tests.test_runner.RunnerTests.test_already_done_steps_are_not_rerun)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 49, in test_already_done_steps_are_not_rerun
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 8, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_handler_budget_updates_survive_finish (tests.test_runner.RunnerTests.test_handler_budget_updates_survive_finish)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 168, in test_handler_budget_updates_survive_finish
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 8, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_handler_failure_blocks_without_auto_retry (tests.test_runner.RunnerTests.test_handler_failure_blocks_without_auto_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 108, in test_handler_failure_blocks_without_auto_retry
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 8, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_max_steps_bounds_dispatch (tests.test_runner.RunnerTests.test_max_steps_bounds_dispatch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 64, in test_max_steps_bounds_dispatch
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 8, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 83, in test_pause_persists_and_stops_after_current_step
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 8, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_residual_running_requires_reconciliation (tests.test_runner.RunnerTests.test_residual_running_requires_reconciliation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 132, in test_residual_running_requires_reconciliation
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 8, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_runs_steps_in_order_and_completes (tests.test_runner.RunnerTests.test_runs_steps_in_order_and_completes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 27, in test_runs_steps_in_order_and_completes
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 8, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_second_runner_is_refused_while_first_runs (tests.test_runner.RunnerTests.test_second_runner_is_refused_while_first_runs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 149, in test_second_runner_is_refused_while_first_runs
+    store = _make_store(self.root)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 8, in _make_store
+    from agent_coop.store import Store
+ModuleNotFoundError: No module named 'agent_coop.store'
+
+======================================================================
+ERROR: test_command_is_structured_argv_carrying_identity (tests.test_runtime.AdapterCommandTests.test_command_is_structured_argv_carrying_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 118, in test_command_is_structured_argv_carrying_identity
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_codebuddy_rejects_error_and_non_json_result (tests.test_runtime.AdapterParseTests.test_codebuddy_rejects_error_and_non_json_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 67, in test_codebuddy_rejects_error_and_non_json_result
+    _parse(CODEBUDDY, error, 's1')
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 25, in _parse
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_codebuddy_reports_requested_and_actual_identity (tests.test_runtime.AdapterParseTests.test_codebuddy_reports_requested_and_actual_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 75, in test_codebuddy_reports_requested_and_actual_identity
+    receipt = _parse(CODEBUDDY, stdout, 's1')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 25, in _parse
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_codebuddy_requires_matching_init_model_and_session (tests.test_runtime.AdapterParseTests.test_codebuddy_requires_matching_init_model_and_session)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 53, in test_codebuddy_requires_matching_init_model_and_session
+    self.assertEqual(_parse(CODEBUDDY, ok, 's1')['result'], {'ok': True})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 25, in _parse
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_codebuddy_uses_result_event_not_trailing_hook (tests.test_runtime.AdapterParseTests.test_codebuddy_uses_result_event_not_trailing_hook)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 41, in test_codebuddy_uses_result_event_not_trailing_hook
+    self.assertEqual(_parse(CODEBUDDY, stdout, 's1')['result'],
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 25, in _parse
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_kimi_blocks_without_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_blocks_without_resume_hint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 101, in test_kimi_blocks_without_resume_hint
+    _parse(KIMI, stdout, 'req-123')
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 25, in _parse
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_kimi_rejects_tool_calls_and_non_json_content (tests.test_runtime.AdapterParseTests.test_kimi_rejects_tool_calls_and_non_json_content)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 111, in test_kimi_rejects_tool_calls_and_non_json_content
+    _parse(KIMI, tool_calls, 'req-123')
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 25, in _parse
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_kimi_uses_final_assistant_content_and_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_uses_final_assistant_content_and_resume_hint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 89, in test_kimi_uses_final_assistant_content_and_resume_hint
+    receipt = _parse(KIMI, stdout, 'req-123')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 25, in _parse
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_rejects_wrong_agent_file_hash (tests.test_runtime.InvokeTests.test_rejects_wrong_agent_file_hash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 275, in test_rejects_wrong_agent_file_hash
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_success_returns_receipt (tests.test_runtime.InvokeTests.test_success_returns_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 238, in test_success_returns_receipt
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_verifies_executable_and_entry_hashes (tests.test_runtime.InvokeTests.test_verifies_executable_and_entry_hashes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 259, in test_verifies_executable_and_entry_hashes
+    from agent_coop import adapters
+ImportError: cannot import name 'adapters' from 'agent_coop' (D:\project\agent-coop-isolated-workflow\agent_coop\__init__.py)
+
+======================================================================
+ERROR: test_success_returns_text_hashes_and_timing (tests.test_runtime.RunBoundedTests.test_success_returns_text_hashes_and_timing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 187, in test_success_returns_text_hashes_and_timing
+    result = self._run_bounded([sys.executable, str(script)])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 150, in _run_bounded
+    from agent_coop.runtime import run_bounded
+ModuleNotFoundError: No module named 'agent_coop.runtime'
+
+======================================================================
+FAIL: test_nonzero_exit_raises (tests.test_runtime.RunBoundedTests.test_nonzero_exit_raises)
+----------------------------------------------------------------------
+ModuleNotFoundError: No module named 'agent_coop.runtime'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 197, in test_nonzero_exit_raises
+    with self.assertRaisesRegex(Exception, '(?i)exit'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "(?i)exit" does not match "No module named 'agent_coop.runtime'"
+
+======================================================================
+FAIL: test_output_limit_raises (tests.test_runtime.RunBoundedTests.test_output_limit_raises)
+----------------------------------------------------------------------
+ModuleNotFoundError: No module named 'agent_coop.runtime'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 206, in test_output_limit_raises
+    with self.assertRaisesRegex(Exception, '(?i)exceed'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "(?i)exceed" does not match "No module named 'agent_coop.runtime'"
+
+======================================================================
+FAIL: test_timeout_terminates_process_tree (tests.test_runtime.RunBoundedTests.test_timeout_terminates_process_tree)
+----------------------------------------------------------------------
+ModuleNotFoundError: No module named 'agent_coop.runtime'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 229, in test_timeout_terminates_process_tree
+    with self.assertRaisesRegex(Exception, '(?i)timeout'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "(?i)timeout" does not match "No module named 'agent_coop.runtime'"
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.053s
+
+FAILED (failures=3, errors=33)

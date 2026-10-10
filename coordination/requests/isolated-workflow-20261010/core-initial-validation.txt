@@ -1,0 +1,78 @@
+test_begin_marks_step_running (tests.test_store.StoreTests.test_begin_marks_step_running) ... ok
+test_canonical_digest_is_sorted_compact_utf8_sha256 (tests.test_store.StoreTests.test_canonical_digest_is_sorted_compact_utf8_sha256) ... ok
+test_fail_marks_blocked (tests.test_store.StoreTests.test_fail_marks_blocked) ... ok
+test_finish_merges_updates_and_marks_done (tests.test_store.StoreTests.test_finish_merges_updates_and_marks_done) ... ok
+test_finish_preserves_concurrent_pause_hold_and_calls_used (tests.test_store.StoreTests.test_finish_preserves_concurrent_pause_hold_and_calls_used) ... ok
+test_initialize_refuses_to_reset_existing_db (tests.test_store.StoreTests.test_initialize_refuses_to_reset_existing_db) ... ok
+test_initialize_sets_initial_fields (tests.test_store.StoreTests.test_initialize_sets_initial_fields) ... ok
+test_pause_resume_roundtrip (tests.test_store.StoreTests.test_pause_resume_roundtrip) ... ok
+test_publish_republish_does_not_regress_revision (tests.test_store.StoreTests.test_publish_republish_does_not_regress_revision) ... ok
+test_publish_writes_two_projections_at_same_revision (tests.test_store.StoreTests.test_publish_writes_two_projections_at_same_revision) ... ok
+test_resume_does_not_clear_failure (tests.test_store.StoreTests.test_resume_does_not_clear_failure) ... ok
+test_update_increments_revision (tests.test_store.StoreTests.test_update_increments_revision) ... ok
+test_update_merges_data_field (tests.test_store.StoreTests.test_update_merges_data_field) ... ok
+test_already_done_steps_are_not_rerun (tests.test_runner.RunnerTests.test_already_done_steps_are_not_rerun) ... ok
+test_handler_budget_updates_survive_finish (tests.test_runner.RunnerTests.test_handler_budget_updates_survive_finish) ... ok
+test_handler_failure_blocks_without_auto_retry (tests.test_runner.RunnerTests.test_handler_failure_blocks_without_auto_retry) ... ok
+test_max_steps_bounds_dispatch (tests.test_runner.RunnerTests.test_max_steps_bounds_dispatch) ... ok
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ok
+test_residual_running_requires_reconciliation (tests.test_runner.RunnerTests.test_residual_running_requires_reconciliation) ... ok
+test_runs_steps_in_order_and_completes (tests.test_runner.RunnerTests.test_runs_steps_in_order_and_completes) ... ok
+test_second_runner_is_refused_while_first_runs (tests.test_runner.RunnerTests.test_second_runner_is_refused_while_first_runs) ... ok
+test_command_is_structured_argv_carrying_identity (tests.test_runtime.AdapterCommandTests.test_command_is_structured_argv_carrying_identity) ... ok
+test_codebuddy_rejects_error_and_non_json_result (tests.test_runtime.AdapterParseTests.test_codebuddy_rejects_error_and_non_json_result) ... ok
+test_codebuddy_reports_requested_and_actual_identity (tests.test_runtime.AdapterParseTests.test_codebuddy_reports_requested_and_actual_identity) ... ok
+test_codebuddy_requires_matching_init_model_and_session (tests.test_runtime.AdapterParseTests.test_codebuddy_requires_matching_init_model_and_session) ... ok
+test_codebuddy_uses_result_event_not_trailing_hook (tests.test_runtime.AdapterParseTests.test_codebuddy_uses_result_event_not_trailing_hook) ... ok
+test_kimi_blocks_without_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_blocks_without_resume_hint) ... ok
+test_kimi_rejects_tool_calls_and_non_json_content (tests.test_runtime.AdapterParseTests.test_kimi_rejects_tool_calls_and_non_json_content) ... ok
+test_kimi_uses_final_assistant_content_and_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_uses_final_assistant_content_and_resume_hint) ... ok
+test_rejects_wrong_agent_file_hash (tests.test_runtime.InvokeTests.test_rejects_wrong_agent_file_hash) ... ok
+test_success_returns_receipt (tests.test_runtime.InvokeTests.test_success_returns_receipt) ... ERROR
+test_verifies_executable_and_entry_hashes (tests.test_runtime.InvokeTests.test_verifies_executable_and_entry_hashes) ... ok
+test_nonzero_exit_raises (tests.test_runtime.RunBoundedTests.test_nonzero_exit_raises) ... <frozen importlib._bootstrap>:488: ResourceWarning: unclosed file <_io.BufferedReader name=3>
+<frozen importlib._bootstrap>:488: ResourceWarning: unclosed file <_io.BufferedReader name=4>
+C:\Users\june\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\traceback.py:241: ResourceWarning: unclosed file <_io.BufferedReader name=5>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\june\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\traceback.py:241: ResourceWarning: unclosed file <_io.BufferedReader name=6>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_output_limit_raises (tests.test_runtime.RunBoundedTests.test_output_limit_raises) ... C:\Users\june\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\traceback.py:241: ResourceWarning: unclosed file <_io.BufferedReader name=3>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\june\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\traceback.py:241: ResourceWarning: unclosed file <_io.BufferedReader name=4>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_success_returns_text_hashes_and_timing (tests.test_runtime.RunBoundedTests.test_success_returns_text_hashes_and_timing) ... D:\project\agent-coop-isolated-workflow\tests\test_runtime.py:154: ResourceWarning: unclosed file <_io.BufferedReader name=3>
+  return run_bounded(**kwargs)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+D:\project\agent-coop-isolated-workflow\tests\test_runtime.py:154: ResourceWarning: unclosed file <_io.BufferedReader name=4>
+  return run_bounded(**kwargs)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_timeout_terminates_process_tree (tests.test_runtime.RunBoundedTests.test_timeout_terminates_process_tree) ... ok
+
+======================================================================
+ERROR: test_success_returns_receipt (tests.test_runtime.InvokeTests.test_success_returns_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 249, in test_success_returns_receipt
+    receipt = self._invoke(profile)
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runtime.py", line 176, in _invoke
+    return invoke(profile, prompt, str(self.root), str(self.log_dir),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\runtime.py", line 146, in invoke
+    bounded = run_bounded(argv, cwd, log_dir, profile['timeout_seconds'],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\runtime.py", line 41, in run_bounded
+    raise RuntimeError(failure)
+RuntimeError: exit code 1
+
+----------------------------------------------------------------------
+Ran 36 tests in 14.992s
+
+FAILED (errors=1)

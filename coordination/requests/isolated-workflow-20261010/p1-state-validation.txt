@@ -1,0 +1,57 @@
+test_begin_marks_step_running (tests.test_store.StoreTests.test_begin_marks_step_running) ... ok
+test_begin_refuses_after_pause (tests.test_store.StoreTests.test_begin_refuses_after_pause) ... ok
+test_canonical_digest_is_sorted_compact_utf8_sha256 (tests.test_store.StoreTests.test_canonical_digest_is_sorted_compact_utf8_sha256) ... ok
+test_fail_marks_blocked (tests.test_store.StoreTests.test_fail_marks_blocked) ... ok
+test_finish_merges_updates_and_marks_done (tests.test_store.StoreTests.test_finish_merges_updates_and_marks_done) ... ok
+test_finish_preserves_concurrent_pause_hold_and_calls_used (tests.test_store.StoreTests.test_finish_preserves_concurrent_pause_hold_and_calls_used) ... ok
+test_initialize_refuses_to_reset_existing_db (tests.test_store.StoreTests.test_initialize_refuses_to_reset_existing_db) ... ok
+test_initialize_sets_initial_fields (tests.test_store.StoreTests.test_initialize_sets_initial_fields) ... ok
+test_initialize_validates_inputs (tests.test_store.StoreTests.test_initialize_validates_inputs) ... ok
+test_pause_conflict_propagates_and_persists (tests.test_store.StoreTests.test_pause_conflict_propagates_and_persists) ... ok
+test_pause_lock_busy_defers_but_persists (tests.test_store.StoreTests.test_pause_lock_busy_defers_but_persists) ... ok
+test_pause_resume_roundtrip (tests.test_store.StoreTests.test_pause_resume_roundtrip) ... ok
+test_publish_republish_does_not_regress_revision (tests.test_store.StoreTests.test_publish_republish_does_not_regress_revision) ... ok
+test_publish_writes_two_projections_at_same_revision (tests.test_store.StoreTests.test_publish_writes_two_projections_at_same_revision) ... ok
+test_resume_does_not_clear_failure (tests.test_store.StoreTests.test_resume_does_not_clear_failure) ... ok
+test_resume_refuses_residual_running (tests.test_store.StoreTests.test_resume_refuses_residual_running) ... ok
+test_update_increments_revision (tests.test_store.StoreTests.test_update_increments_revision) ... ok
+test_update_merges_data_field (tests.test_store.StoreTests.test_update_merges_data_field) ... ok
+test_update_publishes_projections (tests.test_store.StoreTests.test_update_publishes_projections) ... ok
+test_update_rejects_protected_fields (tests.test_store.StoreTests.test_update_rejects_protected_fields) ... ok
+test_already_done_steps_are_not_rerun (tests.test_runner.RunnerTests.test_already_done_steps_are_not_rerun) ... ok
+test_cross_process_runner_mutex (tests.test_runner.RunnerTests.test_cross_process_runner_mutex) ... ok
+test_handler_budget_updates_survive_finish (tests.test_runner.RunnerTests.test_handler_budget_updates_survive_finish) ... ok
+test_handler_failure_blocks_without_auto_retry (tests.test_runner.RunnerTests.test_handler_failure_blocks_without_auto_retry) ... ok
+test_handler_non_dict_result_blocks (tests.test_runner.RunnerTests.test_handler_non_dict_result_blocks) ... ok
+test_max_steps_bounds_dispatch (tests.test_runner.RunnerTests.test_max_steps_bounds_dispatch) ... ok
+test_max_steps_rejects_bool_and_negative (tests.test_runner.RunnerTests.test_max_steps_rejects_bool_and_negative) ... ok
+test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step) ... ERROR
+test_publish_failure_keeps_done_and_no_redispatch (tests.test_runner.RunnerTests.test_publish_failure_keeps_done_and_no_redispatch) ... ok
+test_residual_running_requires_reconciliation (tests.test_runner.RunnerTests.test_residual_running_requires_reconciliation) ... ok
+test_run_publishes_projections (tests.test_runner.RunnerTests.test_run_publishes_projections) ... ok
+test_runs_steps_in_order_and_completes (tests.test_runner.RunnerTests.test_runs_steps_in_order_and_completes) ... ok
+test_second_runner_is_refused_while_first_runs (tests.test_runner.RunnerTests.test_second_runner_is_refused_while_first_runs) ... ok
+
+======================================================================
+ERROR: test_pause_persists_and_stops_after_current_step (tests.test_runner.RunnerTests.test_pause_persists_and_stops_after_current_step)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_runner.py", line 115, in test_pause_persists_and_stops_after_current_step
+    store.resume()
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\store.py", line 338, in resume
+    return self._mutate(apply)
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\store.py", line 191, in _mutate
+    self.publish()
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\store.py", line 365, in publish
+    self._write_status(self.root / 'STATUS', state)
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\store.py", line 397, in _write_status
+    self._atomic_write(path, '\n'.join(lines) + '\n')
+  File "D:\project\agent-coop-isolated-workflow\agent_coop\store.py", line 402, in _atomic_write
+    os.replace(tmp, path)
+PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\june\\AppData\\Local\\Temp\\tmpfb571azl\\sample\\STATUS.tmp' -> 'C:\\Users\\june\\AppData\\Local\\Temp\\tmpfb571azl\\sample\\STATUS'
+
+----------------------------------------------------------------------
+Ran 33 tests in 2.143s
+
+FAILED (errors=1)

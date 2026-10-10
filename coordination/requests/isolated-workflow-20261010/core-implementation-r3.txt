@@ -1,0 +1,45 @@
+GREEN 实现完成，四文件已写出（真实实现，非计划/审核）。
+
+## 已交付文件
+
+| 文件 | 行数 | 职责 |
+|---|---|---|
+| `agent_coop/store.py` | 336 | `canonical_digest` 模块级唯一算法；`file_lock` 跨平台锁；`Store` SQLite 权威 |
+| `agent_coop/runner.py` | 50 | `Runner.run(max_steps)` 唯一有界驱动 |
+| `agent_coop/adapters.py` | 177 | `command` 结构化 argv；`parse` 实测协议解析与身份/tool 核验 |
+| `agent_coop/runtime.py` | 172 | `run_bounded` 有界子进程；`invoke` 收据 |
+
+## 关键实现点
+
+**store.py**
+- `canonical_digest` = `json.dumps(sort_keys=True, separators=(',',':'), ensure_ascii=False).encode('utf-8')` SHA256。
+- `Store` 用 `isolation_level=None` + 显式 `BEGIN IMMEDIATE`/`COMMIT`/`ROLLBACK`（避免 Python 自动事务掩盖手动 BEGIN）；一行 `state` 快照 + 同事务 `events` 表（revision 主键，不可变）。
+- `initialize` 拒绝重置；`update` 顶层字段 + `data` 浅合并；`begin/finish/fail` 事务内读最新，`finish` 只合并 data 指定键，保留并发 pause/hold/calls_used；`finish` 全部 done→`complete`；`resume` 仅解除普通 pause 不触 blocked/running。
+- `publish` 独立 `publish.lock`（不争 run.lock），按 DB 最高 revision 重建 `root/state.json` 与 `STATUS`，逐 revision 写 `.runtime/outbox/`（冲突报错/相同幂等），投影逐个原子写、不回退。
+- `file_lock`：非阻塞模式下同进程用 `_held` 注册表兜底（规避 Windows msvcrt 同进程重入），跨进程靠 msvcrt byte-lock / posix flock。
+
+**runner.py**
+- 整轮持非阻塞 `run.lock`；先查残余 running→`reconciliation_required`；blocked/reconciliation 不派发；done/failed 跳过；paused 停派发；`begin` 持久先于 handler，异常 `fail`→blocked 并正常返回；`max_steps=0` 不执行。
+
+**adapters.py**
+- CodeBuddy argv 按既定参数（含 `--permission-mode acceptEdits` 仅 writer 含 Write/Edit 时）；Kimi 走 `--agent-file`。
+- parse：CodeBuddy `system/init` model/session 严格相等、`result` 事件 `is_error` 判定 + `result` JSON 字符串解对象、末尾 hook 忽略；Kimi 取最终无 tool_calls 的 assistant content + `session.resume_hint` 真实身份；`actual_model` 未知 None；记录 `observed_tool_calls/init_catalog/tool_errors/permission_scope`，越 profile.tools 阻断。
+
+**runtime.py**
+- `run_bounded`：`shell=False`、墙钟轮询 + 双流合计字节上限（边读边查，非超限后才查）、非零退出/超时/超量 raise 带 `exit/timeout/exceed` 关键词、先写有界日志再抛；Windows 用 `taskkill /PID /T /F`，POSIX `start_new_session`+`killpg`，线程读取有界 join 不挂死。
+- `invoke`：先重验 executable/entry/agent_file sha256（`sha` 关键词）→ command → run_bounded → parse，补 wall/hash 字段。
+
+## 潜在边界与说明
+
+- `store.py` 336 行略超 300 软目标（硬 500 内）：因合同要求 `file_lock` 必须放 store.py 供 runner 复用、且 publish/outbox 同文件，未做无语义拆分；如需可后续将 `file_lock` 抽出。
+- `agent_coop/__init__.py` 未创建（属 Codex 集成者职责）；四个模块用相对导入，需该 `__init__.py` 存在才能被测试 `from agent_coop.X import ...` 导入。
+- Windows 同进程互斥依赖 `_held` 进程内注册表 + msvcrt byte-lock 双保险；跨进程仅 msvcrt byte-lock。
+
+## 需运行命令（集成者执行，本作者无 shell 未运行）
+
+```
+python -m unittest discover -s tests -v
+```
+或统一入口 `python -m agent_coop verify`（待集成者提供）。
+
+未声称任何测试通过。

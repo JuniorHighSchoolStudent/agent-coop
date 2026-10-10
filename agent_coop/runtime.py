@@ -1,0 +1,228 @@
+"""Runtime 子进程边界：有界墙钟/输出、进程树终止与 invoke 收据。"""
+import hashlib
+import os
+import subprocess
+import threading
+import time
+from pathlib import Path
+
+from . import adapters
+
+
+def _sha256(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def _validate_budget(timeout_seconds, output_limit_bytes):
+    if (not isinstance(timeout_seconds, (int, float))
+            or isinstance(timeout_seconds, bool)
+            or not 0 < timeout_seconds < float('inf')):
+        raise ValueError('timeout_seconds must be a positive finite number')
+    if (not isinstance(output_limit_bytes, int)
+            or isinstance(output_limit_bytes, bool)
+            or output_limit_bytes <= 0):
+        raise ValueError('output_limit_bytes must be a positive integer')
+
+
+def _resolve_log_dir(cwd, log_dir):
+    from .paths import checked
+    root = Path(cwd)
+    expected = Path(checked(root, '.runtime/logs')).resolve()
+    provided = Path(log_dir).resolve()
+    if provided != expected and expected not in provided.parents:
+        raise ValueError(
+            'log_dir must resolve inside the isolation root .runtime/logs')
+    return provided
+
+
+def run_bounded(argv, cwd, log_dir, timeout_seconds, output_limit_bytes):
+    _validate_budget(timeout_seconds, output_limit_bytes)
+    log_path = _resolve_log_dir(cwd, log_dir)
+    log_path.mkdir(parents=True, exist_ok=True)
+    start = time.monotonic()
+
+    popen_kwargs = {}
+    if os.name != 'nt':
+        popen_kwargs['start_new_session'] = True
+    proc = subprocess.Popen(
+        argv, cwd=str(cwd), shell=False,
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, **popen_kwargs,
+    )
+    out_bytes, err_bytes, failure = _collect(
+        proc, timeout_seconds, output_limit_bytes)
+    wall = time.monotonic() - start
+    _write_logs(log_path, out_bytes, err_bytes)
+    if failure:
+        raise RuntimeError(failure)
+    return {
+        'stdout': out_bytes.decode('utf-8'),
+        'stderr': err_bytes.decode('utf-8'),
+        'exit_code': proc.returncode,
+        'wall_seconds': wall,
+        'stdout_sha256': hashlib.sha256(out_bytes).hexdigest(),
+        'stderr_sha256': hashlib.sha256(err_bytes).hexdigest(),
+    }
+
+
+def _collect(proc, timeout_seconds, output_limit_bytes):
+    out = bytearray()
+    err = bytearray()
+    lock = threading.Lock()
+    total = [0]
+    exceeded = [False]
+    reader_errors = []
+
+    def pump(stream, buf):
+        try:
+            while True:
+                chunk = stream.read(65536)
+                if not chunk:
+                    return
+                with lock:
+                    if exceeded[0]:
+                        return
+                    room = output_limit_bytes - total[0]
+                    if room <= 0:
+                        exceeded[0] = True
+                        return
+                    take = chunk[:room]
+                    buf.extend(take)
+                    total[0] += len(take)
+                    if len(chunk) > room:
+                        exceeded[0] = True
+                        return
+        except Exception as exc:
+            reader_errors.append(exc)
+
+    out_thread = threading.Thread(target=pump, args=(proc.stdout, out),
+                                  daemon=True)
+    err_thread = threading.Thread(target=pump, args=(proc.stderr, err),
+                                  daemon=True)
+    out_thread.start()
+    err_thread.start()
+
+    timed_out = False
+    deadline = time.monotonic() + timeout_seconds
+    while True:
+        parent_alive = proc.poll() is None
+        readers_alive = out_thread.is_alive() or err_thread.is_alive()
+        if exceeded[0]:
+            break
+        if not parent_alive and not readers_alive:
+            break
+        if time.monotonic() >= deadline:
+            timed_out = True
+            break
+        time.sleep(0.02)
+
+    if proc.poll() is None:
+        _terminate_tree(proc)
+    try:
+        proc.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        pass
+    parent_alive = proc.poll() is None
+
+    grace_end = time.monotonic() + 5
+    while (out_thread.is_alive() or err_thread.is_alive()) \
+            and time.monotonic() < grace_end:
+        time.sleep(0.02)
+    readers_alive = out_thread.is_alive() or err_thread.is_alive()
+
+    if reader_errors:
+        failure = f'output reader error: {reader_errors[0]}'
+    elif exceeded[0]:
+        failure = 'output limit exceeded'
+    elif parent_alive:
+        failure = 'termination failed (process still alive)'
+    elif timed_out or readers_alive:
+        if readers_alive and proc.returncode is not None:
+            failure = ('timeout exceeded (parent exited, '
+                       'output readers still alive)')
+        else:
+            failure = 'timeout exceeded'
+    elif proc.returncode != 0:
+        failure = f'exit code {proc.returncode}'
+    else:
+        failure = None
+
+    _close(proc.stdout)
+    _close(proc.stderr)
+    return bytes(out), bytes(err), failure
+
+
+def _terminate_tree(proc):
+    if proc.poll() is not None:
+        return
+    if os.name == 'nt':
+        try:
+            subprocess.run(['taskkill', '/PID', str(proc.pid), '/T', '/F'],
+                           capture_output=True, timeout=15, shell=False)
+        except Exception:
+            pass
+    else:
+        try:
+            import signal
+            os.killpg(proc.pid, signal.SIGKILL)
+        except Exception:
+            pass
+    try:
+        proc.kill()
+    except Exception:
+        pass
+
+
+def _close(pipe):
+    try:
+        pipe.close()
+    except Exception:
+        pass
+
+
+def _write_logs(log_dir, out_bytes, err_bytes):
+    log_dir = Path(log_dir)
+    stdout_path = log_dir / 'stdout.log'
+    stderr_path = log_dir / 'stderr.log'
+    if stdout_path.exists() or stderr_path.exists():
+        raise ValueError(
+            f'refusing to overwrite existing log files in {log_dir}')
+    stdout_path.write_bytes(out_bytes)
+    stderr_path.write_bytes(err_bytes)
+
+
+def invoke(profile, prompt, cwd, log_dir, session_id):
+    _verify_hashes(profile)
+    argv = adapters.command(profile, prompt, session_id)
+    bounded = run_bounded(argv, cwd, log_dir, profile['timeout_seconds'],
+                          profile['output_limit_bytes'])
+    receipt = adapters.parse(profile, bounded['stdout'], session_id)
+    receipt['exit_code'] = bounded['exit_code']
+    receipt['wall_seconds'] = bounded['wall_seconds']
+    receipt['stdout_sha256'] = bounded['stdout_sha256']
+    receipt['stderr_sha256'] = bounded['stderr_sha256']
+    return receipt
+
+
+def _verify_hashes(profile):
+    _verify_file_hash(profile.get('executable'),
+                      profile.get('executable_sha256'), 'executable')
+    _verify_file_hash(profile.get('entry'),
+                      profile.get('entry_sha256'), 'entry')
+    if profile.get('adapter') == 'kimi':
+        _verify_file_hash(profile.get('agent_file'),
+                          profile.get('agent_file_sha256'), 'agent_file')
+
+
+def _verify_file_hash(path, expected, label):
+    if not path:
+        raise ValueError(f'{label} is required')
+    if not expected:
+        raise ValueError(f'{label}_sha256 is required')
+    resolved = Path(path)
+    if not resolved.is_absolute():
+        raise ValueError(f'{label} must be an absolute path: {path}')
+    if not resolved.is_file():
+        raise ValueError(f'{label} is not a regular file: {path}')
+    actual = _sha256(resolved)
+    if actual != expected:
+        raise ValueError(f'{label} sha256 mismatch: {actual} != {expected}')

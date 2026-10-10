@@ -1,0 +1,11 @@
+{
+  "actual_model": "deepseek-v4-pro",
+  "actual_session_id": "agent-coop-p6-flow-gates-20261010",
+  "exit_code": 0,
+  "is_error": false,
+  "finished_utc": "2026-10-10T13:41:22.2090811Z",
+  "stdout_sha256": "a9297b6563be5a2cfbf2a38076730da72f909d8a34a19cb2a62dd68a2b2c69e5",
+  "receipt_sha256": "8e5b4f2aee2c05885c85bdfc71bb7e018ac50cd6c4371796c5faeb0068963830",
+  "test_scope": "20 local tests while P2 still in flight; 2 failures and 1 error; no frozen tested-source digest; diagnostic only",
+  "governance_status": "candidate only; no independent approval before this repair dispatch; awaiting review"
+}

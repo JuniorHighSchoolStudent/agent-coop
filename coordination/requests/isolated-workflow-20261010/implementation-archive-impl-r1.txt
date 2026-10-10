@@ -1,0 +1,16 @@
+实现完成，未运行测试、未用 shell、未调用其它模型、未提交。
+
+## 写入文件（产品代码）
+
+- `agent_coop/paths.py` — `create_root`（拒绝非空、写 `.agent-coop-sample` 标记 + 6 子目录）、`checked`（拒绝绝对/盘符/空/`.`/`..`/逃逸，检查 root 与全部 existing 组件的 symlink/junction/reparse，校验 root 标记）、`digest`（文件 SHA256）、`write_json`（临时文件 + fsync + `os.replace`，拒绝写穿透 existing symlink）。
+- `agent_coop/archive.py` — `create_archive`（workspace/evidence/scratch 白名单、拒绝 `.runtime`/链接/重复/空或非法 subject_digest，先比对幂等再复制，复制后源/target 大小 hash 重验 + 独立临时 restore 读回并自清）、`create_backup`（逐条来自 archive target、`scope='local_only'`、独立复制与恢复验证）；`plan_cleanup`/`apply_cleanup` 薄转发至 cleanup.py。
+- `agent_coop/cleanup.py`（新增）— 固定 `FIXED_POLICY`/`VERIFIER`/`FIXTURE`；`validate_policy`/`validate_authority`（严格 True/False、字段齐、finite 时间、retention 0、固定 policy、config/policy digest 与 Store 一致、到期）；`plan_cleanup`（fixture 必须同时入 archive+backup 清单且 hash 与当前源一致、验证持久 receipts 与传入完全一致、稳定字段排除 now、写 `cleanup-plan.json`+`plan_digest`）；`apply_cleanup`（持久 plan 相等 + digest 正确、`authorize()` 重读权威、稳定字段/到期重验、源与全部 archive/backup 目标 hash/size + 持久 receipt 重核、先落 intent 再二验源/重授权再 unlink，unlink 失败返回 `failed=True` receipt 不伪报成功）。
+
+## 写入文件（测试）
+
+- `tests/test_paths.py`（新增）— 纯路径测试迁入，独立于 Store。
+- `tests/test_archive.py` — 移除 broad `except`+整类 skip，改为 `from agent_coop.store import Store, canonical_digest` 单一摘要入口；`make_full_plan` 将 `scratch/fixture.log` 列入 archive 源清单；新增 `test_plan_cleanup_rejects_fixture_not_backed_up`（未备份 scratch 不删）；`test_apply_cleanup_rejects_changed_archive_or_backup` 每轮 `finally` 恢复 target 原 bytes；权限失败测试 Windows 只读并 addCleanup 恢复、POSIX root 明确 skip。
+
+## 未执行
+
+未运行任何测试，未声称任何用例通过；`Store` 就绪后由 Codex 跑统一验证命令。

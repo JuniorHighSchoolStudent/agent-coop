@@ -1,0 +1,209 @@
+test_checked_rejects_absolute_and_bad_relative (tests.test_paths.PathsTests.test_checked_rejects_absolute_and_bad_relative) ... ok
+test_checked_rejects_junction (tests.test_paths.PathsTests.test_checked_rejects_junction) ... ok
+test_checked_rejects_junction_ancestor (tests.test_paths.PathsTests.test_checked_rejects_junction_ancestor) ... FAIL
+test_checked_rejects_symlink (tests.test_paths.PathsTests.test_checked_rejects_symlink) ... skipped "symlink 不可用: [WinError 1314] 客户端没有所需的特权。: 'C:\\\\Users\\\\june\\\\AppData\\\\Local\\\\Temp\\\\tmplgvn6ju1\\\\outside\\\\x.txt' -> 'C:\\\\Users\\\\june\\\\AppData\\\\Local\\\\Temp\\\\tmplgvn6ju1\\\\sample\\\\link.txt'"
+test_checked_requires_root_marker (tests.test_paths.PathsTests.test_checked_requires_root_marker) ... ok
+test_checked_returns_path_within_root (tests.test_paths.PathsTests.test_checked_returns_path_within_root) ... ok
+test_create_root_layout_marker_and_empty_dir (tests.test_paths.PathsTests.test_create_root_layout_marker_and_empty_dir) ... ok
+test_create_root_rejects_junction_ancestor (tests.test_paths.PathsTests.test_create_root_rejects_junction_ancestor) ... FAIL
+test_create_root_rejects_junction_root (tests.test_paths.PathsTests.test_create_root_rejects_junction_root) ... FAIL
+test_create_root_rejects_non_empty (tests.test_paths.PathsTests.test_create_root_rejects_non_empty) ... ok
+test_digest_matches_sha256 (tests.test_paths.PathsTests.test_digest_matches_sha256) ... ok
+test_write_json_rejects_junction_parent (tests.test_paths.PathsTests.test_write_json_rejects_junction_parent) ... FAIL
+test_write_json_roundtrip (tests.test_paths.PathsTests.test_write_json_roundtrip) ... ok
+test_apply_cleanup_allows_changed_now_if_still_due (tests.test_archive.ArchiveTests.test_apply_cleanup_allows_changed_now_if_still_due) ... ok
+test_apply_cleanup_deletes_only_fixture_and_persists (tests.test_archive.ArchiveTests.test_apply_cleanup_deletes_only_fixture_and_persists) ... ok
+test_apply_cleanup_permission_error_keeps_failure_receipt (tests.test_archive.ArchiveTests.test_apply_cleanup_permission_error_keeps_failure_receipt) ... ok
+test_apply_cleanup_rejects_authority_variations (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_authority_variations) ... ok
+test_apply_cleanup_rejects_changed_archive_or_backup (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_changed_archive_or_backup) ... ok
+test_apply_cleanup_rejects_junctioned_archive_parent (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_junctioned_archive_parent) ... FAIL
+test_apply_cleanup_rejects_junctioned_backup_parent (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_junctioned_backup_parent) ... FAIL
+test_apply_cleanup_rejects_rebound_source (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_rebound_source) ... FAIL
+test_apply_cleanup_rejects_receipt_metadata_change (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_receipt_metadata_change) ... 
+  test_apply_cleanup_rejects_receipt_metadata_change (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_receipt_metadata_change) (receipt='archive') ... FAIL
+  test_apply_cleanup_rejects_receipt_metadata_change (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_receipt_metadata_change) (receipt='backup') ... FAIL
+test_apply_cleanup_rejects_source_and_plan_changes (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_source_and_plan_changes) ... ok
+test_apply_cleanup_source_changed_by_authorize_not_deleted (tests.test_archive.ArchiveTests.test_apply_cleanup_source_changed_by_authorize_not_deleted) ... FAIL
+test_create_archive_idempotent_and_rejects_changes (tests.test_archive.ArchiveTests.test_create_archive_idempotent_and_rejects_changes) ... ok
+test_create_archive_receipt_copies_and_persists (tests.test_archive.ArchiveTests.test_create_archive_receipt_copies_and_persists) ... ok
+test_create_archive_rejects_changed_target_content (tests.test_archive.ArchiveTests.test_create_archive_rejects_changed_target_content) ... FAIL
+test_create_archive_rejects_existing_target_without_receipt (tests.test_archive.ArchiveTests.test_create_archive_rejects_existing_target_without_receipt) ... FAIL
+test_create_archive_rejects_prebuilt_archives_junction (tests.test_archive.ArchiveTests.test_create_archive_rejects_prebuilt_archives_junction) ... FAIL
+test_create_archive_rejects_runtime_db_and_duplicate (tests.test_archive.ArchiveTests.test_create_archive_rejects_runtime_db_and_duplicate) ... ok
+test_create_archive_rejects_symlink_entry (tests.test_archive.ArchiveTests.test_create_archive_rejects_symlink_entry) ... skipped "symlink 不可用: [WinError 1314] 客户端没有所需的特权。: 'C:\\\\Users\\\\june\\\\AppData\\\\Local\\\\Temp\\\\tmp1vvy4vik\\\\outside.txt' -> 'C:\\\\Users\\\\june\\\\AppData\\\\Local\\\\Temp\\\\tmp1vvy4vik\\\\sample\\\\workspace\\\\link.txt'"
+test_create_backup_local_only_persisted_and_idempotent (tests.test_archive.ArchiveTests.test_create_backup_local_only_persisted_and_idempotent) ... ok
+test_create_backup_rejects_changed_backup_target_content (tests.test_archive.ArchiveTests.test_create_backup_rejects_changed_backup_target_content) ... FAIL
+test_create_backup_rejects_prebuilt_backups_junction (tests.test_archive.ArchiveTests.test_create_backup_rejects_prebuilt_backups_junction) ... FAIL
+test_plan_cleanup_fixed_target_and_persisted (tests.test_archive.ArchiveTests.test_plan_cleanup_fixed_target_and_persisted) ... ok
+test_plan_cleanup_rejects_corrupt_target (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_corrupt_target) ... 
+  test_plan_cleanup_rejects_corrupt_target (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_corrupt_target) (manifest='archive') ... FAIL
+  test_plan_cleanup_rejects_corrupt_target (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_corrupt_target) (manifest='backup') ... FAIL
+test_plan_cleanup_rejects_fixture_not_backed_up (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_fixture_not_backed_up) ... ok
+test_plan_cleanup_rejects_invalid_authority (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_invalid_authority) ... ok
+test_plan_cleanup_rejects_subject_mismatch (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_subject_mismatch) ... FAIL
+
+======================================================================
+FAIL: test_checked_rejects_junction_ancestor (tests.test_paths.PathsTests.test_checked_rejects_junction_ancestor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_paths.py", line 159, in test_checked_rejects_junction_ancestor
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_create_root_rejects_junction_ancestor (tests.test_paths.PathsTests.test_create_root_rejects_junction_ancestor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_paths.py", line 146, in test_create_root_rejects_junction_ancestor
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_create_root_rejects_junction_root (tests.test_paths.PathsTests.test_create_root_rejects_junction_root)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_paths.py", line 134, in test_create_root_rejects_junction_root
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_write_json_rejects_junction_parent (tests.test_paths.PathsTests.test_write_json_rejects_junction_parent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_paths.py", line 170, in test_write_json_rejects_junction_parent
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_apply_cleanup_rejects_junctioned_archive_parent (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_junctioned_archive_parent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 365, in test_apply_cleanup_rejects_junctioned_archive_parent
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_apply_cleanup_rejects_junctioned_backup_parent (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_junctioned_backup_parent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 383, in test_apply_cleanup_rejects_junctioned_backup_parent
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_apply_cleanup_rejects_rebound_source (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_rebound_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 396, in test_apply_cleanup_rejects_rebound_source
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_apply_cleanup_rejects_receipt_metadata_change (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_receipt_metadata_change) (receipt='archive')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 421, in test_apply_cleanup_rejects_receipt_metadata_change
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_apply_cleanup_rejects_receipt_metadata_change (tests.test_archive.ArchiveTests.test_apply_cleanup_rejects_receipt_metadata_change) (receipt='backup')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 421, in test_apply_cleanup_rejects_receipt_metadata_change
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_apply_cleanup_source_changed_by_authorize_not_deleted (tests.test_archive.ArchiveTests.test_apply_cleanup_source_changed_by_authorize_not_deleted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 456, in test_apply_cleanup_source_changed_by_authorize_not_deleted
+    self.assertTrue(fixture.exists())
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_create_archive_rejects_changed_target_content (tests.test_archive.ArchiveTests.test_create_archive_rejects_changed_target_content)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 301, in test_create_archive_rejects_changed_target_content
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_create_archive_rejects_existing_target_without_receipt (tests.test_archive.ArchiveTests.test_create_archive_rejects_existing_target_without_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 319, in test_create_archive_rejects_existing_target_without_receipt
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_create_archive_rejects_prebuilt_archives_junction (tests.test_archive.ArchiveTests.test_create_archive_rejects_prebuilt_archives_junction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 333, in test_create_archive_rejects_prebuilt_archives_junction
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_create_backup_rejects_changed_backup_target_content (tests.test_archive.ArchiveTests.test_create_backup_rejects_changed_backup_target_content)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 310, in test_create_backup_rejects_changed_backup_target_content
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_create_backup_rejects_prebuilt_backups_junction (tests.test_archive.ArchiveTests.test_create_backup_rejects_prebuilt_backups_junction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 347, in test_create_backup_rejects_prebuilt_backups_junction
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_plan_cleanup_rejects_corrupt_target (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_corrupt_target) (manifest='archive')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 440, in test_plan_cleanup_rejects_corrupt_target
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_plan_cleanup_rejects_corrupt_target (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_corrupt_target) (manifest='backup')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 440, in test_plan_cleanup_rejects_corrupt_target
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_plan_cleanup_rejects_subject_mismatch (tests.test_archive.ArchiveTests.test_plan_cleanup_rejects_subject_mismatch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-isolated-workflow\tests\test_archive.py", line 407, in test_plan_cleanup_rejects_subject_mismatch
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 39 tests in 2.396s
+
+FAILED (failures=18, skipped=2)

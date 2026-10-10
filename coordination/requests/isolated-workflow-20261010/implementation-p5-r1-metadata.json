@@ -1,0 +1,86 @@
+{
+  "actual_model": "deepseek-v4-pro",
+  "actual_session_id": "agent-coop-p5-cli-web-20261010",
+  "exit_code": 0,
+  "is_error": false,
+  "num_turns": 49,
+  "tools": [
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\AGENTS.md"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\coordination\\requests\\isolated-workflow-20261010\\interfaces.md"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\coordination\\requests\\isolated-workflow-20261010\\interface-amendment.md"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\cli.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\web.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\__main__.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\tests\\test_cli.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\tests\\test_web.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\store.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\runner.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\paths.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\verification.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\sample.py"
+    },
+    {
+      "tool": "Write",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\cli.py"
+    },
+    {
+      "tool": "Write",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\web.py"
+    },
+    {
+      "tool": "Edit",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\tests\\test_cli.py"
+    },
+    {
+      "tool": "Edit",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\tests\\test_web.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\tests\\test_web.py"
+    },
+    {
+      "tool": "Read",
+      "path": "D:\\project\\agent-coop-isolated-workflow\\tests\\test_cli.py"
+    }
+  ],
+  "receipt_sha256": "9003F9BA708216825B372F543CBD87B135284FD8E60DDD3ECF1416BE9A7ACE39"
+}

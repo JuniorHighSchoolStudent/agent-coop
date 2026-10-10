@@ -24,13 +24,13 @@
 - 两组评审须为独立 actor/session，且都不能是作者本人。
 - Kimi Code 已由用户明确要求加入本仓开发：Codex 在规范/计划接收前及关键实现批次交付时，派发有界只读监督。检查是否推进既定出口、越过唯一写入边界、漏验或重复计算、放宽范围/判据、通过及关闭是否有原件。意见保存在同一请求目录；有 blocking 时阻断对应接收，修正后由该监督会话或具名独立替补复核。它不替代两组 CodeBuddy 必需评审，也不以监督在线代替有效意见。所需监督缺席时保持待监督，不自动降级或冒充通过。
 - Claude Code：用户声明额度耗尽，暂停所有新派发；不自动恢复，恢复需经显式配置变更与可用性核验。
-- 共享 CodeBuddy 账号额度设临时调用上限：并发 2、每轮 max-turns 20；额度充足不代表无限并发预算。本次修改与复审合计最多 2 轮，超限交 owner 具名处置。
+- 用户已明确CodeBuddy实现按多实例并行，默认容量与配置语义统一见[design §7.3](design.md#73-资源与预算)；本次人工派发按该默认值执行，替代原临时2路限制。每次max-turns20，评审最多2轮；实现包预算在当前请求具名记录。用户可显式调整容量，不另设隐藏2路瓶颈。
 - Kimi Code 与 CodeBuddy 的 `kimi-k3-2` 是不同 runtime/session，分别核验能力和实际模型身份；当前 Kimi Code 使用宿主已配置的默认 profile，调用时记录可观测的模型信息，未知保持 unknown，不静默替换。监督并发 1、单次最长 10 分钟，由 Codex 手工看护和在超时后停止本次调用；CLI 未提供 turns/token 硬限时明确记为未实施，不宣称产品预算门禁已实现。
 - 当前分配仅适用于本仓，不继承 ABM owner。
 
 ## 当前产品切片：隔离纵向样例（G0已接收，离线实现中）
 
-用户于2026-10-10授权继续实现，并选定仅隔离样例跑通多agent、归档、本机副本与清理。Codex集成，CodeBuddy实现/双席评审、原生Kimi监督。当前为 [复用裁定](../coordination/requests/isolated-workflow-20261010/reuse-decision.md) 与 [具体计划](../coordination/requests/isolated-workflow-20261010/implementation-plan.md) 的G0已接收，证据见[接收记录](../coordination/requests/isolated-workflow-20261010/result-g0.md)；当前进入测试先行的离线实现，尚未通过G1或实跑。用户再次明确全部实现交给CodeBuddy + deepseek-v4-pro，Codex停止直接编码，职责纠偏与草稿接管见[交接记录](../coordination/requests/isolated-workflow-20261010/role-correction.md)。计划先验证只读/模拟层，再经G1审核开放有界实跑；不宣称完整P1/P2/P3已交付，不启用OS定时任务。
+用户于2026-10-10授权继续实现，并选定仅隔离样例跑通多agent、归档、本机副本与清理。Codex集成，CodeBuddy实现/双席评审、原生Kimi监督。当前为 [复用裁定](../coordination/requests/isolated-workflow-20261010/reuse-decision.md) 与 [具体计划](../coordination/requests/isolated-workflow-20261010/implementation-plan.md) 的G0已接收，证据见[接收记录](../coordination/requests/isolated-workflow-20261010/result-g0.md)；当前进入测试先行的离线实现，尚未通过G1或实跑。用户再次明确全部实现交给CodeBuddy + deepseek-v4-pro，Codex停止直接编码，职责纠偏与草稿接管见[交接记录](../coordination/requests/isolated-workflow-20261010/role-correction.md)。当前实现责任人与阻断统一见[交付记录](../coordination/requests/isolated-workflow-20261010/result.md)。计划先验证只读/模拟层，再经G1审核开放有界实跑；不宣称完整P1/P2/P3已交付，不启用OS定时任务。
 
 最近交付的接收与 Git 集成证据见下方历史入口；本节只维护有效下一步，不复制回执或另建状态台账。
 
@@ -63,6 +63,3 @@ P0 复用裁定、能力证据与隔离样例的具体计划已形成候选，�
 2026-10-10 用户授权的隔离纵向样例在限定范围内承接 runner、执行适配与只读 Web；它不代表上述完整产品切片均已完成。先选型/计划审核、再离线验证、再受审实跑的依赖顺序保持有效。
 
 “最终执行者推荐 CodeBuddy + DeepSeek V4-Pro”不意味着设计、集成和审核全部交给它。团队角色按用户配置，各项身份独立性及项目原 owner 合同保持有效。
-
-
-

@@ -319,7 +319,9 @@ claim 使用递增 epoch；过期 worker 的回执不能提交新状态。fencin
 
 ### 7.3 资源与预算
 
-至少支持 `account:<group>`、`worktree:<path>`、`project:<id>:integration`、`device:thor` 四类容量。默认总并发 2、单 writer/树、单 integration writer；具体值可配置。CodeBuddy 多模型配置若使用同一账号，共享该账号组容量。
+至少支持 `account:<group>`、`worktree:<path>`、`project:<id>:integration`、`device:thor` 四类容量。按用户2026-10-10明确要求，`scheduler.max_parallel` 默认4，允许用户配置正整数；推荐CodeBuddy实现者可启动多个独立实例，不设固定2路瓶颈。账号组容量仍由用户配置，实际派发同时受总容量、账号组容量与资源互斥约束；共享CodeBuddy账号的实现/评审profile共同计数，不因模型不同重复获得额度。该配置描述同时在途的调用数量，不是任务包数量、总调用次数或自动重试预算。
+
+单 writer/树、单 integration writer；功能包按显式写集、接口、验收与依赖划分，独立包在各自工作树并行实现，真实依赖只阻塞相应派发或接收点，不把整个模块组串行化。同一会话不能同时续接。容量变更按版本与`expected_revision`生效；调低上限先停止补发，已有attempt保留绑定并自然排空，不为满足新数值强杀在途工作。所有容量与等待原因应在解析后的配置和状态中可见，不能静默降至2或超额启动。
 
 预算首版硬执行墙钟、attempt 数和并发；token/cost 若运行时能提供则记录 measured，否则为 unknown。要求硬 token/cost 上限而运行时不可计量时拒绝该任务，不将 unknown 当 0。账号额度耗尽转 `awaiting_owner` 或显式可恢复等待，不静默换账号/模型。
 
@@ -497,7 +499,7 @@ workflow_bindings:
 scheduler:
   timezone: Asia/Shanghai
   reconcile_every_seconds: 60
-  max_parallel: 2
+  max_parallel: 4  # 用户可配置；与总调用次数预算分开
   coalesce_missed_ticks: true
   notifications: meaningful_changes
 monitor:

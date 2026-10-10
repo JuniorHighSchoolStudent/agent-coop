@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "status": "unreviewed_partial_candidates",
+  "recorded_at_utc": "2026-10-10T13:49:17.0951285+00:00",
+  "identity_source": "actual CLI system/init and result events; exit from exec observation",
+  "num_turns_semantics": "reported cumulative message/history count; not evidence of max-turns enforcement",
+  "role_boundary": "Codex dispatch and validation only; source and test writes in these seven paths are actual CodeBuddy tool calls",
+  "process_gap": "P1 and P2 fixes dispatched from Codex diagnosis before independent defect review and designated package dispatch; no acceptance or PASS claimed",
+  "p1_timeout": {
+    "creation_time_verified": true,
+    "process_id": 17184,
+    "budget_seconds": 600,
+    "has_final": false,
+    "observed_elapsed_seconds": 620.4097172,
+    "observed_termination_utc": "2026-10-10T13:47:26.5626592+00:00"
+  },
+  "invocations": [
+    {
+      "stage": "tests",
+      "adapter": "codebuddy",
+      "requested_model": "deepseek-v4-pro",
+      "actual_model": "deepseek-v4-pro",
+      "session_id": "agent-coop-core-20261010",
+      "first_init_time_utc": "2026-10-10T12:59:06.8600000+00:00",
+      "final_time_utc": "2026-10-10T13:10:56.5290000+00:00",
+      "has_final": true,
+      "final_is_error": false,
+      "observed_exit_code": 0,
+      "outcome": "unreviewed_candidate",
+      "reported_num_turns": 84,
+      "max_turns_argument": 20,
+      "observed_tools": [
+        "Glob",
+        "Grep",
+        "Read",
+        "Write"
+      ],
+      "tool_call_count": 30,
+      "tool_error_count": 0,
+      "write_paths": [
+        "D:\\project\\agent-coop-isolated-workflow\\tests\\test_runner.py",
+        "D:\\project\\agent-coop-isolated-workflow\\tests\\test_runtime.py",
+        "D:\\project\\agent-coop-isolated-workflow\\tests\\test_store.py"
+      ],
+      "local_raw_log_sha256": "0ab6116e64ce621fde5d9258f0d32b0d5e835409938ebc0ad725edae549ec6d4",
+      "full_raw_log_committed": false
+    },
+    {
+      "stage": "correct-tests",
+      "adapter": "codebuddy",
+      "requested_model": "deepseek-v4-pro",
+      "actual_model": "deepseek-v4-pro",
+      "session_id": "agent-coop-core-20261010",
+      "first_init_time_utc": "2026-10-10T13:12:16.7680000+00:00",
+      "final_time_utc": "2026-10-10T13:18:14.6780000+00:00",
+      "has_final": true,
+      "final_is_error": false,
+      "observed_exit_code": 0,
+      "outcome": "unreviewed_candidate",
+      "reported_num_turns": 122,
+      "max_turns_argument": 20,
+      "observed_tools": [
+        "Edit",
+        "Grep",
+        "Read",
+        "Write"
+      ],
+      "tool_call_count": 13,
+      "tool_error_count": 1,
+      "write_paths": [
+        "D:\\project\\agent-coop-isolated-workflow\\tests\\test_runtime.py",
+        "D:\\project\\agent-coop-isolated-workflow\\tests\\test_store.py"
+      ],
+      "local_raw_log_sha256": "ab7ffa595d711a12fe29a880306a28dcbca9d6430d2e630261c2a361ffee5eef",
+      "full_raw_log_committed": false
+    },
+    {
+      "stage": "implementation",
+      "adapter": "codebuddy",
+      "requested_model": "deepseek-v4-pro",
+      "actual_model": "deepseek-v4-pro",
+      "session_id": "agent-coop-core-20261010",
+      "first_init_time_utc": "2026-10-10T13:20:04.0270000+00:00",
+      "final_time_utc": "2026-10-10T13:31:07.5490000+00:00",
+      "has_final": true,
+      "final_is_error": false,
+      "observed_exit_code": 0,
+      "outcome": "unreviewed_candidate",
+      "reported_num_turns": 161,
+      "max_turns_argument": 20,
+      "observed_tools": [
+        "Edit",
+        "Read",
+        "Write"
+      ],
+      "tool_call_count": 13,
+      "tool_error_count": 0,
+      "write_paths": [
+        "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\adapters.py",
+        "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\runner.py",
+        "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\runtime.py",
+        "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\store.py"
+      ],
+      "local_raw_log_sha256": "f90ef94081359df7d2a0a8f0c3427854d31c8646ed9a188cc227dd8c6c655cc0",
+      "full_raw_log_committed": false
+    },
+    {
+      "stage": "runtime-fix",
+      "adapter": "codebuddy",
+      "requested_model": "deepseek-v4-pro",
+      "actual_model": "deepseek-v4-pro",
+      "session_id": "agent-coop-core-20261010",
+      "first_init_time_utc": "2026-10-10T13:35:03.0930000+00:00",
+      "final_time_utc": "2026-10-10T13:44:24.7590000+00:00",
+      "has_final": true,
+      "final_is_error": false,
+      "observed_exit_code": 0,
+      "outcome": "unreviewed_candidate",
+      "reported_num_turns": 195,
+      "max_turns_argument": 20,
+      "observed_tools": [
+        "Edit",
+        "Grep",
+        "Read",
+        "Write"
+      ],
+      "tool_call_count": 11,
+      "tool_error_count": 1,
+      "write_paths": [
+        "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\adapters.py",
+        "D:\\project\\agent-coop-isolated-workflow\\agent_coop\\runtime.py",
+        "D:\\project\\agent-coop-isolated-workflow\\tests\\test_runtime.py"
+      ],
+      "local_raw_log_sha256": "ebb8a0bc38c5b8a9392ec9428f90381d77e65087b120144821db9eefce285b59",
+      "full_raw_log_committed": false
+    },
+    {
+      "stage": "state-fix",
+      "adapter": "codebuddy",
+      "requested_model": "deepseek-v4-pro",
+      "actual_model": "deepseek-v4-pro",
+      "session_id": "agent-coop-p1-state-20261010",
+      "first_init_time_utc": "2026-10-10T13:37:09.6810000+00:00",
+      "final_time_utc": null,
+      "has_final": false,
+      "final_is_error": null,
+      "observed_exit_code": 1,
+      "outcome": "timeout_partial_candidate",
+      "reported_num_turns": null,
+      "max_turns_argument": 20,
+      "observed_tools": [
+        "Read",
+        "Write"
+      ],
+      "tool_call_count": 12,
+      "tool_error_count": 0,
+      "write_paths": [
+        "d:\\project\\agent-coop-isolated-workflow\\agent_coop\\runner.py",
+        "d:\\project\\agent-coop-isolated-workflow\\agent_coop\\store.py",
+        "d:\\project\\agent-coop-isolated-workflow\\tests\\test_runner.py",
+        "d:\\project\\agent-coop-isolated-workflow\\tests\\test_store.py"
+      ],
+      "local_raw_log_sha256": "8be7105e543c8e374968309599d73fbb21ae32d91a5b784e6b94e115d3e04ae5",
+      "full_raw_log_committed": false
+    }
+  ],
+  "candidate_files": [
+    {
+      "sha256": "ed14743e5136c24b18b2e6bd10991e4aef642398f0fd18f6ca3fb8bf5f33fbd2",
+      "path": "agent_coop/store.py"
+    },
+    {
+      "sha256": "4eb09191e37b88241c364b3e2ddbf7f0de94f003701a6722779f9817c5cb0ce6",
+      "path": "agent_coop/runner.py"
+    },
+    {
+      "sha256": "167d6b429202795240419d9264f70ebe93d8d16302b9b5a71fc9de477fbb8772",
+      "path": "agent_coop/runtime.py"
+    },
+    {
+      "sha256": "3039f1c954865c53f780452e0ded8bc3ce31afe6a88e24dc9e15f33a25bf9a27",
+      "path": "agent_coop/adapters.py"
+    },
+    {
+      "sha256": "0bba844f91c77b563f784954ad60d82b1994f88e646e287e21caca77a9652d2f",
+      "path": "tests/test_store.py"
+    },
+    {
+      "sha256": "5b41059cc665df3887eac682145ebf136884d9e79605fdf353bef5445e94020d",
+      "path": "tests/test_runner.py"
+    },
+    {
+      "sha256": "6b218140ede6e35e67df8c8a7fa83480c9497f413ea1954162324415508c963d",
+      "path": "tests/test_runtime.py"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "stage": "tests",
+    "actual_model": "deepseek-v4-pro",
+    "session_id": "agent-coop-isolated-archive-20261010",
+    "result_is_error": false,
+    "num_turns": 52,
+    "tool_error_count": 0,
+    "stream_sha256": "851ba6230335dc9febaaebbc58f7868bce16a0b42358bf1eeaef94ace5280ed0",
+    "started_utc": "2026-10-10T12:59:11.301Z",
+    "completed_utc": "2026-10-10T13:13:22.095Z"
+  },
+  {
+    "stage": "impl",
+    "actual_model": "deepseek-v4-pro",
+    "session_id": "agent-coop-isolated-archive-20261010",
+    "result_is_error": false,
+    "num_turns": 113,
+    "tool_error_count": 2,
+    "stream_sha256": "920d7450bced374bab6d0894046bbac64ad14116a94b8496bce65f097d5f938f",
+    "started_utc": "2026-10-10T13:14:24.399Z",
+    "completed_utc": "2026-10-10T13:27:44.026Z"
+  },
+  {
+    "stage": "regression",
+    "actual_model": "deepseek-v4-pro",
+    "session_id": "agent-coop-isolated-archive-20261010",
+    "result_is_error": false,
+    "num_turns": 146,
+    "tool_error_count": 0,
+    "stream_sha256": "41bfea46483544893b0e06cbda2c2833fa02f6995c9e34368d0b1fb584c97a7a",
+    "started_utc": "2026-10-10T13:28:41.421Z",
+    "completed_utc": "2026-10-10T13:34:58.621Z"
+  }
+]

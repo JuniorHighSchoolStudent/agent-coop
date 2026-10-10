@@ -1,0 +1,29 @@
+完成第3阶段，仅修改两个测试文件，未改产品源码、未运行 shell、未调用其它模型、未提交。
+
+## 修改文件
+
+- `tests/test_paths.py`（177 行）— 新增 `make_link`/`remove_link`（Windows junction 优先、跨平台回退 symlink、仅清理链接自身不递归目标）+ 4 个 junction 回归用例。
+- `tests/test_archive.py`（466 行）— 新增同款 `make_link`/`remove_link` + 12 个回归用例；给 2 个既有幂等用例追加“旧目标 bytes 不变”断言。
+
+## 覆盖的阻断点
+
+**precheck-01（幂等/不覆写）**
+- 幂等重入后旧 archive/backup 目标 bytes 不变（追加进既有用例，当前实现应 green）。
+- 已归档/已备份目标被改内容后再次 `create_archive`/`create_backup` 必须 `ValueError` 且不覆写被改内容（`test_create_archive_rejects_changed_target_content` / `test_create_backup_rejects_changed_backup_target_content`）。
+- 已有 target 但无 receipt 且内容不同必须拒绝不覆盖（`test_create_archive_rejects_existing_target_without_receipt`）。
+
+**precheck-02（junction/reparse）**
+- paths：`create_root` 直接 junction、父祖先 junction 拒绝且外部不写 marker/子目录；`checked` 根路径祖先 junction 拒绝；`write_json` parent junction 拒绝且外部不写文件。
+- archive：预建 `archives/<digest>` 或 `backups/<digest>` junction，`create_archive`/`create_backup` 拒绝且外部目录不增文件。
+- cleanup：plan 生成后 archive/backup 目标父目录改 junction（指向含同 bytes 文件的外部临时目录），`apply_cleanup` 拒绝并保留 fixture。
+
+**precheck-03（计划/回执/authorize 重验）**
+- 持久 plan 重算 `plan_digest` 后 source 换 `workspace/feature.py` 且 hash 匹配，apply 必须拒绝且源码/fixture 保留（`test_apply_cleanup_rejects_rebound_source`）。
+- plan 生成时 authority.subject 与 archive/backup.subject 不符必须拒绝（`test_plan_cleanup_rejects_subject_mismatch`）。
+- plan 生成后持久 archive/backup 仅 metadata 变化（files 不变），apply 必须拒绝（`test_apply_cleanup_rejects_receipt_metadata_change`，带 finally 恢复回执防跨子用例污染）。
+- plan 生成时 archive/backup 任一目标损坏必须拒绝（`test_plan_cleanup_rejects_corrupt_target`，带 finally 恢复）。
+- `authorize` 第 2 次调用改 fixture 内容后，apply 不能删新内容，且留下可见失败 receipt 而非裸 intent（`test_apply_cleanup_source_changed_by_authorize_not_deleted`）。
+
+## 预期结果
+
+“旧目标 bytes 不变”两处断言当前应 green；其余新增用例按各 precheck 逐条揭示当前实现缺口，预期 red（由第4作者修复）。junction 用例在无法创建 junction/symlink 时显式 `skipTest`（环境限制，非隐藏实现错误）；未用 `assertRaises(Exception)` 或全类 skip。未运行测试、未声称任何用例通过。
