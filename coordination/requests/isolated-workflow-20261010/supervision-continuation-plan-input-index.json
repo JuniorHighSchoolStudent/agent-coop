@@ -1,0 +1,134 @@
+{
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "administrative_commit": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54",
+  "cwd": "D:/project/agent-coop-g1-review",
+  "files": [
+    {
+      "name": "result.md",
+      "source": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54:coordination/requests/isolated-workflow-20261010/result.md",
+      "bytes": 27419,
+      "sha256": "502a6259b61ed84c8febbf3ece326fbfd9255cd339d20ee80567034b2885efb4"
+    },
+    {
+      "name": "continuation-plan-20261011.md",
+      "source": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54:coordination/requests/isolated-workflow-20261010/continuation-plan-20261011.md",
+      "bytes": 10655,
+      "sha256": "651d36555e0bfd3ba47cf41f530603d783b60b777a9d12f71a9f5e49d292bf30"
+    },
+    {
+      "name": "continuation-dispatch-proposal-20261011.md",
+      "source": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54:coordination/requests/isolated-workflow-20261010/continuation-dispatch-proposal-20261011.md",
+      "bytes": 11519,
+      "sha256": "aa0d9e07332fd86168af174211d1dec44963d6cf37a022e982a0bc060fc36499"
+    },
+    {
+      "name": "interface-log-invocations-20261011.md",
+      "source": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54:coordination/requests/isolated-workflow-20261010/interface-log-invocations-20261011.md",
+      "bytes": 2015,
+      "sha256": "27a8c7005edb21b3f3b58f2b45e8a8699d90a3ae9f70071ca8b6a982337cc8de"
+    },
+    {
+      "name": "permission-argv-amendment-20261011.md",
+      "source": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54:coordination/requests/isolated-workflow-20261010/permission-argv-amendment-20261011.md",
+      "bytes": 3832,
+      "sha256": "64f673b4d992a16357c589a2403a4dc31ea6f4b8d365354635149e43d1884058"
+    },
+    {
+      "name": "review-continuation-confirm-glm.txt",
+      "source": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54:coordination/requests/isolated-workflow-20261010/review-continuation-confirm-glm.txt",
+      "bytes": 6310,
+      "sha256": "cdc79452c8c536e0f1f44902317f5e39ee2160dbc31facb34ffffd9670bcc752"
+    },
+    {
+      "name": "review-continuation-confirm-kimi.txt",
+      "source": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54:coordination/requests/isolated-workflow-20261010/review-continuation-confirm-kimi.txt",
+      "bytes": 4495,
+      "sha256": "6e3b86bd12f7c621fd22025309899c4b8a0dadb38bfa5c7376fd861cf44dc725"
+    },
+    {
+      "name": "supervision-g1-r2.txt",
+      "source": "ba8b0b9d6440d4c51e9e762fa9946c875ed54f54:coordination/requests/isolated-workflow-20261010/supervision-g1-r2.txt",
+      "bytes": 4481,
+      "sha256": "fde7e2a7acab477c75ac9c46d11f5ce4d7183b4ed8d5e7ef5706333117d996c9"
+    },
+    {
+      "name": "identity-and-profile.json",
+      "source": "fixed confirmation projection of original probe-02 metadata SHA98b09e47bf77f2cfed735861b4128311e930fbee9c63fb653d2a5b38aed5e254",
+      "bytes": 4344,
+      "sha256": "a7c1b295531c8f658350334bf65fd7f4a9fa4ddcea0c21893c1a4166a00d6a55"
+    },
+    {
+      "name": "matrix-and-bytes.json",
+      "source": "fixed confirmation projection of original probe-02 metadata SHA98b09e47bf77f2cfed735861b4128311e930fbee9c63fb653d2a5b38aed5e254",
+      "bytes": 15423,
+      "sha256": "d45d9f152f799af584e0924a5a30a6b5237b5517040e0e95490d22e53ad5325e"
+    },
+    {
+      "name": "native-call-map.json",
+      "source": "fixed confirmation projection of original probe-02 metadata SHA98b09e47bf77f2cfed735861b4128311e930fbee9c63fb653d2a5b38aed5e254",
+      "bytes": 14447,
+      "sha256": "4f4681b642f140f51b7f9068bf7a65cb981b6d702021d21be4525e0472f54d16"
+    },
+    {
+      "name": "run-review.ps1",
+      "source": "exact TEMP dispatcher preparation C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1",
+      "bytes": 8808,
+      "sha256": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed"
+    },
+    {
+      "name": "author-path-attributes-20261011.json",
+      "source": "exact TEMP dispatcher preparation C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/author-path-attributes-20261011.json",
+      "bytes": 4821,
+      "sha256": "16f64e2d157bdffccfd7d46d1217968742638613a4cf383e489c290a6d3cfd70"
+    },
+    {
+      "name": "author-r-log.prepared.json",
+      "source": "exact TEMP dispatcher preparation C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/author-r-log.prepared.json",
+      "bytes": 3804,
+      "sha256": "43504c6f42435ab3f7849853af314e62f3fab0e29d53dbd37f41183a9b6ca375"
+    },
+    {
+      "name": "author-r-log.prompt.txt",
+      "source": "exact TEMP dispatcher preparation C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/author-r-log.prompt.txt",
+      "bytes": 1878,
+      "sha256": "ad8c34ef9b014a26f07009b97c0705b1bce182c8059fc1db8d9352d4437ce7c6"
+    },
+    {
+      "name": "author-r-junction.prepared.json",
+      "source": "exact TEMP dispatcher preparation C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/author-r-junction.prepared.json",
+      "bytes": 2930,
+      "sha256": "34a88be387cbab0a6019cecb7fea79b800807c926a576b8dc2b5620d96211293"
+    },
+    {
+      "name": "author-r-junction.prompt.txt",
+      "source": "exact TEMP dispatcher preparation C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/author-r-junction.prompt.txt",
+      "bytes": 1683,
+      "sha256": "95d790951575bde3b26b092b50c17beb8b41116f6add6efddada7cee0c7e35a8"
+    },
+    {
+      "name": "author-r-publication.prepared.json",
+      "source": "exact TEMP dispatcher preparation C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/author-r-publication.prepared.json",
+      "bytes": 3268,
+      "sha256": "6648a1d2c5addbedb508f1c19ade3fc661b4c0dac39c8ca5b0cf0a98b5cc7fce"
+    },
+    {
+      "name": "author-r-publication.prompt.txt",
+      "source": "exact TEMP dispatcher preparation C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/author-r-publication.prompt.txt",
+      "bytes": 2096,
+      "sha256": "322e2625be4f96542cc8925aee24b67943699a10c038a70bacc5b6840580a335"
+    },
+    {
+      "name": "author-runtime-version-preflight.json",
+      "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/author-runtime-version-preflight.json",
+      "bytes": 1396,
+      "sha256": "2ac6fadb70115d8be076739a0db6fde03b3740598f3acfd3c2ffffc76d61c5fb"
+    }
+  ],
+  "codebuddy_calls_issued": 8,
+  "native_calls_issued_before_this": 0,
+  "budget": {
+    "codebuddy": 18,
+    "native": 2
+  },
+  "authors_started": false
+}

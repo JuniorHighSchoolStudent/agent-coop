@@ -1,0 +1,174 @@
+{
+  "scope": "Independent read-only follow-up scope investigation for g1-glm-B18 / g1-kimi-B11. No implementation, no model call, no admission or change to the three reviewed packages.",
+  "product_candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "observed_administrative_head": "0486bed669cfd68b33037e49ac66220af4f41047",
+  "product_diff_to_candidate": "",
+  "evidence": [
+    {
+      "path": "agent_coop/cli.py",
+      "lines": "15-16,37-40",
+      "fact": "init reads JSON profiles from --profiles and passes them to sample.initialize."
+    },
+    {
+      "path": "agent_coop/sample.py",
+      "lines": "14-46",
+      "fact": "validate_profiles enforces role-to-runtime, tools names, executable/entry hashes, budgets, model and supervisor template. No per-file write scope field is validated."
+    },
+    {
+      "path": "agent_coop/sample.py",
+      "lines": "49-57,71-83",
+      "fact": "Profiles are stored unchanged in config; dispatch passes the role profile unchanged through invoke. No path scope is derived."
+    },
+    {
+      "path": "agent_coop/sample.py",
+      "lines": "86-97",
+      "fact": "workspace/feature.py restriction exists in model prompt and declared artifact check, not in permission profile."
+    },
+    {
+      "path": "agent_coop/runtime.py",
+      "lines": "218-227",
+      "fact": "invoke calls adapters.command with profile/prompt/session and then run_bounded with cwd. Adapter command has no cwd argument; current invoke can transparently carry additional profile fields without signature change."
+    },
+    {
+      "path": "agent_coop/adapters.py",
+      "lines": "16-39,75-79,93-100",
+      "fact": "command uses tools for both --tools and single comma-token --allowedTools; Write/Edit presence selects acceptEdits. Parse checks tool names only, not file_path."
+    },
+    {
+      "path": "agent_coop/gates.py",
+      "lines": "15-29",
+      "fact": "Existing implementation_digest and config_digest bind code/config and reject drift; no separate policy registry is needed."
+    },
+    {
+      "path": "coordination/requests/isolated-workflow-20261010/interfaces.md",
+      "lines": "15-17,29-33",
+      "fact": "Existing profile contract enumerates tools but not per-file permissions; sample owns fixed workflow and implementing feature. Frozen interface requires a successor clarification."
+    },
+    {
+      "path": "docs/design.md",
+      "lines": "269,316,324",
+      "fact": "Permissions belong to profile; writers require isolated worktrees and explicit write sets. This is contract, not present permission implementation."
+    },
+    {
+      "path": "docs/runtime-adapters.md",
+      "lines": "9-11,48-55,61",
+      "fact": "ExecutionProfile binds permissions, RuntimeAdapter consumes authorized profile/capabilities; changed profile creates a new binding."
+    },
+    {
+      "path": "examples/executor-profile.proposed.yaml",
+      "lines": "1-7",
+      "fact": "permission_policy_ref is proposed only, no live parser or authoritative per-file policy implementation."
+    },
+    {
+      "path": "coordination/requests/isolated-workflow-20261010/result.md",
+      "lines": "94,98",
+      "fact": "Historical package ownership: P2 adapters/runtime/test_runtime; P6 sample/checks/gates/test_sample/test_flow/test_gates."
+    }
+  ],
+  "minimum_scope_recommendation": {
+    "decision_owner": "Interface integrator must decide successor profile permission field and P2/P6 boundary before package admission; current findings explicitly scope_needs_alignment.",
+    "policy_owner": "P6 sample is sole owner of fixed sample role write scope (implement: workspace/feature.py; reviewer/supervisor: no writes). Do not hardcode role/file in generic adapter.",
+    "serialization_owner": "P2 adapters is sole owner of profile-to-CLI translation, including dontAsk and separate argv rules; generic runtime remains a transparent process boundary unless reviewed contract requires otherwise.",
+    "minimum_product_files": [
+      "agent_coop/sample.py",
+      "agent_coop/adapters.py"
+    ],
+    "implementation_approach_not_approved": "Extend existing profile with typed per-file permission data, validate/derive from fixed sample authority, bind resolved inputs in existing config digest, and serialize absolute per-file Write/Edit rules. Missing/invalid/broadened writer scope must fail before launch. Preserve invoke/command signatures by supplying resolved profile rather than duplicating scheduler or policy registry.",
+    "open_choice": "Exact field name/schema and whether supplied declaration must equal fixed policy or is derived by sample initialization are not yet specified; choose one authority, not two mutable sources."
+  },
+  "reusable_tests": [
+    {
+      "path": "tests/test_runtime.py",
+      "lines": "176-201",
+      "extension": "AdapterCommandTests: separate argv tokens, exact absolute Write/Edit, dontAsk, no acceptEdits/bypass/generic Write/Edit allow; missing/invalid scope rejects. Existing tests only identity/list/max_turns."
+    },
+    {
+      "path": "tests/test_runtime.py",
+      "lines": "112-121,401-452",
+      "extension": "Existing post-hoc tool-name rejection and invoke hash/launch-boundary tests remain regressions, not evidence of file-scope enforcement."
+    },
+    {
+      "path": "tests/test_flow.py",
+      "lines": "17-38,52-82",
+      "extension": "Profiles fixture and mocked invoke call capture: assert initialized/frozen role permissions and handoff to runtime; reject expanded writer/read-only-role write scope before dispatch. Current mock bypasses actual adapter and cannot prove CLI permissions."
+    },
+    {
+      "path": "tests/test_sample.py",
+      "lines": "75-80,114-121",
+      "extension": "Reuse config tamper and implementation version invalidation for scope binding, not new config/state ledger."
+    },
+    {
+      "path": "tests/test_paths.py",
+      "lines": "67-101,126-160",
+      "extension": "Reuse paths.checked traversal/absolute/symlink/junction rejection; do not copy path validator."
+    }
+  ],
+  "write_set_independence": {
+    "R-log": "Independent of checks.py + test_gates.py if following recommended write set; shared final candidate/digest revalidation still needed.",
+    "R-junction": "Product files independent, test write set NOT independent because AdapterCommandTests and junction test both live in tests/test_runtime.py. Prefer queue after R-junction exact frozen delivery/released claim. Do not dispatch parallel same-file authors.",
+    "alternative_not_admitted": "A reviewed move of existing AdapterCommandTests into a sole test_adapters owner can later separate responsibility, but requires updating/removing original ownership and coordinating test_runtime; do not create duplicate command tests just to claim independent writes."
+  },
+  "unknowns": [
+    "Product profile per-file schema and exact resolved binding contract are not decided.",
+    "Actual CLI/native positive-negative enforcement of future product argv has not been tested; bootstrap probe does not prove product path.",
+    "Hook/session/plugin bypass and host side effects remain existing limited-evidence boundaries; no OS sandbox/global memory isolation claim.",
+    "No new tests or model calls were run in this scope inquiry."
+  ],
+  "manifest": [
+    {
+      "path": "agent_coop/adapters.py",
+      "sha256": "3039f1c954865c53f780452e0ded8bc3ce31afe6a88e24dc9e15f33a25bf9a27",
+      "git_blob_2e9f192": "62140d53bfe781dd7ae96d1c4374c8f193216cf9"
+    },
+    {
+      "path": "agent_coop/sample.py",
+      "sha256": "2c3c8c6df35d246890cbba4f502c2ed9d747d102fe4a0b05a4fb5ed0aa45157c",
+      "git_blob_2e9f192": "d1175b83b5c872df33379e35a9a5a8295d6c4ef4"
+    },
+    {
+      "path": "agent_coop/runtime.py",
+      "sha256": "96f957ca3667ae16d86c33bc726a2efeda9a5f158094e38a73bb641eb4ed2c79",
+      "git_blob_2e9f192": "103d24913e9d28ceef29a2e82fd5b336bc4619e8"
+    },
+    {
+      "path": "agent_coop/gates.py",
+      "sha256": "a1f50a9a5a91f7bb86c41ab5eb1ca30846f7e9c409db53ff683414a04d7adb56",
+      "git_blob_2e9f192": "8dcf7a028b21238cb420b8236c6c058a86fbbb18"
+    },
+    {
+      "path": "agent_coop/cli.py",
+      "sha256": "b7b1784e5a361639bb314d3890e2c5d495b60eea61606091ebb13702685a1fc0",
+      "git_blob_2e9f192": "f47cf3bec411e6375b20600ffd3d55892f7a33c7"
+    },
+    {
+      "path": "tests/test_runtime.py",
+      "sha256": "8fa8456df048ef5c133f51d53749c336bb485e976f9b329d26eb6f1c44905e78",
+      "git_blob_2e9f192": "03ee6a294b461c77d340f5bb053f529d71a335ff"
+    },
+    {
+      "path": "tests/test_flow.py",
+      "sha256": "27ead0985e05ae59db952367208d08b199a6bf205e5df3250dcd6a759b78f726",
+      "git_blob_2e9f192": "fa81764430e96f1e441926cca92e7205ca719e5e"
+    },
+    {
+      "path": "tests/test_sample.py",
+      "sha256": "033489384cc132f0765792bec788424d4c0e76bacd789b3ad4d2ad68d9dff45a",
+      "git_blob_2e9f192": "c95159979f63226754e062a3cabd82fc54b4f1b0"
+    },
+    {
+      "path": "docs/design.md",
+      "sha256": "9b606cfab5eb18bebd07b6069e098ad73494c37abe8d9295604aeac07fef9ef6",
+      "git_blob_2e9f192": "5752a7a819ea319f6f21b596c407b5924541ea59"
+    },
+    {
+      "path": "docs/runtime-adapters.md",
+      "sha256": "243a25be44d4e76467a1632fd7b8a1cdcb33a6651dc35052736dc0ed5f33ded6",
+      "git_blob_2e9f192": "2c64f21ade7a337be2b457c33bcb8d273494a928"
+    },
+    {
+      "path": "coordination/requests/isolated-workflow-20261010/interfaces.md",
+      "sha256": "fac790f5e40dda8ef10017e81aff24977edc61e3daa4604b79a4b2f88655feff",
+      "git_blob_2e9f192": "9554159e638b7858fb804136d74a29cb1a86325d"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+# 原生Kimi计划监督结论（本批 native 1/2）
+
+## 实读范围
+
+`coordination/.runtime/continuation-supervision/` 下：input-index.json、result.md（当前段+冻结历史段）、双席确认票（glm/kimi）、identity-and-profile.json、matrix-and-bytes.json、native-call-map.json（249行全读）、run-review.ps1（128行全读）、author-runtime-version-preflight.json、author-path-attributes-20261011.json、三包 prepared.json+prompt.txt、interface-log-invocations-20261011.md、continuation-plan-20261011.md、permission-argv-amendment-20261011.md；另用 Glob 核实 TEMP 日志目录既有回执与三个作者根的 continuation-author 合同副本。未读另一席任何未列出材料；无 shell，未自行计算哈希，哈希一致性以各原件互引与双席已核记录为准。
+
+## 当前状态一致性（一致）
+
+- input-index：产品 2e9f192、行政 ba8b0b9、CodeBuddy 已发 8/18、native 此前 0/2（本次为第1次）、authors_started=false —— 与 result.md 当前段及任务陈述完全一致。
+- probe-02 证据：native-call-map 显示 12 次调用（Read3/Edit3/Write6）tool_use/tool_result 逐对齐全；P1/P2 成功且字节核验；N1–N7 真实权限拒绝，N7 input 实含 `../` 逃逸串；denied 目标前后 hash 不变、unexpected_fixture_files 空；37.46s<300s；argv 为五 allow 独立 token+两 deny 独立 token+dontAsk+setting-sources none+no-session-persistence+严格空 MCP+四 memory 开关。双席确认票与此逐格吻合。
+- finding 状态：GLM 自关 B17/B15/B16、B18 保持 open；Kimi 自关 B10（限定范围）、B06/B09/B11 保持 open；产品 G1 维持 CHANGES_REQUESTED —— 两票与 result.md 一致，均无越界代关。
+- 三包与合同逐条对齐：R-log 写集 checks.py+test_gates.py、六类验收（含并发、失败/同源码重跑、旧日志字节不变、失败 stderr 保留）、签名/report 不变；R-junction 仅 test_runtime.py、仅生命周期修复、保留逃逸断言/哨兵/child 未执行证据、不 skip 不吞全部 OSError；R-publication 仅 TEMP 具名 harness、30轮×2或120秒首失败停、独立 fixture、finally 还原、不改返回/异常/重试、不枚举他进程句柄、未复现保持 unknown、prompt 显式禁止 TEMP 目录外写入。per-file allow 与写集逐字一致；预算 20turn/600s 落在 wrapper ValidateRange 内。
+- wrapper（run-review.ps1）：全脚本仅 Read-only/ConclusionOnly/Probe/Writer 四条路径，旧 acceptEdits 分支不存在；Writer 强制 admission 的 status 精确串、candidate/root/session/写集（ordinal `-cne`）/四 memory 环境值绑定，并复查 reparse 祖先、既有目标 nlink=1、existing_files hash 漂移、HEAD==candidate、回执四件套拒覆写。prepared 状态串为 "prepared…"，直接喂给 wrapper 会抛 "Writer admission binding mismatch" —— prepared 确实不可启动 writer，与任务陈述一致。preflight 明确 must_recheck_before_author_launch、wrapper 不做版本门禁，表述诚实。
+- seat 别名：prepared 的 p7/p3 仅为传输 seat，preflight 具名 owner 为 P6 checks / P2 test_runtime / P1 TEMP 诊断，无 P7 接管或 P3 范围暗示。
+
+## 结论：监督通过（限本次计划准备范围），三包可在下列具名前置全部满足后启动
+
+无硬阻断。以下 1–4 为启动前必须满足的具名前置，其中 2 是最小纠正（不满足则 r-log/r-junction 启动即被 wrapper 拒覆写防护抛错）：
+
+1. **独立 admission 原件**：dispatcher 逐包生成新 admission（不改 prepared 历史），status 用精确串 `admitted after dual confirmation and native plan supervision`，write_files 顺序与 `-WriteFiles` 实参逐字一致；启动前在 dispatcher 自身进程设置四个 memory 环境变量（wrapper 比对的是进程环境值）。同时按 preflight 人工逐一复核 node.exe/codebuddy bin/dist/run-review.ps1 四个 SHA256 并绑定证据——不得宣称 wrapper 自动执行版本门禁。
+2. **回执前缀冲突（最小纠正）**：TEMP 日志目录已存在 `repair-g1-p7-r1.*` 与 `repair-g1-p3-r1.*` 全套历史回执（上一轮 P7 接管与 P3 修复）。r-log（seat p7）与 r-junction（seat p3）若用默认 Round=1 必然触发 "Existing receipt must not be overwritten"。须显式用 `-Round 2`（当前无 r2 冲突）或具名不同 Gate/LogDirectory，并记录选择；r-publication（seat p1）的 `repair-g1-p1-r1` 前缀当前无冲突，建议三包统一显式轮次以免与历史混淆。
+3. **R-publication 正例几何未测（保持 unknown，非重写范围）**：probe-02 两个正例均在 cwd 内；r-publication 唯一写目标在 TEMP、跨盘且在 cwd 外，"cwd 外绝对路径+精确 allow token 放行"未正向实证（N3/N5 只证 cwd 外拒绝方向）。不得把三包统称"与 probe-02 同构"——r-log/r-junction 写目标在各自 cwd 内、同构成立；r-publication 不同构。若首次 Write 被拒，作者按 prompt 停止报告，dispatcher 不得擅自加 `--add-dir` 或放宽 allow（amendment 明令禁止），须回报双席裁定。
+4. **R-publication 新文件**：wrapper 对不存在目标跳过 nlink 检查（正确）；首次创建后 dispatcher 核 nlink=1 与写集范围（path-attributes 已标 must_repeat_at_launch）。三树当前 HEAD/clean 我无 shell 不能实测，由 wrapper 启动时强制核验，失败即抛错，属已内嵌防线。
+
+小观察（不阻断、不属本批纠正）：run-review.ps1 末行 `exit $callExit` 带孤立 `\r`（混合行尾），PowerShell 解析无碍；如需规整另走具名变更。
+
+## 边界声明
+
+本次 PASS 仅表示准备证据足够继续；writer 未执行，不称任何包已通过。保持 unknown：T1 shell 执行、hook 先行 allow、CLI/session/scoped-hook、真实宿主 memory 全域隔离、路径别名、num_turns 硬预算语义（probe-01 为13、probe-02 为31，仅记录）、N7 decisionReason（GLM"路径匹配层"系静态推断，动态仅见 denial 文本）；"宿主无 hook 配置"不是已证前提。不代产品独立审核，不关闭另一席 finding（GLM B18、Kimi B11 等产品 adapters/sample 权限项仍 open、live 禁），不预支 G1/合入/live。原 R2 监督仅认可 blocked 的结论作为历史保留；本结论只在用户新授权范围内判断准备充分性。事后逐包核写集，越界即收回。
