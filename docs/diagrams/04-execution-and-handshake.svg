@@ -109,8 +109,10 @@
     <text x="1145" y="351" text-anchor="middle" font-size="12" font-weight="700" fill="#E05A6B">rejected</text>
     <text x="1145" y="368" text-anchor="middle" font-size="10.5" fill="#8A5A62">拒绝</text>
 
-    <rect x="765" y="404" width="200" height="42" rx="9" fill="#1E1418" stroke="#6E2A33"/>
-    <text x="865" y="430" text-anchor="middle" font-size="12" font-weight="700" fill="#E05A6B">cancelled / expired</text>
+    <rect x="765" y="400" width="200" height="54" rx="9" fill="#1E1418" stroke="#6E2A33"/>
+    <text x="865" y="417" text-anchor="middle" font-size="12" font-weight="700" fill="#E05A6B">cancelled / expired</text>
+    <text x="865" y="435" text-anchor="middle" font-size="10" fill="#8A5A62">握手不再等待</text>
+    <text x="865" y="451" text-anchor="middle" font-size="10" fill="#8A5A62">不证明旧进程已停止</text>
   </g>
 
   <g stroke="#6B7A90" stroke-width="1.6" fill="none">
@@ -123,11 +125,17 @@
     <path d="M990 312 V326"/>
     <path d="M1145 312 V326"/>
   </g>
-  <path d="M965 205 H1235 V425 H971" stroke="#C77DD6" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#a4p)"/>
-  <text x="978" y="415" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="10.5" fill="#A98CC0">超时 / 撤回</text>
+  <g stroke="#C77DD6" stroke-width="1.5" fill="none" stroke-dasharray="5 4">
+    <path d="M965 205 H1235"/>
+    <path d="M965 275 H1235"/>
+    <path d="M1235 205 V427"/>
+  </g>
+  <path d="M1235 427 H965" stroke="#C77DD6" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#a4p)"/>
+  <text x="1250" y="315" transform="rotate(-90 1250 315)" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="10.5" fill="#A98CC0">超时 / 撤回 · 不生成 accepted</text>
 
-  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12" fill="#B6C0CE">
-    <text x="765" y="474">· ack 不是评审通过；accepted 也不代表已集成</text>
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="11.5" fill="#B6C0CE">
+    <text x="765" y="470">· ack 不是评审通过；accepted 也不代表已集成</text>
+    <text x="765" y="487">· 超时 / 失联不生成 accepted；Scheduler 不代评审者接受</text>
   </g>
 
   <!-- 底部：单写入发布 -->

@@ -1,15 +1,15 @@
 # Diagrams 提交流程审核
 
-用户要求审核最近 diagrams 提交。本次只审查与记录，不修改图、不合入、不运行产品。Codex 为派发与集成者，不占独立票；沿 roadmap 已有团队与预算，不创建新规则。
+用户最初要求审核最近 diagrams 提交；首轮仅审查与记录，不修改图、不合入、不运行产品。随后用户要求“继续使用多agent 协作开发”，授权修订。续作范围和步骤见 [implementation-plan.md](implementation-plan.md)，唯一当前状态见 [result.md](result.md)，首轮结论已归档 [result-r1.md](result-r1.md)。Codex 为派发与集成者，不占独立票；沿 roadmap 已有团队与预算，不创建新规则。
 
-## 固定输入
+## 首轮固定输入（历史）
 
 - 候选：`63ef2300ebf0d7873b75f0bddd095de7f656c4df`；原基线：`d38bdca9ca137a1d18b801f02e7088ffd45e568a`。
 - 当前已接收合同基线：main `cb0793d5d703d2a21d21f18c01a2fc68e1a05814`。工作树根为候选原文；`.review-inputs/current-main/` 是该 main 的只读临时快照，不提交、不形成新 owner。
 - 范围：README、design 的导航增量，五份 SVG 与 index.html；候选 AGENTS/design/roadmap/runtime-adapters 和当前 main 合同作为参照。旧基线本身不是缺陷，须指出实际冲突与影响。
 - Git 作者元数据不能证明实际使用哪个 agent；作者 runtime/session unknown。两位 reviewer 均为本次新建只读会话，与作者无重叠。
 
-## 步骤及覆盖
+## 首轮步骤及沿用覆盖
 
 1. Codex 固定候选、检查差异与原件，核查图的渲染、链接和静态结构。
 2. CodeBuddy glm-5.3 与 kimi-k3-2 独立只读审核，不读彼此意见；并发最多 2，每次 max-turns 20，本请求最多两轮，不把 num_turns 历史条目数当循环次数。
@@ -30,4 +30,4 @@
 
 ## 状态入口
 
-唯一当前审核结论见 [result.md](result.md)。请求与回执不改产品合同；后续修图必须新冻结候选并使旧票失效。原始运行流在本机临时目录，不提交私有会话日志。
+唯一当前审核结论见 [result.md](result.md)。请求与回执不改产品合同；续作图修订使用新的候选及输入清单，旧票失效，沿用 D1–D8 并逐项核对 B1–B3 关闭条件。两组新独立评审与新 Kimi Code 监督均不得由实现者兼任。原始运行流在本机临时目录，不提交私有会话日志。

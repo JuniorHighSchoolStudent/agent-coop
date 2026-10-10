@@ -63,6 +63,9 @@
   .card .head .q{margin:0;color:var(--tx2);font-size:14px}
   .card .head .q b{color:var(--tx)}
   .card .head .file{margin:10px 0 0;font-size:12.5px;color:var(--tx3);font-family:Consolas,"Cascadia Mono",monospace}
+  .card .head .file a{color:#C77DD6;text-decoration:underline;text-underline-offset:3px;font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif}
+  .card .head .file a:hover,.card .head .file a:focus-visible{color:#E5B8E8}
+  a:focus-visible{outline:2px solid #C77DD6;outline-offset:2px;border-radius:3px}
   .card .body{padding:0;background:var(--bg)}
   .card .body img{display:block;width:100%;height:auto}
   .card .notes{padding:20px 26px 24px;background:var(--panel);border-top:1px solid var(--line)}
@@ -115,7 +118,7 @@
       <span class="tag">图 1 / 总体架构</span>
       <h2>小内核 + 可插拔适配器</h2>
       <p class="q"><b>这张图回答：</b>系统由哪些部分组成？谁有权写状态？项目里到底留下什么可审阅的东西？</p>
-      <p class="file">01-architecture-overview.svg</p>
+      <p class="file">01-architecture-overview.svg · <a href="./01-architecture-overview.svg">打开原图 / 放大查看</a></p>
     </div>
     <div class="body"><img src="./01-architecture-overview.svg" alt="Agent Coop 总体架构"></div>
     <div class="notes">
@@ -135,7 +138,7 @@
       <span class="tag">图 2 / 设计思想</span>
       <h2>八条不变量</h2>
       <p class="q"><b>这张图回答：</b>这套设计靠哪些不变量站得住？评审时按哪八条去反驳？</p>
-      <p class="file">02-design-principles.svg</p>
+      <p class="file">02-design-principles.svg · <a href="./02-design-principles.svg">打开原图 / 放大查看</a></p>
     </div>
     <div class="body"><img src="./02-design-principles.svg" alt="Agent Coop 设计思想：八条不变量"></div>
     <div class="notes">
@@ -153,13 +156,14 @@
       <span class="tag">图 3 / 流程</span>
       <h2>需求与配置：从自然语言到合格节点</h2>
       <p class="q"><b>这张图回答：</b>用户说一句话之后，系统凭什么保证它没被曲解、没被越权、真正进了队列？</p>
-      <p class="file">03-request-to-dispatch.svg</p>
+      <p class="file">03-request-to-dispatch.svg · <a href="./03-request-to-dispatch.svg">打开原图 / 放大查看</a></p>
     </div>
     <div class="body"><img src="./03-request-to-dispatch.svg" alt="Agent Coop 需求与配置流程"></div>
     <div class="notes">
       <ul>
-        <li><b>最小变更优先：</b>先检索已有定义，再在「新任务 / 新参数 / 新角色 / 插入节点 / 新插件 / 新工作流」里选最小的一种。</li>
-        <li><b>预览要说人话：</b>不只给一句“已确认”，而是显示立即可执行的部分、等待的前置、在途任务保持不变的内容。</li>
+        <li><b>两个 gate 串在 apply 前：</b>校验通过后，需要新权限/接收权变更/owner 裁定的走原审批出口，需要新 workflow 设计或改节点合同的走 §8.5 多方评审；两者可同时适用，不是任选其一。</li>
+        <li><b>常规任务不重复审批：</b>已有明确授权且满足项目策略的任务跳过两个 gate 直接入队，不为每个新任务增加人工批准。</li>
+        <li><b>未通过不进入 apply：</b>待批准 / 待评审 / 校验失败 / 拒绝均有具名出口；多方评审须所有必需席位通过、无 blocking、校验通过并由具权限集成者接收。</li>
         <li><b>applied ≠ 已完成：</b>它只表示定义或入队已生效，需求是否实现由项目原证据决定。</li>
       </ul>
     </div>
@@ -172,13 +176,13 @@
       <span class="tag">图 4 / 流程</span>
       <h2>一次执行怎么算完成</h2>
       <p class="q"><b>这张图回答：</b>任务状态怎么流转？跨角色怎么交接？状态文件是怎么被“只写一次”地发布出去的？</p>
-      <p class="file">04-execution-and-handshake.svg</p>
+      <p class="file">04-execution-and-handshake.svg · <a href="./04-execution-and-handshake.svg">打开原图 / 放大查看</a></p>
     </div>
     <div class="body"><img src="./04-execution-and-handshake.svg" alt="Agent Coop 执行生命周期、握手状态机与单写入发布"></div>
     <div class="notes">
       <ul>
         <li><b>进程、会话、证据分开：</b>exit 0 只证明正常退出，缺提交/产物/验证时不能进入 delivered。</li>
-        <li><b>握手不是消息：</b>offered → acknowledged → accepted/changes_requested/rejected；超时与失联不生成 accepted。</li>
+        <li><b>握手不是消息：</b>offered → acknowledged → accepted/changes_requested/rejected；offered 与 acknowledged 都可超时/撤回进入 cancelled/expired，超时与失联不生成 accepted，也不证明旧进程已停止。</li>
         <li><b>单写 + outbox：</b>事务提交 → 临时文件 → 原子发布不可变事件 → 发布带 revision 的投影；消费者比对 revision，不一致就显示 <code>publication_pending</code>。</li>
       </ul>
     </div>
@@ -191,7 +195,7 @@
       <span class="tag">图 5 / 闭环</span>
       <h2>知识积累与受控改进</h2>
       <p class="q"><b>这张图回答：</b>踩过的坑怎么沉淀？什么时候允许它改变系统行为？</p>
-      <p class="file">05-knowledge-loop.svg</p>
+      <p class="file">05-knowledge-loop.svg · <a href="./05-knowledge-loop.svg">打开原图 / 放大查看</a></p>
     </div>
     <div class="body"><img src="./05-knowledge-loop.svg" alt="Agent Coop 知识积累与受控改进闭环"></div>
     <div class="notes">

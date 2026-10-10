@@ -1,0 +1,40 @@
+All four files modified and verified. Here is the completion report.
+
+## 四文件实际修改
+
+**`docs/diagrams/03-request-to-dispatch.svg`（B1，全量重排）**
+- viewBox 由 1280×740 扩为 1280×900；副标题改为「两个 gate 串行可同时适用，全部通过后才 apply」。
+- 主链改为：1 需求 → 2 定位 → 3 ChangeProposal → 4 预览 → 5 校验 → **① owner 审批 gate → ② workflow 评审 gate（串行）** → 6 apply → Scheduler 接入。
+- 新增右侧处理/出口：校验失败 `rejected`、owner 审批、拒绝 `blocked·awaiting_owner`、§8.5 多方评审（≥2 独立非作者 · 所有必需槽位通过 · 无 blocking · 校验通过 · 具权限集成者接收）、评审未通过 `awaiting_review`。
+- 箭头分色：灰=主链、琥珀=「是」分支、绿=「批准/通过」回接、红=失败/拒绝具名出口。两个 gate 的「否·跳过」与「通过」都在下一节点汇合，非任选其一。
+
+**`docs/diagrams/04-execution-and-handshake.svg`（B2）**
+- `cancelled / expired` 框补「握手不再等待 / 不证明旧进程已停止」。
+- 虚线改为 offered 与 acknowledged 两路都汇入右侧 rail 再进 `cancelled/expired`；标签「超时/撤回 · 不生成 accepted」。
+- 底部注补「超时/失联不生成 accepted；Scheduler 不代评审者接受」。
+
+**`docs/diagrams/01-architecture-overview.svg`（B3）**
+- 图例三行：实线=控制/数据流、实线(紫)=执行回传、虚线=单写发布(coordinator→证据栏)。
+- 执行环→coordinator 改为紫色实线「执行回传」；新增 coordinator→证据栏紫色虚线「单写发布」；入口→intent 的紫色线改灰以对齐图例。
+- 入口插件改为「Codex Desktop · Claude Code 插件」（不再把 CodeBuddy 写成已定义薄插件）；Store 补「SQLite 为建议（P0 未定）」。
+
+**`docs/diagrams/index.html`**
+- 五图 `.head` 各加 `<a href="./0X-….svg">打开原图 / 放大查看</a>`（可聚焦、无脚本，保留 alt 与响应式）；补 `a:focus-visible` 样式。
+- 图3 摘要改为两 gate 串行表述；图4 摘要补 acknowledged 超时/撤回与「不证明进程停止」。
+
+## 各 B 项如何关闭
+
+- **B1**：授权 gate 与 workflow 评审 gate 已串在 apply 前，条件可同时适用（①② 串行、各自「否·跳过」），常规任务双跳过；必需席位通过/非作者/无 blocking/校验/接收齐全；待批准/待评审/校验失败/拒绝均走红色具名出口，不沿成功线进 apply。
+- **B2**：acknowledged 与 offered 都可到 cancelled/expired，超时/失联不生成 accepted，Scheduler 不代评审接受，且明确不暗示旧进程已停止。
+- **B3**：回传（实线）与 coordinator→证据栏发布（虚线）分开，图例、方向与单写发布语义一致；CodeBuddy 不再冒充薄插件；SQLite 标注为建议。
+
+## 静态自查
+
+- 三张 SVG 手工核对 XML 结构（元素闭合、marker id 引用 `arw3r/arw3g/arwP` 等均已定义）；箭头坐标与框边界逐一比对，未发现线穿文本或框重叠。
+- index.html 五条原图链接 href 指向存在文件，`a:focus-visible` 规则就位。
+
+## 未验证范围（不冒充）
+
+- 我无渲染能力，未实际打开 SVG/HTML 渲染，也未点击五个原图入口、未在桌面/窄屏/辅助技术下目测箭头与文字。真实渲染、Git/XML 校验、链接点击由 Codex 承担。
+- 未做辅助技术/全浏览器验证；未读私有会话或 `.workbuddy`；未改图2/5、规范正文、历史票或状态记录，未新建文件/依赖。
+- 本次为受派实现，**不是独立评审，也不构成接收**；B1–B3 的闭合仍需两席新独立会话复核与 Codex 接收。
