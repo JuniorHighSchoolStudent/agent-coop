@@ -1,6 +1,6 @@
 # 文档组织规范交付
 
-候选 `25690df055a09ea71c7edb4dba163e191b5e9857`，基线 main `a9bb47403c72e8f9afdce23aa27b68d3c06d2bec`。两席独立评审与原生 Kimi Code 监督均 PASS，Codex 于 2026-10-10 接收；尚未合入或推送。集成者 Codex，作者 Codex + CodeBuddy/deepseek-v4-pro，二者不占独立评审票。
+候选 `25690df055a09ea71c7edb4dba163e191b5e9857`，基线 main `a9bb47403c72e8f9afdce23aa27b68d3c06d2bec`。两席独立评审与原生 Kimi Code 监督均 PASS，Codex 于 2026-10-10 接收；已本地合入 main，未推送。集成者 Codex，作者 Codex + CodeBuddy/deepseek-v4-pro，二者不占独立评审票。
 
 ## 交付与原件
 
@@ -30,3 +30,7 @@
 - 监督建议 3 的长期义务沿既有 owner 与 P1 出口保留。建议 4 中临时检查脚本转为正式可复现工具沿 P1 门禁落实；CLAUDE 无改动已有 Git 证据，接收检查又比对基线/候选 Git blob 相同，不将人工清单漏列扩展成额外产品功能。
 - 监督原文「README 表 8 行」属计数笔误，实际 9 个任务行（另有表头）；原件不改，本条更正。两席所述八类用途与九行入口可同时成立。
 - 本次当前治理工作已完成，下一产品切片仍 P0 复用裁定，未启动。不存在待处置 blocking；后续门禁建设义务未因文档接收而关闭。
+
+## 本地集成证据
+
+main 从干净的 a9bb474 fast-forward 至接收提交 `be1dbc2524efe2813d73be57ba12ef1ad4d028c9`，候选 ancestry 检查 exit 0。AGENTS、README、design、runtime-adapters、diagrams、examples、CLAUDE 与被审候选无差异。合入后 104 个相对 Markdown 链接有效、验收 1–54 连续唯一、diff 检查通过。临时派发清单移回本机临时目录，不入库。用户原工作树及 `.workbuddy/` 未变；没有 push、PR 或发布。本段为实际集成后的记录，不冒充先前评审输入。
