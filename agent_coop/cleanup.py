@@ -6,7 +6,6 @@
 import json
 import math
 import time
-from pathlib import Path
 
 FIXED_POLICY = {'id': 'isolated-sample', 'revision': 1, 'retention_seconds': 0,
                 'targets': ['scratch/fixture.log'], 'scope': 'local_only'}
@@ -109,12 +108,18 @@ def plan_cleanup(root, archive_receipt, backup_receipt, authority):
         raise ValueError('archive receipt not persisted')
     if read_evidence(root, 'backup.json') != backup_receipt:
         raise ValueError('backup receipt not persisted')
+    if archive_receipt['subject_digest'] != authority['subject_digest']:
+        raise ValueError('archive subject mismatch')
+    if backup_receipt['subject_digest'] != authority['subject_digest']:
+        raise ValueError('backup subject mismatch')
 
     fixture = checked(root, FIXTURE)
     if not fixture.is_file():
         raise ValueError('fixture missing')
     source_hash = digest(fixture)
     _fixture_manifest_entry(archive_receipt, backup_receipt, source_hash)
+    _verify_manifest_targets(root, archive_receipt['files'])
+    _verify_manifest_targets(root, backup_receipt['files'])
 
     plan = {
         'source': FIXTURE,
@@ -124,8 +129,8 @@ def plan_cleanup(root, archive_receipt, backup_receipt, authority):
         'policy_digest': authority['policy_digest'],
         'terminal_epoch': authority['terminal_epoch'],
         'retention_seconds': 0,
-        'archive_files': archive_receipt['files'],
-        'backup_files': backup_receipt['files'],
+        'archive_receipt': archive_receipt,
+        'backup_receipt': backup_receipt,
     }
     plan['plan_digest'] = plan_digest(plan)
     write_json(checked(root, 'evidence/cleanup-plan.json'), plan)
@@ -133,9 +138,9 @@ def plan_cleanup(root, archive_receipt, backup_receipt, authority):
 
 
 def _verify_manifest_targets(root, files):
-    from .paths import digest
+    from .paths import checked, digest
     for entry in files:
-        target = Path(root) / entry['target']
+        target = checked(root, entry['target'])
         if not target.is_file():
             raise ValueError(f'target missing: {entry["target"]}')
         if target.stat().st_size != entry['size'] or digest(target) != entry['sha256']:
@@ -169,35 +174,36 @@ def apply_cleanup(root, plan, authorize):
         raise ValueError('plan not persisted or tampered')
     if plan_digest(plan) != plan.get('plan_digest'):
         raise ValueError('plan digest mismatch')
+    if plan['source'] != FIXTURE:
+        raise ValueError('plan source is not the fixed fixture')
 
     authority = validate_authority(state, authorize())
     _stable_fields(plan, authority)
 
-    fixture = checked(root, plan['source'])
+    fixture = checked(root, FIXTURE)
     if not fixture.is_file() or digest(fixture) != plan['source_sha256']:
         raise ValueError('source changed')
 
-    if read_evidence(root, 'archive.json').get('files') != plan['archive_files']:
+    if read_evidence(root, 'archive.json') != plan['archive_receipt']:
         raise ValueError('archive receipt changed')
-    if read_evidence(root, 'backup.json').get('files') != plan['backup_files']:
+    if read_evidence(root, 'backup.json') != plan['backup_receipt']:
         raise ValueError('backup receipt changed')
-    _verify_manifest_targets(root, plan['archive_files'])
-    _verify_manifest_targets(root, plan['backup_files'])
+    _verify_manifest_targets(root, plan['archive_receipt']['files'])
+    _verify_manifest_targets(root, plan['backup_receipt']['files'])
 
     receipt_path = checked(root, 'evidence/cleanup.json')
     write_json(receipt_path, {'source': plan['source'], 'intent': 'cleanup'})
 
-    fixture = checked(root, plan['source'])
-    if not fixture.is_file() or digest(fixture) != plan['source_sha256']:
-        raise ValueError('source changed before deletion')
     authority = validate_authority(state, authorize())
     _stable_fields(plan, authority)
-
-    try:
-        fixture.unlink()
-        receipt = _cleanup_receipt(plan, 'deleted', None)
-    except OSError as exc:
-        receipt = _cleanup_receipt(plan, 'failed', str(exc))
+    if not fixture.is_file() or digest(fixture) != plan['source_sha256']:
+        receipt = _cleanup_receipt(plan, 'failed', 'source changed by authorize')
+    else:
+        try:
+            fixture.unlink()
+            receipt = _cleanup_receipt(plan, 'deleted', None)
+        except OSError as exc:
+            receipt = _cleanup_receipt(plan, 'failed', str(exc))
 
     write_json(receipt_path, receipt)
     return receipt
