@@ -28,21 +28,6 @@
 - Kimi Code 与 CodeBuddy 的 `kimi-k3-2` 是不同 runtime/session，分别核验能力和实际模型身份；当前 Kimi Code 使用宿主已配置的默认 profile，调用时记录可观测的模型信息，未知保持 unknown，不静默替换。监督并发 1、单次最长 10 分钟，由 Codex 手工看护和在超时后停止本次调用；CLI 未提供 turns/token 硬限时明确记为未实施，不宣称产品预算门禁已实现。
 - 当前分配仅适用于本仓，不继承 ABM owner。
 
-## 工程规范与团队自举交付
-
-范围：修订 AGENTS.md、README.md、docs/roadmap.md、docs/design.md，并在既有设计指定的 requests 目录保存本次人工协作证据；不实现产品、不选底座、不安装依赖。
-
-本切片的精确候选版本、评审及接收状态统一见 [请求与证据入口](../coordination/requests/bootstrap-engineering-20261010/request.md)。该目录保存本次交付证据；本文件维护切片范围和后续依赖，不重复维护审批结果。
-
-步骤与退出判据：
-
-1. 规范修订：补齐 SSOT、SOLID 审查项、规模约定与质量门禁。
-2. 两份独立评审：对同一精确内容 revision，由上述两组独立主审各自出具意见。
-3. 修正与复核：按意见修正后，原审阅者或具名未参与修正的替补复核。
-4. 集成检查：集成者核对 diff 与依赖，确认未修改产品多方评审合同或降低资格条件。
-
-缺少任一必需评审或存在未解决阻断时不得接收；任何候选内容变更均使旧通过票失效，需对新候选复审。
-
 ## 当前合同补充：阶段角色、触发与经验吸收（2026-10-10）
 
 用户授权吸收 gstack 阶段职责模板、角色触发策略、ABM 可靠性约束与 Jev 有界判断，并对前述定时协作、ABM、Jev 分析做多方评审。合同归 design §4.2/§7.1/§7.4/§7.5/§7.6/§9.1 与 §11 新增验收（47-54），开发执行要求归 AGENTS.md；不新建同类规则入口，不实现产品、不安装 gstack/Jev、不启用宿主定时任务。轻量判断沿 P0（资料复用裁定）→ P4（预算内离线评测）→ P5（受控激活/撤回）接入，阻断处置与硬正确性不等到 P5。
@@ -51,6 +36,7 @@
 
 ## 历史交付入口
 
+- 工程规范与团队自举（bootstrap-engineering-20261010）：已接收，规范与团队约束继续有效，候选及评审链见 [请求](../coordination/requests/bootstrap-engineering-20261010/request.md)；已完成步骤退出当前视图。
 - 前端续作与状态维护（frontend-state-contract-20261010）：已接收，其合同继续有效，证据见 [请求](../coordination/requests/frontend-state-contract-20261010/request.md)；当前合同补充入口已由 role-experience-review-20261010 取代。
 
 ## 按依赖推进
