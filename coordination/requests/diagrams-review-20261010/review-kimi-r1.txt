@@ -1,0 +1,82 @@
+# 独立只读审核报告：diagrams 提交（候选 63ef230）
+
+## 身份、范围与版本限制
+
+- 审核者：CodeBuddy + `kimi-k3-2`，本次新建只读会话，与作者无重叠；未阅读另一 reviewer（glm-5.3）的任何意见。
+- 审核对象：工作树（候选 `63ef230`）下 `docs/diagrams/01-05*.svg`、`docs/diagrams/index.html`，及 `.review-inputs/navigation.diff` 所示 README/design 导航增量。
+- 参照：候选 `AGENTS.md`/`docs/design.md`/`docs/roadmap.md` 原文；`.review-inputs/current-main/`（main `cb0793d`）快照。
+- 工具限制：仅使用 Read/Glob/Grep。**无渲染能力**：五张 SVG 按源码静态审核（坐标、文本、箭头路径、语义），未实际渲染，视觉重叠、文字溢出、对比度、最终观感均未验证，相关判断均为推断并标注。
+- 未独立重算 `.review-inputs/diagram-hashes.json` 的哈希值（无 shell），文件内容与哈希对应关系：**unknown**。
+- 该候选提交前的事前批准/评审历史：未在输入中提供，保持 **unknown**，不作为缺陷计入。
+
+## 逐项判定
+
+### D1 SSOT — PASS
+- 候选 `docs/design.md:32` 明确"图是审阅辅助，不是规范正文；图与文字冲突时以本文文字合同为准，图本身不作为实现依据"；`README.md:46` 仅新增导航一行并标注"辅助阅读，不是规范正文"；`index.html:88,208` 重复同一声明。三处措辞一致，未另立规则 owner。
+- `docs/design.md:139` 将 §5 ASCII 图定为"规范性文字示意"、SVG 定为"可视化版本"，权威层级清楚。
+- 图 2（八条不变量）是对 AGENTS/design 既有规则的摘录性重述（逐条核对均在合同中有出处，见 D2/D5），且受上述辅助声明约束，不构成第二份规则台账。
+- 未发现重复规则 owner 或把图当实现依据的表述。
+
+### D2 总体架构 — PASS
+- `01-architecture-overview.svg:60` coordinator 标"唯一的工具状态写入者"；`:68` Scheduler"派发权威：只有它能改调度状态"；`:74` Monitor"只产事件，不决定重试／取消"——与 design §5/§7.6（只有 Scheduler 修改调度状态）一致。
+- 三类 adapter（`:92-105`）职责划分与 design §9 一致；执行环 `:116-117` 注明"领域结论仍由项目原 owner 写入"。
+- 角色/runtime/provider 分离未在图 1 直接出现，但由图 2 卡片 6（`02-design-principles.svg:90-95`，"角色/runtime/model/provider/项目互不绑定""不按品牌决定内核行为"）覆盖，与 design §6/§4.1 一致。两图合看满足覆盖要求。
+- 非阻断观察见 F-1、F-2。
+
+### D3 需求流程 — PASS（附非阻断缺陷 F-3）
+- 图 3 主链 6 步（`03-request-to-dispatch.svg:23-68`）与 design §8.1 链路一致；校验清单（`:60`）与 §8.2 校验项逐项对应；apply 的 expected_revision CAS 与"冲突返回精确节点/字段，不自动 last-write-wins"（`:68`）与 §8.2 一致。
+- 三条分流内容正确：分支 1 原审批出口（`:91-97`，含"工具不把无回复判定为同意，也不让 LLM 替用户批准"）；分支 2 §8.5 多方评审（`:99-105`，"≥2 个独立评审身份·无未解决 blocking·校验通过·集成者接收""作者不得计入自己的通过票"）；分支 3 直接入队（`:107-113`）。与 design §8.1/§8.5 及 main 同条款一致，未见绕过必需评审的表达。
+- "Scheduler 在调度安全点接入"（`:82`）与"applied≠需求已实现"（`:83`）语义正确。
+- 要素"拒绝出口"部分覆盖：授权拒绝走原审批出口、apply 冲突返回均已表达；但**确定性校验失败后的 rejected/blocked 出口未在图中画出**（design §8.1 result.json 明确含 applied/queued/blocked/rejected 四态）。属无冲突的遗漏，按审核标准不阻断，记入 F-4。
+
+### D4 attempt/握手 — PASS
+- attempt 主链五态与四个旁路出口（`04-execution-and-handshake.svg:32-75`）与 design §7.2 状态枚举完全一致；"调度状态不表达 merged 或领域 sign-off"（`:29`）、"exit 0 只证明正常退出"（`:79`）、epoch/fencing/独立工作树/不自动 reset（`:80-83`）均与 §7.2 原文一致。
+- 握手状态机 offered→acknowledged→accepted/changes_requested/rejected（`:91-125`）与 §7.7 一致；"ack 不是评审通过；accepted 也不代表已集成"（`:130`）✓。
+- 单写入发布五步（`:138-164`）顺序与 §5.1 原文一致；"重复发布只接受同 ID 同摘要""outbox 重放恢复，不重新执行 agent""publication_pending"（`:157,167-168`）✓。异常恢复（interrupted 先对账、无法确认保留占用具名报告）✓。发布条件（关键握手须原件与匹配投影均发布才解锁下游）✓。
+- 非阻断遗漏见 F-5；措辞建议见 F-6。
+
+### D5 知识与改进 — PASS
+- 八步闭环顺序（`05-knowledge-loop.svg:22-99`）与 design §9.1"运行观察→复盘候选→核验证据→检索复用→改进提案→对照评测→有界试用→激活或撤回"逐步一致；回环箭头（`:107-108`）标注"新证据触发下一轮"，与"无新增证据不重复优化同一候选"相容。
+- Observation/Lesson/Improvement 三层权威边界（`:114-132`）与 §9.1 表格逐行一致；"hypothesis""验证为真≠选择使用"（`:18,44`）✓。
+- 不可跨越边界（`:135-147`）：评测/改进者分离、冻结评测集与基线、成本 unknown、权限扩张/阈值放宽/核心代码不自动激活——均与 §9.1 一致，未见扩大权限的表达。"运行中 attempt 不切换配置"（`:91`）✓。
+
+### D6 当前 main 兼容 — PASS（基线差异已识别，非冲突）
+- 候选基线 d38bdca 早于 main cb0793d。main 相对候选新增的合同内容：§4.2 阶段职责模板（main `design.md:117-134`）、§7.1 触发策略补充段（`:243`）、§7.4 接收对账补充段（`:271`）、§9.1 轻量判断节点/Jev（`:735-743`）、验收条目 47–54（`:812-819`）。候选 design 文本不含这些，属**旧基线事实，非候选图的错误**。
+- 逐项比对五张图与 main 新增条款：**未发现与 §4.2、Jev、验收 47–54 相冲突的图示陈述**；图未覆盖阶段角色/Jev 属"非穷尽图"允许范围。暂停/恢复（§7.8）与状态维护（§7.6 当前状态段）未入图，同属允许遗漏；图中也无与之矛盾的表达（图 4 未把 pause 画成 attempt 终态，正确）。
+- 集成提示（非图缺陷）：navigation.diff 的图链接锚在旧 design 文本上，合入时需对 main rebase；main 中相应锚点段落（§5、§7.2、§8.1、§9.1）均仍存在，链接目标不失效。
+
+### D7 可读性/可访问性/导航 — PASS（覆盖限制见下）
+- 结构：五张 SVG 均含 `role="img"` 与中文 `aria-label`；`index.html` 的 `<img>` 均有 alt（`:120,140,158,177,196`）；锚点 `#d1`–`#d5` 与 section id 一一对应（`:96-100` vs `:112,132,150,169,188`）；`../../docs/design.md`（`:108`）相对路径解析正确；README/design 的图链接目标文件均存在（已逐一 Glob 验证）。
+- `index.html:208`"纯手写 SVG，无外部依赖与脚本"——已通读五张 SVG 全文，确认无 `<script>`、无外部 href/image 引用，声称属实。
+- `prefers-reduced-motion`（`:80`）✓；SVG 内无动画。
+- **覆盖限制（coverage limitation）**：无渲染能力，以下未实际验证，保持 unknown：文字是否溢出卡片边界（部分长行有溢出风险，如 `03-request-to-dispatch.svg:94` 约 30 个全角字符放入约 412px 宽区域，静态估算偏紧）、色彩对比度是否达 4.5:1、箭头端点视觉落点。这些只能由渲染核查确认，不据此判 PASS 也不据此判 BLOCK。
+
+### D8 流程证据 — PASS
+- 本次提交为纯文档/图增量，未声称任何产品测试通过、运行验证或已合入；`index.html:209` 明确"Scheduler、Web、CLI/MCP、插件与适配器均未实现"，与 README:5、roadmap:9 及 main 快照一致，无虚假状态。
+- 图 1 称 Web 控制台"首版交付"（`01-architecture-overview.svg:28`）与 design §8.3"Web 属于首版产品交付"一致，指产品范围而非已实现。
+- 候选未自称完成独立评审；本审核请求的输入固定（request.md）与工作树实际内容一致。
+
+## 发现列表（均为非阻断）
+
+| # | 位置 | 类别 | 影响 | 最小修正 | 依据 |
+|---|---|---|---|---|---|
+| F-1 | `01-architecture-overview.svg:20-21` vs `:120-121` | 图例与用法冲突 | 图例声明"虚线=只读证据引用"，但虚线箭头用于"证据回写·投影发布"——这是 coordinator 的**写**动作。读者可能把投影发布误归类为只读引用，弱化"唯一写入者"语义 | 将该箭头改为实线（写路径），或图例增补一条"虚线紫=投影发布" | design §5.1：投影发布是 coordinator 单写动作 |
+| F-2 | `01-architecture-overview.svg:120` | 箭头指向含糊 | 回写路径终点 `H926` 指向 coordinator 右缘外侧，而非右侧证据栏（x=970 起）；证据栏全程无任何箭头连入，"证据从哪来"在图上无答案，易被读作证据流回 coordinator | 箭头终点改指证据栏左缘（约 x=968），方向为 执行环/coordinator → 证据栏 | design §5.1：事件与投影由 coordinator 发布到 coordination/ 文件 |
+| F-3 | `03-request-to-dispatch.svg:18,86-87,91-97` | 分支箭头不完整/起点不一致 | 副标题称"右侧为**校验后**的三条分流"，但实际只有两条连接箭头，且一条起点在步骤 3（y=330，校验前）、一条在步骤 5（y=457）；分支 1（原审批出口）无任何入箭头，悬浮。分流点语义模糊 | 三条分流统一从步骤 5（确定性校验）右缘画出，补齐分支 1 箭头；或修改副标题使其与实际起点一致 | design §8.1：分流由授权/请求类型在校验与授权判断时决定 |
+| F-4 | `03-request-to-dispatch.svg:55-83` | 遗漏（无冲突） | 校验失败 → rejected/blocked 的出口未画出；主链只呈现成功路径 | 在步骤 5 下增加一条"校验失败 → 返回具名原因（rejected/blocked）"出口，或在底部说明补一句 | design §8.1：result.json 含 applied/queued/blocked/rejected 四态 |
+| F-5 | `04-execution-and-handshake.svg:126-127` | 遗漏（无冲突） | "超时/撤回"虚线仅从 offered 出发；合同为 offered/**acknowledged** → cancelled/expired | 从 acknowledged 右缘补一条同类虚线 | design §7.7 状态机文本（main design.md:332） |
+| F-6 | `04-execution-and-handshake.svg:24` | 措辞建议 | "状态机只由 Scheduler 推进"可能被误读为 Scheduler 能产生 accepted；合同实为"接收者响应 + Scheduler 校验状态机、不替评审者接受"。同图 `:130` 已有缓冲，误读风险有限 | 改为"状态转换由具名角色提交、只由 Scheduler 校验生效" | design §7.7：Scheduler 不能替评审者接受 |
+| F-7 | `01-architecture-overview.svg:33` | 轻微超前表述 | "宿主插件入口 Codex · Claude · **CodeBuddy** 薄插件"：合同 §1 只点名 Codex 与 Claude 插件为入口，CodeBuddy 在合同中是 RuntimeAdapter 执行面；CodeBuddy 薄插件属合理扩展方向但无合同明示 | 删去 CodeBuddy 或加注"（扩展方向）" | design §1：Codex 与 Claude 插件提供入口；§6 CodeBuddy 为 CLI 接入 |
+
+## 候选原有错误 vs main 新增合同差异
+
+- 以上 F-1–F-7 全部为**候选自身图示缺陷/遗漏**，与 main 新增合同无关。
+- main 新增合同（§4.2 阶段职责、§7.1/§7.4 补充段、§9.1 Jev、验收 47–54）与候选图之间**未发现冲突**；图未覆盖这些内容属允许遗漏。唯一集成层面事项：候选 design 文本落后 main，navigation.diff 合入前需 rebase——这不是图的内容缺陷。
+
+## 总体判定
+
+**PASS（无 blocking 发现）**。
+
+- 五张图与 index.html 的关键状态语义（唯一写入者、attempt 状态机、握手状态机、单写发布、三类权威、评审门槛、知识闭环边界）经逐项比对与候选及 main 合同一致，未发现误导性箭头/状态表达达到阻断程度。
+- 7 项非阻断发现建议在新冻结候选中修正（旧票依合同失效后复审）。
+- 覆盖限制：无渲染能力，SVG 视觉层（文字溢出、对比度、箭头视觉落点）未验证；diagram-hashes.json 未独立重算；候选提交前的事前批准历史为 unknown。本报告仅为审查意见，不修图、不合入。
