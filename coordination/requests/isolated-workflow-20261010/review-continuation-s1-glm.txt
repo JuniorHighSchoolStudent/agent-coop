@@ -1,0 +1,32 @@
+# S1 证据复核意见（GLM原席 · glm-5.3 · 只读续接）
+
+## 0. 输入与实读范围
+已读 `continuation-s1/glm/input-index.json` + `review-packet.txt` 全文：argv修正提案、探针元数据/作者原件、两项静态调查（权限链、hook链）、isolated-log-directory/2、后继计划/派发提案、result.md摘录、runtime-tool-evidence、本席R2与S0原票、adapters.py/sample.py产品源（哈希与2e9f192一致，与本人R1实读相符）。产品树未变；未读另一席S1意见。哈希链依赖发包人Git blob声明，静态调查bundle SHA（f9affe2a…）与此前runtime-tool-evidence证词一致。
+
+## 1. 探针证据逐格裁定（问题1）
+- **P1失败成立**：native调用映射完整——3次Read（workspace×2成功、sibling×1权限拒绝）+1次Edit `workspace/edit-ok.txt`被拒（`Permission to use Edit has been denied`）；三种子前后SHA（d64ee28e…）、字节数、link_count均不变，`fixture_unchanged=true`。P2/N1–N7未执行=unverified，T1执行能力未测——**均不得记为通过**。
+- **sibling Read拒绝不得当N4写拒绝**：元数据已正确标注`not_write_boundary_proof`。其真实机制是dontAsk对cwd外Read需审批、headless无提示转拒，与写边界无关。
+- **模型/session/预算核验**：deepseek-v4-pro、session与请求一致；38.565秒<300秒；exit0/result success仅为会话结束。`num_turns=13`对`max-turns=12`为字段差异，依前例不作为硬轮数门禁证明。**停止规则合规**：正例失败即停、未重试、未改参、未新增探针。
+- **作者推断不采信**：“Edit不在allowlist/Read路径级allowlist”均不采；独立静态链给出一致解释（见第3节）。
+
+## 2. Hook静态证据与可声称边界（问题2）
+该证据为S0后新增，本人按“新事实”采纳并限定：PreToolUse/tool.check可在doCheckPermission前返回allow；`setting-sources none`仅移除user/project/local作用域（含其enabledPlugins），CLI/session/scoped-hook路径保留；四memory开关只禁注入/抽取，不取消通用hook；N5未执行，**真实宿主memory全域隔离unverified**。**可声称边界（仅限本有界批次）**：“受信宿主、默认无已配置hook/plugin/scoped-hook、指定工具集合+逐文件allow+空MCP+setting-sources none下，对模型发起的Read/Write/Edit构成CLI层文件级约束；hooks/plugin/CLI与session级注入、宿主自身副作用、路径别名不在保证内，保持unknown”。不要求虚构OS隔离。probe-02须在元数据记录无plugin/hook类CLI参数，并把该残余边界原样带入证据。
+
+## 3. 根因与probe-02准入（问题3）
+**g1-glm-B17（新增，bootstrap流程/发包人）｜S1探针argv序列化缺陷**：`--allowedTools`/`--disallowedTools`为variadic逐token规则；旧argv把整串逗号合为一个token，parseRuleString取首括号前`Read,Glob,Grep,Write`为toolName，永不匹配任何工具；deny整串`Bash,PowerShell`同样不成规则。该静态链唯一解释全部四项观测（workspace Read经cwd信任放行、sibling Read与Edit被拒、种子不变），与实际拒绝吻合。**裁定：根因静态成立（高置信；未直接观测decisionReason，修正后仍须探针验证）。**
+**probe-02准入：scope_supported，附条件**：①两原席S1均批准后由发包人启动一次，12turn/300秒，deepseek新session、全新TEMP根，probe-01完整保留；②矩阵=S0冻结集，仅换base/session，N4若前置Read未完成或Edit未执行保持unverified；③最小修正仅拆分argv token（`"Read" "Glob" "Grep" "Write(<path>)" "Edit(<path>)"`、`"Bash" "PowerShell"`各占一元素、结构化数组传递），权限集合与S0意图完全一致、无扩大——deny拆分反而使显式拒绝首次真正生效；④dontAsk/setting-sources none/空MCP/memory开关/CLI hash/fixture判据不变；⑤禁止acceptEdits、泛化Write/Edit、bypass、shell、改全局设置；⑥结果再交两原席各一次只读确认（20turn/600秒）后才native计划监督；⑦预算显式+3（总18次CodeBuddy/2次native），不挪用原15、不预批第三次探针；⑧若出现不同根因，重新具名记录。此为新后继提案，不消费旧probe额度、不直接批准产品作者。
+
+## 4. 产品权限边界（问题4）
+**g1-glm-B18（新增，产品，仅报告）**：adapters.py:29-38在Write/Edit分支使用`--permission-mode acceptEdits`且`--allowedTools`同样传单一逗号token（规则永不匹配，历史上被acceptEdits自动批准掩盖）；sample.validate_profiles/dispatch仅有工具级`tools`，无逐文件profile。即便probe-02通过，也**只准入本批人工开发作者**，不代表产品RuntimeAdapter/live writer迁移。修复属后继具名包（adapters+sample+相应测试），**不得并入R-log/R-junction写集**；live四角色实跑在此关闭前禁止。本人未无证宣称产品权限问题已解决。
+
+## 5. isolated-log-directory/2（问题5）
+逐条满足本人S0前置：checks为调用owner、每次原子分配全新独占子目录、覆盖相同输入成功/失败重跑与并发、不共享/删除/覆盖旧日志（字节摘要不变、禁TemporaryDirectory自动清除）、公开签名与report字段不变、runtime拒覆写保持、写集仅checks.py+test_gates.py、不建第二allocator、不宣称通用并发已解决。**裁定：合同合规，R-log维持scope_supported**；但代码未实现，**B13/B14/B02/B06（对侧编号不代关）均保持open**，不提前关闭。
+
+## 6. 本人finding状态汇总
+B01/B03–B09/B10a/B10b/B12 closed（维持）；B02 open（待B13/B14实现）；B11 open/unknown（诊断范围支持，代码blocked）；B13/B14 open（合同就绪待实现）；**B15/B16维持open**——S0预期随profile实测验证关闭，但probe-01失败，逐文件allow未获证明，须待probe-02全格通过方可关闭；新增B17（bootstrap argv，根因已定、修正待验）、B18（产品adapters/sample权限，仅报告）。
+
+## 结论（四分）
+1. **S1权限能力：FAILED**（P1正例被拒，P2/N1–N7/T1 unverified，profile未证明）；待后继——支持按第3节条件准入一次probe-02。
+2. **产品G1（2e9f192）：维持CHANGES_REQUESTED**（B02/B13/B14 open、B11 unknown；B17/B18不改变产品代码状态）。
+3. **产品作者：仍冻结**——须probe-02通过+双席确认+native计划监督后，方可按R-log/R-junction/R-publication具名包派发（作者须使用经验证的绑定版本profile）。
+4. **native监督：待补**——本后继批次尚未执行，本意见不替代。本人不代另一席/监督签字；输入充足，无具名停止项。

@@ -1,0 +1,145 @@
+{
+  "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+  "administrative_commit": "50a5e3ad7016c1cbdccd79b493503862683ea7ea",
+  "actual_model": "glm-5.3",
+  "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+  "raw_sha256": "dabf05e063a8ad793e532bfaa0aa7b45520fc8d34769dcd7dc3f3300ab0817fc",
+  "receipt_sha256": "c1e97408de08356ebb81609591ee69ae8750b4ac6d7a246b0ee94c36447482d0",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "model": "glm-5.3",
+    "seat": "glm",
+    "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\continuation-s1-glm.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "aa59d23f48e4157a601681a0d5ef173151cafaf099cc78c24d67a8447b039dc7",
+    "started_at": "2026-10-10T23:25:31.3683342+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "continuation-s1",
+      "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+      "administrative_commit": "50a5e3ad7016c1cbdccd79b493503862683ea7ea",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-s1/glm/input-index.json",
+      "input_index_sha256": "111bc5d7bfd28a109c7db096bbef8dc8533a83b46abf65877a1591db9f9dc14a",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1
+      },
+      "previous_resident_codebuddy_processes": {
+        "pids": [
+          21932,
+          21624
+        ],
+        "active_model_occupancy": "unknown; resident serve is not a model attempt"
+      },
+      "permission": "existing read-only Read,Glob,Grep; no writer",
+      "authorization": "root explicit s1 admission after administrative freeze"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "你是独立原审核席glm，真实模型glm-5.3，只读续接本人原session；不是作者。产品准确候选2e9f192c8127956f09c619ff640d763b62369e30未变，cwd D:/project/agent-coop-g1-review；行政/证据候选50a5e3ad7016c1cbdccd79b493503862683ea7ea，两类版本分开。读取D:/project/agent-coop-g1-review/coordination/.runtime/continuation-s1/glm/input-index.json及review-packet.txt；索引可溯每份原始字节。不得读取另一席本次S1新意见。\n\n本次是S0之后唯一已授权S1证据复核，每席一次20turn/600秒。真实探针FAILED，不是全通过：原生3Read(两workspace成功、sibling拒绝)+P1精确allow Edit拒绝；P2/N1–N7均未执行；fixture3种子前后字节相同。exit0/result success只表示会话结束，不等于能力通过。不要采信作者推断“Edit完全不在allowlist/Read是路径级allowlist”，真实原因须依独立静态调查。\n\n请裁定：\n1. 逐格实际工具id/结果/前后hash是否证明P1失败、其余unverified；sibling预读失败不得当N4写拒绝。actualargv、模型/session、12turn/300秒与实际计数字段限度分别核验；是否符合停止规则。\n2. 新增hook静态证据未在S0输入中，不能当已审事实。PreToolUse/tool.check可以早于dontAsk/精确allow返回allow；none过滤user/project/local hooks/plugin设置来源，CLI/session/scoped hook边界尚有unknown。四memory开关禁注入/抽取，不保证取消所有通用hook。fake-memory未执行且从来不能代表真实宿主memory全域拒绝。给出受信宿主、指定工具、限定写集的可声称边界，不要求虚构OS隔离。\n3. 独立调查若证明精确allow未命中的可修正根因，请给具名finding、精确最小profile/argv修正与固定一次封闭探针的准入条件；此为新的后继提案，不自动消费旧probe额度、不直接批准产品作者。若原因证据不足保持unknown，给最小补证。禁止接受acceptEdits、泛化Write/Edit、危险bypass、shell或改变全局设置来求成功。\n4. 产品边界：adapters._codebuddy_command仍在Write/Edit时配置acceptEdits且泛化allowedTools；sample.validate_profiles/dispatch并未实现本bootstrap逐文件profile。即便未来人工profile通过，只能准入本批人工开发作者，不代表产品RuntimeAdapter/live writer迁移。是否需要另立产品finding请具名；不要顺手扩R-log/R-junction写集或无证声称已关闭产品权限问题，live仍禁止。\n5. 新日志调用集合后继合同isolated-log-directory/2是否满足本人S0前置（checks调用owner、每次原子唯一目录、失败/成功重跑及并发、禁止删/覆盖旧日志、公开签名不变）。代码仍未实现，不能提前关B13/B14/B06。\n\n输出中文：准确输入/实读范围、本人finding逐项状态、可确认事实与unknown、新增finding或后继探针最小条件；结论分S1权限能力FAILED/待后继、代码G1仍CHANGES_REQUESTED、产品作者冻结、native监督待补。不得自我修改输入、调用shell或写文件、修改memory、启动子agent、扩大权限或发起另一个模型。预算前收束原始最终意见，不自动续结论轮。\n",
+      "--model",
+      "glm-5.3",
+      "--resume",
+      "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "791ccd5a434c6fcab132428fadcc56b54b4852ea23411a892ab507acf4952e32",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-g1-review"
+  },
+  "completion": {
+    "candidate": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "exit_code": 0,
+    "finished_at": "2026-10-10T23:27:33.2796447+00:00",
+    "wall_seconds": 121.9113105,
+    "final_head": "2e9f192c8127956f09c619ff640d763b62369e30",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "call_412ab1c350714f5bb1ac94da",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-s1\\glm\\input-index.json"
+      }
+    },
+    {
+      "id": "call_b974a57b1e624a8d8a311506",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-s1\\glm\\review-packet.txt"
+      }
+    },
+    {
+      "id": "call_b2e67ac14d3646959ef6ccb0",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-s1\\glm\\review-packet.txt",
+        "limit": 560
+      }
+    },
+    {
+      "id": "call_be332f4b729c4dc48645b3b8",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-s1\\glm\\review-packet.txt",
+        "limit": 400,
+        "offset": 560
+      }
+    }
+  ],
+  "tool_errors": [
+    {
+      "type": "tool_result",
+      "tool_use_id": "call_b974a57b1e624a8d8a311506",
+      "content": [
+        {
+          "type": "text",
+          "text": "File content (estimated 27746 tokens) exceeds maximum allowed tokens (20000). Please use offset and limit parameters to read specific portions of the file, or use the GrepTool to search for specific content."
+        }
+      ],
+      "is_error": true,
+      "_meta": {
+        "rawResponse": {
+          "is_error": true,
+          "tool_error_code": "1005"
+        }
+      }
+    }
+  ],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 198
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

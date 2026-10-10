@@ -1,8 +1,8 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：首次权限探针正例失败，静态主因已定位、S1审核最小修正，产品writer/G1/live仍阻断；来源：用户隔离样例选择、[G0接收](result-g0.md)及[职责纠偏](role-correction.md)。这是本请求当前结果入口，各门禁原件按链接引用，不从文件名猜最新。
+范围：本请求整体交付；维护者：Codex集成者；状态：S1双席批准唯一argv修正探针，产品writer/G1/live仍阻断；来源：用户隔离样例选择、[G0接收](result-g0.md)及[职责纠偏](role-correction.md)。这是本请求当前结果入口，各门禁原件按链接引用，不从文件名猜最新。
 
-## 当前派发控制：权限argv主因已定位，S1原席审核修正提案
+## 当前派发控制：S1双席已支持probe-02，产品作者仍冻结
 
 2026-10-11用户明确继续：先使用多agent协作调查实施问题，再继续分包开发。当前唯一专门发包人为`dispatcher_next`（旧协调实例已结束）；Codex根与只读助手并行调查，实际实现仍由CodeBuddy + deepseek-v4-pro承担。新批次按[后继计划](continuation-plan-20261011.md)具名审核，旧两轮停止记录保留为历史，不阻断用户新授权；权限profile和探针未获审核前禁止产品writer。当前产品候选仍为2e9f192，feature行政基线b45cc17；没有新增产品/测试/CI修改。
 
@@ -17,6 +17,10 @@ S0两原席已正常返回并支持一次12turn/300秒TEMP权限探针：[GLM原
 后继仅做只读参数/权限决策链调查，禁止自动重试或扩权；调查结论及失败证据交S1两原席。新发现的[hook先行allow静态证据](permission-hook-static-evidence-20261011.json)与产品adapters仍使用acceptEdits的事实均列为限制：bootstrap权限验证不等于产品RuntimeAdapter已迁移，也不开放live。
 
 [权限规则静态调查](permission-s1-static-investigation.json)证实本机CLI将allow/deny按独立argv token收集，旧逗号整串不能匹配工具名；--tools另有逗号拆分。与探针拒绝事实一致，但不代替修正后的动态能力验证。[唯一argv修正提案](permission-argv-amendment-20261011.md)只把原规则分成独立argv，不增权限；提议新具名单次probe-02及双席结果确认、显式上限18次CodeBuddy/2次native，尚待S1双席支持。旧失败仍计成本，未自动再试。
+
+S1两原席已正常返回：[GLM原票](review-continuation-s1-glm.txt)/[调用](review-continuation-s1-glm-calls.json)、[Kimi原票](review-continuation-s1-kimi.txt)/[调用](review-continuation-s1-kimi-calls.json)。各一次整包Read因长度上限失败，随后分段取证；不隐去工具错误。两席明确支持唯一probe-02：仅拆allow/deny argv、新TEMP根及session、原矩阵与12turn/300秒上限、首异常停、旧失败保留。显式预算修订已获两席支持：18次CodeBuddy/2次native，上调的3次只用于本次修正探针及两席结果确认，不预批第三探针。
+
+专门发包人获准在本行政检查点后启动该探针，产品作者仍须等待逐格证据、两席结果确认及native计划监督。GLM新增B17绑定bootstrap序列化；GLM B18/Kimi B11绑定产品adapters+sample权限及写集来源，须后继跨包对齐，不并入R-log/R-junction，live继续禁止。CLI/session/scoped hook是否实际配置仍unknown；不能把GLM条件中的“默认无hook”表述当成已验证宿主事实。旧权限finding不由集成者关闭。
 
 ## 2026-10-10已冻结过程与结论
 

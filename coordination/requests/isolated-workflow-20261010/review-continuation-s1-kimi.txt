@@ -1,0 +1,38 @@
+# S1证据复核 · 席B（原kimi-k3-2 session，非作者）
+
+**实读**：continuation-s1/kimi `input-index.json`；`review-packet.txt`分段：argv修正提案、probe-01元数据全文、probe-01作者报告、静态调查JSON、hook静态证据JSON、isolated-log-directory/2合同、result.md前65行（余有独立索引）。产品adapters.py/sample.py为本人R1已核原文（候选内未变）。未读他席S1意见。
+
+## 1. 探针逐格核验
+
+- **原生记录可信**：3次Read（2次workspace成功、返回真实种子内容；1次sibling拒绝带权限原文）+1次Edit（P1，拒绝："requires approval…non-interactive mode"），tool_use_id与is_error齐全。三种子前后sha256全同（d64ee28e…）、link_count=1。**P1失败证实；P2/N1–N7未执行=unverified，标注正确**；sibling预读拒绝≠写拒绝（`not_write_boundary_proof:true`）✓；T1维持"不存在工具执行能力未测"✓。
+- **actualargv**：单token逗号整串`--allowedTools`与`--disallowedTools "Bash,PowerShell"`，与静态根因吻合（见3）。模型/session=ddeepseek-v4-pro/`agent-coop-permission-probe-20261011-01`、dontAsk、setting-sources none、no-session-persistence、严格空MCP、四memory环境变量均核验在案。
+- **预算/停止**：wall 38.565s<300s、1次调用、正例失败即停、无重试/改参/新增——**符合停止规则**。限度：CLI报num_turns=13>请求12，已如实记为字段差异（num_turns语义非硬轮数门禁，沿G0口径），不作违规也不作已验证；probe-02须同口径记录。exit0/final success仅会话结束✓。作者"Edit不在allowlist/Read路径级"推断不采信为根因✓。
+
+## 2. hook静态证据边界
+
+此证据非S0输入，本轮首次受审：PreToolUse hooks/tool.check（executeAndCachePreToolUseHooks）可在doCheckPermission前返回allow/modifiedInput；来源含settings hooks、plugin hooks、scopedHookRegistry；`none`过滤user/project/local三scope的设置及enabledPlugins，但**CLI scope插件、session覆盖、scoped hook路径仍为有限证据边界**。四memory开关仅禁注入/抽取（isAutoMemoryEnabled等），不取消通用hook allow。N5从未执行，且fake-memory本就不能证明真实宿主全域拒绝。**可声称边界**（受信宿主、五工具、限定写集）：CLI option规则在none下仍生效（cliArg消费链已证）；dontAsk下Read受信目录策略+逐文件绝对Write/Edit规则对模型发起调用有效；**残余unknown**：CLI/session/scoped hook先行allow未排除（probe-02输入须继续展示该限制）。不虚构OS隔离。
+
+## 3. argv修正与probe-02准入 → **scope_supported（附条件）**
+
+静态主因成立：`<tools...>` variadic按argv token成规则、无逗号拆分（`--tools`另有独立split），旧整串toolName="Read,Glob,Grep,Write"匹配落空，与headless无提示拒绝完全吻合；deny整串同病。限度如实（无decisionReason快照、动态hook未穷尽）。修正仅序列化拆分、权限/工具/模式/fixture判据零变化——符合我B10底线（禁acceptEdits/泛化/绕过/shell/全局设置）。**probe-02准入条件**：①双席先批准本提案（本票即本人批准）；②新TEMP根、新session、旧probe-01保留；③S0原矩阵P1/P2/N1–N7/T1逐格native tool_use/tool_result，N4前置读未完成则该格unverified；④字节判据+首异常即停+reparse/link-count前置不变；⑤结果回两席各一次确认后才进原生计划监督；⑥预算+3具名（总18 CodeBuddy/2 native），旧失败计成本。不自动消费旧额度、不预批第三次。
+
+## 4. 产品边界 → 新增 **g1-kimi-B11（scope_needs_alignment）**
+
+- **触发**：2e9f192 adapters.py:29-38——`--allowedTools`用同一逗号整串（按本轮静态证据同样不能成规则），且含Write/Edit时加`--permission-mode acceptEdits`；hook证据示acceptEdits模式下Edit无需审批（eQ分支Edit→false）且无路径检查；sample.validate_profiles只固定工具名集合/预算，dispatch原样透传，无逐文件profile。
+- **后果**：live implement角色可在权限层无感知地Edit写集外文件（测试/验证器/证据），违反interfaces工具与写集合同及"不静默放宽权限"。
+- **最小修复**（后继具名包，非本轮）：dontAsk+按声明写集生成逐文件绝对allow规则（独立argv token），契约测试断言argv结构；写集权威来源（profile扩展 vs 派生）须先跨包对齐。
+- **owner/依赖**：P2 adapters/runtime为主，写集来源涉P6 sample——**scope_needs_alignment**。不并入R-log/R-junction；仅未来人工profile通过也不迁移本产品adapter；live继续禁止。
+
+## 5. isolated-log-directory/2 → 满足本人S0前置
+
+逐条核对：调用owner=checks、每次原子独占新目录覆盖同源码/成功重跑/失败重跑/并发（§1)✓；paths.checked沿用、标准库原子分配、无第二allocator/台账、不依赖时间戳/digest(§2)✓；runtime拒覆写不变、不动runtime/sample/gates/Store、失败日志不自动清（§3)✓；逐次stdout/stderr独立留存、旧目录字节摘要不变、公开签名/report字段不变（§4)✓；写集仅checks.py+test_gates.py、验收清单含六类判据（§5)✓；通用并发能力unknown如实（末段）✓。**合同scope_supported；代码未实现，B06/GLM侧B13/B14全部保持open**，验收绿+原席复审后才关子项。
+
+## 本人finding状态
+
+B01–B05、B07、B08、P7接管子项：**closed（R2）**。B06：**open**（/2合同准入，实现未做）。B09：**open**（根因unknown，诊断包S0已支持，本轮无新证据）。B10：**open**（probe-01 FAILED_PROFILE；根因=argv逗号序列化缺陷[治理侧]；修正提案+probe-02准入已支持，待实际正负证据）。B11：**新增open**（产品adapter权限边界，跨包未对齐）。
+
+## 结论
+
+- **S1权限能力：FAILED（首次探针）/待后继**：probe-02可按上述条件准入一次。
+- **产品G1（候选2e9f192）：维持CHANGES_REQUESTED**（B06/B09/B10/B11未闭）。
+- **产品作者冻结**；native计划监督待补；browser JS/云CI/live四角色保持UNKNOWN。本轮不授权writer、不迁移产品adapter、不构成接收/合入/live。
