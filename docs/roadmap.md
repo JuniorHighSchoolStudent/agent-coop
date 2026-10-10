@@ -43,11 +43,15 @@
 
 缺少任一必需评审或存在未解决阻断时不得接收；任何候选内容变更均使旧通过票失效，需对新候选复审。
 
-## 当前合同补充：前端续作与状态维护
+## 当前合同补充：阶段角色、触发与经验吸收（2026-10-10）
 
-用户追加的范围：前端启动/暂停/继续开发，自然语言探索项目与配置推荐，以及集成者和监督者共同维护准确、简洁的当前状态。合同归 design §7.6/§7.8/§8.1/§8.3/§8.4，开发执行要求归 AGENTS.md；不新建同类规则入口。
+用户授权吸收 gstack 阶段职责模板、角色触发策略、ABM 可靠性约束与 Jev 有界判断，并对前述定时协作、ABM、Jev 分析做多方评审。合同归 design §4.2/§7.1/§7.4/§7.5/§7.6/§9.1 与 §11 新增验收（47-54），开发执行要求归 AGENTS.md；不新建同类规则入口，不实现产品、不安装 gstack/Jev、不启用宿主定时任务。轻量判断沿 P0（资料复用裁定）→ P4（预算内离线评测）→ P5（受控激活/撤回）接入，阻断处置与硬正确性不等到 P5。
 
-本次交付的候选、评审、监督与接收状态统一见 [当前请求与证据](../coordination/requests/frontend-state-contract-20261010/request.md)。CodeBuddy 完成前端合同初稿，Codex 汇合状态维护合同及检查，两个独立 CodeBuddy 席位评审，Kimi Code 独立监督。此处仅维护范围与依赖，不堆积历史进行中状态。
+本次交付的候选、评审、监督与接收状态统一见 [当前请求与证据](../coordination/requests/role-experience-review-20261010/request.md)。CodeBuddy/deepseek-v4-pro 在隔离工作树修订文档，Codex 冻结候选，两组独立 CodeBuddy 席位评审，Kimi Code 独立监督。此处仅维护范围与依赖，不堆积历史进行中状态。
+
+## 历史交付入口
+
+- 前端续作与状态维护（frontend-state-contract-20261010）：已接收，其合同继续有效，证据见 [请求](../coordination/requests/frontend-state-contract-20261010/request.md)；当前合同补充入口已由 role-experience-review-20261010 取代。
 
 ## 按依赖推进
 
