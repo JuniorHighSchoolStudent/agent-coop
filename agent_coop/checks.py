@@ -1,6 +1,7 @@
 """固定样例函数的可信验证器；不由执行者修改。"""
 import json
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -36,9 +37,12 @@ def validate_feature(root):
     from .runtime import run_bounded
     source = checked(root, 'workspace/feature.py')
     before = digest(source)
+    verification = checked(root, '.runtime/verification')
+    verification.mkdir(parents=True, exist_ok=True)
+    log_dir = Path(tempfile.mkdtemp(prefix='verification-', dir=str(verification)))
     receipt = run_bounded(
         [sys.executable, '-I', '-c', SCRIPT, str(source)], root,
-        checked(root, '.runtime/verification'), 10, 65536,
+        log_dir, 10, 65536,
     )
     report = json.loads(receipt['stdout'])
     if before != digest(source) or report != {'passed': True, 'cases': 7}:
