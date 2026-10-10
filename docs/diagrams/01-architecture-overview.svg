@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 790" width="1280" height="790" role="img" aria-label="Agent Coop 总体架构：入口层、coordinator 内核、三类适配器、项目内可读证据">
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#1B2130" stroke-width="1"/>
+    </pattern>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7A90"/>
+    </marker>
+    <marker id="arwP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C77DD6"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="790" fill="#0F1219"/>
+  <rect width="1280" height="790" fill="url(#grid)"/>
+
+  <!-- 标题 -->
+  <text x="40" y="54" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="27" font-weight="700" fill="#E8ECF3">Agent Coop 总体架构</text>
+  <text x="40" y="82" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14.5" fill="#98A2B3">小内核 + 可插拔适配器 · 工具状态唯一写入者 · 项目内可读证据</text>
+  <text x="1240" y="54" text-anchor="end" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="13" fill="#7C8798">实线 = 控制 / 数据流</text>
+  <text x="1240" y="76" text-anchor="end" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="13" fill="#7C8798">虚线 = 只读证据引用</text>
+
+  <!-- 入口层 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="40" y="108" width="280" height="66" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="40" y="108" width="280" height="4" rx="2" fill="#920783"/>
+    <text x="60" y="140" font-size="16" font-weight="700" fill="#E8ECF3">Web 控制台</text>
+    <text x="60" y="161" font-size="12.5" fill="#98A2B3">流程与状态的主操作面（首版交付）</text>
+
+    <rect x="340" y="108" width="280" height="66" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="340" y="108" width="280" height="4" rx="2" fill="#C77DD6"/>
+    <text x="360" y="140" font-size="16" font-weight="700" fill="#E8ECF3">宿主插件入口</text>
+    <text x="360" y="161" font-size="12.5" fill="#98A2B3">Codex · Claude · CodeBuddy 薄插件</text>
+
+    <rect x="640" y="108" width="280" height="66" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="640" y="108" width="280" height="4" rx="2" fill="#35C4B5"/>
+    <text x="660" y="140" font-size="16" font-weight="700" fill="#E8ECF3">人工 CLI / MCP</text>
+    <text x="660" y="161" font-size="12.5" fill="#98A2B3">面向 agent 与进阶用户</text>
+  </g>
+
+  <!-- 汇聚到 intent -->
+  <g stroke="#6B7A90" stroke-width="1.6" fill="none">
+    <path d="M180 174 V196"/>
+    <path d="M480 174 V196"/>
+    <path d="M780 174 V196"/>
+    <path d="M180 196 H780"/>
+  </g>
+  <path d="M480 196 V218" stroke="#C77DD6" stroke-width="1.8" fill="none" marker-end="url(#arwP)"/>
+  <text x="500" y="212" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#A98CC0">三个入口共享同一后端，不各持一份状态</text>
+
+  <rect x="40" y="222" width="880" height="46" rx="10" fill="#221A2E" stroke="#4A2A5C"/>
+  <text x="480" y="250" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14.5" fill="#D9C7E8">统一 intent API　·　具名意图 + expected_revision + 幂等请求 ID</text>
+
+  <path d="M480 268 V296" stroke="#6B7A90" stroke-width="1.8" fill="none" marker-end="url(#arw)"/>
+
+  <!-- coordinator -->
+  <rect x="40" y="300" width="880" height="212" rx="14" fill="#151A24" stroke="#3A4557"/>
+  <text x="64" y="332" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="17" font-weight="700" fill="#E8ECF3">coordinator（本机进程）</text>
+  <rect x="300" y="315" width="196" height="24" rx="12" fill="#3A1236" stroke="#7A2A6E"/>
+  <text x="398" y="332" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12" fill="#E5B8E8">唯一的工具状态写入者</text>
+  <text x="64" y="354" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#98A2B3">Scheduler 与 Monitor 是两个职责模块，不拆成两个服务；内核不含任何业务规则</text>
+
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="64" y="372" width="264" height="120" rx="10" fill="#1E2530" stroke="#2C3542"/>
+    <text x="84" y="400" font-size="15" font-weight="700" fill="#C77DD6">Scheduler</text>
+    <text x="84" y="424" font-size="12.5" fill="#B6C0CE">就绪 · 派发 · 资源互斥</text>
+    <text x="84" y="445" font-size="12.5" fill="#B6C0CE">触发去重 · 崩溃恢复</text>
+    <text x="84" y="473" font-size="12" fill="#7C8798">派发权威：只有它能改调度状态</text>
+
+    <rect x="348" y="372" width="264" height="120" rx="10" fill="#1E2530" stroke="#2C3542"/>
+    <text x="368" y="400" font-size="15" font-weight="700" fill="#35C4B5">Monitor</text>
+    <text x="368" y="424" font-size="12.5" fill="#B6C0CE">观测 · 对账 · 告警</text>
+    <text x="368" y="445" font-size="12.5" fill="#B6C0CE">消费结构化事件，不采信自报</text>
+    <text x="368" y="473" font-size="12" fill="#7C8798">只产事件，不决定重试／取消</text>
+
+    <rect x="632" y="372" width="264" height="120" rx="10" fill="#1E2530" stroke="#2C3542"/>
+    <text x="652" y="400" font-size="15" font-weight="700" fill="#5B9BD5">Store（SQLite）</text>
+    <text x="652" y="424" font-size="12.5" fill="#B6C0CE">attempt / claim / handshake</text>
+    <text x="652" y="445" font-size="12.5" fill="#B6C0CE">events + outbox · 事务单写</text>
+    <text x="652" y="473" font-size="12" fill="#7C8798">只存调度运行事实</text>
+  </g>
+
+  <!-- 箭头到适配器 -->
+  <g stroke="#6B7A90" stroke-width="1.8" fill="none" marker-end="url(#arw)">
+    <path d="M180 512 V556"/>
+    <path d="M480 512 V556"/>
+    <path d="M780 512 V556"/>
+  </g>
+
+  <!-- 适配器 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="40" y="560" width="280" height="88" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <text x="60" y="590" font-size="15" font-weight="700" fill="#C77DD6">RuntimeAdapter</text>
+    <text x="60" y="613" font-size="12.5" fill="#98A2B3">探针 · 启动 · 事件</text>
+    <text x="60" y="633" font-size="12.5" fill="#98A2B3">取消 · 恢复 · 能力申报</text>
+
+    <rect x="340" y="560" width="280" height="88" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <text x="360" y="590" font-size="15" font-weight="700" fill="#5B9BD5">ProjectAdapter</text>
+    <text x="360" y="613" font-size="12.5" fill="#98A2B3">原任务 · 基线 · 工作树</text>
+    <text x="360" y="633" font-size="12.5" fill="#98A2B3">接收入口，不改原权威</text>
+
+    <rect x="640" y="560" width="280" height="88" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <text x="660" y="590" font-size="15" font-weight="700" fill="#35C4B5">GateAdapter</text>
+    <text x="660" y="613" font-size="12.5" fill="#98A2B3">原验证命令 · review</text>
+    <text x="660" y="633" font-size="12.5" fill="#98A2B3">证据与完成判据</text>
+  </g>
+
+  <g stroke="#6B7A90" stroke-width="1.8" fill="none" marker-end="url(#arw)">
+    <path d="M180 648 V686"/>
+    <path d="M480 648 V686"/>
+    <path d="M780 648 V686"/>
+  </g>
+
+  <!-- 执行环 -->
+  <rect x="40" y="690" width="880" height="62" rx="11" fill="#12211F" stroke="#2E5C55"/>
+  <text x="480" y="716" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14.5" font-weight="600" fill="#8FE0D4">执行 attempt　→　交付　→　独立评审　→　监督　→　接收</text>
+  <text x="480" y="739" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#7FA9A2">领域结论仍由项目原 owner 写入：本工具不复制业务权威，也不把运行事实当业务完成</text>
+
+  <!-- 回写 -->
+  <path d="M920 721 H946 V406 H926" stroke="#C77DD6" stroke-width="1.8" fill="none" stroke-dasharray="6 5" marker-end="url(#arwP)"/>
+  <text x="962" y="560" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="11.5" fill="#A98CC0" transform="rotate(-90 962 560)">证据回写 · 投影发布</text>
+
+  <!-- 右侧证据栏 -->
+  <rect x="970" y="108" width="270" height="644" rx="14" fill="#131822" stroke="#2C3542"/>
+  <text x="992" y="142" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="16" font-weight="700" fill="#E8ECF3">项目内可读证据</text>
+  <text x="992" y="164" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#98A2B3">coordination/　无需打开宿主会话即可审阅</text>
+
+  <g font-family="'Consolas','Cascadia Mono','Microsoft YaHei',monospace" font-size="12.5" fill="#B6C0CE">
+    <text x="992" y="200">README.md</text>
+    <text x="1230" y="200" text-anchor="end" fill="#7C8798">人工入口</text>
+    <text x="992" y="236">team.yaml</text>
+    <text x="1230" y="236" text-anchor="end" fill="#7C8798">角色唯一来源</text>
+    <text x="992" y="272">STATUS.md</text>
+    <text x="1230" y="272" text-anchor="end" fill="#7C8798">当前工作投影</text>
+    <text x="992" y="308">state/current.json</text>
+    <text x="1230" y="308" text-anchor="end" fill="#7C8798">机器投影</text>
+    <text x="992" y="344">handshakes/&lt;id&gt;/</text>
+    <text x="1230" y="344" text-anchor="end" fill="#7C8798">不可覆盖事件</text>
+    <text x="992" y="380">requests/&lt;id&gt;/</text>
+    <text x="1230" y="380" text-anchor="end" fill="#7C8798">需求与补丁</text>
+    <text x="992" y="416">knowledge/</text>
+    <text x="1230" y="416" text-anchor="end" fill="#7C8798">经验与评测</text>
+    <text x="992" y="452">.runtime/</text>
+    <text x="1230" y="452" text-anchor="end" fill="#7C8798">库与日志</text>
+  </g>
+  <text x="992" y="478" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12" fill="#6E7A8B">.runtime 与高频投影默认 Git 忽略，运行期仍可见</text>
+
+  <rect x="992" y="500" width="226" height="232" rx="10" fill="#1E1A16" stroke="#5C4A2E"/>
+  <text x="1012" y="530" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="13.5" font-weight="700" fill="#E0A83C">派生投影不可手改</text>
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12" fill="#B6C0CE">
+    <text x="1012" y="558">投影只由协调器生成器产出；</text>
+    <text x="1012" y="578">手改 STATUS / current / 已发布事件</text>
+    <text x="1012" y="598">被判为漂移，停止受影响派发，</text>
+    <text x="1012" y="618">不静默覆盖。</text>
+    <text x="1012" y="650">current 与 STATUS 无法跨文件原子</text>
+    <text x="1012" y="670">替换 → revision 不一致时显示</text>
+    <text x="1012" y="690" font-weight="700" fill="#E0A83C">publication_pending</text>
+    <text x="1012" y="710">关键下游继续阻断。</text>
+  </g>
+</svg>

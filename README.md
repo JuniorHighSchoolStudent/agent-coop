@@ -43,6 +43,7 @@
 2. [实施路线](docs/roadmap.md)：按依赖收敛的交付切片和下一步。
 3. [AGENTS.md](AGENTS.md)：所有协作 agent 的统一工程入口。
 4. [调研导入记录](docs/research/design-import.json)：来源及迁移范围。
+5. [图表索引](docs/diagrams/index.html)：总体架构、设计思想与流程的可视化版本（辅助阅读，不是规范正文）。
 
 本仓独立于 ABM 和 trading_system；它们是实践来源与未来项目适配对象。项目仓库为 [JuniorHighSchoolStudent/agent-coop](https://github.com/JuniorHighSchoolStudent/agent-coop)。当前处于设计初始化阶段，尚未发布包或选择开源许可证。
 

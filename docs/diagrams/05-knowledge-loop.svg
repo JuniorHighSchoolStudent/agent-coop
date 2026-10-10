@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-label="Agent Coop 知识积累与受控改进闭环">
+  <defs>
+    <pattern id="grid5" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#1B2130" stroke-width="1"/>
+    </pattern>
+    <marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7A90"/>
+    </marker>
+    <marker id="a5p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C77DD6"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="720" fill="#0F1219"/>
+  <rect width="1280" height="720" fill="url(#grid5)"/>
+
+  <text x="40" y="54" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="27" font-weight="700" fill="#E8ECF3">知识积累与受控改进闭环</text>
+  <text x="40" y="82" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14.5" fill="#98A2B3">先记录后优化；验证为真与选择供任务使用是两件事——反馈点赞不算晋级</text>
+
+  <!-- 第 1 行 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="30" y="130" width="290" height="76" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="30" y="130" width="4" height="76" rx="2" fill="#5B9BD5"/>
+    <circle cx="60" cy="160" r="13" fill="#12233A" stroke="#2E5480"/>
+    <text x="60" y="165" text-anchor="middle" font-size="12.5" font-weight="700" fill="#9FC6EA">1</text>
+    <text x="82" y="165" font-size="14.5" font-weight="700" fill="#E8ECF3">运行观察</text>
+    <text x="54" y="184" font-size="11.5" fill="#98A2B3">运行终态、人工纠偏、新错误指纹</text>
+    <text x="54" y="200" font-size="11.5" fill="#98A2B3">→ 触发复盘候选</text>
+
+    <rect x="340" y="130" width="290" height="76" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="340" y="130" width="4" height="76" rx="2" fill="#5B9BD5"/>
+    <circle cx="370" cy="160" r="13" fill="#12233A" stroke="#2E5480"/>
+    <text x="370" y="165" text-anchor="middle" font-size="12.5" font-weight="700" fill="#9FC6EA">2</text>
+    <text x="392" y="165" font-size="14.5" font-weight="700" fill="#E8ECF3">复盘候选</text>
+    <text x="364" y="184" font-size="11.5" fill="#98A2B3">按问题指纹关联已有条目</text>
+    <text x="364" y="200" font-size="11.5" fill="#98A2B3">每次出现只追加原事件引用</text>
+
+    <rect x="650" y="130" width="290" height="76" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="650" y="130" width="4" height="76" rx="2" fill="#5B9BD5"/>
+    <circle cx="680" cy="160" r="13" fill="#12233A" stroke="#2E5480"/>
+    <text x="680" y="165" text-anchor="middle" font-size="12.5" font-weight="700" fill="#9FC6EA">3</text>
+    <text x="702" y="165" font-size="14.5" font-weight="700" fill="#E8ECF3">核验证据</text>
+    <text x="674" y="184" font-size="11.5" fill="#98A2B3">已观察事实 ≠ 根因</text>
+    <text x="674" y="200" font-size="11.5" fill="#98A2B3">无证据的原因标 hypothesis</text>
+
+    <rect x="960" y="130" width="290" height="76" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="960" y="130" width="4" height="76" rx="2" fill="#35C4B5"/>
+    <circle cx="990" cy="160" r="13" fill="#0F2C29" stroke="#2E5C55"/>
+    <text x="990" y="165" text-anchor="middle" font-size="12.5" font-weight="700" fill="#8FE0D4">4</text>
+    <text x="1012" y="165" font-size="14.5" font-weight="700" fill="#E8ECF3">检索复用</text>
+    <text x="984" y="184" font-size="11.5" fill="#98A2B3">按项目/职责/指纹/版本筛选</text>
+    <text x="984" y="200" font-size="11.5" fill="#98A2B3">只注入少量相关条目与证据锚</text>
+  </g>
+
+  <g stroke="#6B7A90" stroke-width="1.6" fill="none" marker-end="url(#a5)">
+    <path d="M320 168 H336"/>
+    <path d="M630 168 H646"/>
+    <path d="M940 168 H956"/>
+  </g>
+
+  <!-- 中间说明 -->
+  <text x="640" y="250" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#A98CC0">闭环复用已有 Scheduler / 请求 / 握手 / 插件版本机制</text>
+  <text x="640" y="272" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#7C8798">不新建断点数据库、不新增手工进度台账、不另开常驻 LLM 循环</text>
+
+  <path d="M1105 206 V286" stroke="#6B7A90" stroke-width="1.6" fill="none" marker-end="url(#a5)"/>
+
+  <!-- 第 2 行（从右向左） -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="960" y="290" width="290" height="76" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="960" y="290" width="4" height="76" rx="2" fill="#920783"/>
+    <circle cx="990" cy="320" r="13" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="990" y="325" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E5B8E8">5</text>
+    <text x="1012" y="325" font-size="14.5" font-weight="700" fill="#E8ECF3">改进提案</text>
+    <text x="984" y="344" font-size="11.5" fill="#98A2B3">从 Lesson 生成最小变更提案</text>
+    <text x="984" y="360" font-size="11.5" fill="#98A2B3">附基线、候选版本与验证方法</text>
+
+    <rect x="650" y="290" width="290" height="76" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="650" y="290" width="4" height="76" rx="2" fill="#920783"/>
+    <circle cx="680" cy="320" r="13" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="680" y="325" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E5B8E8">6</text>
+    <text x="702" y="325" font-size="14.5" font-weight="700" fill="#E8ECF3">对照评测</text>
+    <text x="674" y="344" font-size="11.5" fill="#98A2B3">冻结评测集与无改动基线</text>
+    <text x="674" y="360" font-size="11.5" fill="#98A2B3">调优案例与验收案例分开</text>
+
+    <rect x="340" y="290" width="290" height="76" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="340" y="290" width="4" height="76" rx="2" fill="#920783"/>
+    <circle cx="370" cy="320" r="13" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="370" y="325" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E5B8E8">7</text>
+    <text x="392" y="325" font-size="14.5" font-weight="700" fill="#E8ECF3">有界试用</text>
+    <text x="364" y="344" font-size="11.5" fill="#98A2B3">预授权范围、样本数、时窗</text>
+    <text x="364" y="360" font-size="11.5" fill="#98A2B3">运行中 attempt 不切换配置</text>
+
+    <rect x="30" y="290" width="290" height="76" rx="11" fill="#171C26" stroke="#2C3542"/>
+    <rect x="30" y="290" width="4" height="76" rx="2" fill="#35C4B5"/>
+    <circle cx="60" cy="320" r="13" fill="#0F2C29" stroke="#2E5C55"/>
+    <text x="60" y="325" text-anchor="middle" font-size="12.5" font-weight="700" fill="#8FE0D4">8</text>
+    <text x="82" y="325" font-size="14.5" font-weight="700" fill="#E8ECF3">激活 / 撤回</text>
+    <text x="54" y="344" font-size="11.5" fill="#98A2B3">满足固定门槛才激活新版本</text>
+    <text x="54" y="360" font-size="11.5" fill="#98A2B3">否则停止或回退未来派发</text>
+  </g>
+
+  <g stroke="#6B7A90" stroke-width="1.6" fill="none" marker-end="url(#a5)">
+    <path d="M960 328 H946"/>
+    <path d="M650 328 H636"/>
+    <path d="M340 328 H326"/>
+  </g>
+  <path d="M30 328 H14 V168 H26" stroke="#C77DD6" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#a5p)"/>
+  <text x="30" y="250" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="11.5" fill="#A98CC0">↑ 新证据触发下一轮</text>
+
+  <!-- 三层证据 -->
+  <rect x="30" y="386" width="770" height="268" rx="14" fill="#151A24" stroke="#3A4557"/>
+  <text x="52" y="418" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="16" font-weight="700" fill="#E8ECF3">积累什么：三层证据，权威边界逐层收紧</text>
+
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="52" y="446" width="726" height="54" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <rect x="66" y="460" width="118" height="26" rx="13" fill="#12233A" stroke="#2E5480"/>
+    <text x="125" y="478" text-anchor="middle" font-size="11.5" font-weight="700" fill="#9FC6EA">Observation</text>
+    <text x="200" y="468" font-size="12" fill="#B6C0CE">失败码、超时、返工、握手缺件、版本冲突、人工纠偏、有效交付的原事件引用</text>
+    <text x="200" y="489" font-size="11.5" fill="#7C8798">权威边界：已观察到的事实；不自动证明根因</text>
+
+    <rect x="52" y="516" width="726" height="54" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <rect x="66" y="530" width="118" height="26" rx="13" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="125" y="548" text-anchor="middle" font-size="11.5" font-weight="700" fill="#E5B8E8">Lesson</text>
+    <text x="200" y="538" font-size="12" fill="#B6C0CE">症状、原因/假设、适用条件、尝试与失败路径、修正、验证与反例</text>
+    <text x="200" y="559" font-size="11.5" fill="#7C8798">权威边界：可复用经验；不能覆盖项目规则</text>
+
+    <rect x="52" y="586" width="726" height="54" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <rect x="66" y="600" width="118" height="26" rx="13" fill="#0F2C29" stroke="#2E5C55"/>
+    <text x="125" y="618" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8FE0D4">Improvement</text>
+    <text x="200" y="608" font-size="12" fill="#B6C0CE">改 prompt、路由、重试参数，增删检查节点，完善模板/插件的具体 patch</text>
+    <text x="200" y="629" font-size="11.5" fill="#7C8798">权威边界：引用 Lesson 的 ChangeProposal；未经激活不改变运行</text>
+  </g>
+
+  <!-- 边界 -->
+  <rect x="830" y="386" width="420" height="268" rx="14" fill="#1A1614" stroke="#5C4A2E"/>
+  <text x="852" y="418" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="16" font-weight="700" fill="#E0A83C">不可跨越的边界</text>
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12" fill="#B6C0CE">
+    <text x="852" y="452">· 评测者与改进者分离</text>
+    <text x="864" y="472" fill="#8A7A5E">生成者不得修改测试集、评分器或结果</text>
+    <text x="852" y="504">· 冻结评测集、环境与运行时版本</text>
+    <text x="864" y="524" fill="#8A7A5E">记录无改动基线，否则效果不可归因</text>
+    <text x="852" y="556">· 无新增证据不重复优化同一候选</text>
+    <text x="852" y="584">· 成本未知仍为 unknown</text>
+    <text x="864" y="604" fill="#8A7A5E">不能计量的指标不能作为自动晋级条件</text>
+    <text x="852" y="626">· 权限扩张 / 阈值放宽 / 核心代码修改</text>
+    <text x="864" y="644" fill="#8A7A5E">不属于默认自动激活集合，走正常工程评审</text>
+  </g>
+</svg>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Coop 架构图集</title>
+<style>
+  :root{
+    --bg:#0F1219; --panel:#151A24; --panel2:#171C26; --line:#2C3542;
+    --tx:#E8ECF3; --tx2:#B6C0CE; --tx3:#7C8798;
+    --purple:#920783; --purple2:#C77DD6; --teal:#35C4B5; --amber:#E0A83C; --blue:#5B9BD5;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--tx);
+    font-family:"Segoe UI","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1360px;margin:0 auto;padding:48px 32px 96px}
+  header h1{margin:0 0 10px;font-size:34px;letter-spacing:-.02em}
+  header .sub{margin:0;color:var(--tx2);font-size:15.5px}
+  header .meta{margin-top:14px;color:var(--tx3);font-size:13px}
+  header .meta code{background:#1B2130;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12.5px}
+
+  .guide{
+    margin:32px 0 8px;background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:22px 24px;
+  }
+  .guide h2{margin:0 0 6px;font-size:16px;color:var(--purple2)}
+  .guide p{margin:0 0 14px;color:var(--tx2);font-size:13.5px}
+  .order{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+  .order li{
+    display:flex;align-items:center;gap:9px;background:#1B2130;border:1px solid var(--line);
+    border-radius:999px;padding:7px 15px 7px 9px;font-size:13px;color:var(--tx2);
+  }
+  .order a{color:inherit;text-decoration:none}
+  .order a:hover{color:var(--tx)}
+  .order .n{
+    width:22px;height:22px;border-radius:50%;background:#3A1236;border:1px solid #7A2A6E;
+    color:#E5B8E8;font-size:12px;font-weight:700;display:grid;place-items:center;flex:none;
+  }
+
+  .toc{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 0}
+  .toc a{
+    display:block;background:var(--panel2);border:1px solid var(--line);border-radius:10px;
+    padding:12px 14px;text-decoration:none;color:var(--tx2);font-size:13.5px;transition:border-color .15s,transform .15s;
+  }
+  .toc a:hover{border-color:#4A2A5C;transform:translateY(-1px)}
+  .toc a b{display:block;color:var(--tx);font-size:14px;font-weight:600;margin-bottom:3px}
+  .toc a span{color:var(--tx3);font-size:12.5px}
+
+  section{margin-top:56px;scroll-margin-top:24px}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  }
+  .card .head{padding:22px 26px 18px;border-bottom:1px solid var(--line);background:#131822}
+  .card .head .tag{
+    display:inline-block;font-size:12px;font-weight:700;color:#E5B8E8;background:#3A1236;
+    border:1px solid #7A2A6E;border-radius:999px;padding:2px 11px;margin-bottom:10px;
+  }
+  .card .head h2{margin:0 0 8px;font-size:22px}
+  .card .head .q{margin:0;color:var(--tx2);font-size:14px}
+  .card .head .q b{color:var(--tx)}
+  .card .head .file{margin:10px 0 0;font-size:12.5px;color:var(--tx3);font-family:Consolas,"Cascadia Mono",monospace}
+  .card .body{padding:0;background:var(--bg)}
+  .card .body img{display:block;width:100%;height:auto}
+  .card .notes{padding:20px 26px 24px;background:var(--panel);border-top:1px solid var(--line)}
+  .card .notes ul{margin:0;padding-left:20px;color:var(--tx2);font-size:13.5px}
+  .card .notes li{margin:5px 0}
+  .card .notes li b{color:var(--tx)}
+
+  footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);color:var(--tx3);font-size:12.5px}
+  footer code{background:#1B2130;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12px}
+
+  @media (max-width:900px){
+    .toc{grid-template-columns:1fr}
+    .wrap{padding:32px 18px 64px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Agent Coop 架构图集</h1>
+  <p class="sub">把设计文档中的架构、思想与流程画成可独立审阅的图；图是辅助，<b>文字合同仍是唯一规范来源</b>。</p>
+  <p class="meta">对应 <code>docs/design.md</code>（草稿，implementation_status: not_started）· 图与正文同 revision 维护</p>
+</header>
+
+<div class="guide">
+  <h2>怎么看</h2>
+  <p>建议按 1 → 5 的顺序阅读：先看清「什么东西、谁说话算数」，再看「凭什么这么设计」，最后看「需求、执行、知识三条流程如何走」。</p>
+  <ul class="order">
+    <li><span class="n">1</span><a href="#d1">总体架构</a></li>
+    <li><span class="n">2</span><a href="#d2">设计思想</a></li>
+    <li><span class="n">3</span><a href="#d3">需求与配置流程</a></li>
+    <li><span class="n">4</span><a href="#d4">执行与握手</a></li>
+    <li><span class="n">5</span><a href="#d5">知识闭环</a></li>
+  </ul>
+  <div class="toc">
+    <a href="#d1"><b>想看“由哪些部分组成”</b><span>入口层 · coordinator 内核 · 三类适配器 · 项目内证据</span></a>
+    <a href="#d2"><b>想评审“设计到底立得住吗”</b><span>八条不变量与明确不做的事</span></a>
+    <a href="#d3"><b>想看“用户提交需求之后发生什么”</b><span>intent → 变更提案 → 校验 → 安全点接入</span></a>
+    <a href="#d4"><b>想看“一次执行怎么算完成”</b><span>attempt 生命周期 · 握手状态机 · 单写入发布</span></a>
+    <a href="#d5"><b>想看“踩过的坑怎么变成改进”</b><span>观察 → 复盘 → 评测 → 有界试用 → 激活</span></a>
+    <a href="../../docs/design.md"><b>回到完整设计</b><span>docs/design.md 产品与协作合同</span></a>
+  </div>
+</div>
+
+<section id="d1">
+  <div class="card">
+    <div class="head">
+      <span class="tag">图 1 / 总体架构</span>
+      <h2>小内核 + 可插拔适配器</h2>
+      <p class="q"><b>这张图回答：</b>系统由哪些部分组成？谁有权写状态？项目里到底留下什么可审阅的东西？</p>
+      <p class="file">01-architecture-overview.svg</p>
+    </div>
+    <div class="body"><img src="./01-architecture-overview.svg" alt="Agent Coop 总体架构"></div>
+    <div class="notes">
+      <ul>
+        <li><b>唯一写入者：</b>三个入口（Web / 宿主插件 / 人工 CLI）共享同一后端，只有 coordinator 能发布工具状态；agent 提交具名 intent。</li>
+        <li><b>内核固定：</b>Scheduler（派发权威）、Monitor（只产事件，不决定重试/取消）、Store（SQLite 事务 + outbox）是三个职责模块，不是三个服务。</li>
+        <li><b>边界插件化：</b>RuntimeAdapter / ProjectAdapter / GateAdapter 承担宿主、项目事实与验证入口；内核不含任何业务规则。</li>
+        <li><b>证据在项目里：</b><code>coordination/</code> 是人工阅读入口；派生投影（STATUS、current.json）只由生成器产出，手改判为漂移。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="d2">
+  <div class="card">
+    <div class="head">
+      <span class="tag">图 2 / 设计思想</span>
+      <h2>八条不变量</h2>
+      <p class="q"><b>这张图回答：</b>这套设计靠哪些不变量站得住？评审时按哪八条去反驳？</p>
+      <p class="file">02-design-principles.svg</p>
+    </div>
+    <div class="body"><img src="./02-design-principles.svg" alt="Agent Coop 设计思想：八条不变量"></div>
+    <div class="notes">
+      <ul>
+        <li>八条按“谁写 → 谁权威 → 凭什么信 → 怎么扩展 → 怎么变好”排列，最后一条是明确不做的范围，防止首版膨胀。</li>
+        <li>任何一条被打破，架构就不再成立：例如缺了“三类权威分开”，运行日志就会被误当成业务完成。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="d3">
+  <div class="card">
+    <div class="head">
+      <span class="tag">图 3 / 流程</span>
+      <h2>需求与配置：从自然语言到合格节点</h2>
+      <p class="q"><b>这张图回答：</b>用户说一句话之后，系统凭什么保证它没被曲解、没被越权、真正进了队列？</p>
+      <p class="file">03-request-to-dispatch.svg</p>
+    </div>
+    <div class="body"><img src="./03-request-to-dispatch.svg" alt="Agent Coop 需求与配置流程"></div>
+    <div class="notes">
+      <ul>
+        <li><b>最小变更优先：</b>先检索已有定义，再在「新任务 / 新参数 / 新角色 / 插入节点 / 新插件 / 新工作流」里选最小的一种。</li>
+        <li><b>预览要说人话：</b>不只给一句“已确认”，而是显示立即可执行的部分、等待的前置、在途任务保持不变的内容。</li>
+        <li><b>applied ≠ 已完成：</b>它只表示定义或入队已生效，需求是否实现由项目原证据决定。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="d4">
+  <div class="card">
+    <div class="head">
+      <span class="tag">图 4 / 流程</span>
+      <h2>一次执行怎么算完成</h2>
+      <p class="q"><b>这张图回答：</b>任务状态怎么流转？跨角色怎么交接？状态文件是怎么被“只写一次”地发布出去的？</p>
+      <p class="file">04-execution-and-handshake.svg</p>
+    </div>
+    <div class="body"><img src="./04-execution-and-handshake.svg" alt="Agent Coop 执行生命周期、握手状态机与单写入发布"></div>
+    <div class="notes">
+      <ul>
+        <li><b>进程、会话、证据分开：</b>exit 0 只证明正常退出，缺提交/产物/验证时不能进入 delivered。</li>
+        <li><b>握手不是消息：</b>offered → acknowledged → accepted/changes_requested/rejected；超时与失联不生成 accepted。</li>
+        <li><b>单写 + outbox：</b>事务提交 → 临时文件 → 原子发布不可变事件 → 发布带 revision 的投影；消费者比对 revision，不一致就显示 <code>publication_pending</code>。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="d5">
+  <div class="card">
+    <div class="head">
+      <span class="tag">图 5 / 闭环</span>
+      <h2>知识积累与受控改进</h2>
+      <p class="q"><b>这张图回答：</b>踩过的坑怎么沉淀？什么时候允许它改变系统行为？</p>
+      <p class="file">05-knowledge-loop.svg</p>
+    </div>
+    <div class="body"><img src="./05-knowledge-loop.svg" alt="Agent Coop 知识积累与受控改进闭环"></div>
+    <div class="notes">
+      <ul>
+        <li><b>三层证据边界逐层收紧：</b>Observation（已观察到的事实）→ Lesson（可复用经验）→ Improvement（具体补丁）。</li>
+        <li><b>验证为真 ≠ 选择使用：</b>反馈点赞不能晋级；没有证据的原因明确标 hypothesis。</li>
+        <li><b>评测者与改进者分离：</b>生成者不能改测试集或评分器；无实证改善不晋级，也不扩大权限。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  图源为 <code>docs/diagrams/*.svg</code>，纯手写 SVG，无外部依赖与脚本。图只为审阅提供直观入口，冲突时以 <code>docs/design.md</code> 的文字合同为准。
+  <br>当前产品状态：仓库与设计初始化；Scheduler、Web、CLI/MCP、插件与适配器均未实现。
+</footer>
+
+</div>
+</body>
+</html>
