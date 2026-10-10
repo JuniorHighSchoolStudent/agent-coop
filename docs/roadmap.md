@@ -28,13 +28,15 @@
 - Kimi Code 与 CodeBuddy 的 `kimi-k3-2` 是不同 runtime/session，分别核验能力和实际模型身份；当前 Kimi Code 使用宿主已配置的默认 profile，调用时记录可观测的模型信息，未知保持 unknown，不静默替换。监督并发 1、单次最长 10 分钟，由 Codex 手工看护和在超时后停止本次调用；CLI 未提供 turns/token 硬限时明确记为未实施，不宣称产品预算门禁已实现。
 - 当前分配仅适用于本仓，不继承 ABM owner。
 
-## 当前合同补充：阶段角色、触发与经验吸收（2026-10-10）
+## 当前工作：图集审核后的修订（2026-10-10）
 
-用户授权吸收 gstack 阶段职责模板、角色触发策略、ABM 可靠性约束与 Jev 有界判断，并对前述定时协作、ABM、Jev 分析做多方评审。合同归 design §4.2/§7.1/§7.4/§7.5/§7.6/§9.1 与 §11 新增验收（47-54），开发执行要求归 AGENTS.md；不新建同类规则入口，不实现产品、不安装 gstack/Jev、不启用宿主定时任务。轻量判断沿 P0（资料复用裁定）→ P4（预算内离线评测）→ P5（受控激活/撤回）接入，阻断处置与硬正确性不等到 P5。
+用户在图集退回修订后要求继续多 agent 开发。本轮仅修正需求放行条件、握手超时出口、证据发布方向，并改善原图入口；沿既有正文合同，不实现产品、不安装依赖、不启用定时任务。实现由 CodeBuddy/deepseek-v4-pro 承担，Codex 集成与渲染核查，两组独立 CodeBuddy 评审和原生 Kimi Code 监督沿上表。
 
-本次交付的候选、评审、监督与接收状态统一见 [当前请求与证据](../coordination/requests/role-experience-review-20261010/request.md)。CodeBuddy/deepseek-v4-pro 在隔离工作树修订文档，Codex 冻结候选，两组独立 CodeBuddy 席位评审，Kimi Code 独立监督。此处仅维护范围与依赖，不堆积历史进行中状态。
+实施计划见 [图集修订计划](../coordination/requests/diagrams-review-20261010/implementation-plan.md)，候选、阻断和唯一当前结论见 [当前结果](../coordination/requests/diagrams-review-20261010/result.md)。本次图集修订不改变 P0 复用裁定前置，不把旧候选通过票沿用到新图。
 
 ## 历史交付入口
+
+- 阶段角色、触发与经验吸收（role-experience-review-20261010）：已接收并在 main cb0793d 合入，证据见 [结果](../coordination/requests/role-experience-review-20261010/result.md)；design §4.2/§7.1/§7.4/§7.5/§7.6/§9.1 及验收47–54继续有效。Jev 仍沿 P0 调研→P4 离线评测→P5 受控激活，未启用。
 
 - 工程规范与团队自举（bootstrap-engineering-20261010）：已接收，规范与团队约束继续有效，候选及评审链见 [请求](../coordination/requests/bootstrap-engineering-20261010/request.md)；已完成步骤退出当前视图。
 - 前端续作与状态维护（frontend-state-contract-20261010）：已接收，其合同继续有效，证据见 [请求](../coordination/requests/frontend-state-contract-20261010/request.md)；当前合同补充入口已由 role-experience-review-20261010 取代。
