@@ -1,0 +1,33 @@
+## 独立评审报告（只读）
+
+**候选**：`8e8f6f054c972e27dd234adf31a29ffbf12471bd`（Codex 测量，本人未重算哈希/未运行 git）。已读 candidate.txt、change.diff、request/research/validation/implementation-r1、AGENTS、design §5/§7.4–7.8/§9.1/§11、roadmap。未读另一席原票及监督意见。
+
+### A1–A8 逐项判定
+
+- **A1 通过**：research.md 四来源均给"实践→落点→不采纳范围"，30 天在 §5.2.4、58、research 三处一致标为本地选择、非社区强制。落点归属清晰（AGENTS 人工操作 / design 产品合同，不复制数值）。
+- **A2 通过**：§5.2.1 覆盖六类关键交流、依赖动作前落盘、临时通知仅引用；event_id/actor/subject_revision/发生时间与 observed_at 分离、缺失标 unknown 并阻断；摘要标作者/删节/原件引用，不冒充授权，「无回复≠同意」在 §5.2.1/§7.4 一致。AGENTS 第1条对应。
+- **A3 通过**：§5.2.2 finding_id 请求内唯一、链路投影完整；原审阅者可复核自己提出的问题但不得参与修复，与 §7.5「原审阅者或未参与修复替补复核闭合」一致（validation 已如实披露此为作者修订）；修复自报/resolved/退出码非独立关闭；旧票失效不丢义务、承接须具名，与 §7.6/51/44 相容。
+- **A4 通过**：§5.2.3 四层分层表齐备；不新建 issues 状态库/聊天总线/归档服务，finding 链仅为投影；SQLite/outbox/握手原件排除出可删缓存。
+- **A5 通过**：归档字段覆盖请求要求的全部项（清单、SHA-256、身份版本、policy id/revision/digest、读回验证、未决承接、备份状态）；目标读回/隔离恢复才算验证；Git 本地≠异机备份，local_only 可见，归档与备份分别举证。
+- **A6 通过**：§5.2.4 起算=attempt 有效终态 UTC、无终态待对账、mtime 不可猜；到期仅评估非删除许可；hold 有理由/owner/复核日期、不自动解除；policy 每 attempt 绑定、在途不读 latest、迁移须具名授权；未配置即阻断清理，容量满不删证据（60）。
+- **A7 通过**：§5.2.5 dry-run 具名清单、执行前重查引用/hold/路径、禁 junction 越界、并发变化停止重估；意图先持久化、逐对象回执、部分失败不汇总全成功、同路径新对象不误删、回执自身是证据；敏感误入不可变证据时限制访问+通知 owner+不泄露值的更正链+授权改写，不可变不为泄露辩护（61）。
+- **A8 通过**：§5.2.6 与 AGENTS 人工节明确"尚无执行器、不授权本轮删除/上传/定时任务"；diff 仅含文档，无新增代码/依赖；design 变更仅两处 hunk（新增 §5.2、§11 追加 55–62），旧 1–54 在 diff 上下文中未动；roadmap 如实记"尚未接收、P0 待启动"。finding_id 落在既有原件/handshake，未越 SSOT。
+
+**一致性核对**：AGENTS 锚点 `#52-交流与归档合同` 与唯一标题 "### 5.2 交流与归档合同"（design.md:208）匹配；design→research 相对路径有效；§11 编号 1–62 连续；roadmap 段落与请求分工（Codex 维护请求/验证/roadmap）相符。
+
+### Blocking
+
+无。
+
+### Advisory
+
+- **glm-A1**（design.md:210）：产品合同正文深链 `coordination/requests/communication-archive-20261010/research.md`。请求目录有独立证据生命周期，若该请求后续 superseded/迁移，design 需同步更新链接。AGENTS 已有引用者检索规则约束，当前有效，仅提示登记该消费者。
+
+### 结论
+
+**PASS**（advisory glm-A1 不阻断）。
+
+### 未验证边界
+
+- 无网络/shell：四个社区来源内容、SHA-256 哈希、`git diff --check`、108 链接机械检查均采信 Codex 测量与 validation.md 记录，本人仅完成仓内文本静态核对；社区来源真伪无法独立核实。
+- 本审为合同静态语义审核，无产品测试入口；不构成对任何自动机制已实现的认定，也不要求本轮实现代码。
