@@ -1,0 +1,25 @@
+## 独立只读评审（C1–C8）
+
+**候选**：`25690df055a09ea71c7edb4dba163e191b5e9857`，作者 Codex（集成）+ CodeBuddy/deepseek-v4-pro（修订）。变更范围：AGENTS.md 新增「文档组织」一节、README 改「按任务导航」、roadmap 新增当前治理工作段、新增 docs-organization 请求四件（request/research/validation/implementation-r1）。candidate.txt 绑定 9 文件哈希；design、runtime-adapters 不在 diff 中（零差异声明与 diff 一致）。
+
+**逐项判定**：
+
+- **C1 通过**。research.md 四个来源均给出采纳落点与不采纳理由，AGENTS「借鉴 Diátaxis」明确为本地选择；validation.md 声明公开来源由 Codex 在线核对。落点可从 research→AGENTS 小节逐一追溯。
+- **C2 通过**。AGENTS 为规则唯一 owner；README 仅导航、不复制阈值（「工程规范」段显式声明）；路径分工表只维护归属、状态归各 owner。design §5.1 是未来产品项目协作目录合同，与本仓当前文档分工不构成双权威，且表内已声明 requests「不是已实现的运行时协议」。
+- **C3 通过**。四类区分落文；明确无运行产品、不伪造教程/操作指南；diff 未建任何目录或站点。
+- **C4 通过**。10 项路径覆盖现存全部文档入口（.gitignore/.gitattributes 非文档，.review-inputs 为未入候选的临时派发脚手架）；命名/元信息四项/拆分条件均可操作；result-r1/r2 与「不建 _v2 活文档」不矛盾——后继原件是「决策保留」节显式允许的机制，且历史文件渐进豁免。
+- **C5 通过**。决策留请求目录、规则回写 owner；bootstrap 历史入口经 request 显式指向 result-r2（已核实 request.md 原文），「不按 result.md 猜最新」与既有实践一致；无新 ADR/台账。
+- **C6 通过**。我独立核验：README 两个新锚点（AGENTS「文档组织」、roadmap「历史交付入口」）标题存在且唯一；全仓无对被删「从哪里开始」锚点的残留引用；AGENTS→research.md、request→roadmap 相对链接解析正确；diff 未删改任何既有标题；旧「从哪里开始」5 项链接在新表全部保留。
+- **C7 通过**。README 任务表覆盖规则、合同、当前进度、适配约定、配置示例、图、历史证据、调研来源八类，均指向实存文件（CLAUDE.md、executor-profile.proposed.yaml、index.html、design-import.json 均存在）。
+- **C8 通过**。验证要求明确机械/语义分层、声明无 CI；verify-docs.ps1 为临时脚本未入库；diff 仅 .md/.txt，无代码、依赖、模板或生成器；未启动 P0。作者未虚报自动检查生效。
+
+**Blocking**：无。
+
+**非阻断建议**：
+1. AGENTS.md:32「本轮不建站点与空目录」——「本轮」是请求作用域措辞，落在长期规则 owner 内，建议改为持久表述（如「现阶段无运行产品，不建站点与空目录」），避免未来读者误判规则时效。
+2. roadmap.md:33「候选尚未冻结」与该提交即送审候选存在表述张力；依赖 validation.md「候选 SHA 由后继评审绑定」才自洽，接收时按「当前状态维护」更新该段即可，建议届时顺带澄清。
+3. candidate.txt 未绑定 CLAUDE.md 哈希，而 validation.md 声明其零差异；该结论可由 change.diff 无此文件推出，但补绑哈希可减少证据缺口。
+
+**最终判定：PASS**。
+
+**验证边界**：仅 Read/Glob/Grep 只读核验；Git 状态、哈希、`git diff --check`、verify-docs.ps1 结果均采信 candidate.txt/validation.md 的 Codex 测量，未亲测；公开来源 URL 未联网复核，仅核对 research.md 摘要与本地推导的自洽性；未读其他请求历史评审原件与另一席意见；代码/CI 缺失按本轮范围不作阻断，亦不视为已实现自动文档检查。

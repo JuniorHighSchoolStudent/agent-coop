@@ -1,0 +1,38 @@
+# 独立监督 verdict — 候选 25690df0（docs-organization-20261010）
+
+监督身份：独立 Kimi Code 监督会话，非作者、非评审席、非 CodeBuddy kimi 席位；本会话实际模型未暴露，记 unknown。无 shell/网络，未重算 Git/hash、未在线核对 URL，以下结论基于仓内九份证据原件的只读核对。
+
+## S1 独立身份与范围 — PASS
+
+作者为 Codex + CodeBuddy/deepseek-v4-pro，request 与 roadmap 团队表均明确二者不占独立票；两席评审（glm-5.3、kimi-k3-2）为独立会话且非作者，与 roadmap:15-21 绑定一致。范围限文档治理：AGENTS 新增「文档组织」、README 导航、roadmap 当前段、请求四件。design/runtime-adapters/diagrams/examples/CLAUDE 未改由 Codex `git diff --quiet` exit 0 支撑，reviewer 与我均未冒充重算，边界表述诚实。candidate.txt 绑定 9 文件，缺 CLAUDE 哈希属已知缺口，由 diff 零差异声明覆盖，result 第 4 条已具名处置，不阻断。
+
+## S2 C1–C8 与社区证据/本地取舍 — PASS
+
+research.md 四来源均列采纳落点与未采纳理由，明示"非上游官方认可"，本地取舍清晰（不建四空目录、不另立 ADR 编号、不外迁 Wiki）。我抽查仓内事实：AGENTS 含完整「文档组织」一节（路径分工表 10 项、四类目的、元信息四项、验证分层、渐进豁免）；README「按任务导航」表 8 行，链接目标 `AGENTS.md#文档组织`、`docs/roadmap.md#历史交付入口` 的标题实际存在且唯一；旧「从哪里开始」节无残留（两席已 Grep 核实，README 现状一致）。C8 边界成立：diff 仅 .md/.txt，verify-docs.ps1 临时未入库，无 CI/依赖/P0 提前启动，无自动门禁虚报。C2 中 design §5.1 未来产品合同与本仓分工不构成双权威，GLM 论证成立。
+
+## S3 作者、两席原票与 Codex 处置一致 — PASS
+
+两席原票均 PASS、无 blocking，绑定同一候选 SHA，声明未互读意见，符合独立性。Codex 在 result「非阻断意见处置」1–6 覆盖全部 7 条建议（GLM 3 条 + kimi 4 条），逐条给出采纳或具名理由，未改写原票、以 result 追加纠正（GLM C6「未删改既有标题」过宽表述由第 6 条纠正定位，证据保真）。未闭合义务均有归属：README 枚举同步成本归未来 AGENTS/README 维护者；自动门禁义务沿 P0/P1 出口归集成者 Codex，未因 PASS 被掩盖。
+
+## S4 生命周期与当前/历史无混淆 — PASS
+
+roadmap:31-33「候选尚未冻结」是冻结输入时点快照，两席与 result 第 3 条均明确：接收检查点才移除该段、增设历史入口，不在接收前改当前状态，符合「当前状态维护」合同。result 明示"尚未接收、合入或推送"、"两席未审阅 result"、共享测量不冒充独立执行，接收/合入/发布三分清晰，草稿/冻结候选/原件/结果入口生命周期区分正确。
+
+## S5 验证与接收/合入边界 — PASS
+
+validation.md 测量与边界分层诚实：96 链接为写入前测量、冻结前实测 97（result 第 5 条承接，不拿旧数冒充最终树）；脚本不查锚点/远程页面已声明；锚点与导航路径人工核对逐条列出。无产品测试/CI 声明与仓库现状一致。
+
+## Blocking
+
+无。
+
+## 可否接收
+
+可以接收。条件性后继处置（均归 Codex，属接收检查点动作，非本轮候选内容）：
+
+1. 接收时更新 roadmap：移除「当前治理工作」段，历史交付入口新增本轮条目并绑定候选 SHA 与 result 指针。
+2. result.md 追记监督通过结论与接收时间；保持「未合入/未推送」如实表述至实际完成。
+3. 未来 AGENTS 增节或门禁落地时同步 README 枚举与两处"无自动门禁"表述（result 第 2 条义务延续）。
+4. CLAUDE 哈希缺口与 verify-docs.ps1 不可复算属本轮可接受边界，P1 工具落地时应消化。
+
+监督自身边界：Git/hash/脚本/在线来源均采信 Codex 测量与两席声明，未独立重算；本会话模型 unknown。

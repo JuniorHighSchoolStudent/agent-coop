@@ -1,0 +1,35 @@
+# 独立评审意见（只读，评审者 kimi-k3-2，非作者）
+
+**候选**：25690df055a09ea71c7edb4dba163e191b5e9857（SHA 取自 Codex 测量的 `.review-inputs/candidate.txt`，本人无 shell 无法重算 hash；但已逐一 Read 候选实际文件，内容与 `change.diff` 完全一致）。
+
+## 逐项 C1–C8 判定
+
+- **C1 PASS**：research.md 表格四来源逐项列「采纳落点/未采纳理由」，明确"不是上游官方认可"；AGENTS 正文只链接 research.md 不复制 URL，溯源链完整。
+- **C2 PASS**：AGENTS 新「现有路径分工」表只声明归属，并明写"不在表内再建状态副本"；README 仅导航无阈值复制；design/roadmap/requests 各司其职，无第二规则入口。
+- **C3 PASS**：AGENTS「按读者目的区分」明确本仓无运行产品、不伪造教程/操作指南、不建空目录；README 按读者任务导航而非硬套四象限，与 research.md 取舍一致。
+- **C4 PASS**：10 行路径分工经我 Glob 逐项核对全部存在（含 CLAUDE.md、docs/research/design-import.json、examples 草案）；命名、四项最小元信息、拆分三条件均可操作；现存文件映射完整（.git* 属 git 配置非文档）。
+- **C5 PASS**：决策背景/取舍留存于本请求目录；`superseded_by`/`supersedes` 方向明确；"按显式入口选有效结果，不按 result.md 文件名猜最新"可执行；未新增台账/ADR 目录/模板/生成器（经全仓 Glob 确认）。
+- **C6 PASS**：README 删除「从哪里开始」后，我 Grep 全仓确认无任何活文档引用该节或 README 锚点；两个新增锚点 `AGENTS.md#文档组织`、`docs/roadmap.md#历史交付入口` 的标题均实际存在且唯一；8 个导航目标文件全部存在；历史原件零改动。
+- **C7 PASS**：README 导航表覆盖规则、合同、当前工作、适配约定、配置例子、图、历史证据、调研来源八类读者任务，均直达现有文件，无需全仓阅读。
+- **C8 PASS**：diff 无代码/依赖/CI 变更；validation.md 与 AGENTS 均明示"无产品测试入口、未配置 CI"；roadmap 条目声明 P0 保持待启动。未声称已实现自动文档检查。
+
+## Blocking
+
+无。
+
+## 非阻断建议
+
+1. **README.md:38** 括号内枚举 AGENTS 五个小节名（SSOT、SOLID、规模、质量门禁、文档组织），属软性内容镜像；AGENTS 日后增节需同步此处。建议改为不枚举或接受同步成本，不影响本轮接收。
+2. **AGENTS.md「验证要求」**"现状无自动门禁与 CI"与既有「质量门禁」"当前尚未引入这些工具"同义。同文件同 owner 不破 SSOT，但状态变化时需两处同步，建议后续合并表述。
+3. **docs/roadmap.md:31-33**「当前治理工作」条目写"候选尚未冻结"；候选冻结后即过时。按「当前状态维护」规则，集成者应在接收检查点更新该入口并补候选 SHA——属预期流程，提醒勿遗漏。
+4. validation.md 所述 verify-docs.ps1 脚本不在仓内（临时复用），其"96 链接有效"结论本人无法复算；本轮变更涉及的新增链接我已用 Glob/Grep 独立核实，结论一致，但该脚本的覆盖数字请以 Codex 测量为准。
+
+## 结论
+
+**PASS**
+
+## 自身验证边界
+
+- 无 shell/网络/编辑权限：未重算候选 SHA 与文件 hash（采用 candidate.txt 的 Codex 测量），未运行 verify-docs.ps1 与 `git diff --check`，未在线核验 research.md 四条外部 URL（依赖 Codex 已读摘要）。
+- 已独立完成：候选全文件 Read 与 diff 逐块比对；新增/变动链接与锚点的存在性和唯一性；全仓 Glob 核实无新增目录/模板/台账；Grep 核实被删节无残留消费者。
+- 未读另一席（glm-5.3）意见与 Kimi 监督意见；未全量阅读其他请求历史原件。
