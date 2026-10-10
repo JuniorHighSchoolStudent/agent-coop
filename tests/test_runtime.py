@@ -6,6 +6,8 @@ run_bounded 驱动真实临时 Python 子进程验证成功/非零退出/输出�
 """
 import hashlib
 import json
+import os
+import subprocess
 import sys
 import tempfile
 import time
@@ -310,6 +312,43 @@ class RunBoundedTests(SubprocessTests):
         with self.assertRaisesRegex(Exception, 'log_dir'):
             self._run_bounded([sys.executable, str(script)],
                               log_dir=str(outside))
+
+    def test_log_dir_inside_root_but_outside_runtime_is_rejected(self):
+        script = self._write_script('import sys\nsys.stdout.write("x")\n')
+        with self.assertRaisesRegex(ValueError, 'log_dir'):
+            self._run_bounded([sys.executable, str(script)],
+                              log_dir=str(self.root / 'workspace'))
+
+    def test_log_dir_junction_escape_is_rejected(self):
+        script = self._write_script('import sys\nsys.stdout.write("x")\n')
+        outside = Path(self._tmp.name) / 'outside'
+        outside.mkdir()
+        junction = self.root / '.runtime' / 'escape'
+        if sys.platform == 'win32':
+            proc = subprocess.run(
+                ['cmd', '/c', 'mklink', '/J', str(junction), str(outside)],
+                capture_output=True, text=True)
+            if proc.returncode != 0:
+                self.skipTest(f'mklink /J 不可用: {proc.stderr.strip()}')
+            self.addCleanup(os.rmdir, junction)
+        else:
+            try:
+                junction.symlink_to(outside, target_is_directory=True)
+            except OSError as exc:
+                self.skipTest(f'symlink 不可用: {exc}')
+            self.addCleanup(junction.unlink)
+        with self.assertRaisesRegex(ValueError, 'junction|symlink'):
+            self._run_bounded([sys.executable, str(script)],
+                              log_dir=str(junction))
+
+    def test_log_dir_accepts_runtime_and_its_descendants(self):
+        script = self._write_script('import sys\nsys.stdout.write("ok")\n')
+        for rel in ('.runtime', '.runtime/verification'):
+            with self.subTest(log_dir=rel):
+                result = self._run_bounded(
+                    [sys.executable, str(script)],
+                    log_dir=str(self.root / rel))
+                self.assertEqual(result['stdout'], 'ok')
 
     def test_log_bytes_are_bounded_on_disk(self):
         script = self._write_script(

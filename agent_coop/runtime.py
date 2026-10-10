@@ -26,13 +26,20 @@ def _validate_budget(timeout_seconds, output_limit_bytes):
 
 def _resolve_log_dir(cwd, log_dir):
     from .paths import checked
-    root = Path(cwd)
-    expected = Path(checked(root, '.runtime/logs')).resolve()
-    provided = Path(log_dir).resolve()
-    if provided != expected and expected not in provided.parents:
+    root = Path(cwd).absolute()
+    runtime_base = Path(checked(root, '.runtime'))
+    provided = Path(log_dir)
+    if not provided.is_absolute():
+        provided = root / provided
+    try:
+        relative = provided.relative_to(root)
+    except ValueError:
+        raise ValueError('log_dir must be inside the isolation root')
+    target = Path(checked(root, relative))
+    if target != runtime_base and runtime_base not in target.parents:
         raise ValueError(
-            'log_dir must resolve inside the isolation root .runtime/logs')
-    return provided
+            'log_dir must be inside the isolation root .runtime')
+    return target
 
 
 def run_bounded(argv, cwd, log_dir, timeout_seconds, output_limit_bytes):
