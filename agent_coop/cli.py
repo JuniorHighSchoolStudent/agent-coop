@@ -51,6 +51,11 @@ def execute(args):
     elif args.command == 'pause':
         store.pause()
     elif args.command == 'resume':
+        state = store.read()
+        if state['phase'] in ('blocked', 'reconciliation_required'):
+            print(f'agent-coop: cannot resume from phase {state["phase"]}',
+                  file=sys.stderr)
+            return 1
         store.resume()
     elif args.command == 'serve':
         from .web import serve
