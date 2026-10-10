@@ -60,6 +60,15 @@ def _existing_receipt(root, name, receipt):
     return existing
 
 
+def _verify_target(root, entry):
+    target = checked(root, entry['target'])
+    if not target.is_file():
+        raise ValueError(f'target missing: {entry["target"]}')
+    if target.stat().st_size != entry['size'] or digest(target) != entry['sha256']:
+        raise ValueError(f'target changed: {entry["target"]}')
+    return target
+
+
 def _receipt(subject_digest, policy, files):
     return {
         'subject_digest': subject_digest,
@@ -89,10 +98,15 @@ def create_archive(root, entries, subject_digest):
     receipt = _receipt(subject_digest, policy, files)
     existing = _existing_receipt(root, 'archive.json', receipt)
     if existing is not None:
+        for entry in files:
+            _verify_target(root, entry)
         return existing
     for entry in files:
+        if checked(root, entry['target']).exists():
+            raise ValueError(f'target already exists without receipt: {entry["target"]}')
+    for entry in files:
         _copy_verified(checked(root, entry['source']),
-                       Path(root) / entry['target'], entry['size'], entry['sha256'])
+                       checked(root, entry['target']), entry['size'], entry['sha256'])
     write_json(checked(root, 'evidence/archive.json'), receipt)
     return receipt
 
@@ -109,7 +123,7 @@ def create_backup(root, archive_receipt):
     files = []
     for entry in archive_receipt['files']:
         archive_target_rel = entry['target']
-        archive_target = Path(root) / archive_target_rel
+        archive_target = checked(root, archive_target_rel)
         if not archive_target.is_file():
             raise ValueError(f'archive target missing: {archive_target_rel}')
         if archive_target.stat().st_size != entry['size'] or digest(archive_target) != entry['sha256']:
@@ -122,10 +136,15 @@ def create_backup(root, archive_receipt):
     receipt['scope'] = 'local_only'
     existing = _existing_receipt(root, 'backup.json', receipt)
     if existing is not None:
+        for entry in files:
+            _verify_target(root, entry)
         return existing
     for entry in files:
-        _copy_verified(Path(root) / entry['source'],
-                       Path(root) / entry['target'], entry['size'], entry['sha256'])
+        if checked(root, entry['target']).exists():
+            raise ValueError(f'target already exists without receipt: {entry["target"]}')
+    for entry in files:
+        _copy_verified(checked(root, entry['source']),
+                       checked(root, entry['target']), entry['size'], entry['sha256'])
     write_json(checked(root, 'evidence/backup.json'), receipt)
     return receipt
 

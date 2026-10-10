@@ -25,17 +25,29 @@ def _is_reparse_point(path):
     return False
 
 
+def _reject_reparse_chain(path):
+    """path 自身或任一祖先为符号链接/junction（reparse point）时拒绝。"""
+    current = Path(path)
+    while True:
+        if _is_reparse_point(current):
+            raise ValueError('symlink or junction in path')
+        parent = current.parent
+        if parent == current:
+            break
+        current = parent
+
+
 def _require_clean_root(root):
     if not root.is_absolute():
         raise ValueError('root must be absolute')
-    if _is_reparse_point(root):
-        raise ValueError('root must not be a symlink or junction')
+    _reject_reparse_chain(root)
     if not (root / MARKER).exists():
         raise ValueError('root marker missing')
 
 
 def create_root(path):
     target = Path(path).absolute()
+    _reject_reparse_chain(target)
     if target.exists():
         if not target.is_dir():
             raise ValueError('target exists and is not a directory')
@@ -82,8 +94,7 @@ def digest(path):
 
 def write_json(path, value):
     path = Path(path).absolute()
-    if _is_reparse_point(path):
-        raise ValueError('refusing to write through symlink or junction')
+    _reject_reparse_chain(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     data = json.dumps(value, sort_keys=True, ensure_ascii=False,
                       separators=(',', ':')).encode('utf-8')
