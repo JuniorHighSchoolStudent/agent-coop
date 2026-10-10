@@ -1,0 +1,145 @@
+{
+  "scope": "S1 permission investigation read-only, no new probe authorization",
+  "bundle": "C:\\Users\\june\\AppData\\Roaming\\npm\\node_modules\\@tencent-ai\\codebuddy-code\\dist\\codebuddy-headless.js",
+  "bundle_sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65",
+  "metadata": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\probe-permission-s1-probe-r1.actual-metadata.json",
+  "metadata_sha256": "f4b5b8a1642317c248d4b4d8b68c7e7476dfe410860612bef5c72ef6ae8813ec",
+  "argv_sha256_from_metadata": "5c09083b0f62bb63cd4f0666509bd67e63f034c5313c25062765a78f7a9e3134",
+  "static_prediction": {
+    "qualification": "Static derivation from exact argv and bundle; no CLI, model, tool, matcher, or permission probe executed.",
+    "allowedTools": [
+      "Read,Glob,Grep,Write(C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/permission-profile-20261011/probe-01/workspace/write-ok.txt),Edit(C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/permission-profile-20261011/probe-01/workspace/edit-ok.txt)"
+    ],
+    "disallowedTools": [
+      "Bash,PowerShell"
+    ],
+    "allow_tool_name_before_first_parenthesis": "Read,Glob,Grep,Write",
+    "deny_tool_name": "Bash,PowerShell"
+  },
+  "minimal_argv_fragment_proposal_not_executed": [
+    "--tools",
+    "Read,Glob,Grep,Write,Edit",
+    "--allowedTools",
+    "Read",
+    "Glob",
+    "Grep",
+    "Write(C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/permission-profile-20261011/probe-01/workspace/write-ok.txt)",
+    "Edit(C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/permission-profile-20261011/probe-01/workspace/edit-ok.txt)",
+    "--disallowedTools",
+    "Bash",
+    "PowerShell"
+  ],
+  "unchanged_requirements": [
+    "dontAsk",
+    "setting-sources none",
+    "no-session-persistence",
+    "strict empty MCP",
+    "original memory flags",
+    "same exact per-file scopes"
+  ],
+  "findings": [
+    "Combined comma token does not reach path matcher because tool name mismatch occurs first.",
+    "disallowedTools combined comma token similarly does not form two explicit deny rules.",
+    "Tools selection has explicit comma split, independently.",
+    "Path matcher replaces backslashes and sets nocase true; trusted directory check uppercases drive letters.",
+    "dontAsk allows trusted-directory reads by strategy, asks for edits and outside reads; headless no-prompt logic then denies.",
+    "Settings sources none does not remove CLI option rules; it disables configured source scopes."
+  ],
+  "limits": [
+    "No actual parsed session options or decisionReason snapshot was captured in supplied metadata. Static chain explains observed results but dynamic hook/policy configuration was not read.",
+    "P2 and N1-N7 remain unexecuted; corrected argv is not validated or approved.",
+    "No shell-execution or host-memory global-isolation proof."
+  ],
+  "source_extracts": [
+    {
+      "name": "tools_split",
+      "line": 240,
+      "char_offset": 4969162,
+      "text": "async createIsEnabledChecker(eA,el){let ec=!0===eA.defer_loading,eu=await this.deferToolConfigService.isGlobalDeferLoadingEnabled(),ed=eA.name,ep=eA.aliases||[],eg=this.deferToolConfigService,eh=this.agentToolDeferOverlayCache;return async eA=>{let ef=np.pr.merge(eA.runContext.context.options?.toolDeferOverlay,eh.get(eA.agent?.name));if(eg.isBuiltinToolDeferLoading(ed,ec,ef)&&eu&&!(!0===eA.runContext.skipActivationCheck||(0,ne.kC)(eA.runContext)))return!1;let em=eA.runContext.context,eE=(0,A3.rl)(em,eA.agent?.name);if(!(0,A3.q0)(eE,ed)||void 0!==el&&!1===(\"function\"==typeof el?await el(eA):el))return!1;let ey=em.options?.tools;if(void 0!==ey&&\"default\"!==ey){let eA=ey.split(\",\").map(eA=>eA.trim()).filter(Boolean);if(0===eA.length||0===rm.PermissionUtils.matchPermissionRules(eA,[ed]).length)return!1}return!(this.isToolDisallowed(em,ed,ep)||em.permissionModeSubject?.value===Av.ZC.Delegate&&!nw.has(ed)||(ed===Av.L3.ENTER_PLAN_MODE||ed===Av.L3.EXIT_PLAN_MODE)&&(0,nf.zJ)())&&(ed!==Av.L3.EXIT_PLAN_MODE||!!(0,nf.Os)(em))}}maybeInjectSendMessage(eA,el){AI.vFs.has(eA)||eA!==AI.QYL.MINIMAL&&(el.includes(Av.L3.SEND_MESSAGE)||el.push(Av.L3.SEND_MESSAGE),el.includes(Av.L3.MESSAGE_COLLEAGUE)||el.push(Av.L3.MESSAGE_COLLEAGUE),el.includes(Av.L3.S"
+    },
+    {
+      "name": "cli_variadic",
+      "line": 273,
+      "char_offset": 5243064,
+      "text": ".option(\"--allowedTools <tools...>\",'Comma or space-separated list of tool names to allow (e.g. \"Bash(git:*) Edit\")').option(\"--disallowedTools <tools...>\",'Comma or space-separated list of tool names to deny (e.g. \"Bash(git:*) Edit\")').option(\"--mcp-config <fileOrString>\",\"Load MCP servers from a JSON file or string\").option(\"--channels <value>\",\"Enable specific"
+    },
+    {
+      "name": "cli_parse",
+      "line": 273,
+      "char_offset": 5261029,
+      "text": "parseOpts(){let eA=tE.args;return tE.parseOptions(process.argv),{arg:eA,opts:tE.opts()}}isHelpRequested(){let eA=process.argv;return eA.includes(\"-h\")"
+    },
+    {
+      "name": "session_options",
+      "line": 273,
+      "char_offset": 5239195,
+      "text": "function pickDefinedCliSessionInitialOptions(eA){let el={};for(let ec of[\"sessionId\",\"permissionMode\",\"permissionModeBeforePlan\",\"subagentPermissionMode\",\"dangerouslySkipPermissions\",\"model\",\"fallbackModel\",\"textToImageModel\",\"imageToImageModel\",\"tools\",\"allowedTools\",\"disallowedTools\",\"addDir\",\"channels\",\"dangerouslyLoadDevelopmentChannels\",\"mcpConfig\",\"strictMcpConfig\",\"sessionPersistence\",\"agent\",\"privateDataSticky\"]){let eu=eA[ec];void 0!==eu&&(el[ec]=eu)}return el}ey=__decorate([(0,eu.Component)()],ey)},21852(eA,el,ec){\"use strict\";ec.d(el,{v:()=>eu});let eu=Symbol(\"CliView\")},4"
+    },
+    {
+      "name": "commander_event",
+      "line": 3276,
+      "char_offset": 15706640,
+      "text": "let handleOptionValue=(el,eu,ed)=>{null==el&&void 0!==eA.presetArg&&(el=eA.presetArg);let ep=this.getOptionValue(ec);null!==el&&eA.parseArg?el=this._callParseArg(eA,el,ep,eu):null!==el&&eA.variadic&&(el=eA._concatValue(el,ep)),null==el&&(el=!eA.negate&&(!!eA.isBoolean()||!!eA.optional||\"\")),this.setOptionValueWithSource(ec,el,ed)};return this.on(\"option:\"+el,el=>{let ec=`error: option '${eA.flags}' argument '${el}' is invalid.`;handleOptionValue(el,ec,\"cli\")}),eA.envVar&&this.on(\"optionEnv:\"+el,el=>{let ec=`error: option '${eA.flags}' value '${el}' from env '${eA.envVar}' is invalid.`;handleOptionValue(el,ec,\"env\")}),this}_optionEx(eA,el,ec,eu,ed){if(\"object\"==typeof el&&el instanceof eC)throw Error(\"To add an Option object use addOption() instead of option() or require"
+    },
+    {
+      "name": "commander_parse",
+      "line": 3279,
+      "char_offset": 15716503,
+      "text": "parseOptions(eA){let el=[],ec=[],eu=el,ed=eA.slice();function maybeOption(eA){return eA.length>1&&\"-\"===eA[0]}let ep=null;for(;ed.length;){let eA=ed.shift();if(\"--\"===eA){eu===ec&&eu.push(eA),eu.push(...ed);break}if(ep&&!maybeOption(eA)){this.emit(`option:${ep.name()}`,eA);continue}if(ep=null,maybeOption(eA)){let el=this._findOption(eA);if(el){if(el.required){let eA=ed.shift();void 0===eA&&this.optionMissingArgument(el),this.emit(`option:${el.name()}`,eA)}else if(el.optional){let eA=null;ed.length>0&&!maybeOption(ed[0])&&(eA=ed.shift()),this.emit(`option:${el.name()}`,eA)}else this.emit(`option:${el.name()}`);ep=el.variadic?el:null;continue}}if(eA.length>2&&\"-\"===eA[0]&&\"-\"!==eA[1]){let el=this._findOption(`-${eA[1]}`);if(el){el.required||el.optional&&this._combineFlagAndOptionalValue?this.emit(`option:${el.name()}`,eA.slice(2)):(this.emit(`option:${el.name()}`),ed.unshift(`-${eA.slice(2)}`));continue}}if(/^--[^=]+=/.test(eA)){let el=eA.indexOf(\"=\"),ec=this._findOption(eA.slice(0,el));if(ec&&(ec.required||ec.optional)){this.emit(`option:${ec.name()}`,eA.slice(el+1));continue}}if(maybeOption(eA)&&(eu=ec),(this._enablePositionalOptions||this._passThroughOptions)&&0===el.length&&0===ec.length){if(this._findCommand(eA)){el.push(eA),ed.length>0&&ec.push(...ed);break}else if(eA===this._helpCommandName&&this._hasImplicitHelpCommand()){el.push(eA),ed.length>0&&el.push(...ed);break}else if(this._defaultCommandName){ec.push(eA),ed.length>0&&ec.push(...ed);break}}if(this._passThroughOptions){eu.p"
+    },
+    {
+      "name": "commander_collect",
+      "line": 3285,
+      "char_offset": 15732283,
+      "text": "_concatValue(eA,el){return el!==this.defaultValue&&Array.isArray(el)?el.concat(eA):[eA]}choices(eA){retur"
+    },
+    {
+      "name": "source_rules",
+      "line": 2159,
+      "char_offset": 9571395,
+      "text": "function sourceRules(eA,el){return(el??[]).map(el=>({permission:el,source:eA}))}function mergeSourcedRules(eA){retu"
+    },
+    {
+      "name": "allow_consumption",
+      "line": 2159,
+      "char_offset": 9577999,
+      "text": "...sourceRules(\"cliArg\",ey.allowedTools),...sourceRules(\"session\",ep.requestOptions?.allowedTools),...sourceRules(\"projectSettings\",eb?eg.allowRules.projectSettings:[]),...sourceRules(\"localSettings\",eb?eg.allowRules.localSettings:[])],eI=[...sourceRules(\"projectSettings\",eb?[]:eg.allowRules.projectSettings),...sourceRules(\"localSettings\",eb?[]:eg.allowRules.localSettings),...sourceRules(\"command\",eg.allowRules.command),...sou"
+    },
+    {
+      "name": "tool_matcher",
+      "line": 2565,
+      "char_offset": 10561949,
+      "text": "static matchPermissionRules(eA,el){let ec=this.getDebugService();ec?.debug(`permission-utils: matchPermissionRules called, permissions: ${JSON.stringify(eA)}, toolNames: ${JSON.stringify(el)}`);let eu=[];if(!eA||0===eA.length)return eu;let ed=el.map(eA=>eA.toLowerCase());for(let el of eA){let eA=el,ep=\"*\",eg=el.indexOf(\"(\");eg>=0&&(eA=el.substring(0,eg),ep=el.substring(eg+1,el.lastIndexOf(\")\"))),ed.includes(eA.toLowerCase())&&(eu.push({permission:el,rule:ep}),ec?.debug(`permission-utils: matchPermissionRules matched - permission: \"${el}\", tool: \"${eA}\", rule: \"${ep}\"`))}return ec?.debug(`permission-utils: matchPermissionRules result: ${JSON.stringify(eu)}`),eu}static matchMcpPermissionRules(eA,el,ec){let eu=this.getDebugService();eu?.debug(`permission-utils: matchMcpPermissionRules called, permissions: ${JSON.stringify(eA)}"
+    },
+    {
+      "name": "path_matcher",
+      "line": 2565,
+      "char_offset": 10565203,
+      "text": "static matchFileRule(eA,el){return eA=PermissionUtils.normalizePath(eA),el=PermissionUtils.normalizeFilePathPattern(el),(0,ep.xF)(eA,el,{dot:!0,nocase:!0,matchBase:!0})}static normalizePath(eA){let el=eA;return(eA.startsWith(\"~\")&&(el=em().join(eh().homedir(),eA.slice(1))),el=el.replace(/\\\\/g,\"/\"),em().isAbsolute(el)||(el=em().resolve(eQ.P.getWorkDir(),el)),eA.startsWith(\"//\"))?`/${el}`:el}static normalizeFilePathPattern(eA){let el=eA;return eA.startsWith(\"~\")&&(el=em().join(eh().homedir(),eA.slice(1))),el=el.replace(/\\\\/g,\"/\"),em().isAbsolute(el)||eA.startsWith(\"*\")||eA.startsWith(\".\")||(el=em().resolve(eQ.P.getWorkDir(),el)),el.startsWith(\"//\")&&(el=el.substring(1)),el}static matchCommandRule(eA,el){if(!el)return!1;let ec=this.getDebugService();if(this.matchSingleCommandAgainstPattern(eA,el))return ec?.debug(`permission-utils: matchCommandRule exact match for full c"
+    },
+    {
+      "name": "mode_fallback",
+      "line": 2428,
+      "char_offset": 10170478,
+      "text": "this.mode=ew.ZC.DontAsk}async needApproval(eA,el,ec,eu,ed){let ep=[eA.name,...eA.aliases||[]].map(eA=>eA.toLowerCase());switch(eA.resolveToolType(ep)){case ew.aG.Read:return!await eb.PermissionUtils.isArgsInTrustedDirectories(eu);case ew.aG.Bash:case ew.aG.Edit:default:return!0}}};__decorate([(0,eC.Autowired)(eB.Vr),__metadata(\"design:type\",\"function\"==typeof(ey=void 0!==eB.Vr&&eB.Vr)?ey:Object)],eT.prototype,\"settingsManager\",void 0),__decorate([(0,eC.Component)(eI.vR)],eT)},2871(eA,el,ec){\"use strict\";ec.d(el,{ET"
+    },
+    {
+      "name": "trusted_dirs",
+      "line": 2565,
+      "char_offset": 10568797,
+      "text": "static async isArgsInTrustedDirectories(eA,el){for(let ec of eA)if(ec.type===eI.H5.FilePath&&!await PermissionUtils.isInTrustedDirectories(ec.value,el))return!1;return!0}static async isInTrustedDirectories(eA,el){let ec=eQ.P.resolveFilePathToWorkDir(eA),ed=[],ep=eu.ContainerUtil.get(ev.Vr);return ed.push(eQ.P.getWorkDir()),ed.push(...await ep.get(\"trustedDirectories\")||[]),el&&ed.push(...el.options?.addDir||[]),!!ed.find(eA=>PermissionUtils.isWithin(eA,ec))}static isWithin(eA,el){let ec=el.replace(/\\\\/g,\"/\"),ed=eA.replace(/\\\\/g,\"/\");if(eu.isWindows&&(ec=ec.replace(/^([a-zA-Z]):/,(eA,el)=>el.toUpperCase()+\":\"),ed=ed.replace(/^([a-zA-Z]):/,(eA,el)=>el.toUpperCase()+\":\")),ec=em().posix.normalize(ec),(ed=em().posix.normalize(ed)).includes(\"*\"))return(0,ep.xF)(ec,ed,{dot:!0,nocase:eu.isWindows});let eg=ed.endsWith(\"/\")?ed:ed+\"/\";return ec===ed||ec.startsWith(eg)}static createDefaultToolPermissionContext(){return(0,ed.Usv)()}static parseRuleString(eA){let el=eA.trim(),ec=el.indexOf(\"(\");if(ec>=0){let eA=el.lastIndexOf(\")\");return{toolName:el.substring(0,ec),ruleContent:el.substring(ec+1,eA>ec?eA:el.length)}}return{toolName:el}}static ruleValueToString(eA){return eA.ruleContent?`${eA.tool"
+    },
+    {
+      "name": "headless_deny",
+      "line": 2159,
+      "char_offset": 9580226,
+      "text": "if(eg.shouldAvoidPermissionPrompts&&!(0,n4.A1S)(ep)&&!this.isEffectiveAutoMode(ep)){this.debugService.debug(\"tool-permission: shouldAvoidPermissionPrompts is true, denying\");let el=(0,nX.cC)(eA.name,\"this tool requires approval but permission prompts are not available in non-interactive mode\"),ec=`To allow this tool, the user can either: (1) re-run with ${(0,uI.Gq)().binaryName} -p -y \"<prompt>\" or ${(0,uI.Gq)().binaryName} -p --permission-mode bypassPermissions \"<prompt>\" to bypass all permission checks, or (2) add \"${eA.name}\" to the \"permissions.allow\" list in settings to permanently allow this tool.`;return{behavior:\"deny\",message:`${el} ${ec}`,decisionReason:{type:\"asyncAgent\",reason:\"Permission prompts are not available in this context\"}}}return this.debugService.debug(\"tool-permission: No matching rules, defaulting to ask (secure default)\"),{behavior:\"ask\",message:`Approval required for ${eA.name}`,decisionReason:{type:\"default\"},suggestions:this.generateRuleSuggestions(eA.name,eE)}}async needsApproval(eA,el,ec,eu,ed){let ep=el?.context,finish=eA=>(ep&&eu&&(\"ask\"===eA.behavior"
+    },
+    {
+      "name": "setting_sources",
+      "line": 911,
+      "char_offset": 8728182,
+      "text": "SettingScopeAllowedSync(eA,el=process.argv){let ec;for(let eA=0;eA<el.length;eA++){let eu=el[eA];\"--setting-sources\"===eu?ec=el[eA+1]:eu.startsWith(\"--setting-sources=\")&&(ec=eu.slice(18))}if(void 0===(ec??=getProcessSettingSources())||\"\"===ec.trim())return!0;let eu=ec.split(/[,\\s]+/).map(eA=>eA.trim().toLowerCase()).filter(Boolean);if(eu.includes(\"none\"))return!1;switch(eA){case ed.USER:return eu.includes(\"user\");case ed.PROJECT:return eu.includes(\"project\");case ed.PROJECT_LOCAL:return eu.includes(\"local\");default:return!0}}let eZ=\"CODEBUDDY_DEFER_TOOL_LOADING\",e0=\"CODEBUDDY_SHOW_ALL_DEFERRED_TOOLS\",e1=\"CODEBUDDY_SKIP_INTERNAL_HEADERS\",e2=\"CODEBUDDY_PASSTHROUGH_HEADER_PREFIXES\",e3=\"CODEBUD"
+    }
+  ]
+}

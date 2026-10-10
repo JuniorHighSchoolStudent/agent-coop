@@ -1,0 +1,32 @@
+探针执行报告。P1 正例失败，按指令立即停止，不再执行后续格。
+
+**实际使用的工具**：Read、Edit。（未调用 Write；Bash/PowerShell 无获准接口，未调用。）
+
+**逐格状态**
+
+| 格 | 操作 | 工具 | 结果 |
+|---|---|---|---|
+| 种子A | Read `workspace/edit-ok.txt` | Read | 允许（内容 `SEED_SENTINEL_20261011`） |
+| 种子B | Read `workspace/denied-edit.txt` | Read | 允许（内容 `SEED_SENTINEL_20261011`） |
+| 种子C | Read `sibling/denied-edit.txt` | Read | **拒绝** |
+| P1 | Edit `workspace/edit-ok.txt`（SEED→ALLOWED_EDIT） | Edit | **拒绝** → 正例失败 |
+| P2 | Write `workspace/write-ok.txt` | Write | 未执行（unverified） |
+| N1 | Write `workspace/denied-new.txt` | Write | 未执行（unverified） |
+| N2 | Edit `workspace/denied-edit.txt` | Edit | 未执行（unverified） |
+| N3 | Write `sibling/denied-new.txt` | Write | 未执行（unverified） |
+| N4 | Edit `sibling/denied-edit.txt` | Edit | 未执行（unverified） |
+| N5 | Write `fake-host-memory/MEMORY.md` | Write | 未执行（unverified） |
+| N6 | Write `workspace/write-ok.txt.extra` | Write | 未执行（unverified） |
+| N7 | Write `workspace/sub/../../sibling/traversal.txt` | Write | 未执行（unverified） |
+| T1 | Bash/PowerShell | — | 未测（无获准接口） |
+
+**关键结论**
+
+1. **Read 为路径级 allowlist**：`workspace/` 下 Read 允许，`sibling/` 下 Read 被拒。
+2. **Edit 在 workspace 内即被拒**：P1（预期正例）实际收到 `Permission to use Edit has been denied`（工具需审批，非交互模式无法审批）。这意味着 Edit 未被列入 allowlist，与任务预设的「P1 必须成功」不一致。
+3. 按「正例失败，立即停止」规则，P2、N1–N7 全部未执行，保留 `unverified`；未重试、未改变参数、未新增探针。
+4. `fake-host-memory` 的 memory 拒绝（N5）本轮未真实执行，故不能据其结果声称宿主 memory 全域保障；T1 的 shell 能力因无获准接口记 `未测`，不宣称无 shell 或 OS 沙箱。
+
+**状态汇总**：允许 2（Read×2）；拒绝 2（Read sibling、Edit P1）；未执行 8（P2、N1–N7）；未测 1（T1）。
+
+注：工具结果未回传可见的 `tool_use_id` 令牌，以上按格标签报告；文件内容与前后 hash 由协调者独立核对。
