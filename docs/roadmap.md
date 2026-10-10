@@ -28,9 +28,9 @@
 - Kimi Code 与 CodeBuddy 的 `kimi-k3-2` 是不同 runtime/session，分别核验能力和实际模型身份；当前 Kimi Code 使用宿主已配置的默认 profile，调用时记录可观测的模型信息，未知保持 unknown，不静默替换。监督并发 1、单次最长 10 分钟，由 Codex 手工看护和在超时后停止本次调用；CLI 未提供 turns/token 硬限时明确记为未实施，不宣称产品预算门禁已实现。
 - 当前分配仅适用于本仓，不继承 ABM owner。
 
-## 当前产品切片：P0 复用裁定（待启动）
+## 当前产品切片：P0 复用裁定与隔离纵向样例（审核中）
 
-开发交流与归档方案已完成多方评审、监督及接收，退出当前工作视图。下一步仍是按下表形成 P0 复用裁定和运行时能力证据，完成评审后才编写 P1 精确实施计划；本轮未启动该后继工作，未固定依赖或启用产品/定时任务。
+用户于2026-10-10授权继续实现，并选定仅隔离样例跑通多agent、归档、本机副本与清理。Codex集成，CodeBuddy实现/双席评审、原生Kimi监督。当前为 [复用裁定](../coordination/requests/isolated-workflow-20261010/reuse-decision.md) 与 [具体计划](../coordination/requests/isolated-workflow-20261010/implementation-plan.md) 的G0审核准备；尚未接收选型、未写产品源码。计划先验证只读/模拟层，再经G1审核开放有界实跑；不宣称完整P1/P2/P3已交付，不启用OS定时任务。
 
 最近交付的接收与 Git 集成证据见下方历史入口；本节只维护有效下一步，不复制回执或另建状态台账。
 
