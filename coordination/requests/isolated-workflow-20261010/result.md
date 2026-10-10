@@ -1,8 +1,8 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：S1双席批准唯一argv修正探针，产品writer/G1/live仍阻断；来源：用户隔离样例选择、[G0接收](result-g0.md)及[职责纠偏](role-correction.md)。这是本请求当前结果入口，各门禁原件按链接引用，不从文件名猜最新。
+范围：本请求整体交付；维护者：Codex集成者；状态：修正探针限定矩阵实测满足，待原席确认及native监督，产品writer/G1/live仍阻断；来源：用户隔离样例选择、[G0接收](result-g0.md)及[职责纠偏](role-correction.md)。这是本请求当前结果入口，各门禁原件按链接引用，不从文件名猜最新。
 
-## 当前派发控制：S1双席已支持probe-02，产品作者仍冻结
+## 当前派发控制：probe-02已完成，待原席结果确认及计划监督
 
 2026-10-11用户明确继续：先使用多agent协作调查实施问题，再继续分包开发。当前唯一专门发包人为`dispatcher_next`（旧协调实例已结束）；Codex根与只读助手并行调查，实际实现仍由CodeBuddy + deepseek-v4-pro承担。新批次按[后继计划](continuation-plan-20261011.md)具名审核，旧两轮停止记录保留为历史，不阻断用户新授权；权限profile和探针未获审核前禁止产品writer。当前产品候选仍为2e9f192，feature行政基线b45cc17；没有新增产品/测试/CI修改。
 
@@ -21,6 +21,10 @@ S0两原席已正常返回并支持一次12turn/300秒TEMP权限探针：[GLM原
 S1两原席已正常返回：[GLM原票](review-continuation-s1-glm.txt)/[调用](review-continuation-s1-glm-calls.json)、[Kimi原票](review-continuation-s1-kimi.txt)/[调用](review-continuation-s1-kimi-calls.json)。各一次整包Read因长度上限失败，随后分段取证；不隐去工具错误。两席明确支持唯一probe-02：仅拆allow/deny argv、新TEMP根及session、原矩阵与12turn/300秒上限、首异常停、旧失败保留。显式预算修订已获两席支持：18次CodeBuddy/2次native，上调的3次只用于本次修正探针及两席结果确认，不预批第三探针。
 
 专门发包人获准在本行政检查点后启动该探针，产品作者仍须等待逐格证据、两席结果确认及native计划监督。GLM新增B17绑定bootstrap序列化；GLM B18/Kimi B11绑定产品adapters+sample权限及写集来源，须后继跨包对齐，不并入R-log/R-junction，live继续禁止。CLI/session/scoped hook是否实际配置仍unknown；不能把GLM条件中的“默认无hook”表述当成已验证宿主事实。旧权限finding不由集成者关闭。
+
+probe-02已结束：[原件](permission-probe-argv02-20261011.txt)、[逐格原生结果与字节元数据](permission-probe-argv02-20261011-metadata.json)。37.462秒，真实deepseek-v4-pro与新session正确；12次native调用为Read3/Edit3/Write6。P1/P2实际成功且精确字节满足；N1–N7各有权限拒绝，目标不存在或种子摘要保持，N4已先读成功，N7实际使用含../的路径。没有额外fixture文件。CLI报告num_turns31而请求12，继续不声称硬轮数保证；T1未实测、hook/真实memory全域边界未知。该结果仅为限定fixture能力证据，产品作者仍冻结。
+
+下一准入仅为两原席各一次probe-02结果确认；无新探针、无代码作者、无live。两席确认后交原生Kimi计划监督，再判断已审三个包的作者准入。产品权限B18/B11仍开放，后继范围调查不扩大本批写集。
 
 ## 2026-10-10已冻结过程与结论
 
