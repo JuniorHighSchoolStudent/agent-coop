@@ -29,6 +29,8 @@ implementation_status: not_started
 
 本仓自身的开发规则以 [AGENTS.md](../AGENTS.md) 为唯一维护入口，当前开发团队与派发安排以 [实施路线](roadmap.md) 为准。引导阶段通过现有宿主会话人工协作，不代表 Scheduler 或 RuntimeAdapter 已实现、验收；开发团队的临时可用性变化不改变产品接入目标。
 
+配套图示见 [图表索引](diagrams/index.html)：总体架构、设计思想、需求流程、执行与握手、知识闭环共五张，按 1→5 顺序阅读。**图是审阅辅助，不是规范正文**；图与文字冲突时以本文文字合同为准，图本身不作为实现依据。
+
 ## 2. 实践来源与可复用边界
 
 设计调研于 2026-10-10，参考用户在交易系统与 agent-based-microbench（ABM）的多 agent 协作实践。这里保留可复用结论；具体业务仓库内容、账户和工作机环境不是本工具安装依赖。
@@ -153,6 +155,8 @@ Web 控制台 / Codex、Claude 插件 / 人工 CLI
           └──── 执行 attempt → 交付 → 评审 → 接收 ────┘
 ```
 
+上图是规范性文字示意，便于逐行 diff 与 grep。对应的可视化版本（含入口层、coordinator 三模块、三类适配器、项目内证据栏与派生投影约束）见 [图 1 · 总体架构](diagrams/01-architecture-overview.svg)；架构取舍所依据的不变量见 [图 2 · 设计思想](diagrams/02-design-principles.svg)。
+
 建议首版使用 Python、SQLite 和一个 coordinator 进程；原因是本机运行环境及现有 ACP 模块均为 Python。Scheduler 与 Monitor 是该进程内两个职责明确的模块，无需拆成两个服务。插件使用宿主要求的 manifest/MCP 包装，内核不依赖桌面 UI。若 P0 选择 OMA 承载，保留这些逻辑接口而不再并建 Python scheduler。
 
 SQLite 只保存调度运行事实：triggers、attempts、claims、handshakes、events 及 evidence refs。事务内更新状态和追加发布 outbox；项目内可读协议记录与当前状态由该事务事件发布，不允许 agent 同时改数据库和状态文件。仓库任务是否完成继续以 ProjectAdapter 读取的原任务与原证据为准。运行库与可读状态均放在项目协作目录；用户工具目录只持安装、凭证引用和跨项目账号容量协调等机器级内容，不持有另一份项目进度。
@@ -245,6 +249,8 @@ Scheduler 接收手动 run、固定 interval、带时区的 cron、上游交付�
 ### 7.2 进程、会话和证据分开
 
 attempt 状态为 `queued / claimed / running / awaiting_review / awaiting_owner / delivered / failed / interrupted / cancelled`。调度状态不表达 `merged` 或领域 sign-off；那些由项目原证据投影。进程 exit 0 只证明正常退出；缺少要求的提交/产物/验证时，不能进入 delivered。
+
+attempt 主链与旁路出口、握手状态机，以及 §5.1 的单写入与投影发布见 [图 4 · 执行与握手](diagrams/04-execution-and-handshake.svg)。
 
 同一事务取得 claim 和启动意图后才起进程；启动前生成 attempt_id 并绑定进程运行标记。进程启动但句柄登记前崩溃时，恢复先按 attempt 标记、PID 创建时间、session 和 cwd 对账，禁止立即再派。无法确认时进入 interrupted 等待恢复，不因 lease 到期就认定旧进程已经停止。
 
@@ -487,6 +493,8 @@ Web 与插件都提供“提交需求”“调整团队/工作流”“查看变
   → STATUS 显示排队、握手和执行结果
 ```
 
+从自然语言到合格节点的完整链路，含三条分流（走原审批出口 / 进入 §8.5 多方评审 / 直接入队）与 intake/planner 角色的边界，见 [图 3 · 需求与配置流程](diagrams/03-request-to-dispatch.svg)。
+
 自然语言解析由一个可配置的 intake/planner 角色完成；结构化输入可直接进入校验。该角色只提出建议，不持调度写权、不自行扩大权限。已有明确授权且满足项目策略的普通任务可直接入队；需要新权限、接收权变更或既有合同要求 owner 裁定的变更进入原审批出口。不是每个新任务都增加一次人工批准，也不能让 LLM 替用户批准插件安装。
 
 需要推荐或设计新 workflow、修改既有节点合同/依赖/完成判据的请求，进入 §8.5 的多角色设计与评审。结构化输入只能跳过自然语言解析，不能绕过必要评审；按已发布模板创建普通实例不重复开展模板设计评审。
@@ -688,6 +696,8 @@ ProjectAdapter 形成带 revision/digest 的设计输入快照，至少包括项
 ### 9.1 知识积累与受控改进
 
 闭环为：**运行观察 → 复盘候选 → 核验证据 → 检索复用 → 改进提案 → 对照评测 → 有界试用 → 激活或撤回**。它复用现有 Scheduler、角色、请求、握手和插件版本机制；“复盘者/改进者”只是可选角色模板，用户可按项目定义。Kimi 可发现问题或交叉监督，不能独自批准自己提出的改进。
+
+该闭环的八步流转、Observation/Lesson/Improvement 三层证据边界，以及不可跨越的迭代边界见 [图 5 · 知识闭环](diagrams/05-knowledge-loop.svg)。
 
 #### 积累什么
 

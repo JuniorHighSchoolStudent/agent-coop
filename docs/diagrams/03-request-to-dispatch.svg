@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 740" width="1280" height="740" role="img" aria-label="Agent Coop 需求与配置流程：从自然语言到合格节点">
+  <defs>
+    <pattern id="grid3" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#1B2130" stroke-width="1"/>
+    </pattern>
+    <marker id="arw3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7A90"/>
+    </marker>
+    <marker id="arw3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#E0A83C"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="740" fill="#0F1219"/>
+  <rect width="1280" height="740" fill="url(#grid3)"/>
+
+  <text x="40" y="54" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="27" font-weight="700" fill="#E8ECF3">需求与配置流程：从自然语言到合格节点</text>
+  <text x="40" y="82" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14.5" fill="#98A2B3">结构化输入可跳过自然语言解析，但不能绕过必要评审；右侧为校验后的三条分流</text>
+
+  <!-- 主链 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <!-- 1 -->
+    <rect x="40" y="116" width="700" height="58" rx="10" fill="#171C26" stroke="#2C3542"/>
+    <rect x="40" y="116" width="4" height="58" rx="2" fill="#920783"/>
+    <circle cx="76" cy="145" r="14" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="76" y="150" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E5B8E8">1</text>
+    <text x="102" y="140" font-size="15" font-weight="700" fill="#E8ECF3">用户需求 / 结构化配置</text>
+    <text x="102" y="161" font-size="12.5" fill="#98A2B3">保留原始输入、提出者、项目与授权范围；模型生成的解释不算用户原话</text>
+
+    <!-- 2 -->
+    <rect x="40" y="194" width="700" height="58" rx="10" fill="#171C26" stroke="#2C3542"/>
+    <rect x="40" y="194" width="4" height="58" rx="2" fill="#920783"/>
+    <circle cx="76" cy="223" r="14" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="76" y="228" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E5B8E8">2</text>
+    <text x="102" y="218" font-size="15" font-weight="700" fill="#E8ECF3">定位可复用定义</text>
+    <text x="102" y="239" font-size="12.5" fill="#98A2B3">原任务 · 现有角色 · 模板 · 插件——先检索，再选最小变更类型</text>
+
+    <!-- 3 -->
+    <rect x="40" y="272" width="700" height="58" rx="10" fill="#171C26" stroke="#2C3542"/>
+    <rect x="40" y="272" width="4" height="58" rx="2" fill="#920783"/>
+    <circle cx="76" cy="301" r="14" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="76" y="306" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E5B8E8">3</text>
+    <text x="102" y="296" font-size="15" font-weight="700" fill="#E8ECF3">形成增量 ChangeProposal</text>
+    <text x="102" y="317" font-size="12.5" fill="#98A2B3">base_workflow_version/digest · patch · 权限预算增量 · 受影响消费者 · 回退点</text>
+
+    <!-- 4 -->
+    <rect x="40" y="350" width="700" height="58" rx="10" fill="#171C26" stroke="#2C3542"/>
+    <rect x="40" y="350" width="4" height="58" rx="2" fill="#920783"/>
+    <circle cx="76" cy="379" r="14" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="76" y="384" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E5B8E8">4</text>
+    <text x="102" y="374" font-size="15" font-weight="700" fill="#E8ECF3">预览影响</text>
+    <text x="102" y="395" font-size="12.5" fill="#98A2B3">立即可执行的 · 等待的前置 · 在途任务保持什么 · 哪个后继动作会改变</text>
+
+    <!-- 5 -->
+    <rect x="40" y="428" width="700" height="58" rx="10" fill="#171C26" stroke="#2C3542"/>
+    <rect x="40" y="428" width="4" height="58" rx="2" fill="#5B9BD5"/>
+    <circle cx="76" cy="457" r="14" fill="#12233A" stroke="#2E5480"/>
+    <text x="76" y="462" text-anchor="middle" font-size="12.5" font-weight="700" fill="#9FC6EA">5</text>
+    <text x="102" y="452" font-size="15" font-weight="700" fill="#E8ECF3">确定性校验</text>
+    <text x="102" y="473" font-size="12.5" fill="#98A2B3">重复 ID · 缺失引用 · 循环依赖 · 不可达必需节点 · 输入输出兼容 · 能力 · 独立性 · 版本 · 权限 · 预算</text>
+
+    <!-- 6 -->
+    <rect x="40" y="506" width="700" height="58" rx="10" fill="#171C26" stroke="#2C3542"/>
+    <rect x="40" y="506" width="4" height="58" rx="2" fill="#5B9BD5"/>
+    <circle cx="76" cy="535" r="14" fill="#12233A" stroke="#2E5480"/>
+    <text x="76" y="540" text-anchor="middle" font-size="12.5" font-weight="700" fill="#9FC6EA">6</text>
+    <text x="102" y="530" font-size="15" font-weight="700" fill="#E8ECF3">按既有授权 apply</text>
+    <text x="102" y="551" font-size="12.5" fill="#98A2B3">expected_revision 原子比较并交换；冲突返回精确节点/字段，不自动 last-write-wins</text>
+  </g>
+
+  <g stroke="#6B7A90" stroke-width="1.8" fill="none" marker-end="url(#arw3)">
+    <path d="M76 174 V190"/>
+    <path d="M76 252 V268"/>
+    <path d="M76 330 V346"/>
+    <path d="M76 408 V424"/>
+    <path d="M76 486 V502"/>
+    <path d="M390 564 V588"/>
+  </g>
+
+  <!-- 结果 -->
+  <rect x="40" y="592" width="700" height="56" rx="10" fill="#12211F" stroke="#2E5C55"/>
+  <text x="390" y="616" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14" font-weight="600" fill="#8FE0D4">Scheduler 在调度安全点接入 → STATUS 显示排队 · 握手 · 执行结果</text>
+  <text x="390" y="637" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#7FA9A2">applied 表示定义/入队已生效，不表示需求已经实现</text>
+
+  <!-- 分支线 -->
+  <path d="M740 457 H772" stroke="#E0A83C" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#arw3a)"/>
+  <path d="M740 330 H772" stroke="#E0A83C" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#arw3a)"/>
+
+  <!-- 右侧分支 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="776" y="116" width="464" height="112" rx="12" fill="#1E1A16" stroke="#5C4A2E"/>
+    <circle cx="806" cy="140" r="12" fill="#2C2314" stroke="#5C4A2E"/>
+    <text x="806" y="145" text-anchor="middle" font-size="12" font-weight="700" fill="#EFCB8A">1</text>
+    <text x="828" y="145" font-size="14.5" font-weight="700" fill="#E0A83C">需要新权限 / 接收权变更 / 合同要求 owner 裁定？</text>
+    <text x="796" y="172" font-size="12.5" fill="#B6C0CE">是 → 走原审批出口，由原 owner 裁定；不因“配置里写了”就获得授权</text>
+    <text x="796" y="196" font-size="12.5" fill="#B6C0CE">否 → 继续常规校验</text>
+    <text x="796" y="218" font-size="12" fill="#8A7A5E">工具不把无回复判定为同意，也不让 LLM 替用户批准</text>
+
+    <rect x="776" y="246" width="464" height="112" rx="12" fill="#1E1A16" stroke="#5C4A2E"/>
+    <circle cx="806" cy="270" r="12" fill="#2C2314" stroke="#5C4A2E"/>
+    <text x="806" y="275" text-anchor="middle" font-size="12" font-weight="700" fill="#EFCB8A">2</text>
+    <text x="828" y="275" font-size="14.5" font-weight="700" fill="#E0A83C">需要推荐 / 设计新 workflow、改节点合同？</text>
+    <text x="796" y="302" font-size="12.5" fill="#B6C0CE">是 → 进入 §8.5 多角色协同设计与多方评审：</text>
+    <text x="796" y="324" font-size="12.5" fill="#B6C0CE">≥2 个独立评审身份 · 无未解决 blocking · 校验通过 · 集成者接收</text>
+    <text x="796" y="346" font-size="12" fill="#8A7A5E">作者不得计入自己的通过票，不能自签自批</text>
+
+    <rect x="776" y="376" width="464" height="112" rx="12" fill="#141C1A" stroke="#2E5C55"/>
+    <circle cx="806" cy="400" r="12" fill="#0F2C29" stroke="#2E5C55"/>
+    <text x="806" y="405" text-anchor="middle" font-size="12" font-weight="700" fill="#8FE0D4">3</text>
+    <text x="828" y="405" font-size="14.5" font-weight="700" fill="#35C4B5">已有明确授权且满足项目策略的常规任务</text>
+    <text x="796" y="432" font-size="12.5" fill="#B6C0CE">直接入队，不为每个新任务增加一次人工批准；</text>
+    <text x="796" y="454" font-size="12.5" fill="#B6C0CE">按已发布模板创建实例，不重复开展模板设计评审</text>
+    <text x="796" y="476" font-size="12" fill="#7FA9A2">只做有界的自然语言澄清，不假设需求已获授权执行</text>
+  </g>
+
+  <!-- 底部说明 -->
+  <rect x="776" y="512" width="464" height="136" rx="12" fill="#171C26" stroke="#2C3542"/>
+  <text x="796" y="540" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14" font-weight="700" fill="#C77DD6">intake / planner 角色的边界</text>
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#B6C0CE">
+    <text x="796" y="566">· 只提出建议，不持调度写权、不自行扩大权限</text>
+    <text x="796" y="588">· 自然语言解析不是授权；结构化输入也不等于批准</text>
+    <text x="796" y="610">· 请求记录落在 coordination/requests/&lt;id&gt;/：</text>
+    <text x="796" y="632">　request.yaml · proposal.yaml · validation.json · result.json</text>
+  </g>
+</svg>

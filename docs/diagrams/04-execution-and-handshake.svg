@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 760" width="1280" height="760" role="img" aria-label="Agent Coop 执行生命周期、握手状态机与单写入投影发布">
+  <defs>
+    <pattern id="grid4" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#1B2130" stroke-width="1"/>
+    </pattern>
+    <marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7A90"/>
+    </marker>
+    <marker id="a4g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4CB782"/>
+    </marker>
+    <marker id="a4r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#E05A6B"/>
+    </marker>
+    <marker id="a4p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C77DD6"/>
+    </marker>
+  </defs>
+
+  <rect width="1280" height="760" fill="#0F1219"/>
+  <rect width="1280" height="760" fill="url(#grid4)"/>
+
+  <text x="40" y="54" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="27" font-weight="700" fill="#E8ECF3">执行生命周期、握手状态机与单写入发布</text>
+  <text x="40" y="82" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14.5" fill="#98A2B3">进程、会话、证据分开；状态机只由 Scheduler 推进，协议事件不可覆盖</text>
+
+  <!-- 左：attempt 生命周期 -->
+  <rect x="30" y="112" width="670" height="388" rx="14" fill="#151A24" stroke="#3A4557"/>
+  <text x="55" y="144" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="16" font-weight="700" fill="#E8ECF3">attempt 生命周期</text>
+  <text x="55" y="165" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#98A2B3">调度状态：不表达 merged 或领域 sign-off</text>
+
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="55" y="182" width="108" height="54" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="109" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#C77DD6">queued</text>
+    <text x="109" y="223" text-anchor="middle" font-size="10.5" fill="#8B96A6">排队</text>
+
+    <rect x="183" y="182" width="108" height="54" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="237" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#C77DD6">claimed</text>
+    <text x="237" y="223" text-anchor="middle" font-size="10.5" fill="#8B96A6">已领取 + epoch</text>
+
+    <rect x="311" y="182" width="108" height="54" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="365" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#C77DD6">running</text>
+    <text x="365" y="223" text-anchor="middle" font-size="10.5" fill="#8B96A6">运行中</text>
+
+    <rect x="439" y="182" width="108" height="54" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="493" y="204" text-anchor="middle" font-size="10.5" font-weight="700" fill="#C77DD6">awaiting_review</text>
+    <text x="493" y="225" text-anchor="middle" font-size="10.5" fill="#8B96A6">待评审</text>
+
+    <rect x="567" y="182" width="108" height="54" rx="9" fill="#12211F" stroke="#2E5C55"/>
+    <text x="621" y="204" text-anchor="middle" font-size="12.5" font-weight="700" fill="#4CB782">delivered</text>
+    <text x="621" y="223" text-anchor="middle" font-size="10.5" fill="#7FA9A2">已交付</text>
+  </g>
+  <g stroke="#6B7A90" stroke-width="1.6" fill="none" marker-end="url(#a4)">
+    <path d="M163 209 H179"/>
+    <path d="M291 209 H307"/>
+    <path d="M419 209 H435"/>
+    <path d="M547 209 H563"/>
+  </g>
+
+  <text x="55" y="272" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#98A2B3">旁路与出口（可从非终态进入，不互相冒充）</text>
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="55" y="286" width="146" height="48" rx="9" fill="#1E1A16" stroke="#5C4A2E"/>
+    <text x="128" y="306" text-anchor="middle" font-size="12" font-weight="700" fill="#E0A83C">awaiting_owner</text>
+    <text x="128" y="324" text-anchor="middle" font-size="10.5" fill="#8A7A5E">额度 / 人工决定</text>
+
+    <rect x="219" y="286" width="146" height="48" rx="9" fill="#1E1418" stroke="#6E2A33"/>
+    <text x="292" y="306" text-anchor="middle" font-size="12" font-weight="700" fill="#E05A6B">failed</text>
+    <text x="292" y="324" text-anchor="middle" font-size="10.5" fill="#8A5A62">失败</text>
+
+    <rect x="383" y="286" width="146" height="48" rx="9" fill="#1E1418" stroke="#6E2A33"/>
+    <text x="456" y="306" text-anchor="middle" font-size="12" font-weight="700" fill="#E05A6B">interrupted</text>
+    <text x="456" y="324" text-anchor="middle" font-size="10.5" fill="#8A5A62">中断，先对账</text>
+
+    <rect x="547" y="286" width="128" height="48" rx="9" fill="#1E1418" stroke="#6E2A33"/>
+    <text x="611" y="306" text-anchor="middle" font-size="12" font-weight="700" fill="#E05A6B">cancelled</text>
+    <text x="611" y="324" text-anchor="middle" font-size="10.5" fill="#8A5A62">已确认停止</text>
+  </g>
+
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#B6C0CE">
+    <text x="55" y="372">· exit 0 只证明正常退出；缺提交 / 产物 / 验证时不能进入 delivered</text>
+    <text x="55" y="396">· claim 使用递增 epoch：过期 worker 的迟到回执不能提交新状态</text>
+    <text x="55" y="420">· fencing 只保护工具持有的状态写入，不阻止 CLI 的 Git / 文件副作用</text>
+    <text x="55" y="444">· 每个 writer 仍需独立工作树；重启前后不得两个 writer 共享同一棵树</text>
+    <text x="55" y="468">· 无法确认旧进程已停止 → 保留占用并具名报告，不自动 reset / clean / stash</text>
+  </g>
+
+  <!-- 右：握手状态机 -->
+  <rect x="740" y="112" width="510" height="388" rx="14" fill="#151A24" stroke="#3A4557"/>
+  <text x="765" y="144" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="16" font-weight="700" fill="#E8ECF3">握手协议状态机</text>
+  <text x="765" y="165" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#98A2B3">跨角色依赖的显式具名请求与响应</text>
+
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="765" y="182" width="200" height="46" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="865" y="203" text-anchor="middle" font-size="13" font-weight="700" fill="#5B9BD5">offered</text>
+    <text x="865" y="220" text-anchor="middle" font-size="10.5" fill="#8B96A6">请求与证据已发布</text>
+
+    <rect x="765" y="252" width="200" height="46" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="865" y="273" text-anchor="middle" font-size="13" font-weight="700" fill="#5B9BD5">acknowledged</text>
+    <text x="865" y="290" text-anchor="middle" font-size="10.5" fill="#8B96A6">接收者领取该 revision</text>
+
+    <rect x="765" y="330" width="140" height="48" rx="9" fill="#12211F" stroke="#2E5C55"/>
+    <text x="835" y="351" text-anchor="middle" font-size="12" font-weight="700" fill="#4CB782">accepted</text>
+    <text x="835" y="368" text-anchor="middle" font-size="10.5" fill="#7FA9A2">按本类合同完成判断</text>
+
+    <rect x="920" y="330" width="140" height="48" rx="9" fill="#1E1A16" stroke="#5C4A2E"/>
+    <text x="990" y="352" text-anchor="middle" font-size="10" font-weight="700" fill="#E0A83C">changes_requested</text>
+    <text x="990" y="370" text-anchor="middle" font-size="10.5" fill="#8A7A5E">要求修改</text>
+
+    <rect x="1075" y="330" width="140" height="48" rx="9" fill="#1E1418" stroke="#6E2A33"/>
+    <text x="1145" y="351" text-anchor="middle" font-size="12" font-weight="700" fill="#E05A6B">rejected</text>
+    <text x="1145" y="368" text-anchor="middle" font-size="10.5" fill="#8A5A62">拒绝</text>
+
+    <rect x="765" y="404" width="200" height="42" rx="9" fill="#1E1418" stroke="#6E2A33"/>
+    <text x="865" y="430" text-anchor="middle" font-size="12" font-weight="700" fill="#E05A6B">cancelled / expired</text>
+  </g>
+
+  <g stroke="#6B7A90" stroke-width="1.6" fill="none">
+    <path d="M865 298 V312"/>
+    <path d="M835 312 H1145"/>
+  </g>
+  <g stroke="#6B7A90" stroke-width="1.6" fill="none" marker-end="url(#a4)">
+    <path d="M865 228 V248"/>
+    <path d="M835 312 V326"/>
+    <path d="M990 312 V326"/>
+    <path d="M1145 312 V326"/>
+  </g>
+  <path d="M965 205 H1235 V425 H971" stroke="#C77DD6" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#a4p)"/>
+  <text x="978" y="415" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="10.5" fill="#A98CC0">超时 / 撤回</text>
+
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12" fill="#B6C0CE">
+    <text x="765" y="474">· ack 不是评审通过；accepted 也不代表已集成</text>
+  </g>
+
+  <!-- 底部：单写入发布 -->
+  <rect x="30" y="520" width="1220" height="200" rx="14" fill="#151A24" stroke="#3A4557"/>
+  <text x="55" y="552" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="16" font-weight="700" fill="#E8ECF3">单写入与投影发布</text>
+  <text x="55" y="573" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#98A2B3">只有 coordinator 能发布工具状态；agent 通过 intent 提交，人工通过 decision 显式导入</text>
+
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="55" y="590" width="214" height="58" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="162" y="614" text-anchor="middle" font-size="12.5" font-weight="700" fill="#C77DD6">事务提交</text>
+    <text x="162" y="633" text-anchor="middle" font-size="11" fill="#8B96A6">协议事件 + 待发布项（outbox）</text>
+
+    <rect x="294" y="590" width="214" height="58" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="401" y="614" text-anchor="middle" font-size="12.5" font-weight="700" fill="#C77DD6">写临时文件</text>
+    <text x="401" y="633" text-anchor="middle" font-size="11" fill="#8B96A6">按稳定事件 ID，同目录</text>
+
+    <rect x="533" y="590" width="214" height="58" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="640" y="614" text-anchor="middle" font-size="12.5" font-weight="700" fill="#C77DD6">原子发布</text>
+    <text x="640" y="633" text-anchor="middle" font-size="11" fill="#8B96A6">不可变事件文件 handshakes/&lt;id&gt;/</text>
+
+    <rect x="772" y="590" width="214" height="58" rx="9" fill="#1E2530" stroke="#2C3542"/>
+    <text x="879" y="614" text-anchor="middle" font-size="12.5" font-weight="700" fill="#C77DD6">发布投影</text>
+    <text x="879" y="633" text-anchor="middle" font-size="11" fill="#8B96A6">current / STATUS 携带 revision</text>
+
+    <rect x="1011" y="590" width="214" height="58" rx="9" fill="#1E1A16" stroke="#5C4A2E"/>
+    <text x="1118" y="614" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E0A83C">消费者比对</text>
+    <text x="1118" y="633" text-anchor="middle" font-size="11" fill="#8A7A5E">revision 不一致 → publication_pending</text>
+  </g>
+  <g stroke="#6B7A90" stroke-width="1.6" fill="none" marker-end="url(#a4)">
+    <path d="M269 619 H290"/>
+    <path d="M508 619 H529"/>
+    <path d="M747 619 H768"/>
+    <path d="M986 619 H1007"/>
+  </g>
+
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12" fill="#B6C0CE">
+    <text x="55" y="678">· 重复发布只接受同 ID 同摘要；不同摘要拒绝并报警</text>
+    <text x="55" y="700">· 关键握手只有在原件与匹配投影都发布后才解锁下游；发布失败由 outbox 重放恢复，不重新执行 agent</text>
+  </g>
+</svg>

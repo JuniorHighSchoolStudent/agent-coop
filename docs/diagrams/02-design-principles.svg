@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="Agent Coop 设计思想：八条不变量">
+  <defs>
+    <pattern id="grid2" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#1B2130" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1280" height="640" fill="#0F1219"/>
+  <rect width="1280" height="640" fill="url(#grid2)"/>
+
+  <text x="40" y="54" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="27" font-weight="700" fill="#E8ECF3">设计思想：八条不变量</text>
+  <text x="40" y="82" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="14.5" fill="#98A2B3">内核小、边界硬、证据先——任何一条被打破，架构就不再成立</text>
+
+  <!-- 卡片 1 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="30" y="112" width="290" height="200" rx="12" fill="#171C26" stroke="#2C3542"/>
+    <rect x="30" y="112" width="290" height="4" rx="2" fill="#C77DD6"/>
+    <circle cx="56" cy="146" r="15" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="56" y="151" text-anchor="middle" font-size="13" font-weight="700" fill="#E5B8E8">01</text>
+    <text x="82" y="152" font-size="15.5" font-weight="700" fill="#E8ECF3">唯一写入者</text>
+    <text x="50" y="186" font-size="12.5" fill="#B6C0CE">工具状态只有 coordinator 能发布</text>
+    <text x="50" y="210" font-size="12.5" fill="#B6C0CE">agent 提交具名 intent，不直接改状态</text>
+    <text x="50" y="234" font-size="12.5" fill="#B6C0CE">人工决定须显式校验后导入</text>
+    <text x="50" y="266" font-size="12" fill="#7C8798">一个项目一个触发权威</text>
+    <text x="50" y="288" font-size="12" fill="#7C8798">不出现两个存活 writer 共享一棵树</text>
+  </g>
+
+  <!-- 卡片 2 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="340" y="112" width="290" height="200" rx="12" fill="#171C26" stroke="#2C3542"/>
+    <rect x="340" y="112" width="290" height="4" rx="2" fill="#5B9BD5"/>
+    <circle cx="366" cy="146" r="15" fill="#12233A" stroke="#2E5480"/>
+    <text x="366" y="151" text-anchor="middle" font-size="13" font-weight="700" fill="#9FC6EA">02</text>
+    <text x="392" y="152" font-size="15.5" font-weight="700" fill="#E8ECF3">单一事实来源</text>
+    <text x="360" y="186" font-size="12.5" fill="#B6C0CE">每种事实只有一个权威 owner</text>
+    <text x="360" y="210" font-size="12.5" fill="#B6C0CE">派生投影由生成器产出，禁止手改</text>
+    <text x="360" y="234" font-size="12.5" fill="#B6C0CE">不建重复的配置、调度器或台账</text>
+    <text x="360" y="266" font-size="12" fill="#7C8798">README 只做导航，设计文档是合同</text>
+    <text x="360" y="288" font-size="12" fill="#7C8798">规则变更只在唯一入口落地</text>
+  </g>
+
+  <!-- 卡片 3 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="650" y="112" width="290" height="200" rx="12" fill="#171C26" stroke="#2C3542"/>
+    <rect x="650" y="112" width="290" height="4" rx="2" fill="#35C4B5"/>
+    <circle cx="676" cy="146" r="15" fill="#0F2C29" stroke="#2E5C55"/>
+    <text x="676" y="151" text-anchor="middle" font-size="13" font-weight="700" fill="#8FE0D4">03</text>
+    <text x="702" y="152" font-size="15.5" font-weight="700" fill="#E8ECF3">三类权威分开</text>
+    <text x="670" y="186" font-size="12.5" fill="#B6C0CE">领域结论 → 项目原任务与原证据</text>
+    <text x="670" y="210" font-size="12.5" fill="#B6C0CE">调度事实 → SQLite 事务</text>
+    <text x="670" y="234" font-size="12.5" fill="#B6C0CE">可读记录 → 事件文件与 Markdown 投影</text>
+    <text x="670" y="266" font-size="12" fill="#7C8798">进程退出、测试通过、接收、合入、</text>
+    <text x="670" y="288" font-size="12" fill="#7C8798">发布不得混同</text>
+  </g>
+
+  <!-- 卡片 4 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="960" y="112" width="290" height="200" rx="12" fill="#171C26" stroke="#2C3542"/>
+    <rect x="960" y="112" width="290" height="4" rx="2" fill="#E0A83C"/>
+    <circle cx="986" cy="146" r="15" fill="#2C2314" stroke="#5C4A2E"/>
+    <text x="986" y="151" text-anchor="middle" font-size="13" font-weight="700" fill="#EFCB8A">04</text>
+    <text x="1012" y="152" font-size="15.5" font-weight="700" fill="#E8ECF3">证据优先</text>
+    <text x="980" y="186" font-size="12.5" fill="#B6C0CE">exit 0 / 心跳 / 自报 PASS ≠ 完成</text>
+    <text x="980" y="210" font-size="12.5" fill="#B6C0CE">握手绑定 revision、接收者、完成条件</text>
+    <text x="980" y="234" font-size="12.5" fill="#B6C0CE">review 缺席或 HEAD 陈旧不能放行</text>
+    <text x="980" y="266" font-size="12" fill="#7C8798">ack 不是评审通过；</text>
+    <text x="980" y="288" font-size="12" fill="#7C8798">accepted 也不是已集成</text>
+  </g>
+
+  <!-- 卡片 5 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="30" y="332" width="290" height="200" rx="12" fill="#171C26" stroke="#2C3542"/>
+    <rect x="30" y="332" width="290" height="4" rx="2" fill="#E05A6B"/>
+    <circle cx="56" cy="366" r="15" fill="#2C1418" stroke="#6E2A33"/>
+    <text x="56" y="371" text-anchor="middle" font-size="13" font-weight="700" fill="#F0A3AC">05</text>
+    <text x="82" y="372" font-size="15.5" font-weight="700" fill="#E8ECF3">诚实申报</text>
+    <text x="50" y="406" font-size="12.5" fill="#B6C0CE">unknown / stale 保持可见</text>
+    <text x="50" y="430" font-size="12.5" fill="#B6C0CE">能力缺失 fail-closed，不静默降级</text>
+    <text x="50" y="454" font-size="12.5" fill="#B6C0CE">不伪造成功、不放宽权限</text>
+    <text x="50" y="486" font-size="12" fill="#7C8798">模型不可用 → 明确阻断，</text>
+    <text x="50" y="508" font-size="12" fill="#7C8798">不偷偷换账号或换模型</text>
+  </g>
+
+  <!-- 卡片 6 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="340" y="332" width="290" height="200" rx="12" fill="#171C26" stroke="#2C3542"/>
+    <rect x="340" y="332" width="290" height="4" rx="2" fill="#C77DD6"/>
+    <circle cx="366" cy="366" r="15" fill="#3A1236" stroke="#7A2A6E"/>
+    <text x="366" y="371" text-anchor="middle" font-size="13" font-weight="700" fill="#E5B8E8">06</text>
+    <text x="392" y="372" font-size="15.5" font-weight="700" fill="#E8ECF3">配置与实现分离</text>
+    <text x="360" y="406" font-size="12.5" fill="#B6C0CE">角色 / runtime / model / provider</text>
+    <text x="360" y="430" font-size="12.5" fill="#B6C0CE">/ 项目互不绑定</text>
+    <text x="360" y="454" font-size="12.5" fill="#B6C0CE">换执行者不改内核、不复制模板</text>
+    <text x="360" y="486" font-size="12" fill="#7C8798">推荐执行者只是可替换预设，</text>
+    <text x="360" y="508" font-size="12" fill="#7C8798">不按品牌决定内核行为</text>
+  </g>
+
+  <!-- 卡片 7 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="650" y="332" width="290" height="200" rx="12" fill="#171C26" stroke="#2C3542"/>
+    <rect x="650" y="332" width="290" height="4" rx="2" fill="#5B9BD5"/>
+    <circle cx="676" cy="366" r="15" fill="#12233A" stroke="#2E5480"/>
+    <text x="676" y="371" text-anchor="middle" font-size="13" font-weight="700" fill="#9FC6EA">07</text>
+    <text x="702" y="372" font-size="15.5" font-weight="700" fill="#E8ECF3">开放扩展 · 封闭内核</text>
+    <text x="670" y="406" font-size="12.5" fill="#B6C0CE">插件三接口：Runtime / Project / Gate</text>
+    <text x="670" y="430" font-size="12.5" fill="#B6C0CE">内核固定：Scheduler · Monitor ·</text>
+    <text x="670" y="454" font-size="12.5" fill="#B6C0CE">trigger · store · claim · 预算</text>
+    <text x="670" y="486" font-size="12" fill="#7C8798">通用内核不写入 ABM 或交易</text>
+    <text x="670" y="508" font-size="12" fill="#7C8798">业务规则</text>
+  </g>
+
+  <!-- 卡片 8 -->
+  <g font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif">
+    <rect x="960" y="332" width="290" height="200" rx="12" fill="#171C26" stroke="#2C3542"/>
+    <rect x="960" y="332" width="290" height="4" rx="2" fill="#35C4B5"/>
+    <circle cx="986" cy="366" r="15" fill="#0F2C29" stroke="#2E5C55"/>
+    <text x="986" y="371" text-anchor="middle" font-size="13" font-weight="700" fill="#8FE0D4">08</text>
+    <text x="1012" y="372" font-size="15.5" font-weight="700" fill="#E8ECF3">受控改进闭环</text>
+    <text x="980" y="406" font-size="12.5" fill="#B6C0CE">先记录后优化：观察 → 复盘 → 评测</text>
+    <text x="980" y="430" font-size="12.5" fill="#B6C0CE">评测者与改进者分离，</text>
+    <text x="980" y="454" font-size="12.5" fill="#B6C0CE">生成者不得修改评分器</text>
+    <text x="980" y="486" font-size="12" fill="#7C8798">无实证改善不晋级，</text>
+    <text x="980" y="508" font-size="12" fill="#7C8798">任何情况下不扩大权限</text>
+  </g>
+
+  <!-- 边界条 -->
+  <rect x="30" y="552" width="1220" height="56" rx="11" fill="#1A1220" stroke="#4A2A5C"/>
+  <text x="50" y="576" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="13.5" font-weight="700" fill="#C77DD6">明确不做</text>
+  <text x="50" y="597" font-family="'Segoe UI','Microsoft YaHei',system-ui,sans-serif" font-size="12.5" fill="#B6C0CE">多租户系统 · 消息总线集群 · 向量记忆库 · 插件市场 · 自有模型 tool loop；首版 Web 是同一状态投影的图形入口，不成为第二套任务权威</text>
+</svg>
