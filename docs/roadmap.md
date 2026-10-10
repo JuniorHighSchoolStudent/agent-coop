@@ -28,6 +28,10 @@
 - Kimi Code 与 CodeBuddy 的 `kimi-k3-2` 是不同 runtime/session，分别核验能力和实际模型身份；当前 Kimi Code 使用宿主已配置的默认 profile，调用时记录可观测的模型信息，未知保持 unknown，不静默替换。监督并发 1、单次最长 10 分钟，由 Codex 手工看护和在超时后停止本次调用；CLI 未提供 turns/token 硬限时明确记为未实施，不宣称产品预算门禁已实现。
 - 当前分配仅适用于本仓，不继承 ABM owner。
 
+## 当前治理工作：文档组织规范（实现与审核中）
+
+Codex 集成与派发；CodeBuddy / deepseek-v4-pro 修订组织规则及导航；两席 CodeBuddy 独立评审与 Kimi Code 监督待开展。基线 main a9bb474，候选尚未冻结，尚未接收。范围、社区依据和 C1–C8 验收见 [请求](../coordination/requests/docs-organization-20261010/request.md)。下一步冻结候选、验证并送审；产品 P0 保持待启动。
+
 ## 当前产品切片：P0 复用裁定（待启动）
 
 图集修订已完成多方复审与监督接收，退出当前工作视图。下一步仍是按下表形成 P0 复用裁定和运行时能力证据，完成评审后才编写 P1 精确实施计划；本轮未启动该后继工作，未固定依赖或启用产品/定时任务。

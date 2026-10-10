@@ -35,15 +35,23 @@
 
 ## 工程规范与当前开发安排
 
-工程开发规则（SSOT、SOLID 审查项、代码/函数规模、质量门禁）以 [AGENTS.md](AGENTS.md) 为唯一维护入口，本文件不复制阈值。当前开发团队角色绑定、临时调用上限与治理文档切片步骤见 [docs/roadmap.md](docs/roadmap.md)。
+工程开发规则（SSOT、SOLID 审查项、代码/函数规模、质量门禁、文档组织）以 [AGENTS.md](AGENTS.md) 为唯一维护入口，本文件不复制阈值。当前开发团队角色绑定、临时调用上限与治理文档切片步骤见 [docs/roadmap.md](docs/roadmap.md)。
 
-## 从哪里开始
+## 按任务导航
 
-1. [完整设计](docs/design.md)：功能、状态协议、多方评审、知识闭环和验收场景。
-2. [实施路线](docs/roadmap.md)：按依赖收敛的交付切片和下一步。
-3. [AGENTS.md](AGENTS.md)：所有协作 agent 的统一工程入口。
-4. [调研导入记录](docs/research/design-import.json)：来源及迁移范围。
-5. [图表索引](docs/diagrams/index.html)：总体架构、设计思想与流程的可视化版本（辅助阅读，不是规范正文）。
+新读者按目的进入，无需逐文件阅读：
+
+| 我想…… | 入口 |
+|---|---|
+| 了解产品目标与组成 | 上文「产品组成」与 [完整设计](docs/design.md) |
+| 看当前进度、团队角色与下一步 | [实施路线](docs/roadmap.md) |
+| 按工程规则参与开发 | [AGENTS.md](AGENTS.md)；Claude 会话见 [CLAUDE.md](CLAUDE.md) |
+| 新增、拆分或归档文档 | [文档组织规范](AGENTS.md#文档组织) |
+| 接入或核对运行时、模型与适配器 | [运行时接入约定](docs/runtime-adapters.md) |
+| 看配置例子（草案，非权威） | [拟议配置](examples/executor-profile.proposed.yaml) |
+| 看图辅助理解 | [图表索引](docs/diagrams/index.html) |
+| 溯源决策、评审与监督证据 | [历史交付入口](docs/roadmap.md#历史交付入口)，再进入对应请求与有效结果 |
+| 溯源调研与导入来源 | [调研导入记录](docs/research/design-import.json) |
 
 本仓独立于 ABM 和 trading_system；它们是实践来源与未来项目适配对象。项目仓库为 [JuniorHighSchoolStudent/agent-coop](https://github.com/JuniorHighSchoolStudent/agent-coop)。当前处于设计初始化阶段，尚未发布包或选择开源许可证。
 
