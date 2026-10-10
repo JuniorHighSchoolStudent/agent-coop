@@ -24,6 +24,17 @@ def _sha256_text(text):
     return hashlib.sha256(text.encode('utf-8')).hexdigest()
 
 
+def remove_link(path):
+    """仅移除 junction/符号链接自身，不递归其目标。"""
+    path = Path(path)
+    for cleaner in (os.rmdir, os.unlink):
+        try:
+            cleaner(path)
+            return
+        except OSError:
+            continue
+
+
 def _parse(profile, stdout, session_id):
     from agent_coop import adapters
     return adapters.parse(profile, stdout, session_id)
@@ -204,15 +215,13 @@ class AdapterCommandTests(unittest.TestCase):
 class SubprocessTests(unittest.TestCase):
     def setUp(self):
         self._tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self._tmp.cleanup)
         base = Path(self._tmp.name)
         self.root = base / 'sample'
         self.root.mkdir()
         (self.root / '.agent-coop-sample').write_text('sample', encoding='utf-8')
         self.log_dir = self.root / '.runtime' / 'logs'
         self.log_dir.mkdir(parents=True)
-
-    def tearDown(self):
-        self._tmp.cleanup()
 
     def _write_script(self, body, name='fixture.py'):
         script = Path(self._tmp.name) / name
@@ -320,9 +329,16 @@ class RunBoundedTests(SubprocessTests):
                               log_dir=str(self.root / 'workspace'))
 
     def test_log_dir_junction_escape_is_rejected(self):
-        script = self._write_script('import sys\nsys.stdout.write("x")\n')
         outside = Path(self._tmp.name) / 'outside'
         outside.mkdir()
+        sentinel = outside / 'sentinel.txt'
+        sentinel.write_text('untouched', encoding='utf-8')
+        marker = Path(self._tmp.name) / 'child_ran.txt'
+        script = self._write_script(
+            'import sys\n'
+            'open(sys.argv[1], "w").write("ran")\n',
+            'escape_child.py',
+        )
         junction = self.root / '.runtime' / 'escape'
         if sys.platform == 'win32':
             proc = subprocess.run(
@@ -330,16 +346,18 @@ class RunBoundedTests(SubprocessTests):
                 capture_output=True, text=True)
             if proc.returncode != 0:
                 self.skipTest(f'mklink /J 不可用: {proc.stderr.strip()}')
-            self.addCleanup(os.rmdir, junction)
         else:
             try:
                 junction.symlink_to(outside, target_is_directory=True)
             except OSError as exc:
                 self.skipTest(f'symlink 不可用: {exc}')
-            self.addCleanup(junction.unlink)
+        self.addCleanup(remove_link, junction)
         with self.assertRaisesRegex(ValueError, 'junction|symlink'):
-            self._run_bounded([sys.executable, str(script)],
+            self._run_bounded([sys.executable, str(script), str(marker)],
                               log_dir=str(junction))
+        self.assertFalse(marker.exists())
+        self.assertEqual(sentinel.read_text(encoding='utf-8'), 'untouched')
+        self.assertEqual([p.name for p in outside.iterdir()], ['sentinel.txt'])
 
     def test_log_dir_accepts_runtime_and_its_descendants(self):
         script = self._write_script('import sys\nsys.stdout.write("ok")\n')
