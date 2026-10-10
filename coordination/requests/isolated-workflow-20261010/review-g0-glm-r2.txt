@@ -1,0 +1,28 @@
+## G0 复审（glm-5.3，只读，非作者）
+
+**精确候选**：ae62910d5bc0f743ceaf280a6c5b1bf6c829b286。相对前轮 856614a 差异：新增 `interface-amendment.md`、冻结两份 r1 评审原件、roadmap 61/63 行修正。已核对 diff 与仓内文件一致；两份 r1 原件未被改写。
+
+**W1–W8**：前轮判定不变（PASS），本轮澄清只加强不放宽：
+- W2/W4 增强：amendment#2 明确 STATUS/state.json 分别原子替换、revision 不一致显示 publication_pending、publish 持独立发布锁按最高 revision 重建且不回退、pause 走 Store 短事务并尝试 publish 不争 runner 锁——与我 A2/A3 建议一致，消除了双写路径歧义。
+- W3/W5 增强：amendment#1 finish 不得用旧快照覆盖并发 pause/hold/calls_used、initialize 拒绝重置预算；#3 补 requested_session_id，CodeBuddy 严格相等、Kimi 必取 resume_hint 缺失阻断。
+- W6 增强：#5 补齐 policy id/revision/digest、验证者版本、核验 UTC 时间、权限级别、未决承接引用（门禁通过时空列表）与逐文件大小 hash，且声明为样例裁剪不冒充生产 ACL——精确回应 A1。
+- W7 增强：#4 now_epoch 执行时新采集、不参与稳定字段相等比较——修正了原计划把 now_epoch 纳入 authority 稳定字段的潜在自相矛盾，其余稳定字段仍须相等。
+- W8：#6 声明规模数字系送审时点 AGENTS 冻结快照、owner 仍为 AGENTS，"P1限定"仅指样例离线阶段——回应 A5；复用裁定如实标注“仍待 G0 监督接收”，不把计划当成功。
+
+**原票处置核对（g0-glm-A1–A5）**：
+- A1 关闭（#5 样例裁剪清单+限定声明）。
+- A2 关闭（#2 publication_pending 消费者语义；G1 合同测试覆盖重放仍待代码证据）。
+- A3 关闭（#1+#2 读合并与发布权责）。
+- A4 关闭（#1 仅可信 CLI 可设 hold、模型不能设/解除、本轮不演示写入口、测试注入验证阻断）。
+- A5 关闭（#6 双点均澄清）。
+
+**他席事项**：diff 中可见 roadmap 61/63 行已在同候选内按最小修正更新，矛盾消除；g0-kimi-B1 之闭合按其自注“待原席复核”，不属本票承接，其 advisory 处置亦由该席位跟踪。
+
+**Blocking**：无。
+
+**Advisory（新）**：
+- g0-glm-r2-A1：interfaces.md 正文无指向 interface-amendment.md 的指针，单读原件会得过时条目；建议结果入口或后继修订在 interfaces.md 顶部加一行“以后继澄清为准”的定位，非阻断。
+
+**结论：PASS**。原票 A1–A5 全部关闭，无新增阻断；可提交监督接收。
+
+**未验证范围**：无 shell/网络权限，未做候选与基线的 git 对象级核验（仅核对 diff 与工作树一致）；上游仓库、既有项目 ACP 层（db382c9）、现机 Python 3.12.14 按固定引用采信；kimi 席意见及监督处置不在本票范围；W2–W8 计划级判定不预支 G1 代码证据。

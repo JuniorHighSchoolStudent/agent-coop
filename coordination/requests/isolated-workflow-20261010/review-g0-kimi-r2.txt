@@ -1,0 +1,39 @@
+# G0 复审（kimi-k3-2，非作者，只读）
+
+**精确候选**：ae62910d5bc0f743ceaf280a6c5b1bf6c829b286（第二轮）。差异：新增 `interface-amendment.md` 与两席首轮评审原件，改写 `docs/roadmap.md` 第61/63行；`reuse-decision.md`、`implementation-plan.md`、`interfaces.md` 与首轮逐字相同。注：另一席评审原件随 diff 进入视野，本票判断不采用其结论，仅按候选文档独立复核。
+
+## 原票逐项处置
+
+- **g0-kimi-B1（blocking，roadmap.md:61/63 状态矛盾）→ 关闭**。新文本（roadmap.md:61,63）明确"P0复用裁定…已形成候选""G0接收前不写产品源码"，并声明"2026-10-10用户授权的隔离纵向样例在限定范围内承接runner、执行适配与只读Web；不代表完整产品切片均已完成"。原"不提前搭建执行器或前端底座"的矛盾表述已移除，依赖顺序保留，符合最小修正要求，满足 AGENTS 当前状态唯一性。
+- **原 advisory 1（上游 force-push 核验时点）→ 保留**，不改变结论。
+- **原 advisory 2（实跑回执保留"非OS强隔离"限定语）→ 保留**，供实跑阶段执行。
+
+## W1–W8 复审
+
+- **W1 通过**：复用裁定未变，固定 commit/许可证/静态核验边界与 unknown 保留维持有效。
+- **W2 通过（计划层）**：amendment 第1–2条补足 finish 不得用旧快照覆盖并发 pause/hold/calls_used、initialize 不重置预算；STATUS/state.json 双投影允许崩溃期不一致、消费者按 revision 检测显示 publication_pending、publish 独立锁按 DB 最高 revision 重建不回退、pause 短事务不争整轮锁——与 design §5.1/§7.6 语义一致，消除了原"整轮持锁又允许另一CLI写pause"的歧义。
+- **W3 通过（计划层）**：amendment 第3条要求回执含 requested_session_id、session_id 恒为可信 CLI 实际身份、CodeBuddy 严格相等、Kimi 取 resume_hint 缺失即阻断，四席独立性按实际身份核验，强化了身份绑定。
+- **W4 通过（计划层）**：暂停持久/续作跳过/只读 Web/fake-live 区分未变。
+- **W5 通过（计划层）**：subject_digest 绑定与三票重验未变，身份核验更严。
+- **W6 通过（计划层）**：amendment 第5条补齐 policy id/revision/digest、验证者、核验 UTC、权限级别 local_user、未决义务显式空列表、逐文件大小 hash，对齐 design §5.2.3 最小字段且声明不冒充生产 ACL/异机冗余。
+- **W7 通过（计划层）**：amendment 第4条将 now_epoch 移出计划稳定字段相等比较、执行时新采集，稳定字段仍须相等，hold/源 hash/副本读回重核——修正了时间字段误绑，不扩大清理范围；仅可信 CLI 可设 hold、模型不能设/解除，本轮不演示 hold 写入口，边界诚实。
+- **W8 通过（计划层）**：amendment 第6条声明规模数字为送审时点快照、AGENTS 仍是唯一 owner，"P1限定只读/模拟验证"仅样例离线阶段非产品 P1 交付——SSOT 与防误读均落实；roadmap 当前状态准确。
+
+**权限/SSOT/防过时**：amendment 为后继澄清、原件不改写，标注"第二轮候选"；明确"没有增加删除对象、调用预算或平台能力声明"，scope 未扩张；轮次在"每门禁最多两轮"限制内。
+
+## Blocking
+
+无。
+
+## Advisory
+
+- 保留首轮两条（上游指针核验时点；实跑回执保留非 OS 强隔离限定语）。
+- amendment 第2条"尝试publish"：建议 G1 合同测试覆盖 pause 事务与 runner publish 交错时投影不回退的情形（计划已声明，仅提示落实）。
+
+## 结论
+
+**PASS**。g0-kimi-B1 已按最小修正关闭，新增澄清全部在隔离样例授权范围内，无新增 blocking。
+
+## 未验证范围
+
+上游仓库实际内容、本机 CLI/Python 环境、git 对象级核验（无 shell/网络权限）；amendment 各条仅为计划承诺，G1 须以实际代码与测试重验 W2–W8；监督意见未读取、不在本票范围。

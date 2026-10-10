@@ -1,0 +1,13 @@
+**监督票：PASS**（原生 Kimi Code 独立监督，非 CodeBuddy Kimi 评审席位；runtime=Kimi Code CLI，实际模型 unknown，如实保留）。仅对候选 `ae62910d5bc0f743ceaf280a6c5b1bf6c829b286` 的 G0 选型/计划负责；不声称任何代码、实跑、测试通过、合入或发布已完成。本轮为首次监督派发，非复审。
+
+**S1 身份独立与精确候选：通过。** 作者/集成者 Codex 不计票；评审 A 为 CodeBuddy glm-5.3（session agent-coop-isolated-g0-glm-20261010），评审 B 为 CodeBuddy kimi-k3-2（另一 session），均非作者；两席 r2 原件均绑定精确候选 ae62910d 并核对 diff 与仓内文件一致。第二轮 diff 含他席首轮原票，kimi 席原件如实声明看到但未采用其结论，result-g0.md 也未称第二轮盲审，符合诚实申报。result-g0.md 正确区分原生监督与 CodeBuddy Kimi，不冒名替代。
+
+**S2 原阻断复核：通过。** 首轮唯一 blocking 为 g0-kimi-B1（roadmap:61/63 相互矛盾的当前状态）。现 roadmap 61 行已改为「已形成候选…G0 接收前不写产品源码」，63 行声明隔离样例在限定范围内承接 runner/适配/只读 Web 且不代表完整切片完成，矛盾消除，属最小修正。该 blocking 由原席 kimi-k3-2 本人复核关闭（r2 原件逐项核对），非集成者代签。glm 席 A1–A5 原为 advisory，由 interface-amendment.md 第1–6条承接并经原席 r2 逐项关闭；r2 新增 advisory（g0-glm-r2-A1：interfaces.md 无指向澄清的指针）已由 result-g0.md 的联合阅读声明在入口层处置，可留待 G1 收敛，不构成 blocking。
+
+**S3 W1–W8 与唯一状态/权限/清理边界：通过（计划层）。** interfaces+amendment 维持单一 SQLite 权威、runner 文件锁互斥、publish 独立锁不回退、pause 短事务；hold 仅可信 CLI 设置、模型不能设/解除；身份绑定 requested_session_id 与实际 session 严格核验，无 fallback；清理限固定 `scratch/fixture.log`，authority 由可信代码重建、执行前重查，retention=0 不推广生产；backup 明确 local_only；不 push/上传/启用 OS 定时任务。amendment 明示「没有增加删除对象、调用预算或平台能力声明」，scope 未扩张。W2–W8 均为计划级判定，不预支 G1 代码证据，两席与计划文本对此表述一致。
+
+**S4 当前状态无过时堆积：通过。** roadmap 当前切片单一口径（「审核中」），历史交付入口完整且未改写；B1 所指冲突文本已在同候选内修正，无并行冲突的「当前状态」。result-g0.md 是本请求唯一当前结果入口，如实标注「两席复审PASS，待原生Kimi监督，未写产品源码」与「无产品测试入口，未声称测试通过」，测试通过/评审/接收/合入/发布未混同。
+
+**S5 下一步 owner 与边界：通过。** result-g0.md 明确：监督 PASS 后由 Codex 记录接收并派发两名真实 CodeBuddy deepseek 作者（不同文件、并发 2、max-turns 20、测试先行）；离线通过后冻结 G1，G1 双席+原生监督后才四调用实跑；清理仅本次 scratch fixture，不 push、不上传；监督 blocking 由原监督/独立替补复核，Codex 不自签。边界与计划步骤 2–6 一致。
+
+**结论：PASS，无未决监督阻断。** 此前「待监督」属正确检查点，非循环阻断；接收登记与 G1 派发由集成者按既有合同推进，监督意见闭合权限不由集成者代签。随票 advisory（非阻断）：G1 复核时核验 amendment 各承诺已落实为代码与测试（尤其 publish 交错不回退的合同测试、resume_hint 缺失阻断），实跑回执保留「非 OS 强隔离」限定语。
