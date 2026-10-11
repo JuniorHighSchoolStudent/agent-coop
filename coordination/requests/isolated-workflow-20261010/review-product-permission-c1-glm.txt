@@ -1,0 +1,38 @@
+# C1内容审核（GLM原席 · glm-5.3 · 只读 · 候选67a86ce/行政37aa090）
+
+## 0. 实读范围
+input-index、**8个变更源文件全文**（sample/adapters/runtime/test_sample/test_cli/test_runtime/test_adapter_commands/test_runtime_invoke）、合同/计划（SHA与S0修订版557c4072/26544dd8一致，沿用已读）、integration-c1、verify output（尾部60行含两处红项+REVIEW TARGET全清单）、author-a原件、author-b-failure.json。未读：discovery/before/after json、calls summaries、write audits（依集成线索+计数核算：旧144＋新增42＝186，其中旧AdapterCommandTests 2项/InvokeTests 3项迁移后计入，13+19+15−5=42，数目自洽）。未读他席新票。
+
+## 1. 交叉全链判断
+- **A（有效交付）**：canonical_path先reparse后resolve、拒UNC/设备、盘符大写✓；深复制唯一派生点✓；dispatch顺序=validate_binding→权限→写目标→预留→invoke✓；测试覆盖注入/深复制/schema/root非规范/额外目标/硬链/reparse/预留前零计数/预留后Popen哨兵✓；自述“未运行测试”如实。**A自述偏差记录**：实际304/343行（自述305/344）、inherit实际16名（自述17）——以verify原件为准，非缺陷。
+- **B（未完成候选）**：进程exit0但result=error_during_execution/Max turns(20) exceeded（num_turns84），无有效final——**不补签**。代码实质完成度：argv逐token序列化（tools单token、Read/Glob/Grep逐项、Write/Edit精确文件规则、Bash/PowerShell独立deny、dontAsk/none/空MCP、无acceptEdits）✓；invoke的cwd核对在command/Popen前✓；_build_env从空字典+inherit+set、PATH/SYSTEMROOT非空必需、不改父env✓；env=None兼容（非模型验证器不注入CB值）✓；测试迁移不复制helper（显式import基类与fixture）、无重复发现✓。
+- **重复--allowedTools/--disallowedTools**：依静态variadic _concatValue累积证据，**不构成缺陷**，不报、不加探针。
+- **canonical helper顺序（集成线索4）**：adapters.canonical_path先resolve无reparse检查——**裁定非缺陷**：该函数是表示转换非安全边界；实际cwd在run_bounded经paths.checked→_require_clean_root→全祖先reparse拒绝后才达Popen，无绕过。
+- **真实链充分性**：sample.initialize→command（真派生→真argv）✓、dispatch→invoke→Popen预留语义✓、真实子进程env允许/剔除/覆盖/父不变✓——但存在下述具名缺口，修复后须补齐反例。
+
+## 2. 本人具名finding（全部修复准入见第3节）
+**g1-glm-B21｜A+B｜sample.py:136、:161；adapters.py:47｜中**：schema校验用`!=1`——sample层`True`/`1.0`均过（True==1、1.0==1）；adapter层拒bool但**1.0同样通过**（`1.0 != 1`为False）。合同“整数1，bool不算整数”是预留前检查：bool在sample层漏拒会先消耗计数再被adapter迟拒；1.0两层全过。最小修复：A改`type(x) is not int or x != 1`（permissions.schema与config.schema两处）＋反例（True/False/1.0/2/'1'/None）；B对adapters.py:47补`not isinstance(schema,int)`同款＋反例。验收：预留前拒绝且calls_used=0。
+
+**g1-glm-B22｜B｜adapters.py:42-68｜中**：_validate_permissions未查**五键精确集合**（未知键通过）、未拒**kimi非空write_files**（kimi CLI无文件规则机制，kimi+Write/Edit工具+write_files经纯command()实测通过——声明了不可表达的权限）。最小修复：精确键集合校验＋kimi adapter拒绝非空write_files＋表示等价测试（同一fixture路径上`sample.canonical_path(x)==adapters.canonical_path(x)`，防两实现漂移）。验收：三反例绿。
+
+**g1-glm-B23｜B｜runtime.py:248-284｜低**：_build_env只casefold查inherit重复；set键与inherit名跨层大小写冲突（set 'Path'+inherit 'PATH'）及set自身大小写变体（{'PATH','Path'}）均不拒，子进程env出现同名大小写双键。合同要求拒“大小写歧义”。最小修复：set键casefold对inherit与自身查重、保留**精确同名**合法覆盖；反例测试。
+
+**g1-glm-B24｜B｜test_runtime_invoke.py:85-90｜低**：测试直接`os.environ[...]=`后cleanup只pop——宿主若原设有同名变量（如CODEBUDDY_DISABLE_AUTO_MEMORY）将被删值泄漏至后续用例。最小修复：记录原值并恢复（或mock.patch.dict）；不读取实际值。
+
+**g1-glm-B25｜B｜test_runtime_invoke.py:121、:126/143｜阻断verify绿**：组合验证的两处红项均为测试缺陷、产品行为正确——①env=None子进程print在Windows输出`present\r\n`，断言仅`present`（改子进程`sys.stdout.write("present")`，与文件既有约定一致，**不改产品stdout**）；②四值fixture的inherit=['PATH']缺SYSTEMROOT，产品按合同拒绝（fixture补`'SYSTEMROOT'`，**不放宽环境合同**）。验收：186项=184pass/2既有skip、exit0。
+
+**g1-glm-B26｜A｜sample.py:151-156及_validate_permission｜中**：dispatch重验只查Write/Edit有无——①工具集不查精确等于角色策略（额外`Bash`进tools可过预留）；②不重验角色↔adapter绑定（一致篡改+重算摘要后，supervise可换成codebuddy+CB_SET+model串，绕过“原生Kimi监督”固定样例合同）。最小修复：`set(tools)==角色期望集`＋角色adapter/model绑定重验（supervise=kimi/model None；其余=codebuddy/model str），预留前拒绝；反例：额外Bash、supervise换codebuddy一致篡改均拒且零计数。
+
+## 3. 修复准入与B未完成处置
+- **A**：准入预算内一次同写集修复（sample.py/test_sample.py/test_cli.py/test_flow.py），范围=B21(A侧)+B26＋随附行数自述更正；交付须含有效final。
+- **B**：**准许基于Maxturn现场的一次finding-bound修复**——但为**全新deepseek会话**（原session已Maxturn无final，禁止resume续签），冻结候选为基线，同写集五文件，范围=B21(B侧)+B22+B23+B24+B25＋**必须补交有效完成票与软目标内聚说明**（B无完成票，根不得代写作者结论）。两修复并行（写集不相交），各计1次。
+- 修复后：根重验受影响范围＋准确组合候选一次`python -m agent_coop verify`须exit0→双席C2内容批准→才可产品矩阵。**当前严禁矩阵**。
+
+## 4. 软目标裁定
+A：sample 304（派生+校验同owner高内聚簇，函数≤40：validate_profiles 35/_validate_permission 27）与test_sample 343（写集强制单文件、12项独立拒绝原因）——**接受**。B（无作者说明，本人代行结构核验、待B修复票确认）：runtime 309（新增均合同要求的env构造，_build_env 37/invoke 13/_verify_cwd 10均≤40）、test_runtime 409（迁移后残留解析+子进程基座）——**有条件接受**，B修复交付须附本人具名说明方最终成立。新文件test_adapter_commands 226/test_runtime_invoke 267达标。其余未变软项（adapters 57/49、cleanup 42、runner 44、store 402、test_archive 465、test_runner:225 47）按原接受沿用。
+
+## 5. 未知与不预支
+alias/hook先行allow/真实memory全域/TOCTOU仍unknown；环境白名单对真实CodeBuddy认证的sufficiency未测（矩阵若因环境失败为合法证据）；产品矩阵/live/B18关闭均未准入；B11历史根因不变。
+
+## 6. C1结论
+**CHANGES_REQUESTED**：B21–B26六项具名finding（B25直接阻断verify绿）。A/B各准一次同写集finding-bound修复（B须新会话+完成票+软目标说明）。预算：本票后8/15 CB、1/2 native；两修复后10/15，C2双后12/15，矩阵1＋限定确认≤2＝上限15，充足。交根归档，不自动派修复；矩阵须待修复后组合verify exit0＋双席C2批准。

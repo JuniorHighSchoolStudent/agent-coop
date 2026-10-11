@@ -1,0 +1,39 @@
+# 产品权限C1内容复审 · 席B（原kimi-k3-2 session，非作者）
+
+**实读**：input-index、integration-c1、c1-metadata、author-a.txt、author-b-failure.json；source/下8变更文件中sample.py/adapters.py/runtime.py/test_sample.py/test_runtime.py/test_adapter_commands.py/test_runtime_invoke.py七份全文+test_cli.py尾部与新增注入用例定点核对；verify output定点核FAIL/ERROR/汇总/软目标。合同/计划hash与已批准修订版一致未重读。写集符合性自核：变更文件恰为A3+B5声明集合；B的calls-summary/write-audit未逐行读（口径声明）。合同（557c…)/计划（2654…）不变。
+
+## 交叉全链判断
+
+- **A链路**：canonical_path先`_reject_reparse_chain`后resolve、盘符大写/拒UNC设备✓；深复制唯一派生、16名inherit（代码正确，A回执"17"为自述偏差）、四值/Kimi空set✓；dispatch顺序validate_binding→权限/写目标校验→预算→预留→invoke，预留语义符合澄清2✓；test_sample 12项反例均有invoke未调用+零计数断言、test_sample_profile_reaches_invoke与CLI注入拒绝为真实链路✓。
+- **B链路**：argv为探针实证格式（独立token、Read/Glob/Grep逐项、Write（文件）/Edit（文件）、Bash/PowerShell分列、dontAsk/none/空MCP、无acceptEdits）✓；AdapterCommandTests/InvokeTests整体迁移、原文件无重复类、基类经import复用、SubprocessTests._profile含双adapter合法permissions✓；真实子进程env过滤/覆盖/父环境不变测试在案✓；重复--allowedTools经静态证据为concat累积，**不是缺陷**（按要求不报假缺陷）；Kimi+Write/Edit+非空写集通过属adapter中立设计，须由sample角色校验拦截（计入下方A缺口，不算B越权）。
+- 组合186=182pass/2既有symlink skip/1F/1E、exit1、前后清单一致——与集成线索一致，我另发现代码层缺口如下。
+
+## 本人具名finding
+
+**g1-kimi-B14（A，sample.py，blocking）**
+- B14a `_validate_permission`(sample.py:136)：`!=1`接受True/1.0——违反"整数1、bool不算整数"。最小修复：严格`type is int`且非bool、值==1。
+- B14b tools仅查Write/Edit有无（:151-156)：重算摘要后塞入Bash等额外工具可预留前通过——违反"角色工具与冻结值/非法语义仍须拒绝"。修复：按角色精确比对冻结工具集合。
+- B14c 不重验角色adapter/model（supervise可被改为codebuddy+模型+一致set后通过）——违反固定角色绑定。修复：dispatch重验adapter按角色固定、kimi model为None、codebuddy model非空字符串。
+- 验收：三项各有预留前拒绝+calls_used==0+invoke未调用反例；组合verify转绿；写集仅sample.py+tests/test_sample.py。
+
+**g1-kimi-B15（B，adapters/runtime/tests，blocking）**
+- B15a `_validate_permissions`(adapters.py:42-68）缺准确五键集合校验，未知permissions键通过。修复：键集合不等即拒+反例。
+- B15b schema浮点洞（:46-48)：bool已拒但1.0通过。修复：严格整数+1.0反例。
+- B15c `canonical_path`(adapters.py:10-22）先resolve且无原始reparse检查，违反合同"不得先resolve再省略原始reparse检查"（下游checked有兜底，但合同次序必须在helper成立）。修复：与sample同序（absolute→_reject_reparse_chain→resolve）。
+- B15d `_build_env`(runtime.py:267-274）缺set键内大小写歧义及set×inherit大小写变体冲突校验（仅精确同名覆盖合法）。修复：casefold查重与跨集合变体拒绝+反例。
+- B15e 测试三处（test_runtime_invoke.py)：①:121 CRLF断言改`.strip()`比较，**不得改产品stdout**；②:143 fixture补SYSTEMROOT（产品按合同拒绝是正确的，不得放宽必需项）；③:85-90与114-115父env修改后cleanup仅pop——宿主原值会丢（CODEBUDDY_DISABLE_AUTO_MEMORY在开发环境可能预存在），改为保存原值/哨兵恢复。
+- 验收：组合verify 186全绿（2既有skip除外）、各拒绝有反例、无产品语义削弱；写集仅adapters.py/runtime.py/test_runtime.py/test_adapter_commands.py/test_runtime_invoke.py。
+
+## A/B修复准入与B未完成处置
+
+- **A：准入预算内一次finding-bound修复**（B14a–c，上述写集，作者不跑测试由根验证）。
+- **B：exit0但error_during_execution/Max turns exceeded、无有效final——不是交付**，五文件为未完成现场。**准入一次finding-bound修复**：以根冻结现场为输入开**新的有界会话**（非resume死亡会话、不自动续跑），修B15a–e，写集不变，不扩成通用权限包。
+- 两修复仍走finding→发包人→作者→原席C2；不允许第三内容修复轮。
+
+## 软目标与未知
+
+sample304/runtime309/test_sample343/test_runtime409均软超、内聚可接受（权限簇/进程边界/迁移后收敛）；B无作者说明，由本审核自评补述并标注"B未完成"口径，不补写成作者结论。未知保留：原始路径alias/hook先行allow/真实memory全域/TOCTOU、POSIX未实跑、browser JS/云CI/live。discovery 144→186经我核test_runtime.py无重复类+两新文件类齐——数量事实成立，充分性以上述反例补齐为准。
+
+## C1结论
+
+**CHANGES_REQUESTED**（B14/B15具名阻断）。严禁产品矩阵：必须两修复完成→准确候选组合verify→C2双席内容批准后才可执行；预算路径8→10→12→15/15可行，native1/2未用。交根归档，不自动派修复。

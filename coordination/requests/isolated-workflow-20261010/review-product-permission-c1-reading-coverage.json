@@ -1,0 +1,252 @@
+[
+  {
+    "seat": "glm",
+    "candidate": "37aa090dae5cf38a0e79991ef45fbc4a25ab0cdb",
+    "actual_model": "glm-5.3",
+    "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "native_calls": [
+      {
+        "id": "call_621bde0202f4480a8c930c64",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\input-index.json"
+        }
+      },
+      {
+        "id": "call_d170bb94c2f6418680122f58",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\source\\agent_coop\\sample.py"
+        }
+      },
+      {
+        "id": "call_0e8c41f4a4744072be3ee150",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\source\\agent_coop\\adapters.py"
+        }
+      },
+      {
+        "id": "call_103f9430e0134f67814ebe3a",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\source\\agent_coop\\runtime.py"
+        }
+      },
+      {
+        "id": "call_e2e5b0cf45e04193b768c46d",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\source\\tests\\test_runtime_invoke.py"
+        }
+      },
+      {
+        "id": "call_5bdb628b01fa4d7d89ad509d",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\source\\tests\\test_adapter_commands.py"
+        }
+      },
+      {
+        "id": "call_58fbc26470fb400d9d8e94fa",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\source\\tests\\test_runtime.py"
+        }
+      },
+      {
+        "id": "call_54d9aa909c624c3b9db6827c",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\source\\tests\\test_sample.py"
+        }
+      },
+      {
+        "id": "call_a3d74ff6897048f99954ce2b",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\source\\tests\\test_cli.py"
+        }
+      },
+      {
+        "id": "call_628cb4d843c5430d98f6e7b0",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\product-permission-integration-c1.md"
+        }
+      },
+      {
+        "id": "call_5410938a51b84327a222efa0",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\product-permission-author-b-failure.json"
+        }
+      },
+      {
+        "id": "call_7f634bf54e2c4b77bb9adb77",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\product-permission-c1-output.txt",
+          "offset": 140
+        }
+      },
+      {
+        "id": "call_48d6b767679c48b1b6ed1ce6",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c1\\glm\\product-permission-author-a.txt"
+        }
+      }
+    ],
+    "tool_errors": [],
+    "full_source_files": 8,
+    "partial_source_files": null,
+    "verify_output_coverage": "Read offset140 tail only; no beginning full read",
+    "verify_metadata_read": false,
+    "contract_plan_read": "No fresh Read; relied on exact unchanged hash and prior S0 reading",
+    "not_read": [
+      "before.json",
+      "after.json",
+      "discovery.json",
+      "author calls summaries",
+      "author write audits"
+    ],
+    "limitation": "Both reviews lack requested complete verify-output read; do not claim full raw verification recheck. Kimi source/test_cli coverage partial. Findings are original reviewer opinions, not dispatcher closure."
+  },
+  {
+    "seat": "kimi",
+    "candidate": "37aa090dae5cf38a0e79991ef45fbc4a25ab0cdb",
+    "actual_model": "kimi-k3-2",
+    "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "native_calls": [
+      {
+        "id": "Read_85_cc3759dd",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/input-index.json"
+        }
+      },
+      {
+        "id": "Read_86_b96a2cd7",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/product-permission-integration-c1.md"
+        }
+      },
+      {
+        "id": "Read_87_191d26ec",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/product-permission-c1-metadata.json"
+        }
+      },
+      {
+        "id": "Read_88_31ffe492",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/product-permission-author-b-failure.json"
+        }
+      },
+      {
+        "id": "Read_89_bc5f8ac8",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/product-permission-author-a.txt"
+        }
+      },
+      {
+        "id": "Read_90_9d1480d0",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/agent_coop/sample.py"
+        }
+      },
+      {
+        "id": "Read_91_e56a8011",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/agent_coop/adapters.py"
+        }
+      },
+      {
+        "id": "Read_92_879524a0",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/agent_coop/runtime.py"
+        }
+      },
+      {
+        "id": "Read_93_8d467dd2",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/tests/test_runtime_invoke.py"
+        }
+      },
+      {
+        "id": "Read_94_31c11ba2",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/tests/test_adapter_commands.py"
+        }
+      },
+      {
+        "id": "Read_95_f0c5e6eb",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/tests/test_sample.py"
+        }
+      },
+      {
+        "id": "Read_96_6e1585c9",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/tests/test_runtime.py"
+        }
+      },
+      {
+        "id": "Grep_97_0e3bab4d",
+        "name": "Grep",
+        "input": {
+          "-n": true,
+          "output_mode": "content",
+          "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/product-permission-c1-output.txt",
+          "pattern": "(FAIL:|ERROR:|Ran \\d+|FAILED|^OK|skipped=|REVIEW TARGET)"
+        }
+      },
+      {
+        "id": "Read_98_205ca989",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/tests/test_cli.py",
+          "limit": 45,
+          "offset": 150
+        }
+      },
+      {
+        "id": "Grep_99_550692ba",
+        "name": "Grep",
+        "input": {
+          "-A": 12,
+          "-n": true,
+          "output_mode": "content",
+          "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c1/kimi/source/tests/test_cli.py",
+          "pattern": "supplied_permissions"
+        }
+      }
+    ],
+    "tool_errors": [],
+    "full_source_files": 7,
+    "partial_source_files": "tests/test_cli.py offset150 limit45; plus targeted Grep if recorded in calls",
+    "verify_output_coverage": "targeted Grep FAIL/ERROR/summary/soft targets; no full Read",
+    "verify_metadata_read": true,
+    "contract_plan_read": "No fresh Read; relied on exact unchanged hash and prior S0 reading",
+    "not_read": [
+      "before.json",
+      "after.json",
+      "discovery.json",
+      "author calls summaries",
+      "author write audits"
+    ],
+    "limitation": "Both reviews lack requested complete verify-output read; do not claim full raw verification recheck. Kimi source/test_cli coverage partial. Findings are original reviewer opinions, not dispatcher closure."
+  }
+]
