@@ -30,9 +30,11 @@
 
 ## 当前产品切片：隔离纵向样例
 
+当前活动工作为[开发治理与监督失效修复](../coordination/requests/governance-enforcement-20261011/result.md)：把本仓开发中已暴露的门禁放宽、监督缺输入、必需席读取缺口转为产品校验和回归反例，并在本轮实际开发使用。上一批静态实现及main合入保留为历史事实，其流程例外授权与监督充分性正在独立复核；完整live仍未准入。
+
 用户于2026-10-10选定仅隔离样例跑通多agent、归档、本机副本与清理。Codex集成和专门发包，实际CodeBuddy + deepseek-v4-pro实现、双独立CodeBuddy评审席与原生Kimi监督；角色纠偏及草稿接管见[交接记录](../coordination/requests/isolated-workflow-20261010/role-correction.md)。[复用裁定](../coordination/requests/isolated-workflow-20261010/reuse-decision.md)、[具体计划](../coordination/requests/isolated-workflow-20261010/implementation-plan.md)及[G0接收](../coordination/requests/isolated-workflow-20261010/result-g0.md)保留为阶段依据。
 
-准确候选、静态范围接收、实际验证、历史根因unknown及live权限阻断只在[当前交付记录](../coordination/requests/isolated-workflow-20261010/result.md)维护。本切片的后继是固定样例权限合同及分包审核；静态接收不自动开放live，不宣称完整P1/P2/P3已交付，不启用OS定时任务。后继合同与实现须继续经专门发包、独立原席评审和监督。
+上一隔离批次的准确候选、静态范围接收、实际验证、历史根因unknown及live权限限制见[隔离样例交付记录](../coordination/requests/isolated-workflow-20261010/result.md)；新的治理修复仅在上方活动入口维护。静态接收不自动开放live，不宣称完整P1/P2/P3已交付，不启用OS定时任务。后继合同与实现继续经专门发包、独立审核和监督。
 
 最近交付的接收与 Git 集成证据见下方历史入口；本节只维护有效下一步，不复制回执或另建状态台账。
 
