@@ -1,6 +1,6 @@
 # 隔离样例操作
 
-范围：固定四角色小功能开发、审核与归档清理演示；维护者：本仓CLI/sample模块；状态：实现候选，待G1与真实调用验证；来源：[接收计划](../coordination/requests/isolated-workflow-20261010/result-g0.md)。不是完整生产调度平台。
+范围：固定四角色小功能开发、审核与归档清理演示；维护者：本仓CLI/sample模块；状态：准确静态接收/main合入与live阻断以[当前结果](../coordination/requests/isolated-workflow-20261010/result.md)为准；来源：[接收计划](../coordination/requests/isolated-workflow-20261010/result-g0.md)。不是完整生产调度平台。
 
 ## 准备配置
 
@@ -37,4 +37,4 @@ SQLite的complete只表示这条样例流程完成，不代表Git合入或发布
 
 只有本次固定`scratch/fixture.log`可清理，明确样例policy的retention=0；不是生产保留策略。清理先保存计划，再重查候选、三票、hold、原文件hash与两个副本；任一失败保留阻断/失败回执。源码、审核原件、SQLite/outbox、Git历史和其他项目文件都不在目标集合。
 
-路径与工具限制不是恶意本机账户的OS沙箱。需要受信任的单用户目录；评审会话独立但没有OS级相互文件不可见保证。本轮只验证Windows本机实跑，跨平台CI配置不等于云端CI已运行。
+路径与工具限制不是恶意本机账户的OS沙箱。需要受信任的单用户目录；评审会话独立但没有OS级相互文件不可见保证。已验证范围由当前结果列出；Windows本机测试、人工开发CLI调用、产品live实跑分别举证，跨平台CI配置不等于云端CI已运行。

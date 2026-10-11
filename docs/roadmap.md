@@ -38,9 +38,9 @@
 
 ## 历史交付入口
 
-- 开发交流与归档（communication-archive-20261010）：候选 `8e8f6f054c972e27dd234adf31a29ffbf12471bd` 已接收，社区依据、两席评审、原生监督与本人澄清、集成状态见 [结果](../coordination/requests/communication-archive-20261010/result.md)。AGENTS 维护人工操作，design §5.2 维护技术合同；自动采集、归档备份、保留清理尚未实现。
+- 开发交流与归档（communication-archive-20261010）：候选 `8e8f6f054c972e27dd234adf31a29ffbf12471bd` 已接收，社区依据、两席评审、原生监督与本人澄清、集成状态见 [结果](../coordination/requests/communication-archive-20261010/result.md)。AGENTS 维护人工操作，design §5.2 维护技术合同；该次为人工规约交付；后继自动能力以当前切片结果为准。
 
-- 文档组织规范（docs-organization-20261010）：候选 `25690df055a09ea71c7edb4dba163e191b5e9857` 已接收，规则归 AGENTS、导航归 README；社区取舍、两席独立评审、Kimi Code 监督与 Git 集成状态见 [结果](../coordination/requests/docs-organization-20261010/result.md)。自动门禁尚未落地，继续沿 P0/P1 出口推进。
+- 文档组织规范（docs-organization-20261010）：候选 `25690df055a09ea71c7edb4dba163e191b5e9857` 已接收，规则归 AGENTS、导航归 README；社区取舍、两席独立评审、Kimi Code 监督与 Git 集成状态见 [结果](../coordination/requests/docs-organization-20261010/result.md)。该次未实现自动门禁；后继实现及验证以当前切片结果为准。
 
 - 图集修订（diagrams-review-20261010）：新候选已接收，首轮 B1–B3 已闭合，候选、实现、两席复审、独立监督与合入状态统一见 [结果](../coordination/requests/diagrams-review-20261010/result.md)；未实现产品功能。
 

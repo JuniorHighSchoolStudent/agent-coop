@@ -2,7 +2,7 @@
 
 面向实际项目的轻量多 Agent 协作工具，通过可配置角色、可评审工作流和插件适配器，统一调度、监控、交接与经验积累。
 
-> 当前状态：仓库与设计初始化。尚无可运行 CLI、Scheduler、Web 或适配器；下文描述产品目标。
+> 下文描述完整产品目标。隔离样例已有实现；准确候选、接收、主线与live阻断以[实施路线](docs/roadmap.md)指向的当前结果为准，不等于完整平台交付。
 
 用户描述需求，集成者与设计者结合项目事实、已有模板、社区实践和经验推荐 workflow；多个独立审核者通过后发布，由 Scheduler 按依赖、预算与资源约束派发。Web 展示流程、握手、阻断和知识改进，项目目录保存可人工审阅的证据。
 
@@ -27,7 +27,8 @@
 
 | 接入目标 | 当前证据 | 本仓实现 |
 |---|---|---|
-| Codex CLI / Claude Code / CodeBuddy / Kimi Code | 前期本机帮助与相关协议调研 | 未实现 |
+| CodeBuddy / Kimi Code | 帮助调研、固定样例及受限实际调用证据 | 固定样例边界见[当前切片](docs/roadmap.md)，通用适配合同仍待实现 |
+| Codex CLI / Claude Code | 前期本机帮助与相关协议调研 | 通用接入未实现，开发团队约束见实施路线 |
 | Codex Desktop | 设计为薄插件与人工协作入口 | 未实现 |
 | OpenCode / 用户扩展 agent | 扩展合同及官方 CLI 资料 | 未实现、未做本机验证 |
 
@@ -53,7 +54,7 @@
 | 溯源决策、评审与监督证据 | [历史交付入口](docs/roadmap.md#历史交付入口)，再进入对应请求与有效结果 |
 | 溯源调研与导入来源 | [调研导入记录](docs/research/design-import.json) |
 
-本仓独立于 ABM 和 trading_system；它们是实践来源与未来项目适配对象。项目仓库为 [JuniorHighSchoolStudent/agent-coop](https://github.com/JuniorHighSchoolStudent/agent-coop)。当前处于设计初始化阶段，尚未发布包或选择开源许可证。
+本仓独立于 ABM 和 trading_system；它们是实践来源与未来项目适配对象。项目仓库为 [JuniorHighSchoolStudent/agent-coop](https://github.com/JuniorHighSchoolStudent/agent-coop)。实现成熟度由当前切片入口维护；尚未发布包或选择开源许可证。
 
 用于仓库 About 的英文描述：
 

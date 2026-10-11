@@ -1,0 +1,340 @@
+{
+  "observed_utc": "2026-10-11T08:42:43.5915187+08:00",
+  "baseline": "f0223b34e0204dde667ea8dff2d80beb3d3b1a3c",
+  "scope": "read-only files and prior public receipts; no session-private inspection, no model or probe",
+  "files": [
+    {
+      "path": "C:/Program Files/nodejs/node.exe",
+      "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+    },
+    {
+      "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6"
+    },
+    {
+      "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js",
+      "sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65"
+    },
+    {
+      "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@moonshot-ai/kimi-code/dist/main.mjs",
+      "sha256": "5b300a573d306f879361eb7a2baec3a19448ea94eadca28001408b19c42eeb69"
+    },
+    {
+      "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1",
+      "sha256": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed"
+    },
+    {
+      "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-supervision-g1.ps1",
+      "sha256": "ef260838f90da38f2c540f2601f22cc343ade513d2ed0f415de81df08e2a7c77"
+    }
+  ],
+  "versions": {
+    "source": "installed package.json",
+    "codebuddy": "2.164.0",
+    "kimi": "0.43.0"
+  },
+  "review_cwd_head": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+  "review_cwd_status": [],
+  "historical_receipts": [
+    {
+      "path": "coordination\\requests\\isolated-workflow-20261010\\review-continuation-content-r2-glm-calls.json",
+      "sha256": "bb74899fd9c2c8a19060ef366c48ce02c2c6fdc456211efb977c835a8afd50cc",
+      "model": "glm-5.3",
+      "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "resume_hint": null,
+      "session": null,
+      "requested_resume": null,
+      "resume": "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "cwd": "D:\\project\\agent-coop-g1-review",
+      "exit_code": 0,
+      "finish": "2026-10-11T08:20:23.3061347+08:00",
+      "wall_seconds": 126.3505556,
+      "tools": [
+        {
+          "id": "call_7bec5cbe8f6d4e19a71b731c",
+          "name": "Read",
+          "input": {
+            "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\input-index.json"
+          }
+        },
+        {
+          "id": "call_eb18a35cced34e57b90c7d76",
+          "name": "Read",
+          "input": {
+            "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\read-first.txt"
+          }
+        },
+        {
+          "id": "call_7b3941d3e47044619941db95",
+          "name": "Read",
+          "input": {
+            "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\product-delta.patch"
+          }
+        },
+        {
+          "id": "call_1e776aa73249425a8a6c1455",
+          "name": "Read",
+          "input": {
+            "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\integration-observations-continuation-r2.md"
+          }
+        },
+        {
+          "id": "call_89e482251b9042c28915c9dc",
+          "name": "Read",
+          "input": {
+            "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\diagnostic-publication-candidate-r2.txt"
+          }
+        },
+        {
+          "id": "call_d48509c0684e4e3abe4866c6",
+          "name": "Read",
+          "input": {
+            "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\repair-write-scope-audit-20261011.json"
+          }
+        }
+      ]
+    },
+    {
+      "path": "coordination\\requests\\isolated-workflow-20261010\\review-continuation-content-r2-kimi-calls.json",
+      "sha256": "53cbd0bc096fe79422bd604a40a11e924d8f2964b61c934ca2f13f751ecb279f",
+      "model": "kimi-k3-2",
+      "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "resume_hint": null,
+      "session": null,
+      "requested_resume": null,
+      "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "cwd": "D:\\project\\agent-coop-g1-review",
+      "exit_code": 0,
+      "finish": "2026-10-11T08:20:48.4695428+08:00",
+      "wall_seconds": 151.5150415,
+      "tools": [
+        {
+          "id": "Read_69_49760c8d",
+          "name": "Read",
+          "input": {
+            "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/input-index.json"
+          }
+        },
+        {
+          "id": "Read_70_001b3752",
+          "name": "Read",
+          "input": {
+            "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/read-first.txt"
+          }
+        },
+        {
+          "id": "Read_71_874969eb",
+          "name": "Read",
+          "input": {
+            "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/integration-observations-continuation-r2.md"
+          }
+        },
+        {
+          "id": "Read_72_27fa6134",
+          "name": "Read",
+          "input": {
+            "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/product-delta.patch"
+          }
+        },
+        {
+          "id": "Read_73_ca244f73",
+          "name": "Read",
+          "input": {
+            "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/diagnostic-publication-candidate-r2.txt"
+          }
+        }
+      ]
+    },
+    {
+      "path": "coordination\\requests\\isolated-workflow-20261010\\supervision-continuation-final-calls.json",
+      "sha256": "30b776555d2b28029236dc0c53bd97f5f9309524df222cab9bc364ba6419bc9e",
+      "model": "unknown",
+      "actual_session": null,
+      "resume_hint": null,
+      "session": null,
+      "requested_resume": "session_a75b547a-13c5-4740-b07f-f3d4ccc93704",
+      "resume": null,
+      "cwd": "D:\\project\\agent-coop-g1-review",
+      "exit_code": 0,
+      "finish": "2026-10-11T08:31:18.5831462+08:00",
+      "wall_seconds": 222.0128545,
+      "tools": null,
+      "actual_meta": [
+        {
+          "role": "meta",
+          "type": "system.version",
+          "version": "0.43.0"
+        },
+        {
+          "role": "meta",
+          "type": "session.resume_hint",
+          "session_id": "session_a75b547a-13c5-4740-b07f-f3d4ccc93704",
+          "command": "kimi -r session_a75b547a-13c5-4740-b07f-f3d4ccc93704",
+          "content": "To resume this session: kimi -r session_a75b547a-13c5-4740-b07f-f3d4ccc93704"
+        }
+      ],
+      "native_calls": [
+        {
+          "type": "function",
+          "id": "tool_1yg0dPQnLSnW3lHIkS1b0SR7",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/input-index.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_Mh5tpfouHi4goXt31OQmDmGR",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/read-first.txt\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_d6Ljhwvg6cN3FrgaVK3KqUoS",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/verification-continuation-r2-metadata.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_XKAqAtV1zh8mrYp2hFJAaye8",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/verification-continuation-r2-output.txt\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_Bi3YFiDGcFHxKy9KdDmbNfLw",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/review-reading-coverage.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_JG9TJwyDxHPL5NytRGPxBj6w",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/review-continuation-content-r2-glm.txt\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_ZQIXsl5ZCETlLaqSzuxXR5jm",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/review-continuation-content-r2-kimi.txt\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_vtGZDDp90wEcGsyoyG5gds1s",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-execution-20261011.md\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_xofABwhZ3rDWKSw86s6wZDYM",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-execution-preflight-20261011.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_yMv1NAxMktjG9OoXUOWHi1Gs",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-execution-process-20261011.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_tTkoTbdLocsZZjKKJTsPFcPa",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-execution-metadata-20261011.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_SjH5EmZ73dZkarFJVB4HZiv9",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-execution-summary-20261011.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_GVNxbTGFpMHqI7mTTjtADJaP",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-execution-audit-20261011.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_HK5dAelwQ1fDDZ56rnfb1wyB",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-execution-python-20261011.txt\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_ro8qet8aIpOKbFXklOcZTh4n",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/diagnostic-execution-stdout-20261011.txt\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_GppDgLAu2r5i3hrIJA0npJN2",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-raw-event-excerpts.txt\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_MkU8GrzhUFRFDV0NN0yycNcJ",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/native-final-resume-preflight.json\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_FZrHKxvAvaVBoOjR2icezBUT",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/native-kimi-resume-investigation-20261011.md\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_PI48Q48QJYlu9x8Ffp9icbxI",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"n_lines\":60,\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/result.md\"}"
+          }
+        },
+        {
+          "type": "function",
+          "id": "tool_4TfFo1YenoU0jzSYQcxKkfto",
+          "function": {
+            "name": "Read",
+            "arguments": "{\"path\":\"D:/project/agent-coop-g1-review/coordination/.runtime/continuation-final-supervision/diagnostic-execution-before-20261011.json\"}"
+          }
+        }
+      ]
+    }
+  ]
+}

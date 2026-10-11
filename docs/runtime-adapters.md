@@ -1,6 +1,6 @@
 # 运行时与模型扩展约定
 
-状态：设计合同，尚未实现。产品总体合同以 [design.md](design.md) 为准。
+状态：完整接入设计合同；固定隔离样例的实现、接收与未知项由[实施路线](roadmap.md)的当前结果入口维护，不等同完整接口已交付。产品总体合同以 [design.md](design.md) 为准。
 
 ## 分离的配置维度
 
@@ -42,7 +42,7 @@ RuntimeAdapter 从宿主正式支持的模型目录、配置 schema 或 ACP conf
 
 ## 适配器接口与准入
 
-具体语言 API 由 P0 选定底座后确定，先固定语义：
+以下固定通用接口语义；现有隔离样例只承接限定子集，不能将局部command/invoke实现视为全部通用API已交付：
 
 - `probe`：获取版本和能力，区分 supported、unsupported、unknown。
 - `start`：接收已经授权的 attempt、工作目录、profile、输入与预算，返回精确进程/会话身份。
@@ -61,3 +61,7 @@ manifest 声明 ID、版本、API 版本、配置 schema、能力和受支持平
 用户更换执行者时，先选择已注册适配器及模型，再核验原节点所需能力与权限。满足原合同的 profile 变更生成后继绑定；需要改变输入输出、权限、预算或流程时进入变更评审。已有 attempt 保持旧 profile；Web 显示“目标支持/已安装/能力已验证/实际调用已验证”的不同状态。
 
 本机尚未验证 OpenCode，不安装软件、不自动导入其账号，也不宣称已经接通。其他 agent 依同一合同扩展。
+
+## 固定样例权限细化候选
+
+当前GLM B18/Kimi B11后继权限修复拟采用[版本化权限合同](../coordination/requests/isolated-workflow-20261010/product-permission-contract-20261011.md)：sample派生冻结范围、adapter序列化、runtime白名单环境。该合同送审状态与实际实现/验证仅以当前请求结果为准，不因文档出现而获得live权限。
