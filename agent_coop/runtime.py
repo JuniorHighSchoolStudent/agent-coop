@@ -42,7 +42,8 @@ def _resolve_log_dir(cwd, log_dir):
     return target
 
 
-def run_bounded(argv, cwd, log_dir, timeout_seconds, output_limit_bytes):
+def run_bounded(argv, cwd, log_dir, timeout_seconds, output_limit_bytes,
+                env=None):
     _validate_budget(timeout_seconds, output_limit_bytes)
     log_path = _resolve_log_dir(cwd, log_dir)
     log_path.mkdir(parents=True, exist_ok=True)
@@ -51,6 +52,8 @@ def run_bounded(argv, cwd, log_dir, timeout_seconds, output_limit_bytes):
     popen_kwargs = {}
     if os.name != 'nt':
         popen_kwargs['start_new_session'] = True
+    if env is not None:
+        popen_kwargs['env'] = env
     proc = subprocess.Popen(
         argv, cwd=str(cwd), shell=False,
         stdout=subprocess.PIPE, stderr=subprocess.PIPE, **popen_kwargs,
@@ -217,15 +220,68 @@ def _write_logs(log_dir, out_bytes, err_bytes):
 
 def invoke(profile, prompt, cwd, log_dir, session_id):
     _verify_hashes(profile)
+    _verify_cwd(profile, cwd)
     argv = adapters.command(profile, prompt, session_id)
+    env = _build_env(profile['permissions']['environment'])
     bounded = run_bounded(argv, cwd, log_dir, profile['timeout_seconds'],
-                          profile['output_limit_bytes'])
+                          profile['output_limit_bytes'], env=env)
     receipt = adapters.parse(profile, bounded['stdout'], session_id)
     receipt['exit_code'] = bounded['exit_code']
     receipt['wall_seconds'] = bounded['wall_seconds']
     receipt['stdout_sha256'] = bounded['stdout_sha256']
     receipt['stderr_sha256'] = bounded['stderr_sha256']
     return receipt
+
+
+def _verify_cwd(profile, cwd):
+    permissions = profile.get('permissions')
+    if not isinstance(permissions, dict):
+        raise ValueError('permissions are required')
+    root = permissions.get('root')
+    if not isinstance(root, str) or not root:
+        raise ValueError('permissions.root is required')
+    actual = adapters.canonical_path(cwd)
+    if root != actual:
+        raise ValueError(f'cwd does not match permissions.root: {actual} != {root}')
+
+
+def _build_env(environment):
+    if not isinstance(environment, dict):
+        raise ValueError('permissions.environment must be an object')
+    if set(environment) != {'inherit', 'set'}:
+        raise ValueError(
+            'permissions.environment must contain exactly inherit and set')
+    inherit = environment['inherit']
+    if not isinstance(inherit, (list, tuple)):
+        raise ValueError('environment.inherit must be a list')
+    seen = {}
+    for name in inherit:
+        if not isinstance(name, str) or not name:
+            raise ValueError(
+                'environment.inherit names must be non-empty strings')
+        key = name.casefold()
+        if key in seen:
+            raise ValueError(
+                f'duplicate or case-ambiguous inherit name: {name}')
+        seen[key] = name
+    set_values = environment['set']
+    if not isinstance(set_values, dict):
+        raise ValueError('environment.set must be an object')
+    for key, value in set_values.items():
+        if not isinstance(key, str) or not key:
+            raise ValueError('environment.set keys must be non-empty strings')
+        if not isinstance(value, str):
+            raise ValueError('environment.set values must be strings')
+    env = {}
+    for name in inherit:
+        if name in os.environ:
+            env[name] = os.environ[name]
+    env.update(set_values)
+    if not env.get('PATH'):
+        raise ValueError('PATH must be non-empty in the subprocess environment')
+    if os.name == 'nt' and not env.get('SYSTEMROOT'):
+        raise ValueError('SYSTEMROOT must be non-empty on Windows')
+    return env
 
 
 def _verify_hashes(profile):

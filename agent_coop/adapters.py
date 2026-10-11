@@ -1,7 +1,71 @@
 """CodeBuddy / Kimi 命令构造与 stream-json 协议解析。"""
 import json
+import os
+from pathlib import Path
 
 PERMISSION_SCOPE = 'cli_tool_filter_not_os_sandbox'
+_FORBIDDEN_RULE_CHARS = frozenset('*?[](){},!')
+
+
+def canonical_path(path):
+    """权限字段与 cwd 的规范字符串：Path.resolve(strict=False).as_posix()；
+    Windows 仅接受本地盘符绝对路径且盘符统一大写，拒绝 UNC 与设备路径。"""
+    resolved = Path(path).resolve(strict=False)
+    if os.name == 'nt':
+        drive = resolved.drive
+        if not (len(drive) == 2 and drive[1] == ':' and drive[0].isalpha()):
+            raise ValueError('only local drive-letter absolute paths are allowed')
+        text = resolved.as_posix()
+        if text[:1].isalpha() and text[1:2] == ':':
+            text = text[:1].upper() + text[1:]
+        return text
+    return resolved.as_posix()
+
+
+def _validate_canonical_field(value, label):
+    if not isinstance(value, str) or not value:
+        raise ValueError(f'{label} must be a non-empty string')
+    if canonical_path(value) != value:
+        raise ValueError(f'{label} must be the canonical absolute path: {value!r}')
+    return value
+
+
+def _validate_file_rule(path):
+    for char in path:
+        if ord(char) < 32 or ord(char) == 127:
+            raise ValueError(f'control character in write rule: {ord(char)}')
+        if char in _FORBIDDEN_RULE_CHARS:
+            raise ValueError(f'forbidden character in write rule: {char!r}')
+    return path
+
+
+def _validate_permissions(profile):
+    permissions = profile.get('permissions')
+    if not isinstance(permissions, dict):
+        raise ValueError('permissions are required')
+    schema = permissions.get('schema')
+    if isinstance(schema, bool) or schema != 1:
+        raise ValueError('permissions.schema must be the integer 1')
+    if permissions.get('scope') != PERMISSION_SCOPE:
+        raise ValueError(f'permissions.scope must be {PERMISSION_SCOPE}')
+    _validate_canonical_field(permissions.get('root'), 'permissions.root')
+    write_files = permissions.get('write_files')
+    if not isinstance(write_files, list):
+        raise ValueError('permissions.write_files must be a list')
+    for path in write_files:
+        _validate_canonical_field(path, 'permissions.write_files entry')
+        _validate_file_rule(path)
+    environment = permissions.get('environment')
+    if not isinstance(environment, dict) or set(environment) != {'inherit', 'set'}:
+        raise ValueError(
+            'permissions.environment must contain exactly inherit and set')
+    tools = list(profile.get('tools') or [])
+    write_tools = [tool for tool in tools if tool in ('Write', 'Edit')]
+    if write_files and set(write_tools) != {'Write', 'Edit'}:
+        raise ValueError('write_files require both Write and Edit tools')
+    if not write_files and write_tools:
+        raise ValueError('read-only profile must not declare write_files')
+    return permissions
 
 
 def command(profile, prompt, session_id):
@@ -19,27 +83,35 @@ def _codebuddy_command(profile, prompt, session_id):
             or max_turns <= 0:
         raise ValueError('max_turns must be a positive integer')
     tools = list(profile.get('tools') or [])
-    tools_arg = ','.join(tools)
+    permissions = _validate_permissions(profile)
     argv = [
         profile['executable'],
         profile['entry'],
         '-p', prompt,
         '--model', profile['model'],
         '--session-id', session_id,
-        '--tools', tools_arg,
-        '--allowedTools', tools_arg,
+        '--tools', ','.join(tools),
+        '--permission-mode', 'dontAsk',
+        '--setting-sources', 'none',
+        '--disallowedTools', 'Bash',
+        '--disallowedTools', 'PowerShell',
         '--strict-mcp-config',
         '--mcp-config', '{"mcpServers":{}}',
         '--max-turns', str(max_turns),
         '--output-format', 'stream-json',
         '--verbose',
     ]
-    if 'Write' in tools or 'Edit' in tools:
-        argv += ['--permission-mode', 'acceptEdits']
+    for tool in tools:
+        if tool in ('Read', 'Glob', 'Grep'):
+            argv += ['--allowedTools', tool]
+    for path in permissions['write_files']:
+        argv += ['--allowedTools', f'Write({path})']
+        argv += ['--allowedTools', f'Edit({path})']
     return argv
 
 
 def _kimi_command(profile, prompt):
+    _validate_permissions(profile)
     return [
         profile['executable'],
         profile['entry'],

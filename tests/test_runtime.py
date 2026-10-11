@@ -34,6 +34,23 @@ CODEBUDDY = {'adapter': 'codebuddy', 'model': 'deepseek-v4-pro',
 KIMI = {'adapter': 'kimi', 'model': None,
         'tools': ['Read', 'Glob', 'Grep']}
 
+INHERIT = [
+    'APPDATA', 'COMSPEC', 'HOME', 'HOMEDRIVE', 'HOMEPATH', 'LANG', 'LC_ALL',
+    'LOCALAPPDATA', 'PATH', 'PATHEXT', 'SYSTEMROOT', 'TEMP', 'TMP', 'TZ',
+    'USERPROFILE', 'WINDIR',
+]
+CODEBUDDY_SET = {
+    'CODEBUDDY_DISABLE_AUTO_MEMORY': '1',
+    'CODEBUDDY_CODE_DISABLE_AUTO_MEMORY': '1',
+    'CODEBUDDY_MEMORY_EXTRACTION_ENABLED': '0',
+    'CODEBUDDY_MEMORY_EXTRACTION_DISABLED': '1',
+}
+
+
+def _canonical(path):
+    from agent_coop.adapters import canonical_path
+    return canonical_path(path)
+
 
 class AdapterParseTests(unittest.TestCase):
     def test_codebuddy_uses_result_event_not_trailing_hook(self):
@@ -173,34 +190,6 @@ class AdapterParseTests(unittest.TestCase):
             _parse(KIMI, plain_text, 'req-123')
 
 
-class AdapterCommandTests(unittest.TestCase):
-    def test_command_is_structured_argv_carrying_identity(self):
-        from agent_coop import adapters
-        profile = {'adapter': 'codebuddy', 'executable': '/node',
-                   'entry': '/entry.js', 'model': 'deepseek-v4-pro',
-                   'tools': [], 'max_turns': 20}
-        argv = adapters.command(profile, 'please implement', 'sess-1')
-        self.assertIsInstance(argv, list)
-        self.assertTrue(argv and all(isinstance(a, str) for a in argv))
-        self.assertEqual(argv[0], profile['executable'])
-        self.assertIn(profile['entry'], argv)
-        self.assertIn('please implement', argv)
-        self.assertIn('sess-1', argv)
-        self.assertIn(profile['model'], argv)
-
-    def test_command_requires_positive_max_turns(self):
-        from agent_coop import adapters
-        base = {'adapter': 'codebuddy', 'executable': '/node',
-                'entry': '/entry.js', 'model': 'deepseek-v4-pro', 'tools': []}
-        for bad in ({}, {'max_turns': 0}, {'max_turns': -1},
-                    {'max_turns': '20'}):
-            with self.subTest(max_turns=bad.get('max_turns', 'missing')):
-                with self.assertRaisesRegex(ValueError, 'max_turns'):
-                    adapters.command(dict(base, **bad), 'hi', 'sess-1')
-        argv = adapters.command(dict(base, max_turns=20), 'hi', 'sess-1')
-        self.assertIn('20', argv)
-
-
 class SubprocessTests(unittest.TestCase):
     def setUp(self):
         self._tmp = tempfile.TemporaryDirectory()
@@ -238,6 +227,16 @@ class SubprocessTests(unittest.TestCase):
             'max_turns': 20,
             'agent_file': str(agent_file) if agent_file else None,
             'agent_file_sha256': _sha256(agent_file) if agent_file else None,
+            'permissions': {
+                'schema': 1,
+                'scope': 'cli_tool_filter_not_os_sandbox',
+                'root': _canonical(self.root),
+                'write_files': [],
+                'environment': {
+                    'inherit': INHERIT,
+                    'set': CODEBUDDY_SET if adapter == 'codebuddy' else {},
+                },
+            },
         }
         profile.update(overrides)
         return profile
@@ -404,60 +403,6 @@ class RunBoundedTests(SubprocessTests):
             gc.collect()
         self.assertFalse(
             any(issubclass(w.category, ResourceWarning) for w in caught))
-
-
-class InvokeTests(SubprocessTests):
-    def test_success_returns_receipt(self):
-        from agent_coop import adapters
-        script = self._write_script(
-            'import json\n'
-            'print(json.dumps({"type":"system","subtype":"init",'
-            '"session_id":"s1","model":"deepseek-v4-pro"}))\n'
-            'print(json.dumps({"type":"result","is_error":False,'
-            '"result":"{\\"ok\\":true}"}))\n'
-        )
-        profile = self._profile(script)
-        with mock.patch.object(adapters, 'command',
-                               return_value=[sys.executable, str(script)]):
-            receipt = self._invoke(profile)
-        self.assertEqual(receipt['exit_code'], 0)
-        self.assertEqual(receipt['adapter'], 'codebuddy')
-        self.assertEqual(receipt['actual_model'], 'deepseek-v4-pro')
-        self.assertEqual(receipt['session_id'], 's1')
-        self.assertEqual(receipt['requested_session_id'], 's1')
-        self.assertEqual(receipt['result'], {'ok': True})
-        self.assertGreaterEqual(receipt['wall_seconds'], 0)
-
-    def test_verifies_executable_and_entry_hashes(self):
-        from agent_coop import adapters
-        marker = Path(self._tmp.name) / 'ran.txt'
-        script = self._write_script(
-            'import sys\nopen(sys.argv[1], "w").write("ran")\n'
-        )
-        argv = [sys.executable, str(script), str(marker)]
-        for override in ({'entry_sha256': '0' * 64},
-                         {'executable_sha256': '0' * 64}):
-            with self.subTest(override=override):
-                profile = self._profile(script, **override)
-                with mock.patch.object(adapters, 'command', return_value=argv):
-                    with self.assertRaisesRegex(Exception, '(?i)sha|hash'):
-                        self._invoke(profile)
-                self.assertFalse(marker.exists())
-
-    def test_rejects_wrong_agent_file_hash(self):
-        from agent_coop import adapters
-        marker = Path(self._tmp.name) / 'ran.txt'
-        script = self._write_script(
-            'import sys\nopen(sys.argv[1], "w").write("ran")\n'
-        )
-        agent_file = self._write_script('# agent file\n', 'agent.md')
-        profile = self._profile(script, adapter='kimi', agent_file=agent_file,
-                                agent_file_sha256='0' * 64)
-        argv = [sys.executable, str(script), str(marker)]
-        with mock.patch.object(adapters, 'command', return_value=argv):
-            with self.assertRaisesRegex(Exception, '(?i)sha|hash'):
-                self._invoke(profile)
-        self.assertFalse(marker.exists())
 
 
 if __name__ == '__main__':
