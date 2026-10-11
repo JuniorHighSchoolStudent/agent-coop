@@ -1,0 +1,98 @@
+test_codebuddy_allowed_tool_error_is_counted_not_fatal (tests.test_runtime.AdapterParseTests.test_codebuddy_allowed_tool_error_is_counted_not_fatal) ... ok
+test_codebuddy_raw_text_is_final_result_only (tests.test_runtime.AdapterParseTests.test_codebuddy_raw_text_is_final_result_only) ... ok
+test_codebuddy_rejects_error_and_non_json_result (tests.test_runtime.AdapterParseTests.test_codebuddy_rejects_error_and_non_json_result) ... ok
+test_codebuddy_reports_requested_and_actual_identity (tests.test_runtime.AdapterParseTests.test_codebuddy_reports_requested_and_actual_identity) ... ok
+test_codebuddy_requires_matching_init_model_and_session (tests.test_runtime.AdapterParseTests.test_codebuddy_requires_matching_init_model_and_session) ... ok
+test_codebuddy_tool_outside_profile_is_blocked (tests.test_runtime.AdapterParseTests.test_codebuddy_tool_outside_profile_is_blocked) ... ok
+test_codebuddy_uses_result_event_not_trailing_hook (tests.test_runtime.AdapterParseTests.test_codebuddy_uses_result_event_not_trailing_hook) ... ok
+test_kimi_blocks_without_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_blocks_without_resume_hint) ... ok
+test_kimi_rejects_tool_calls_and_non_json_content (tests.test_runtime.AdapterParseTests.test_kimi_rejects_tool_calls_and_non_json_content) ... ok
+test_kimi_uses_final_assistant_content_and_resume_hint (tests.test_runtime.AdapterParseTests.test_kimi_uses_final_assistant_content_and_resume_hint) ... ok
+test_parse_rejects_bad_jsonl_line (tests.test_runtime.AdapterParseTests.test_parse_rejects_bad_jsonl_line) ... ok
+test_parse_rejects_dict_result (tests.test_runtime.AdapterParseTests.test_parse_rejects_dict_result) ... ok
+test_log_bytes_are_bounded_on_disk (tests.test_runtime.RunBoundedTests.test_log_bytes_are_bounded_on_disk) ... ok
+test_log_dir_accepts_runtime_and_its_descendants (tests.test_runtime.RunBoundedTests.test_log_dir_accepts_runtime_and_its_descendants) ... ok
+test_log_dir_inside_root_but_outside_runtime_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_inside_root_but_outside_runtime_is_rejected) ... ok
+test_log_dir_junction_escape_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_junction_escape_is_rejected) ... ok
+test_log_dir_outside_root_is_rejected (tests.test_runtime.RunBoundedTests.test_log_dir_outside_root_is_rejected) ... ok
+test_nonzero_exit_raises (tests.test_runtime.RunBoundedTests.test_nonzero_exit_raises) ... ok
+test_output_limit_raises (tests.test_runtime.RunBoundedTests.test_output_limit_raises) ... ok
+test_parent_exit_with_child_holding_pipe_is_bounded_failure (tests.test_runtime.RunBoundedTests.test_parent_exit_with_child_holding_pipe_is_bounded_failure) ... ok
+test_success_leaves_no_resource_warning (tests.test_runtime.RunBoundedTests.test_success_leaves_no_resource_warning) ... ok
+test_success_returns_text_hashes_and_timing (tests.test_runtime.RunBoundedTests.test_success_returns_text_hashes_and_timing) ... ok
+test_timeout_terminates_process_tree (tests.test_runtime.RunBoundedTests.test_timeout_terminates_process_tree) ... ok
+test_command_is_structured_argv_carrying_identity (tests.test_adapter_commands.AdapterCommandTests.test_command_is_structured_argv_carrying_identity) ... ok
+test_command_requires_positive_max_turns (tests.test_adapter_commands.AdapterCommandTests.test_command_requires_positive_max_turns) ... ok
+test_disallowed_tools_are_separate_bash_and_powershell (tests.test_adapter_commands.AdapterCommandTests.test_disallowed_tools_are_separate_bash_and_powershell) ... ok
+test_environment_must_have_exactly_inherit_and_set (tests.test_adapter_commands.AdapterCommandTests.test_environment_must_have_exactly_inherit_and_set) ... ok
+test_file_rule_rejects_forbidden_characters (tests.test_adapter_commands.AdapterCommandTests.test_file_rule_rejects_forbidden_characters) ... ok
+test_kimi_keeps_agent_file_and_validates_read_only (tests.test_adapter_commands.AdapterCommandTests.test_kimi_keeps_agent_file_and_validates_read_only) ... ok
+test_kimi_rejects_write_files (tests.test_adapter_commands.AdapterCommandTests.test_kimi_rejects_write_files) ... ok
+test_missing_permissions_rejected (tests.test_adapter_commands.AdapterCommandTests.test_missing_permissions_rejected) ... ok
+test_permission_mode_dont_ask_without_accept_edits (tests.test_adapter_commands.AdapterCommandTests.test_permission_mode_dont_ask_without_accept_edits) ... ok
+test_permissions_root_must_be_canonical (tests.test_adapter_commands.AdapterCommandTests.test_permissions_root_must_be_canonical) ... ok
+test_permissions_schema_must_be_integer_one (tests.test_adapter_commands.AdapterCommandTests.test_permissions_schema_must_be_integer_one) ... ok
+test_permissions_scope_must_match (tests.test_adapter_commands.AdapterCommandTests.test_permissions_scope_must_match) ... ok
+test_pinned_identity_and_stream_json_preserved (tests.test_adapter_commands.AdapterCommandTests.test_pinned_identity_and_stream_json_preserved) ... ok
+test_read_only_profile_emits_no_write_rules (tests.test_adapter_commands.AdapterCommandTests.test_read_only_profile_emits_no_write_rules) ... ok
+test_read_only_tools_reject_write_files (tests.test_adapter_commands.AdapterCommandTests.test_read_only_tools_reject_write_files) ... ok
+test_read_tools_are_independent_allowed_argv (tests.test_adapter_commands.AdapterCommandTests.test_read_tools_are_independent_allowed_argv) ... ok
+test_tools_are_comma_separated_single_token (tests.test_adapter_commands.AdapterCommandTests.test_tools_are_comma_separated_single_token) ... ok
+test_write_files_become_exact_write_and_edit_rules (tests.test_adapter_commands.AdapterCommandTests.test_write_files_become_exact_write_and_edit_rules) ... ok
+test_write_tools_require_write_files (tests.test_adapter_commands.AdapterCommandTests.test_write_tools_require_write_files) ... ok
+test_build_env_applies_codebuddy_four_value_set (tests.test_runtime_invoke.InvokeTests.test_build_env_applies_codebuddy_four_value_set) ... ERROR
+test_build_env_copies_inherit_applies_set_and_excludes_noninherit (tests.test_runtime_invoke.InvokeTests.test_build_env_copies_inherit_applies_set_and_excludes_noninherit) ... ok
+test_build_env_rejects_duplicate_or_case_ambiguous_inherit (tests.test_runtime_invoke.InvokeTests.test_build_env_rejects_duplicate_or_case_ambiguous_inherit) ... ok
+test_build_env_rejects_missing_path (tests.test_runtime_invoke.InvokeTests.test_build_env_rejects_missing_path) ... ok
+test_build_env_rejects_missing_systemroot_on_windows (tests.test_runtime_invoke.InvokeTests.test_build_env_rejects_missing_systemroot_on_windows) ... ok
+test_build_env_rejects_non_string_set_values (tests.test_runtime_invoke.InvokeTests.test_build_env_rejects_non_string_set_values) ... ok
+test_dispatch_reserves_budget_then_rejects_before_launch (tests.test_runtime_invoke.InvokeTests.test_dispatch_reserves_budget_then_rejects_before_launch)
+依赖包 A(sample) schema2；预留后启动前拒绝保留 +1 且无 Popen。 ... ok
+test_env_none_inherits_parent_environment (tests.test_runtime_invoke.InvokeTests.test_env_none_inherits_parent_environment) ... FAIL
+test_explicit_env_does_not_modify_parent_environment (tests.test_runtime_invoke.InvokeTests.test_explicit_env_does_not_modify_parent_environment) ... ok
+test_invoke_rejects_cwd_mismatch_before_launch (tests.test_runtime_invoke.InvokeTests.test_invoke_rejects_cwd_mismatch_before_launch) ... ok
+test_rejects_wrong_agent_file_hash (tests.test_runtime_invoke.InvokeTests.test_rejects_wrong_agent_file_hash) ... ok
+test_run_bounded_explicit_env_passes_to_child (tests.test_runtime_invoke.InvokeTests.test_run_bounded_explicit_env_passes_to_child) ... ok
+test_sample_initialize_derives_profile_and_command (tests.test_runtime_invoke.InvokeTests.test_sample_initialize_derives_profile_and_command)
+依赖包 A(sample) schema2 权限派生；A 未合入时失败属依赖待合。 ... FAIL
+test_success_returns_receipt (tests.test_runtime_invoke.InvokeTests.test_success_returns_receipt) ... ok
+test_verifies_executable_and_entry_hashes (tests.test_runtime_invoke.InvokeTests.test_verifies_executable_and_entry_hashes) ... ok
+
+======================================================================
+ERROR: test_build_env_applies_codebuddy_four_value_set (tests.test_runtime_invoke.InvokeTests.test_build_env_applies_codebuddy_four_value_set)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-pp-b-20261011\tests\test_runtime_invoke.py", line 150, in test_build_env_applies_codebuddy_four_value_set
+    env = _build_env(environment)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\agent-coop-pp-b-20261011\agent_coop\runtime.py", line 283, in _build_env
+    raise ValueError('SYSTEMROOT must be non-empty on Windows')
+ValueError: SYSTEMROOT must be non-empty on Windows
+
+======================================================================
+FAIL: test_env_none_inherits_parent_environment (tests.test_runtime_invoke.InvokeTests.test_env_none_inherits_parent_environment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-pp-b-20261011\tests\test_runtime_invoke.py", line 121, in test_env_none_inherits_parent_environment
+    self.assertEqual(result['stdout'], 'present')
+AssertionError: 'present\r\n' != 'present'
+- present
+
+?        -
++ present
+- 
+
+
+======================================================================
+FAIL: test_sample_initialize_derives_profile_and_command (tests.test_runtime_invoke.InvokeTests.test_sample_initialize_derives_profile_and_command)
+依赖包 A(sample) schema2 权限派生；A 未合入时失败属依赖待合。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\project\agent-coop-pp-b-20261011\tests\test_runtime_invoke.py", line 221, in test_sample_initialize_derives_profile_and_command
+    self.assertEqual(state['config']['schema'], 2)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 57 tests in 20.055s
+
+FAILED (failures=2, errors=1)

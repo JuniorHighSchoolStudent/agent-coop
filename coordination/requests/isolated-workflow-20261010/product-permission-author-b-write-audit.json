@@ -1,0 +1,141 @@
+{
+  "package": "PP-B",
+  "owner": "P2",
+  "root": "D:/project/agent-coop-pp-b-20261011",
+  "candidate": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+  "head": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+  "status": " M agent_coop/adapters.py\n M agent_coop/runtime.py\n M tests/test_runtime.py\n?? tests/test_adapter_commands.py\n?? tests/test_runtime_invoke.py\n",
+  "changed": [
+    "agent_coop/adapters.py",
+    "agent_coop/runtime.py",
+    "tests/test_runtime.py",
+    "tests/test_adapter_commands.py",
+    "tests/test_runtime_invoke.py"
+  ],
+  "unexpected_files": [],
+  "outside_write_calls": [],
+  "write_calls": [
+    {
+      "id": "call_00_HpYU95X43YLA28shYJiP7357",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-b-20261011/agent_coop/adapters.py"
+    },
+    {
+      "id": "call_00_ET_IcUX6tlhFJBtruxXafLv5902",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-b-20261011/agent_coop/adapters.py"
+    },
+    {
+      "id": "call_00_wH1Z13FbNfLMKMNsykee9424",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-b-20261011/agent_coop/runtime.py"
+    },
+    {
+      "id": "call_00_ET_pSp4ePkGGinjSk5q3KgN3048",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-b-20261011/agent_coop/runtime.py"
+    },
+    {
+      "id": "call_00_FKauTyYP5sV2Rv1Znm8K0650",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-b-20261011/tests/test_runtime.py"
+    },
+    {
+      "id": "call_00_ET_nkALrzlMCJ0eMcppWDoW2820",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-b-20261011/tests/test_runtime.py"
+    },
+    {
+      "id": "call_00_ET_ciV9KKHj9CMjD96FwTDl3942",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-b-20261011/tests/test_runtime.py"
+    },
+    {
+      "id": "call_00_ET_QOEor31yKJwONdLeAUjr2465",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-b-20261011/tests/test_runtime.py"
+    },
+    {
+      "id": "call_00_Mvgb3okdncjZ7W9394y88832",
+      "tool": "Write",
+      "path": "D:/project/agent-coop-pp-b-20261011/tests/test_adapter_commands.py"
+    },
+    {
+      "id": "call_00_W9dyfcjVJkz8l3EiyzAQ9624",
+      "tool": "Write",
+      "path": "D:/project/agent-coop-pp-b-20261011/tests/test_runtime_invoke.py"
+    }
+  ],
+  "files": [
+    {
+      "path": "agent_coop/adapters.py",
+      "sha256": "e39660936b61189b41446768fd047f35f63e7bb0e0a50c95af8de8799f81a20b",
+      "bytes": 10508,
+      "physical_lines": 278,
+      "nlink": 1,
+      "is_symbolic_link": false,
+      "baseline_sha256": "3039f1c954865c53f780452e0ded8bc3ce31afe6a88e24dc9e15f33a25bf9a27"
+    },
+    {
+      "path": "agent_coop/runtime.py",
+      "sha256": "a72bc950084dc058d775563daabf487f470a7d360e669b90ed47c07d4a3b5c60",
+      "bytes": 10563,
+      "physical_lines": 309,
+      "nlink": 1,
+      "is_symbolic_link": false,
+      "baseline_sha256": "96f957ca3667ae16d86c33bc726a2efeda9a5f158094e38a73bb641eb4ed2c79"
+    },
+    {
+      "path": "tests/test_runtime.py",
+      "sha256": "19e012e9afef9961fd544b52100af92086af25782820facc94245aa33aa4b295",
+      "bytes": 17523,
+      "physical_lines": 409,
+      "nlink": 1,
+      "is_symbolic_link": false,
+      "baseline_sha256": "280812373e8b0fcae3255b2854177eff8d1c780ba6a66807f78508137495ded2"
+    },
+    {
+      "path": "tests/test_adapter_commands.py",
+      "sha256": "38e59eb354028aa7cbf62b6f700ac7213490e8479d0fad2f9cdad7c1e4710fef",
+      "bytes": 9553,
+      "physical_lines": 225,
+      "nlink": 1,
+      "is_symbolic_link": false,
+      "baseline_sha256": null
+    },
+    {
+      "path": "tests/test_runtime_invoke.py",
+      "sha256": "142530ad6d15f02ac568308ea3b49497d06173dfd7981d00e56bdb821c1f8ec9",
+      "bytes": 12692,
+      "physical_lines": 267,
+      "nlink": 1,
+      "is_symbolic_link": false,
+      "baseline_sha256": null
+    }
+  ],
+  "tracked_diff_sha256": "d6ac50a97f6a8dc91af7251b13e38b9ab960f70104ae6230e9f70cc6e9e6d8af",
+  "completion": {
+    "candidate": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T01:20:32.1412340+00:00",
+    "wall_seconds": 505.4559522,
+    "final_head": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+    "final_status": [
+      " M agent_coop/adapters.py",
+      " M agent_coop/runtime.py",
+      " M tests/test_runtime.py",
+      "?? tests/test_adapter_commands.py",
+      "?? tests/test_runtime_invoke.py"
+    ]
+  },
+  "final_result": {
+    "subtype": "error_during_execution",
+    "is_error": true,
+    "errors": [
+      "Max turns (20) exceeded"
+    ],
+    "num_turns": 84
+  },
+  "validation": "not run by dispatcher; scope audit is not content acceptance",
+  "snapshot_at": "2026-10-11T01:21:54.020Z"
+}

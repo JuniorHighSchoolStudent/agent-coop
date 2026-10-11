@@ -1,0 +1,101 @@
+{
+  "package": "PP-A",
+  "owner": "P6",
+  "root": "D:/project/agent-coop-pp-a-20261011",
+  "candidate": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+  "head": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+  "status": " M agent_coop/sample.py\n M tests/test_cli.py\n M tests/test_sample.py\n",
+  "changed": [
+    "agent_coop/sample.py",
+    "tests/test_cli.py",
+    "tests/test_sample.py"
+  ],
+  "unexpected_files": [],
+  "outside_write_calls": [],
+  "write_calls": [
+    {
+      "id": "call_00_7wiEgBBU5OfblFkVd9Py8934",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-a-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_00_ynG4Fe352pZLirz9XeLK5596",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-a-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_00_ET_Qgm8JVeNSAXy4vjYQG7y6343",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-a-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_00_ZL9odQaFx3hhEI9LbHoh6935",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-a-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_00_GQnwt6924PWSz8VG4HBy4216",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-a-20261011/tests/test_sample.py"
+    },
+    {
+      "id": "call_00_9vTZ5sVO2OSsbp0yzEs49602",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-a-20261011/tests/test_sample.py"
+    },
+    {
+      "id": "call_00_OufrtFjF7ItMqa6KXJ5v1953",
+      "tool": "Edit",
+      "path": "D:/project/agent-coop-pp-a-20261011/tests/test_cli.py"
+    }
+  ],
+  "files": [
+    {
+      "path": "agent_coop/sample.py",
+      "sha256": "cf8c2de308dcf79af7bb15730f04b038f66f0c877f0d41ca1fa7fae202cc1d41",
+      "bytes": 14465,
+      "physical_lines": 304,
+      "nlink": 1,
+      "is_symbolic_link": false,
+      "baseline_sha256": "2c3c8c6df35d246890cbba4f502c2ed9d747d102fe4a0b05a4fb5ed0aa45157c"
+    },
+    {
+      "path": "tests/test_cli.py",
+      "sha256": "eb2c4a5df969faf05ec4637f42959092b6d58e5ecfd52ec4b5e626fee854e7f3",
+      "bytes": 8873,
+      "physical_lines": 176,
+      "nlink": 1,
+      "is_symbolic_link": false,
+      "baseline_sha256": "ebf3a32845b73ef8498621465cc217c238636aff5c189f9d6a8501b649bac347"
+    },
+    {
+      "path": "tests/test_sample.py",
+      "sha256": "7466372620cc68cdd493c868299b8d8e0a05a644b64bc1c1fc1614fd34836fd3",
+      "bytes": 16828,
+      "physical_lines": 343,
+      "nlink": 1,
+      "is_symbolic_link": false,
+      "baseline_sha256": "033489384cc132f0765792bec788424d4c0e76bacd789b3ad4d2ad68d9dff45a"
+    }
+  ],
+  "tracked_diff_sha256": "61bfecf93ea1c32357797226af7141a9e0069c8971e81fbff8471f4a63c8b761",
+  "completion": {
+    "candidate": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T01:20:31.8084781+00:00",
+    "wall_seconds": 504.9685302,
+    "final_head": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+    "final_status": [
+      " M agent_coop/sample.py",
+      " M tests/test_cli.py",
+      " M tests/test_sample.py"
+    ]
+  },
+  "final_result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 98
+  },
+  "validation": "not run by dispatcher; scope audit is not content acceptance",
+  "snapshot_at": "2026-10-11T01:21:53.852Z"
+}

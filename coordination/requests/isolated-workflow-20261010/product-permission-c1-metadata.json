@@ -1,0 +1,12 @@
+{
+  "candidate": "67a86ce33755e11dda990c0ac7bb3b4d78edd307",
+  "python": "C:/Users/june/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+  "unchanged": true,
+  "exit_code": 1,
+  "elapsed_seconds": 34.2899126,
+  "command": "python -B -m agent_coop verify",
+  "output_sha256": "61236c018e96d9ac9b98bc63e6f5757384b102bd089d8ae28fab4552cabd912b",
+  "before_sha256": "14e08f7b33de0cf0bee2abfe07a09296fa50211f37b53a64a384e1b1b78761de",
+  "started_utc": "2026-10-11T01:22:42.5792000Z",
+  "after_sha256": "14e08f7b33de0cf0bee2abfe07a09296fa50211f37b53a64a384e1b1b78761de"
+}

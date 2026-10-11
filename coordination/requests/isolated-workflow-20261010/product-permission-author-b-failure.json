@@ -1,0 +1,49 @@
+{
+  "type": "result",
+  "subtype": "error_during_execution",
+  "is_error": true,
+  "uuid": "01a1288c-1753-7483-8b0f-664f72290659",
+  "session_id": "agent-coop-pp-p2-b-20261011",
+  "duration_ms": 502033,
+  "duration_api_ms": 500878,
+  "num_turns": 84,
+  "total_cost_usd": 0,
+  "usage": {
+    "input_tokens": 1685023,
+    "output_tokens": 70277,
+    "cache_creation_input_tokens": 95647,
+    "cache_read_input_tokens": 1589376,
+    "cache_creation": null,
+    "server_tool_use": null,
+    "service_tier": null
+  },
+  "permission_denials": [],
+  "errors": [
+    "Max turns (20) exceeded"
+  ],
+  "modelUsage": {
+    "deepseek-v4-pro": {
+      "inputTokens": 0,
+      "outputTokens": 26749,
+      "cacheReadInputTokens": 1086208,
+      "cacheCreationInputTokens": 11363,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000
+    }
+  },
+  "_meta": {
+    "codebuddy.ai/contextUsed": 130784,
+    "codebuddy.ai/usageByCategory": {
+      "systemPrompt": 3797,
+      "conversation": 78251,
+      "tools": 48690,
+      "mcp": 0,
+      "skills": 46,
+      "version": 1
+    },
+    "traceparent": "00-ab0884d71eb1ebfc1d2f37513509846d-8b46380b4be07b58-01",
+    "baggage": "codebuddy.session_id=agent-coop-pp-p2-b-20261011,codebuddy.conversation_request_id=01a128846e0576bd8774c1d9ed0f5c97"
+  },
+  "_requestId": "01a128846e0576bd8774c1d9ed0f5c97",
+  "__timestamp": "2026-10-11T01:20:32.094Z"
+}

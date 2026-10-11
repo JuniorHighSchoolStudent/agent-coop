@@ -1,0 +1,38 @@
+实现完成。以下是交付说明。
+
+## 修改文件清单
+
+| 文件 | 变更 |
+|---|---|
+| `agent_coop/sample.py` | 新增权限派生与冻结/dispatch 重验；`config.schema` 1→2；`validate_profiles` 拒绝输入 `permissions`；`dispatch` 预留前加权限/写目标校验 |
+| `tests/test_sample.py` | 新增 `SamplePermissionTests`（12 项正负用例）与 `_build_profiles`/`FROZEN_INHERIT`/`CODEBUDDY_SET` fixture |
+| `tests/test_cli.py` | 新增 `test_init_rejects_supplied_permissions_before_root_creation` |
+
+`tests/test_flow.py` 未改动（既有暂停/恢复、跨包交接路径原样覆盖）。
+
+## 责任与消费者 / 复用结果
+
+- 责任：P6（sample 唯一授权 owner），仅派生冻结字段；P2 为协议/执行 owner，消费 `permissions.root/write_files/environment`。
+- 复用：`paths._reject_reparse_chain`（原始 reparse 先验）、`Store`/`gates.validate_binding`/`implementation_digest`、既有 `dispatch`/`invoke`/`checked` 入口；未改 gates/Store，未新增 config/policy 模块。
+- 关键实现点（`agent_coop/sample.py`）：
+  - `canonical_path`（:23）先原始 reparse 再 `resolve(strict=False).as_posix()`；Windows 仅本地盘符绝对路径、盘符大写、拒 UNC/设备，其余组件保留 resolve 拼写。
+  - `_derive_permissions`（:78）/`_derive_profiles`（:87）唯一生成点：深复制、`schema=1`、固定 `scope`、`root`、implement 唯一 `workspace/feature.py` 写集、`environment={inherit:17名, set}`（CodeBuddy 4 值 / Kimi 空）。
+  - `dispatch`（:195）顺序：`validate_binding` → `_validate_permissions`（schema2/字段/角色工具/冻结值逐字符） → `_validate_write_targets`（去重/绝对/根内/reparse/普通文件 nlink=1） → 才 `calls_used+1` 并 invoke。
+
+## 合同覆盖与测试案例（均验证目标拒绝原因）
+
+- 注入拒绝、深复制不变调用者、冻结 schema2+permissions 精确值、config schema1、权限未知版本(2)、缺 permissions、未知字段、root 搬移/反斜线/尾分隔非规范表示、额外写目标、现存普通文件硬链 nlink>1、junction reparse、跨包交接（sample 生成 profile 经真实 invoke/command→Popen 哨兵，预留+1、Popen 恰一次、无实际启动）。
+- 预留前拒绝类均断言 `invoke` 未调用且 `calls_used` 保持 0；交接类断言 `Popen` 已进入且预留为 1。
+
+## 跨包依赖未验证项（依赖待合，不求绿）
+
+- 本地 `runtime.py`/`adapters.py` 仍是旧版（B/P2 在独立树）：`run_bounded(env=...)`、`invoke` 显式 env 构造、adapter 逐文件 argv/permissions 序列化均未落地。本包 `dispatch` 保持旧 `invoke(profile,prompt,root,log_dir,session_id)` 签名未破坏边界；交接测试仅证明冻结 profile 能被现有 invoke 边界消费（无 KeyError/TypeError），**不**证明 env/cwd/写规则语义，须待 P2 合入后组合验证。
+
+## 软目标内聚说明
+
+- `sample.py` 305 行，超 300 软目标 5 行；无函数超 40（`validate_profiles` 35、`_validate_permission` 27）。超软因权限派生+校验为同一 owner 的高内聚簇，未压行/删注释。
+- `test_sample.py` 344 行，超 300 软目标 44 行；无函数超 40。受唯一写集限制，sample 权限正负用例只能落在本文件，12 项各验证独立拒绝原因，符合"逐目标验证拒绝"要求。
+
+## 未运行事实
+
+- 未运行任何测试/验证（按约束不 Shell、不 commit、不启子进程/模型）。以上测试为已实现代码，未声称通过；运行、组合验证与受审集成由根负责。

@@ -1,0 +1,59 @@
+{
+  "status": "admitted after dual confirmation and native plan supervision",
+  "candidate": "4279bd915459d46df7b9bf9ef6d8ca3fb528fa0f",
+  "root": "D:/project/agent-coop-pp-b-20261011",
+  "session": "agent-coop-pp-p2-b-20261011",
+  "package": "PP-B",
+  "owner": "P2",
+  "wrapper_seat_alias": "p3",
+  "write_files": [
+    "D:/project/agent-coop-pp-b-20261011/agent_coop/adapters.py",
+    "D:/project/agent-coop-pp-b-20261011/agent_coop/runtime.py",
+    "D:/project/agent-coop-pp-b-20261011/tests/test_runtime.py",
+    "D:/project/agent-coop-pp-b-20261011/tests/test_adapter_commands.py",
+    "D:/project/agent-coop-pp-b-20261011/tests/test_runtime_invoke.py"
+  ],
+  "existing_files": [
+    {
+      "path": "D:/project/agent-coop-pp-b-20261011/agent_coop/adapters.py",
+      "sha256": "3039f1c954865c53f780452e0ded8bc3ce31afe6a88e24dc9e15f33a25bf9a27"
+    },
+    {
+      "path": "D:/project/agent-coop-pp-b-20261011/agent_coop/runtime.py",
+      "sha256": "96f957ca3667ae16d86c33bc726a2efeda9a5f158094e38a73bb641eb4ed2c79"
+    },
+    {
+      "path": "D:/project/agent-coop-pp-b-20261011/tests/test_runtime.py",
+      "sha256": "280812373e8b0fcae3255b2854177eff8d1c780ba6a66807f78508137495ded2"
+    }
+  ],
+  "environment": {
+    "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+    "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+    "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+    "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+  },
+  "authorization": "root explicit 4279bd9 parallel author admission after original dual S0 revision and native plan PASS",
+  "contract_revision": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+  "budget": {
+    "max_turns": 20,
+    "wall_seconds": 600,
+    "calls_for_package": 1,
+    "batch_after_two_authors": 6,
+    "batch_limit": 15,
+    "native_used": 1,
+    "native_limit": 2
+  },
+  "runtime_preflight": {
+    "observed_at": "2026-10-11T01:12:05.908Z",
+    "version": "2.164.0",
+    "node_version": "v24.14.0",
+    "sha256": {
+      "C:/Program Files/nodejs/node.exe": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6",
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65",
+      "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed"
+    }
+  },
+  "remaining_preflight": "wrapper immediately validates target ancestors non-reparse/nlink and all existing target hashes before launch"
+}
