@@ -1,0 +1,122 @@
+{
+  "candidate": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+  "administrative_commit": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+  "actual_model": "kimi-k3-2",
+  "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+  "raw_sha256": "23b6c37a8a1c333dc8c5393ba71d8d6092b5b251dbbccf66d6154152de9564c3",
+  "receipt_sha256": "4ebc8af44a2ea4c1878eaf0300aa7f4cf2239a5738273cfdc3351a1d4b8c3d79",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+    "model": "kimi-k3-2",
+    "seat": "kimi",
+    "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\product-permission-s0-revision-kimi.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "5a703d32280ea9efbb453a01861566d0a0156f800527935ca12d670bf63b72f4",
+    "started_at": "2026-10-11T00:57:50.5498756+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "product-permission-s0-revision",
+      "candidate": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+      "administrative_commit": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+      "prior": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/input-index.json",
+      "input_index_sha256": "fa5992c171160dd2cd6334fccffc111fa5ebae2e8acdd42264c5d21d9c6dbf45",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1,
+        "batch_after_dispatch": 4,
+        "batch_limit": 15
+      },
+      "permission": "existing read-only tool selection; legacy comma allow not claimed effective",
+      "authorization": "root explicit sole S0 revision dual review",
+      "session": "agent-coop-g1-kimi-r1-34bce56b-20261010"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "exact_write_files": [],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "原kimi独立审核席，原session agent-coop-g1-kimi-r1-34bce56b-20261010、原cwd D:/project/agent-coop-g1-review。本轮是预算内唯一S0修订复核，候选5f9d4309dcdda3cb94b217e82c6006acc719f7db，前版c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4。一次20turn/600秒，只Read/Glob/Grep，无shell/写文件或memory/委派。\n直接Read D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/input-index.json以及其中新contract全文、新plan全文、revision-delta.patch、本人首轮S0票和result当前段。不得只复述首轮记忆；不读另一席本轮新票，不重审未变历史全量。代码仍ed65079，未派作者。\n本次三项必须逐条裁定：1 canonical=Path.resolve(strict=False).as_posix，Windows盘符大写、其他组件沿resolve拼写、拒UNC/设备/非规范冻结表示，原始reparse先检查；核生成/比较/可证边界及反例责任是否可实现，不误称resolve安全隔离。2 sample预留calls_used之前的自身校验失败零计数；invoke阶段启动前失败保留预留，不等于实际模型调用；核各owner和异常出口无矛盾、不得偷抹消耗或把预留当成功调用。3 若内容有修复，必须准确候选C2双批准后才产品矩阵，之后最多每席一次限定结果确认，不能第三代码修复轮。\n确认fixture/schema校验owner说明：A在sample校验、不改gates/Store；B更新SubprocessTests._profile并为Kimi提供permissions，必要时InvokeTests整体迁移继承原无测试基类，不复制helper；唯一写集不扩。\n并行许可必须对本新版本重新明确：首轮GLM条件合同变动回串行，因此旧并行票不沿用。请明确新合同冻结后“批准A/B并行”或“仍须A→B串行”，附必要前置。两席都新批准才可并行，否则默认串行；容量4不改。\n新预算保持15CB/2native，本轮两次后累计4/15、0/2；这是唯一合同修订双复核，未通过则具名阻断，不能自动追加/换身份。旧11提案仅历史。上轮DS06与未改条款可同hash沿用，不冒称新增实读。writer、live、产品矩阵仍未准入，B18/B11只由原席按产品真实证据处置。\n输出中文：实际读取范围，三澄清逐项支持/阻断与理由，schema/fixture/唯一owner，针对准确新版本并行/串行，预算/顺序，具名残余finding与整体S0修订结论。不自动发native/writer；完成后交根确认输入完整再决定计划监督。",
+      "--model",
+      "kimi-k3-2",
+      "--resume",
+      "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "669744206af9c5d562498b3e71f5fc823be6c5151278600326ccedadbc9f5a2d",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-g1-review"
+  },
+  "completion": {
+    "candidate": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T01:00:26.3516393+00:00",
+    "wall_seconds": 155.8017637,
+    "final_head": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "Read_81_3d1d29eb",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/input-index.json"
+      }
+    },
+    {
+      "id": "Read_82_a8888e0e",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/revision-delta.patch"
+      }
+    },
+    {
+      "id": "Read_83_33dc9a56",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/product-permission-contract-20261011.md"
+      }
+    },
+    {
+      "id": "Read_84_1e78fe51",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/product-permission-plan-20261011.md"
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 256
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

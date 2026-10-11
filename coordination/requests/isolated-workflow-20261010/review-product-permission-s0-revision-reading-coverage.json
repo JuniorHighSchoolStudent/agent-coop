@@ -1,0 +1,50 @@
+[
+  {
+    "seat": "glm",
+    "model": "glm-5.3",
+    "session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "native_reads": [
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0-revision\\glm\\input-index.json"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0-revision\\glm\\revision-delta.patch"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0-revision\\glm\\product-permission-contract-20261011.md"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0-revision\\glm\\product-permission-plan-20261011.md"
+      }
+    ],
+    "limitations": [
+      "New contract, plan and delta read directly; result current-state change was read through delta, not a separate result.md Read.",
+      "Own first S0 vote reused from prior session; no new source Read; no other-seat current vote supplied.",
+      "Kimi remarks about resolve case and special aliases are reviewer inference, not new filesystem probe evidence. No alias coverage claim expanded."
+    ]
+  },
+  {
+    "seat": "kimi",
+    "model": "kimi-k3-2",
+    "session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "native_reads": [
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/input-index.json"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/revision-delta.patch"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/product-permission-contract-20261011.md"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/kimi/product-permission-plan-20261011.md"
+      }
+    ],
+    "limitations": [
+      "New contract, plan and delta read directly; result current-state change was read through delta, not a separate result.md Read.",
+      "Own first S0 vote reused from prior session; no new source Read; no other-seat current vote supplied.",
+      "Kimi remarks about resolve case and special aliases are reviewer inference, not new filesystem probe evidence. No alias coverage claim expanded."
+    ]
+  }
+]

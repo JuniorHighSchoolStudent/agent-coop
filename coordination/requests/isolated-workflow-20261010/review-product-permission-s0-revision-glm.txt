@@ -1,0 +1,26 @@
+# S0修订复核（GLM原席 · glm-5.3 · 只读 · 唯一预算内复核）
+
+## 0. 实际读取范围
+input-index.json、revision-delta.patch（c7cdf48→5f9d430全diff）、新contract全文（557c4072…）、新plan全文（26544dd8…）、result.md当前段（经delta确认更新为“2/15已用、唯一修订复核准入”）。本席首轮S0票（ff657386…）及c7cdf48版合同/计划/文档六件在首轮已全读，本轮经delta确认**除contract/plan/result三处外无其他变更**，未变条款（含DS-01–06、环境合同、矩阵门槛、预算分项）按首轮实读沿用，不冒称新增实读；未读另一席本轮意见；源码仍ed65079未派作者。
+
+## 1. 三项澄清逐项裁定
+**① 规范路径表示——支持。**`Path.resolve(strict=False).as_posix()`＋盘符大写＋拒UNC/设备＋保留resolve组件拼写不casefold＋冻结字段逐字符相等（反斜线/点段/尾分隔符/非规范盘符不作替代表示），生成端（sample）与比较端（invoke将实际cwd转同一表示）同函数输出确定性相等，可实现、可测试；**关键安全序正确**：先原始路径reparse检查、明文禁止“先resolve后省略reparse检查”（resolve会跟随junction，颠倒顺序即逃逸）；不宣称覆盖特殊文件系统别名、不误称resolve为安全隔离。反例责任明确落在P6（非规范冻结表示/root改变拒绝）与P2（表示校验/cwd不一致拒绝）测试。本项解决本人首轮advisory①。
+
+**② 预留计数语义——支持。**边界无矛盾且与既有合同自洽：sample预留前失败（绑定/配置/业务权限/路径）零计数无invoke；预留后invoke内CLI语法/cwd/必需环境/启动失败**不回退计数**、且不等于实际模型调用（须测“保留计数且无Popen”）；P2不为零计数建第二授权计算器、P6不假报预留为已调用。与interfaces“模型调用先持久增加calls_used、无自动重试”及test_review_wrong_verdict（calls_used=2含两次真实调用）一致；重试将再次预留，无双重记账空间。
+
+**③ 顺序硬条件——支持，并确认其为准确口径。**有修复时：C1→修复→组合重验→**双席C2批准准确新内容→矩阵→限定结果确认**，明文禁止矩阵先于修复后C2；无修复时：C1双批准→矩阵→C2兼结果确认。本人首轮S0票的顺序简写（“…矩阵→C2/确认”）确有歧义，属本席表述缺陷；按修订声明，原票不改写、以本次双席复核裁定为准——本人确认本硬条件。
+
+## 2. schema/fixture校验owner确认
+✓schema2校验留在sample.dispatch，A不改gates/Store，既有合成Store fixture的validate_binding要求不扩大；✓B更新`SubprocessTests._profile`为CodeBuddy/Kimi提供合法permissions与环境fixture，InvokeTests必要时整体迁移并**继承原无测试方法基类**（显式import、不复制helper、不重复发现旧测试）；A/B唯一写集不变（A：sample/test_sample/test_flow/test_cli；B：adapters/runtime/test_runtime/test_adapter_commands/test_runtime_invoke），无扩集。
+
+## 3. 并行/串行（对新版本5f9d430重新裁定）
+**批准A/B并行**，前置（针对新版重申）：①接口权威=5f9d430所载合同字节，B只依合同不依A实现；②写集不相交、同文件互斥（无共享文件）；③组合C1对同一精确候选审全链（sample→profile→adapter→Popen），漂移=具名finding修复不重派；④**本版之后若合同再有修订或Kimi席本轮不批准→自动回退A→B串行**。因原串行为Kimi席条件，并行仅在Kimi席亦对新版明示批准时生效。容量4不改、不为凑数增包。修订使合同更精确（表示/计数两端共享规范），降低并行接口漂移风险，故本人维持批准。
+
+## 4. 预算与顺序
+本轮为“一次合同修订双席复核”，双席后累计**4/15 CodeBuddy、0/2 native**；剩余=作者2＋C1双2＋最多两finding修复2＋C2双2＋矩阵1＋必要时限定结果确认2，上限自洽且充足。两轮内容上限、限定确认不产生第三代码修复轮、修复改V协议则V不运行、修订仅此一次（本次未通过即具名阻断、不再追加、不换身份）。旧11提案仅历史，旧批17/18不结转。
+
+## 5. 残余finding
+**无新增具名finding**——三项澄清均成立且解决首轮advisory①（规范表示）与计数隐含边界。残余C1核验条件：①测试迁移后discovery唯一性证明；②环境白名单对真实CodeBuddy CLI认证的sufficiency仍属未知（矩阵若因环境失败为合法证据、不得扩名单）；③root↔cwd与写集比较的反例测试须按新规范表示落实。B18/B11维持open，仅原席按产品真实证据处置。
+
+## 6. 整体S0修订结论
+**批准**：新合同（5f9d430字节）、新计划、三澄清、A/B并行（附第3节前置并须Kimi席同批）、15/2预算与顺序硬条件。本票后由根确认两席输入完整，再启动native计划监督；writer、产品矩阵、live均未准入，本票不派发、不预支native/作者/B18/B11关闭。若Kimi席对本版不予批准，按默认A→B串行继续，无需再修订合同。

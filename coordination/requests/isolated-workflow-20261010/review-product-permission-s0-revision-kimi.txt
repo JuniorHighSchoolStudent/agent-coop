@@ -1,0 +1,30 @@
+# S0修订复核 · 席B（原kimi-k3-2 session，预算内唯一修订轮）
+
+**实读**：input-index、revision-delta.patch全文（contract+2段、plan+2段、result当前段）、新contract全文、新plan全文；本人首轮S0票在上下文（未变条款与同hash DS-01–06沿用首轮实读，不冒称新读）。未读他席本轮票。result当前段事实准确（首轮双席附条件支持、三处澄清、B18/B11 open、未派作者）。
+
+## 三项澄清逐条裁定
+
+**1. 规范表示（contract新段一）→ 支持**
+先原始路径reparse检查、后`Path.resolve(strict=False).as_posix()`的次序被显式强制（"不得先resolve再省略原始reparse检查"）——这正是resolve会静默穿越junction的关键防线✓。Windows仅本地盘符绝对、盘符大写、拒UNC/设备路径；保留resolve组件拼写不做全路径casefold；冻结字段逐字符相等、拒反斜线/点段/尾分隔符/非规范盘符作为替代表示；invoke把实际cwd转同一表示再比较。可实现性与边界诚实：对已存在组件resolve归一到盘上真实大小写（大小写别名收敛✓），8.3短名/挂载点/subst等归"特殊别名不宣称覆盖"且表现为比较失败即拒（fail-closed）✓；不误称resolve为安全隔离，仅作比较规范化，真实边界仍是CLI过滤+受信宿主✓。反例责任可实现：sample派生侧拒非规范、adapter验表示、invoke转表示比较。C1明确期望：A/B测试须含小写盘符、反斜线形式、UNC、点段表示的拒绝用例（合同已具名这些拒绝规则，测试分类随之覆盖）。
+
+**2. 预留计数语义（contract新段二）→ 支持**
+"无新增调用计数"精确限定为sample在预算预留**之前**的绑定/配置/业务权限/路径校验；通过后calls_used预留一次，invoke阶段（CLI语法/cwd/必需环境/启动）失败不回退——与既有"失败即blocked、不自动重试消耗预算"及现行dispatch先计数后invoke的保守语义一致，消除了旧文"拒绝且无计数"与invoke失败的字面矛盾✓。owner分界清晰：P6拥有预留点、不得把预留假报为已调用模型；P2拥有预留后启动前拒绝、不得为零计数另造授权计算器；测试须分别证明预留前拒绝零计数、预留后启动前拒绝保留计数且无Popen——两类出口无矛盾、无偷抹消耗✓。
+
+**3. 修复后顺序硬条件（plan新段）→ 支持**
+有修复：C1→修复→组合重验→双席C2批准准确新内容→矩阵→限定结果确认；**禁止矩阵先于修复后C2**；无修复才是C1双批准→矩阵→C2结果确认。消除GLM原票简写歧义且不改写原件✓；限定结果确认不产生第三代码修复轮✓。
+
+## schema/fixture/owner确认
+
+schema2校验留在sample.dispatch、不扩gates.validate_binding对既有合成Store fixture的要求——test_archive等合成fixture链路不受影响✓；A写集sample/test_sample/test_flow/test_cli、B写集adapters/runtime/test_runtime/test_adapter_commands/test_runtime_invoke均未扩大✓；B须更新SubprocessTests._profile为CodeBuddy/Kimi合法permissions+环境fixture、InvokeTests迁移继承原无测试基类、禁复制helper/重复发现✓。建议（advisory）：发包输入给两包同一组canonical示例向量（root与feature.py的规范字符串），避免A派生表示与B fixture各自拼写漂移。
+
+## 并行/串行（对新版本重新裁定）
+
+旧并行票因合同输入变更不沿用，本轮重新明确：**批准A/B并行**（候选5f9d430，附前置）。理由：两处澄清反而收窄了跨包歧义——规范表示成为逐字符的共享fixture权威、预留计数owner分界显式、B的fixture义务已具名；写集仍不相交。前置（任一缺失即回A→B串行）：①本合同按准确hash冻结，本轮已是唯一修订复核，再变更即阻断/串行，无第三修订轮；②两包逐字实现字段/表示/预留语义；③交接失败标"依赖待合"不冒称通过；④组合verify+C1门槛不变；⑤须另一席同样新批准，否则默认串行。容量4不改。
+
+## 预算与顺序
+
+15 CodeBuddy/2 native维持，分项不变；本轮后累计4/15、0/2 native✓。唯一修订复核已用尽：若任一席不批准则具名阻断，不自动追加、不换身份。旧11提案仅历史。
+
+## 残余finding与整体结论
+
+B18(GLM)/B11(Kimi)：仍**open**，仅按产品矩阵真实证据由原席处置；B09=unknown照常携带。writer/live/产品矩阵未准入。**整体S0修订结论：批准**——三澄清全部支持、合同5f9d430冻结后可交根确认输入完整、再进native计划监督；本票不自动发native/writer，不构成实现接收或live授权。

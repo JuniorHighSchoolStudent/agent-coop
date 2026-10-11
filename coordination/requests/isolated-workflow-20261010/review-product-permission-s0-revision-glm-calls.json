@@ -1,0 +1,122 @@
+{
+  "candidate": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+  "administrative_commit": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+  "actual_model": "glm-5.3",
+  "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+  "raw_sha256": "bdd8959877f6a30dc73d80aef0b89f8c2d46423bfc3e8b99560bf7228482d2dd",
+  "receipt_sha256": "bf703afb6656f031807e2fc0e98c044c8b9a0f05ab15890f8158034e9bf88128",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+    "model": "glm-5.3",
+    "seat": "glm",
+    "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\product-permission-s0-revision-glm.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "eddd039092c5018ec3eb31d062f905686770a416c584425cce470b5c5803a918",
+    "started_at": "2026-10-11T00:57:50.5499002+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "product-permission-s0-revision",
+      "candidate": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+      "administrative_commit": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+      "prior": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/glm/input-index.json",
+      "input_index_sha256": "e36c52967ff21dbf116a29ebbaaa8676b22741592db1dbede5661e2257c578c3",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1,
+        "batch_after_dispatch": 4,
+        "batch_limit": 15
+      },
+      "permission": "existing read-only tool selection; legacy comma allow not claimed effective",
+      "authorization": "root explicit sole S0 revision dual review",
+      "session": "agent-coop-g1-glm-r1-34bce56b-20261010"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "exact_write_files": [],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "原glm独立审核席，原session agent-coop-g1-glm-r1-34bce56b-20261010、原cwd D:/project/agent-coop-g1-review。本轮是预算内唯一S0修订复核，候选5f9d4309dcdda3cb94b217e82c6006acc719f7db，前版c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4。一次20turn/600秒，只Read/Glob/Grep，无shell/写文件或memory/委派。\n直接Read D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0-revision/glm/input-index.json以及其中新contract全文、新plan全文、revision-delta.patch、本人首轮S0票和result当前段。不得只复述首轮记忆；不读另一席本轮新票，不重审未变历史全量。代码仍ed65079，未派作者。\n本次三项必须逐条裁定：1 canonical=Path.resolve(strict=False).as_posix，Windows盘符大写、其他组件沿resolve拼写、拒UNC/设备/非规范冻结表示，原始reparse先检查；核生成/比较/可证边界及反例责任是否可实现，不误称resolve安全隔离。2 sample预留calls_used之前的自身校验失败零计数；invoke阶段启动前失败保留预留，不等于实际模型调用；核各owner和异常出口无矛盾、不得偷抹消耗或把预留当成功调用。3 若内容有修复，必须准确候选C2双批准后才产品矩阵，之后最多每席一次限定结果确认，不能第三代码修复轮。\n确认fixture/schema校验owner说明：A在sample校验、不改gates/Store；B更新SubprocessTests._profile并为Kimi提供permissions，必要时InvokeTests整体迁移继承原无测试基类，不复制helper；唯一写集不扩。\n并行许可必须对本新版本重新明确：首轮GLM条件合同变动回串行，因此旧并行票不沿用。请明确新合同冻结后“批准A/B并行”或“仍须A→B串行”，附必要前置。两席都新批准才可并行，否则默认串行；容量4不改。\n新预算保持15CB/2native，本轮两次后累计4/15、0/2；这是唯一合同修订双复核，未通过则具名阻断，不能自动追加/换身份。旧11提案仅历史。上轮DS06与未改条款可同hash沿用，不冒称新增实读。writer、live、产品矩阵仍未准入，B18/B11只由原席按产品真实证据处置。\n输出中文：实际读取范围，三澄清逐项支持/阻断与理由，schema/fixture/唯一owner，针对准确新版本并行/串行，预算/顺序，具名残余finding与整体S0修订结论。不自动发native/writer；完成后交根确认输入完整再决定计划监督。",
+      "--model",
+      "glm-5.3",
+      "--resume",
+      "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "5939e885237b7af5ea18924d860e763aefa2b7e7496b0ef42a9afe90197d4cc9",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-g1-review"
+  },
+  "completion": {
+    "candidate": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T00:59:28.9708148+00:00",
+    "wall_seconds": 98.4209146,
+    "final_head": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "call_8f6179e14f5549968ac135d7",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0-revision\\glm\\input-index.json"
+      }
+    },
+    {
+      "id": "call_29eadd86ff91483c979d8501",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0-revision\\glm\\revision-delta.patch"
+      }
+    },
+    {
+      "id": "call_e0972f5a82a84a878ad9987d",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0-revision\\glm\\product-permission-contract-20261011.md"
+      }
+    },
+    {
+      "id": "call_b85fde93af194bd5868133f5",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0-revision\\glm\\product-permission-plan-20261011.md"
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 296
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}
