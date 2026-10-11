@@ -1,0 +1,28 @@
+{
+  "schema": "development-invocation/2",
+  "attempt_id": "gov-s1-glm",
+  "role_id": "review_glm",
+  "actor_id": "gov-20261011-review_glm",
+  "adapter": "codebuddy",
+  "requested_model": "glm-5.3",
+  "requested_session_id": "agent-coop-governance-glm-s1-20261011-6b339fd5",
+  "process_exit_code": 0,
+  "raw_sha256": "3dfc3b23406472d167edcd177674e16d89f443f8dec609658afd1ca7cb59b6df",
+  "input_subject_digest": "0092b28cfd99d6ce86b6337151f45f18416b6eda8b50bc8016695f9912e0b784",
+  "policy_digest": "210a5730aee94acc0342da96e63a278f9e4132d1d92ef400fcc3af9972362b83",
+  "evidence_bundle_digest": null,
+  "capabilities": {
+    "native_read_content": {
+      "state": "supported",
+      "source_ref": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s1-run-20261011/review-governance-s1-glm-r1.jsonl#sha256=3dfc3b23406472d167edcd177674e16d89f443f8dec609658afd1ca7cb59b6df"
+    },
+    "terminal_completion": {
+      "state": "supported",
+      "source_ref": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s1-run-20261011/review-governance-s1-glm-r1.jsonl#sha256=3dfc3b23406472d167edcd177674e16d89f443f8dec609658afd1ca7cb59b6df"
+    },
+    "tool_call_pairing": {
+      "state": "supported",
+      "source_ref": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s1-run-20261011/review-governance-s1-glm-r1.jsonl#sha256=3dfc3b23406472d167edcd177674e16d89f443f8dec609658afd1ca7cb59b6df"
+    }
+  }
+}

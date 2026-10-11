@@ -1,0 +1,533 @@
+{
+  "each_seat": [
+    {
+      "artifact_id": "old-00",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-00.md",
+      "offset": 1,
+      "limit": 148,
+      "estimated_return_utf8_bytes": 14206,
+      "estimated_content_tokens": 2476
+    },
+    {
+      "artifact_id": "old-01",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-01.md",
+      "offset": 119,
+      "limit": 19,
+      "estimated_return_utf8_bytes": 3605,
+      "estimated_content_tokens": 656
+    },
+    {
+      "artifact_id": "old-01",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-01.md",
+      "offset": 330,
+      "limit": 28,
+      "estimated_return_utf8_bytes": 4662,
+      "estimated_content_tokens": 832
+    },
+    {
+      "artifact_id": "old-01",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-01.md",
+      "offset": 691,
+      "limit": 52,
+      "estimated_return_utf8_bytes": 7177,
+      "estimated_content_tokens": 1268
+    },
+    {
+      "artifact_id": "old-02",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-02.md",
+      "offset": 1,
+      "limit": 67,
+      "estimated_return_utf8_bytes": 9361,
+      "estimated_content_tokens": 1747
+    },
+    {
+      "artifact_id": "old-03",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-03.md",
+      "offset": 1,
+      "limit": 26,
+      "estimated_return_utf8_bytes": 3601,
+      "estimated_content_tokens": 675
+    },
+    {
+      "artifact_id": "old-04",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-04.txt",
+      "offset": 1,
+      "limit": 38,
+      "estimated_return_utf8_bytes": 7925,
+      "estimated_content_tokens": 1515
+    },
+    {
+      "artifact_id": "old-05",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-05.txt",
+      "offset": 1,
+      "limit": 39,
+      "estimated_return_utf8_bytes": 5675,
+      "estimated_content_tokens": 1076
+    },
+    {
+      "artifact_id": "old-06",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-06.txt",
+      "offset": 1,
+      "limit": 31,
+      "estimated_return_utf8_bytes": 6358,
+      "estimated_content_tokens": 1206
+    },
+    {
+      "artifact_id": "old-07",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-07.txt",
+      "offset": 1,
+      "limit": 32,
+      "estimated_return_utf8_bytes": 4764,
+      "estimated_content_tokens": 887
+    },
+    {
+      "artifact_id": "old-08",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-08.json",
+      "offset": 1,
+      "limit": 160,
+      "estimated_return_utf8_bytes": 7180,
+      "estimated_content_tokens": 1582
+    },
+    {
+      "artifact_id": "old-09",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-09.txt",
+      "offset": 1,
+      "limit": 38,
+      "estimated_return_utf8_bytes": 6952,
+      "estimated_content_tokens": 1311
+    },
+    {
+      "artifact_id": "old-10",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-10.json",
+      "offset": 1,
+      "limit": 18,
+      "estimated_return_utf8_bytes": 1149,
+      "estimated_content_tokens": 267
+    },
+    {
+      "artifact_id": "old-10",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-10.json",
+      "offset": 1336,
+      "limit": 9,
+      "estimated_return_utf8_bytes": 627,
+      "estimated_content_tokens": 141
+    },
+    {
+      "artifact_id": "old-corrections",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-corrections.json",
+      "offset": 1,
+      "limit": 269,
+      "estimated_return_utf8_bytes": 6624,
+      "estimated_content_tokens": 1280
+    },
+    {
+      "artifact_id": "old-contract",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-contract.md",
+      "offset": 1,
+      "limit": 121,
+      "estimated_return_utf8_bytes": 23980,
+      "estimated_content_tokens": 4620
+    },
+    {
+      "artifact_id": "old-contract",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-contract.md",
+      "offset": 122,
+      "limit": 40,
+      "estimated_return_utf8_bytes": 7222,
+      "estimated_content_tokens": 1347
+    },
+    {
+      "artifact_id": "implementation-contract",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/implementation-contract.md",
+      "offset": 1,
+      "limit": 126,
+      "estimated_return_utf8_bytes": 23237,
+      "estimated_content_tokens": 4462
+    },
+    {
+      "artifact_id": "implementation-contract",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/implementation-contract.md",
+      "offset": 127,
+      "limit": 86,
+      "estimated_return_utf8_bytes": 21243,
+      "estimated_content_tokens": 4075
+    },
+    {
+      "artifact_id": "runtime-plan",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/runtime-plan.md",
+      "offset": 1,
+      "limit": 134,
+      "estimated_return_utf8_bytes": 23071,
+      "estimated_content_tokens": 4386
+    },
+    {
+      "artifact_id": "dispatch-sequence",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/dispatch-sequence.md",
+      "offset": 1,
+      "limit": 95,
+      "estimated_return_utf8_bytes": 15489,
+      "estimated_content_tokens": 2846
+    },
+    {
+      "artifact_id": "request",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/request.md",
+      "offset": 1,
+      "limit": 13,
+      "estimated_return_utf8_bytes": 1970,
+      "estimated_content_tokens": 357
+    },
+    {
+      "artifact_id": "scope-amendment",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/scope-amendment.md",
+      "offset": 1,
+      "limit": 15,
+      "estimated_return_utf8_bytes": 2425,
+      "estimated_content_tokens": 429
+    },
+    {
+      "artifact_id": "plan",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/plan.md",
+      "offset": 1,
+      "limit": 47,
+      "estimated_return_utf8_bytes": 7684,
+      "estimated_content_tokens": 1397
+    },
+    {
+      "artifact_id": "investigation",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/investigation.md",
+      "offset": 1,
+      "limit": 58,
+      "estimated_return_utf8_bytes": 8899,
+      "estimated_content_tokens": 1659
+    },
+    {
+      "artifact_id": "current-result",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/current-result.md",
+      "offset": 1,
+      "limit": 38,
+      "estimated_return_utf8_bytes": 7862,
+      "estimated_content_tokens": 1465
+    },
+    {
+      "artifact_id": "current-agents",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/current-agents.md",
+      "offset": 1,
+      "limit": 151,
+      "estimated_return_utf8_bytes": 15240,
+      "estimated_content_tokens": 2665
+    },
+    {
+      "artifact_id": "current-roadmap",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/current-roadmap.md",
+      "offset": 1,
+      "limit": 69,
+      "estimated_return_utf8_bytes": 9793,
+      "estimated_content_tokens": 1828
+    },
+    {
+      "artifact_id": "scope-delta",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/scope-delta.patch",
+      "offset": 1,
+      "limit": 21,
+      "estimated_return_utf8_bytes": 2785,
+      "estimated_content_tokens": 512
+    },
+    {
+      "artifact_id": "source-adapters",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/source-adapters.py",
+      "offset": 1,
+      "limit": 289,
+      "estimated_return_utf8_bytes": 12661,
+      "estimated_content_tokens": 2744
+    },
+    {
+      "artifact_id": "source-paths",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/source-paths.py",
+      "offset": 1,
+      "limit": 111,
+      "estimated_return_utf8_bytes": 3991,
+      "estimated_content_tokens": 842
+    },
+    {
+      "artifact_id": "source-test-runtime",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/source-test-runtime.py",
+      "offset": 1,
+      "limit": 409,
+      "estimated_return_utf8_bytes": 19869,
+      "estimated_content_tokens": 4360
+    },
+    {
+      "artifact_id": "source-test-paths",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/source-test-paths.py",
+      "offset": 1,
+      "limit": 176,
+      "estimated_return_utf8_bytes": 7600,
+      "estimated_content_tokens": 1646
+    },
+    {
+      "artifact_id": "historical-s0-glm-final",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/historical-s0-glm-final.json",
+      "offset": 1,
+      "limit": 54,
+      "estimated_return_utf8_bytes": 11813,
+      "estimated_content_tokens": 2372
+    },
+    {
+      "artifact_id": "historical-s0-kimi-final",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/historical-s0-kimi-final.json",
+      "offset": 1,
+      "limit": 57,
+      "estimated_return_utf8_bytes": 13283,
+      "estimated_content_tokens": 2668
+    },
+    {
+      "artifact_id": "s0-glm-actual-metadata",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-glm-actual-metadata.json",
+      "offset": 1,
+      "limit": 46,
+      "estimated_return_utf8_bytes": 1529,
+      "estimated_content_tokens": 327
+    },
+    {
+      "artifact_id": "s0-kimi-actual-metadata",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-kimi-actual-metadata.json",
+      "offset": 1,
+      "limit": 46,
+      "estimated_return_utf8_bytes": 1540,
+      "estimated_content_tokens": 330
+    },
+    {
+      "artifact_id": "batch-config",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/batch-config.json",
+      "offset": 1,
+      "limit": 43,
+      "estimated_return_utf8_bytes": 1644,
+      "estimated_content_tokens": 360
+    },
+    {
+      "artifact_id": "prompt-body-B1",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/prompt-body-B1.txt",
+      "offset": 1,
+      "limit": 7,
+      "estimated_return_utf8_bytes": 2267,
+      "estimated_content_tokens": 462
+    },
+    {
+      "artifact_id": "dialect-static-evidence",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/dialect-static-evidence.json",
+      "offset": 1,
+      "limit": 302,
+      "estimated_return_utf8_bytes": 23966,
+      "estimated_content_tokens": 5517
+    },
+    {
+      "artifact_id": "dialect-static-evidence",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/dialect-static-evidence.json",
+      "offset": 303,
+      "limit": 20,
+      "estimated_return_utf8_bytes": 1129,
+      "estimated_content_tokens": 252
+    },
+    {
+      "artifact_id": "s1-admission",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/S1-ADMISSION-DRAFT.md",
+      "offset": 1,
+      "limit": 18,
+      "estimated_return_utf8_bytes": 3567,
+      "estimated_content_tokens": 683
+    },
+    {
+      "artifact_id": "s0-glm-reading-coverage",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-glm-reading-coverage.json",
+      "offset": 1,
+      "limit": 557,
+      "estimated_return_utf8_bytes": 15547,
+      "estimated_content_tokens": 3078
+    },
+    {
+      "artifact_id": "s0-glm-reading-coverage",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-glm-reading-coverage.json",
+      "offset": 5295,
+      "limit": 7,
+      "estimated_return_utf8_bytes": 362,
+      "estimated_content_tokens": 78
+    },
+    {
+      "artifact_id": "s0-kimi-reading-coverage",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-kimi-reading-coverage.json",
+      "offset": 1,
+      "limit": 557,
+      "estimated_return_utf8_bytes": 15696,
+      "estimated_content_tokens": 3116
+    },
+    {
+      "artifact_id": "s0-kimi-reading-coverage",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-kimi-reading-coverage.json",
+      "offset": 5257,
+      "limit": 7,
+      "estimated_return_utf8_bytes": 366,
+      "estimated_content_tokens": 79
+    },
+    {
+      "artifact_id": "profile-cell-P2-native",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-cell-P2-native.json",
+      "offset": 1,
+      "limit": 67,
+      "estimated_return_utf8_bytes": 2579,
+      "estimated_content_tokens": 562
+    },
+    {
+      "artifact_id": "profile-dispatch-identity",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-dispatch-identity.json",
+      "offset": 1,
+      "limit": 7,
+      "estimated_return_utf8_bytes": 291,
+      "estimated_content_tokens": 66
+    },
+    {
+      "artifact_id": "profile-execution-completion",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-execution-completion.json",
+      "offset": 1,
+      "limit": 14,
+      "estimated_return_utf8_bytes": 535,
+      "estimated_content_tokens": 119
+    },
+    {
+      "artifact_id": "profile-cli-final-raw",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-cli-final-raw.json",
+      "offset": 1,
+      "limit": 6,
+      "estimated_return_utf8_bytes": 124,
+      "estimated_content_tokens": 25
+    },
+    {
+      "artifact_id": "profile-cli-final-raw",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-cli-final-raw.json",
+      "offset": 8,
+      "limit": 43,
+      "estimated_return_utf8_bytes": 1582,
+      "estimated_content_tokens": 342
+    },
+    {
+      "artifact_id": "profile-author-A",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-A.json",
+      "offset": 1,
+      "limit": 70,
+      "estimated_return_utf8_bytes": 2497,
+      "estimated_content_tokens": 539
+    },
+    {
+      "artifact_id": "profile-author-N1",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-N1.json",
+      "offset": 1,
+      "limit": 70,
+      "estimated_return_utf8_bytes": 2500,
+      "estimated_content_tokens": 540
+    },
+    {
+      "artifact_id": "profile-author-N2",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-N2.json",
+      "offset": 1,
+      "limit": 70,
+      "estimated_return_utf8_bytes": 2489,
+      "estimated_content_tokens": 537
+    },
+    {
+      "artifact_id": "profile-author-R1",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-R1.json",
+      "offset": 1,
+      "limit": 70,
+      "estimated_return_utf8_bytes": 2484,
+      "estimated_content_tokens": 536
+    },
+    {
+      "artifact_id": "profile-author-W",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-W.json",
+      "offset": 1,
+      "limit": 70,
+      "estimated_return_utf8_bytes": 2493,
+      "estimated_content_tokens": 538
+    },
+    {
+      "artifact_id": "profile-review_glm",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-review_glm.json",
+      "offset": 1,
+      "limit": 65,
+      "estimated_return_utf8_bytes": 2293,
+      "estimated_content_tokens": 494
+    },
+    {
+      "artifact_id": "profile-review_kimi",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-review_kimi.json",
+      "offset": 1,
+      "limit": 65,
+      "estimated_return_utf8_bytes": 2295,
+      "estimated_content_tokens": 495
+    },
+    {
+      "artifact_id": "profile-supervisor",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-supervisor.json",
+      "offset": 1,
+      "limit": 67,
+      "estimated_return_utf8_bytes": 2409,
+      "estimated_content_tokens": 521
+    },
+    {
+      "artifact_id": "superseded-policy-s0",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/superseded-policy-s0.json",
+      "offset": 1,
+      "limit": 121,
+      "estimated_return_utf8_bytes": 23884,
+      "estimated_content_tokens": 5817
+    },
+    {
+      "artifact_id": "superseded-policy-s0",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/superseded-policy-s0.json",
+      "offset": 122,
+      "limit": 82,
+      "estimated_return_utf8_bytes": 14067,
+      "estimated_content_tokens": 3394
+    },
+    {
+      "artifact_id": "bootstrap-policy",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/bootstrap-policy.json",
+      "offset": 1,
+      "limit": 99,
+      "estimated_return_utf8_bytes": 23872,
+      "estimated_content_tokens": 5847
+    },
+    {
+      "artifact_id": "bootstrap-policy",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/bootstrap-policy.json",
+      "offset": 100,
+      "limit": 116,
+      "estimated_return_utf8_bytes": 23774,
+      "estimated_content_tokens": 5770
+    },
+    {
+      "artifact_id": "bootstrap-policy",
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/bootstrap-policy.json",
+      "offset": 216,
+      "limit": 100,
+      "estimated_return_utf8_bytes": 19437,
+      "estimated_content_tokens": 4709
+    }
+  ],
+  "limits": {
+    "planned_max_source_lines": 1000,
+    "planned_max_line_UTF16_units": 1900,
+    "planned_max_return_UTF8_bytes": 24000
+  },
+  "required_semantics": "All plan required artifacts AND per role. Historical final projections are bootstrap displays, current v2 attempts initially empty. Policy itself is mandatory extra bootstrap read, not self-reference.",
+  "coverage_scope": "S0 coverage: requirement rows and tail limitations, not repeated read-body list. CLI final raw excludes long line7; parsed identity1-7 only. Old native coverage fixed ranges. Native capacity unknown.",
+  "assumptions": {
+    "parallel_Read_per_response": [
+      5,
+      8
+    ],
+    "max_turns": 20,
+    "timeout_seconds": 600,
+    "min_final_response_reserve": 1,
+    "min_analysis_response_reserve": 2
+  }
+}

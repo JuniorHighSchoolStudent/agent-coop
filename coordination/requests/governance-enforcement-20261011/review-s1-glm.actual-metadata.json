@@ -1,0 +1,61 @@
+{
+  "candidate": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+  "role": "review_glm",
+  "requested_model": "glm-5.3",
+  "requested_session": "agent-coop-governance-glm-s1-20261011-6b339fd5",
+  "actual_init": [
+    {
+      "event_ordinal": 1,
+      "model": "glm-5.3",
+      "session_id": "agent-coop-governance-glm-s1-20261011-6b339fd5"
+    },
+    {
+      "event_ordinal": 152,
+      "model": "glm-5.3",
+      "session_id": "agent-coop-governance-glm-s1-20261011-6b339fd5"
+    }
+  ],
+  "actual_identity_matches": true,
+  "wrapper_exit_code": 0,
+  "wall_seconds": 330.5349645,
+  "raw_sha256": "3dfc3b23406472d167edcd177674e16d89f443f8dec609658afd1ca7cb59b6df",
+  "native_result": {
+    "event_ordinal": 151,
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 149
+  },
+  "native_result_count": 1,
+  "strict_final_parse_error": "Unexpected token '全', \"全部64块必读材料已\"... is not valid JSON",
+  "strict_final_schema": null,
+  "final_binding_matches": false,
+  "decision": null,
+  "tools": [
+    "Read"
+  ],
+  "tool_calls": 64,
+  "tool_results": 64,
+  "coverage_all_required_complete": false,
+  "reading_coverage_sha256": "81a75ac3bf884fc30af8c64d43c3d6dcb3696cab02ff73409f8061c537803dc7",
+  "missing": [
+    {
+      "artifact_id": "s1-admission",
+      "ranges": [
+        [
+          17,
+          18
+        ]
+      ]
+    }
+  ],
+  "events_after_result": [
+    {
+      "ordinal": 152,
+      "type": "system",
+      "subtype": "init"
+    }
+  ],
+  "invocation_sha256": "0617be4b4e096b0cf530279bc497677f9d69bf25d7de929a3cbc4867db34e8b0",
+  "completion_sha256": "877abda776c66d185c3c326ea3a57761d09b656f3606a5e8388a9c68d1e94610",
+  "admission_status": "blocked: mandatory actual coverage and valid strict final must both hold; process oversight defect retained"
+}

@@ -1,0 +1,100 @@
+{
+  "status": "PREPARED_AWAITING_ROOT_PIN_ADMISSION_NO_MODEL_STARTED",
+  "candidate": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+  "policy_sha256": "210a5730aee94acc0342da96e63a278f9e4132d1d92ef400fcc3af9972362b83",
+  "index_sha256": "ee67507d957229e55cc735cc46113b42d04d5877f97233da429bab621df78fff",
+  "subject_digest": "0092b28cfd99d6ce86b6337151f45f18416b6eda8b50bc8016695f9912e0b784",
+  "required_reads_sha256": "d9c59a096d3af63baeed4768150889c5f5a543a8ce08b551d56ca5edf77a7520",
+  "prompt_bindings_sha256": "641ca4df738281d9c6f65d9aa1af8d5095da71e4c2ea75a9bc66d0628c1d9500",
+  "profiles": "8 exact profile files; native capacity/model unknown",
+  "artifact_count": 52,
+  "condition_count": 16,
+  "each_seat_required_evidence": 51,
+  "Read_chunks": 64,
+  "display_utf8_bytes": 527201,
+  "estimated_content_tokens": 108732,
+  "max_chunk_tokens": 5847,
+  "turns": {
+    "requested": 20,
+    "batching_assumption": [
+      5,
+      8
+    ],
+    "estimated_Read_responses": [
+      8,
+      13
+    ],
+    "minimum_reasoning_final_reserve": 3,
+    "completion_guaranteed": false
+  },
+  "timeout_seconds": 600,
+  "watcher": {
+    "state": "not_started",
+    "required": "operational parent must emit ready before model wrapper launch, record PID+creation+deadline; no old ready record reused",
+    "limitation": "existing bootstrap watcher is not product Win32 containment; descendant races/controller-crash are GOV06 unresolved"
+  },
+  "source_checks": {
+    "all_artifact_hashes_match": true,
+    "errors": []
+  },
+  "trees": [
+    {
+      "package_id": "A",
+      "cwd": "D:/project/agent-coop-gov-b1-a-20261011",
+      "head": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+      "clean": true,
+      "write_files": [
+        "D:/project/agent-coop-gov-b1-a-20261011/agent_coop/review_policy.py",
+        "D:/project/agent-coop-gov-b1-a-20261011/tests/test_review_policy.py"
+      ]
+    },
+    {
+      "package_id": "N1",
+      "cwd": "D:/project/agent-coop-gov-b1-n1-20261011",
+      "head": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+      "clean": true,
+      "write_files": [
+        "D:/project/agent-coop-gov-b1-n1-20261011/agent_coop/native_events.py",
+        "D:/project/agent-coop-gov-b1-n1-20261011/tests/test_native_events.py"
+      ]
+    },
+    {
+      "package_id": "N2",
+      "cwd": "D:/project/agent-coop-gov-b1-n2-20261011",
+      "head": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+      "clean": true,
+      "write_files": [
+        "D:/project/agent-coop-gov-b1-n2-20261011/agent_coop/adapters.py",
+        "D:/project/agent-coop-gov-b1-n2-20261011/tests/test_runtime.py"
+      ]
+    },
+    {
+      "package_id": "R1",
+      "cwd": "D:/project/agent-coop-gov-b1-r1-20261011",
+      "head": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+      "clean": true,
+      "write_files": [
+        "D:/project/agent-coop-gov-b1-r1-20261011/agent_coop/paths.py",
+        "D:/project/agent-coop-gov-b1-r1-20261011/tests/test_paths.py"
+      ]
+    },
+    {
+      "package_id": "W",
+      "cwd": "D:/project/agent-coop-gov-b1-w-20261011",
+      "head": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+      "clean": true,
+      "write_files": [
+        "D:/project/agent-coop-gov-b1-w-20261011/agent_coop/win_process.py",
+        "D:/project/agent-coop-gov-b1-w-20261011/tests/test_win_process.py"
+      ]
+    }
+  ],
+  "scope_limits": [
+    "No native/author call admitted",
+    "S0 v1 projections historical only, not current v2 votes",
+    "Native max-turn flag/Read capacity unknown",
+    "Full historical Read bodies excluded as declared; summary rows+limits retained",
+    "CB2000 lines conservative default; UTF16 line truncation/token estimator from pinned code",
+    "Exact CLI actual argv/identity/reading remain future actual observations, not preparation claims"
+  ]
+}

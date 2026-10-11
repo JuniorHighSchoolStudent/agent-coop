@@ -1,0 +1,25 @@
+{
+  "candidate": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+  "cwd": "D:/project/agent-coop-governance-review-s1-20261011",
+  "mode": "fresh S1 successor review; not native session resume",
+  "seats": {
+    "glm": {
+      "role_id": "review_glm",
+      "model": "glm-5.3",
+      "session": "agent-coop-governance-glm-s1-20261011-6b339fd5",
+      "prompt": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/prompt-glm.txt",
+      "prompt_sha256": "1306452e3d801c0ac4b6275ba3d02b55cf6d86ca64a0b94c026d200f5ef44bd8",
+      "max_turns": 20,
+      "watchdog_seconds": 600
+    },
+    "kimi": {
+      "role_id": "review_kimi",
+      "model": "kimi-k3-2",
+      "session": "agent-coop-governance-kimi-s1-20261011-78780920",
+      "prompt": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/prompt-kimi.txt",
+      "prompt_sha256": "3d80503f1cf8b08cb19312b69cc18d9f19f54d7d23a2f7e2d0c64fdee5bade74",
+      "max_turns": 20,
+      "watchdog_seconds": 600
+    }
+  }
+}

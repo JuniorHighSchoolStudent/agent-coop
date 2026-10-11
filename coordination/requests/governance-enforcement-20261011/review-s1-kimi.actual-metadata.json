@@ -1,0 +1,61 @@
+{
+  "candidate": "dc37ae62a0aa8b40e0d881a364a6ddd190c0e146",
+  "role": "review_kimi",
+  "requested_model": "kimi-k3-2",
+  "requested_session": "agent-coop-governance-kimi-s1-20261011-78780920",
+  "actual_init": [
+    {
+      "event_ordinal": 1,
+      "model": "kimi-k3-2",
+      "session_id": "agent-coop-governance-kimi-s1-20261011-78780920"
+    },
+    {
+      "event_ordinal": 145,
+      "model": "kimi-k3-2",
+      "session_id": "agent-coop-governance-kimi-s1-20261011-78780920"
+    }
+  ],
+  "actual_identity_matches": true,
+  "wrapper_exit_code": 0,
+  "wall_seconds": 480.4218311,
+  "raw_sha256": "00ac8eb41402517f23b2a7c96bb9af2d53c73e81012861f5c2012c204525b97f",
+  "native_result": {
+    "event_ordinal": 144,
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 142
+  },
+  "native_result_count": 1,
+  "strict_final_parse_error": "Unexpected token '全', \"全部64块必读材料已\"... is not valid JSON",
+  "strict_final_schema": null,
+  "final_binding_matches": false,
+  "decision": null,
+  "tools": [
+    "Read"
+  ],
+  "tool_calls": 64,
+  "tool_results": 64,
+  "coverage_all_required_complete": false,
+  "reading_coverage_sha256": "ccdd4a634550a0ed313ee0aaad5670a0883437ada92ebee52b8a7f60868fc00f",
+  "missing": [
+    {
+      "artifact_id": "s1-admission",
+      "ranges": [
+        [
+          17,
+          18
+        ]
+      ]
+    }
+  ],
+  "events_after_result": [
+    {
+      "ordinal": 145,
+      "type": "system",
+      "subtype": "init"
+    }
+  ],
+  "invocation_sha256": "78ac160ef7f69d8016790c5042d000da657b559109417669c97d2dbae09b132b",
+  "completion_sha256": "5849cf19efeeb4677b7874454a5e10adfe22fb3b14a0d36b1d4fa2185c333c1b",
+  "admission_status": "blocked: mandatory actual coverage and valid strict final must both hold; process oversight defect retained"
+}

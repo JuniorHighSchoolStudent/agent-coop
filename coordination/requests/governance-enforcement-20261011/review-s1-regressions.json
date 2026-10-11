@@ -1,0 +1,150 @@
+{
+  "schema": "administrative-regression-evidence/1",
+  "status": "actual failures preserved; not product implementation or approval",
+  "input_artifact": {
+    "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/S1-ADMISSION-DRAFT.md",
+    "sha256": "5de39aad993b9e58831060151060a3c1c4c22fe181d25e53641f85f2386f08e5"
+  },
+  "required_plan": {
+    "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/required-reads.json",
+    "sha256": "d9c59a096d3af63baeed4768150889c5f5a543a8ce08b551d56ca5edf77a7520"
+  },
+  "prompt_bindings": {
+    "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/prompt-bindings.json",
+    "sha256": "641ca4df738281d9c6f65d9aa1af8d5095da71e4c2ea75a9bc66d0628c1d9500"
+  },
+  "source_missing_lines": [
+    {
+      "line": 17,
+      "text": ""
+    },
+    {
+      "line": 18,
+      "text": "材料初估40–50 Read被实测否定：最终保留完整64 Read、526830显示UTF-8字节（最终更新见PREPARATION精确值）。按5–8工具/响应估计8–13轮，仍须至少3轮判断/final余量，600秒不保证。根已明确保留全部必读、不凑估计删材料；此偏差属于GOV09本轮真实回归输入，不另建状态台账。"
+    }
+  ],
+  "root_cause": "Prompt tables were generated at limit16; final admission added blank17 and material-estimate line18. Final freeze updated requirement limit18 and prompt hashes/bindings but not the embedded Read row. Independent preflight did not compare rows. Actual tool returned only1..16 plus empty display marker17, which is not source coverage.",
+  "cases": [
+    {
+      "seat": "glm",
+      "raw_result_event_ordinal": 151,
+      "invalid_final_prefix": "全部64块必读材料已按表逐块实际Read完成（含bootstrap-policy全文1-99/100-215/216-315三段、superseded-policy-s0全文1-121/122-203两段、两席coverage指定区间[1,557]+尾段、CLI历史final排除第7行的精确区间、三份源码与测试全文、全部profile与batch-config、dialect静态证据两段、S1准入、prompt-body与两份历史S0 final投影）。无缺读、无截断、未读他席本次意见、未用index或摘要替代正文。基于独立实读，现给出最终裁定。\n\n",
+      "strict_json_error": "Unexpected token '全', \"全部64块必读材料已\"... is not valid JSON",
+      "missing_required": {
+        "condition_id": "read-review_glm",
+        "artifact_id": "s1-admission",
+        "source_sha256": "5de39aad993b9e58831060151060a3c1c4c22fe181d25e53641f85f2386f08e5",
+        "required_ranges": [
+          [
+            1,
+            18
+          ]
+        ],
+        "covered_ranges": [
+          [
+            1,
+            16
+          ]
+        ],
+        "missing_ranges": [
+          [
+            17,
+            18
+          ]
+        ],
+        "status": "incomplete",
+        "contributing_call_ids": [
+          "call_2c35aeaf17b1451a8e73bfff"
+        ]
+      },
+      "actual_read": {
+        "call_id": "call_2c35aeaf17b1451a8e73bfff",
+        "call_event_ordinal": 94,
+        "result_event_ordinal": 100,
+        "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/S1-ADMISSION-DRAFT.md",
+        "offset": 1,
+        "limit": 16,
+        "is_error": false,
+        "artifact_id": "s1-admission",
+        "source_sha256": "5de39aad993b9e58831060151060a3c1c4c22fe181d25e53641f85f2386f08e5",
+        "verified_ranges": [
+          [
+            1,
+            16
+          ]
+        ],
+        "ignored_empty_display_markers": [
+          17
+        ],
+        "problems": [],
+        "success_basis": "explicit_success_and_content_match"
+      }
+    },
+    {
+      "seat": "kimi",
+      "raw_result_event_ordinal": 144,
+      "invalid_final_prefix": "全部64块必读材料已独立实读完毕。给出本席裁定。\n\n",
+      "strict_json_error": "Unexpected token '全', \"全部64块必读材料已\"... is not valid JSON",
+      "missing_required": {
+        "condition_id": "read-review_kimi",
+        "artifact_id": "s1-admission",
+        "source_sha256": "5de39aad993b9e58831060151060a3c1c4c22fe181d25e53641f85f2386f08e5",
+        "required_ranges": [
+          [
+            1,
+            18
+          ]
+        ],
+        "covered_ranges": [
+          [
+            1,
+            16
+          ]
+        ],
+        "missing_ranges": [
+          [
+            17,
+            18
+          ]
+        ],
+        "status": "incomplete",
+        "contributing_call_ids": [
+          "Read_14_2f0be8f5"
+        ]
+      },
+      "actual_read": {
+        "call_id": "Read_14_2f0be8f5",
+        "call_event_ordinal": 27,
+        "result_event_ordinal": 35,
+        "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/S1-ADMISSION-DRAFT.md",
+        "offset": 1,
+        "limit": 16,
+        "is_error": false,
+        "artifact_id": "s1-admission",
+        "source_sha256": "5de39aad993b9e58831060151060a3c1c4c22fe181d25e53641f85f2386f08e5",
+        "verified_ranges": [
+          [
+            1,
+            16
+          ]
+        ],
+        "ignored_empty_display_markers": [
+          17
+        ],
+        "problems": [],
+        "success_basis": "explicit_success_and_content_match"
+      }
+    }
+  ],
+  "process_precision": {
+    "source": "independent live PowerShell tool snapshot during Kimi; original watcher raw files retained",
+    "wrapper_pid": 53184,
+    "get_process_creation": "2026-10-11T04:23:02.7942906Z",
+    "cim_creation": "2026-10-11T04:23:02.7942900Z",
+    "node_pid": 3728,
+    "node_get_process_creation": "2026-10-11T04:23:03.7025768Z",
+    "node_cim_creation": "2026-10-11T04:23:03.7025760Z",
+    "effect": "strict string equality failed; no observed descendants in original watch ledger",
+    "no_retroactive_fix": true
+  }
+}

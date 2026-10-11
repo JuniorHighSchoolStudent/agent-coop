@@ -1,0 +1,2628 @@
+{
+  "seat": "kimi",
+  "role": "review_kimi",
+  "raw_path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s1-run-20261011/review-governance-s1-kimi-r1.jsonl",
+  "raw_sha256": "00ac8eb41402517f23b2a7c96bb9af2d53c73e81012861f5c2012c204525b97f",
+  "input_index_sha256": "ee67507d957229e55cc735cc46113b42d04d5877f97233da429bab621df78fff",
+  "policy_sha256": "210a5730aee94acc0342da96e63a278f9e4132d1d92ef400fcc3af9972362b83",
+  "subject_digest": "0092b28cfd99d6ce86b6337151f45f18416b6eda8b50bc8016695f9912e0b784",
+  "method": "Exact pinned CB native tool_use/tool_result pairing; explicit is_error=false; exact frozen canonical path/hash; numbered arrow logical text. Strip only CR from CRLF terminators and line-number display wrapper. Ignore known empty requested-slice/EOF display markers without crediting source lines. No self-report or cross-seat union.",
+  "coverage": [
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-00",
+      "source_sha256": "c56b86445b49d1de78983466f3ce53c5d61f1de87db82df44ce82701d6a9dad1",
+      "required_ranges": [
+        [
+          1,
+          148
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          148
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_24_7865a0a3"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-01",
+      "source_sha256": "309da80ae62900d27b5acd609bf2d30c5028e5e882451eed42571c4d6d290664",
+      "required_ranges": [
+        [
+          119,
+          137
+        ],
+        [
+          330,
+          357
+        ],
+        [
+          691,
+          742
+        ]
+      ],
+      "covered_ranges": [
+        [
+          119,
+          137
+        ],
+        [
+          330,
+          357
+        ],
+        [
+          691,
+          742
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_25_dc5a9589",
+        "Read_26_c045d72f",
+        "Read_27_76ff0955"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-02",
+      "source_sha256": "8367c03a3b6710e06d8cfda96a3350079145ef35740c816f51006395dabe2f2d",
+      "required_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_28_4dadb263"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-03",
+      "source_sha256": "9a872a46b90802b07f114b9c3d5b4703981c7538a1757beb2b496cc8a5e0017a",
+      "required_ranges": [
+        [
+          1,
+          26
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          26
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_29_c380beff"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-04",
+      "source_sha256": "73412db091ef7b6b7ead5e705c2705958341407f3e1526cba9225e6dfc4b2ba2",
+      "required_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_30_5ba01b6b"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-05",
+      "source_sha256": "3342fff49abe4912a7eabcf52720a88fed5c0c134bd8c9ff1d1621ef6f9ac981",
+      "required_ranges": [
+        [
+          1,
+          39
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          39
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_31_71320a37"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-06",
+      "source_sha256": "bdc8a583205efd58f7258aaf839e55a3481ef4d383727443ec3f38b3f9150627",
+      "required_ranges": [
+        [
+          1,
+          31
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          31
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_32_3feca91c"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-07",
+      "source_sha256": "66f583c076c813202d8d560389a67795194a6e17c7da2fb4c28ae1df09a7faba",
+      "required_ranges": [
+        [
+          1,
+          32
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          32
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_33_40dfaf00"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-08",
+      "source_sha256": "022e4c7e5b6aeb685148cdc8d057ef44b7afcb6e2710a7b48b43bcb1f82e54db",
+      "required_ranges": [
+        [
+          1,
+          160
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          160
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_34_ad585d01"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-09",
+      "source_sha256": "df04ffd713bb3d6e5fb54b685be07f4cc5afbf7d47b1db6e0434ee47c6714b96",
+      "required_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_35_f4429cc1"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-10",
+      "source_sha256": "3a3ce04c07766c1668244d5fe33526efb201b7ec5642bc91f18601ca9ab51f5d",
+      "required_ranges": [
+        [
+          1,
+          18
+        ],
+        [
+          1336,
+          1344
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          18
+        ],
+        [
+          1336,
+          1344
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_36_9d65972b",
+        "Read_37_32eccbad"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-corrections",
+      "source_sha256": "0760e259bea01d5c1c571b8879ea07c81fb3e8af466f1af3e5e98f730da7ecdb",
+      "required_ranges": [
+        [
+          1,
+          269
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          269
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_38_10b4d2c5"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "old-contract",
+      "source_sha256": "50a46022e21cea398812817d64a04a15023cd4292bc0f04bc2deecf40d5a0cfa",
+      "required_ranges": [
+        [
+          1,
+          161
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          161
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_19_5adf34c8",
+        "Read_20_7e9d70a3"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "implementation-contract",
+      "source_sha256": "377809f434fa863354bbc3bbe4acfd8b87f9d6ad0f11ee4176140dd4630c237e",
+      "required_ranges": [
+        [
+          1,
+          212
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          212
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_3_f4ea8382",
+        "Read_4_f1627337"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "runtime-plan",
+      "source_sha256": "9e1e0e43539c82e0d6d86069c4f78dd6572d3653f7842d26d4733df12c6a1115",
+      "required_ranges": [
+        [
+          1,
+          134
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          134
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_5_0286911e"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "dispatch-sequence",
+      "source_sha256": "df9f65af7f69a2ee0a81ceaebe81baa1b5fd2bca1a6f17cdbc66d4880ffcb70e",
+      "required_ranges": [
+        [
+          1,
+          95
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          95
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_6_86594574_04314ed5"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "request",
+      "source_sha256": "d083e8658bb1b1501767d928753e98c6c625035e9d49c32006c18b0c4a8f14f8",
+      "required_ranges": [
+        [
+          1,
+          13
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          13
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_0_4f319255"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "scope-amendment",
+      "source_sha256": "1c2992a38cdd0e57916ca6f640a0b2fa63e9113c7c2917269ae2df94e0116a08",
+      "required_ranges": [
+        [
+          1,
+          15
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          15
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_1_b9af9ce8"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "plan",
+      "source_sha256": "5d8c0b8811cad1ea425bf6fc15607f1f360abeb916d1cb4d99eac22172ea7bfd",
+      "required_ranges": [
+        [
+          1,
+          47
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          47
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_2_a64e49ac"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "investigation",
+      "source_sha256": "68a7093439cdb47474e87cc2f6053f7b43da56d635893f2af7f0b9bdeeba6b1e",
+      "required_ranges": [
+        [
+          1,
+          58
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          58
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_7_89d9e10e"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "current-result",
+      "source_sha256": "c0c7c8fcd020ea3d8331cf6a8f8741f4e8931d87d5212e38f1dcb03b8a9b796e",
+      "required_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_8_8f9754c6"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "current-agents",
+      "source_sha256": "1e0893e0b52d1c17c8cce1ab324002ea7de54ebbdc5a072938580ec42f1d7518",
+      "required_ranges": [
+        [
+          1,
+          151
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          151
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_9_5749f72b"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "current-roadmap",
+      "source_sha256": "a76ecda82fe9d532519bcb65db981ed967fe2ee66de2664e5d7ae8d244025995",
+      "required_ranges": [
+        [
+          1,
+          69
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          69
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_10_da9bbb1f"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "scope-delta",
+      "source_sha256": "39e1b2c49763adae08786f078ef90e2aa2fe81f24c5eb939c3ac27fedbbcb433",
+      "required_ranges": [
+        [
+          1,
+          21
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          21
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_11_e2be0cfa"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "source-adapters",
+      "source_sha256": "3c9cd515ad1af39b6b33b0ad5036c22426ecd2f956c125aa0cf1882bd20c63e6",
+      "required_ranges": [
+        [
+          1,
+          289
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          289
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_61_553fc322"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "source-paths",
+      "source_sha256": "13050fbf2e5afdf843da1e7cb3c31c3ff50235bb1171f1454bd523781142ec67",
+      "required_ranges": [
+        [
+          1,
+          111
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          111
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_60_568d51bb"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "source-test-runtime",
+      "source_sha256": "19e012e9afef9961fd544b52100af92086af25782820facc94245aa33aa4b295",
+      "required_ranges": [
+        [
+          1,
+          409
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          409
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_62_df836153"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "source-test-paths",
+      "source_sha256": "b6a36e20e969c1cc91de3f474158a19107a006783e91557a4468fc56b6e2065d",
+      "required_ranges": [
+        [
+          1,
+          176
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          176
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_63_18b8f482"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "historical-s0-glm-final",
+      "source_sha256": "835422d9ae58fd70a2bf01e55a2fb1ad550b740c44847f51c2832599deabb0f8",
+      "required_ranges": [
+        [
+          1,
+          54
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          54
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_15_a730ce34"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "historical-s0-kimi-final",
+      "source_sha256": "32f9aae7cc3bfc58623b94b3c2fc1daedbf00d1a27fdbbde2c7b99020e0b0699",
+      "required_ranges": [
+        [
+          1,
+          57
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          57
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_21_9eecc2bc"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "s0-glm-actual-metadata",
+      "source_sha256": "1ee7e2ab268b7d0d2b4bfeadfeff5a4929eae52a9bf952af4b2ed3e45bfa3300",
+      "required_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_39_a0a10feb"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "s0-kimi-actual-metadata",
+      "source_sha256": "9de0c1e715935d3b64c7bf720ec4863ffa3c43eb2a6a76c3a6830dda4de8c6b2",
+      "required_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_40_448f7f4d"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "batch-config",
+      "source_sha256": "ee461ecd2cd0f8caf668339fdfe104cb91b18ae60c37107729725fcc5b70aa32",
+      "required_ranges": [
+        [
+          1,
+          43
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          43
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_12_91626188_4017ab78"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "prompt-body-B1",
+      "source_sha256": "f2ff6b8a45e7350cc59ed1cc9e9b46bf59033a0cef0c02cd4d356e34f04593c9",
+      "required_ranges": [
+        [
+          1,
+          7
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          7
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_13_ff97af7f"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "dialect-static-evidence",
+      "source_sha256": "803ca9bb9d6f9df28111701204b610fab0f5263571fcbc34a31f3f354ab0bfd4",
+      "required_ranges": [
+        [
+          1,
+          322
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          322
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_41_aaddc0cc",
+        "Read_42_64508391_7b5af7c6"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "s1-admission",
+      "source_sha256": "5de39aad993b9e58831060151060a3c1c4c22fe181d25e53641f85f2386f08e5",
+      "required_ranges": [
+        [
+          1,
+          18
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          16
+        ]
+      ],
+      "missing_ranges": [
+        [
+          17,
+          18
+        ]
+      ],
+      "status": "incomplete",
+      "contributing_call_ids": [
+        "Read_14_2f0be8f5"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "s0-glm-reading-coverage",
+      "source_sha256": "3aec528bd9e07e319a5d77f008e241cf02eb3bb051bfb6a2f500ce9655cada8e",
+      "required_ranges": [
+        [
+          1,
+          557
+        ],
+        [
+          5295,
+          5301
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          557
+        ],
+        [
+          5295,
+          5301
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_56_c4b65214",
+        "Read_57_b9ec68e1"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "s0-kimi-reading-coverage",
+      "source_sha256": "e243d665804e282e9368ef3a7a82e37460037d710a25c2b7bb55809ed659d3b0",
+      "required_ranges": [
+        [
+          1,
+          557
+        ],
+        [
+          5257,
+          5263
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          557
+        ],
+        [
+          5257,
+          5263
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_58_f703c92d",
+        "Read_59_e8a50b33"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-cell-P2-native",
+      "source_sha256": "a6f67263e6b85e9513cea7bee3809dd44b13d2034cdad1d12d92572ad611265d",
+      "required_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_43_cbc5d951"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-dispatch-identity",
+      "source_sha256": "97a1a0e9ce32e5889fde353db265e88b456e618d8719093d8eca29d5f3be4f00",
+      "required_ranges": [
+        [
+          1,
+          7
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          7
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_44_9aa40526"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-execution-completion",
+      "source_sha256": "9d867d9d84bbed11c7bd672d0e5d63b8ee8a611ae2a56276360f7df3d8b9bb0d",
+      "required_ranges": [
+        [
+          1,
+          14
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          14
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_45_fcfb6642"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-cli-final-raw",
+      "source_sha256": "05b0d38124665138e3ffc371e850cb32c0037d3eb775b4654346c8f28109dff2",
+      "required_ranges": [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          50
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          50
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_46_223a0e5c",
+        "Read_47_f0d3de1f"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-author-A",
+      "source_sha256": "ccb4a20e56a513981a7098ad8908b974afb474340b03c9e7af6bf68f282063a4",
+      "required_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_48_8dbc5e2e"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-author-N1",
+      "source_sha256": "e44b51ffa2e64a955b1db16a482192bf350a5b07bbbec16129b2d70fef39678c",
+      "required_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_49_77c97a5f"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-author-N2",
+      "source_sha256": "d2570023cf163620a47519380fd6a2e8ca2d512b9b4a89e5fe74babfdf9768a0",
+      "required_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_50_acaee69c"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-author-R1",
+      "source_sha256": "994883aa9323312e717b8067612bc514340a97f7245457adbfcc9020f126331f",
+      "required_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_51_fa3d8bd8"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-author-W",
+      "source_sha256": "452b290753b845e8b5142717f6d9ee08bc7db94cb831163ef0c9caa0efae1817",
+      "required_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_52_eacf8239"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-review_glm",
+      "source_sha256": "eefe2a4edbd6d706c4e95ec3df5b3bbea8b9e3ee25e02d85f6346fd20c1e2865",
+      "required_ranges": [
+        [
+          1,
+          65
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          65
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_53_12d6adfa"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-review_kimi",
+      "source_sha256": "4dab0b5b2049a7150116cc871e5957d991af312a754455385b5d52f18262ab91",
+      "required_ranges": [
+        [
+          1,
+          65
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          65
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_54_de08d632"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "profile-supervisor",
+      "source_sha256": "b77b6172167201058ef9e2380b520454d9ee0f6b904f470cb042e256ddac5e1e",
+      "required_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_55_72eba6f4"
+      ]
+    },
+    {
+      "condition_id": "read-review_kimi",
+      "artifact_id": "superseded-policy-s0",
+      "source_sha256": "66ce0dd1dc0ec886bcdf0fec83366362f73c6add009f924b72de42660ae5cf35",
+      "required_ranges": [
+        [
+          1,
+          203
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          203
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_22_c21defe4",
+        "Read_23_625cab8c"
+      ]
+    },
+    {
+      "condition_id": "bootstrap-policy-extra-read",
+      "artifact_id": "bootstrap-policy",
+      "source_sha256": "210a5730aee94acc0342da96e63a278f9e4132d1d92ef400fcc3af9972362b83",
+      "required_ranges": [
+        [
+          1,
+          315
+        ]
+      ],
+      "covered_ranges": [
+        [
+          1,
+          315
+        ]
+      ],
+      "missing_ranges": [],
+      "status": "complete",
+      "contributing_call_ids": [
+        "Read_16_61d904fa",
+        "Read_17_4bf86e69",
+        "Read_18_752c6373"
+      ]
+    }
+  ],
+  "all_required_complete": false,
+  "read_calls": [
+    {
+      "call_id": "Read_0_4f319255",
+      "call_event_ordinal": 4,
+      "result_event_ordinal": 12,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/request.md",
+      "offset": 1,
+      "limit": 13,
+      "is_error": false,
+      "artifact_id": "request",
+      "source_sha256": "d083e8658bb1b1501767d928753e98c6c625035e9d49c32006c18b0c4a8f14f8",
+      "verified_ranges": [
+        [
+          1,
+          13
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        14
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_1_b9af9ce8",
+      "call_event_ordinal": 5,
+      "result_event_ordinal": 13,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/scope-amendment.md",
+      "offset": 1,
+      "limit": 15,
+      "is_error": false,
+      "artifact_id": "scope-amendment",
+      "source_sha256": "1c2992a38cdd0e57916ca6f640a0b2fa63e9113c7c2917269ae2df94e0116a08",
+      "verified_ranges": [
+        [
+          1,
+          15
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        16
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_2_a64e49ac",
+      "call_event_ordinal": 6,
+      "result_event_ordinal": 14,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/plan.md",
+      "offset": 1,
+      "limit": 47,
+      "is_error": false,
+      "artifact_id": "plan",
+      "source_sha256": "5d8c0b8811cad1ea425bf6fc15607f1f360abeb916d1cb4d99eac22172ea7bfd",
+      "verified_ranges": [
+        [
+          1,
+          47
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        48
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_3_f4ea8382",
+      "call_event_ordinal": 7,
+      "result_event_ordinal": 15,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/implementation-contract.md",
+      "offset": 1,
+      "limit": 126,
+      "is_error": false,
+      "artifact_id": "implementation-contract",
+      "source_sha256": "377809f434fa863354bbc3bbe4acfd8b87f9d6ad0f11ee4176140dd4630c237e",
+      "verified_ranges": [
+        [
+          1,
+          126
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        127
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_4_f1627337",
+      "call_event_ordinal": 8,
+      "result_event_ordinal": 16,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/implementation-contract.md",
+      "offset": 127,
+      "limit": 86,
+      "is_error": false,
+      "artifact_id": "implementation-contract",
+      "source_sha256": "377809f434fa863354bbc3bbe4acfd8b87f9d6ad0f11ee4176140dd4630c237e",
+      "verified_ranges": [
+        [
+          127,
+          212
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        213
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_5_0286911e",
+      "call_event_ordinal": 9,
+      "result_event_ordinal": 17,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/runtime-plan.md",
+      "offset": 1,
+      "limit": 134,
+      "is_error": false,
+      "artifact_id": "runtime-plan",
+      "source_sha256": "9e1e0e43539c82e0d6d86069c4f78dd6572d3653f7842d26d4733df12c6a1115",
+      "verified_ranges": [
+        [
+          1,
+          134
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        135
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_6_86594574_04314ed5",
+      "call_event_ordinal": 10,
+      "result_event_ordinal": 18,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/dispatch-sequence.md",
+      "offset": 1,
+      "limit": 95,
+      "is_error": false,
+      "artifact_id": "dispatch-sequence",
+      "source_sha256": "df9f65af7f69a2ee0a81ceaebe81baa1b5fd2bca1a6f17cdbc66d4880ffcb70e",
+      "verified_ranges": [
+        [
+          1,
+          95
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        96
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_7_89d9e10e",
+      "call_event_ordinal": 11,
+      "result_event_ordinal": 19,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/investigation.md",
+      "offset": 1,
+      "limit": 58,
+      "is_error": false,
+      "artifact_id": "investigation",
+      "source_sha256": "68a7093439cdb47474e87cc2f6053f7b43da56d635893f2af7f0b9bdeeba6b1e",
+      "verified_ranges": [
+        [
+          1,
+          58
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        59
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_8_8f9754c6",
+      "call_event_ordinal": 21,
+      "result_event_ordinal": 29,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/current-result.md",
+      "offset": 1,
+      "limit": 38,
+      "is_error": false,
+      "artifact_id": "current-result",
+      "source_sha256": "c0c7c8fcd020ea3d8331cf6a8f8741f4e8931d87d5212e38f1dcb03b8a9b796e",
+      "verified_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        39
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_9_5749f72b",
+      "call_event_ordinal": 22,
+      "result_event_ordinal": 30,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/current-agents.md",
+      "offset": 1,
+      "limit": 151,
+      "is_error": false,
+      "artifact_id": "current-agents",
+      "source_sha256": "1e0893e0b52d1c17c8cce1ab324002ea7de54ebbdc5a072938580ec42f1d7518",
+      "verified_ranges": [
+        [
+          1,
+          151
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        152
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_10_da9bbb1f",
+      "call_event_ordinal": 23,
+      "result_event_ordinal": 31,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/current-roadmap.md",
+      "offset": 1,
+      "limit": 69,
+      "is_error": false,
+      "artifact_id": "current-roadmap",
+      "source_sha256": "a76ecda82fe9d532519bcb65db981ed967fe2ee66de2664e5d7ae8d244025995",
+      "verified_ranges": [
+        [
+          1,
+          69
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        70
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_11_e2be0cfa",
+      "call_event_ordinal": 24,
+      "result_event_ordinal": 32,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/scope-delta.patch",
+      "offset": 1,
+      "limit": 21,
+      "is_error": false,
+      "artifact_id": "scope-delta",
+      "source_sha256": "39e1b2c49763adae08786f078ef90e2aa2fe81f24c5eb939c3ac27fedbbcb433",
+      "verified_ranges": [
+        [
+          1,
+          21
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        22
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_12_91626188_4017ab78",
+      "call_event_ordinal": 25,
+      "result_event_ordinal": 33,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/batch-config.json",
+      "offset": 1,
+      "limit": 43,
+      "is_error": false,
+      "artifact_id": "batch-config",
+      "source_sha256": "ee461ecd2cd0f8caf668339fdfe104cb91b18ae60c37107729725fcc5b70aa32",
+      "verified_ranges": [
+        [
+          1,
+          43
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        44
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_13_ff97af7f",
+      "call_event_ordinal": 26,
+      "result_event_ordinal": 34,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/prompt-body-B1.txt",
+      "offset": 1,
+      "limit": 7,
+      "is_error": false,
+      "artifact_id": "prompt-body-B1",
+      "source_sha256": "f2ff6b8a45e7350cc59ed1cc9e9b46bf59033a0cef0c02cd4d356e34f04593c9",
+      "verified_ranges": [
+        [
+          1,
+          7
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        8
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_14_2f0be8f5",
+      "call_event_ordinal": 27,
+      "result_event_ordinal": 35,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/S1-ADMISSION-DRAFT.md",
+      "offset": 1,
+      "limit": 16,
+      "is_error": false,
+      "artifact_id": "s1-admission",
+      "source_sha256": "5de39aad993b9e58831060151060a3c1c4c22fe181d25e53641f85f2386f08e5",
+      "verified_ranges": [
+        [
+          1,
+          16
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        17
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_15_a730ce34",
+      "call_event_ordinal": 28,
+      "result_event_ordinal": 36,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/historical-s0-glm-final.json",
+      "offset": 1,
+      "limit": 54,
+      "is_error": false,
+      "artifact_id": "historical-s0-glm-final",
+      "source_sha256": "835422d9ae58fd70a2bf01e55a2fb1ad550b740c44847f51c2832599deabb0f8",
+      "verified_ranges": [
+        [
+          1,
+          54
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        55
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_16_61d904fa",
+      "call_event_ordinal": 38,
+      "result_event_ordinal": 46,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/bootstrap-policy.json",
+      "offset": 1,
+      "limit": 99,
+      "is_error": false,
+      "artifact_id": "bootstrap-policy",
+      "source_sha256": "210a5730aee94acc0342da96e63a278f9e4132d1d92ef400fcc3af9972362b83",
+      "verified_ranges": [
+        [
+          1,
+          99
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        100
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_17_4bf86e69",
+      "call_event_ordinal": 39,
+      "result_event_ordinal": 47,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/bootstrap-policy.json",
+      "offset": 100,
+      "limit": 116,
+      "is_error": false,
+      "artifact_id": "bootstrap-policy",
+      "source_sha256": "210a5730aee94acc0342da96e63a278f9e4132d1d92ef400fcc3af9972362b83",
+      "verified_ranges": [
+        [
+          100,
+          215
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        216
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_18_752c6373",
+      "call_event_ordinal": 40,
+      "result_event_ordinal": 48,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/bootstrap-policy.json",
+      "offset": 216,
+      "limit": 100,
+      "is_error": false,
+      "artifact_id": "bootstrap-policy",
+      "source_sha256": "210a5730aee94acc0342da96e63a278f9e4132d1d92ef400fcc3af9972362b83",
+      "verified_ranges": [
+        [
+          216,
+          315
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        316
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_19_5adf34c8",
+      "call_event_ordinal": 41,
+      "result_event_ordinal": 49,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-contract.md",
+      "offset": 1,
+      "limit": 121,
+      "is_error": false,
+      "artifact_id": "old-contract",
+      "source_sha256": "50a46022e21cea398812817d64a04a15023cd4292bc0f04bc2deecf40d5a0cfa",
+      "verified_ranges": [
+        [
+          1,
+          121
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        122
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_20_7e9d70a3",
+      "call_event_ordinal": 42,
+      "result_event_ordinal": 50,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-contract.md",
+      "offset": 122,
+      "limit": 40,
+      "is_error": false,
+      "artifact_id": "old-contract",
+      "source_sha256": "50a46022e21cea398812817d64a04a15023cd4292bc0f04bc2deecf40d5a0cfa",
+      "verified_ranges": [
+        [
+          122,
+          161
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        162
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_21_9eecc2bc",
+      "call_event_ordinal": 43,
+      "result_event_ordinal": 51,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/historical-s0-kimi-final.json",
+      "offset": 1,
+      "limit": 57,
+      "is_error": false,
+      "artifact_id": "historical-s0-kimi-final",
+      "source_sha256": "32f9aae7cc3bfc58623b94b3c2fc1daedbf00d1a27fdbbde2c7b99020e0b0699",
+      "verified_ranges": [
+        [
+          1,
+          57
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        58
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_22_c21defe4",
+      "call_event_ordinal": 44,
+      "result_event_ordinal": 52,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/superseded-policy-s0.json",
+      "offset": 1,
+      "limit": 121,
+      "is_error": false,
+      "artifact_id": "superseded-policy-s0",
+      "source_sha256": "66ce0dd1dc0ec886bcdf0fec83366362f73c6add009f924b72de42660ae5cf35",
+      "verified_ranges": [
+        [
+          1,
+          121
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        122
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_23_625cab8c",
+      "call_event_ordinal": 45,
+      "result_event_ordinal": 53,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/superseded-policy-s0.json",
+      "offset": 122,
+      "limit": 82,
+      "is_error": false,
+      "artifact_id": "superseded-policy-s0",
+      "source_sha256": "66ce0dd1dc0ec886bcdf0fec83366362f73c6add009f924b72de42660ae5cf35",
+      "verified_ranges": [
+        [
+          122,
+          203
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        204
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_24_7865a0a3",
+      "call_event_ordinal": 56,
+      "result_event_ordinal": 64,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-00.md",
+      "offset": 1,
+      "limit": 148,
+      "is_error": false,
+      "artifact_id": "old-00",
+      "source_sha256": "c56b86445b49d1de78983466f3ce53c5d61f1de87db82df44ce82701d6a9dad1",
+      "verified_ranges": [
+        [
+          1,
+          148
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        149
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_25_dc5a9589",
+      "call_event_ordinal": 57,
+      "result_event_ordinal": 65,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-01.md",
+      "offset": 119,
+      "limit": 19,
+      "is_error": false,
+      "artifact_id": "old-01",
+      "source_sha256": "309da80ae62900d27b5acd609bf2d30c5028e5e882451eed42571c4d6d290664",
+      "verified_ranges": [
+        [
+          119,
+          137
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        138
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_26_c045d72f",
+      "call_event_ordinal": 58,
+      "result_event_ordinal": 66,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-01.md",
+      "offset": 330,
+      "limit": 28,
+      "is_error": false,
+      "artifact_id": "old-01",
+      "source_sha256": "309da80ae62900d27b5acd609bf2d30c5028e5e882451eed42571c4d6d290664",
+      "verified_ranges": [
+        [
+          330,
+          357
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        358
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_27_76ff0955",
+      "call_event_ordinal": 59,
+      "result_event_ordinal": 67,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-01.md",
+      "offset": 691,
+      "limit": 52,
+      "is_error": false,
+      "artifact_id": "old-01",
+      "source_sha256": "309da80ae62900d27b5acd609bf2d30c5028e5e882451eed42571c4d6d290664",
+      "verified_ranges": [
+        [
+          691,
+          742
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        743
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_28_4dadb263",
+      "call_event_ordinal": 60,
+      "result_event_ordinal": 68,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-02.md",
+      "offset": 1,
+      "limit": 67,
+      "is_error": false,
+      "artifact_id": "old-02",
+      "source_sha256": "8367c03a3b6710e06d8cfda96a3350079145ef35740c816f51006395dabe2f2d",
+      "verified_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        68
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_29_c380beff",
+      "call_event_ordinal": 61,
+      "result_event_ordinal": 69,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-03.md",
+      "offset": 1,
+      "limit": 26,
+      "is_error": false,
+      "artifact_id": "old-03",
+      "source_sha256": "9a872a46b90802b07f114b9c3d5b4703981c7538a1757beb2b496cc8a5e0017a",
+      "verified_ranges": [
+        [
+          1,
+          26
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        27
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_30_5ba01b6b",
+      "call_event_ordinal": 62,
+      "result_event_ordinal": 70,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-04.txt",
+      "offset": 1,
+      "limit": 38,
+      "is_error": false,
+      "artifact_id": "old-04",
+      "source_sha256": "73412db091ef7b6b7ead5e705c2705958341407f3e1526cba9225e6dfc4b2ba2",
+      "verified_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "ignored_empty_display_markers": [],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_31_71320a37",
+      "call_event_ordinal": 63,
+      "result_event_ordinal": 71,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-05.txt",
+      "offset": 1,
+      "limit": 39,
+      "is_error": false,
+      "artifact_id": "old-05",
+      "source_sha256": "3342fff49abe4912a7eabcf52720a88fed5c0c134bd8c9ff1d1621ef6f9ac981",
+      "verified_ranges": [
+        [
+          1,
+          39
+        ]
+      ],
+      "ignored_empty_display_markers": [],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_32_3feca91c",
+      "call_event_ordinal": 73,
+      "result_event_ordinal": 80,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-06.txt",
+      "offset": 1,
+      "limit": 31,
+      "is_error": false,
+      "artifact_id": "old-06",
+      "source_sha256": "bdc8a583205efd58f7258aaf839e55a3481ef4d383727443ec3f38b3f9150627",
+      "verified_ranges": [
+        [
+          1,
+          31
+        ]
+      ],
+      "ignored_empty_display_markers": [],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_33_40dfaf00",
+      "call_event_ordinal": 74,
+      "result_event_ordinal": 81,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-07.txt",
+      "offset": 1,
+      "limit": 32,
+      "is_error": false,
+      "artifact_id": "old-07",
+      "source_sha256": "66f583c076c813202d8d560389a67795194a6e17c7da2fb4c28ae1df09a7faba",
+      "verified_ranges": [
+        [
+          1,
+          32
+        ]
+      ],
+      "ignored_empty_display_markers": [],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_34_ad585d01",
+      "call_event_ordinal": 75,
+      "result_event_ordinal": 82,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-08.json",
+      "offset": 1,
+      "limit": 160,
+      "is_error": false,
+      "artifact_id": "old-08",
+      "source_sha256": "022e4c7e5b6aeb685148cdc8d057ef44b7afcb6e2710a7b48b43bcb1f82e54db",
+      "verified_ranges": [
+        [
+          1,
+          160
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        161
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_35_f4429cc1",
+      "call_event_ordinal": 76,
+      "result_event_ordinal": 83,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-09.txt",
+      "offset": 1,
+      "limit": 38,
+      "is_error": false,
+      "artifact_id": "old-09",
+      "source_sha256": "df04ffd713bb3d6e5fb54b685be07f4cc5afbf7d47b1db6e0434ee47c6714b96",
+      "verified_ranges": [
+        [
+          1,
+          38
+        ]
+      ],
+      "ignored_empty_display_markers": [],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_36_9d65972b",
+      "call_event_ordinal": 77,
+      "result_event_ordinal": 84,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-10.json",
+      "offset": 1,
+      "limit": 18,
+      "is_error": false,
+      "artifact_id": "old-10",
+      "source_sha256": "3a3ce04c07766c1668244d5fe33526efb201b7ec5642bc91f18601ca9ab51f5d",
+      "verified_ranges": [
+        [
+          1,
+          18
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        19
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_37_32eccbad",
+      "call_event_ordinal": 78,
+      "result_event_ordinal": 85,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-10.json",
+      "offset": 1336,
+      "limit": 9,
+      "is_error": false,
+      "artifact_id": "old-10",
+      "source_sha256": "3a3ce04c07766c1668244d5fe33526efb201b7ec5642bc91f18601ca9ab51f5d",
+      "verified_ranges": [
+        [
+          1336,
+          1344
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        1345
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_38_10b4d2c5",
+      "call_event_ordinal": 79,
+      "result_event_ordinal": 86,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/old-corrections.json",
+      "offset": 1,
+      "limit": 269,
+      "is_error": false,
+      "artifact_id": "old-corrections",
+      "source_sha256": "0760e259bea01d5c1c571b8879ea07c81fb3e8af466f1af3e5e98f730da7ecdb",
+      "verified_ranges": [
+        [
+          1,
+          269
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        270
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_39_a0a10feb",
+      "call_event_ordinal": 88,
+      "result_event_ordinal": 97,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-glm-actual-metadata.json",
+      "offset": 1,
+      "limit": 46,
+      "is_error": false,
+      "artifact_id": "s0-glm-actual-metadata",
+      "source_sha256": "1ee7e2ab268b7d0d2b4bfeadfeff5a4929eae52a9bf952af4b2ed3e45bfa3300",
+      "verified_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        47
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_40_448f7f4d",
+      "call_event_ordinal": 89,
+      "result_event_ordinal": 98,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-kimi-actual-metadata.json",
+      "offset": 1,
+      "limit": 46,
+      "is_error": false,
+      "artifact_id": "s0-kimi-actual-metadata",
+      "source_sha256": "9de0c1e715935d3b64c7bf720ec4863ffa3c43eb2a6a76c3a6830dda4de8c6b2",
+      "verified_ranges": [
+        [
+          1,
+          46
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        47
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_41_aaddc0cc",
+      "call_event_ordinal": 90,
+      "result_event_ordinal": 99,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/dialect-static-evidence.json",
+      "offset": 1,
+      "limit": 302,
+      "is_error": false,
+      "artifact_id": "dialect-static-evidence",
+      "source_sha256": "803ca9bb9d6f9df28111701204b610fab0f5263571fcbc34a31f3f354ab0bfd4",
+      "verified_ranges": [
+        [
+          1,
+          302
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        303
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_42_64508391_7b5af7c6",
+      "call_event_ordinal": 91,
+      "result_event_ordinal": 100,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/dialect-static-evidence.json",
+      "offset": 303,
+      "limit": 20,
+      "is_error": false,
+      "artifact_id": "dialect-static-evidence",
+      "source_sha256": "803ca9bb9d6f9df28111701204b610fab0f5263571fcbc34a31f3f354ab0bfd4",
+      "verified_ranges": [
+        [
+          303,
+          322
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        323
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_43_cbc5d951",
+      "call_event_ordinal": 92,
+      "result_event_ordinal": 101,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-cell-P2-native.json",
+      "offset": 1,
+      "limit": 67,
+      "is_error": false,
+      "artifact_id": "profile-cell-P2-native",
+      "source_sha256": "a6f67263e6b85e9513cea7bee3809dd44b13d2034cdad1d12d92572ad611265d",
+      "verified_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        68
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_44_9aa40526",
+      "call_event_ordinal": 93,
+      "result_event_ordinal": 102,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-dispatch-identity.json",
+      "offset": 1,
+      "limit": 7,
+      "is_error": false,
+      "artifact_id": "profile-dispatch-identity",
+      "source_sha256": "97a1a0e9ce32e5889fde353db265e88b456e618d8719093d8eca29d5f3be4f00",
+      "verified_ranges": [
+        [
+          1,
+          7
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        8
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_45_fcfb6642",
+      "call_event_ordinal": 94,
+      "result_event_ordinal": 103,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-execution-completion.json",
+      "offset": 1,
+      "limit": 14,
+      "is_error": false,
+      "artifact_id": "profile-execution-completion",
+      "source_sha256": "9d867d9d84bbed11c7bd672d0e5d63b8ee8a611ae2a56276360f7df3d8b9bb0d",
+      "verified_ranges": [
+        [
+          1,
+          14
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        15
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_46_223a0e5c",
+      "call_event_ordinal": 95,
+      "result_event_ordinal": 104,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-cli-final-raw.json",
+      "offset": 1,
+      "limit": 6,
+      "is_error": false,
+      "artifact_id": "profile-cli-final-raw",
+      "source_sha256": "05b0d38124665138e3ffc371e850cb32c0037d3eb775b4654346c8f28109dff2",
+      "verified_ranges": [
+        [
+          1,
+          6
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        7
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_47_f0d3de1f",
+      "call_event_ordinal": 96,
+      "result_event_ordinal": 105,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-cli-final-raw.json",
+      "offset": 8,
+      "limit": 43,
+      "is_error": false,
+      "artifact_id": "profile-cli-final-raw",
+      "source_sha256": "05b0d38124665138e3ffc371e850cb32c0037d3eb775b4654346c8f28109dff2",
+      "verified_ranges": [
+        [
+          8,
+          50
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        51
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_48_8dbc5e2e",
+      "call_event_ordinal": 107,
+      "result_event_ordinal": 115,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-A.json",
+      "offset": 1,
+      "limit": 70,
+      "is_error": false,
+      "artifact_id": "profile-author-A",
+      "source_sha256": "ccb4a20e56a513981a7098ad8908b974afb474340b03c9e7af6bf68f282063a4",
+      "verified_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        71
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_49_77c97a5f",
+      "call_event_ordinal": 108,
+      "result_event_ordinal": 116,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-N1.json",
+      "offset": 1,
+      "limit": 70,
+      "is_error": false,
+      "artifact_id": "profile-author-N1",
+      "source_sha256": "e44b51ffa2e64a955b1db16a482192bf350a5b07bbbec16129b2d70fef39678c",
+      "verified_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        71
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_50_acaee69c",
+      "call_event_ordinal": 109,
+      "result_event_ordinal": 117,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-N2.json",
+      "offset": 1,
+      "limit": 70,
+      "is_error": false,
+      "artifact_id": "profile-author-N2",
+      "source_sha256": "d2570023cf163620a47519380fd6a2e8ca2d512b9b4a89e5fe74babfdf9768a0",
+      "verified_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        71
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_51_fa3d8bd8",
+      "call_event_ordinal": 110,
+      "result_event_ordinal": 118,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-R1.json",
+      "offset": 1,
+      "limit": 70,
+      "is_error": false,
+      "artifact_id": "profile-author-R1",
+      "source_sha256": "994883aa9323312e717b8067612bc514340a97f7245457adbfcc9020f126331f",
+      "verified_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        71
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_52_eacf8239",
+      "call_event_ordinal": 111,
+      "result_event_ordinal": 119,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-author-W.json",
+      "offset": 1,
+      "limit": 70,
+      "is_error": false,
+      "artifact_id": "profile-author-W",
+      "source_sha256": "452b290753b845e8b5142717f6d9ee08bc7db94cb831163ef0c9caa0efae1817",
+      "verified_ranges": [
+        [
+          1,
+          70
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        71
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_53_12d6adfa",
+      "call_event_ordinal": 112,
+      "result_event_ordinal": 120,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-review_glm.json",
+      "offset": 1,
+      "limit": 65,
+      "is_error": false,
+      "artifact_id": "profile-review_glm",
+      "source_sha256": "eefe2a4edbd6d706c4e95ec3df5b3bbea8b9e3ee25e02d85f6346fd20c1e2865",
+      "verified_ranges": [
+        [
+          1,
+          65
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        66
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_54_de08d632",
+      "call_event_ordinal": 113,
+      "result_event_ordinal": 121,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-review_kimi.json",
+      "offset": 1,
+      "limit": 65,
+      "is_error": false,
+      "artifact_id": "profile-review_kimi",
+      "source_sha256": "4dab0b5b2049a7150116cc871e5957d991af312a754455385b5d52f18262ab91",
+      "verified_ranges": [
+        [
+          1,
+          65
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        66
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_55_72eba6f4",
+      "call_event_ordinal": 114,
+      "result_event_ordinal": 122,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/profile-supervisor.json",
+      "offset": 1,
+      "limit": 67,
+      "is_error": false,
+      "artifact_id": "profile-supervisor",
+      "source_sha256": "b77b6172167201058ef9e2380b520454d9ee0f6b904f470cb042e256ddac5e1e",
+      "verified_ranges": [
+        [
+          1,
+          67
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        68
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_56_c4b65214",
+      "call_event_ordinal": 125,
+      "result_event_ordinal": 131,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-glm-reading-coverage.json",
+      "offset": 1,
+      "limit": 557,
+      "is_error": false,
+      "artifact_id": "s0-glm-reading-coverage",
+      "source_sha256": "3aec528bd9e07e319a5d77f008e241cf02eb3bb051bfb6a2f500ce9655cada8e",
+      "verified_ranges": [
+        [
+          1,
+          557
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        558
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_57_b9ec68e1",
+      "call_event_ordinal": 126,
+      "result_event_ordinal": 132,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-glm-reading-coverage.json",
+      "offset": 5295,
+      "limit": 7,
+      "is_error": false,
+      "artifact_id": "s0-glm-reading-coverage",
+      "source_sha256": "3aec528bd9e07e319a5d77f008e241cf02eb3bb051bfb6a2f500ce9655cada8e",
+      "verified_ranges": [
+        [
+          5295,
+          5301
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        5302
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_58_f703c92d",
+      "call_event_ordinal": 127,
+      "result_event_ordinal": 133,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-kimi-reading-coverage.json",
+      "offset": 1,
+      "limit": 557,
+      "is_error": false,
+      "artifact_id": "s0-kimi-reading-coverage",
+      "source_sha256": "e243d665804e282e9368ef3a7a82e37460037d710a25c2b7bb55809ed659d3b0",
+      "verified_ranges": [
+        [
+          1,
+          557
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        558
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_59_e8a50b33",
+      "call_event_ordinal": 128,
+      "result_event_ordinal": 134,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/s0-kimi-reading-coverage.json",
+      "offset": 5257,
+      "limit": 7,
+      "is_error": false,
+      "artifact_id": "s0-kimi-reading-coverage",
+      "source_sha256": "e243d665804e282e9368ef3a7a82e37460037d710a25c2b7bb55809ed659d3b0",
+      "verified_ranges": [
+        [
+          5257,
+          5263
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        5264
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_60_568d51bb",
+      "call_event_ordinal": 129,
+      "result_event_ordinal": 135,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/source-paths.py",
+      "offset": 1,
+      "limit": 111,
+      "is_error": false,
+      "artifact_id": "source-paths",
+      "source_sha256": "13050fbf2e5afdf843da1e7cb3c31c3ff50235bb1171f1454bd523781142ec67",
+      "verified_ranges": [
+        [
+          1,
+          111
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        112
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_61_553fc322",
+      "call_event_ordinal": 130,
+      "result_event_ordinal": 136,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/source-adapters.py",
+      "offset": 1,
+      "limit": 289,
+      "is_error": false,
+      "artifact_id": "source-adapters",
+      "source_sha256": "3c9cd515ad1af39b6b33b0ad5036c22426ecd2f956c125aa0cf1882bd20c63e6",
+      "verified_ranges": [
+        [
+          1,
+          289
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        290
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_62_df836153",
+      "call_event_ordinal": 138,
+      "result_event_ordinal": 140,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/source-test-runtime.py",
+      "offset": 1,
+      "limit": 409,
+      "is_error": false,
+      "artifact_id": "source-test-runtime",
+      "source_sha256": "19e012e9afef9961fd544b52100af92086af25782820facc94245aa33aa4b295",
+      "verified_ranges": [
+        [
+          1,
+          409
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        410
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    },
+    {
+      "call_id": "Read_63_18b8f482",
+      "call_event_ordinal": 139,
+      "result_event_ordinal": 141,
+      "path": "D:/project/agent-coop-governance-review-s1-20261011/coordination/.runtime/governance-s1/source-test-paths.py",
+      "offset": 1,
+      "limit": 176,
+      "is_error": false,
+      "artifact_id": "source-test-paths",
+      "source_sha256": "b6a36e20e969c1cc91de3f474158a19107a006783e91557a4468fc56b6e2065d",
+      "verified_ranges": [
+        [
+          1,
+          176
+        ]
+      ],
+      "ignored_empty_display_markers": [
+        177
+      ],
+      "problems": [],
+      "success_basis": "explicit_success_and_content_match"
+    }
+  ],
+  "sequence_anomalies": [],
+  "limitations": [
+    "Coverage is administrative extraction, not yet product B/C implementation.",
+    "Prompt table requested S1-admission limit16 while frozen required plan requires18; missing17(blank) and18(material sizing) cannot be silently waived.",
+    "Original parent watcher compared GetProcess100ns with CIMmicroseconds strings and did not expand descendants; wrapper-only prefix remains a process oversight gap."
+  ]
+}
