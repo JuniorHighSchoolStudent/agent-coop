@@ -1,0 +1,182 @@
+{
+  "candidate": "57504fa586a9584250a8515b581ae34f80b212d8",
+  "administrative_commit": "57504fa586a9584250a8515b581ae34f80b212d8",
+  "actual_model": "kimi-k3-2",
+  "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+  "raw_sha256": "ac78fddde7289775779d9e5d5270b838ae63ce15f43879b19f0d98b9aa60c5ff",
+  "receipt_sha256": "424fabfa5b18eadd0846859dc82a07957c6110d61fd2dfab2bfdd859b4892721",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "57504fa586a9584250a8515b581ae34f80b212d8",
+    "model": "kimi-k3-2",
+    "seat": "kimi",
+    "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\product-permission-matrix-confirm-kimi.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "6d5c31619b498f332d416eebcc736091536c77a827b94daef18c09e4e019589b",
+    "started_at": "2026-10-11T02:13:26.0696299+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "administrative_commit": "57504fa586a9584250a8515b581ae34f80b212d8",
+      "product_commit": "fe2e1b6b03cde7763f6f2c974d909edf6c2ce708",
+      "seat": "kimi",
+      "model": "kimi-k3-2",
+      "session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "index": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/kimi-input-index.json",
+      "index_sha256": "896e6ffadcd2a8826155c15b612d92aafb6255cdf93e1dd16251171d89f55d1f",
+      "prompt_sha256": "6d5c31619b498f332d416eebcc736091536c77a827b94daef18c09e4e019589b",
+      "pins": {
+        "node": {
+          "path": "C:/Program Files/nodejs/node.exe",
+          "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+        },
+        "entry": {
+          "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+          "sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6"
+        },
+        "dist": {
+          "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js",
+          "sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65"
+        },
+        "wrapper": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1",
+          "sha256": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed"
+        }
+      },
+      "budget_after_dual": {
+        "codebuddy": 15,
+        "limit": 15,
+        "native": 1,
+        "native_limit": 2
+      },
+      "status": "root admitted sole independent limited matrix confirmation"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "exact_write_files": [],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "你是原独立kimi-k3-2审核席，继续原session agent-coop-g1-kimi-r1-34bce56b-20261010，原cwd D:/project/agent-coop-g1-review。唯一末次产品矩阵限定结果确认：准确行政57504fa586a9584250a8515b581ae34f80b212d8、产品fe2e1b6b03cde7763f6f2c974d909edf6c2ce708。只Read/Glob/Grep；不写文件或memory、不开Shell/子agent、不运行试验、不看另一席本轮票、不重开静态代码内容修复。一次请求20turn/600秒，无重试。\r\n先Read D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/kimi-input-index.json，然后完整Read索引全部10个packet和本人C2原票；可一轮并行2-3个Read减少开销，避免一大包截断。每包约16KB以内，原件按Git字节串联加SHA标头，既有CRLF不改；读取覆盖应声明串联原件/区间实读，不谎称分别打开源文件。packet内所有九格tool_use/result全文必须直接读，不能以summary代替。未读/截断须如实列出，勿追加模型调用。\r\n本轮直接核九格原生id/path/result、fixture前后摘要；N4书面方法及S0/S1/预存expected、actual STATUS/完整状态与运维捕获次序：先STATUS后Store.read，没有独立逐I/O tracing；原completion当时native_denial=not_yet_evaluated不改，后续cell-N4原始流映射为明确拒绝。模型final的ids=[]原样保留，真实ids来自每格原始流。actual CIM命令行与Windows解析argv是实际观察；另列事后command重建及准备session占位模板，不混称。\r\n必须核实际profile/env白名单/四固定值、prepare参数错误（未重init/未模型）、receipt/cli-final/summary、本人C2与当前result段。执行原model/session匹配、parser正常exit0、P1/P2成功/N1–N7各一次Write明确non-interactive approval denied且已有seed先Read成功；这些是待你从原件判断的事实，不由发包人签PASS。\r\n具名裁定本人GLM B18或Kimi B11能否按准确fe2e指定TEMP矩阵范围关闭，或仍须保留哪一部分。N4是否支持限定证明须独立裁定。请求maxturns20而CLI num_turns55，只能说请求参数，不能硬上限；外部文件看护实际仅最后约12秒/16次、前约61秒空档，没有补跑，怎样影响指定矩阵证据及更广准入必须明确。runtime600秒/8MiB与外部看护分开，未测试超时/超输出分支。\r\n保留B两次作者maxturn无有效final/B27未满足；你本人C2的准确fe2e独立静态范围例外交最终native，不能改成B作者成功。GLM历史B11/Kimi历史B09根因unknown，真实memory/hook/TOCTOU/未测别名/POSIX/Shell执行能力/完整四角色live均未证。init工具目录大于请求不是实际能力；本轮实际7Read/8Write/1Edit，不称全域沙箱。\r\n此双席启动后实际15/15CB、1/2native，CB额度用尽，无第三内容轮/作者/补结论/重新矩阵。只有根冻结后一次最终native尚待准入。当前不自动接收/main/live。\r\n最终中文给出实际已读范围、逐格/N4/身份/parser证据裁定、本人finding处置与精确范围、B交付例外与历史unknown、numturns/watch缺口是否阻断哪一层接收、预算与下一步。你有权保留阻断，不能因无额度而强行PASS。",
+      "--model",
+      "kimi-k3-2",
+      "--resume",
+      "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "9732e50833b33f349638919bf2ead2f8399cad2a073be74210631b4a46f45e94",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-g1-review"
+  },
+  "completion": {
+    "candidate": "57504fa586a9584250a8515b581ae34f80b212d8",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T02:17:27.9372660+00:00",
+    "wall_seconds": 241.8676361,
+    "final_head": "57504fa586a9584250a8515b581ae34f80b212d8",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "Read_114_a4f5c97d",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/kimi-input-index.json"
+      }
+    },
+    {
+      "id": "Read_115_eb9c2466",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-01.txt"
+      }
+    },
+    {
+      "id": "Read_116_51705b81",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-02.txt"
+      }
+    },
+    {
+      "id": "Read_117_5dc7818d",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-03.txt"
+      }
+    },
+    {
+      "id": "Read_118_72ab4bc9",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-04.txt"
+      }
+    },
+    {
+      "id": "Read_119_6cc65e16",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-05.txt"
+      }
+    },
+    {
+      "id": "Read_120_6bdcca66",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-06.txt"
+      }
+    },
+    {
+      "id": "Read_121_90e7c8d9",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-07.txt"
+      }
+    },
+    {
+      "id": "Read_122_cde3f6d4",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-08.txt"
+      }
+    },
+    {
+      "id": "Read_123_ab9d7018",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-09.txt"
+      }
+    },
+    {
+      "id": "Read_124_0e1cfa61",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-10.txt"
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 372
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

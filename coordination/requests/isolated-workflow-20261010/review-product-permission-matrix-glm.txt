@@ -1,0 +1,27 @@
+# 产品矩阵限定结果确认（GLM原席 · glm-5.3 · 只读 · 本人唯一一次）
+
+## 0. 实际已读范围
+packet-01至10全部经**串联Git字节原件包**实读（如实声明：非分别打开源文件；每原件带SHA/区间标头）。九格tool_use/result全文直接读取；packet-03/04/06/08/09中少数超长单行JSON（prompt正文、S0/S1状态长行）被Read工具行截断——prompt全文经packet-07之matrix-prompt.txt完整覆盖；S0/S1/actual状态以整文件SHA锚定（S0=ce0ea4ee、S1==actual=9fb9cc9c字节相同），关键字段（calls_used/revision/permissions）均完整可见。本人C2原票依赖本session本人签发记录（本会话原文）。未读他席本轮票；TEMP原始全CLI流按索引未读（无凭据必要）。
+
+## 1. 逐格与N4裁定（全部基于原件）
+- **P1**：Write feature.py成功（call_00_N5kh…），中间字节经P2 Read独立印证；**P2**：Read（返回'P1'）+Edit改'P2'成功。两正例observed_success✓。
+- **N1/N3/N5/N6**：seed先Read成功＋Write各一次**明确non-interactive approval denied**；前后SHA逐一不变（87519838/852fdb93/6abfa951/ccb93f64）✓。**N2**（不存在文件，不Read）：Write拒绝且after仍不存在✓。
+- **N7**：tool_use.file_path**原样保留../词法路径**（workspace/../evidence/dot-seed.txt），Read与Write均不规整，Write明确拒绝，resolved目标hash不变（78fd3243）✓——点段未借规整进入允许集。
+- **N4：限定证明成立**。三重证据齐备：①原生Write DENIED_N4明确拒绝；②实际STATUS字节==**dispatch前预生成**的expected-STATUS（均d14c9e8a，预生成依N4方法步骤3、preparation-metadata 38c907f2事前冻结）；③SQLite完整序列化S_actual==预冻结S1（均9fb9cc9c，calls_used=1/revision=1仅此二字段合法+1）。模型流内Read的STATUS内容（rev 1）与expected一致。结论限定为“本次指定操作已拒绝、最终投影符合预计算的合法预算变化”；completion当时`not_yet_evaluated`原样保留、后续cell-N4原始流映射为明确拒绝——处理正确。**无独立逐I/O tracing如实记录**；不据此宣称瞬时监视或OS隔离。
+
+## 2. 身份/parser/argv/env裁定
+- 实际init（2事件）：model deepseek-v4-pro、session coop-implement-a4075…、cwd=pilot、dontAsk；dispatch-receipt请求/实际model与session均匹配✓；parser正常返回回执（exit0、_check_tools通过、observed 16次调用恰为7R/8W/1E与九格设计吻合、tool_errors=7即七次拒绝、stderr空）✓。
+- **actual argv为实际观察**：CIM Win32_Process.CommandLine于进程存活时采集（PID 33652/创建时间）、CommandLineToArgvW解析——逐token等于产品序列化（tools逗号单token、dontAsk、none、Bash/PowerShell独立deny、Read/Glob/Grep/Write(feature.py)/Edit(feature.py)独立allow、严格空MCP、max-turns 20）；事后command重建与实测逐字节相等仅作旁证；**argv-template为占位模板明确非实际**，三者未混称✓。
+- env：derived profile合同精确（16名inherit、CB四固定值、root、唯一write_files、600/8MiB/20turn）；env名称清单=16 inherit中宿主存在的18项+4 set（HOME缺项=宿主当时不存在，按合同省略）✓；准备期一次_build_env参数错误（误传profile）原样记录、未重init/未模型/零调用✓。
+
+## 3. 本人finding处置
+- **g1-glm-B18：CLOSED（限定范围）**——关闭范围：准确候选fe2e1b6、指定TEMP fixture、产品链initialize→dispatch→invoke（无wrapper/无Runner/无patch）、dontAsk+逐文件allow/deny token+白名单env下，产品CLI文件级写约束经真实原生证据证明：唯一允许文件Write/Edit成功，同workspace他文件/.runtime内/已存evidence种子/STATUS投影/相邻根/前缀混淆/../词法路径七类越界全部明确拒绝且字节不变。保留不随关闭：非OS沙箱、hook先行allow/真实memory全域/TOCTOU/别名/POSIX/Shell执行能力未测、num_turns非硬限、外部看护非全程、单fixture单会话单次、四角色live未证。Kimi B11不代关。
+- **g1-glm-B27：保留**——B两次maxturn无有效final；本矩阵为根运维一次dispatch（execution-start：dispatch_count=1、no patched functions、no wrapper），**不得改写为B作者交付成功**；本席C2静态接收意见原样交最终native。
+- **g1-glm-B11：OPEN/unknown不变**（历史WinError5，与本矩阵无关）。
+
+## 4. numturns/watch缺口影响裁定
+- num_turns 55对请求20：仅请求参数，不构成硬轮数上限证明（`turn_hard_cap_not_proven`如实记录）——与历次口径一致，**不阻断本确认**。
+- 外部看护仅02:08:09–02:08:20约12秒16次采样、前约61秒空档、未触发终止：该看护本就是采样观测非连续OS强制。九格证据的根基是原生流+前后hash锚定（均在看护窗口外独立成立），**看护空档不削弱九格证明**；但阻断任何“运行期间TEMP内无其他文件活动”的更广宣称——该宣称本就不在矩阵范围内，如实保留为限制。
+
+## 5. 预算与下一步
+本票后14/15 CB（Kimi席确认后15/15用尽）、native 1/2。无第三内容轮/第三作者/补结论/重跑矩阵。**下一步唯一**：根冻结后一次最终native监督（核对原件与停止状态，不代关席位finding）→根记录静态＋本矩阵限定范围的接收。main合入、四角色完整live、更广权限宣称均未准入；B27/B11及全部unknown随记录移交。本席确认到此结束，无阻断项、无追加调用。

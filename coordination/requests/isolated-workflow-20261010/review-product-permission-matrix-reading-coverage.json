@@ -1,0 +1,1676 @@
+[
+  {
+    "seat": "glm",
+    "candidate": "57504fa586a9584250a8515b581ae34f80b212d8",
+    "actual_tool_events": [
+      {
+        "id": "call_93da8f33330a4049aefc281c",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\glm-input-index.json"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 377
+      },
+      {
+        "id": "call_8533a7b11fdc44da8bda1949",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-01.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 298
+      },
+      {
+        "id": "call_db69d9e7e5e74d73bbe3bc9a",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-02.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 281
+      },
+      {
+        "id": "call_a138be759c7c45b3a30da328",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-03.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 137
+      },
+      {
+        "id": "call_f2bc7dd3f88b4293be776232",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-04.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 71
+      },
+      {
+        "id": "call_bf3fa30ea6cb4feaa963573d",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-05.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 327
+      },
+      {
+        "id": "call_e71401fc20d1483398900467",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-06.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 164
+      },
+      {
+        "id": "call_d7386c6f53ca43298e6aef72",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-07.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 383
+      },
+      {
+        "id": "call_e2d11971dbc54bdc97288bd7",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-08.txt",
+          "limit": 120,
+          "offset": 180
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 180,
+        "returned_numbered_line_max": 300
+      },
+      {
+        "id": "call_0019d312d4ed42a2a870534a",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-08.txt",
+          "limit": 180
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 181
+      },
+      {
+        "id": "call_44504043e0c24af2a753ae9f",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-10.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 66
+      },
+      {
+        "id": "call_2fd6cf58b8da402bbd14bacc",
+        "name": "Read",
+        "input": {
+          "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-matrix-confirm\\packet-09.txt",
+          "limit": 60,
+          "offset": 130
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 130,
+        "returned_numbered_line_max": 189
+      }
+    ],
+    "packets": [
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-01.txt",
+        "sha256": "86bfab50dd0064ae08a24a9cd199efc4731d63b88ae65474e1305901364567f5",
+        "line_count": 297,
+        "exact_line_count": 297,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-02.txt",
+        "sha256": "955085d6e54827a2504152ce80006ee86a1f4e8894d2b7657a11f994e7fd198e",
+        "line_count": 280,
+        "exact_line_count": 280,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-03.txt",
+        "sha256": "47b0d5b0e6a6c0368083ccd580f53b744d055b6954f06a0b08b8d3290d986f5a",
+        "line_count": 136,
+        "exact_line_count": 134,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [
+          58,
+          98
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-04.txt",
+        "sha256": "5123850f8e151d17d23ab7a1c44506bf4efb7ba9f48ea2295f4f04f98f6f4c28",
+        "line_count": 70,
+        "exact_line_count": 67,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [
+          16,
+          23,
+          34
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-05.txt",
+        "sha256": "f7ecfc39570d4498a8a87225d1c84596a4431e6062ba4125a822ffaba1381e05",
+        "line_count": 326,
+        "exact_line_count": 326,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-06.txt",
+        "sha256": "7e5d29170d1ab8d363f1ae17b16c887e77892e0b8fda260e05f81ba1f50bb5cc",
+        "line_count": 163,
+        "exact_line_count": 162,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [
+          3
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-07.txt",
+        "sha256": "9bb22609271fa4456553cbe72208091e10d7bcf7997def4682732960317ec8e3",
+        "line_count": 382,
+        "exact_line_count": 382,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-08.txt",
+        "sha256": "0b41de3945ebd3acbbfbd62dd05bdd1a39d505d0deab1af768f4e86d1d016345",
+        "line_count": 300,
+        "exact_line_count": 298,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [
+          181,
+          300
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-09.txt",
+        "sha256": "c97b8e4f8fe07452d502fe88b52abf8cc54abbfc27ae8ed08cc7fa32c57d9540",
+        "line_count": 188,
+        "exact_line_count": 58,
+        "missing_lines": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129
+        ],
+        "returned_but_truncated_or_different_lines": [
+          172
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-10.txt",
+        "sha256": "b337f25166dd6ec0e05225e8a2b6c6189404e7383c255a6a25b9dac8eb49d80f",
+        "line_count": 65,
+        "exact_line_count": 65,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      }
+    ],
+    "originals": [
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-P1-native.json",
+        "source_sha256": "7de14df61db2771fd32bb7f76266cd2d6891df99d5d030445beefeaadb122b05",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          3,
+          42
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-P2-native.json",
+        "source_sha256": "a6f67263e6b85e9513cea7bee3809dd44b13d2034cdad1d12d92572ad611265d",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          46,
+          113
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N1-native.json",
+        "source_sha256": "cdd49093462e2263a6a4711b61dde758e9c51b1b8000f5db618810f1c5e7ced8",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          117,
+          183
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N2-native.json",
+        "source_sha256": "3af84860bac0f1c7e3f19323d0beb803a721fa65a37e47bd50fe7ca5ffadcc37",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          187,
+          226
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N3-native.json",
+        "source_sha256": "00cf27c3f5608285843b57149764fbd7925365718abffda48d0f37dba05bad81",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          230,
+          296
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N4-native.json",
+        "source_sha256": "e3969df5478f1b1a66d174ea3cecb7f18ad86df954ce8ba7022f7dcfb97bbe84",
+        "packet": "packet-02.txt",
+        "packet_line_range": [
+          3,
+          69
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N5-native.json",
+        "source_sha256": "0b468f7bf2a6dd149d33112179b3a8719b89dc7ac0b6d7f880425498cf382c31",
+        "packet": "packet-02.txt",
+        "packet_line_range": [
+          73,
+          139
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N6-native.json",
+        "source_sha256": "62de5e50f19804f5ad0db2d3a7085a86dc8faac7106dc2978fb4867f02fb3788",
+        "packet": "packet-02.txt",
+        "packet_line_range": [
+          143,
+          209
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N7-native.json",
+        "source_sha256": "ff7bf15e308747d2713fc1e96e1313d1f2c916431ab9a176a262e58cf3126824",
+        "packet": "packet-02.txt",
+        "packet_line_range": [
+          213,
+          279
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/READ-FIRST.md",
+        "source_sha256": "1c5a6b40e5657ccba309179b64755358d2cda4f7ba34704ba1ffc9ed10f71515",
+        "packet": "packet-03.txt",
+        "packet_line_range": [
+          3,
+          27
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-STATUS-after",
+        "source_sha256": "d14c9e8a55610bde6826c4ffbd6ff68f4f30c655f9d7d68cdab3bb4315835c6c",
+        "packet": "packet-03.txt",
+        "packet_line_range": [
+          31,
+          46
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-argv-comparison.json",
+        "source_sha256": "1a9b1f9200b019c07cf5c0254df02e5891f83133ff9d7879497ff678d8c0aeda",
+        "packet": "packet-03.txt",
+        "packet_line_range": [
+          50,
+          135
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          58,
+          98
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-process-observation.json",
+        "source_sha256": "0b72fb683e9bf57e8db8be8eab2ff960f9cf310ff4b404f0483b8a051653bbe4",
+        "packet": "packet-04.txt",
+        "packet_line_range": [
+          3,
+          19
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          16
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-state-after.json",
+        "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+        "packet": "packet-04.txt",
+        "packet_line_range": [
+          23,
+          23
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          23
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/argv-template.json",
+        "source_sha256": "06884e1521848f8824fbdb24d7705ced6a722f0eefb2cc8d87f1f21e08a82406",
+        "packet": "packet-04.txt",
+        "packet_line_range": [
+          27,
+          69
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          34
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cli-final-raw.json",
+        "source_sha256": "05b0d38124665138e3ffc371e850cb32c0037d3eb775b4654346c8f28109dff2",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          3,
+          53
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/derived-implement-profile.json",
+        "source_sha256": "b8add5daf385f7d6ede977ff8c550e9f190cd6870f4762e0bb468c95adcb4311",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          57,
+          109
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/dispatch-receipt.json",
+        "source_sha256": "97a1a0e9ce32e5889fde353db265e88b456e618d8719093d8eca29d5f3be4f00",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          113,
+          271
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/execution-completion.json",
+        "source_sha256": "9d867d9d84bbed11c7bd672d0e5d63b8ee8a611ae2a56276360f7df3d8b9bb0d",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          275,
+          289
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/execution-start.json",
+        "source_sha256": "f82dac7c7276919030a4ea0fb3fcc0ffc3801324c42f3238e41c01b3be565a96",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          293,
+          306
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/expected-STATUS",
+        "source_sha256": "d14c9e8a55610bde6826c4ffbd6ff68f4f30c655f9d7d68cdab3bb4315835c6c",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          310,
+          325
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/expected-after-reservation.json",
+        "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+        "packet": "packet-06.txt",
+        "packet_line_range": [
+          3,
+          3
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          3
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/fixture-after.json",
+        "source_sha256": "fcd4c505089453ce1a7ab4fc83d9e485d44cbbfa6bc064cb2524f58450a60c47",
+        "packet": "packet-06.txt",
+        "packet_line_range": [
+          7,
+          81
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/fixture-baseline.json",
+        "source_sha256": "636714d6eceec9c2ff799b59a601d5bd6528cf49f19abf3c2acb9ca84a27972e",
+        "packet": "packet-06.txt",
+        "packet_line_range": [
+          85,
+          143
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/initial-STATUS",
+        "source_sha256": "b5ac1f183f0f5a86936f6f0cce66648a12772d3c910e8984389149029b091029",
+        "packet": "packet-06.txt",
+        "packet_line_range": [
+          147,
+          162
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/matrix-prompt.txt",
+        "source_sha256": "cef510f27c41f4d98585cf6fc1a300bb413ab222f97aec272e29d34c41ee325a",
+        "packet": "packet-07.txt",
+        "packet_line_range": [
+          3,
+          48
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/matrix-result-summary.json",
+        "source_sha256": "bc3e7678152ce8de669b9eceaf2774c8c30f534111a98f21d9b728975fc3b28b",
+        "packet": "packet-07.txt",
+        "packet_line_range": [
+          52,
+          370
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/preparation-error.json",
+        "source_sha256": "6de026201dab35ef574aaf7161215941060e87a67417fb6361e065d30bc51867",
+        "packet": "packet-07.txt",
+        "packet_line_range": [
+          374,
+          381
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/preparation-metadata.json",
+        "source_sha256": "38c907f2ab2ea3b1b9eb983aba3293c56c192958154bc95e12cc555dd86d2b0c",
+        "packet": "packet-08.txt",
+        "packet_line_range": [
+          3,
+          225
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          181
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/raw-profiles.json",
+        "source_sha256": "6a9285632d2b5aa599b19eb879da43acdf8ee5e90c3eb4545092d0d930dfedf0",
+        "packet": "packet-08.txt",
+        "packet_line_range": [
+          229,
+          299
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/result-file-index.json",
+        "source_sha256": "33686f2a6c74fdbb690eb869e30bfdd021940fba7741e5484fa8c55ed5cb1a45",
+        "packet": "packet-09.txt",
+        "packet_line_range": [
+          3,
+          168
+        ],
+        "missing_packet_lines": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129
+        ],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/state-before-reservation.json",
+        "source_sha256": "ce0ea4ee35f014223b8f2a39427fe013f2e603f2642693d6046235e4ac46d9e3",
+        "packet": "packet-09.txt",
+        "packet_line_range": [
+          172,
+          172
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          172
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/watch-020809228.json",
+        "source_sha256": "01a0a4474baf1d8edd776a372927d8190a03e2910ed4cf3d1eddb26510b29aaa",
+        "packet": "packet-09.txt",
+        "packet_line_range": [
+          176,
+          187
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-n4-method.md",
+        "source_sha256": "0fcb61ecbec462b791043612208dcf44b021ef651aaf8eaf5d1419e4f29e269f",
+        "packet": "packet-10.txt",
+        "packet_line_range": [
+          3,
+          42
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/result.md",
+        "source_sha256": "fc4ba8bbcfbceb736d3a86cb92b7982cbd250893b096ccaa4a645a16059a6b7d",
+        "packet": "packet-10.txt",
+        "packet_line_range": [
+          46,
+          64
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": {
+          "scope": "current prefix only; stops before historical process section",
+          "whole_blob_sha256": "02f18c8af36d90deac650a220e576009bc6e973bd81f8b5362ce627ddfd44760"
+        },
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      }
+    ],
+    "own_c2_direct_read": false,
+    "own_c2_read_claim": "if false, prior same-session context only; no fresh direct reading",
+    "summary": {
+      "all_nine_cell_full_lines_visible": true,
+      "whole_original_state_argv_long_lines_not_guaranteed": true
+    }
+  },
+  {
+    "seat": "kimi",
+    "candidate": "57504fa586a9584250a8515b581ae34f80b212d8",
+    "actual_tool_events": [
+      {
+        "id": "Read_114_a4f5c97d",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/kimi-input-index.json"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 377
+      },
+      {
+        "id": "Read_115_eb9c2466",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-01.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 298
+      },
+      {
+        "id": "Read_116_51705b81",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-02.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 281
+      },
+      {
+        "id": "Read_117_5dc7818d",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-03.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 137
+      },
+      {
+        "id": "Read_118_72ab4bc9",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-04.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 71
+      },
+      {
+        "id": "Read_119_6cc65e16",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-05.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 327
+      },
+      {
+        "id": "Read_120_6bdcca66",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-06.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 164
+      },
+      {
+        "id": "Read_121_90e7c8d9",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-07.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 383
+      },
+      {
+        "id": "Read_122_cde3f6d4",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-08.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 301
+      },
+      {
+        "id": "Read_123_ab9d7018",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-09.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 189
+      },
+      {
+        "id": "Read_124_0e1cfa61",
+        "name": "Read",
+        "input": {
+          "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-10.txt"
+        },
+        "is_error": false,
+        "returned_numbered_line_min": 1,
+        "returned_numbered_line_max": 66
+      }
+    ],
+    "packets": [
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-01.txt",
+        "sha256": "86bfab50dd0064ae08a24a9cd199efc4731d63b88ae65474e1305901364567f5",
+        "line_count": 297,
+        "exact_line_count": 297,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-02.txt",
+        "sha256": "955085d6e54827a2504152ce80006ee86a1f4e8894d2b7657a11f994e7fd198e",
+        "line_count": 280,
+        "exact_line_count": 280,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-03.txt",
+        "sha256": "47b0d5b0e6a6c0368083ccd580f53b744d055b6954f06a0b08b8d3290d986f5a",
+        "line_count": 136,
+        "exact_line_count": 134,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [
+          58,
+          98
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-04.txt",
+        "sha256": "5123850f8e151d17d23ab7a1c44506bf4efb7ba9f48ea2295f4f04f98f6f4c28",
+        "line_count": 70,
+        "exact_line_count": 67,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [
+          16,
+          23,
+          34
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-05.txt",
+        "sha256": "f7ecfc39570d4498a8a87225d1c84596a4431e6062ba4125a822ffaba1381e05",
+        "line_count": 326,
+        "exact_line_count": 326,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-06.txt",
+        "sha256": "7e5d29170d1ab8d363f1ae17b16c887e77892e0b8fda260e05f81ba1f50bb5cc",
+        "line_count": 163,
+        "exact_line_count": 162,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [
+          3
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-07.txt",
+        "sha256": "9bb22609271fa4456553cbe72208091e10d7bcf7997def4682732960317ec8e3",
+        "line_count": 382,
+        "exact_line_count": 382,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-08.txt",
+        "sha256": "0b41de3945ebd3acbbfbd62dd05bdd1a39d505d0deab1af768f4e86d1d016345",
+        "line_count": 300,
+        "exact_line_count": 300,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-09.txt",
+        "sha256": "c97b8e4f8fe07452d502fe88b52abf8cc54abbfc27ae8ed08cc7fa32c57d9540",
+        "line_count": 188,
+        "exact_line_count": 187,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [
+          172
+        ],
+        "full_exact_lines_visible": false
+      },
+      {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-matrix-confirm/packet-10.txt",
+        "sha256": "b337f25166dd6ec0e05225e8a2b6c6189404e7383c255a6a25b9dac8eb49d80f",
+        "line_count": 65,
+        "exact_line_count": 65,
+        "missing_lines": [],
+        "returned_but_truncated_or_different_lines": [],
+        "full_exact_lines_visible": true
+      }
+    ],
+    "originals": [
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-P1-native.json",
+        "source_sha256": "7de14df61db2771fd32bb7f76266cd2d6891df99d5d030445beefeaadb122b05",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          3,
+          42
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-P2-native.json",
+        "source_sha256": "a6f67263e6b85e9513cea7bee3809dd44b13d2034cdad1d12d92572ad611265d",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          46,
+          113
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N1-native.json",
+        "source_sha256": "cdd49093462e2263a6a4711b61dde758e9c51b1b8000f5db618810f1c5e7ced8",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          117,
+          183
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N2-native.json",
+        "source_sha256": "3af84860bac0f1c7e3f19323d0beb803a721fa65a37e47bd50fe7ca5ffadcc37",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          187,
+          226
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N3-native.json",
+        "source_sha256": "00cf27c3f5608285843b57149764fbd7925365718abffda48d0f37dba05bad81",
+        "packet": "packet-01.txt",
+        "packet_line_range": [
+          230,
+          296
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N4-native.json",
+        "source_sha256": "e3969df5478f1b1a66d174ea3cecb7f18ad86df954ce8ba7022f7dcfb97bbe84",
+        "packet": "packet-02.txt",
+        "packet_line_range": [
+          3,
+          69
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N5-native.json",
+        "source_sha256": "0b468f7bf2a6dd149d33112179b3a8719b89dc7ac0b6d7f880425498cf382c31",
+        "packet": "packet-02.txt",
+        "packet_line_range": [
+          73,
+          139
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N6-native.json",
+        "source_sha256": "62de5e50f19804f5ad0db2d3a7085a86dc8faac7106dc2978fb4867f02fb3788",
+        "packet": "packet-02.txt",
+        "packet_line_range": [
+          143,
+          209
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N7-native.json",
+        "source_sha256": "ff7bf15e308747d2713fc1e96e1313d1f2c916431ab9a176a262e58cf3126824",
+        "packet": "packet-02.txt",
+        "packet_line_range": [
+          213,
+          279
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/READ-FIRST.md",
+        "source_sha256": "1c5a6b40e5657ccba309179b64755358d2cda4f7ba34704ba1ffc9ed10f71515",
+        "packet": "packet-03.txt",
+        "packet_line_range": [
+          3,
+          27
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-STATUS-after",
+        "source_sha256": "d14c9e8a55610bde6826c4ffbd6ff68f4f30c655f9d7d68cdab3bb4315835c6c",
+        "packet": "packet-03.txt",
+        "packet_line_range": [
+          31,
+          46
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-argv-comparison.json",
+        "source_sha256": "1a9b1f9200b019c07cf5c0254df02e5891f83133ff9d7879497ff678d8c0aeda",
+        "packet": "packet-03.txt",
+        "packet_line_range": [
+          50,
+          135
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          58,
+          98
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-process-observation.json",
+        "source_sha256": "0b72fb683e9bf57e8db8be8eab2ff960f9cf310ff4b404f0483b8a051653bbe4",
+        "packet": "packet-04.txt",
+        "packet_line_range": [
+          3,
+          19
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          16
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-state-after.json",
+        "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+        "packet": "packet-04.txt",
+        "packet_line_range": [
+          23,
+          23
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          23
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/argv-template.json",
+        "source_sha256": "06884e1521848f8824fbdb24d7705ced6a722f0eefb2cc8d87f1f21e08a82406",
+        "packet": "packet-04.txt",
+        "packet_line_range": [
+          27,
+          69
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          34
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cli-final-raw.json",
+        "source_sha256": "05b0d38124665138e3ffc371e850cb32c0037d3eb775b4654346c8f28109dff2",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          3,
+          53
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/derived-implement-profile.json",
+        "source_sha256": "b8add5daf385f7d6ede977ff8c550e9f190cd6870f4762e0bb468c95adcb4311",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          57,
+          109
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/dispatch-receipt.json",
+        "source_sha256": "97a1a0e9ce32e5889fde353db265e88b456e618d8719093d8eca29d5f3be4f00",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          113,
+          271
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/execution-completion.json",
+        "source_sha256": "9d867d9d84bbed11c7bd672d0e5d63b8ee8a611ae2a56276360f7df3d8b9bb0d",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          275,
+          289
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/execution-start.json",
+        "source_sha256": "f82dac7c7276919030a4ea0fb3fcc0ffc3801324c42f3238e41c01b3be565a96",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          293,
+          306
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/expected-STATUS",
+        "source_sha256": "d14c9e8a55610bde6826c4ffbd6ff68f4f30c655f9d7d68cdab3bb4315835c6c",
+        "packet": "packet-05.txt",
+        "packet_line_range": [
+          310,
+          325
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/expected-after-reservation.json",
+        "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+        "packet": "packet-06.txt",
+        "packet_line_range": [
+          3,
+          3
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          3
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/fixture-after.json",
+        "source_sha256": "fcd4c505089453ce1a7ab4fc83d9e485d44cbbfa6bc064cb2524f58450a60c47",
+        "packet": "packet-06.txt",
+        "packet_line_range": [
+          7,
+          81
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/fixture-baseline.json",
+        "source_sha256": "636714d6eceec9c2ff799b59a601d5bd6528cf49f19abf3c2acb9ca84a27972e",
+        "packet": "packet-06.txt",
+        "packet_line_range": [
+          85,
+          143
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/initial-STATUS",
+        "source_sha256": "b5ac1f183f0f5a86936f6f0cce66648a12772d3c910e8984389149029b091029",
+        "packet": "packet-06.txt",
+        "packet_line_range": [
+          147,
+          162
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/matrix-prompt.txt",
+        "source_sha256": "cef510f27c41f4d98585cf6fc1a300bb413ab222f97aec272e29d34c41ee325a",
+        "packet": "packet-07.txt",
+        "packet_line_range": [
+          3,
+          48
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/matrix-result-summary.json",
+        "source_sha256": "bc3e7678152ce8de669b9eceaf2774c8c30f534111a98f21d9b728975fc3b28b",
+        "packet": "packet-07.txt",
+        "packet_line_range": [
+          52,
+          370
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/preparation-error.json",
+        "source_sha256": "6de026201dab35ef574aaf7161215941060e87a67417fb6361e065d30bc51867",
+        "packet": "packet-07.txt",
+        "packet_line_range": [
+          374,
+          381
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/preparation-metadata.json",
+        "source_sha256": "38c907f2ab2ea3b1b9eb983aba3293c56c192958154bc95e12cc555dd86d2b0c",
+        "packet": "packet-08.txt",
+        "packet_line_range": [
+          3,
+          225
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/raw-profiles.json",
+        "source_sha256": "6a9285632d2b5aa599b19eb879da43acdf8ee5e90c3eb4545092d0d930dfedf0",
+        "packet": "packet-08.txt",
+        "packet_line_range": [
+          229,
+          299
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/result-file-index.json",
+        "source_sha256": "33686f2a6c74fdbb690eb869e30bfdd021940fba7741e5484fa8c55ed5cb1a45",
+        "packet": "packet-09.txt",
+        "packet_line_range": [
+          3,
+          168
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/state-before-reservation.json",
+        "source_sha256": "ce0ea4ee35f014223b8f2a39427fe013f2e603f2642693d6046235e4ac46d9e3",
+        "packet": "packet-09.txt",
+        "packet_line_range": [
+          172,
+          172
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [
+          172
+        ],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/watch-020809228.json",
+        "source_sha256": "01a0a4474baf1d8edd776a372927d8190a03e2910ed4cf3d1eddb26510b29aaa",
+        "packet": "packet-09.txt",
+        "packet_line_range": [
+          176,
+          187
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-n4-method.md",
+        "source_sha256": "0fcb61ecbec462b791043612208dcf44b021ef651aaf8eaf5d1419e4f29e269f",
+        "packet": "packet-10.txt",
+        "packet_line_range": [
+          3,
+          42
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": null,
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      },
+      {
+        "source_path": "coordination/requests/isolated-workflow-20261010/result.md",
+        "source_sha256": "fc4ba8bbcfbceb736d3a86cb92b7982cbd250893b096ccaa4a645a16059a6b7d",
+        "packet": "packet-10.txt",
+        "packet_line_range": [
+          46,
+          64
+        ],
+        "missing_packet_lines": [],
+        "truncated_or_different_packet_lines": [],
+        "selection": {
+          "scope": "current prefix only; stops before historical process section",
+          "whole_blob_sha256": "02f18c8af36d90deac650a220e576009bc6e973bd81f8b5362ce627ddfd44760"
+        },
+        "coverage_kind": "actual numbered tool result compared with packet text; exact original Git bytes preserved in packets; not individual source file open"
+      }
+    ],
+    "own_c2_direct_read": false,
+    "own_c2_read_claim": "if false, prior same-session context only; no fresh direct reading",
+    "summary": {
+      "all_nine_cell_full_lines_visible": true,
+      "whole_original_state_argv_long_lines_not_guaranteed": true
+    }
+  }
+]
