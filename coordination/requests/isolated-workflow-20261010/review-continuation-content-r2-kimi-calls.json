@@ -1,0 +1,125 @@
+{
+  "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+  "administrative_commit": "fd17787d52369aa9c7ff9ed40931a4efe7ba474c",
+  "actual_model": "kimi-k3-2",
+  "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+  "raw_sha256": "25d6af2fb75e4aea9df292af9d34bad8817184a966e00a1804f363ef42b599ab",
+  "receipt_sha256": "714764786af072424bc65abc4f9205598be0f7600f3ff06b19bbb9642d3d1609",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+    "model": "kimi-k3-2",
+    "seat": "kimi",
+    "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\continuation-content-r2-kimi.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "6d0f9406edfb5e1228cb0da5661729680d0c0de4b407a7cfefe0d5553ce048e1",
+    "started_at": "2026-10-11T00:18:16.9545013+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "continuation-content-r2",
+      "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+      "administrative_commit": "fd17787d52369aa9c7ff9ed40931a4efe7ba474c",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/input-index.json",
+      "input_index_sha256": "0a79b3e498f53d71fd7ed148f71a9fa69fe29aafd3931a9c9a983aaa5e39ca54",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1
+      },
+      "permission": "existing read-only Read,Glob,Grep; no writer",
+      "authorization": "root explicit final content R2 admission"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "exact_write_files": [],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "你是原独立审核席kimi，原session原cwd，末轮内容R2，一次20turn/600秒。准确产品ed65079e6fd2cd3afc09ec871817cfb11c621b76；行政fd17787d52369aa9c7ff9ed40931a4efe7ba474c。本轮双席发出后17/18 CodeBuddy、native1/2；不追加模型调用或作者。\n先读D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/input-index.json、read-first.txt、integration-observations-continuation-r2.md、本人R1票。审准确cwd源码与product-delta.patch：唯一产品变化test_runtime.py删除复制helper，既有平台分支直接addCleanup(os.rmdir/os.unlink)，无广捕获，LIFO/全部逃逸哨兵child断言不变。作者464行内聚说明在repair原件，root未写代码。准确ed65079统一verify144=142pass/2既有symlink权限skip，exit0/33.52612s，43文件manifest前后62697fa6...相同，clean；root未把绿代关。判断本人GLM B19/Kimi B12能否关闭、此前日志关闭是否仍有效。\n完整审diagnostic-publication-candidate-r2.txt（原TEMP脚本byte原件，SHA fd3fcf135f9ffac634b5610ce44d327ee256dcd79975d7305d16036c1c3d0438），必要时对照R1。任务TEMP锚定/finally恢复、setUp部分失败原位保留和_finalizer.detach、cleanup/观测/emit/summary降级fail-closed、无retry/被测行为透明、30轮×2/内部120秒与外部看护。脚本425行、46/56/51三个软函数单一职责，硬限不变；原件作者说明未运行，不能自报有效。CPython私有_finalizer依赖需绑定实际Python版本；根补充静态inspect.getsource确认其指定Python3.12.14中TemporaryDirectory.__init__创建weakref.finalize且cleanup自身调用detach，仅静态事实，无fixture/harness执行；不声称跨Python保障。外部句柄工具不在范围，作者建议不构成授权。请判本人GLM B20/Kimi B13修复是否充分，任何未闭阻断具名保留。\n必须显式裁定执行/复核顺序：GLM前票要求“重冻hash再审方可执行”，Kimi前票要求“修复后执行+双席看结果”。目前harness完全未运行。请明确本人是否接受：在本R2审过准确fd3fcf...并获双席许可后，根以固定Python/源摘要/任务TEMP/独立进程PID创建时间120秒外部看护，唯一一次30轮×2诊断，首失败/超限停止且保留输出/fixture；最终native监督查验真实结果和当前状态，B11(GLM)/B09(Kimi)历史根因保持unknown，不凭未复現代关；本批不追加双席结果票。只有你明确接受才可这样安排。若仍坚持本人/双席运行后结果票，请明确保持该条件；不得由协调者/native代签或先跑后补。若你批准执行的附加前置请精确具名，不设隐含无限循环。\n产品权限B18/B11仍open且live禁，R1已支持后继scope但明确不占本批finding-bound额度，当前不发新权限作者；没有产品CLI真实权限验证，不以bootstrap代关。静态G1范围接收与live/main/监督分别裁定，未知T1/hook/真实memory/alias/num_turns仍保留。本轮只Read/Glob/Grep，无shell/写memory/子agent/读他席新票。中文输出实读、每个本人finding状态、静态候选结论、diagnostic执行准入及最终native查证是否足够、未验证/阻断。",
+      "--model",
+      "kimi-k3-2",
+      "--resume",
+      "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "23f55a2dbdb1976293226ce8d7f8857db0c7f0b26134fe0e625ef396e6fd034f",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-g1-review"
+  },
+  "completion": {
+    "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T00:20:48.4695428+00:00",
+    "wall_seconds": 151.5150415,
+    "final_head": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "Read_69_49760c8d",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/input-index.json"
+      }
+    },
+    {
+      "id": "Read_70_001b3752",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/read-first.txt"
+      }
+    },
+    {
+      "id": "Read_71_874969eb",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/integration-observations-continuation-r2.md"
+      }
+    },
+    {
+      "id": "Read_72_27fa6134",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/product-delta.patch"
+      }
+    },
+    {
+      "id": "Read_73_ca244f73",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/diagnostic-publication-candidate-r2.txt"
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 221
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

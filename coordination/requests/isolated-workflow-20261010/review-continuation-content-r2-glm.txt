@@ -1,0 +1,26 @@
+# 后继内容R2审核（GLM原席 · glm-5.3 · 末轮只读）
+
+## 0. 实读范围
+input-index.json、read-first.txt、product-delta.patch（全）、integration-observations-continuation-r2.md、diagnostic-publication-candidate-r2.txt（425行全）、repair-write-scope-audit-20261011.json、verify metadata（元数据含exit0/33.52612s/前后manifest 62697fa6一致）与R2 verify输出（144=142pass/2既有symlink WinError1314 skip，junction/gates/flow全绿，无硬限FAIL）。test_runtime以R1全量实读+本delta比对；未读另一席R2新票。修复作者身份经写集核查：junction仅2次Edit于独立worktree的test_runtime.py（head e5b9873d，非reparse）；publication仅1 Write+1 Edit于TEMP脚本，产物SHA=fd3fcf13…与送审原件一致，产品零写入。root未写产品代码。
+
+## 1. 本人finding逐项状态
+- **g1-glm-B19：CLOSED**。delta实证：本地`remove_link`副本删除；平台分支内直接注册`addCleanup(os.rmdir, junction)`(win32)/`addCleanup(os.unlink, junction)`(POSIX)——无跨cleaner回退、无`except OSError: continue`吞异常，错误完全上抛（比导入test_paths仍吞异常的旧helper更严格，优于我R1建议的导入方案，正确）；LIFO（setUp先注册tmp.cleanup后执行）、逃逸断言、哨兵、marker/child未运行断言、原skip条件均未动；统一verify复绿。test_runtime 464行软目标的内聚说明（作者冻结原件内）接受；POSIX分支本机未实跑=unknown，如实保留。
+- **g1-glm-B20：CLOSED**。R2 harness三子项全修：①失败（含setUp部分失败）**原位保留**fixture——不复制、不调tearDown、`_finalizer.detach()`防GC/退出清理，且tempfile.tempdir锚定TASK_TEMP使全部现场留在任务目录；②成功路径tearDown异常记`cleanup`降级；③emit/summary/捕获失败均入`diagnostic_degraded`，**exit1 fail-closed**，summary结论三分类（failure_observed/evidence_degraded/not_reproduced）不把降级混同未复现。30×2/内部120秒（仅用例间截止，如实声明非硬中断）、finally双恢复（wrapper+tempdir）、透传不吞被测异常、仅本进程句柄计数、无retry。46/56/51三个软函数单一职责说明成立。残余：`_finalizer`为CPython私有属性，缺失时**不报降级**——以执行前置绑定化解（见第3节），不构成代码缺陷。
+- **此前关闭仍有效**：B02/B13/B14基于6323456关闭，其后唯一产品变化为test_runtime.py，相关测试在ed65079 verify中复绿，逐项复核维持CLOSED。B01/B03–B10/B12/B15/B16/B17维持CLOSED。
+- **g1-glm-B11：OPEN/unknown**（维持——未复现不得关闭，见第3节结局规则）；**g1-glm-B18：OPEN**（产品adapters/sample权限，live持续blocked，不以bootstrap代关；R1已支持后继scope，不占本批finding-bound额度，当前不发新权限作者）。
+
+## 2. 静态候选结论（ed65079）
+**静态G1（隔离样例受审范围）：本席PASS。**依据：本席全部产品代码类finding已关闭或明确为非静态阻断（B11根因unknown不阻断静态正确性、B18仅阻断live）；统一verify独立clean树exit0、manifest前后一致、无硬限、软目标均有内聚说明。**显式保留**：PASS仅指静态实现审核意见——不代表接收、合入、main、原生监督通过或live；browser JS、云CI、live四角色、产品CLI真实权限（B18）均未验证；T1/hook先行allow/真实宿主memory/路径alias/num_turns未知口径不变；POSIX分支未实跑。
+
+## 3. diagnostic执行准入与复核顺序（显式裁定）
+**本人接受**拟议顺序：两席R2审过准确fd3fcf13…并许可后，root执行**唯一一次**诊断，最终由native监督查证真实运行原件与当前状态，B11保持unknown，本批不追加双席结果票。我R1“重冻hash再审”条件已由本轮满足（R2字节原件本人逐行实审）。Kimi席的“双席看结果”条件由该席本轮自行裁定，本人不代答、不代签。**接受的前提是以下前置全部满足（具名，缺一即运行无效）**：
+1. 执行前双席R2许可均到位（准确hash fd3fcf13…，不得先跑后补）；
+2. 准确ed65079 clean detached checkout、**固定Python 3.12.14**（与根`inspect.getsource`静态验证_finalizer行为的同一解释器；运行元数据记录sys.executable/version与脚本SHA，启动前复核hash）、`-B`禁写pycache；
+3. 任务TEMP无既有输出种子（OUTPUT_LOG/SUMMARY/task-temp为空——追加模式无run-id隔离的既定缓解）、脚本路径非reparse、nlink=1；
+4. 独立进程+PID/创建时间120秒外部看护（进程树终止），与内部120秒截止分开；30轮×2内部上限、首失败停、harness零改动；
+5. 归档：前后manifest、脚本hash、真实退出码、stdout、summary、JSONL、保留fixture路径；native核对一致性（退出码↔summary结论↔降级事件↔fixture实际存在性——若failure_observed而fixture_temp缺失，判_finalizer前提失效，证据无效）；
+6. **结局规则预commit**：not_reproduced→B11维持unknown仅记录；evidence_degraded或看护击杀或任何前置失败→本次运行无效、B11 unknown、后续行动须新具名审核；failure_observed→新具名finding交两席未来审核（不自动采信根因、不自动派修）；
+7. native只查证事实，不关闭席位finding（B11除非failure_observed后经席位流程，否则永不被native关闭）。
+
+## 4. 未验证/阻断清单
+未验证：harness实际运行（本票仅为静态审）、产品live四角色、产品CLI权限、browser JS、云CI、POSIX分支、T1/hook/真实memory/alias/num_turns。阻断：B18（live）、B11（历史根因，unknown而非可修阻断）、诊断执行待Kimi席R2与双席许可。预算：本票后17/18 CodeBuddy、native 1/2；本人不追加任何模型调用授权。第二内容轮为本人末轮，无自动续审。

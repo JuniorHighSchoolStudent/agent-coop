@@ -1,0 +1,27 @@
+# 末轮内容R2复审 · 席B（原kimi-k3-2 session，非作者）
+
+**实读**：input-index、read-first、integration-observations-r2、product-delta.patch（全量）、diagnostic-publication-candidate-r2.txt全文（425行逐行核）；本人R1票在上下文。未读他席本轮票。写集自核：patch仅test_runtime.py +2/-12；verify元数据/前后manifest（62697fa6…一致、clean）与integration观察互证。
+
+## 逐项裁定
+
+**junction修复 → g1-kimi-B12 closed**。复制helper已删；平台分支内直接`addCleanup(os.rmdir/os.unlink)`——零捕获、错误全上抛，严于我已审下限（仅容忍FileNotFoundError）；LIFO、skip条件、逃逸拒绝/哨兵/child断言原样；准确ed65079统一verify 144=142pass/2既有symlink权限skip、exit0，junction用例真实通过。test_runtime 464行软目标：作者内聚说明（adapter构造+子进程边界两类职责同文件，迁移属B11包决策）可接受、无硬超限。R1的B06日志关闭继续有效（本候选仍全绿）。GLM B19归GLM自关。
+
+**诊断R2修复 → g1-kimi-B13 closed（修复充分，执行前置见下）**。对照我B13三项阻断：①锚定——`tempfile.tempdir`临时指向DIAG_DIR/task-temp、finally还原（391/398行），RunnerTests的TemporaryDirectory随之落入任务TEMP✓；②保留——失败（含setUp部分失败）不复制、不调tearDown、`cleanup='skipped_preserve'`、`_finalizer.detach()`防GC/退出清理，原现场原位留存✓；③fail-closed——emit/capture/cleanup/summary_write/log_close全部入`diagnostic_degraded`，conclusion三分（failure_observed/evidence_degraded/not_reproduced），`return 1 if (failures or _degraded)`，被测异常仍raise透传、无retry✓。30轮×2/内部120秒如实标注非硬中断、外部看护独立✓；本进程句柄仅计数✓；规模425行及46/56/51三函数有单一职责说明、无硬超限✓。残留（不阻断、转为执行前置）：`_finalizer`缺失时静默不保留→执行必须绑定已静态核验的Python 3.12.14；日志append模式→执行前目录须无既有输出。GLM B20归GLM。
+
+## 执行/复核顺序裁定：本人**接受**（附精确前置）
+
+我R1条件为"修复后执行+双席看结果"；GLM条件为"重冻hash再审方可执行"。本轮R2即对准确fd3fcf13…的冻结重审，满足GLM侧；我**显式放宽**"双席看结果票"为：双席R2审准确hash → 一次有界执行 → 最终native查验真实运行与当前状态；任何复现证据下一批次必回双席后才可议修复包。放宽理由：该诊断任何结果本轮都不能关闭任何finding——复现→证据下批回双席；未复现/降级→B09照常open；native监督核验运行真实性覆盖过程完整。前置（缺一即中止，不设隐含循环）：
+1. 仅执行SHA=fd3fcf135f9ffac634b5610ce44d327ee256dcd79975d7305d16036c1c3d0438的原件，执行前即时重hash，不符即停；**须另一席R2同样批准该hash**，否则不执行。
+2. 固定已静态核验的Python 3.12.14，归档stdout记录实际sys.version，不符即中止（_finalizer为版本绑定私有依赖，不声称跨Python保障）。
+3. repo_root=准确ed65079 clean detached；summary的inputs_sha256须与manifest值一致；`-B`禁pycache。
+4. 任务TEMP无既有output/summary/task-temp，路径非reparse；唯一一次，不重跑。
+5. 外部独立进程按PID+创建时间120秒硬看护进程树；内部30轮×2/首失败即停；前后manifest、真实退出码、stdout、summary、JSONL、失败fixture分别归档。
+6. 结果分类：failure_observed→证据下批回双席，不自动派修；evidence_degraded→不算干净未复现、本批不重试；not_reproduced→B09保持open/unknown。
+
+## 本人finding终态
+
+B01–B08、B10、**B12、B13：closed**。B06：closed（R1，仍有效）。**B09：open**（历史根因unknown；诊断执行已准入，未复现不得代关）。**B11：open**（R1已支持后继scope：P6派生/P2序列化两串行包；不占本批finding-bound额度、本轮不发权限作者；live持续禁止，不以bootstrap代关；无产品CLI真实权限验证）。
+
+## 静态候选结论
+
+候选ed65079组合verify全绿、manifest一致、树clean；本人内容finding除两项具名保留外全部关闭。**本席范围内：静态G1内容阻断解除**——携带B09=根因unknown、B11=live准入阻断两项声明，不反对静态范围接收流程继续；但整体G1 PASS/接收须待另一席finding状态与最终native监督，本票不代签。T1/hook先行allow/真实memory全域/alias/num_turns未知保留；browser JS、云CI、live四角色、main合入均未验证/未授权。本轮后不追加双席票、不追加作者；剩余1次CodeBuddy与1次native按既有计划使用。
