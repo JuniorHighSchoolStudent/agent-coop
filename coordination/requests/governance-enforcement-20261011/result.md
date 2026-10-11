@@ -1,6 +1,6 @@
 # 开发治理修复当前状态
 
-范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**S6双席正文覆盖与完整意见已独立核验：GLM pass、Kimi changes_requested/GOV-06；native已返回blocked/GOV-06，但620.319秒越界，不能作预算合规准入；限定修补仍须由真实执行者承担，后继独立行政监督已结束，repair_allowed=false；正在补准确作者派发资料及独立澄清**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。截至S6双席结束确认8次CodeBuddy模型调用；native累计实际调用2次：第一次blocked终态但超时，第二次限定行政监督214.568秒结束，仍blocked；另有S2两次launcher失败、S3及S4各两次目标Node已启动后看护中止，均未观察到原生模型初始化，后端活动/计费未知。S6已知owner/watcher/wrapper/CLI退出，tree_empty仍unknown。用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
+范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**S6双席正文覆盖与完整意见已独立核验：GLM pass、Kimi changes_requested/GOV-06；native已返回blocked/GOV-06，但620.319秒越界，不能作预算合规准入；限定修补仍须由真实执行者承担，限定两文件修补已获fresh native明确支持并签发准确激活许可，真实deepseek作者已写入两份授权文件，但535.340秒停止且无完整final，交付partial；看护再次漏过480秒收口，原许可不得重用；B1仍阻断**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。CodeBuddy累计确认9次模型调用（本次新增1次实际修补作者）；native累计已启动3次：第一次blocked终态但超时，第二次限定行政监督214.568秒结束仍blocked，第三次准确派单复核166.495秒结束，明确support/repair_allowed=true；另有S2两次launcher失败、S3及S4各两次目标Node已启动后看护中止，均未观察到原生模型初始化，后端活动/计费未知。S6已知owner/watcher/wrapper/CLI退出，tree_empty仍unknown。用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
 
 ## 当前结论与下一动作
 
@@ -15,11 +15,11 @@ GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓�
 
 2026-10-11T07:44:29.4049505Z进入手工看护，原绝对截止07:54:29.4049505Z；wrapper记录07:54:50.241435Z退出0、wall620.3194562秒，已超过截止约20.8秒。native完整final为blocked/GOV-06，要求具名CodeBuddy修复后fresh双审/native，不能据此开放B1；该意见保留但不当预算合规准入。实际session为session_31ce87b2-1b76-4805-a659-950d5c742415，版本0.43.0，model/provider保持unknown。07:54:00.301675Z最后在途手工观测仍alive，截止未按时停止是新的看护偏差，沿GOV-06/R2及GOV-S0-I01承接，不由Codex补执行逻辑。原件目录本机TEMP/agent-coop-governance-s6-native-20261011；独立正文核验完成：157/157个Read/result按唯一ID配对，134源17700要求行与准确源逐字相等，无缺读或失配；完整final严格JSON，raw SHA为41e3ef3119562136ada1f1971105b87b9187f276b332025a545ec6b0362139bd。意见自报132 rows不准确，不能替代真实157块覆盖或据此补造缺读。发包人已记录manual-terminal：target于07:54:50.2089551Z、wrapper于07:54:50.3185491Z自然退出0；原句柄处置前有效、Dispose后closed，stop_issued=false，tree_empty=null。发包人说明07:54:00后发生上下文切换/压缩，07:56:47恢复时已错过停止；该原因不豁免预算。后继人工看护在480秒主动收口，为600秒总界留处置余量；切换前先停止在途调用，仍不宣称硬实时自动看护。该次监督已返回终态；不能把协调活动当代码推进。后继只审限定修补范围及准入，不原样重跑157块全案。
 
-[两文件行政修复工作包](administrative-repair-package.md)已准备，真实作者指定CodeBuddy + deepseek-v4-pro；该草稿尚未准入、未派发，不授权B1或由Codex实现。
+[两文件行政修复工作包](administrative-repair-package.md)已准备，真实作者指定CodeBuddy + deepseek-v4-pro；该包后继已获限定准入并实际派发，当前为partial，准确终态见下；不授权B1或由Codex实现。
 
-限定行政监督已按[独立准入](administrative-supervision-admission.md)实际启动：2026-10-11T08:03:12.0116088Z ready，480秒主动收口08:11:12.0116088Z，600秒绝对截止08:13:12.0116088Z。原wrapper16936、native52788已绑定有效句柄，实际7argv逐项等于冻结8argv去exe。材料25项1326行，审两文件修补路径，不审B1通过。该次监督已于08:06:47.0023794Z自然退出0，wall214.5683095秒。独立核25块1326行完整，完整JSON为blocked、repair_allowed=false，raw SHA af5a2a4c56515104e9814199f4781c87f1f10142283179081f946497ed8b7c79；session为session_4e9528ef-0522-4247-83f4-2a509d9ab2a6。两原句柄已Dispose；首次及第二次观测间隔约30.30/25.71秒未达20秒目标，600秒运行预算内退出不等于观察目标全达。当前实际实现0、审核0、监督0，没有在途模型。原件本机TEMP/agent-coop-admin-repair-supervision-20261011。
+限定行政监督已按[独立准入](administrative-supervision-admission.md)实际启动：2026-10-11T08:03:12.0116088Z ready，480秒主动收口08:11:12.0116088Z，600秒绝对截止08:13:12.0116088Z。原wrapper16936、native52788已绑定有效句柄，实际7argv逐项等于冻结8argv去exe。材料25项1326行，审两文件修补路径，不审B1通过。该次监督已于08:06:47.0023794Z自然退出0，wall214.5683095秒。独立核25块1326行完整，完整JSON为blocked、repair_allowed=false，raw SHA af5a2a4c56515104e9814199f4781c87f1f10142283179081f946497ed8b7c79；session为session_4e9528ef-0522-4247-83f4-2a509d9ab2a6。两原句柄已Dispose；首次及第二次观测间隔约30.30/25.71秒未达20秒目标，600秒运行预算内退出不等于观察目标全达。该次收尾时实现0、审核0、监督0，已知调用退出；后继在途状态以下方准确派单复核为准。原件本机TEMP/agent-coop-admin-repair-supervision-20261011。
 
-限定监督明确两文件修复设计一致，但保留GOV-06、ADM-REPAIR-PENDING-ROOT-ADMISSION、ADM-REPAIR-LATE-NATIVE-NOT-COMPLIANCE、WATCH-RECOVERY-DEADLINE-MISSED四项阻断。实际缺件是作者profile、完整prompt/argv、入口与环境/会话/写集绑定；唯一发包人正在准备准确待准入派单，不填已批准。根提出最终签发与独立监督应分阶段、缺陷修补不应循环依赖缺陷先关闭的解释，须由独立席复核，不能自行把repair_allowed=false改true。后继只补这些准确缺口，不重审13包，也不关闭历史超时或产品GOV-06。
+限定监督明确两文件修复设计一致，但保留GOV-06、ADM-REPAIR-PENDING-ROOT-ADMISSION、ADM-REPAIR-LATE-NATIVE-NOT-COMPLIANCE、WATCH-RECOVERY-DEADLINE-MISSED四项阻断。实际缺件是作者profile、完整prompt/argv、入口与环境/会话/写集绑定；当时缺件由后继准确待准入派单补齐，原否决保留；后继结论见下。根提出最终签发与独立监督应分阶段、缺陷修补不应循环依赖缺陷先关闭的解释，须由独立席复核，不能自行把repair_allowed=false改true。后继只补这些准确缺口，不重审13包，也不关闭历史超时或产品GOV-06。
 
 ### 准入：准确作者派单的限定独立复核
 
@@ -31,6 +31,23 @@ GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓�
 
 复用同版既有native wrapper/agent/入口，只读无Resume；操作安排沿上一限定准入：ready先于目标、原Process/显式有效SafeHandle、480秒主动停止、600秒总界、8MiB、观察目标20秒、上下文切换前先停止。原实际观察偏差须保留，未知能力不升级为硬实时或整树保证；实际源、session、终态、全部正文及完整JSON仍须核验。只有本次明确支持准确两文件实施路径，根才另签activated-admission；原prepared文件不改为通过。
 
+上述后继复核已实际启动：2026-10-11T08:18:01.5239088Z ready，480秒收口08:26:01.5239088Z，600秒绝对截止08:28:01.5239088Z。原wrapper41060及native35744显式有效持柄，13.31秒完成首次完整watch observation，actual7argv等planned8去exe。原件TEMP/agent-coop-admin-repair-followup-20261011。该次已于08:20:48.474185Z完成166.4953668秒自然exit0，原句柄已Dispose。独立核30块1725行实际正文无缺读，完整JSON为support、repair_allowed=true；raw SHA04dd482df03614ffd154761170a5435677511aefdd038be20c05483ec23dba77、完整final SHA94a32895d735c6a5cc2caf3d576b9d99941671b837f29864e5a4ff662fd0107b，session_71383cae-79e4-440b-a911-781e5cfc3d20。最大观测间隔17.100887秒，600/480时点前完成。原四项阻断对本有限修补动作不再阻断，仍按原意见保留接线、B1和最终关闭效力。
+
+根已实际核26全部来源、作者文件与runtime摘要、detached/clean@ed527及75份实际invocation中拟用session零使用后，签发D:/ac-repair/dist/author/activated-admission.json，SHA dc5f63ca3cff5755445b28a007b4e0fa2fdc202ca85ce3ea0d888a089db8bf2a。原prepared文件不改，新许可只绑定准确两文件、deepseek-v4-pro/session52e90c17、完整planned argv和fresh支持原件，保留GLM pass/Kimi changes_requested的真实范围，不宣称双PASS或B1准入。唯一发包人已实际启动，原生init确认model=deepseek-v4-pro、session=agent-coop-admin-diagnostic-repair-20261011-52e90c17、cwd=d:/ac-repair、permissionMode=dontAsk。ready为08:24:34.7349415Z，480秒收口08:32:34.7349415Z、600秒绝对截止08:34:34.7349415Z；wrapper42500和目标49988显式有效持柄，实际argv逐项等计划，memory四值核定。启动时实际修补作者1；该次现已停止，当前修补作者0、产品作者0、审核0、监督0；本包不占用B1通过状态。原件TEMP/agent-coop-admin-diagnostic-repair-20261011/repair-admin-diagnostic-repair-p1-r1.*。尚无有效作者交付、接收或接线结论；后继已有局部测试结果，见下。
+
+### 限定作者的实际部分交付与看护复发
+
+2026-10-11T08:33:30.6383662Z发包人对原持柄目标49988执行停止，目标于08:33:30.6399893Z退出-1，wrapper42500于08:33:30.7455849Z退出1；completion为535.3401053秒、exit -1，已知原对象均确认退出并释放。没有观察到完整后代树，tree_empty保持unknown。480秒主动停止迟55.9034247秒；08:30:25至08:33:23出现177.8375356秒观察空档，原因是自动上下文切换。600秒内退出不能掩盖这次看护失败，原20秒观测目标也未达到。
+
+稳定原始流52条均可解析，记录15次Read、1次Write和6次Edit，写入仅两份授权文件且各有成功工具结果，但没有result事件或完整final。因此这是CodeBuddy的真实部分实现，不能记为零改动，也不能记为有效交付、接收或接线。raw SHA `102df687cca9da094c030c9330d36c72c6ccd90e49ca4815dd457925ec026fdd`，completion SHA `3fa7adf648b1b175454d6435f77a50f24bfb4a87564792f3a9de5efe398f1c61`，manual-terminal SHA `bf5c04a6336a9a9897032a7f86abd1605a0b8f22ed6799b74a48a7d313022d87`，均在上述run目录。片段当前SHA `64ea7c02909044709f50584d1aaeedb1ad06a05c463f47f8e7d097a915b84aaa`；checker当前SHA `26cfa978b0d30640a550854a0b10de50b347925509d008798321d81e85bc135f`。最后Edit工具成功于08:33:30.050Z，故此前在途未观察到写入的快照不再代表终态。
+
+原activated-admission仅用于这次已结束的准确attempt，后续启动效力撤回，不改写原件。独立调查员已核实际diff并运行checker，结果见下；唯一发包人准备绑定partial新hash及未闭合缺陷的最小续作交接，派发前仍需准确恢复准入。不得盲重发旧prompt，也不得由Codex完成源码或看护修补。任何新执行须绑定明确恢复原因、准确输入和适用准入；未形成有效交付前不进入接收或放行B1。
+
+独立调查员实际运行作者checker一次：08:38:41至08:38:47Z，exit0、6.844秒、21/21声明分支符合预期，原15例均保留；自有fixture47708自然exit0，无kill、无模型、stderr空。报告`D:/ac-repair/dist/admin-diagnostic-repair-check.json` SHA `2b55b112e19fb01c37683441620d3ccd3407003f5d59af1e5dccaae7c4f17484`，准确fragment/checker hash与上述一致；原件在本次run目录`independent-check-once/`，execution SHA `c4f3c67b0ac0ea61c8c35789f6e4148e8e31f97357170e8ba2eef26a7c7ad548`。异常分片重组、hash及UTF16长度独立核相等。根已回读报告与执行原件，不重复运行会拒绝覆盖的checker。
+
+通过21例仍有具名剩余诊断缺口，继续归GOV-06行政修补，不以测试绿关闭：片段141–148行not-found路径的目标getter异常仍标为GetProcessById/CIM API，缺真实失败API；CIM复查非空时只保存count，已取得的present身份未保留。新增6例未覆盖这两条路径；parent.get_StartTime异常的API仍不准确，fresh PID/PPID等诊断分支也未被新增6例覆盖。checker已存在报告拒覆发生在fixture自然退出后，不宣称启动前零副作用拒绝。发包人据此准备同一两文件的新hash续作包，补确切反例并完成有效作者final；后继checker须由执行者绑定新的独占报告路径，原报告保留。审核仍由CodeBuddy GLM/Kimi和native独立执行，Codex只验证、记录及集成。
+GOV-06/W/R2新增实际反例：控制协调者的上下文切换期间停止责任不能依赖该协调者继续采样；需要独立执行的截止与可恢复状态，且须用控制者不响应/退出的真实子进程回归验证。GOV-05/08/S/X/C2区分partial写入、有效作者交付、接收及当前运行人数；GOV-S0-I01要求监督核实际观察间隔和超时处置，不能把“600秒内退出”签成全部看护条件达成。这些仍是待产品实现及独立关闭的需求，行政片段通过不能关闭它们。
+当前恢复裁定：旧Job owner/watcher只支持glm/kimi只读调用且固定依赖旧片段，不能把author伪装成review或由Codex改执行逻辑。只读复用审计找到已有`agent_coop.paths.create_root()`与`agent_coop.runtime.run_bounded()`可组成受审bootstrap：建立真实新隔离根后，直接运行CB准确argv，模型stdout/stderr直接进入现有收流与独立截止，不经过将模型流另写文件的wrapper。仅为可审方案，未新调用模型、未获新准入。它仍没有Windows Job及控制者崩溃保障，父先退子孙/日志延迟落盘风险保留；不能关闭W/R2。完整sample init的作者权限固定feature.py，不能借其Store/配置假装本两文件任务。下一步明确为绑定新cwd/两文件真实版本/权限/会话/全部argv及现有runtime版本后独立复核，之后才交唯一发包人续作；不再原样依赖人工480秒看护。
 ### S6意见与待监督分歧
 
 GLM raw SHA `196acc00862fc8bbe25878aafad8e966de5860125d3c58f7d1a5746dc6d13b5e`、完整final SHA `2376de2cecd8351c335076cae7170e8d60d6a4cabf18b56dbba6e87b9725853c`；Kimi raw SHA `697ceb23c38b3e3461f5ec1f666b46c611fe853d364425f4a21754c8e12ce369`、完整final SHA `9b2f435db76f01980797aa1bd3416e2450297261dbdbda8e39daf12425035030`。完整hash和实际调用原件以本机`C:/Users/june/AppData/Local/Temp/agent-coop-governance-s6-run-20261011/`两席目录为准。可读无损final与逐项coverage为`D:/ac6/dist/n/gf.json`、`kf.json`、`gc.json`、`kc.json`；两个coverage SHA分别`e33f03968644e6e776c9a13d95f7476c5425bb1b60e1a50441f37aebdebd49c8`、`2efb23bf2732a4e7d90f13933d240e41595dc788ba25d377d49526ca8ee37a43`。
