@@ -1,0 +1,46 @@
+{
+  "candidate": "ee94914543e9248d17c9fde670869744173ea22a",
+  "role": "review_glm",
+  "requested_model": "glm-5.3",
+  "requested_session": "agent-coop-governance-glm-s0-20261011-74a0a55a",
+  "actual_init": [
+    {
+      "model": "glm-5.3",
+      "session_id": "agent-coop-governance-glm-s0-20261011-74a0a55a"
+    },
+    {
+      "model": "glm-5.3",
+      "session_id": "agent-coop-governance-glm-s0-20261011-74a0a55a"
+    }
+  ],
+  "wrapper_exit_code": 0,
+  "wall_seconds": 341.0886434,
+  "raw_sha256": "7d4695646997d3a7d27374b39a5615355828063b96a1ca182420aa0a9792787f",
+  "native_result": [
+    {
+      "subtype": "success",
+      "is_error": false,
+      "num_turns": 83
+    }
+  ],
+  "final_schema": "development-final/1",
+  "decision": "pass",
+  "final_binding_matches": true,
+  "tools": [
+    "Read"
+  ],
+  "tool_calls": 33,
+  "tool_results": 33,
+  "coverage_all_required_complete": true,
+  "reading_coverage_sha256": "3aec528bd9e07e319a5d77f008e241cf02eb3bb051bfb6a2f500ce9655cada8e",
+  "sequence_anomalies": [],
+  "native_result_event_line": 85,
+  "events_after_result": [
+    {
+      "type": "system",
+      "subtype": "init"
+    }
+  ],
+  "final_after_all_tool_results": true,
+  "process_watch_path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/watch-completion-glm.json"
+}

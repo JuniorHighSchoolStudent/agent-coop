@@ -1,0 +1,46 @@
+{
+  "candidate": "ee94914543e9248d17c9fde670869744173ea22a",
+  "role": "review_kimi",
+  "requested_model": "kimi-k3-2",
+  "requested_session": "agent-coop-governance-kimi-s0-20261011-3faf149a",
+  "actual_init": [
+    {
+      "model": "kimi-k3-2",
+      "session_id": "agent-coop-governance-kimi-s0-20261011-3faf149a"
+    },
+    {
+      "model": "kimi-k3-2",
+      "session_id": "agent-coop-governance-kimi-s0-20261011-3faf149a"
+    }
+  ],
+  "wrapper_exit_code": 0,
+  "wall_seconds": 287.3212495,
+  "raw_sha256": "f2c302fa57d7dd8f4b0207a137b96d3c76c3bff85e07ec8991406c7a32db54e4",
+  "native_result": [
+    {
+      "subtype": "success",
+      "is_error": false,
+      "num_turns": 73
+    }
+  ],
+  "final_schema": "development-final/1",
+  "decision": "pass",
+  "final_binding_matches": true,
+  "tools": [
+    "Read"
+  ],
+  "tool_calls": 33,
+  "tool_results": 33,
+  "coverage_all_required_complete": true,
+  "reading_coverage_sha256": "e243d665804e282e9368ef3a7a82e37460037d710a25c2b7bb55809ed659d3b0",
+  "sequence_anomalies": [],
+  "process_watch_path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/watch-completion-kimi.json",
+  "native_result_event_line": 75,
+  "events_after_result": [
+    {
+      "type": "system",
+      "subtype": "init"
+    }
+  ],
+  "final_after_all_tool_results": true
+}

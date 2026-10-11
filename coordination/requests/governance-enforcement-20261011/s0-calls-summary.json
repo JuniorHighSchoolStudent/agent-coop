@@ -1,0 +1,199 @@
+{
+  "candidate": "ee94914543e9248d17c9fde670869744173ea22a",
+  "phase": "fresh_S0_original_three_package_scope",
+  "calls_used_codebuddy": 2,
+  "calls_budget_proposed_codebuddy": 14,
+  "calls_used_native": 0,
+  "new_calls_authorized": false,
+  "policy": {
+    "path": "D:/project/agent-coop-governance-review-20261011/coordination/.runtime/governance-s0/bootstrap-policy.json",
+    "sha256": "66ce0dd1dc0ec886bcdf0fec83366362f73c6add009f924b72de42660ae5cf35"
+  },
+  "index": {
+    "path": "D:/project/agent-coop-governance-review-20261011/coordination/.runtime/governance-s0/input-index.json",
+    "sha256": "49ab6976f5a59532fa5b91fda8fea99259f7f08ec41daeb21229b7c61a0f9c9c"
+  },
+  "seats": [
+    {
+      "seat": "glm",
+      "actual": {
+        "candidate": "ee94914543e9248d17c9fde670869744173ea22a",
+        "role": "review_glm",
+        "requested_model": "glm-5.3",
+        "requested_session": "agent-coop-governance-glm-s0-20261011-74a0a55a",
+        "actual_init": [
+          {
+            "model": "glm-5.3",
+            "session_id": "agent-coop-governance-glm-s0-20261011-74a0a55a"
+          },
+          {
+            "model": "glm-5.3",
+            "session_id": "agent-coop-governance-glm-s0-20261011-74a0a55a"
+          }
+        ],
+        "wrapper_exit_code": 0,
+        "wall_seconds": 341.0886434,
+        "raw_sha256": "7d4695646997d3a7d27374b39a5615355828063b96a1ca182420aa0a9792787f",
+        "native_result": [
+          {
+            "subtype": "success",
+            "is_error": false,
+            "num_turns": 83
+          }
+        ],
+        "final_schema": "development-final/1",
+        "decision": "pass",
+        "final_binding_matches": true,
+        "tools": [
+          "Read"
+        ],
+        "tool_calls": 33,
+        "tool_results": 33,
+        "coverage_all_required_complete": true,
+        "reading_coverage_sha256": "3aec528bd9e07e319a5d77f008e241cf02eb3bb051bfb6a2f500ce9655cada8e",
+        "sequence_anomalies": [],
+        "native_result_event_line": 85,
+        "events_after_result": [
+          {
+            "type": "system",
+            "subtype": "init"
+          }
+        ],
+        "final_after_all_tool_results": true,
+        "process_watch_path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/watch-completion-glm.json"
+      },
+      "artifacts": {
+        "receipt.txt": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-glm-r1.receipt.txt",
+          "sha256": "70a35df393a54ed8955283357afff8154837c3d864ca50bd61d8d305969a8129"
+        },
+        "actual-metadata.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-glm-r1.actual-metadata.json",
+          "sha256": "1ee7e2ab268b7d0d2b4bfeadfeff5a4929eae52a9bf952af4b2ed3e45bfa3300"
+        },
+        "reading-coverage.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-glm-r1.reading-coverage.json",
+          "sha256": "3aec528bd9e07e319a5d77f008e241cf02eb3bb051bfb6a2f500ce9655cada8e"
+        },
+        "development-invocation.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-glm-r1.development-invocation.json",
+          "sha256": "386ff969b1b52a2cd1f8297f8d94c0f2f524748ae428026932c48e1f50e07372"
+        },
+        "invocation.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-glm-r1.invocation.json",
+          "sha256": "7d03aa615fc35ac4a17f912a9ad60b098488ecfc27bc923c9315f3836b703360"
+        },
+        "completion.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-glm-r1.completion.json",
+          "sha256": "eafa9ff7524c7e33212f335616eedfdbbaee26b94b46144a133dec63bb05438b"
+        },
+        "jsonl": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-glm-r1.jsonl",
+          "sha256": "7d4695646997d3a7d27374b39a5615355828063b96a1ca182420aa0a9792787f"
+        }
+      }
+    },
+    {
+      "seat": "kimi",
+      "actual": {
+        "candidate": "ee94914543e9248d17c9fde670869744173ea22a",
+        "role": "review_kimi",
+        "requested_model": "kimi-k3-2",
+        "requested_session": "agent-coop-governance-kimi-s0-20261011-3faf149a",
+        "actual_init": [
+          {
+            "model": "kimi-k3-2",
+            "session_id": "agent-coop-governance-kimi-s0-20261011-3faf149a"
+          },
+          {
+            "model": "kimi-k3-2",
+            "session_id": "agent-coop-governance-kimi-s0-20261011-3faf149a"
+          }
+        ],
+        "wrapper_exit_code": 0,
+        "wall_seconds": 287.3212495,
+        "raw_sha256": "f2c302fa57d7dd8f4b0207a137b96d3c76c3bff85e07ec8991406c7a32db54e4",
+        "native_result": [
+          {
+            "subtype": "success",
+            "is_error": false,
+            "num_turns": 73
+          }
+        ],
+        "final_schema": "development-final/1",
+        "decision": "pass",
+        "final_binding_matches": true,
+        "tools": [
+          "Read"
+        ],
+        "tool_calls": 33,
+        "tool_results": 33,
+        "coverage_all_required_complete": true,
+        "reading_coverage_sha256": "e243d665804e282e9368ef3a7a82e37460037d710a25c2b7bb55809ed659d3b0",
+        "sequence_anomalies": [],
+        "process_watch_path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/watch-completion-kimi.json",
+        "native_result_event_line": 75,
+        "events_after_result": [
+          {
+            "type": "system",
+            "subtype": "init"
+          }
+        ],
+        "final_after_all_tool_results": true
+      },
+      "artifacts": {
+        "receipt.txt": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.receipt.txt",
+          "sha256": "86fe6d9c2c96f5df9cf44deb16fc590e67cf06417984df5b486933da94054db3"
+        },
+        "actual-metadata.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.actual-metadata.json",
+          "sha256": "9de0c1e715935d3b64c7bf720ec4863ffa3c43eb2a6a76c3a6830dda4de8c6b2"
+        },
+        "reading-coverage.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.reading-coverage.json",
+          "sha256": "e243d665804e282e9368ef3a7a82e37460037d710a25c2b7bb55809ed659d3b0"
+        },
+        "development-invocation.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.development-invocation.json",
+          "sha256": "8be57e4181f724de6cece474e262b46076bbf478084e75f162db7223e13451da"
+        },
+        "invocation.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.invocation.json",
+          "sha256": "d97b487c04d9de50781141285d9f117c9f1269e58404041c1e1bc33aa2b8df1c"
+        },
+        "completion.json": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.completion.json",
+          "sha256": "34a06fb58dd74909deb609065ad1d0889518ca56990fc4834a7a2819aac43d04"
+        },
+        "jsonl": {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.jsonl",
+          "sha256": "f2c302fa57d7dd8f4b0207a137b96d3c76c3bff85e07ec8991406c7a32db54e4"
+        }
+      }
+    }
+  ],
+  "watcher": {
+    "ready": {
+      "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/watcher-ready.json",
+      "sha256": "3eede61079460ab4e1c8077c38d008d241c25ad922bd248ccf91ab89d3311990"
+    },
+    "finished": {
+      "path": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/watcher-finished.json",
+      "sha256": "e774b872b9a653aba026fe649f8dd7b1f0a585b34b7514a035b970b4ae349c55"
+    },
+    "limits": [
+      "Both runs exited normally before deadline; forced-timeout termination path was not dynamically triggered.",
+      "500ms is requested sleep between CIM polls, not a measured maximum observation interval.",
+      "Known child list is a best-effort descendant scan keyed by PID; parent PID reuse was not independently revalidated against captured creation time when expanding descendants. Do not claim OS process-tree isolation; carry to GOV-06 product runner design.",
+      "CLI startup created host shell helper processes, while actual model tools were Read only; no claim host had no shells."
+    ]
+  },
+  "scope_limits": [
+    "Both decisions pass only frozen original S0 scope; new mandatory GOV06-09 product implementation is not approved by these tickets.",
+    "Root identified missing supervisor dependency on current peer opinions/coverage and non-self-referential binding problem after freeze; not resolved by these two pass decisions.",
+    "New checker not implemented: reading coverage and invocation are administrative derivations bound to raw, not native emitted fields or a product eligible report.",
+    "Kimi summary initially claims accept includes old00..10, but later accurately states old04..10 inherited via prior plan; original receipt retained without correction.",
+    "No authors, native supervisor or further review calls launched."
+  ]
+}

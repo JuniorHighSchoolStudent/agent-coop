@@ -1,0 +1,27 @@
+{
+  "schema": "development-invocation/1",
+  "attempt_id": "gov-s0-kimi",
+  "role_id": "review_kimi",
+  "actor_id": "gov-20261011-review_kimi",
+  "adapter": "codebuddy",
+  "requested_model": "kimi-k3-2",
+  "requested_session_id": "agent-coop-governance-kimi-s0-20261011-3faf149a",
+  "process_exit_code": 0,
+  "raw_sha256": "f2c302fa57d7dd8f4b0207a137b96d3c76c3bff85e07ec8991406c7a32db54e4",
+  "input_subject_digest": "230daf0ea34035b49fa8409ebca3677b2635df09783b19c3a56a79ed719f4a4f",
+  "policy_digest": "66ce0dd1dc0ec886bcdf0fec83366362f73c6add009f924b72de42660ae5cf35",
+  "capabilities": {
+    "native_read_content": {
+      "state": "supported",
+      "source_ref": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.jsonl#sha256=f2c302fa57d7dd8f4b0207a137b96d3c76c3bff85e07ec8991406c7a32db54e4"
+    },
+    "terminal_completion": {
+      "state": "supported",
+      "source_ref": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.jsonl#sha256=f2c302fa57d7dd8f4b0207a137b96d3c76c3bff85e07ec8991406c7a32db54e4"
+    },
+    "tool_call_pairing": {
+      "state": "supported",
+      "source_ref": "C:/Users/june/AppData/Local/Temp/agent-coop-governance-s0-run-20261011/review-governance-s0-kimi-r1.jsonl#sha256=f2c302fa57d7dd8f4b0207a137b96d3c76c3bff85e07ec8991406c7a32db54e4"
+    }
+  }
+}
