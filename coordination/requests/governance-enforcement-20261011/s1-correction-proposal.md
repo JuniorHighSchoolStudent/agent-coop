@@ -1,8 +1,8 @@
 # S1现场问题最小后继修订提案（未批准）
 
-范围：S1准备与运行暴露的会话声明、读取计划派生、严格final和看护身份问题；维护者：Codex合同调查/集成者；状态：候选，待S1结果汇总后具体审批，不是已修复、已正式复审或新增调用准入。基于冻结候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`的[后继合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)与[分批计划](dispatch-sequence.md)。本文仅新增，不修改S0/S1输入、模型原票或历史调用。
+范围：S1准备与运行暴露的会话声明、读取计划派生、严格final和看护身份问题；维护者：Codex合同调查/集成者；状态：具体修订进入下一轮设计与产品实施；用户已取消固定轮次限制，不是产品已修复或已正式复审。基于冻结候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`的[后继合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)与[分批计划](dispatch-sequence.md)。本文仅新增，不修改S0/S1输入、模型原票或历史调用。
 
-现有两轮S0/S1双席调用已经使用，共4次CodeBuddy、0次native；S1两席均已结束，但完整final严格JSON无效且真实读取缺17–18行，尾部PASS均不计有效票。本文提出下述一次性追加复核申请，不自行授权任何调用；原拟议52/8亦不是可自行支用的额度。状态、最终证据指针与批准仅在原[result](result.md)维护。
+现有两轮S0/S1双席调用已经使用，共4次CodeBuddy、0次native；S1两席均已结束，但完整final严格JSON无效且真实读取缺17–18行，尾部PASS均不计有效票。用户最新指示已替代一次性追加复核申请及原固定52/8上限；后继依具名问题与准确候选继续，仍须满足独立审核、监督和实际用量记录。状态、最终证据指针与准入仅在原[result](result.md)维护。
 
 ## 1. fresh native未请求session ID，不可倒填
 
@@ -49,7 +49,7 @@ A仍判必需条件，B仍核实际Read正文；预检或派生同步通过不�
 | 原文线索与核对结果 | 最小后继要求、owner及验收 |
 |---|---|
 | F1：确认`bootstrap-policy.json`的plan/accept required_evidence均未包含当前policy；index仅有其寻址/hash，subject.artifacts亦未含当前policy。prompt安排实读不能替机器必需条件 | A/C将各阶段必需审核/监督席读取准确当前policy纳入固定义务，B核实际覆盖。沿既有字段为该policy artifact声明full、source_sha256=null；先冻结不含自身hash的policy，再将其真实字节hash加入subject.artifacts并计算subject。condition的权威源仍是已固定旧规则，不将当前policy自身hash写回policy。F/D据此派生读取表。缺当前policy义务、只读旧policy、只在prompt要求而机器集合缺项均拒绝；修改policy后旧subject/票失效。此为后继候选修正，不能改S1原件或以native口头确认替代 |
-| F2：确认B1 batch-config.model_call_limit=16；分批预算16含设计双席2，其余作者/修复/内容审最坏14。不能把16整体再当设计后可新增额度 | S/D沿既有剩余额度/authority_ref合同核全请求与本批两层预算；C核预算批准来源。明确16是批总口径，14仅在恰好已消耗该批设计2次且无其他扣减时成立，不机械改为固定14。S0/S1失败及本提案追加均计入准确全局已用；Store启用晚于B1时不能重新发B1额度。回归已用2后拒第15次新增、本批与全局余量取共同约束、失败计数及重复初始化不清零；纯预算计数测试无需模型 |
+| F2：旧B1 batch-config.model_call_limit=16包含设计双席2，其余最多14；这是旧原票的预算口径线索。用户新指令已撤销其作为当前固定批次数上限的效力 | S/D以null明确不设开发调用次数上限，C核用户授权来源；失败/预约/实际启动继续准确记账，启用Store不能清零。回归null模式超过旧两轮/16次仍可按合法后继继续，但旧票/缺证据仍拒绝；用户以后显式设置有限预算时另核全请求与批次共同约束，不以本次旧16作为默认。重复初始化、失败减计数、null误当0均拒绝，纯预算测试无需模型 |
 | F3：未确认丢源。`PREPARED-SOURCE-MAP.json`已将runtime-plan映射到准确`dc37ae6…:coordination/requests/governance-enforcement-20261011/runtime-integration-plan.md`，字节hash为`9e1e0e43539c82e0d6d86069c4f78dd6572d3653f7842d26d4733df12c6a1115` | C复用单一artifact ID/准确源映射，不因展示重命名再造权威。验收该真实改名映射通过；同名错hash、无映射的必需链接目标、从显示名猜latest均拒绝。包内相对链接不自动证明原仓文件已读 |
 | F4：确认冻结source-test-runtime.py为409物理行，N2继续增加回归有硬上限风险 | N2作者在现有专属写集内先说明测试组织与增量规模；A/C消费既有具名规模检查证据，独立审核仍审内聚性。若预计或实际越500须停止并提出明确写集调整/精确局部例外，未批准前不新建测试文件或压行。409不是已越硬上限，也不是未来增量已获准 |
 | F5：W实现尚未发生，重型Windows路径超过目标/20轮风险是估算，不能写成实际超限或实现已可行 | W交付必须有真实无模型进程验收及准确文件/函数物理行数，遵守300/500与40/80及独立局部例外规则；F保留预算估算和unknown。超响应预算或硬规模上限不得靠隐藏续跑、删注释或未审拆分通过 |
@@ -57,14 +57,14 @@ A仍判必需条件，B仍核实际Read正文；预检或派生同步通过不�
 
 **不采用structured flag。** 静态调查原件为`TEMP/agent-coop-governance-20261011/codebuddy-structured-output-static-evidence.json`，状态static_only_no_probe_no_admission，绑定headless实现SHA `f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65`。其中SO-01–04显示`--json-schema`依赖额外StructuredOutput工具及独立`result.structured_output`字段；缺结果时stop hook最多自动续跑3次，尚不能证明max-turns为包含续跑的总上限。SO-05另见schema校验器失败可能退回generic参数。现有Read/Glob/Grep工具集、完整result严格JSON合同及无隐藏重试预算均不覆盖此行为。本请求不加该flag、不改变解析字段、不作模型probe，不用它挽救S1原票；保留该实证供既有runtime/预算负例，不新增可选输出平台。
 
-## 6. 一次性追加复核的具体申请（尚未授权）
+## 6. 用户已替代固定轮次及一次性追加申请
 
-[roadmap](../../../docs/roadmap.md)第27行规定每次max-turns20、评审最多2轮；S1准入原件的停止边界同样不授权第三轮。S0/S1已经用完两轮。为审上述具体修订，拟仅申请本请求**额外一次双席设计复核，共新增2次CodeBuddy**：原GLM/Kimi独立只读，各最多20响应轮、600秒，无自动重试、不使用json-schema隐式续跑；任一失败即保留原件并停止，不自动补调。不改全局两轮规则，也不自动授权native或作者。
+用户2026-10-11明确要求“不设限制，以达成目标为准”，并指定本提案的四项现场问题在下轮产品开发解决。准确指示与适用范围见[范围补充](scope-amendment.md#2026-10-11用户纠正按目标闭环不设固定轮数)。此前申请追加2调用、累计6次、总54/8的方案只保留于Git历史，不再是当前待批准事项，不能用另一个固定总调用数重新制造轮数阻断。
 
-只有用户对这次具名追加明确授权后，才可冻结修订候选/完整读取计划并走原派发准入；S0/S1已用4次，追加后此设计复核累计最多6次。若保留其余13包原设计预算，整体候选上限从52CB/8native变为**54CB/8native**，基本口径从31/8变为**33/8**；这是待批准预算提案，不是本次2调用之外的支用授权。未来作者仍须各批有效计划、必需双席和native门禁，后续实际用量只沿原请求result及同一Store承接。
+后继审核、监督和修复按[当前路线](../../../docs/roadmap.md)与修订后的[分批计划](dispatch-sequence.md)推进。调用逐次绑定问题、准确候选与预期证据；单次20响应轮/600秒及真实看护、独立席位、暂停和资源约束继续有效。实现与修复仍由专门发包人派给实际CodeBuddy作者，Codex不接管产品编码。旧S0/S1原票、消耗和失败不改写。
 
 ## 7. 审批与证据承接
 
 上述事实的原流仍在本机受权TEMP路径，本文不复制私有执行日志。双席来源为`agent-coop-governance-s1-run-20261011/review-governance-s1-{glm,kimi}-r1.jsonl`、同名前缀receipt/invocation/completion；watcher来源为同目录watch-completion-glm.json和watcher-correction-kimi.json；会话请求来源为`agent-coop-isolated-workflow-20261010/run-supervision-g1.ps1`。仓内[GLM原文](review-s1-glm.txt)、[Kimi原文](review-s1-kimi.txt)及[真实回归记录](review-s1-regressions.json)保留失败事实；完整原件/准确hash与最终状态沿[result](result.md)引用，不用此提案摘要代原件。
 
-后继审批应明确：哪些是字段语义澄清、哪些改变派生产品接口、哪些是既有合同的真实回归；覆盖受影响A/B/C/D/F/N1/N2/W/R2/S消费者和独立关闭责任。产品/测试仍由实际CodeBuddy作者实现；Codex只提交文档、核验证据与集成。S0/S1已用调用不撤销、不改写，也不被此提案转换成新范围批准。未获新准入前只可准备可审材料，不能补票、派作者或把本文件标为“已修”。
+后继审批应明确：哪些是字段语义澄清、哪些改变派生产品接口、哪些是既有合同的真实回归；覆盖受影响A/B/C/D/F/N1/N2/W/R2/S消费者和独立关闭责任。产品/测试仍由实际CodeBuddy作者实现；Codex只提交文档、核验证据与集成。S0/S1已用调用不撤销、不改写，也不被此提案转换成新范围批准。后继调用按最新用户授权及当前规则逐次准入；必需有效审核与监督未完成前不得派作者或把本文件标为“已修”。

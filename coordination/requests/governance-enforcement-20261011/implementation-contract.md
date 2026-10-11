@@ -1,12 +1,14 @@
 # 开发治理产品修复实施合同（后继候选）
 
-范围：GOV-01–09及GOV-S0-I01的产品责任、共享接口与失败/恢复验收；维护者：Codex合同集成者；状态：待后继独立双席复核及native监督，未授权新增模型调用或实现。旧[contract.md](contract.md)为`ee94914543e9248d17c9fde670869744173ea22a`送审原件，本文件不修改、覆盖或倒签它。原两席S0的PASS仅覆盖原scope，不证明本后继合同已获审。当前状态、调用预算、写集分包和顺序分别由[result](result.md)及实施计划维护。
+范围：GOV-01–09及GOV-S0-I01的产品责任、共享接口与失败/恢复验收；维护者：Codex合同集成者；状态：依用户最新指令推进至目标完成，后继准确候选仍须独立双席复核及native监督；不以历史票准入实现。旧[contract.md](contract.md)为`ee94914543e9248d17c9fde670869744173ea22a`送审原件，本文件不修改、覆盖或倒签它。原两席S0的PASS仅覆盖原scope，不证明本后继合同已获审。当前状态、调用预算、写集分包和顺序分别由[result](result.md)及实施计划维护。
 
 需求依据：[范围补充](scope-amendment.md)、[调查](investigation.md)、[AGENTS](../../../AGENTS.md)、[design](../../../docs/design.md)。本文件是后继接口候选，不另建问题、批准、PASS或进程状态台账；长期规则仍归AGENTS/design，通用状态仍归现有Store/Runner，原件沿同一request保存。
 
+用户最新指令取代固定review/repair轮次：设计、作者修复、内容审查及监督按未闭合finding持续推进，轮次标签仅为序号，不设总调用次数来变相封顶。每次CodeBuddy调用仍最多20响应轮/600秒，native仍保持真实可执行的600秒边界及未知能力声明；每次准确版本、权限、独立性、暂停和异常处置不变。无进展须先调查并修改受审输入/修复方案，禁止对同一失败盲重试。旧S1冻结内容保留在`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`及原送审树/原票；[现场提案](s1-correction-proposal.md)的事实沿用，其“额外2票审批/54次”候选限制已被用户指令替代，不再作为本合同门禁。
+
 ## 1. 承接与变化
 
-旧合同中以下要求全部保留：旧策略独立pin、旧条件完整继承、准确角色/候选/原件绑定、逐席实际Read正文、作者有效final、独立审核与监督、unknown可见、无豁免入口、严格JSON和类型敏感摘要、有限阶段依赖、纯观察不得执行动作、实际使用和独立关闭。预算不足、内容PASS、native PASS或临时行政例外均不能抵消缺项。既有失败和Git合入事实不改写。
+旧合同中以下要求全部保留：旧策略独立pin、未被用户明确替代的有效旧条件完整继承、准确角色/候选/原件绑定、逐席实际Read正文、作者有效final、独立审核与监督、unknown可见、无豁免入口、严格JSON和类型敏感摘要、有限阶段依赖、纯观察不得执行动作、实际使用和独立关闭。预算不足、内容PASS、native PASS或临时行政例外均不能抵消缺项。既有失败和Git合入事实不改写。
 
 | 后继变化 | 原缺口与明确边界 |
 |---|---|
@@ -19,16 +21,18 @@
 
 v2的role_bindings另增加`profile_artifact_id`（manual为null），指向当前subject内已审profile文件；实际动作必须消费该准确文件/hash，不能只比adapter/model名。profile依现有配置/权限schema，新增dialect定位见第6节。policy没有新增关闭监督最低要求或partial_accept的开关。
 
-策略修订由旧授权规则受审，不能由待审policy自行授予放宽权限。后继policy继续逐值承接有效原条件；分组read_coverage只合并同角色同阶段的机器条件，不删其required_evidence，各条仍全部AND。request.conditions始终保留完整policy列表，不能因为当前阶段不claim历史义务而删条件。
+策略修订由旧授权规则受审，不能由待审policy自行授予放宽权限。后继policy继续逐值承接有效原条件；本次[scope-amendment](scope-amendment.md)所记录的用户指令只具名替代固定审核/修复/自动attempt次数限制。新policy.authority_refs必须pin该用户指令及准确旧规则，送审材料逐项列旧条件来源、被替代文本和新语义；旧原件保留，新request.conditions完整对应新受审policy，不能让已失效次数条件继续阻断。A按独立批准的新policy与条件摘要核验，不解释自然语言自行override；用户指令不能被扩大为豁免作者final、必读、准确版本、独立性或看护。双席与native须核这条授权链及差异，模型/集成者无自签放宽入口。分组read_coverage只合并同角色同阶段的机器条件，不删其required_evidence，各条仍全部AND。request.conditions始终保留完整policy列表，不能因为当前阶段不claim历史义务而删条件。
 
 ## 2. 最低不变量与可配范围
 
 以下是产品最低判据，不是可由policy关闭的开关，也不按CodeBuddy/Kimi品牌硬编码：
 
 1. 阶段若包含kind=supervisor和必需kind=reviewer，监督输入必须覆盖该阶段**全部必需reviewer**的准确有效final及完整逐席原生观察/coverage。少一席、旧候选、摘要替原件或监督未实际读到均阻断。A验证审核者存在不替代监督的独立判断。
-2. policy确定角色、独立性、每阶段条件和额外必读源；它可以增加监督材料，不能取消上一条。两个角色重命名或复用同session/raw不产生独立票；作者、审核者、监督的独立性延续旧合同。
+2. policy确定角色、独立性、每阶段条件和额外必读源；它可以增加监督材料，不能取消上一条。plan/accept每个必需reviewer及supervisor均必须完整读取准确当前policy，A/C拒绝实例漏配，B核其实际正文覆盖，不能仅在prompt要求或用旧policy替代。两个角色重命名或复用同session/raw不产生独立票；作者、审核者、监督的独立性延续旧合同。
 3. 旧规则/旧准入条件使用固定源hash；变化的候选源使用subject内准确hash。plan历史调查可由accept沿prior链重算，不要求每席再读全部历史；accept仍直接核适用旧条件、当前候选、验证、作者交付及本轮finding，不能用plan票代内容票。
 4. 成功仅属于明确层次：原生进程/协议结束、有效作者交付、审核完成、监督完成、产品动作许可、动作完成、合入分别举证。临时check报告不变成批准本身，也不自动更改当前状态。
+
+当前policy必读使用既有required_evidence：固定artifact ID、coverage=full、source_sha256=null；condition权威引用准确旧规则。先冻结不含自身hash的policy，再把其实际hash加入subject.artifacts并计算subject，外部独立pin仍核policy字节。policy中不得嵌入自己的hash；缺subject绑定、旧hash、缺任一必需席读取均阻断。该有向依赖没有policy→自身摘要循环。
 
 ## 3. 监督证据的无循环绑定
 
@@ -100,6 +104,10 @@ C包受审后可以由受权发包人直接调用上述公开API构造真实监�
 
 必要消费者合同测试包括旧sample parse、治理B和原生真实fixture：同一个坏序列两条消费者均拒绝，同一个合法序列两者对身份/工具次序一致；治理final schema不强加给旧sample业务final。B仍须核True/1/1.0、长行截断、错误路径、角色独立覆盖和经审定等价投影。
 
+`development-invocation/2.requested_session_id`明确为非空字符串或null。有显式原生请求时actual必须相等；null仅表示经实际argv证明本次fresh调用没有请求session ID，不表示actual可缺失或runtime普遍不支持预选。N1从原生raw取得非空无冲突actual，B核请求语义，A核独立性/excluded；禁止用actual事后倒填requested，调度attempt/session标识不能冒充原生实际session。恢复调用仍核其准确请求目标。
+
+B严格解析完整final_text，仅允许JSON自身合法空白；散文后JSON、代码围栏、截尾选对象或另取更早final均不得通过。N1协议success、进程exit0与B治理final有效性分别举证。S1两席真实raw必须回归：GLM第151条/Kimi第144条result均success但完整正文char 0解析失败；第94条/第27条Read准入文件仅1–16而固定要求1–18。自报64Read不补缺读；只修JSON或只补Read均不能恢复。不同角色最终字段和准确subject仍依既有合同，不启用json-schema/StructuredOutput：已核实现可能隐式续跑3次、增加工具并换用structured_output字段，不在本次权限/预算/解析合同内。
+
 ## 6. 容量预检与实际动作边界
 
 本节只冻结消费者边界及验收，不在本文件展开全部执行工程。具体平台和现有实现迁移由运行时提案、实施计划及正式审核决定；未实现不得用人工操作冒称产品能力。
@@ -120,7 +128,7 @@ C包受审后可以由受权发包人直接调用上述公开API构造真实监�
 
 ### 6.1 派发前容量
 
-纯API `assess_development(requirements, artifacts, dialect, budgets)`返回ReadinessReport，包含decision（eligible/blocked/unknown）、按席位的字节数/最长行/需读范围/分片数量、估算tokens及输出量、工具/turn下界与明确假设、findings。dialect和计数规则绑定准确runtime文件hash/版本及原能力证据，不接收临时env自填阈值；budgets由已批准包提供。
+纯API `assess_development(requirements, artifacts, dialect, budgets)`返回ReadinessReport，包含decision（eligible/blocked/unknown）、按席位的字节数/最长行/需读范围/分片数量、估算tokens及输出量、工具/turn下界与明确假设、findings及规范read_plan。read_plan为按artifact_id/offset/limit/projection_id排序（null排序键为空字符串）的分片列表，每项准确含artifact_id/source_sha256/path/read_sha256/offset/limit/projection_id（后者可null）；path为实际Read目标规范绝对路径，read_sha256为该目标准确字节hash；无投影时指源，有投影时指经B重算验证的投影，source_sha256始终绑定原源，offset/limit为正int；由逐席policy要求、准确源字节和dialect确定性生成，不能从prompt反推或跨席并集。dialect和计数规则绑定准确runtime文件hash/版本及原能力证据，不接收临时env自填阈值；budgets由已批准包提供。
 
 dialect是准确profile引用的已审配置：`schema=development-dialect/1`、`adapter`、`implementation_file`（准确path/sha256）、`read_limits`（max_lines/max_chars_per_line/max_estimated_tokens）、`token_estimator`、`turn_counter`、`source_artifact_id`、`source_sha256`。限值为正整数非bool或null；计数方法为受实现支持的版本ID或null，未知不可偷偷选默认值。原profile仅增加`development_dialect`对象，保留其现有permissions/environment/executable/executable_sha256/entry/entry_sha256/max_turns/timeout_seconds/output_limit_bytes，以及native已有agent_file/agent_file_sha256。开发runtime每次启动前除原_verify_hashes外实测implementation_file，证据源也须hash吻合；不能把一个安装版本的Read限制泛化到另一个版本。
 
@@ -128,11 +136,13 @@ dialect是准确profile引用的已审配置：`schema=development-dialect/1`、
 
 重复要求可按同一席同一准确artifact/range合并读取计划，但不能跨席合并或删除义务。已知长行截断、无法表达必读内容、确定超硬限制须blocked；无法估算的关键项标unknown并交受权入口，不能默认为足够。估算不保证完成，不把CLI num_turns当max_turns，不把工具调用数当模型轮次。恢复只能通过受审的范围/等价表示/预算调整并重算，不自动缩减required或加模型调用。
 
+C新增只读公开API `prepare_development_read_plan(stage, role_id, index_path, policy_path, policy_sha256)`：严格装载/核pin、当前policy必读不变量和准确源，调用F，返回ReadinessReport。只允许尚待本阶段意见的准备态，不把该输出当阶段eligible；源/schema/pin缺陷仍拒绝，不写index或Store。D消费此read_plan生成prompt；C/F均不生成另一份prompt。源从16增至18时旧计划失效，源18/计划18/prompt16虽各自hash正确仍须拒绝。此接口供真实计划审核材料准备及后继开发动作共用，不另建脚本。
+
 ### 6.2 执行、看护与状态
 
 开发执行继续使用现有runtime/adapter/environment边界，增量接入独立cwd与受控evidence_root；不要求业务开发树伪造sample marker，也不删除sample原有保护。对外开发调用拟为`runtime.invoke_development(profile, prompt, cwd, evidence_root, attempt_id, session_id)`，具体最小扩展由运行时提案固定。它必须真实消费准确profile/runtime/write-set/session及预算，不只是写一份watchdog参数。
 
-看护/进程包含边界必须在子进程可运行前建立并持续至整个受管树确认结束；控制者退出、父进程提前退出或PID复用不能失去子孙身份。超时、输出越界、看护失败须终止受管树并确认，不得仅杀父进程后回成功。不支持的宿主能力fail closed，不能以“最佳努力taskkill”声称无看护空档。实际平台API、资源释放与崩溃窗口须有官方依据和真实无模型子进程反例，不在本合同凭散文判定Windows实现已成立。
+看护/进程包含边界必须在子进程可运行前建立并持续至整个受管树确认结束；控制者退出、父进程提前退出或PID复用不能失去子孙身份。超时、输出越界、看护失败须终止受管树并确认，不得仅杀父进程后回成功。S1运维watcher将GetProcess的100ns创建时间与CIM微秒字符串全等比较，造成first_child=null；W必须用原句柄/准确创建身份维护包含边界，R2消费同一进程对象，不靠格式字符串/PID单值或宽松时间容差判断所有权。真实无模型回归须覆盖显示精度差异、PID复用、父早退、控制者故障及无法确认树清空；运维修补不冒充产品修复。不支持的宿主能力fail closed，不能以“最佳努力taskkill”声称无看护空档。实际平台API、资源释放与崩溃窗口须有官方依据和真实无模型子进程反例，不在本合同凭散文判定Windows实现已成立。
 
 派发动作复用现有Runner/Store，拟`Runner.dispatch_development(action)`在内部装载原件并重算A/B/容量，不接收调用者填好的PASS/Observation。`Store.claim_dispatch(expected_revision, claim)`在同一现有DB事务内核revision、输入、预算和资源并记录claim；claim绑定request/attempt、subject/policy/profile/runtime/write-set/session及预算，不能先启动再补claim。不能沿现有整轮run.lock阻塞所有独立作者；并发资源与同写集互斥由同一Store准确事实控制，默认CodeBuddy容量4是可配置团队值。
 
@@ -158,7 +168,7 @@ dialect是准确profile引用的已审配置：`schema=development-dialect/1`、
 | `Store.accept_development(expected_revision, admission)` | admission由重算产生，包含action/request/batch/subject/policy/index摘要及准确report和必需票据引用；同一CAS事务核依赖和本批未闭合条件，写accepted事件，不消耗模型额度、不修改历史意见 |
 | `development-acceptance-receipt/1` | schema、event_id、revision、request_id、batch_id、subject_digest、policy_digest、index（ArtifactRef）、report（ArtifactRef）、evidence_refs（全部必需作者/审核/监督原件的ArtifactRef）。由现有Store发布，不由模型或命令调用者填accepted；跨批依赖固定该原件hash并由Store核对应记录 |
 
-claim预算字段来自已批准profile；总次数/并发可用额由同一Store受审批次配置控制，不能仅检查单次max_turns。尚未结束的调用继续占用资源，不因超时文字或父进程已退出便释放。action_id/attempt_id重复必须幂等返回原定位或冲突拒绝，不能二次启动。
+claim单次预算来自已批准profile；并发及显式配置的成本额度由同一Store控制。总调用限额为null时不比较总次数上限，但每次仍记录reserved/used并核暂停、资源和准确准入，不能把“不限审核轮次”当“不限单次执行”。尚未结束的调用继续占用资源，不因超时文字或父进程已退出便释放。action_id/attempt_id重复必须幂等返回原定位或冲突拒绝，不能二次启动。
 
 runtime通过受控`on_created(process_identity)`回调执行上述Store记录，顺序必须是contained+suspended创建→看护/日志就绪→持久化启动身份→resume。创建失败不计真实启动，保留claim失败；记录失败立即终止尚未运行的受管树，不能先resume后补记录。创建及记录成功但resume失败，used保留并记录resume_failed，不退回额度暗中重试；实际是否有模型/provider活动单列unknown或具证据的未发生，不把calls_used冒充供应商计费。控制者在记录/恢复窗口崩溃须靠包含边界终止或由原claim对账，不能静默释放未知进程资源。`invoke_development`因此增加具名参数`on_created`，只允许动作owner传入此生命周期回调，不执行调用者任意模型代码。
 
@@ -170,21 +180,23 @@ runtime通过受控`on_created(process_identity)`回调执行上述Store记录�
 
 开发控制根仍只有`.runtime/state.sqlite`和现有events/投影。D公开`initialize_development(control_root, config_path, config_sha256)`严格加载独立批准pin，交S的`Store.initialize_development(config)`；后者校完整开发schema再复用现有初始化事务及`steps=['development']`，拒绝覆盖已存在DB。旧Runner.run/sample handlers不消费此development步骤，新动作使用专属方法；同一request的后续批只注册到这一个Store，不能各批新建DB清空总预算。配置文件由受权集成者按已审计划准备，产品校验并冻结；模型不自设额度。
 
-`development-store-config/1`准确字段：schema、request_id、control_root、evidence_root、authority_ref（ArtifactRef）、model_call_limit（非负int）、account_groups（非空ID映射，每项capacity为正int、model_call_limit为非负int）、bootstrap_acceptance_refs（已获审ArtifactRef列表）。**这里全局及账户组model_call_limit均是Store启用时已审剩余额度，不是整批历史总上限**；初始calls_used=0仅表示本Store尚未执行调用。authority_ref必须绑定初始化前的实际用量/剩余额度对账，含已批总额、此前已用、仍在途预约及差额，覆盖S0、失败、修复等全部实际调用，不能只统计accepted批。未知消耗先保守占用并阻断无法确认的剩余额度，不能补0。初始化前冻结对账检查点，其他渠道有新调用则旧剩余快照失效，须重新获准后初始化。
+`development-store-config/1`准确字段：schema、request_id、control_root、evidence_root、authority_ref（ArtifactRef）、model_call_limit（非负int或null）、account_groups（非空ID映射，每项capacity为正int、model_call_limit为非负int或null）、bootstrap_acceptance_refs（已获审ArtifactRef列表）。字段必填，bool/float、负数、缺字段拒绝。null明确表示该scope没有用户设置的调用次数上限，不是unknown、0或免记账；当前全局/账户组/批次均应为null，不生成新数字替代被取消的轮次限制。0表示明确不准新增调用；数值只允许来自用户显式成本预算，不由模型/发包人为限轮推导。sample原有受审model_call_limit=4不因此改变。
 
-全局及各账户组分别核本Storereserved+used不超过上述剩余限额，容量核在途claim；同一账号的不同模型不能拆组规避并发。group是受审显式配置，不按agent品牌推断；默认容量4只是当前团队配置值。authority_ref定位原授权和准确启用对账，不是本config自己的摘要。报告分别列“启用前已用/在途”“本Store已用/预约”“剩余额度”，不把bootstrap接收导入变成再次消耗或补回预算。一个request固定一个control_root，既有DB拒绝重初始化；换目录重建不能被认作新的额度池。config_digest由Store计算并保护，任何后续限额/根路径变化均须新受审配置迁移，本切片不提供临时改限入口。
+若存在明确数值，Store初始化及批次注册时该scope的model_call_limit均表示该检查点已审剩余额度，须扣除此前实际用量和在途预约；authority_ref（批次由plan_admission证据引用）绑定准确授权、实际消耗及对账，含S0/S1失败、所有修复，不只含accepted。null时仍绑定用户无次数上限指令及完整对账，报告剩余为null，不能显示无穷余额或unknown变0。历史计数、本Store reserved/used与供应商实际计费分别报告；模型活动无法确认保持unknown，对进程/资源先对账而非盲重启。初始化前冻结检查点，外部新调用令旧对账失效；成本额度只在显式数值scope核reserved+used不超剩余，null scope仅持续计数。
+
+容量仍核在途claim；同一账号不同模型不能拆组规避并发，默认容量4为受审团队配置。authority_ref不是本config自摘要。一个request固定一个control_root，既有DB拒重初始化；导入bootstrap接收不二次计调用、不清空历史。config_digest受Store保护，后续实际成本限制或根路径变化须准确受审迁移，不提供临时改限入口。S/D/X须回归null下超过旧两轮/旧总次数仍可在有效准入时继续、数值成本边界精确阻断、失败计数、暂停/资源冲突及重复初始化不能清账。没有次数上限绝不允许同一失败无调查自动重试。
 
 bootstrap_acceptance_refs只允许本请求产品Store尚未可用时、作者/双席/监督全部有效且已具名接收的早期批次原件；缺作者final的旧B27等历史例外不符合导入条件。该列表在初始化时固定；Store可用后的新批必须使用正式产品接收，不借bootstrap入口减掉门禁。S提供`Store.import_bootstrap_acceptance(expected_revision, verified_admission)`的CAS写入，D仅在第6.0节重算和pin检查后调用，不直接改data。
 
-每批plan的subject必须包含固定ID`batch-config`及准确字节hash，profile文件和prompt body亦在该subject.artifacts中。`development-batch-config/1`准确字段：schema、request_id、batch_id、model_call_limit（正int）、author_bindings（package_id映射）；每个binding含prompt_body_artifact_id/profile_artifact_id/cwd/account_group_id/extra_resource_keys（非空字符串的去重列表，可空）。package集合来自同批受审index，不在config再维护另一份；binding必须恰好覆盖这些包，account_group_id必须存在全局config，cwd必须等于该profile.permissions.root并落在本包已准备工作树，不能从action临时替换。
+每批plan的subject必须包含固定ID`batch-config`及准确字节hash，profile文件和prompt body亦在该subject.artifacts中。`development-batch-config/1`准确字段：schema、request_id、batch_id、model_call_limit（非负int或null，语义同上）、author_bindings（package_id映射）；每个binding含prompt_body_artifact_id/profile_artifact_id/cwd/account_group_id/extra_resource_keys（非空字符串的去重列表，可空）。package集合来自同批受审index，不在config再维护另一份；binding必须恰好覆盖这些包，account_group_id必须存在全局config，cwd必须等于该profile.permissions.root并落在本包已准备工作树，不能从action临时替换。
 
 D公开`register_development_batch(store, plan_index_path, policy_path, policy_sha256, expected_revision)`，从已完成的准确plan装载batch-config并调用C验证；S的`Store.register_development_batch(expected_revision, batch_config, plan_admission)`核同request、唯一batch ID及批准关联，追加不可变配置与摘要到同一Store的data.development，不改全局config。plan_admission包含准确plan subject/index/policy与必需票据引用；batch-config本体不含未来plan票或index hash，避免自引用。重复同摘要幂等，不同摘要拒绝。后续claim必须与已注册batch_config_digest完全相同。
 
 profile定义真实可执行入口、模型、工具、环境、精确permissions与单次预算；batch-config只把包绑定到该profile/cwd/账户组，不能再覆写。D根据已审package.allowed_paths与cwd规范化并核对profile.permissions.write_files逐值相等，然后派生强制排他资源`file:<规范绝对写路径>`；再加入受审extra_resource_keys。账户组容量单独消耗，不能把它当全组互斥锁导致4并行退化为1。Store只接受与已注册包推导结果相同的resource_keys，不接受caller删掉冲突路径。读者无需占作者排他写锁，具体读写协调沿受审包依赖。
 
-prompt来源唯一为已审prompt_body_artifact_id的UTF-8正文；D纯函数`render_development_prompt(body_bytes, context)`在正文前添加一行canonical JSON上下文、两个换行，再拼接原body字节，不作自由模板替换。context准确为schema=development-prompt-context/1、request_id、batch_id、package_id、role_id、stage=dispatch、subject_digest、policy_digest、evidence_bundle_digest=null。body不含自身最终hash或可变候选摘要；实际完整prompt在动作前沿请求证据出口冻结，action.prompt引用其hash，D重算字节一致性。这样计划批准正文与生成规则，最终prompt绑定准确候选却不会把自己的hash塞回subject。新增文字、权限或不同渲染规则均拒绝。
+prompt正文来源唯一为已审prompt_body_artifact_id的UTF-8 bytes，不手工维护第二份必读表；D纯函数改为`render_development_prompt(body_bytes, context, read_plan)`。输出固定为一行canonical JSON context、两个换行、规范read_plan JSON（sort_keys=True/indent=2/ensure_ascii=False/allow_nan=False）、两个换行、原body bytes。context准确含schema=development-prompt-context/1、request_id、batch_id、package_id（非作者为null）、role_id、stage（plan/dispatch/accept）、subject_digest、policy_digest、evidence_bundle_digest（监督为准确bundle，其余null）。read_plan来自C/F本角色本阶段重算结果；body不得再含独立维护的必读范围表。与旧renderer相比，这是明确接口变化，原prompt不能默默沿用。
 
-D是上述prompt渲染/装载的唯一owner；A/B仅比较实际final与invocation的角色、subject、policy等绑定，C只准备证据投影，不另生成prompt。
+body不含自己的最终hash或可变候选摘要；实际完整prompt在动作前沿请求证据出口冻结并由action/invocation绑定，D从准确context/read_plan/body重算逐字节一致性。源变化、计划漏项、旧source hash或实际prompt范围缺17–18均启动前阻断。生成表不证明实际读取，B仍逐席重算Read正文。D是唯一渲染owner；C只装载/核证据并提供F计划，A/B比较实际绑定/覆盖，不另生prompt。bootstrap尚无产品时明确人工准备并独立反向核表；产品可用后的下一适用审核及B4作者实际消费该能力。
 
 ## 7. 分阶段接口依赖与规模
 
@@ -210,3 +222,9 @@ D是上述prompt渲染/装载的唯一owner；A/B仅比较实际final与invocati
 | GOV-S0-I01 | 最低监督不变量：双席全PASS但漏一席/旧票/自引用/人工摘要/监督未读必须拒绝；完整同subject包及真实读取恢复 | 本轮后继计划与最终监督实际消费产品证据包；R＋S，原S0 PASS不代本项关闭 |
 
 还须有两个防空转反例：人工修改投影及其hash但raw不变，重算拒绝；只跑单元测试/离线报告而实际派发绕过产品入口，不能关闭GOV-06/08/09。完成记录分别报告合同获审、代码有效交付、旧消费者修复、产品检查、真实动作、监督与合入。全部finding满足其适用完成链才可结束本请求；后续登记或人工规约不是替代实现。
+
+## 9. S1四项现场缺陷的产品关闭条件
+
+四项均属本请求必修，不能仅更新文档后关闭。漏读由F/C/D生成并核计划到prompt，B核实际正文；无效审核输出由N1保留全文、B严格解析、A/C阻断；看护漏管由W/R2原句柄包含与真实生命周期修复；策略自读缺口由A/C最低集合＋F/D派生＋B实际覆盖闭合。每项必须具有本次真实失败fixture、明确恢复正例及独立双席/native关闭证据，且在本项目后继真实审核/必要C2作者链消费已交付产品。S1原失败票不变成有效票。
+
+N2冻结旧测试409行及W复杂度风险须在具体交付按既有300/500、40/80审查，不能用去注释或无语义拆分绕过；native agent_file启动前复用runtime._verify_hashes并验证缺失/变字节阻断，当前存在不是未来启动证明。准确源映射已存在的runtime-plan改名不得误报丢源，C继续按原件ID/path/hash核验。这些验收仍使用既有13包，不新增相似调度器、台账或未审写集。

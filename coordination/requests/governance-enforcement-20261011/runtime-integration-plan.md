@@ -2,7 +2,7 @@
 
 范围：GOV06–09在本请求内实现、反例验证和本项目实际使用；接口合同见[implementation-contract.md](implementation-contract.md)，原始问题见[investigation.md](investigation.md)，当前状态仅见[result.md](result.md)。基线为 `ee94914543e9248d17c9fde670869744173ea22a` 的产品源码。本文件是受审的实施拆分，不改写原S0输入，也不是已经实现或获准调用的证明。
 
-责任：Codex调查、合同、验证与集成；dispatcher_next唯一正式发包；所有产品/测试实现和修复由实际CodeBuddy作者完成，独立两席和native分别审核、监督。每包请求20 turn，作者无有效final即未交付，不以行数通过或其他席PASS代替。包数增加须由根在旧规则下重订调用预算后才能派发。
+责任：Codex调查、合同、验证与集成；dispatcher_next唯一正式发包；所有产品/测试实现和修复由实际CodeBuddy作者完成，独立两席和native分别审核、监督。每次CodeBuddy请求20响应轮/600秒，作者无有效final即未交付，不以行数通过或其他席PASS代替。用户已取消固定review/repair轮次，按未闭合finding调查、修复并复审至目标完成；旧序号不构成上限。包数/写集变化仍须准确设计准入，不用总调用限额变相封顶；当前无用户次数预算，开发配置显式null且准确记账。隔离sample原有4次专属合同不变。
 
 ## 1. 目标与复用裁定
 
@@ -30,7 +30,7 @@
 
 ### 2.1 共同原生观察
 
-`adapters.observe_native(adapter, raw_bytes) -> NativeTrace` 是公开消费入口。内部实现可由具名 `native_events.py` 承接，两者不能各写一套解析器。Trace至少提供实际model/session、terminal、final_text、配对工具记录、事件序号、原始SHA和violations；配对记录保留call_id、name、input、result、显式错误状态。读取内容不因模型自述而补齐。
+`adapters.observe_native(adapter, raw_bytes) -> NativeTrace` 是公开消费入口。内部实现可由具名 `native_events.py` 承接，两者不能各写一套解析器。Trace至少提供实际model/session、terminal、final_text、配对工具记录、事件序号、原始SHA和violations；配对记录保留call_id、name、input、result、显式错误状态。读取内容不因模型自述而补齐。N1保留整个final_text；S1 GLM/Kimi协议success但散文+JSON由B严格拒绝，不截尾提取对象，读取1–16不得冒称满足1–18。fresh原生未请求session时invocation.requested_session_id为null，实际非空身份仍从raw取得，B/A核请求及独立性，禁止倒填。
 
 旧 `adapters.parse(profile, stdout, session_id)` 从同一Trace生成既有receipt，并保持产品result格式；B `observe_development` 从Trace做artifact路径/正文/范围/投影匹配及治理final检查。共享层不理解治理角色、condition_id或政策PASS。实际退出码由runtime持有，不从JSONL自报补成0；无退出码的Trace只能表达协议终态。
 
@@ -38,7 +38,7 @@ CodeBuddy必须拒绝矛盾init、重复/未知/悬挂工具、错误次序、�
 
 ### 2.2 材料预检
 
-`assess_development(requirements, artifacts, dialect, budgets) -> ReadinessReport` 为纯函数，owner为 `development_preflight.py`。输入artifacts复用C装载的准确path/bytes；每席独立计算，不把三席材料合成一个已读集合。输出包含明确阻断、未知、每席数据量、最长必读行、估算token、建议区间、块数和轮数下界/假设。
+`assess_development(requirements, artifacts, dialect, budgets) -> ReadinessReport` 为纯函数，owner为 `development_preflight.py`。输入artifacts复用C装载的准确path/bytes；每席独立计算，不把三席材料合成一个已读集合。输出包含明确阻断、未知、每席数据量、最长必读行、估算token、建议区间、块数和轮数下界/假设，以及合同§6.1定义的规范read_plan。F由固定required_evidence、准确源和dialect派生分片；C公开只读prepare_development_read_plan装载与调用F，D唯一renderer消费同一计划，不再手写必读表。真实源18/计划18/prompt16必须启动前拒绝，源变动须重算全部派生；B继续核实际Read正文。
 
 dialect由受审adapter/runtime摘要绑定能力参数；不得由caller任选更宽阈值。按implementation-contract §6.1，`development_dialect.implementation_file`独立定位实际方言文件，R2启动前实测它及原executable/entry/适用agent_file；claim.runtime_digest按合同规定的四项摘要计算。CodeBuddy的Node、CLI entry和headless dist不同，不能互相代替或擅自改启动entry。复用B的源/投影等价接口，预检不另造投影。超过已知单行上限、必读范围无法表示、摘要不符、缺必需原件均在启动前拒绝。请求20 turn仍固定；每响应5–8个Read、模型速度与推理余量不是硬保证，必须明确假设，不能据此宣布必定完成。检查包含为最终结构化交付预留的预算，不能把全部轮数都分给读取。
 
@@ -48,11 +48,11 @@ dialect由受审adapter/runtime摘要绑定能力参数；不得由caller任选�
 
 `Store.claim_dispatch(expected_revision, claim) -> persisted_claim`、`Store.finish_dispatch(expected_revision, claim_id, outcome)` 沿implementation-contract的写接口。claim固定request/package/role/session、subject/policy/input/profile/runtime摘要、cwd、写集、日志地址、预算和资源键。具体字段由合同冻结，不能存成调用者自报PASS。
 
-同一 `BEGIN IMMEDIATE` 中校验expected_revision、配置/政策绑定、attempt唯一性、预算余额、资源冲突及实际并发上限，再记录reserved与递增revision/events。总默认容量4、账号组共享限额、单writer工作树及session互斥都必须可见；不能因为模型不同重复计算账号额度。失败不退成未调用，不自动创建替代attempt。预算在预留时保守占用；创建失败可分类为未启动，但不得隐式释放为可重试次数。
+同一 `BEGIN IMMEDIATE` 中校验expected_revision、配置/政策绑定、attempt唯一性、显式非null成本余额（null不设次数上限但仍记账）、资源冲突及实际并发上限，再记录reserved与递增revision/events。总默认容量4、账号组共享限额、单writer工作树及session互斥都必须可见；不能因为模型不同重复计算账号额度。失败不退成未调用，不自动创建替代attempt。预算在预留时保守占用；创建失败可分类为未启动，但不得隐式释放为可重试次数。
 
 `Store.mark_dispatch_started(expected_revision, claim_id, process_identity)`沿合同§6.3在contained+suspended创建后、resume前原子记录身份，将该预留转为used。并发revision冲突只对原挂起进程重核/CAS，不能再创建进程。身份记录失败须终止未恢复的树；记录成功而resume失败保留used及resume_failed，模型/provider是否实际活动另行举证，不把used当计费。
 
-初始化、批注册和bootstrap导入均沿合同§6.4：S提供同一Store的专属事务，D唯一装载批准配置并调用，禁止裸update绕过。Store初始化只接纳启用检查点已审核的剩余额度，authority_ref覆盖S0、失败、修复和在途占用，不将calls_used=0解释为此前未用。前批固定bootstrap原件通过D重算、S建立source→accepted事件映射；不回填旧依赖hash、不导入缺作者final的例外、不另建DB清空预算。
+初始化、批注册和bootstrap导入均沿合同§6.4：S提供同一Store的专属事务，D唯一装载批准配置并调用，禁止裸update绕过。Store初始化按合同支持model_call_limit显式null，当前全局/账户组/批次均不设次数上限；用户未来显式数值成本预算才在启用/注册检查点核剩余额度。authority_ref仍覆盖用户指令、S0/S1、失败、修复和在途占用，不将calls_used=0解释为此前未用。S/D/X必须测试越过旧轮次/旧总数仍合法推进、显式数值限额阻断、暂停和失败不清账，不能另加默认attempt次数限。前批固定bootstrap原件通过D重算、S建立source→accepted事件映射；不回填旧依赖hash、不导入缺作者final的例外、不另建DB清空预算。
 
 实际并发记录仍归当前请求同一个Store，正文/原始流保留外部不可覆盖证据引用。预留后未启动、启动后未终结、控制者崩溃均保留可对账状态；重启不能盲重派。终结只能匹配原claim，失败、unknown和成功分开。开发动作不滥用sample的current_step让第一个完成的包宣告全部完成。
 
@@ -98,16 +98,18 @@ Python公开Popen STARTUPINFO属性只明确支持handle_list，不承诺暴露�
 |---|---|---|---|
 | N1 原生序列内核 | 新`agent_coop/native_events.py`、新`tests/test_native_events.py` | 唯一NativeTrace、两种方言配对/终态负例；无治理角色语义 | 观察API冻结 |
 | N2 既有parser接入 | `agent_coop/adapters.py`、`tests/test_runtime.py` | observe_native公开入口、旧parse消费N1、迁移缺ID旧fixture；不复制N1 | N1 |
-| F 材料预检 | 新`agent_coop/development_preflight.py`、新`tests/test_development_preflight.py` | 每席必读能力/预算拒绝、准确估计与unknown、复用投影入口 | B投影接口及方言字段冻结；真实组合须B可用 |
+| F 材料预检 | 新`agent_coop/development_preflight.py`、新`tests/test_development_preflight.py` | 每席必读能力/单次预算拒绝、规范read_plan、准确估计与unknown、复用投影入口 | B投影接口及方言字段冻结；真实组合须B可用；C/F/D规范read_plan→prompt失配回归 |
 | W Windows进程容器 | 新`agent_coop/win_process.py`、新`tests/test_win_process.py` | 创建时Job关联、挂起/恢复、句柄生命周期、父退出/控制者退出子树清除 | Windows接口与测试边界冻结 |
 | R1 路径与原件预留 | `agent_coop/paths.py`、`tests/test_paths.py` | 在保留sample checked语义下支持显式开发证据根；拒重解析/越界，唯一目录预留 | 开发cwd/evidence_root合同冻结 |
 | R2 runtime接入 | `agent_coop/runtime.py`、新`tests/test_runtime_development.py` | 同收集算法消费ContainedProcess；方言implementation_file实测、on_created成功后resume；开发invoke与样例路径分开、失败留流与终态 | W、R1、N2；启动回调接口冻结 |
 | S 原子claim | `agent_coop/store.py`、新`agent_coop/dispatch_claims.py`、新`tests/test_dispatch_claims.py` | Store唯一写入；开发初始化/批注册/bootstrap映射、claim/mark_started/finish/accept；dispatch_claims为事务内纯校验/转换，不读写DB | 合同§6.3–6.4冻结 |
-| D 开发输入组合 | 新`agent_coop/development.py`、新`tests/test_development.py` | 消费C的真实A/B装载共享入口；唯一初始化/批注册/bootstrap导入装载及prompt渲染；preflight和启动输入复核，不接caller PASS | A、B、C、F及S冻结API；实组合须S可用 |
+| D 开发输入组合 | 新`agent_coop/development.py`、新`tests/test_development.py` | 消费C的真实A/B装载共享入口；唯一初始化/批注册/bootstrap导入装载及消费read_plan的prompt渲染；preflight和启动输入复核，不接caller PASS | A、B、C、F及S冻结API；实组合须S可用 |
 | X Runner动作 | `agent_coop/runner.py`、新`tests/test_development_actions.py` | claim后runtime、终结原claim，四独立调用并行，拒绝先spawn后核验；accept内部重算并条件提交 | D、S、R2 |
 | C2 动作CLI接线 | `agent_coop/cli.py`、`tests/test_cli.py` | 唯一CLI写入包；同一CLI动作调用X，失败非零/证据可定位，不能绕过门禁 | X；C仅维护development_audit装载/组合及专属测试 |
 
 N1/A/R1/W是首批可独立就绪的4路候选，A为既有纯政策判定包；F及S按发包计划的后续批准批次进入，不能仅因有空槽提前跨批启动，也不能用未验B的替身输出作集成成功。N2和R2是依赖小包，不让单作者在20 turn里同时完成新Win32、旧parser迁移和动作编排。S有三个文件是因为Store402行，事务纯规则需要明确承接模块；不能让该模块自行建连接或保存第二份状态。
+
+N2冻结tests/test_runtime.py已有409行，增量不得暗越500；W复杂度也须具名审300/500与40/80，不能凭计划估计自签例外。native agent_file继续复用原runtime._verify_hashes，缺失/换字节在启动前阻断，不增建校验器。
 
 N2拥有旧测试fixture迁移，其他包不得复制其测试类。新测试文件只覆盖新职责，复用现有fixture工厂时只导入工厂/常量，不能导入TestCase导致重复发现。新旧统一verify必须检查测试ID唯一，原201项的迁移/新增/替代逐项说明，不能以数量相等掩盖删测。
 
@@ -119,7 +121,7 @@ N2拥有旧测试fixture迁移，其他包不得复制其测试类。新测试�
 |---|---|---|
 | GOV07 | early final后悬挂工具、重复ID、未知result、冲突session/model、错误subtype、final后再次模型/工具输出 | 合法尾随Kimi resume_hint、配对的失败工具后正常final；产品parse与B对共同序列结果一致 |
 | GOV09 | 3559字符必读行、21526估算token单块、缺范围/旧SHA、未知CLI方言、零final预留、伪造成功估计 | 现真实S0材料按每席重算，不发模型探针；预检输出与事后raw覆盖分别存证 |
-| GOV06 | 已有日志目录、junction逃逸、Job创建/句柄设置/恢复失败、父退出子仍活、超时、总stdout+stderr超限、控制者崩溃、读取线程失败 | 真实临时Python父子进程，用句柄/等待和独立ready信号证明创建/终止；只看异常字符串不够 |
+| GOV06 | 已有日志目录、junction逃逸、Job创建/句柄设置/恢复失败、父退出子仍活、超时、总stdout+stderr超限、控制者崩溃、读取线程失败 | 真实临时Python父子进程，用句柄/等待和独立ready信号证明创建/终止；只看异常字符串不够；S1 GetProcess 100ns/CIM微秒显示差异回归不得漏管，原句柄身份与PID复用反例分别证明 |
 | GOV08 | stale revision、政策/输入改变、同attempt重放、伪造PASS/Observation、容量/账号预算满、同写树/session冲突、claim后崩溃 | 同一Store四独立资源claim可并存，第五个拒绝；四个真实受控测试进程可同时运行，预算不超发，终结只更新自己claim |
 | 失败恢复 | 崩溃后无terminal却自动重派、旧PID被复用后盲杀、失败日志被下次覆盖、错误receipt当成功 | 无自动重试；残留reserved/running明确待对账，原进程身份不可确认则unknown，旧证据不可覆盖 |
 
@@ -132,3 +134,5 @@ Job/句柄继承/父退出/控制者退出/timeout/输出上限/真实env及argv
 真实C2作者动作及有效交付证明入口被消费；四路并发能力另用四个真实受控Python进程证明，不为凑并发模型证据强开无任务调用。若验收策略要求真实四作者并行，应由根在实际四个独立就绪包和预算内安排，不能用测试进程替代该更强声明。
 
 本轮尚未发生的修复派发不能伪造发生，但GOV06–09的代码、反例及适用实际使用必须齐备后才可关闭。报告通过不自动赋予merge、push、live或生产任务权限；本批不实现生产OS任务、全局memory、账号代理、跨项目容量服务或完整Scheduler。
+
+S1四项缺陷沿合同第9节必修：F/C/D解决源与计划正确而prompt漏行，N1/B/A/C拒绝两份真实无效审核输出且不采尾部PASS，W/R2防原句柄生命周期漏管，A/C/F/D/B确保当前policy完整必读及无自引用摘要。恢复fixture与失败原件均留存；后继真实审核消费C/F/B产品入口，B4必要作者消费D/X/W/R2，再由独立双席/native核对后关闭。json-schema隐式续跑/不同structured_output字段不纳入本次能力，不作为无效输出的捷径。
