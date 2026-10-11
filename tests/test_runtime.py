@@ -24,17 +24,6 @@ def _sha256_text(text):
     return hashlib.sha256(text.encode('utf-8')).hexdigest()
 
 
-def remove_link(path):
-    """仅移除 junction/符号链接自身，不递归其目标。"""
-    path = Path(path)
-    for cleaner in (os.rmdir, os.unlink):
-        try:
-            cleaner(path)
-            return
-        except OSError:
-            continue
-
-
 def _parse(profile, stdout, session_id):
     from agent_coop import adapters
     return adapters.parse(profile, stdout, session_id)
@@ -346,12 +335,13 @@ class RunBoundedTests(SubprocessTests):
                 capture_output=True, text=True)
             if proc.returncode != 0:
                 self.skipTest(f'mklink /J 不可用: {proc.stderr.strip()}')
+            self.addCleanup(os.rmdir, junction)
         else:
             try:
                 junction.symlink_to(outside, target_is_directory=True)
             except OSError as exc:
                 self.skipTest(f'symlink 不可用: {exc}')
-        self.addCleanup(remove_link, junction)
+            self.addCleanup(os.unlink, junction)
         with self.assertRaisesRegex(ValueError, 'junction|symlink'):
             self._run_bounded([sys.executable, str(script), str(marker)],
                               log_dir=str(junction))
