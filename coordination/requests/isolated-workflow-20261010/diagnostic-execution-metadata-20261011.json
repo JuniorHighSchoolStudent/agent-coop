@@ -1,0 +1,19 @@
+{
+  "root": "D:\\project\\agent-coop-continuation-review-r2",
+  "events_sha256": "33b889444eeb86b5548b3b36254035c0b7d1db2594a2b0ba391931de90afa134",
+  "before_sha256": "62697fa6367ce3598ae7fbb98103915a879f67fdd541f7bf773f75ed7685980a",
+  "status": [],
+  "harness_after_sha256": "fd3fcf135f9ffac634b5610ce44d327ee256dcd79975d7305d16036c1c3d0438",
+  "stdout_sha256": "4a6602bcf9251bfa72dcbb138463bcca3e30ffb622f64e9dc214319e18bf0ae4",
+  "started_at": "2026-10-11T00:23:30.4642979+00:00",
+  "pid": 45456,
+  "wall_seconds": 7.2909479,
+  "exit_code": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "after_sha256": "62697fa6367ce3598ae7fbb98103915a879f67fdd541f7bf773f75ed7685980a",
+  "finished_at": "2026-10-11T00:23:37.7552458+00:00",
+  "created_utc": "2026-10-11T00:23:30.5798968Z",
+  "summary_sha256": "4a6602bcf9251bfa72dcbb138463bcca3e30ffb622f64e9dc214319e18bf0ae4",
+  "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+  "timed_out": false
+}

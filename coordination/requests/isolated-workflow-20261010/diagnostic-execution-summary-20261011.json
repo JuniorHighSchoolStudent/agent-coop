@@ -1,0 +1,22 @@
+{
+  "conclusion": "not_reproduced_root_cause_unknown",
+  "degraded_events": [],
+  "diagnostic_degraded": false,
+  "failures": [],
+  "inputs_sha256": {
+    "agent_coop/paths.py": "13050fbf2e5afdf843da1e7cb3c31c3ff50235bb1171f1454bd523781142ec67",
+    "agent_coop/runner.py": "4eb09191e37b88241c364b3e2ddbf7f0de94f003701a6722779f9817c5cb0ce6",
+    "agent_coop/store.py": "ed14743e5136c24b18b2e6bd10991e4aef642398f0fd18f6ca3fb8bf5f33fbd2",
+    "tests/test_runner.py": "5b41059cc665df3887eac682145ebf136884d9e79605fdf353bef5445e94020d"
+  },
+  "max_rounds": 30,
+  "output_log": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\publication-diagnostic-20261011\\diagnose_publication-output.jsonl",
+  "repo_root": "D:\\project\\agent-coop-continuation-review-r2",
+  "rounds_run": 30,
+  "scope": "R-publication bounded diagnostic",
+  "stop_reason": "round_limit",
+  "task_temp": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\publication-diagnostic-20261011\\task-temp",
+  "tests_run": 60,
+  "wall_limit_seconds": 120.0,
+  "wall_seconds": 7.046999999991385
+}

@@ -1,0 +1,18 @@
+{
+  "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+  "outputs_absent": true,
+  "harness_sha256": "fd3fcf135f9ffac634b5610ce44d327ee256dcd79975d7305d16036c1c3d0438",
+  "ancestors": [
+    {
+      "reparse": false,
+      "path": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\publication-diagnostic-20261011\\diagnose_publication.py"
+    },
+    {
+      "reparse": false,
+      "path": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\publication-diagnostic-20261011"
+    }
+  ],
+  "python_sha256": "31073dad142bc7f3374e3122aa668270052c9ad37d0aaab803ae73f184c3a43b",
+  "administrative_commit": "836f80a037fa3c441770a6caf54bd2240e749c3b",
+  "captured_utc": "2026-10-11T00:23:11.5294402+00:00"
+}

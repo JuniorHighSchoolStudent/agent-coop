@@ -1,0 +1,77 @@
+{
+  "remaining_fixture_entries": [],
+  "summary_inputs_match": [
+    {
+      "path": "agent_coop/paths.py",
+      "equal": true
+    },
+    {
+      "path": "agent_coop/runner.py",
+      "equal": true
+    },
+    {
+      "path": "agent_coop/store.py",
+      "equal": true
+    },
+    {
+      "path": "tests/test_runner.py",
+      "equal": true
+    }
+  ],
+  "out_of_scope_fixture_count": 0,
+  "round_events": 60,
+  "stages": [
+    {
+      "Name": "outbox/000000.json",
+      "Count": 60
+    },
+    {
+      "Name": "outbox/000001.json",
+      "Count": 60
+    },
+    {
+      "Name": "outbox/000002.json",
+      "Count": 60
+    },
+    {
+      "Name": "outbox/000003.json",
+      "Count": 60
+    },
+    {
+      "Name": "outbox/000004.json",
+      "Count": 60
+    },
+    {
+      "Name": "outbox/000005.json",
+      "Count": 30
+    },
+    {
+      "Name": "outbox/000006.json",
+      "Count": 30
+    },
+    {
+      "Name": "state.json",
+      "Count": 450
+    },
+    {
+      "Name": "STATUS",
+      "Count": 450
+    }
+  ],
+  "replace_outcomes": [
+    {
+      "Name": "ok",
+      "Count": 1260
+    }
+  ],
+  "round_outcomes": [
+    {
+      "Name": "ok",
+      "Count": 60
+    }
+  ],
+  "fixture_failure_preservation_exercised": false,
+  "replace_events": 1260,
+  "event_count": 1320,
+  "reason": "No test failure occurred; failure preservation branch not dynamically exercised"
+}

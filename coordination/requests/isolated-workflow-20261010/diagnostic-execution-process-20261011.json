@@ -1,0 +1,12 @@
+{
+  "pid": 45456,
+  "started_utc": "2026-10-11T00:23:30.4642979+00:00",
+  "created_utc": "2026-10-11T00:23:30.5798968Z",
+  "external_timeout_seconds": 120,
+  "command": [
+    "C:\\Users\\june\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-B",
+    "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\publication-diagnostic-20261011\\diagnose_publication.py",
+    "D:\\project\\agent-coop-continuation-review-r2"
+  ]
+}
