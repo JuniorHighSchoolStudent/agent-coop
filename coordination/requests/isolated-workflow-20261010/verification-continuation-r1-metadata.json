@@ -1,0 +1,13 @@
+{
+  "root": "D:/project/agent-coop-continuation-review-r1",
+  "candidate": "632345652dada9a642ad89a90a51a918797c8f4b",
+  "command": "python -m agent_coop verify",
+  "started_at": "2026-10-10T23:59:38.4895184+00:00",
+  "finished_at": "2026-10-11T00:00:11.9407662+00:00",
+  "wall_seconds": 33.4512478,
+  "exit_code": 0,
+  "before_sha256": "cfe7774e8453f065a23efe895b8127ffd18043f3704c709875358d7e7a22635e",
+  "after_sha256": "cfe7774e8453f065a23efe895b8127ffd18043f3704c709875358d7e7a22635e",
+  "output_sha256": "d8101405eefed253e0a596939100d62a4fbb7df13ff30c19d029a7b9fd33e1db",
+  "status": []
+}
