@@ -1,0 +1,32 @@
+{
+  "path": "C:\\Users\\june\\AppData\\Roaming\\npm\\node_modules\\@moonshot-ai\\kimi-code\\dist\\main.mjs",
+  "sha256": "5b300a573d306f879361eb7a2baec3a19448ea94eadca28001408b19c42eeb69",
+  "scope": "Installed static select_tools disclosure versus authorization; no invocation or private session inspection",
+  "sections": [
+    {
+      "end": 215601,
+      "excerpt": "215572: \tSelectToolsTool = class SelectToolsTool {\n215573: \t\ttoolSelect;\n215574: \t\tname = SELECT_TOOLS_TOOL_NAME;\n215575: \t\tdescription = DESCRIPTION;\n215576: \t\tparameters = toInputJsonSchema(SelectToolsInputSchema);\n215577: \t\tconstructor(toolSelect) {\n215578: \t\t\tthis.toolSelect = toolSelect;\n215579: \t\t}\n215580: \t\tresolveExecution(args) {\n215581: \t\t\treturn {\n215582: \t\t\t\tdescription: `Loading ${args.names.join(\", \")}`,\n215583: \t\t\t\tapprovalRule: this.name,\n215584: \t\t\t\texecute: async () => {\n215585: \t\t\t\t\tif (!this.toolSelect.enabled()) return {\n215586: \t\t\t\t\t\toutput: \"select_tools is not available for the current model.\",\n215587: \t\t\t\t\t\tisError: true\n215588: \t\t\t\t\t};\n215589: \t\t\t\t\tconst { toLoad, alreadyAvailable, unknown } = this.toolSelect.load(args.names);\n215590: \t\t\t\t\tconst lines = [];\n215591: \t\t\t\t\tif (toLoad.length > 0) lines.push(`Loaded: ${toLoad.join(\", \")}`);\n215592: \t\t\t\t\tif (alreadyAvailable.length > 0) lines.push(`Already available: ${alreadyAvailable.join(\", \")}`);\n215593: \t\t\t\t\tfor (const name of unknown) lines.push(`Unknown tool: ${name}. Pick from the latest announced tools list.`);\n215594: \t\t\t\t\tconst isError = toLoad.length === 0 && alreadyAvailable.length === 0;\n215595: \t\t\t\t\treturn isError ? {\n215596: \t\t\t\t\t\toutput: lines.join(\"\\n\"),\n215597: \t\t\t\t\t\tisError\n215598: \t\t\t\t\t} : { output: lines.join(\"\\n\") };\n215599: \t\t\t\t}\n215600: \t\t\t};\n215601: \t\t}",
+      "start": 215572
+    },
+    {
+      "end": 215736,
+      "excerpt": "215708: \ttoolSelectPendingLoadedKey = defineState(\"toolSelect.pendingLoaded\", () => /* @__PURE__ */ new Set());\n215709: \tAgentToolSelectService = class AgentToolSelectService extends Service {\n215710: \t\ttoolRegistry;\n215711: \t\tprofile;\n215712: \t\ttoolPolicy;\n215713: \t\tcontext;\n215714: \t\tflags;\n215715: \t\tstates;\n215716: \t\tconstructor(toolRegistry, profile, toolPolicy, context, toolExecutor, flags, eventBus, states) {\n215717: \t\t\tsuper();\n215718: \t\t\tthis.toolRegistry = toolRegistry;\n215719: \t\t\tthis.profile = profile;\n215720: \t\t\tthis.toolPolicy = toolPolicy;\n215721: \t\t\tthis.context = context;\n215722: \t\t\tthis.flags = flags;\n215723: \t\t\tthis.states = states;\n215724: \t\t\tthis.states.contributeState(toolSelectPendingLoadedKey);\n215725: \t\t\tthis._register(toolExecutor.registerUnavailableToolDescriber((name) => this.describeUnavailableTool(name)));\n215726: \t\t\tthis._register(toolExecutor.registerMissingToolDescriber((name) => this.describeMissingTool(name)));\n215727: \t\t\tthis._register(eventBus.subscribe(CompactionCompleted, () => {\n215728: \t\t\t\tthis.pendingLoaded.clear();\n215729: \t\t\t}));\n215730: \t\t\tthis._register(eventBus.subscribe(ContextSpliced, (splice) => {\n215731: \t\t\t\tif (splice.deleteCount === 0 || splice.messages.length > 0) return;\n215732: \t\t\t\tthis.dropPendingLoadedNotLanded();\n215733: \t\t\t}));\n215734: \t\t}\n215735: \t\tget pendingLoaded() {\n215736: \t\t\treturn this.states.get(toolSelectPendingLoadedKey);",
+      "start": 215708
+    },
+    {
+      "end": 215800,
+      "excerpt": "215774: \t\tload(names) {\n215775: \t\t\tconst loadable = new Set(this.loadableToolNames());\n215776: \t\t\tconst loaded = this.activeLoadedToolNames();\n215777: \t\t\tconst toLoad = [];\n215778: \t\t\tconst alreadyAvailable = [];\n215779: \t\t\tconst unknown = [];\n215780: \t\t\tfor (const name of new Set(names)) if (loaded.has(name)) alreadyAvailable.push(name);\n215781: \t\t\telse if (loadable.has(name)) toLoad.push(name);\n215782: \t\t\telse unknown.push(name);\n215783: \t\t\tif (toLoad.length > 0) for (const name of toLoad) this.pendingLoaded.add(name);\n215784: \t\t\treturn {\n215785: \t\t\t\ttoLoad,\n215786: \t\t\t\talreadyAvailable,\n215787: \t\t\t\tunknown\n215788: \t\t\t};\n215789: \t\t}\n215790: \t\tdrainPendingToolSchemas() {\n215791: \t\t\tif (!this.enabled() || this.pendingLoaded.size === 0) return void 0;\n215792: \t\t\tconst names = [...this.pendingLoaded].toSorted((a, b) => a.localeCompare(b));\n215793: \t\t\tconst tools = [];\n215794: \t\t\tfor (const name of names) {\n215795: \t\t\t\tconst tool = this.schemaOf(name);\n215796: \t\t\t\tif (tool === void 0) continue;\n215797: \t\t\t\tthis.pendingLoaded.delete(name);\n215798: \t\t\t\ttools.push(tool);\n215799: \t\t\t}\n215800: \t\t\treturn tools.length === 0 ? void 0 : tools;",
+      "start": 215774
+    },
+    {
+      "end": 215835,
+      "excerpt": "215826: \t\t\tif (this.toolRegistry.resolve(name) !== void 0) return void 0;\n215827: \t\t\tif (!this.loadedToolNames().has(name)) return void 0;\n215828: \t\t\tif (isMcpToolName(name)) return `Tool \"${name}\" was loaded but its MCP server is currently disconnected. It may become available again when the server reconnects; do not retry immediately.`;\n215829: \t\t\treturn `Tool \"${name}\" was loaded but is no longer registered. Do not retry it unless it becomes available again.`;\n215830: \t\t}\n215831: \t\tloadableToolNames() {\n215832: \t\t\treturn this.toolRegistry.list().filter((info) => this.isDynamicallyLoadable(info) && this.toolPolicy.isToolActive(info.name, info.source)).map((info) => info.name).toSorted((a, b) => a.localeCompare(b));\n215833: \t\t}\n215834: \t\tloadedToolNames() {\n215835: \t\t\tconst names = collectLoadedDynamicToolNames(this.context.get());",
+      "start": 215826
+    },
+    {
+      "end": 271655,
+      "excerpt": "271647: \t\tsetActiveTools(names) {\n271648: \t\t\tthis.activeToolNamesOverlay = void 0;\n271649: \t\t\tif (names === void 0) {\n271650: \t\t\t\tthis.dispatcher.dispatch(new ToolsResetActiveTools({ agentId: this.scopeContext.agentId }));\n271651: \t\t\t\treturn;\n271652: \t\t\t}\n271653: \t\t\tthis.dispatcher.dispatch(new ToolsSetActiveTools({\n271654: \t\t\t\tagentId: this.scopeContext.agentId,\n271655: \t\t\t\tnames: [...names]",
+      "start": 271647
+    }
+  ]
+}

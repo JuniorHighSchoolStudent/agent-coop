@@ -1,0 +1,25 @@
+# 后继内容R1复审 · 席B（原kimi-k3-2 session，非作者）
+
+**实读**：input-index、read-first、product-delta.patch（三文件全量diff）、integration-observations、diagnostic-publication-candidate-r1.txt全文、product-permission-scope-proposal、verification-continuation-r1-output（Grep核Fail/ERROR/汇总/关键用例）。行政导航文件写的f16d00f1与索引33527047不一致，以索引blob/hash为准（不影响内容）。作者身份/写集：product-delta.patch（本人自核：仅checks.py/test_gates.py/test_runtime.py变更）+协调者事后写集审计（其证据，口径声明）。统一验证：144项OK(skip2=symlink WinError1314)、exit0、manifest前后cfe7774e一致——与我Grep结果一致。
+
+## R-log → **g1-kimi-B06 closed**
+
+checks.py新行（候选37-44）：`checked(root,'.runtime/verification')`+`tempfile.mkdtemp`原子独占分配，/2合同逐条满足：调用owner=checks✓、标准库原子分配无第二allocator✓、runtime拒覆写不动✓、不动runtime/sample/gates/Store✓、签名/report字段不变✓。六类验收有真实测试：失败→成功（旧字节+失败stderr保留）、成功→成功（字节不变）、失败→失败（各自stderr）、同源×3独立目录、并发×4独立目录；组合验证中test_verifier_checks_boundary与junction用例均ok。advisory：`assertRaises(Exception)`偏宽（可后续收紧，不阻断）。
+
+## R-junction → 新增 **g1-kimi-B12（open，scope_supported）**
+
+逃逸拒绝/哨兵/child marker/外侧列举断言补强✓、LIFO转换✓、Windows不再WinError3✓。但候选tests/test_runtime.py:27-36新增`remove_link`为test_paths.py既有helper的逐字复制，且`except OSError: continue`吞全部异常——违反已审"不复制helper/仅容忍已消失"：权限或非空等真实清理失败会静默通过，可能掩盖残留junction。**最小修复准入**（唯一写集tests/test_runtime.py、消耗剩余finding-bound调用之一、须先于B11相关adapter测试串行）：优先`from tests.test_paths import remove_link`（单一owner）；或收窄为仅`except FileNotFoundError`。保留LIFO/哨兵/child证据/失败路径收链接；禁skip/削弱断言/无关重构；行数不得明显增长（当前474，硬限500）。验收：junction用例Windows无skip转绿+28项runtime回归不退化。
+
+## R-publication → 新增 **g1-kimi-B13（open，scope_supported）**
+
+亲核诊断脚本确认三项阻断：①`_run_one`直调`case.setUp()`（脚本236行），RunnerTests用无dir参数TemporaryDirectory——fixture落在系统默认TEMP而非任务目录，违反唯一TEMP写入合同（不执行是对的）；②`_preserve_fixture`仅copy（201-217）而`finally: case.tearDown()`（264）无条件删原fixture，copy失败仅留字符串、setUp失败无保留——"失败fixture保留"不成立；③`_emit`(144-145)/summary写（368-369)/tearDown(264-266）三处吞错可产出证据缺失的exit0伪ok。**准入一次finding-bound修复**（唯一写集=TEMP diagnose_publication.py）：fixture锚定DIAG_DIR（如设tempfile.tempdir指向其下并还原）；先保留后清理、preserve-failed则不删原现场并记degraded；观测/证据写失败汇总为`diagnostic_degraded`并以独立退出码（如3）fail-closed，同时保持被测行为/异常透传、不加retry；注明120秒为内部循环截止、须外部有界看护。规模：380行/_run_one53/_observed_replace43/main42为软超限，自含TEMP诊断内聚说明可接受、无硬超限。B09保持open：未复现即历史根因unknown，诊断修复后仍须执行+双席看结果。
+
+## 产品权限scope裁定（B11/B18）
+
+方向**scope_supported**：P6 sample=固定样例权限派生唯一owner（隔离根+固定写集→冻结config，config_digest/implementation_digest绑定，缺字段/歧义/越写集启动前拒绝，旧配置不静默补宽）；P2 adapters=序列化唯一owner（探针验证过的独立token、dontAsk/none/空MCP/显式shell deny，拒绝acceptEdits/泛化/bypass）；env四memory开关纳入同一版本化profile+runtime最小allowlist透传，hook先行allow残留如实声明。批准拆两个串行包（A=P6 sample+test_sample/test_flow；B=P2 adapters+runtime env+AdapterCommandTests），B须在A及B12之后（test_runtime.py串行）。**预算裁定：不得占用本批剩余3个finding-bound调用**（已指定B12/B13）；权限实施属新合同+两包，须后继批次经计划修订+native监督后具名派发。B11由needs_alignment转为scope_supported但仍**open**（未实施；bootstrap成功不代关；live持续禁止；产品CLI权限须独立有界验证，不挪用TEMP探针）。
+
+## 结论
+
+- finding：B01–B08、B10 closed；**B09/B11/B12/B13 open**。
+- 候选6323456组合验证首次全绿（exit0），但**G1维持CHANGES_REQUESTED**：B12/B13待修、B09根因unknown、B11未实施、本批native监督未做；browser JS/云CI/live四角色UNKNOWN。
+- B11属live准入阻断；静态G1后续可在B09如实携带unknown、B11明示阻断live的前提下继续推进——由监督与双席下轮裁定，本轮不预支接收/合入/live。

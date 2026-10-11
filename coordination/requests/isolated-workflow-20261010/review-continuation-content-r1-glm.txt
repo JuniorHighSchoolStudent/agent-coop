@@ -1,0 +1,29 @@
+# 后继内容R1审核（GLM原席 · glm-5.3 · 只读）
+
+## 0. 实读范围
+input-index.json、read-first.txt、product-delta.patch（全）、diagnostic-publication-candidate-r1.txt（全381行）、author-facts.json（三包作者调用投影）、verification-continuation-r1-metadata/output（158行全）、product-permission-scope-proposal、test_runner.py setUp/tearDown结构（grep核验）。checks/test_gates/test_runtime以delta+本席R2全量实读为基础比对；未读另一席本轮意见。统一verify=独立clean detached树6323456：144 tests/142 pass/2 skip（两处symlink WinError1314环境性，与既往相同）、exit0/33.451s、manifest前后cfe7774e一致、无硬限FAIL。
+
+## 1. 作者治理核验
+三包=三独立worktree三独立deepseek-v4-pro session；实际写集与批准逐文件一致：r-log仅Edit checks.py/test_gates.py、r-junction仅Edit test_runtime.py（与R-log无共享文件，串行约束满足）、r-publication仅Write/Edit TEMP diagnose_publication.py（final_status干净）。r-publication两次Read报File-does-not-exist已如实记录，良性。
+
+## 2. R-log实审与finding关闭
+- checks.py:40-43：`checked(root,'.runtime/verification')`→`mkdir(exist_ok)`→`tempfile.mkdtemp(prefix='verification-',dir=…)`——调用owner checks、每调用原子唯一目录、无第二allocator、无自动删除、公开签名/report字段不变、runtime拒覆写未动。junction防线：checked+runtime `_resolve_log_dir`双层。
+- test_gates六类验收全部真实有意义（真子进程、真失败stderr断言、并发4线程、同输入×3、新旧字节保持），统一verify全绿。
+- **g1-glm-B02：CLOSED**（三跨包测试line38/39/44绿+junction逃逸line96绿+边界/1验证）；**g1-glm-B13：CLOSED**（六类+test_verifier绿+runtime 28回归无退化）。
+
+## 3. R-junction实审
+- 生命周期缺陷已修：setUp注册`addCleanup(self._tmp.cleanup)`（LIFO末位），测试体内注册`remove_link`（先执行）——R2的WinError3机制消除；断言未削弱、skip仅mklink不可用、新增哨兵/marker（child未运行）/outside内容核验。**g1-glm-B14：CLOSED**。
+- **新增 g1-glm-B19｜tests/test_runtime.py:175-183**：①本地`remove_link`复制tests/test_paths.py既有helper，违反AGENTS“一个维护入口”与本人confirm“复用既有模式”条件；②`for cleaner…except OSError: continue`双失败静默返回，吞清理异常。**最小修复（唯一写集tests/test_runtime.py，串行writer）**：删除本地副本改`from tests.test_paths import remove_link`（或等价单处引用），并把双失败改为末次异常上抛。验收：统一verify复绿、无新增skip、断言强度不变、无第二helper副本。准许使用剩余finding-bound调用之一。test_runtime.py 474行软目标随B19一并刷新内聚说明。
+
+## 4. R-publication harness实审（未执行）
+- 合规项：TEMP锚定（DIAG_DIR=文件所在TEMP目录，产品零改动）；30轮×2/120秒、首失败停、逐轮墙钟检查；复用两个B11历史用例且inputs_sha256绑定store/runner/paths/test_runner；包装透明透传异常、finally恢复；仅本进程句柄计数，不枚举他进程；RunnerTests为tearDown方法式，`_run_one`手工调用无addCleanup泄漏。
+- **新增 g1-glm-B20｜diagnose_publication.py**：①`_preserve_fixture`(:201-216)复制失败仅返回字符串，随后finally的`tearDown→_tmp.cleanup()`**删除原始fixture**——首失败现场丢失，与诊断目的相悖；②:262-266 tearDown异常`except Exception: pass`无记录；③`_emit`(:144-145)/summary写入(:364-369)失败静默——verdict本身安全（内存failures+exit code+stdout），但证据丢失不可见。**最小修复（仅同一TEMP文件一次）**：preserve失败时保留原fixture目录（跳过cleanup或tearDown后重试复制一次）并记录决策；tearDown异常_emit记录；summary增加emit/summary写失败标志。修复后重冻hash再审，方可执行一次诊断；**未复现则B11保持unknown**（B11现维持open/unknown）。advisory：无单用例超时（两用例历史毫秒级，可接受）；OUTPUT_LOG追加模式跨次混写，建议记录run标识。
+
+## 5. 产品权限scope裁定（B18/Kimi B11，另一席不代关）
+- **方案1获本人支持**：固定样例权限唯一owner=P6 sample（从隔离根及固定产物派生，入固化config、经config_digest/implementation_digest绑定），CLI序列化唯一owner=P2 adapters（角色无关、启动前拒绝缺失/歧义/超集/不可精确表达）；拒绝acceptEdits/硬编码/用户任意profile方案正确；paths.checked复用+硬链接数核验；非OS沙箱声明正确。
+- 对四个待明确问题的裁定：①schema入固化config，旧配置（无权限字段/版本不符）必须失效拒绝，运行中不得读latest或补宽；②子进程环境**应纳入**同一版本化profile（runtime最小透传），并如实声明memory开关≠hook先行allow阻断，若不纳入则live环境弱于已测开发profile的差异必须显式；③同意拆“sample权限派生”/“adapters序列化+runtime环境”两独立包，共享test_runtime.py须待B19后串行；④验收按提案所列+产品实际CLI权限独立受审有界验证，不得挪用bootstrap探针。
+- **不得占用finding-bound修复调用**：这是新功能包非最小修复；须先出接口合同经两席审核，再由发包人显式预算派发（根决定）。B18维持open，live持续blocked；bootstrap通过不代关。
+
+## 6. 总体结论
+- **许可scope结论**：R-log、R-junction按批准范围执行且治理合规；B19（test_runtime.py单包）与B20（TEMP单文件一次）准予finding-bound修复；R-publication诊断在B20修复重冻前**不得执行**；产品权限合同可起草，不预支派发。
+- **产品验收结论（候选6323456）**：**CHANGES_REQUESTED**——唯一产品代码阻断为B19；B02/B13/B14经实审关闭，B11 unknown（不阻断静态）、B18 open（阻断live）。B19修复+统一verify复绿后，本席产品静态finding无进一步阻断，但产品G1最终接收、native监督、合入、main、live四角色实跑均不因本票预支；预算13/18已用，剩余按上述裁定使用，不追加探针。

@@ -1,6 +1,6 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：双原席及原生Kimi计划监督已通过，三个实际CodeBuddy作者已交付退出，准确组合验证已过、待原席首轮内容审核；产品G1/live/合入仍阻断。本文件是唯一当前结果入口，旧过程保留为历史，不能从原件中的旧待办推断当前状态。
+范围：本请求整体交付；维护者：Codex集成者；状态：双原席及原生Kimi计划监督已通过，三个实际CodeBuddy作者已交付退出，准确组合验证已过、原席首轮内容审核要求两具名修复；产品G1/live/合入仍阻断。本文件是唯一当前结果入口，旧过程保留为历史，不能从原件中的旧待办推断当前状态。
 
 ## 当前派发控制（2026-10-11）
 
@@ -10,11 +10,11 @@
 
 | 当前工作 | 准确状态与责任 |
 |---|---|
-| 内容R1审核 | 两原席将审核准确6323456组合候选；统一verify已完成，不再显示为待冻结 |
-| R-log | 实际作者交付与25项局部验证完成，等待原席按/2合同关闭对应finding |
-| R-junction | 28项局部验证通过，但重复helper及吞全部OSError偏离仍开放；由原席给最小复修意见 |
-| R-publication | 脚本已真实写入指定TEMP并核nlink1，运行边界存在缺陷，因此未执行；由原席裁定复修，历史根因仍unknown |
-| 接收与live | 产品权限B18/B11仍待范围对齐；原席复审、最终native监督与接收均未完成，不预支G1/main/live |
+| 内容R1审核 | 两原席已审核准确6323456，均CHANGES_REQUESTED；日志及旧生命周期finding已由原席关闭 |
+| R-log | 实际交付与验证完成，GLM B02/B13及Kimi B06已由原席关闭 |
+| R-junction | 原生命周期B14关闭；新GLM B19/Kimi B12要求唯一test_runtime.py写集复修，不复制helper、不吞真实清理错误 |
+| R-publication | 新GLM B20/Kimi B13准入同一TEMP脚本复修；仍未执行，需重冻后审核放行，历史根因unknown |
+| 接收与live | 产品权限B18/B11方案方向已对齐、合同和实施未准入；原席复审、最终native监督与接收均未完成，不预支G1/main/live |
 
 分包与唯一写集：R-log仅checks.py/test_gates.py，执行[验证日志集合/2合同](interface-log-invocations-20261011.md)；R-junction仅test_runtime.py，修生命周期并保留逃逸/哨兵/未执行证据；R-publication仅TEMP具名harness，最多30轮×2项或120秒，首失败停止，不改Store/Runner、不加重试，未复现保持unknown。实际作者均由专门发包人正式派出，不由集成者补写。
 
@@ -28,16 +28,22 @@
 
 常备限制：每包逐文件绝对allow=批准写集、全祖先非reparse、已有目标link_count1，准确CLI版本/身份绑定，事后核对写集，越界即收回。T1执行能力、hook先行allow、CLI/session/scoped-hook、真实宿主memory全域隔离、未测路径别名仍unknown；宿主无hook配置不是已证前提。CLI报告num_turns（probe-01为13、probe-02为31）与请求12分别保留，不声称硬轮数保证；N7拒绝的内部decisionReason未动态观测。静态[hook证据](permission-hook-static-evidence-20261011.json)不扩大实测结论。
 
-产品未决项：GLM B13/B02及Kimi B06的日志子项已有候选修复和验证，待原席关闭；GLM B14及Kimi B06的junction子项因新交付偏离仍待审核；GLM B11/Kimi B09根因unknown；GLM B18/Kimi B11是产品adapters+sample权限及写集来源缺陷，须后继跨包对齐，不混入本批已审三包。bootstrap探针不代关产品finding。后继只读[写集权威调查](product-permission-scope-investigation-20261011.json)与[范围方案提案](product-permission-scope-proposal-20261011.md)已准备，尚未审核、不是派发许可；它们不扩大当前三个包。浏览器JS、云CI、live四角色均未验证。
+产品未决项：GLM B13/B02/B14及Kimi B06已由原席关闭；新GLM B19/B20及Kimi B12/B13待本轮具名复修；GLM B11/Kimi B09根因unknown；GLM B18/Kimi B11是产品adapters+sample权限及写集来源缺陷，须后继跨包对齐，不混入本批已审三包。bootstrap探针不代关产品finding。后继只读[写集权威调查](product-permission-scope-investigation-20261011.json)与[范围方案提案](product-permission-scope-proposal-20261011.md)已获两席方向支持，尚缺新接口合同/后继批次审核与预算，不是派发许可；它们不扩大当前三个包。浏览器JS、云CI、live四角色均未验证。
 
-预算：经S1两席明确批准，本后继批次最多18次CodeBuddy/2次native；当前已发11次CodeBuddy、native1次。新增的3次仅用于修正探针及两席确认，现已使用；不转换未用额度，不追加第三探针。原失败和全部审核计成本。三个作者已全部正常退出；R-log25项/R-junction28项局部验证通过，诊断脚本因执行边界问题未运行。准确组合候选与统一verify已冻结，下一步仅准入两原席各一次首轮内容审核，不自动派修。
+预算：经S1两席明确批准，本后继批次最多18次CodeBuddy/2次native；当前已发13次CodeBuddy、native1次。新增的3次仅用于修正探针及两席确认，现已使用；不转换未用额度，不追加第三探针。原失败和全部审核计成本。三个作者已全部正常退出；R-log25项/R-junction28项局部验证通过，诊断脚本因执行边界问题未运行。准确组合候选与统一verify已冻结，首轮内容审核已完成；只准入两票交集的两个finding-bound修复，由dispatcher_next发布，不扩大至权限新功能。
 
 [原生Kimi计划监督原票](supervision-continuation-plan.txt)、[调用](supervision-continuation-plan-calls.json)及[准确输入索引](supervision-continuation-plan-input-index.json)已归档。422.360秒、35次tool与35次result、exit0，实际session_a75b547a-13c5-4740-b07f-f3d4ccc93704，runtime0.43.0、模型unknown；PASS仅表示准备充分，不是产品接收。启动条件：逐包独立admission（不改prepared历史），四个memory子进程环境值、node/bin/dist/wrapper四摘要人工复核；显式Gate=continuation-author/Round=1避免历史回执前缀冲突；每包启动前重新核路径与已有文件摘要。人工版本核查和600秒看护不冒充wrapper自动门禁。
 
-计划监督时，R-publication跨盘且cwd外的正向Write尚未实证；后续本次作者已真实成功写入指定harness，并核nlink1及精确写集。该次成功不扩成所有cwd外路径能力，也不证明harness执行边界正确；没有加add-dir或扩大allow。R-log/R-junction均为cwd内目标，沿已测规则；p7/p3只是旧wrapper传输seat别名，真实owner仍P6 checks/P2 test_runtime。三个作者交付与局部实测已完成，详见[集成检查线索](integration-observations-continuation-r1.md)及其原件链接。junction helper复制/吞异常与诊断TEMP/失败现场/证据失效问题仍待原席裁定；没有原席finding前不派修，根不补写。
+计划监督时，R-publication跨盘且cwd外的正向Write尚未实证；后续本次作者已真实成功写入指定harness，并核nlink1及精确写集。该次成功不扩成所有cwd外路径能力，也不证明harness执行边界正确；没有加add-dir或扩大allow。R-log/R-junction均为cwd内目标，沿已测规则；p7/p3只是旧wrapper传输seat别名，真实owner仍P6 checks/P2 test_runtime。三个作者交付与局部实测已完成，详见[集成检查线索](integration-observations-continuation-r1.md)及其原件链接。junction与诊断边界已有两原席具名finding及一次最小修复许可，根不补写。
 准确组合候选632345652dada9a642ad89a90a51a918797c8f4b已在独立clean detached树完成唯一验证：[输出](verification-continuation-r1-output.txt)、[元数据](verification-continuation-r1-metadata.json)、[前清单](verification-continuation-r1-before.json)/[后清单](verification-continuation-r1-after.json)。144项、142通过/2跳过、exit0，33.451秒；43文件清单前后同SHA cfe7774e8453f065a23efe895b8127ffd18043f3704c709875358d7e7a22635e，无硬规模失败，8个软目标。两skip仍为Windows创建文件symlink权限不足（WinError1314），junction回归真实通过；302本地链接机械有效，不代表浏览器JS、远端、锚点或云CI。test_runtime已变为474行，不能把旧未变符号豁免自动延伸；helper复制与吞异常继续交原席。
 
-本检查点只准入原GLM/Kimi各一次内容R1，原session、原cwd切到上述准确候选，最新行政状态按本入口冻结送审。审核须逐项处理两个未决交付偏离及既有产品finding，测试通过不代替scope审核。诊断脚本没有执行，历史P1根因未被新结果关闭。
+[内容R1 GLM原票](review-continuation-content-r1-glm.txt)/[调用](review-continuation-content-r1-glm-calls.json)与[Kimi原票](review-continuation-content-r1-kimi.txt)/[调用](review-continuation-content-r1-kimi-calls.json)已归档。原模型/session/cwd，232.728秒及251.268秒；GLM 11工具/1次Read偏移超界后正确读取，Kimi 7工具/0错误；均CHANGES_REQUESTED。当前产品6323456未接收。
+
+本检查点仅准入dispatcher_next发布两个finding-bound修复：B19/B12唯一tests/test_runtime.py，B20/B13唯一原TEMP diagnose_publication.py。两包写集独立可并行，CodeBuddy共享容量默认4，分别一次20turn/600秒；保持既定精确权限、四环境开关及身份绑定。junction须消除重复helper且真实清理错误显现；原票import示例不授权修改test_paths.py，也不允许借既有广捕获helper继续吞错。诊断以两票更严格条件为准：所有fixture锚定任务TEMP、保留失败原现场、证据错误以diagnostic_degraded失败退出、无重试、明确内外截止。作者完成后重冻hash送原席末轮审核，执行顺序尊重GLM“再审方可执行”，不以Kimi要求执行证据越过前置审核。
+
+两修复后最多一次原席双审与一次原生监督，预计17/18 CodeBuddy、2/2 native；余量不自动转作新功能。产品权限方向已获支持，仍须独立版本化合同、后继计划和监督，不占本批修复额度。原生最终监督的[恢复调查](native-kimi-resume-investigation-20261011.md)仅静态证据，实际resume待执行；print内部forceAuto限制已明确，不以无bypass参数冒称审批隔离。
+
+制包偏差保留：本次内容R1 read-first首句行政SHA残留f16d00f1；实际调用prompt/admission/input-index及Git原件均准确33527047，Kimi明确按索引判读。未在读取中改输入，未追加调用。诊断仍未执行，历史根因未关闭。
 以下为2026-10-10冻结历史，包含当时的状态和停止决定；有效待办以本页当前段为准。
 ## 2026-10-10已冻结过程与结论
 
