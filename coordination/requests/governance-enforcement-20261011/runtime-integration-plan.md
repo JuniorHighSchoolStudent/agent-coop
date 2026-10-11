@@ -90,7 +90,11 @@ S3新增GOV06/W/R2诊断验收：目标node已创建与后续辅助进程发现/
 
 追加S3真实getter反例：PowerShell属性访问静默null仍可使`-not handle.IsClosed`为true；旧retained字段不能单独证明原句柄有效。W/R2须覆盖null、invalid、closed与类型错误，保留实际句柄获取API/异常和创建身份，不能凭缓存StartTime或Process对象通过。GetProcessById not-found、显式get_SafeHandle失败及其他ArgumentException分别诊断，不将后续复现冒认S3唯一根因。另覆盖过期CIM快照、同源身份冲突及创建时间显示精度差异，禁止以任意时间容差接受旧身份。准确原件及历史限制由[result](result.md)链接，产品继续stdlib/ctypes原子Job方案，宿主私有组件不成为隐式依赖。
 
-产品形成前的同强度行政恢复严格沿[实施合同§6.2](implementation-contract.md#62-执行看护与状态)：只修既有临时watcher取值/诊断和已绑定目标之外的未绑定候选分类，独立核最小差异及正负例后重新冻结只读准入。无模型测试至少区分已绑定目标有效时的辅助not-found、目标未绑定、原句柄无效、权限/未知异常、过期快照与身份冲突；仅首类在准确复查后记unknown并继续持柄看护。该路径不实现或验收W/R2，不复活S3原票，不豁免双席/native，也不把未知后代清空记为成功。
+产品形成前的既有轮询式行政恢复严格沿[实施合同§6.2](implementation-contract.md#62-执行看护与状态)：只修既有临时watcher取值/诊断和已绑定目标之外的未绑定候选分类，独立核最小差异及正负例后重新冻结只读准入。无模型测试至少区分已绑定目标有效时的辅助not-found、目标未绑定、原句柄无效、权限/未知异常、过期快照与身份冲突；仅首类在准确复查后记unknown并继续持柄看护。该路径不实现或验收W/R2，不复活S3原票，不豁免双席/native，也不把未知后代清空记为成功。
+
+S4后的具名Job行政候选另沿实施合同§6.2：每席独立owner/watcher及日志复用同一参数化行政脚本，复用已安装且准确pin的binding/addon，owner直接ensure严格true、self具体Job成员严格true后才spawn固定PS watcher；确认watcher属于同一Job再一次GO，GO前零wrapper。PS仅以原对象绑定wrapper和实际CLI目标，辅助CIM作为诊断而非持续包含权威；不再迭代放宽短寿辅助进程catch。候选须独立核现成测试及本机适用边界，再由根新准确准入；不在此复制行政controller或新增产品runner。
+
+行政验收分别核ready/GO顺序、Job初始化失败不spawn watcher，watcher成员查询失败不放行wrapper、真实目标身份、每席owner起算总600秒/8MiB且GO不重置、owner退出/强杀和nested/PTY/Git Bash后代实证。10项供应商测试的实际结果及适用范围只由当前result引用；没有原生源码和tree_empty接口，不能声称完成源码属性核验或实际整树清空。已知终态与终止unknown分别保留，异常停止不得因更换组件消失。产品W继续前述stdlib/ctypes原子Job方案，行政借用CodeBuddy宿主组件不成为产品依赖，也不替代W/R2真实回归、独立接收及dogfood。
 
 日志目录和stdout/stderr以独占方式在创建目标进程前打开，收集过程中按总字节上限增量保留已接收流；正常失败保留原始片段和分类。控制者骤停可能留下不完整流，必须标明partial/unknown并结合Store未终结claim对账，不能把部分日志称为完整模型终态，也不能用新调用覆盖它。
 

@@ -21,6 +21,8 @@ watcher于2026-10-11T06:40:49.6859408Z ready，PID40980；两wrapper随后启动
 
 准确本机原件位于`C:/Users/june/AppData/Local/Temp/agent-coop-governance-s4-run-20261011/`：GLM/Kimi watch-completion SHA-256分别`9f37cf4cf8298906ec23ca9b3118ef9cd1f90ca84f432c0bf6241f5d69fa1d61`、`5de35ae2a759bce92c0cdcc4dd31c175082243844bbbddebf1d0ff4ad158d51b`；cleanup为`e209ff14a26cb73ae9f00c95f9e8ce2d7c040b7ca03714afc3cff8c26c19d3b4`。保留冻结输入、失败准备和实际运行原件；本机TEMP不是长期备份。后继调用须有针对本次失败的恢复证据与新准入，不能沿S4原许可续跑。
 
+后续成熟组件调查：现成`windows-job.native-test.cjs`在本机实际10/10通过、exit0，覆盖正常/强制退出、父先退、嵌套Job、Worker、IPC、PTY及Git Bash前后台子孙；没有模型调用或包/产品改动。原件目录`C:/Users/june/AppData/Local/Temp/agent-coop-governance-native-job-20261011/`，测试stdout SHA-256 `ceb88836fa10bed1cf92bfc3175bc10fbab108e6312da527846ff5e0a510c5d9`。直接binding建立Job返回true且self membership为true；独立兄弟Job的动态查询返回false，支持该固定组件的限定成员语义，但native源码未随包提供，不能宣称源码级验证。`no-orphans.install()`会降级warn/false，不作为严格准入入口。候选行政恢复采用每席独立owner直接严格核binding后承载watcher，具体方案与新准入仍待完成；产品W不依赖宿主私有组件，不把这些测试当GOV-06产品关闭。
+
 ## 宿主自动继续入口
 
 2026-10-11用户要求建立自动化任务派发修复。已通过Codex宿主工具创建并回读自动化`agent-coop`（名称“Agent Coop 派包与修复闭环”），创建时状态ACTIVE、每15分钟唤醒同一任务。准确配置及暂停状态以宿主自动化为权威，本处仅保留建立事实，不复制维护另一份prompt或调度状态。
