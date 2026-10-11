@@ -161,6 +161,10 @@ W的`spawn_contained(argv,cwd,env,*,expected_command_line_sha256)`复用同一wi
 
 看护/进程包含边界必须在子进程可运行前建立并持续至整个受管树确认结束；控制者退出、父进程提前退出或PID复用不能失去子孙身份。超时、输出越界、看护失败须终止受管树并确认，不得仅杀父进程后回成功。S1运维watcher将GetProcess的100ns创建时间与CIM微秒字符串全等比较，造成first_child=null；W必须用原句柄/准确创建身份维护包含边界，R2消费同一进程对象，不靠格式字符串/PID单值或宽松时间容差判断所有权。真实无模型回归须覆盖显示精度差异、PID复用、父早退、控制者故障及无法确认树清空；运维修补不冒充产品修复。不支持的宿主能力fail closed，不能以“最佳努力taskkill”声称无看护空档。实际平台API、资源释放与崩溃窗口须有官方依据和真实无模型子进程反例，不在本合同凭散文判定Windows实现已成立。
 
+S3诊断回归沿GOV-06/W/R2承接，准确原件、撤回准入及当前状态只由[result](result.md)链接维护：目标node实际已创建，但bootstrap watcher捕获ArgumentException后仅输出`descendant disappeared before identity could be bound`并停止两席；原catch没有entry PID/name/parentPID/创建身份、异常原文或具体失败API。该摘要不能证明某个短寿辅助进程退出，更不能猜测是哪一个bash/pwsh。15个已绑定进程退出不等于未观察后代已清空；两席raw为0字节，无init/final/Read，不能由目标创建推断原生调用或审核成功。原S3冻结材料不改，产品实现尚未开始。
+
+W/R2须在既有日志、outcome及violations证据出口区分目标创建、目标绑定、原句柄/创建身份、包含状态及辅助后代发现失败，不增加新接口或台账。异常保留原文、发生API和当时已观察到的进程身份/父子关系；未获得的PID、名称、parentPID或创建身份明确unknown，不用错误分类文案补造。无模型回归覆盖目标已创建而辅助发现失败、身份查询/绑定阶段抛错、已观察进程退出但未观察后代unknown、原流为空而无原生终态；各自应能定位失败API与已知/未知身份，不能将所有ArgumentException归成“已退出”。恢复必须有准确原身份/包含边界及可核树终态；放宽PID匹配、吞掉异常或将未观察项忽略后报PASS均拒绝。诊断充分性与实际包含/终止成功分别举证，运维文案改善不替产品回归及独立关闭。
+
 派发动作复用现有Runner/Store，拟`Runner.dispatch_development(action)`在内部装载原件并重算A/B/容量，不接收调用者填好的PASS/Observation。`Store.claim_dispatch(expected_revision, claim)`在同一现有DB事务内核revision、输入、预算和资源并记录claim；claim绑定request/attempt、subject/policy/profile/runtime/write-set/session及预算，不能先启动再补claim。不能沿现有整轮run.lock阻塞所有独立作者；并发资源与同写集互斥由同一Store准确事实控制，默认CodeBuddy容量4是可配置团队值。
 
 动作启动前须再次核对claim仍有效；输入、暂停、预算或资源变化令许可失效。故障后先核真实进程与原件，再决定终止/承接/明确新attempt，不能自动重跑未知存活调用。产品接收动作同样在内部重算当前accept，不直接消费旧报告；输出/发布失败沿现有事务及发布恢复，不能因此重新执行模型。状态投影取同一Store/request原件，不增加development-status.json或第二PASS数据库。

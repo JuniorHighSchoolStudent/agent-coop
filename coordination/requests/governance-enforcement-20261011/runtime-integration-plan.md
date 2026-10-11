@@ -84,6 +84,10 @@ D的公开初始化、批注册、bootstrap导入和prompt渲染API直接沿合�
 
 S2的StandardOutputEncoding异常独立保留，根因以[result](result.md)所链准确原件与后续FirstChance调查结论为准，不仅由argv过长推断；R2验证配置失败时点与原始字节收集/明确解码，W只承接标准流句柄。无模型反例覆盖中文/emoji输出、无效字节和启动配置错误。目标创建/恢复/native init/model请求分层举证，conhost存在但目标失败、挂起成功但恢复失败、运行而无native init均不能归为模型成功。
 
+S3新增GOV06/W/R2诊断验收：目标node已创建与后续辅助进程发现/身份绑定失败分别记录。bootstrap的ArgumentException摘要缺具体失败API、异常原文及entry PID/name/parentPID/创建身份，不能据此断言短寿子进程消失或猜bash/pwsh；已绑定15个进程退出也不证明未观察后代退出。两席0字节raw无init/final/Read，不能补成模型成功。准入撤回与准确原件沿[result](result.md)，本段不修改冻结S3输入或宣称产品已实现。
+
+在既有日志/outcome/violations出口保留失败API、异常原文、当时已观察身份及显式unknown；W负责原句柄/包含事实，R2负责生命周期阶段与原流关联。无模型测试须覆盖目标创建后发现失败、身份绑定查询异常、已知进程全退而未知后代未证清空、空流无原生终态，并区分诊断完整与真实树终止。不得靠忽略异常、宽松PID/时间匹配或把未知辅助进程视为已退取得PASS；恢复仍核准确原身份与包含/终止证据，不新建watcher或诊断台账。
+
 日志目录和stdout/stderr以独占方式在创建目标进程前打开，收集过程中按总字节上限增量保留已接收流；正常失败保留原始片段和分类。控制者骤停可能留下不完整流，必须标明partial/unknown并结合Store未终结claim对账，不能把部分日志称为完整模型终态，也不能用新调用覆盖它。
 
 方案依据与限制：微软说明Job默认涵盖CreateProcess创建的子进程，关闭最后句柄可终止Job及嵌套Job；但其他进程代理/WMI创建的进程不因此自动纳入。此方案是对受控CLI及其正常子进程树的生命周期管理，不是恶意逃逸或OS权限沙箱。[Job Objects](https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects)
