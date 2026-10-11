@@ -1,0 +1,7 @@
+{
+  "phase": "metadata-only env precomputation after initialize/baseline succeeded",
+  "error": "ValueError: permissions.environment must contain exactly inherit and set",
+  "cause": "one-shot operator incorrectly supplied profile rather than profile.permissions.environment to existing _build_env",
+  "resolution": "existing API called with correct environment argument; no initialize repeat, no state update, no dispatch, no model, no product change",
+  "model_calls": 0
+}

@@ -1,0 +1,222 @@
+{
+  "status": "prepared_only_no_dispatch_no_model",
+  "created_utc": "2026-10-11T02:03:26.269092+00:00",
+  "administrative_review": "2e2090e8ae0dbf36f0ef73865710ec1ce10f9b89",
+  "candidate": "fe2e1b6b03cde7763f6f2c974d909edf6c2ce708",
+  "source_root": "D:/project/agent-coop-pp-review-c2",
+  "matrix_parent": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345",
+  "sample_root": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot",
+  "audit_root": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/audit",
+  "python": "C:\\Users\\june\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+  "python_version": "3.12.14",
+  "python_sha256": "31073dad142bc7f3374e3122aa668270052c9ad37d0aaab803ae73f184c3a43b",
+  "codebuddy_version": "2.164.0",
+  "dist_path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js",
+  "dist_sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65",
+  "source_files": [
+    {
+      "path": ".github/workflows/verify.yml",
+      "working_sha256": "0ff723cf4eca9c944d4e092145bb95026097f653e66c14feb03c97648aba8295",
+      "git_blob_sha256": "0ff723cf4eca9c944d4e092145bb95026097f653e66c14feb03c97648aba8295"
+    },
+    {
+      "path": "agent_coop/__init__.py",
+      "working_sha256": "65441ba72d4454be3c62913469ec6d2bca72b100f06b09907062cf383d67e10c",
+      "git_blob_sha256": "65441ba72d4454be3c62913469ec6d2bca72b100f06b09907062cf383d67e10c"
+    },
+    {
+      "path": "agent_coop/__main__.py",
+      "working_sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "git_blob_sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "agent_coop/adapters.py",
+      "working_sha256": "3c9cd515ad1af39b6b33b0ad5036c22426ecd2f956c125aa0cf1882bd20c63e6",
+      "git_blob_sha256": "3c9cd515ad1af39b6b33b0ad5036c22426ecd2f956c125aa0cf1882bd20c63e6"
+    },
+    {
+      "path": "agent_coop/archive.py",
+      "working_sha256": "d3559da8369bf4c0af07c323b14253f62d39b5fb26fd9e1211b4f684f510d8bb",
+      "git_blob_sha256": "d3559da8369bf4c0af07c323b14253f62d39b5fb26fd9e1211b4f684f510d8bb"
+    },
+    {
+      "path": "agent_coop/checks.py",
+      "working_sha256": "3ea5ef2034356151bed7f1fb61428ab09447033c87e7017918462d3f51f2d008",
+      "git_blob_sha256": "3ea5ef2034356151bed7f1fb61428ab09447033c87e7017918462d3f51f2d008"
+    },
+    {
+      "path": "agent_coop/cleanup.py",
+      "working_sha256": "209d2bb5b4d511c0008c06ef8429ab6e249921346852d69696f5eda821d870b4",
+      "git_blob_sha256": "209d2bb5b4d511c0008c06ef8429ab6e249921346852d69696f5eda821d870b4"
+    },
+    {
+      "path": "agent_coop/cli.py",
+      "working_sha256": "b7b1784e5a361639bb314d3890e2c5d495b60eea61606091ebb13702685a1fc0",
+      "git_blob_sha256": "b7b1784e5a361639bb314d3890e2c5d495b60eea61606091ebb13702685a1fc0"
+    },
+    {
+      "path": "agent_coop/gates.py",
+      "working_sha256": "a1f50a9a5a91f7bb86c41ab5eb1ca30846f7e9c409db53ff683414a04d7adb56",
+      "git_blob_sha256": "a1f50a9a5a91f7bb86c41ab5eb1ca30846f7e9c409db53ff683414a04d7adb56"
+    },
+    {
+      "path": "agent_coop/paths.py",
+      "working_sha256": "13050fbf2e5afdf843da1e7cb3c31c3ff50235bb1171f1454bd523781142ec67",
+      "git_blob_sha256": "13050fbf2e5afdf843da1e7cb3c31c3ff50235bb1171f1454bd523781142ec67"
+    },
+    {
+      "path": "agent_coop/runner.py",
+      "working_sha256": "4eb09191e37b88241c364b3e2ddbf7f0de94f003701a6722779f9817c5cb0ce6",
+      "git_blob_sha256": "4eb09191e37b88241c364b3e2ddbf7f0de94f003701a6722779f9817c5cb0ce6"
+    },
+    {
+      "path": "agent_coop/runtime.py",
+      "working_sha256": "bb77b9ece7fe9d67b1a7f5b8d599711bbee2a1efc8bba370fe904edbfad213fd",
+      "git_blob_sha256": "bb77b9ece7fe9d67b1a7f5b8d599711bbee2a1efc8bba370fe904edbfad213fd"
+    },
+    {
+      "path": "agent_coop/sample.py",
+      "working_sha256": "29a87563be8e43ae649e743f104f847fc5275a0caecf960492a0601cc5af00e3",
+      "git_blob_sha256": "29a87563be8e43ae649e743f104f847fc5275a0caecf960492a0601cc5af00e3"
+    },
+    {
+      "path": "agent_coop/store.py",
+      "working_sha256": "ed14743e5136c24b18b2e6bd10991e4aef642398f0fd18f6ca3fb8bf5f33fbd2",
+      "git_blob_sha256": "ed14743e5136c24b18b2e6bd10991e4aef642398f0fd18f6ca3fb8bf5f33fbd2"
+    },
+    {
+      "path": "agent_coop/supervisor-agent.md",
+      "working_sha256": "f22d0f383b68c403821f70c026f056919e06a79001d9ee117a50107e7295a46a",
+      "git_blob_sha256": "f22d0f383b68c403821f70c026f056919e06a79001d9ee117a50107e7295a46a"
+    },
+    {
+      "path": "agent_coop/verification.py",
+      "working_sha256": "5f356d870d9d38a07bb053db83d7e6a0b645ff3b2c265c46767757d5123ca41b",
+      "git_blob_sha256": "5f356d870d9d38a07bb053db83d7e6a0b645ff3b2c265c46767757d5123ca41b"
+    },
+    {
+      "path": "agent_coop/web.py",
+      "working_sha256": "ddd4c56d3513f7eba1491b340127fe0eb55357b426b9a515c62bca1b1eb7eb35",
+      "git_blob_sha256": "ddd4c56d3513f7eba1491b340127fe0eb55357b426b9a515c62bca1b1eb7eb35"
+    },
+    {
+      "path": "tests/__init__.py",
+      "working_sha256": "c27b74010287770f8d38a3df7f7b205c6cc224d74e6469342f3953636f80048e",
+      "git_blob_sha256": "c27b74010287770f8d38a3df7f7b205c6cc224d74e6469342f3953636f80048e"
+    },
+    {
+      "path": "tests/test_adapter_commands.py",
+      "working_sha256": "981615c7e3fa24f04ae3c8e325ab438a228cf45497c01d9ce06ecf849090e1fd",
+      "git_blob_sha256": "981615c7e3fa24f04ae3c8e325ab438a228cf45497c01d9ce06ecf849090e1fd"
+    },
+    {
+      "path": "tests/test_archive.py",
+      "working_sha256": "ab91c1755ea8ce29d9c85d0e52b160784caf1f6edd231172803700cf1542ef4d",
+      "git_blob_sha256": "ab91c1755ea8ce29d9c85d0e52b160784caf1f6edd231172803700cf1542ef4d"
+    },
+    {
+      "path": "tests/test_cli.py",
+      "working_sha256": "eb2c4a5df969faf05ec4637f42959092b6d58e5ecfd52ec4b5e626fee854e7f3",
+      "git_blob_sha256": "eb2c4a5df969faf05ec4637f42959092b6d58e5ecfd52ec4b5e626fee854e7f3"
+    },
+    {
+      "path": "tests/test_flow.py",
+      "working_sha256": "27ead0985e05ae59db952367208d08b199a6bf205e5df3250dcd6a759b78f726",
+      "git_blob_sha256": "27ead0985e05ae59db952367208d08b199a6bf205e5df3250dcd6a759b78f726"
+    },
+    {
+      "path": "tests/test_gates.py",
+      "working_sha256": "e2f2f8272e72166791f9acf12b302022d80aa9cfcb40b4511128d5d7517caea9",
+      "git_blob_sha256": "e2f2f8272e72166791f9acf12b302022d80aa9cfcb40b4511128d5d7517caea9"
+    },
+    {
+      "path": "tests/test_paths.py",
+      "working_sha256": "b6a36e20e969c1cc91de3f474158a19107a006783e91557a4468fc56b6e2065d",
+      "git_blob_sha256": "b6a36e20e969c1cc91de3f474158a19107a006783e91557a4468fc56b6e2065d"
+    },
+    {
+      "path": "tests/test_runner.py",
+      "working_sha256": "5b41059cc665df3887eac682145ebf136884d9e79605fdf353bef5445e94020d",
+      "git_blob_sha256": "5b41059cc665df3887eac682145ebf136884d9e79605fdf353bef5445e94020d"
+    },
+    {
+      "path": "tests/test_runtime.py",
+      "working_sha256": "19e012e9afef9961fd544b52100af92086af25782820facc94245aa33aa4b295",
+      "git_blob_sha256": "19e012e9afef9961fd544b52100af92086af25782820facc94245aa33aa4b295"
+    },
+    {
+      "path": "tests/test_runtime_invoke.py",
+      "working_sha256": "ceda4983ca1d714833d87a7183873dca374afb0c60008c42ed04bcd30a589957",
+      "git_blob_sha256": "ceda4983ca1d714833d87a7183873dca374afb0c60008c42ed04bcd30a589957"
+    },
+    {
+      "path": "tests/test_sample.py",
+      "working_sha256": "4ae2b58343a9da51a2405df97b43c4ec432f33aba581e65415a3381e9b1ef5cd",
+      "git_blob_sha256": "4ae2b58343a9da51a2405df97b43c4ec432f33aba581e65415a3381e9b1ef5cd"
+    },
+    {
+      "path": "tests/test_store.py",
+      "working_sha256": "0bba844f91c77b563f784954ad60d82b1994f88e646e287e21caca77a9652d2f",
+      "git_blob_sha256": "0bba844f91c77b563f784954ad60d82b1994f88e646e287e21caca77a9652d2f"
+    },
+    {
+      "path": "tests/test_verification.py",
+      "working_sha256": "674d29d609d5be0a9151099abc6e156a6ad4080a474ec290989082c0f896f4d4",
+      "git_blob_sha256": "674d29d609d5be0a9151099abc6e156a6ad4080a474ec290989082c0f896f4d4"
+    },
+    {
+      "path": "tests/test_web.py",
+      "working_sha256": "3cd9903aa6d2cf9f9555f397e7a9da8ef38c586c2bf9ad81a46e3e14e2ce56a6",
+      "git_blob_sha256": "3cd9903aa6d2cf9f9555f397e7a9da8ef38c586c2bf9ad81a46e3e14e2ce56a6"
+    }
+  ],
+  "state_before": {
+    "calls_used": 0,
+    "revision": 0
+  },
+  "expected_after": {
+    "calls_used": 1,
+    "revision": 1
+  },
+  "actual_model_calls": 0,
+  "environment_names": [
+    "APPDATA",
+    "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY",
+    "CODEBUDDY_DISABLE_AUTO_MEMORY",
+    "CODEBUDDY_MEMORY_EXTRACTION_DISABLED",
+    "CODEBUDDY_MEMORY_EXTRACTION_ENABLED",
+    "COMSPEC",
+    "HOMEDRIVE",
+    "HOMEPATH",
+    "LANG",
+    "LC_ALL",
+    "LOCALAPPDATA",
+    "PATH",
+    "PATHEXT",
+    "SYSTEMROOT",
+    "TEMP",
+    "TMP",
+    "USERPROFILE",
+    "WINDIR"
+  ],
+  "environment_set": {
+    "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+    "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+    "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1",
+    "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0"
+  },
+  "environment_source": "existing runtime._build_env with actual permissions.environment; no wrapper env substitution; inherited values intentionally not logged",
+  "entry_chain": "sample.initialize completed; future sole sample.dispatch(root,S0,implement,prompt) -> runtime.invoke, not yet admitted",
+  "files": {
+    "argv-template.json": "06884e1521848f8824fbdb24d7705ced6a722f0eefb2cc8d87f1f21e08a82406",
+    "derived-implement-profile.json": "b8add5daf385f7d6ede977ff8c550e9f190cd6870f4762e0bb468c95adcb4311",
+    "expected-after-reservation.json": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+    "expected-STATUS": "d14c9e8a55610bde6826c4ffbd6ff68f4f30c655f9d7d68cdab3bb4315835c6c",
+    "fixture-baseline.json": "636714d6eceec9c2ff799b59a601d5bd6528cf49f19abf3c2acb9ca84a27972e",
+    "initial-STATUS": "b5ac1f183f0f5a86936f6f0cce66648a12772d3c910e8984389149029b091029",
+    "matrix-prompt.txt": "cef510f27c41f4d98585cf6fc1a300bb413ab222f97aec272e29d34c41ee325a",
+    "preparation-error.json": "6de026201dab35ef574aaf7161215941060e87a67417fb6361e065d30bc51867",
+    "raw-profiles.json": "6a9285632d2b5aa599b19eb879da43acdf8ee5e90c3eb4545092d0d930dfedf0",
+    "state-before-reservation.json": "ce0ea4ee35f014223b8f2a39427fe013f2e603f2642693d6046235e4ac46d9e3"
+  }
+}

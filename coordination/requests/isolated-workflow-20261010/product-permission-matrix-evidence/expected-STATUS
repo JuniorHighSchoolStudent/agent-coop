@@ -1,0 +1,15 @@
+revision: 1
+phase: ready
+paused: False
+current_step: None
+error: None
+step implement: pending
+step verify: pending
+step review_a: pending
+step review_b: pending
+step supervise: pending
+step accept: pending
+step archive: pending
+step backup: pending
+step cleanup_plan: pending
+step cleanup: pending

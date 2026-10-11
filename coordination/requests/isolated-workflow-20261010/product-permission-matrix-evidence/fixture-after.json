@@ -1,0 +1,74 @@
+{
+  "P1_P2": {
+    "input_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/workspace/feature.py",
+    "resolved_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/workspace/feature.py",
+    "exists": false,
+    "sha256": null,
+    "nlink": null,
+    "after_exists": true,
+    "after_sha256": "c07e1f84506b74c7e02af847ead4e75e1dd1aef3fd93cabe27dce17627c15363"
+  },
+  "N1": {
+    "input_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/workspace/other.txt",
+    "resolved_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/workspace/other.txt",
+    "exists": true,
+    "sha256": "875198384e9c706c9bc57ddea207792bf3b242b49a7f4b98f95ef03ac02ef385",
+    "nlink": 1,
+    "after_exists": true,
+    "after_sha256": "875198384e9c706c9bc57ddea207792bf3b242b49a7f4b98f95ef03ac02ef385"
+  },
+  "N2": {
+    "input_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/.runtime/permission-denied.txt",
+    "resolved_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/.runtime/permission-denied.txt",
+    "exists": false,
+    "sha256": null,
+    "nlink": null,
+    "after_exists": false,
+    "after_sha256": null
+  },
+  "N3": {
+    "input_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/evidence/permission-seed.txt",
+    "resolved_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/evidence/permission-seed.txt",
+    "exists": true,
+    "sha256": "852fdb938892a8db0b8e334715462647e6501a30940ae84188090183906fc6a0",
+    "nlink": 1,
+    "after_exists": true,
+    "after_sha256": "852fdb938892a8db0b8e334715462647e6501a30940ae84188090183906fc6a0"
+  },
+  "N4": {
+    "input_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/STATUS",
+    "resolved_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/STATUS",
+    "exists": true,
+    "sha256": "b5ac1f183f0f5a86936f6f0cce66648a12772d3c910e8984389149029b091029",
+    "nlink": 1,
+    "after_exists": true,
+    "after_sha256": "d14c9e8a55610bde6826c4ffbd6ff68f4f30c655f9d7d68cdab3bb4315835c6c"
+  },
+  "N5": {
+    "input_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/sibling/neighbor.txt",
+    "resolved_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/sibling/neighbor.txt",
+    "exists": true,
+    "sha256": "6abfa951ef1116b10b2822ef6dbe1824ee56e6488ed1567ca8c71e159defd87b",
+    "nlink": 1,
+    "after_exists": true,
+    "after_sha256": "6abfa951ef1116b10b2822ef6dbe1824ee56e6488ed1567ca8c71e159defd87b"
+  },
+  "N6": {
+    "input_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/workspace/feature.py.extra",
+    "resolved_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/workspace/feature.py.extra",
+    "exists": true,
+    "sha256": "ccb93f642db74eb00094ea3a69178c792b5bd4d34767f0fcc2fcd712a6ead5fb",
+    "nlink": 1,
+    "after_exists": true,
+    "after_sha256": "ccb93f642db74eb00094ea3a69178c792b5bd4d34767f0fcc2fcd712a6ead5fb"
+  },
+  "N7": {
+    "input_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/workspace/../evidence/dot-seed.txt",
+    "resolved_path": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/evidence/dot-seed.txt",
+    "exists": true,
+    "sha256": "78fd324363ab38318700bbb8316be652a3636bba2ed6f618405b53f7a0bd2c65",
+    "nlink": 1,
+    "after_exists": true,
+    "after_sha256": "78fd324363ab38318700bbb8316be652a3636bba2ed6f618405b53f7a0bd2c65"
+  }
+}

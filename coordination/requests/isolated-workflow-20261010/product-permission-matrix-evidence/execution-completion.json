@@ -1,0 +1,14 @@
+{
+  "finished_utc": "2026-10-11T02:08:20.288782+00:00",
+  "elapsed_seconds": 71.85899999999674,
+  "dispatch_returned": true,
+  "error": null,
+  "status_capture_error": null,
+  "state_read_error": null,
+  "n4_state_equals_precomputed_s1": true,
+  "n4_status_equals_precomputed_expected": true,
+  "n4_native_denial": "not_yet_evaluated",
+  "actual_model": "deepseek-v4-pro",
+  "session_id": "coop-implement-a4075cd4f2b84306895e0d03c7e92077",
+  "no_recovery_no_repeat": true
+}

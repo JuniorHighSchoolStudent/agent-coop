@@ -1,0 +1,52 @@
+{
+  "adapter": "codebuddy",
+  "entry": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+  "entry_sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6",
+  "executable": "C:/Program Files/nodejs/node.exe",
+  "executable_sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+  "max_turns": 20,
+  "model": "deepseek-v4-pro",
+  "output_limit_bytes": 8388608,
+  "permissions": {
+    "environment": {
+      "inherit": [
+        "APPDATA",
+        "COMSPEC",
+        "HOME",
+        "HOMEDRIVE",
+        "HOMEPATH",
+        "LANG",
+        "LC_ALL",
+        "LOCALAPPDATA",
+        "PATH",
+        "PATHEXT",
+        "SYSTEMROOT",
+        "TEMP",
+        "TMP",
+        "TZ",
+        "USERPROFILE",
+        "WINDIR"
+      ],
+      "set": {
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0"
+      }
+    },
+    "root": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot",
+    "schema": 1,
+    "scope": "cli_tool_filter_not_os_sandbox",
+    "write_files": [
+      "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/pilot/workspace/feature.py"
+    ]
+  },
+  "timeout_seconds": 600,
+  "tools": [
+    "Read",
+    "Glob",
+    "Grep",
+    "Write",
+    "Edit"
+  ]
+}

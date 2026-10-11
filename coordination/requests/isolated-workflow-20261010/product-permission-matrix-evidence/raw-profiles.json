@@ -1,0 +1,70 @@
+{
+  "implement": {
+    "executable": "C:/Program Files/nodejs/node.exe",
+    "executable_sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+    "timeout_seconds": 600,
+    "output_limit_bytes": 8388608,
+    "max_turns": 20,
+    "adapter": "codebuddy",
+    "entry": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+    "entry_sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6",
+    "model": "deepseek-v4-pro",
+    "tools": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Write",
+      "Edit"
+    ]
+  },
+  "review_a": {
+    "executable": "C:/Program Files/nodejs/node.exe",
+    "executable_sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+    "timeout_seconds": 600,
+    "output_limit_bytes": 8388608,
+    "max_turns": 20,
+    "adapter": "codebuddy",
+    "entry": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+    "entry_sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6",
+    "model": "glm-5.3",
+    "tools": [
+      "Read",
+      "Glob",
+      "Grep"
+    ]
+  },
+  "review_b": {
+    "executable": "C:/Program Files/nodejs/node.exe",
+    "executable_sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+    "timeout_seconds": 600,
+    "output_limit_bytes": 8388608,
+    "max_turns": 20,
+    "adapter": "codebuddy",
+    "entry": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+    "entry_sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6",
+    "model": "kimi-k3-2",
+    "tools": [
+      "Read",
+      "Glob",
+      "Grep"
+    ]
+  },
+  "supervise": {
+    "executable": "C:/Program Files/nodejs/node.exe",
+    "executable_sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+    "timeout_seconds": 600,
+    "output_limit_bytes": 8388608,
+    "max_turns": 20,
+    "adapter": "kimi",
+    "entry": "C:/Users/june/AppData/Roaming/npm/node_modules/@moonshot-ai/kimi-code/dist/main.mjs",
+    "entry_sha256": "5b300a573d306f879361eb7a2baec3a19448ea94eadca28001408b19c42eeb69",
+    "model": null,
+    "tools": [
+      "Read",
+      "Glob",
+      "Grep"
+    ],
+    "agent_file": "D:/project/agent-coop-pp-review-c2/agent_coop/supervisor-agent.md",
+    "agent_file_sha256": "f22d0f383b68c403821f70c026f056919e06a79001d9ee117a50107e7295a46a"
+  }
+}

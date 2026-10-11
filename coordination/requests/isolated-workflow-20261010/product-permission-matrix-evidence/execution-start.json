@@ -1,0 +1,13 @@
+{
+  "started_utc": "2026-10-11T02:07:08.427339+00:00",
+  "python_pid": 41960,
+  "candidate": "fe2e1b6b03cde7763f6f2c974d909edf6c2ce708",
+  "preparation_sha256": "38c907f2ab2ea3b1b9eb983aba3293c56c192958154bc95e12cc555dd86d2b0c",
+  "prompt_sha256": "cef510f27c41f4d98585cf6fc1a300bb413ab222f97aec272e29d34c41ee325a",
+  "dispatch_count": 1,
+  "codebuddy_budget_used_after_start": 13,
+  "codebuddy_budget_total": 15,
+  "native_used": 1,
+  "native_total": 2,
+  "source": "existing sample.dispatch only; no patched functions; no wrapper"
+}
