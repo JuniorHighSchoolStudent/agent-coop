@@ -1,15 +1,74 @@
 # 开发治理修复当前状态
 
-范围：本仓开发失效的产品修复；维护者：Codex集成者。当前T准备独立监督、M合同修订待复核；项目目录纠偏已迁两个作者树，产品作者仍未放行，旧行政修补未关闭。最新状态仅见下一节；历史准入、失败、意见及其效力保留在后文。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。
+范围：本仓开发失效的产品修复；维护者：Codex集成者。当前有效状态仅以下检查点；历史准入、失败与原票在后文保留，不继续计作在途或新候选通过。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。
 
 ## 当前结论与下一动作
 
-- 实际在途（本轮双席终态核验检查点）：产品作者0、模型审核0、native监督0。M/T两席均自然结束，独立原流核验已确认完整意见、身份及每席25块1127行实读：GLM要求局部修改M、Kimi为pass，不能记成双通过。T独立准备作者/监督材料，M合同小修待复核；详见下方准确设计审核记录。此前恢复评估因480秒超时结束、没有有效监督结论，不准作者或原样重试。上一CodeBuddy作者改了两文件但无final；21项局部checker已通过，剩余诊断缺陷未关闭。原activated许可已消耗，不能复用。
-- 本次宿主唤醒推进了无模型实证：2026-10-11T09:01:25Z运行现有路径及run_bounded测试，15/15通过、无skip，20.032秒、exit0；准确原件`C:/Users/june/AppData/Local/Temp/agent-coop-runtime-existing-tests-20261011T090125Z/execution.json` SHA `a94446fc85b0b6b6e293bced6f23b0aae648815f55b73198a9158160c5f2767b`。源码未变，根回读完整命令和输出；不当产品关闭或作者调用证据。
-- dispatcher_next已用现有create_root创建`D:/ac-repair-bounded`，两份partial源码按原hash复制到workspace，无代码修补。作者草稿和只读native材料已冻结并独立核验：作者14块767行，native40块2593行；未获新作者准入。
-- 下一动作：T按不受M局部finding阻断的范围，由唯一发包人准备准确T作者/native材料，M修订previous失败语义后独立复核。只有对应准确准入后另签作者许可。行政修补未关闭及runtime未知照实保留，不把读取完整冒监督同意，不新增Codex看护实现。
-- 本回合用户提供的AGENTS文本明确替换此前AGENTS指令，已在新隔离根精确物化；磁盘旧长版只作历史来源，不据其被替换条款新增门禁。其他用户角色约束、准确绑定和有效独立审核条件仍保留；不改写冻结旧票，不把用户文本中的阶段描述当实测工具不存在的证明。
-- 用户最新要求补齐监控驱动的拆包、受审调整与自动补发，并核业务阶段职责。已确认design §4.2参考gstack的阶段职责已文档接收但未产品化，当前固定样例四角色不能代产品/工程/QA等职责完成。[流水线修订提案](pipeline-amendment.md)补充闭环与职责映射，新增M确定性观察/T阶段合同两个无副作用独立作者包；完整闭环仍由原A/C/S/D/X/C2接线。当前为后继设计待审，不复用S6或40块恢复输入的票。默认4路是执行者并行配置，不是本账号真实总上限或固定团队人数。
+整理检查点：2026-10-11T13:05:25Z。用户要求先整理提交，暂停新派发；唯一发包人确认本轮已知外部调用均已终态并处置原句柄。当前作者0、审核0、native监督0，不据此断言全账号占用或整树清空。三个用户缺陷（监督覆盖、启动状态真实性、失联处置）仍未关闭，当前候选均未接收、未合入main。
+
+| 工作包 | 已核事实 | 未决事项与下一责任人 |
+|---|---|---|
+| T 阶段合同 | CodeBuddy返修已自然exit0；root实际运行22项测试全过，含跨hash-seed公开API与多stage AND反例 | 完整result为散文加JSON围栏，`final_invalid`仍阻断；修后双审包已准备但未调用。恢复后由issuer派双席核准确代码、测试及最小作者交付修正，再按意见推进 |
+| W Windows进程容器 | CodeBuddy作者481.807秒超时、无final；4项不创建进程测试通过。返修GLM/Kimi各25块1502行读取完整，均pass返修方案 | 产品544行超硬限，创建flags、属性数组生命周期、失败清理及真实验收缺口未修。下一步由issuer将准确新作者绑定和两完整票交native，获准后由CodeBuddy修复；不是代码接收 |
+| N1 原生事件内核 | GLM/Kimi各29块1614行完整读取，完整strict JSON均pass并附实现条件 | LF切行与旧_events复用边界、Kimi元数据顺序、init.tools类型、完整raw回归等条件待收敛与监督；尚无作者调用 |
+| M / S1 / A/C / S/X / R2 | M继续暂停；S1注册快照、旧库拒绝、幂等重放、真实启动事实分离仅完成调查建议 | 后继必须冻结准确合同并独立审核后派执行者；未实现、未准入，不以消息建议或底层单测关闭三项机制缺陷 |
+
+T两文件当前hash：产品`c3a288154283f27d4072ccb795b2cc5bc8c4d5547c5809c45060efe63992033d`、测试`134ba2b99a32470c865934a24783685c2f0f8b5099d0c6f1eefff7889f9a6428`；验证前后相同。规模289/384行，测试具名函数44行超过软目标，仍须独立内聚性审核。测试绿不能抵消无效作者final；不截取对象补票，不由Codex代修源码或结语。
+
+本轮可续接原件位于项目受管根`coordination/.runtime/workspaces/`，只保存本机引用，不将私有会话、运行日志和环境账户文件提交Git：
+
+- T：`flow-t/.runtime/verification-t-2/`为22项验证原件；`flow-t/evidence/author-repair-r1-independent/`为完整无效final及独核，独核SHA `298589ecacf59743736912032590ce0e120b20be453830f6fc1e910bd1d57423`；待派包`flow-t/evidence/delivery-review-r3/PREPARATION.json` SHA `2b4c9485b5d7e26f7ee13c4c2d39a73517bbbdbf8e00ccedc2df165e1caf1b8a`。
+- W：`.runtime/verification-w-1/`保存partial调查与4项安全验证；`.runtime/w-partial-repair-review-r1-{glm,kimi}/`保存返修双席完整原票。GLM独核SHA `3ff95a73ed2a9587b3defa98b42ea1463b37cc20f3cc6f75a84bb0d995c127b2`，Kimi独核SHA `49d2655e43073affe4a765e139ed20274733ff8208db21d74255c4a8bbaf6fe6`，路径前缀均为`governance-w/`。两票仅支持返修方案；Kimi关于实际泄漏的绝对措辞未做OS复现，不作已测事实。
+- N1：`governance-n1/evidence/n1-plan-review-r1-independent/`保存双席原票及核验。GLM独核SHA `d0ae11fde85b2c284f59dd9f275d18e462570c7526891c049af251ae6141b98f`，Kimi独核SHA `e84b65d5861227e947e91e30603d65d2ccb405ae07793061c1139ce5310163c6`。意见需按准确版本消费，不借给新范围。
+
+历史66.3秒、W作者199.416秒及其余观察间隔偏差继续保留，自动超时和原进程退出不证明连续看护或整树清空。实际启动、模型身份、监督意见、交付、验证、接收和main合入分别举证。
+
+本次仅提交当前状态整理。主工作目录原停在`codex/architecture-diagrams@63ef230`；整理提交承接现有`codex/governance-enforcement-20261011@4cdc191`，提交后将该分支检出到`D:/project/agent-coop`，原治理工作树留在同一提交的detached快照。main保持原位；T/W未接收源码留在独立工作树，M/N1工作树及主目录`.workbuddy`保留，不迁移、清理或推送。此工作目录调整不改变任何冻结base或已发票据。
+
+## 此前检查点记录（历史，不作当前计数）
+
+- W作者已终态（本调查12:49核验检查点）：原Python49896/node46268于12:47:36自然结束为exit1，ready起481.8069516秒，原runtime明确timeout exceeded，原柄Dispose、tree_empty未知；不是成功交付。T返修准确启动状态由issuer另报，不凭准备记running。W实际init为deepseek-v4-pro/session agent-coop-author-w-20261011-5e8d47e4；85合法事件、19模型响应ID、25Read/3Write/2Edit/3Grep，只写授权两文件，无result/final。14静态块518行及activation93/native31行逐字同源完整；独核回执SHA `37802d1d499f40ca6eff0f1eea74ff760eed114ef5e0cf493f279dbf44f50a4e`。17机械观察含ready最大199.4158285秒、6次>20，280至480秒观察空档不被自动超时抹去。
+- W部分源码与验证：win_process.py SHA `d3811ad1c482aba495d6433a6e697c305bc54c582fab59a265ffd85f6f4ae570`（544行超过500硬限，_bind52行超过40软目标）；test_win_process.py SHA `243589a7e7ee1ccf150ba074f6596cd0866ba715885302f13395f0db2b19ae19`（232行）。本调查仅实际运行4项既有无CreateProcess测试，全部通过；原件唯一W根`.runtime/verification-w-1/`，execution SHA `508dac72e37714fd799ac1fd7c4fc6dba66db6de72fca5c337d22b7ba67a1cad`。真实spawn全套未运行：创建flags错误、lpValue数组生命周期和未入Job挂起进程清理缺口使安全性不能确认；通过4项不冒W正确或接收。
+- 已完成W计划监督（历史前置）：W Python40948/node43128自然exit0，ready起271.2451249秒，原柄有效后Dispose、tree_empty未知；原件在W根`.runtime/w-native-plan-1/`及`w-native-plan-operator-1/`。独立核34事件/26Read26返回：26块1128行正文完整，1127行逐字同源，agent.md第12行完整428字后多字面\r，保留呈现差异不冒全字节同；author-binding的1–150/151–160两段分别event32/event29返回，160行全读。event33完整strict JSON support、plan_supported/author_plan_allowed=true、blocking_ids为空，candidate/source/input/scope全匹配；尾actualsession为session_48c731d2-4a22-4d3c-98bc-9035f368f541，model/provider未知。16次观察max27.9447474秒、2次>20（含ready）；不宣称持续观察全合规。完整原意见SHA `ce371ba2c9b198112b739c109e9749624df4d5da38ff63d86b9184ede079a3f4`，逐项独核回执SHA `781ef663e15abcfc9f3165d18fbe54297460cc28fcf0c55553e62c0a17152a35`。
+- 上一模型审核终态（W与T r2均已Dispose）：W两席自然exit0，GLM ready起227.667665秒、Kimi267.1032909秒；tree_empty未知。独立核W各63事件、27Read/27返回，固定27块1138行完整实际覆盖；完整final均严格JSON且准确candidate/source/input/policy/role/session绑定，decision=pass但附实现条件，不是作者许可或W实现。actual models为glm-5.3/kimi-k3-2，各4模型响应；CLI num_turns60不是模型响应数。原件为W根`.runtime/w-plan-review-r1-{glm,kimi}/`及对应operator。W最后完整观察12:15:09.724Z至12:16:36终态记录存在约86.97秒空档；12:15:55会话工具fb53d3仅离散读取两旧Python HasExited=true，没有独立磁盘句柄观察，不能冒持续看护。T r2由发包人确认GLM229.219秒/Kimi204.902秒自然退，audit唯一核该两票原流，本调查者不重复；初读pass仅对增量修复方案，不是代码接收。
+- T上一双审终态（2026-10-11T12:05:28.4495999Z）：GLM Python3348/node49964自然exit0，ready至Python退出248.0822422秒；Kimi Python21856/node52548自然exit0，250.6841726秒；两原柄各已Dispose，tree_empty均null。原件在T根`.runtime/delivery-review-r1-{glm,kimi}/`及对应`-operator/`。独立核完整流：GLM59事件25Read，Kimi62事件27Read，均实际覆盖固定27块1970行；GLM合并读取两源码全文，summary误称26表项不是缺读。Kimi首源码块末多空161行是工具边界占位，后续真实161–287正文完整匹配。两完整result均严格JSON、changes_requested、准确candidate/source/input/policy/role/session同冻结；原生model分别glm-5.3/kimi-k3-2，尾init身份同值。实际assistant message.id为4/9个响应，CLI num_turns56/59不作模型响应次数。实际工具调用仅Read，无写入/额外调用事实。两席各14次机械观察，含ready至首观测的最大间隔27.9106208秒，各5次超过20秒目标（仅相邻14条观察则4次，另ready到首观察1次），不能称频率全达标；完整原件和22材料逐项覆盖核验位于T根`evidence/delivery-review-r1-independent/`。其中root-multicycle-observation.json为root工具chunk6e9133的明确转录，不冒独立复测。
+- 实际验证：/root/investigate_runtime于11:42:19Z在T workspace独占运行bundled Python `-B -m unittest -v tests.test_stage_contracts`，20项17过3失败、exit1；原件唯一权威为T根`.runtime/verification-t-1/`，execution.json SHA `39bf2270972b3be1b717e5a653180498484dbe359a63e9641d5fb21e8c626e62`。源码前后SHA保持：stage_contracts.py `3237c09d0a9c1553e9bc7eecf76c55145c8e35b1a4ab748277d65f0dd2271e14`，test_stage_contracts.py `2cee58fb0ac3725126685c5458aa01013f3744eda7897da86e7c4bd64e06971a`。产品287行、测试316行；测试schema表驱动函数44行超过软目标，未超过硬限，仍须内聚性审核。目标失败，未扩大运行全verify。
+- 当前缺陷与责任：两环测试实际返回related_ids重复首尾；另一测试把未声明extra coverage当合法，修复不得放宽冻结合同。唯一发包人先将失败原件交GLM/Kimi双席独立交付审核，根/调查者不改源码测试；audit已将原流/角色行为限定纳入准确材料，native接收仍待。M的MT-F01、GOV06、A/C/D/S/X及R1未决项保留；本T调用不关闭它们。原66.322005秒observer失败不追认，恢复意见仅前瞻替代本次T的旧周期前置，不等于产品监督机制已修复。
+- 下一步：本调查将W部分原件、实际4项验证和明确未验范围整理成两文件窄返修方案，交原双席独立审核；没有final不补成交付，规模例外不得自签。N1准确窄计划包已冻结并交根/issuer，后继原票独核由audit承担；T返修原件与流程由audit独核。唯一issuer启动获准工作，调查者不写产品或测试；W/R2、GOV06及前三机制缺陷继续open。
+
+### 本轮角色纠偏与监督调查
+
+用户再次要求发包人、执行者、审核者、监督者各司其职。根今后仅负责当前对账、集成与准确准入，不承担目录迁移、证据批量归集或反复材料修补的执行；dispatcher_next仍是唯一发包人；实际CodeBuddy + deepseek-v4-pro承担产品实现和维护修补，GLM + Kimi独立双席审核，native独立监督。调用与人数只据实际原件更新，协调、调查、材料准备不能计为实现并行。本段由独立调查者/root/audit_design_state核对并维护，不冒充正式native意见或替任一独立席关闭阻断。
+
+本轮已发生的越界动作明确保留：根实际创建受管调用根并迁移M/T两个作者工作树、批量复制54份运行原件及来源映射、尝试迁移治理树并处理目标准备。这些属于用户要求交执行者的维护操作，虽未改产品源码，也不能因使用现成命令或标作行政准备继续由根承接；此前反复修补材料的执行同样不得以“准备”绕开角色分工。历史实际作者归属不改写，不追认为CodeBuddy完成。
+
+属于集成职责的动作继续保留：根核对candidate/当前阻断/owner/实际人数，审阅准确原件与独立核验，登记状态、整合已获审交付并在条件满足后签发准确准入。只读调查可核文件、权限和证据，但调查结论不授权根亲自实施修补；维护工作必须经唯一发包人给准确写集、已有复用入口和验收，再由执行者交付、双席及native按适用范围独立复核。该纠偏不新增T门禁，不变更在途T冻结输入，也不把尚未实施的产品角色门禁反向设为T前置。
+
+T监督实际启动依据为发包人原件`D:/project/agent-coop/coordination/.runtime/workspaces/flow-t/.runtime/native-t-operator-1/ready.json`：ready为2026-10-11T10:31:40.7140111Z，准入摘要`302136da75777e68c56056306f76955c0e6008e0a4870c688204dc2e0d8631ab`。同目录python-start/native-target记录Python51904（creation_ticks639273115007169241）和native node41884（639273115007969499）及显式有效原句柄；10:32:24.0838144Z观察两者未退出。480秒参考10:39:40.714Z、外侧收口10:40:40.714Z、600秒截止10:41:40.714Z。该启动检查点仅证实进程启动/在途，未预填原生init、session、模型或监督支持。实际终态现已取得：同目录terminal.json记录native于10:34:55.5715600Z、Python于10:34:55.6125385Z自然exit0，至Python退出194.8985274秒，manual_stop_issued=false，tree_empty仍null；观察记录于10:35:26.2833400Z确认。原流位于相邻`.runtime/native-t-plan-1/stdout.log`，SHA `7573399508c430dcb21e78b2c0dd1a281385913ef8192c81144c88eb26839642`；完整意见native-opinion.txt SHA `987797eab5435656439dffd1bffdf3ef71114cb211276dcf8f04c764d5e73bb9`，本调查已回读核两摘要及终态。意见为support、author_plan_allowed=true，仅范围T-only-author-plan；实际session为`session_fb978977-ba4d-4202-b3a2-58f3ae83fb12`，model unknown。根独立核验报告24块1427行内容完整，其中末行存在字面`\r`呈现差异，保留该限定、不虚写逐字节全同。原意见条件及advisory仍保留，既不关闭M/旧GOV缺口，也不代执行期监督桥接裁定。
+
+补充桥接送审材料已窄修并独核：同T根`evidence/supervision-bridge/PREPARATION.json` SHA `2113b28773c66a43d9235193390536e7d6ab0209881013eca2c65d058e6ee61e`，10块662行，完整native/operator argv为3527/739 UTF16含NUL且Windows往返一致。先前误把§8.5当直接监督条款的问题已补同源§7.5–7.8准确340–424；新增用户约束已标明行政转述，不冒原话。原件hash、prompt/read表及12项无损投影已核，不重审T代码设计。根只签该准确补充的一次只读送审，非T作者许可；激活原件`evidence/supervision-bridge/activated-review.json` SHA `57109f4c356e7afae0f4db0c8ee9b01e3ec6f928305203bf179ed307deb2ddbc`。发包人实际ready为2026-10-11T10:47:38.5291938Z，原件在同T根`.runtime/native-bridge-operator-1`；Python36544（ticks639273124586372679）→native node10080（639273124587176659），原Process/SafeHandle记录有效。独立调查已对照本机进程StartTime核身份一致、均未退出，并核实际native argv、Python操作argv、environment hash与已审plan逐值一致，agent只读Read/Glob/Grep且subagents为空，T工作树仍clean；可见启动材料未见root/issuer越界，不能推断隐藏操作不存在。10:48:26.8669430Z观察仍在途；480/540/600时点分别10:55:38.529Z、10:56:38.529Z、10:57:38.529Z。该启动观察时raw尚未落盘，未预填读取/final/bridge_allowed。该次现已自然终态：同operator目录terminal.json记录native于10:50:00.3980096Z、Python于10:50:00.4346838Z自然exit0，至Python退出141.90549秒；manual_stop_issued=false。handle-disposed.json记录10:50:26.6520229Z两原柄closed，已知目标退出，tree_empty仍null。10次人工观察最大间隔20.515183秒，一次超过20秒目标，不能称观察频率全达标。当前观察任务仅覆盖这次补充native，T作者须后继单独followup并准确绑定就位。
+
+本次补充原流`.runtime/native-t-bridge-1/stdout.log`为122749字节，SHA `0216ceae5abc5639c0e31fd567aa4518c5ed7ff7bc95d68357f4d8837036b386`；完整native-opinion.txt SHA `277da1745969348572a4f3310abfe228d32ffe5b85264980a94d939de61bb912`。独立流程调查已核14条合法JSON事件，唯一完整assistant final为严格JSON且无重复键/非有限数，candidate/scope/input_digest与冻结输入一致，decision=support、bridge_allowed=true、blocking_ids为空。10个Read与10返回准确配对，662要求行中661行逐字同源；native-agent末12行完整正文后多字面`\r`，保留呈现差异不冒逐字节全同，无缺必读正文。实际session由最后resume_hint证明为`session_96502a93-6142-4753-b12d-8762d9e8a830`，版本0.43.0，model/provider保持unknown；final前全部工具已有返回，尾部仅session元数据。
+
+效力仅为本准确T执行期人工桥接的条件式支持：原T计划意见及本补充意见均须绑定后继唯一作者激活；需本attempt的followup和observer本人实际ready、两文件初始状态/权限/profile/argv/账号约束一致；原480/540/600/8MiB不变。观察缺席/越界冻结相应后继并由发包人收口原对象，恢复仍交正式native；交付双审及后继native接收不能省略。六项advisory和原停止/恢复条件完整保留，不关闭MT-F01、GOV-06、A/C/D/S/X/R1产品缺口，也不把本次调查核验自签为产品接收或作者就位。
+
+### 监督缺位机制调查与现有owner承接
+
+用户最新指出监督缺位是机制缺陷。本次调查对照[design §7.5](../../../docs/design.md#75-kimi-监督者)、§7.6–7.8：监督原应覆盖执行者、评审者与集成者，并在关键变更、故障恢复、阻断到期及接收触发；消息发送不等握手接受；监督不可用不能记通过，也不能无依据冻结无关工作。当前T-only-author-plan监督没有审本轮根执行目录迁移/证据归集的合规性，也没有覆盖发包人全流程派单与唤醒；native在途计数不能补足这些缺席范围。这是GOV-S0-I01及GOV-01/03/05/08/09的未闭合产品问题，不新增监督台账。
+
+已发生的角色越界未被及时阻断：上段根的迁移、归集和维护操作真实执行后，才由用户再次纠正。另用户指出idle worker仅收到send_message而未被唤醒，形成准备/协调空转；现有协作工具合同也明确send_message不启动新turn，followup_task才可触发idle agent。通知送达不得当作dispatch成功、acknowledged或running。此处不补造未留存的idle起止时间；本次即时agent列表均running，不能拿当前快照否认此前偏差，更不能把调查agent在工作算作产品作者。
+
+| 既有owner | 最小修复与必须保留的反例 |
+|---|---|
+| A/C | 核监督证据的准确actor、独立性、scope、候选和适用前置；不能用T计划意见/旧PASS替代集成者或发包人操作监督。反例：有native进程但scope不覆盖、监督缺席/过期、修复者自签均不得满足相应前置；接收仍消费原始意见和读取证据。 |
+| D | 派包同时绑定实现actor、维护写集、监督触发/恢复义务及证据；行政/TEMP/现成命令不豁免执行者。反例：把迁移/归集/行为修补标“准备”后派给集成者必须拒绝；准确R1维护修复可走既有受限恢复流程，不混入T包。 |
+| S | 在同一Store保存监督待办、覆盖范围/有效性、actor职责及握手状态；派发与状态发布的同一检查点核适用监督前置。反例：监督unknown不能投影通过，已发通知无响应不能投影running，旧监督票不能覆盖新操作；无第二状态库。 |
+| X | 消费S的准确准入/握手及runtime启动能力，区分通知、唤醒请求、实际启动和原生身份；按已绑定运行时入口触发idle执行者，不硬编码宿主工具名。反例：send成功但worker仍idle须保留未启动并触发对账/具名恢复；重放不能重复启动；监督缺席时不得越过受影响新dispatch门禁。 |
+| R1 | PATH-MOVE-GOV-01及项目受管目录维护由真实CodeBuddy执行；保留源/WIP/占用unknown、失败诊断及原引用，不让根重试。反例：目标冲突、源在写/状态漂移、Permission denied未知不得强复制删原或改权限；新路径必须重新绑定。 |
+
+当前人工执行边界与后继产品验收分开：根停止维护执行，只对账/集成/准入；发包人保持唯一启动责任。缺少适用有效监督前置的新dispatch保持awaiting_review，不因存在某个native进程而放行；不依赖该前置的工作仍可继续。T计划调用已按原准确许可安全收尾；未来获准调用仍由发包人看护，保持其准确480/540/600时点和8MiB，不改冻结输入、不重置预算、不为补监督而重复启动；未知终态/缺有效意见不得解锁下游。监督调查者不接管其进程、不替native签票。
+
+修复通道不能循环自批准，也不能要求机制缺陷先关闭才允许修复：先由D对应派包职责给出准确受限修复范围、执行者、已有入口和验收；沿原bootstrap权限安排可用且独立的具名监督作该范围恢复评估，原有效双席证据只在相同适用范围内复用。根仅在真实独立意见支持及其余条件满足后签准确许可；普通调查者不自动升级为监督替补，修复者不能批准自己。若缺具权独立席，保持该新写动作awaiting_review并明确补位owner，不由根亲写绕过。修后仍须准确版本的双席/native复核、产品失败/恢复反例和本项目真实消费，不能用本状态更新关闭GOV缺口或扩大T当前准入。
 
 ### M/T准确设计审核准备
 
@@ -41,6 +100,8 @@
 
 本轮双席运行原件54文件已逐文件SHA校等复制到`D:/project/agent-coop/coordination/.runtime/evidence/governance-enforcement-20261011/flow-design-r1`，其source-map.json保原路径和摘要，旧副本未删、历史调用路径未改。两独核报告在该目录各席的independent-verification.json，标明行政原流核验而非模型批准；此副本归集不等异机备份或清理许可。旧T/M草稿及已用D:/acf材料保持历史，不再用其路径创建新调用。
 
+治理树迁移待处理PATH-MOVE-GOV-01（执行owner：R1维护工作包的实际CodeBuddy + deepseek-v4-pro；派发owner：dispatcher_next；根仅对账/集成/准入）：根在4cdc191且当时clean后尝试git worktree move迁往项目受管governance/workspace，被Windows拒绝Permission denied。Git仍登记`D:/project/agent-coop-governance`及4cdc191，源目录保留，目标仅有新create_root基础目录而无workspace；之后result状态修改使源不再clean，不能沿用旧快照。只读调查未见路径reparse或ACL deny，源/目标父目录属性及DELETE访问句柄探测成功并关闭；缺可用占用工具，具体失败原因仍unknown，不能将未发现命令行引用当无占用。根不再重试、改权限或强复制删原；唯一发包人把准确失败、当前WIP、已有Git迁移入口与验证交回R1维护工作包，执行前重新核源状态/占用/目标，交付后独立核HEAD、注册、忽略原件及旧引用保留。不新增平行台账，不以本项未解阻断T准确根或扩大本T准入；治理树仍未迁移成功。
+
 ### 本次准确只读恢复准入
 
 [恢复候选说明](bounded-recovery-admission.md)保留准备状态原件；本段与`D:/ac-repair-bounded/evidence/native/activated-review.json`构成本次实际限定签发，activation SHA `0d258aa07b84daca716441cdfc35f1ff4e1a5befef6afb0d7e576676fc392b0d`。仅一次fresh只读native，不准作者、重试、resume或产品B1。绑定native PREPARATION `19dfd0c3f570784ef309ac68b09e917fede91b9bd038f7e11e53b401c998e7bd`、plan `c7d5680df6326e3729ce83f63964b2191cfef94341e3fc9f848ad2b9070a0d7a`、prompt `a627dd7976658c162ed2899a1b87e5e538ac9f02f9b959913d31ca3fbe6a0012`；作者PREPARATION `8622c60e546722f0018c6343743fc26c62afd7219a407ee6b053d925b14fbcf2`仍prepared。
@@ -57,6 +118,12 @@
 
 流水线文档交叉审核已修正：D真实依赖准入、不可变组合树锁外验证、暂停/启动许可竞态、公平队列及逻辑动作与attempt幂等边界。独立审查支持将提案交接到准确schema修订；这是Codex技术调查意见，不是GLM/Kimi或native正式票。文档检查566个本地链接、62个验收ID无失败；当前没有流水线新增实现或回归通过结论。
 ## 历史检查点与未决责任证据
+
+从当前入口移入的已完成准备事实（不当本轮在途或许可）：
+
+- 本次宿主唤醒推进了无模型实证：2026-10-11T09:01:25Z运行现有路径及run_bounded测试，15/15通过、无skip，20.032秒、exit0；准确原件`C:/Users/june/AppData/Local/Temp/agent-coop-runtime-existing-tests-20261011T090125Z/execution.json` SHA `a94446fc85b0b6b6e293bced6f23b0aae648815f55b73198a9158160c5f2767b`。源码未变，根回读完整命令和输出；不当产品关闭或作者调用证据。
+- dispatcher_next已用现有create_root创建`D:/ac-repair-bounded`，两份partial源码按原hash复制到workspace，无代码修补。作者草稿和只读native材料已冻结并独立核验：作者14块767行，native40块2593行；未获新作者准入。
+
 
 以下保留各检查点的原范围、实际结果及后继处置；“当时/启动时”的状态不替代上方当前人数及下一动作。GOV-01–09及GOV-S0-I01仍须产品实现、失败/恢复回归、本仓真实使用及独立关闭。
 - main保持`9a4855a39121f2483e1630082bc36533a2165a5e`。治理工作在`codex/governance-enforcement-20261011`；原用户工作树、`.workbuddy`及旧证据保留，本轮未合入main或push。
