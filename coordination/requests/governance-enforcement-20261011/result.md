@@ -7,7 +7,7 @@
 GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓真实使用和独立关闭。当前只完成调查、实施候选和两轮实际设计审核；没有产品修复完成，不以文档、临时看护或尾部PASS代替交付。
 
 - main保持`9a4855a39121f2483e1630082bc36533a2165a5e`。治理工作在`codex/governance-enforcement-20261011`；原用户工作树、`.workbuddy`及旧证据保留，本轮未合入main或push。
-- 原冻结S1候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`留在独立送审树和Git历史；当前后继正在修订[实施合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)、[分批派发计划](dispatch-sequence.md)：13包、4个完整接收批次，首批N1/A/R1/W四路，N2等待N1有效交付。五个首批作者树只完成隔离准备，没有作者运行。
+- 原冻结S1候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`留在独立送审树和Git历史；轮次与四项必修要求已于`9092a8b`提交，后继送审前仍在核准[实施合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)、[分批派发计划](dispatch-sequence.md)：13包、4个完整接收批次，首批N1/A/R1/W四路，N2等待N1有效交付。五个首批作者树只完成隔离准备，没有作者运行。
 - Codex负责调查、合同、证据、验证和集成；dispatcher_next唯一正式发包；实际CodeBuddy + deepseek-v4-pro实现/修复，CodeBuddy + GLM/Kimi独立交叉审核，native Kimi独立监督。默认执行容量4可配；Claude暂停。
 - 下一动作是审阅[S1最小修订提案](s1-correction-proposal.md)，处理读取计划派生、会话声明、严格final及看护身份回归。用户最新指示已取消固定轮次，原追加2票问题不再待答复；[范围补充](scope-amendment.md)保留原话，[当前路线](../../../docs/roadmap.md)维护有效团队约束。旧52/54总次数不是新的隐藏上限；实际消耗保留，单次运行与资源约束继续执行。下一轮四项必达为漏读、无效审核输出、看护漏管及策略自读缺口；需要有效双席意见和native监督后才派作者。
 

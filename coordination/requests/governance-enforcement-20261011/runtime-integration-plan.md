@@ -30,7 +30,7 @@
 
 ### 2.1 共同原生观察
 
-`adapters.observe_native(adapter, raw_bytes) -> NativeTrace` 是公开消费入口。内部实现可由具名 `native_events.py` 承接，两者不能各写一套解析器。Trace至少提供实际model/session、terminal、final_text、配对工具记录、事件序号、原始SHA和violations；配对记录保留call_id、name、input、result、显式错误状态。读取内容不因模型自述而补齐。N1保留整个final_text；S1 GLM/Kimi协议success但散文+JSON由B严格拒绝，不截尾提取对象，读取1–16不得冒称满足1–18。fresh原生未请求session时invocation.requested_session_id为null，实际非空身份仍从raw取得，B/A核请求及独立性，禁止倒填。
+`adapters.observe_native(adapter, raw_bytes) -> NativeTrace` 是公开消费入口。内部实现可由具名 `native_events.py` 承接，两者不能各写一套解析器。Trace至少提供实际model/session、terminal、final_text、配对工具记录、事件序号、原始SHA和violations；配对记录保留call_id、name、input、result、显式错误状态。读取内容不因模型自述而补齐。N1保留整个final_text；S1 GLM/Kimi协议success但散文+JSON由B严格拒绝，不截尾提取对象，读取1–16不得冒称满足1–18。fresh原生未请求session时invocation.requested_session_id为null，实际非空身份仍从raw取得，B/A核请求及独立性，禁止倒填。invocation/2新增execution_invocation及prompt两个ArtifactRef；C严格装载既有实际argv原件与完整prompt，按合同白名单映射成launch_evidence传B，不读latest、不猜capability.source_ref或把规范null自述当证据。R2/D沿同一runtime证据出口记录并绑定，现有native无argv旧原件不能证明fresh；原件额外字段不授予权限，报告不展开秘密。
 
 旧 `adapters.parse(profile, stdout, session_id)` 从同一Trace生成既有receipt，并保持产品result格式；B `observe_development` 从Trace做artifact路径/正文/范围/投影匹配及治理final检查。共享层不理解治理角色、condition_id或政策PASS。实际退出码由runtime持有，不从JSONL自报补成0；无退出码的Trace只能表达协议终态。
 
@@ -38,7 +38,7 @@ CodeBuddy必须拒绝矛盾init、重复/未知/悬挂工具、错误次序、�
 
 ### 2.2 材料预检
 
-`assess_development(requirements, artifacts, dialect, budgets) -> ReadinessReport` 为纯函数，owner为 `development_preflight.py`。输入artifacts复用C装载的准确path/bytes；每席独立计算，不把三席材料合成一个已读集合。输出包含明确阻断、未知、每席数据量、最长必读行、估算token、建议区间、块数和轮数下界/假设，以及合同§6.1定义的规范read_plan。F由固定required_evidence、准确源和dialect派生分片；C公开只读prepare_development_read_plan装载与调用F，D唯一renderer消费同一计划，不再手写必读表。真实源18/计划18/prompt16必须启动前拒绝，源变动须重算全部派生；B继续核实际Read正文。
+`assess_development(requirements, artifacts, dialect, budgets) -> ReadinessReport` 为纯函数，owner为 `development_preflight.py`。输入artifacts复用C装载的准确path/bytes；每席独立计算，不把三席材料合成一个已读集合。输出包含明确阻断、未知、每席数据量、最长必读行、估算token、建议区间、块数和轮数下界/假设，以及合同§6.1定义的规范read_plan。F由固定required_evidence、准确源和dialect派生分片；C公开只读prepare_development_read_plan装载与调用F，D唯一renderer消费同一计划，不再手写必读表。所有角色正文唯一取policy.role_bindings的stage→body映射；author_bindings不保留第二份body引用。reviewer准备允许未来意见/bundle缺席但不产生eligible，supervisor准备必须先核有效reviewers及完整bundle；正式门禁不变。真实源18/计划18/prompt16必须启动前拒绝，源变动须重算全部派生；B继续核实际Read正文。
 
 dialect由受审adapter/runtime摘要绑定能力参数；不得由caller任选更宽阈值。按implementation-contract §6.1，`development_dialect.implementation_file`独立定位实际方言文件，R2启动前实测它及原executable/entry/适用agent_file；claim.runtime_digest按合同规定的四项摘要计算。CodeBuddy的Node、CLI entry和headless dist不同，不能互相代替或擅自改启动entry。复用B的源/投影等价接口，预检不另造投影。超过已知单行上限、必读范围无法表示、摘要不符、缺必需原件均在启动前拒绝。请求20 turn仍固定；每响应5–8个Read、模型速度与推理余量不是硬保证，必须明确假设，不能据此宣布必定完成。检查包含为最终结构化交付预留的预算，不能把全部轮数都分给读取。
 

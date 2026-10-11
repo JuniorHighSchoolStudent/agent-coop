@@ -19,7 +19,7 @@
 
 只新增必要的v2协议：`development-review-policy/2`、`development_audit/2`、`development-invocation/2`、`development-final/2`、`development-observation/2`、`development-report/2`；原`development-delivery/1`继续承接。report在旧字段外增加batch_id/evidence_bundle_digest（无监督时null），B新增字段见下文。未列变化的字段、精确类型、摘要算法和拒绝未知字段规则仍依旧合同。v1原件只能作为历史证据或旧scope回放输入，不能静默升级成满足新监督不变量；不要求补造历史v2 final。
 
-v2的role_bindings另增加`profile_artifact_id`（manual为null），指向当前subject内已审profile文件；实际动作必须消费该准确文件/hash，不能只比adapter/model名。profile依现有配置/权限schema，新增dialect定位见第6节。policy没有新增关闭监督最低要求或partial_accept的开关。
+v2的role_bindings另增加`profile_artifact_id`（manual为null）与`prompt_body_artifact_ids`（stage→artifact ID，stage仅plan/dispatch/accept）；前者指向当前subject内已审profile文件，后者是所有作者/审核/监督已审正文的唯一定位。任何拟准备或调用的role/stage必须有非空body ID且其准确文件/hash在subject.artifacts，不从artifacts枚举或文件名猜选；manual不调用模型时映射为空。实际动作必须消费该准确文件/hash，不能只比adapter/model名。profile依现有配置/权限schema，新增dialect定位见第6节。policy没有新增关闭监督最低要求或partial_accept的开关。
 
 策略修订由旧授权规则受审，不能由待审policy自行授予放宽权限。后继policy继续逐值承接有效原条件；本次[scope-amendment](scope-amendment.md)所记录的用户指令只具名替代固定审核/修复/自动attempt次数限制。新policy.authority_refs必须pin该用户指令及准确旧规则，送审材料逐项列旧条件来源、被替代文本和新语义；旧原件保留，新request.conditions完整对应新受审policy，不能让已失效次数条件继续阻断。A按独立批准的新policy与条件摘要核验，不解释自然语言自行override；用户指令不能被扩大为豁免作者final、必读、准确版本、独立性或看护。双席与native须核这条授权链及差异，模型/集成者无自签放宽入口。分组read_coverage只合并同角色同阶段的机器条件，不删其required_evidence，各条仍全部AND。request.conditions始终保留完整policy列表，不能因为当前阶段不claim历史义务而删条件。
 
@@ -42,7 +42,7 @@ v2的role_bindings另增加`profile_artifact_id`（manual为null），指向当�
 
 ### 3.1 证据包最小schema
 
-`development_audit/2`在原字段外新增`supervision_bundles`，为stage→bundle artifact ID的映射；只允许plan/accept。没有监督的阶段不要求包，含监督和必需reviewer的阶段必须有且只有一个被当前索引显式选择的包。该包是本次输入原件，不是状态库。原artifacts.kind增加`review_bundle`；可读票据/coverage仍为projection。
+`development_audit/2`在原字段外新增`supervision_bundles`，为stage→bundle artifact ID的映射；只允许plan/accept。没有监督的阶段不要求包，正式阶段判定中，含监督和必需reviewer的阶段必须有且只有一个被当前索引显式选择的包。第6.1节仅生成本阶段reviewer读取计划的准备态允许未来包尚不存在；该准备态不能进入正式eligible/动作接收。该包是本次输入原件，不是状态库。原artifacts.kind增加`review_bundle`；可读票据/coverage仍为projection。
 
 `development-review-bundle/1`准确字段如下，未知字段拒绝：
 
@@ -54,7 +54,7 @@ v2的role_bindings另增加`profile_artifact_id`（manual为null），指向当�
 
 包本体不含自身digest；`bundle_digest`是其严格canonical JSON摘要。raw/invocation指向该role该阶段同subject的已完成原件；final/coverage指向第4节产品确定性投影。C重新读取并重算，不信任包内用户填的通过结论。每个当前阶段/角色只选择一个有效attempt；被替代attempt留在历史索引，不能混入当前有效票。包不含监督自身attempt/final、最终DevelopmentReport、可变result，也不递归引用其他监督包。
 
-`development-invocation/2`和`development-final/2`各新增`evidence_bundle_digest`：监督为准确bundle_digest，其余角色为null。A核二者相等且等于C重算值；监督raw中的实际Read须覆盖包、每席final投影及coverage投影，不能只读bundle清单。这里是独立于subject的附加证据绑定，允许所有人审核同一个候选又避免future-vote/self-reference循环。
+`development-invocation/2`在旧精确字段之外新增`execution_invocation`与`prompt`（均为ArtifactRef，分别指实际启动原件和完整prompt原字节），并与`development-final/2`各新增`evidence_bundle_digest`：监督为准确bundle_digest，其余角色为null。A核二者相等且等于C重算值；监督raw中的实际Read须覆盖包、每席final投影及coverage投影，不能只读bundle清单。这里是独立于subject的附加证据绑定，允许所有人审核同一个候选又避免future-vote/self-reference循环。
 
 监督的内置required_evidence由C根据固定policy角色及重算包派生，再由A检查其完备；不得只依赖policy实例手工列出。其artifact/hash来自已完成同subject attempt及重算投影，不套用旧合同“source_sha256=null只能来自subject”的候选源规则；该例外仅适用于上述内置监督依赖，不能用于任意附件。policy原有required_evidence的hash规则不变。
 
@@ -94,7 +94,7 @@ C包受审后可以由受权发包人直接调用上述公开API构造真实监�
 |---|---|
 | RuntimeAdapter：`adapters.observe_native(adapter, raw_bytes)` | 输出NativeTrace：adapter、actual_model、actual_session_id、terminal（success/failed/unknown）、final_text、final_event_ordinal、paired_tools、violations、raw_sha256。paired_tools每项含call_id/name/input/result/is_error/call_event_ordinal/result_event_ordinal；缺少结果保留null和违规，is_error未知为null。只解释真实协议与事件顺序，不解释development-final/业务PASS |
 | 旧`adapters.parse(profile, stdout, session_id)` | 必须消费同一NativeTrace，核profile工具/身份并解析现有业务结果；不得保留另一套“取最后result即可成功”的序列判据。Runtime实际exit码仍由runtime核，Trace的terminal只是协议终态 |
-| B：`observe_development(trace, invocation, requirements, artifacts)` | v2改变首参数，直接消费NativeTrace；requirements仍为evidence/projection_rules，artifacts仍为ID→{path,bytes}。输出DevelopmentObservation，承接原NativeObservation字段，另含role_id/stage/subject_digest/policy_digest、final_text/final_event_ordinal及第4节coverage定位字段；核实际Read内容、治理final和进程退出，不重解析provider序列 |
+| B：`observe_development(trace, invocation, requirements, artifacts, launch_evidence)` | v2改变首参数，直接消费NativeTrace；requirements仍为evidence/projection_rules，artifacts仍为ID→{path,bytes}。launch_evidence由C按下述固定映射提供，B纯核实际argv/prompt/请求身份关系。输出DevelopmentObservation，承接原NativeObservation字段，另含role_id/stage/subject_digest/policy_digest、final_text/final_event_ordinal及第4节coverage定位字段；核实际Read内容、治理final和进程退出，不重解析provider序列 |
 | B：`render_review_evidence(observation, representation)` | 只渲染第4节确定性原票/覆盖证据，不加载文件、不决定准入、不提供人工可编辑PASS |
 | A：`evaluate_development(stage, policy, request, observations)` | 延续纯schema/阶段/身份/条件判定；request envelope保留index/declarations/prior_results/policy_digest，增加supervision_bundle（C重算的包或null）。observations为attempt_id→B结果；A独立检查最低监督集合、摘要、final声明与覆盖，不只相信C已检查标志 |
 | A：`evaluate_review_evidence(stage, policy, request, observations)` | 供证据准备使用，复用同一schema/版本/作者交付及必需reviewer判据；尚无supervisor是此准备步骤允许的唯一未完成后继。返回`{decision:ready|blocked|invalid, findings}`，ready仅表示可生成监督输入，绝不等于plan/accept eligible，也不供Store动作授权 |
@@ -103,6 +103,17 @@ C包受审后可以由受权发包人直接调用上述公开API构造真实监�
 共享观察需先严格JSONL验证，再复用既有_events；本轮只有一个原生序列owner。必须识别调用/返回配对、冲突身份、失败或重复final、final后新assistant/tool、未完成工具；Kimi最终assistant后仅允许已观测的meta/session.resume_hint白名单。缺能力保持unknown，不从init工具目录推断实际调用成功。工具本身失败可作为负例证据，但失败Read不贡献覆盖。
 
 必要消费者合同测试包括旧sample parse、治理B和原生真实fixture：同一个坏序列两条消费者均拒绝，同一个合法序列两者对身份/工具次序一致；治理final schema不强加给旧sample业务final。B仍须核True/1/1.0、长行截断、错误路径、角色独立覆盖和经审定等价投影。
+
+启动证据复用既有wrapper的execution invocation，不另造进程协议或把规范invocation自述当事实。新增两个ArtifactRef须存在于当前index.artifacts并核准确字节hash；它们属于attempt证据，不进入subject.artifacts（完整prompt含subject，不能反向自引用）。C严格JSON解码execution原件，并加载准确UTF-8 prompt；不得沿可变latest或capabilities.source_ref猜出处。C传B的内存`launch_evidence`准确字段为`execution_sha256`、`cwd`、`candidate`、`argv`（string列表，保持原顺序/字节文本）、`prompt_path`、`prompt_sha256`、`prompt_bytes`、`requested_session`、`requested_resume`；后两者为string或null，只由下列原件字段映射。C核两引用/hash、规范路径与prompt_path一致，且cwd/candidate分别匹配该attempt受审profile根和受派subject的commit、argv入口匹配准确profile.entry；不能将别的候选启动原件借给本次。B核请求与argv、完整prompt内容及同invocation的身份关系，缺件/未知映射/矛盾均invalid或unknown而不满足要求。
+
+| C受支持窄映射 | 准确来源与B交叉核验 |
+|---|---|
+| CodeBuddy现有execution原件 | `root→cwd`、`candidate`、`actual_argv→argv`、`prompt→prompt_path`、`prompt_sha256`、`requested_session`、`resume→requested_resume`（空字符串规范为null）。B核唯一`-p`参数后的完整文本等于prompt_bytes严格UTF-8解码结果；fresh的唯一`--session-id`必须与requested_session及规范requested_session_id一致；恢复选择器只有经准确原件/已审方言证明才接受，不能从resume自述推断 |
+| native Kimi现有execution原件 | 同样取root/candidate/actual_argv/prompt/prompt_sha256，`requested_resume→requested_resume`，requested_session置null表示该原件没有此字段。B核唯一`--prompt`完整文本等于prompt原文；fresh应无`--session`/恢复选择器且requested_resume为空/null，有实际agent-file参数；resume的`--session`值必须与requested_resume及规范requested_session_id相同。`session='unknown until actual resume_hint'`只是旧占位，绝不能映射为actual或有效请求 |
+
+仅以上已核形态被支持；参数选择器重复、冲突、缺值或不受支持形式拒绝，不能猜“最后一个生效”。实际raw才是actual身份来源。外层execution ArtifactRef SHA是原件完整性权威；旧actual_argv_sha256及argv_hash_encoding保留在原件供定位，当前不把不同PowerShell序列化算法当统一canonical摘要，也不声称验证未实现的内部编码。B逐元素核实际argv，不由旧内部hash单独证明它。C/B只消费上述白名单字段，额外原件metadata不授予权限；治理invocation自身仍拒未知字段。原件可信生产仍归实际wrapper/runtime观察，离线checker不声称认证OS进程。
+
+已核实据为S1 `review-governance-s1-glm-r1.invocation.json`与旧`supervision-product-permission-final.invocation.json`；后者是resume实例，fresh仅静态核`run-supervision-g1.ps1`分支，不冒称已有fresh成功样本。旧native原件若无actual_argv，只能历史展示，不能作为fresh/null充分证据。R2开发执行沿同一runtime证据出口记录上述最小启动事实，D将原件/完整prompt引用绑定到治理invocation，不建新台账；日志、报告不展开完整argv/prompt/env或敏感内容，仅给获准路径/hash与差异定位。回归必须覆盖丢引用、换prompt且重填自述hash、argv缺session但规范非null、native占位倒填、重复selector、旧无argv原件及准确fresh/resume恢复例。
 
 `development-invocation/2.requested_session_id`明确为非空字符串或null。有显式原生请求时actual必须相等；null仅表示经实际argv证明本次fresh调用没有请求session ID，不表示actual可缺失或runtime普遍不支持预选。N1从原生raw取得非空无冲突actual，B核请求语义，A核独立性/excluded；禁止用actual事后倒填requested，调度attempt/session标识不能冒充原生实际session。恢复调用仍核其准确请求目标。
 
@@ -136,7 +147,7 @@ dialect是准确profile引用的已审配置：`schema=development-dialect/1`、
 
 重复要求可按同一席同一准确artifact/range合并读取计划，但不能跨席合并或删除义务。已知长行截断、无法表达必读内容、确定超硬限制须blocked；无法估算的关键项标unknown并交受权入口，不能默认为足够。估算不保证完成，不把CLI num_turns当max_turns，不把工具调用数当模型轮次。恢复只能通过受审的范围/等价表示/预算调整并重算，不自动缩减required或加模型调用。
 
-C新增只读公开API `prepare_development_read_plan(stage, role_id, index_path, policy_path, policy_sha256)`：严格装载/核pin、当前policy必读不变量和准确源，调用F，返回ReadinessReport。只允许尚待本阶段意见的准备态，不把该输出当阶段eligible；源/schema/pin缺陷仍拒绝，不写index或Store。D消费此read_plan生成prompt；C/F均不生成另一份prompt。源从16增至18时旧计划失效，源18/计划18/prompt16虽各自hash正确仍须拒绝。此接口供真实计划审核材料准备及后继开发动作共用，不另建脚本。
+C新增只读公开API `prepare_development_read_plan(stage, role_id, index_path, policy_path, policy_sha256)`：严格装载/核pin、当前policy必读不变量和准确源，调用F，返回ReadinessReport。准备结果只表示材料readiness，不是阶段eligible。reviewer准备允许本阶段尚未产生的reviewer/监督意见及未来supervision bundle缺席；不允许缺其要读的源、accept必需作者交付或上游准入。supervisor准备必须先按evaluate_review_evidence核全部必需reviewer有效，并由C重算完整bundle及投影，只允许该supervisor自身最终意见尚不存在。author dispatch准备核有效prior plan，允许该作者未来final缺席。所有角色均严格核源/schema/pin，不能以准备态忽略其他缺陷；不写index或Store。D消费此read_plan生成prompt；C/F均不生成另一份prompt。源从16增至18时旧计划失效，源18/计划18/prompt16虽各自hash正确仍须拒绝。此接口供真实计划审核材料准备及后继开发动作共用，不另建脚本。
 
 ### 6.2 执行、看护与状态
 
@@ -188,15 +199,17 @@ runtime通过受控`on_created(process_identity)`回调执行上述Store记录�
 
 bootstrap_acceptance_refs只允许本请求产品Store尚未可用时、作者/双席/监督全部有效且已具名接收的早期批次原件；缺作者final的旧B27等历史例外不符合导入条件。该列表在初始化时固定；Store可用后的新批必须使用正式产品接收，不借bootstrap入口减掉门禁。S提供`Store.import_bootstrap_acceptance(expected_revision, verified_admission)`的CAS写入，D仅在第6.0节重算和pin检查后调用，不直接改data。
 
-每批plan的subject必须包含固定ID`batch-config`及准确字节hash，profile文件和prompt body亦在该subject.artifacts中。`development-batch-config/1`准确字段：schema、request_id、batch_id、model_call_limit（非负int或null，语义同上）、author_bindings（package_id映射）；每个binding含prompt_body_artifact_id/profile_artifact_id/cwd/account_group_id/extra_resource_keys（非空字符串的去重列表，可空）。package集合来自同批受审index，不在config再维护另一份；binding必须恰好覆盖这些包，account_group_id必须存在全局config，cwd必须等于该profile.permissions.root并落在本包已准备工作树，不能从action临时替换。
+每批plan的subject必须包含固定ID`batch-config`及准确字节hash，profile文件和prompt body亦在该subject.artifacts中。`development-batch-config/1`准确字段：schema、request_id、batch_id、model_call_limit（非负int或null，语义同上）、author_bindings（package_id映射）；每个binding含profile_artifact_id/cwd/account_group_id/extra_resource_keys（非空字符串的去重列表，可空）。package集合来自同批受审index，不在config再维护另一份；binding必须恰好覆盖这些包，account_group_id必须存在全局config，cwd必须等于该profile.permissions.root并落在本包已准备工作树，不能从action临时替换。
 
 D公开`register_development_batch(store, plan_index_path, policy_path, policy_sha256, expected_revision)`，从已完成的准确plan装载batch-config并调用C验证；S的`Store.register_development_batch(expected_revision, batch_config, plan_admission)`核同request、唯一batch ID及批准关联，追加不可变配置与摘要到同一Store的data.development，不改全局config。plan_admission包含准确plan subject/index/policy与必需票据引用；batch-config本体不含未来plan票或index hash，避免自引用。重复同摘要幂等，不同摘要拒绝。后续claim必须与已注册batch_config_digest完全相同。
 
 profile定义真实可执行入口、模型、工具、环境、精确permissions与单次预算；batch-config只把包绑定到该profile/cwd/账户组，不能再覆写。D根据已审package.allowed_paths与cwd规范化并核对profile.permissions.write_files逐值相等，然后派生强制排他资源`file:<规范绝对写路径>`；再加入受审extra_resource_keys。账户组容量单独消耗，不能把它当全组互斥锁导致4并行退化为1。Store只接受与已注册包推导结果相同的resource_keys，不接受caller删掉冲突路径。读者无需占作者排他写锁，具体读写协调沿受审包依赖。
 
-prompt正文来源唯一为已审prompt_body_artifact_id的UTF-8 bytes，不手工维护第二份必读表；D纯函数改为`render_development_prompt(body_bytes, context, read_plan)`。输出固定为一行canonical JSON context、两个换行、规范read_plan JSON（sort_keys=True/indent=2/ensure_ascii=False/allow_nan=False）、两个换行、原body bytes。context准确含schema=development-prompt-context/1、request_id、batch_id、package_id（非作者为null）、role_id、stage（plan/dispatch/accept）、subject_digest、policy_digest、evidence_bundle_digest（监督为准确bundle，其余null）。read_plan来自C/F本角色本阶段重算结果；body不得再含独立维护的必读范围表。与旧renderer相比，这是明确接口变化，原prompt不能默默沿用。
+此次候选从author_bindings删除prompt_body_artifact_id，所有角色统一由policy.role_bindings[role_id].prompt_body_artifact_ids[stage]定位；作者profile重复引用须与policy同值，不能形成两份可不同的权限来源。此为明确schema修订，旧含author body字段的batch-config不得静默当新候选通过。
 
-body不含自己的最终hash或可变候选摘要；实际完整prompt在动作前沿请求证据出口冻结并由action/invocation绑定，D从准确context/read_plan/body重算逐字节一致性。源变化、计划漏项、旧source hash或实际prompt范围缺17–18均启动前阻断。生成表不证明实际读取，B仍逐席重算Read正文。D是唯一渲染owner；C只装载/核证据并提供F计划，A/B比较实际绑定/覆盖，不另生prompt。bootstrap尚无产品时明确人工准备并独立反向核表；产品可用后的下一适用审核及B4作者实际消费该能力。
+prompt正文来源唯一为上述role/stage映射的UTF-8 bytes，不手工维护第二份必读表；D纯函数改为`render_development_prompt(body_bytes, context, read_plan)`。输出固定为一行canonical JSON context、两个换行、规范read_plan JSON（sort_keys=True/indent=2/ensure_ascii=False/allow_nan=False）、两个换行、原body bytes。context准确含schema=development-prompt-context/1、request_id、batch_id、package_id（非作者为null）、role_id、stage（plan/dispatch/accept）、subject_digest、policy_digest、evidence_bundle_digest（监督为准确bundle，其余null）。read_plan来自C/F本角色本阶段重算结果；body不得再含独立维护的必读范围表。与旧renderer相比，这是明确接口变化，原prompt不能默默沿用。
+
+body不含自己的最终hash或可变候选摘要；实际完整prompt在动作前沿请求证据出口冻结并由action/invocation绑定，D从准确context/read_plan/body重算逐字节一致性。源变化、计划漏项、旧source hash或实际prompt范围缺17–18均启动前阻断。生成表不证明实际读取，B仍逐席重算Read正文。D是唯一渲染owner；C只装载/核证据并提供F计划及launch_evidence，A/B比较实际绑定/覆盖，不另生prompt。bootstrap尚无产品时明确人工准备并独立反向核表；产品可用后的下一适用审核及B4作者实际消费该能力。
 
 ## 7. 分阶段接口依赖与规模
 
