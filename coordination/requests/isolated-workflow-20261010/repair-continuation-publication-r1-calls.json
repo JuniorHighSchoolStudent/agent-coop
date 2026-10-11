@@ -1,0 +1,394 @@
+{
+  "candidate": "632345652dada9a642ad89a90a51a918797c8f4b",
+  "administrative_commit": "a07868e35fe41bc43d612932687d216589704a57",
+  "actual_model": "deepseek-v4-pro",
+  "actual_session": "agent-coop-continuation-fix-publication-20261011",
+  "raw_sha256": "8527deb6a91631554ae5828535763c2e38a609f850d2321d31936843deb4dacf",
+  "receipt_sha256": "f2390ee0e9ca7d96b6089901d82a6d76be69733a4b1a26af85b5445ddd6d582b",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-continuation-fix-publication",
+    "candidate": "632345652dada9a642ad89a90a51a918797c8f4b",
+    "model": "deepseek-v4-pro",
+    "seat": "p1",
+    "requested_session": "agent-coop-continuation-fix-publication-20261011",
+    "resume": "",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\fix-publication.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "a3cb5ad4855e76d6bda5d32a1307e548914cd2089a51003d63744c0da33f83c1",
+    "started_at": "2026-10-11T00:11:01.6754465+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep,Write,Edit",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "package": "finding-fix-publication",
+      "seat": "p1",
+      "root": "D:/project/agent-coop-continuation-fix-publication",
+      "candidate": "632345652dada9a642ad89a90a51a918797c8f4b",
+      "administrative_evidence": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+      "session": "agent-coop-continuation-fix-publication-20261011",
+      "model": "deepseek-v4-pro",
+      "write_files": [
+        "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py"
+      ],
+      "existing_files": [
+        {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py",
+          "sha256": "163973bada848297dee629ba058aef0b0f0fc11833ac93302100dcc913e77999"
+        }
+      ],
+      "originals": [
+        {
+          "name": "continuation-plan-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "651d36555e0bfd3ba47cf41f530603d783b60b777a9d12f71a9f5e49d292bf30"
+        },
+        {
+          "name": "interface-log-invocations-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "27a8c7005edb21b3f3b58f2b45e8a8699d90a3ae9f70071ca8b6a982337cc8de"
+        },
+        {
+          "name": "permission-argv-amendment-20261011.md",
+          "source": "3d49adc11cb46c8228beb8f9fab27580f43b8a0d",
+          "sha256": "64f673b4d992a16357c589a2403a4dc31ea6f4b8d365354635149e43d1884058"
+        }
+      ],
+      "environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "calls": 1,
+        "max_turns": 20,
+        "wall_seconds": 600
+      },
+      "status": "admitted after dual confirmation and native plan supervision",
+      "permission": {
+        "mode": "dontAsk",
+        "setting_sources": "none",
+        "no_session_persistence": true,
+        "tools": "Read,Glob,Grep,Write,Edit",
+        "allow": [
+          "Read",
+          "Glob",
+          "Grep",
+          "Write(C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py)",
+          "Edit(C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py)"
+        ],
+        "deny": [
+          "Bash",
+          "PowerShell"
+        ],
+        "strict_mcp_empty": true
+      },
+      "limitations": [
+        "trusted host only",
+        "hooks/session/global memory unknown",
+        "T1 execution untested",
+        "no path alias guarantee; reparse ancestors checked before launch",
+        "not product adapter migration"
+      ],
+      "admitted_at": "2026-10-11T08:10:34.0186607+08:00",
+      "glm_confirmation_sha256": "cdc79452c8c536e0f1f44902317f5e39ee2160dbc31facb34ffffd9670bcc752",
+      "gate": "continuation-repair",
+      "supervision_receipt_sha256": "c761caab7fd2755f304f4e5e5c62597bda5e0e9c894e1ee332444c13b177a73a",
+      "prompt_sha256": "a3cb5ad4855e76d6bda5d32a1307e548914cd2089a51003d63744c0da33f83c1",
+      "runtime_version_preflight": {
+        "captured_utc": "2026-10-11T07:43:20.0547465+08:00",
+        "node_version": "v24.14.0",
+        "codebuddy_package_version": "2.164.0",
+        "files": [
+          {
+            "path": "C:/Program Files/nodejs/node.exe",
+            "sha256": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088"
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+            "sha256": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6"
+          },
+          {
+            "path": "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js",
+            "sha256": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65"
+          },
+          {
+            "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1",
+            "sha256": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed"
+          }
+        ],
+        "must_recheck_before_author_launch": true,
+        "enforcement": "dispatcher manual preflight, not wrapper automatic binary version enforcement",
+        "package_owner": {
+          "r-log": "P6 checks",
+          "r-publication": "P1 TEMP diagnostic",
+          "r-junction": "P2 test_runtime"
+        },
+        "legacy_seat_alias": {
+          "p3": "r-junction transport alias only, no P3 scope",
+          "p7": "r-log transport alias only, no P7 ownership transfer",
+          "p1": "r-publication"
+        }
+      },
+      "publication_outside_cwd_positive_geometry": "first author exact TEMP Write already observed success; no general extrapolation",
+      "round": "1",
+      "kimi_confirmation_sha256": "6e3b86bd12f7c621fd22025309899c4b8a0dadb38bfa5c7376fd861cf44dc725",
+      "administrative_commit": "a07868e35fe41bc43d612932687d216589704a57",
+      "role_identity": "finding-bound package+exact write_files",
+      "content_r1_glm_sha256": "a930dfee0e28f16ccc72ebab33fc57da02920f5e0ec2e5483af8fbc3f4e4cbb0",
+      "content_r1_kimi_sha256": "31093230dc613b38b654d938853193cdac79036f57d905f96a15ac05f93b5688",
+      "version_manual_rechecked_at": "2026-10-11T08:10:34.0186801+08:00",
+      "finding_kimi": "g1-kimi-B13",
+      "finding_glm": "g1-glm-B20",
+      "source_receipt_predecessor": "repair-continuation-author-p1-r1",
+      "current_path_checks": [
+        {
+          "path": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\publication-diagnostic-20261011\\diagnose_publication.py",
+          "reparse": false,
+          "attributes": "Archive"
+        },
+        {
+          "path": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\publication-diagnostic-20261011",
+          "reparse": false,
+          "attributes": "Directory"
+        },
+        {
+          "path": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010",
+          "reparse": false,
+          "attributes": "Directory"
+        },
+        {
+          "path": "C:\\Users\\june\\AppData\\Local\\Temp",
+          "reparse": false,
+          "attributes": "Directory, Archive"
+        },
+        {
+          "path": "C:\\Users\\june\\AppData\\Local",
+          "reparse": false,
+          "attributes": "Directory"
+        },
+        {
+          "path": "C:\\Users\\june\\AppData",
+          "reparse": false,
+          "attributes": "Directory"
+        },
+        {
+          "path": "C:\\Users\\june",
+          "reparse": false,
+          "attributes": "Directory"
+        },
+        {
+          "path": "C:\\Users",
+          "reparse": false,
+          "attributes": "ReadOnly, Directory"
+        },
+        {
+          "path": "C:\\",
+          "reparse": false,
+          "attributes": "Hidden, System, Directory, Archive"
+        }
+      ],
+      "launch_prefix": "repair-continuation-repair-p1-r1",
+      "existing_target_nlink": 1
+    },
+    "purpose": "repair",
+    "permission_mode": "dontAsk",
+    "exact_write_files": [
+      "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py"
+    ],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "你是真实CodeBuddy deepseek-v4-pro具名修复作者，产品基线632345652dada9a642ad89a90a51a918797c8f4b、行政a07868e35fe41bc43d612932687d216589704a57，独立cwd=D:/project/agent-coop-continuation-fix-publication，会话=agent-coop-continuation-fix-publication-20261011。只允许修改 C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py。先读AGENTS及原有实现，然后对照本任务明确finding修复，不得扩大范围。\n只修GLM B20/Kimi B13，唯一同一TEMP harness。先把所有原RunnerTests临时fixture锚定DIAG_DIR下任务TEMP（可临时设置tempfile.tempdir并finally还原）。每轮独立目录；失败必须保留原始fixture，包括setUp部分失败；不得复制失败后仍tearDown删原现场，不做复制重试。观测、emit/summary写失败与cleanup失败必须可见，记录diagnostic_degraded并独立非零退出fail-closed，同时保持被测返回/异常透明透传，无retry。保留原两个历史用例、最多30轮×2或120秒首失败停，明确内部截止与外部看护边界。finally恢复所有临时替换与tempdir；当前进程句柄计数范围不扩大，不查外部私有句柄，不改Store/Runner/测试。原始失败fixture不移动到任务外，输出仅此任务TEMP。规模软超限需说明具体函数内聚。你不得执行harness；修复后固定hash再经R2批准才允许根执行，历史根因unknown保持。\n仅Read/Glob/Grep/Write/Edit，每个Edit先Read；无Shell/子agent，不写memory/settings、不commit、不测试/不运行诊断。任何权限拒绝或身份漂移即停，不换工具绕过。最多20turn/600秒一次，不自动续调。根独立验证，原两席R2审核，不自审自签。最终说明真实改动、复用、具体规模/内聚、未测范围和风险，不把测试或执行自报为通过。",
+      "--model",
+      "deepseek-v4-pro",
+      "--session-id",
+      "agent-coop-continuation-fix-publication-20261011",
+      "--tools",
+      "Read,Glob,Grep,Write,Edit",
+      "--allowedTools",
+      "Read",
+      "Glob",
+      "Grep",
+      "Write(C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py)",
+      "Edit(C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py)",
+      "--disallowedTools",
+      "Bash",
+      "PowerShell",
+      "--permission-mode",
+      "dontAsk",
+      "--setting-sources",
+      "none",
+      "--no-session-persistence",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "d6e050d1d6b8f8750623a3c2652a6ebe863dcf34e18e5a34038ce618b31bc01d",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-continuation-fix-publication"
+  },
+  "completion": {
+    "candidate": "632345652dada9a642ad89a90a51a918797c8f4b",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T00:14:27.0130605+00:00",
+    "wall_seconds": 205.337614,
+    "final_head": "632345652dada9a642ad89a90a51a918797c8f4b",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "call_00_HFFhERPPMbmaCcGvW5BY2086",
+      "name": "Read",
+      "input": {
+        "file_path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py"
+      }
+    },
+    {
+      "id": "call_00_56JHV0bfDZRziYsMaRIG6825",
+      "name": "Grep",
+      "input": {
+        "pattern": "B20|B13",
+        "path": "D:/project/agent-coop-continuation-fix-publication/coordination",
+        "output_mode": "files_with_matches"
+      }
+    },
+    {
+      "id": "call_01_9STmGIWEOivQTu4zwdvR0926",
+      "name": "Grep",
+      "input": {
+        "pattern": "publication-diagnostic|diagnose_publication",
+        "path": "D:/project/agent-coop-continuation-fix-publication",
+        "output_mode": "files_with_matches"
+      }
+    },
+    {
+      "id": "call_00_KRRaoD5RF1VylBiDyBVu8869",
+      "name": "Grep",
+      "input": {
+        "pattern": "B20|B13",
+        "path": "D:/project/agent-coop-continuation-fix-publication/coordination/requests/isolated-workflow-20261010",
+        "output_mode": "content",
+        "-n": true,
+        "-C": 3
+      }
+    },
+    {
+      "id": "call_00_1YGxfWeVox6ioKiaKB4y7589",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-fix-publication/coordination/requests/isolated-workflow-20261010/continuation-dispatch-proposal-20261011.md"
+      }
+    },
+    {
+      "id": "call_00_7TIkCN3PgjfRtvYDUu5o8132",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-fix-publication/coordination/requests/isolated-workflow-20261010/result.md"
+      }
+    },
+    {
+      "id": "call_00_Htz4YSih9qU8SvWGTQOo8209",
+      "name": "Grep",
+      "input": {
+        "pattern": "B20|B13|B19",
+        "path": "D:/project/agent-coop-continuation-fix-publication/coordination/requests/isolated-workflow-20261010",
+        "output_mode": "files_with_matches"
+      }
+    },
+    {
+      "id": "call_01_K5ucQOxBperMQtiGgAQk9930",
+      "name": "Glob",
+      "input": {
+        "pattern": "coordination/requests/isolated-workflow-20261010/*"
+      }
+    },
+    {
+      "id": "call_00_A0LVvNHJJMzSsJiqiNxS9087",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-fix-publication/coordination/requests/isolated-workflow-20261010/integration-observations-continuation-r1.md"
+      }
+    },
+    {
+      "id": "call_01_tJj5h2vS1iapwql4QBkZ4078",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-fix-publication/coordination/requests/isolated-workflow-20261010/author-r-publication-20261011.txt"
+      }
+    },
+    {
+      "id": "call_00_GuSleoJMYGPDm1MspfKL6186",
+      "name": "Grep",
+      "input": {
+        "pattern": "g1-glm-B20|g1-kimi-B13|GLM B20|Kimi B13",
+        "path": "D:/project/agent-coop-continuation-fix-publication",
+        "output_mode": "content",
+        "-n": true
+      }
+    },
+    {
+      "id": "call_00_L68TpJWkxBH0Sz9ACqXO7475",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-fix-publication/tests/test_runner.py"
+      }
+    },
+    {
+      "id": "call_00_3y1I1C9YG4qQtv6XXxtS8144",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-continuation-fix-publication/coordination/requests/isolated-workflow-20261010/diagnostic-publication-candidate-r1.txt"
+      }
+    },
+    {
+      "id": "call_00_r50WIkJr5tRVZg0nKqyW2226",
+      "name": "Write",
+      "input": {
+        "file_path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py",
+        "content": "\"\"\"R-publication 有界诊断 harness（仅本 TEMP 文件，不改仓库产品/测试）。\n\n复用两个历史用例（tests.test_runner.RunnerTests）：\n- test_pause_persists_and_stops_after_current_step\n- test_run_publishes_projections\n\n观察当前 Python 进程发布阶段的 os.replace 前后：\n- 发布阶段：按目标文件名派生（STATUS / state.json / outbox/<rev>.json）\n- 源/目标属性：存在性、类型、大小、mtime/ctime、inode、NT file_attributes\n- 本进程句柄计数：ctypes GetProcessHandleCount（仅计数，不枚举句柄）\n- 失败时：exc_type / winerror / errno / strerror\n\n边界（与已审计划一致）：\n- 仅诊断，不改产品/测试；临时包装 os.replace 并临时设置 tempfile.tempdir，\n  finally 均恢复；不改变返回/异常/重试行为，观测代码自身绝不抛异常。\n- 所有原 RunnerTests 临时 fixture 锚定到本任务 TEMP（DIAG_DIR/task-temp）：\n  tempfile.tempdir 临时指向该目录，使 setUp 的 TemporaryDirectory 落在任务\n  目录内，finally 还原 tempfile.tempdir；每轮 setUp 各自独立 mkdtemp 子目录。\n- 失败（含 setUp 部分失败）原位保留原始 fixture：不复制、不调用 tearDown 删除\n  原现场、不重试，并 detach TemporaryDirectory 终结器防止 GC/退出时清理；\n  原始 fixture 不移出任务目录，输出仅此任务 TEMP。\n- 观测/emit/summary 写失败、cleanup 失败均记录 diagnostic_degraded，最终独立\n  非零退出 fail-closed；被测返回/异常仍透明透传，观测层不加重试、不吞被测异常。\n- 首失败或超限即停：最多 MAX_ROUNDS 轮 x 2 用例，或 WALL_LIMIT_SECONDS 秒墙钟。\n  WALL_LIMIT_SECONDS 是内部循环截止（仅在用例之间检查，不硬中断单个用例）；\n  外部有界进程看护由发包人按 PID/创建时间终止进程树负责，与内部截止分开。\n- 不枚举其他进程私有句柄、不装驱动、不改系统安全设置。\n- 未复现保持历史根因 unknown，本文件不宣称根因。\n\n运行：python diagnose_publication.py <repo_root>\n输出写于本文件同目录（DIAG_DIR）：\n- diagnose_publication-output.jsonl（逐事件）\n- diagnose_publication-summary.json（最终摘要，含 diagnostic_degraded）\n- task-temp/（每轮 fixture；失败 fixture 原位保留于其内）\n\n规模说明（软目标 40 行、硬上限 80 行，均未超硬上限）：\n- _observed_replace（约 43 行）：单一职责 = 包装一次 os.replace 并采集发布阶段\n  前后证据；before/after/error 三种采集与结果透传属同一观测点，拆分反而散开。\n- _run_one（约 52 行）：单一职责 = 驱动一个历史用例的 setUp/测试/tearDown 完整\n  生命周期，并原位保留失败 fixture、记录 cleanup 降级；分支属同一生命周期。\n- main（约 44 行）：单一职责 = 装配与还原（路径校验/输入摘要/tempdir 替换/包装/\n  还原/日志关闭/摘要写出/退出码），各步是顺序编排而非混合业务逻辑。\n\"\"\"\nimport hashlib\nimport json\nimport os\nimport sys\nimport tempfile\nimport time\nfrom pathlib import Path\n\nMAX_ROUNDS = 30\nWALL_LIMIT_SECONDS = 120.0\nTEST_NAMES = (\n    'test_pause_persists_and_stops_after_current_step',\n    'test_run_publishes_projections',\n)\n\nDIAG_DIR = Path(__file__).resolve().parent\nOUTPUT_LOG = DIAG_DIR / 'diagnose_publication-output.jsonl'\nSUMMARY_FILE = DIAG_DIR / 'diagnose_publication-summary.json'\nTASK_TEMP = DIAG_DIR / 'task-temp'\n\n_original_replace = os.replace\n_original_tempdir = tempfile.tempdir\n_CTX = {'round': 0, 'test': None}\n_log_handle = None\n_degraded = []\n\n\ndef _note_degraded(reason, detail=None):\n    \"\"\"记录诊断层降级事件；自身绝不抛异常。\"\"\"\n    try:\n        _degraded.append({'reason': reason, 'detail': detail})\n    except Exception:\n        pass\n\n\ndef _process_handle_count():\n    \"\"\"当前进程句柄总数（仅计数，不枚举句柄、不触碰其他进程）。\"\"\"\n    if os.name != 'nt':\n        return None\n    try:\n        import ctypes\n        from ctypes import wintypes\n        k32 = ctypes.WinDLL('kernel32', use_last_error=True)\n        k32.GetCurrentProcess.restype = wintypes.HANDLE\n        k32.GetProcessHandleCount.argtypes = (\n            wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD))\n        k32.GetProcessHandleCount.restype = wintypes.BOOL\n        count = wintypes.DWORD()\n        if k32.GetProcessHandleCount(\n                k32.GetCurrentProcess(), ctypes.byref(count)):\n            return int(count.value)\n        return None\n    except Exception:\n        return None\n\n\ndef _path_attrs(path):\n    \"\"\"源/目标属性；任何异常都降级为字典，绝不抛出。\"\"\"\n    if path is None:\n        return None\n    p = Path(path)\n    try:\n        st = os.lstat(p)\n    except OSError as exc:\n        return {\n            'exists': False,\n            'error': type(exc).__name__,\n            'errno': getattr(exc, 'errno', None),\n            'winerror': getattr(exc, 'winerror', None),\n        }\n    info = {\n        'exists': True,\n        'size': st.st_size,\n        'mtime_ns': st.st_mtime_ns,\n        'ctime_ns': getattr(st, 'st_ctime_ns', None),\n        'inode': getattr(st, 'st_ino', None),\n    }\n    try:\n        if os.path.isdir(p):\n            info['type'] = 'dir'\n        elif os.path.islink(p):\n            info['type'] = 'link'\n        else:\n            info['type'] = 'file'\n    except OSError:\n        info['type'] = 'unknown'\n    if os.name == 'nt':\n        info['file_attributes'] = getattr(st, 'st_file_attributes', None)\n    return info\n\n\ndef _stage_of(target):\n    \"\"\"按目标文件名派生发布阶段；非发布目标返回 None。\"\"\"\n    try:\n        name = target.name\n    except AttributeError:\n        return None\n    if name == 'STATUS':\n        return 'STATUS'\n    if name == 'state.json':\n        return 'state.json'\n    try:\n        if target.parent.name == 'outbox':\n            return 'outbox/' + name\n    except AttributeError:\n        return None\n    return None\n\n\ndef _capture(source, target):\n    return {\n        'source': _path_attrs(source) if source is not None else None,\n        'target': _path_attrs(target),\n        'handle_count': _process_handle_count(),\n    }\n\n\ndef _emit(record):\n    \"\"\"追加一条 JSONL 事件；写失败记录降级，不干扰被测代码。\"\"\"\n    global _log_handle\n    try:\n        if _log_handle is None:\n            DIAG_DIR.mkdir(parents=True, exist_ok=True)\n            _log_handle = open(OUTPUT_LOG, 'a', encoding='utf-8')\n        _log_handle.write(\n            json.dumps(record, ensure_ascii=False, sort_keys=True) + '\\n')\n        _log_handle.flush()\n    except Exception as exc:\n        _note_degraded('emit_write', type(exc).__name__)\n\n\ndef _observed_replace(src, dst, *args, **kwargs):\n    \"\"\"包装 os.replace：仅观测发布目标，行为与异常完全透传。\"\"\"\n    try:\n        target = Path(os.fsdecode(os.fspath(dst)))\n        source = Path(os.fsdecode(os.fspath(src)))\n    except Exception:\n        return _original_replace(src, dst, *args, **kwargs)\n    stage = _stage_of(target)\n    if stage is None:\n        return _original_replace(src, dst, *args, **kwargs)\n    rec = {\n        'kind': 'replace',\n        'round': _CTX['round'],\n        'test': _CTX['test'],\n        'stage': stage,\n        'source': str(source),\n        'target': str(target),\n    }\n    try:\n        rec['before'] = _capture(source, target)\n    except Exception as exc:\n        rec['before'] = {'capture_error': True}\n        _note_degraded('capture_before', type(exc).__name__)\n    try:\n        result = _original_replace(src, dst, *args, **kwargs)\n    except BaseException as exc:\n        rec['outcome'] = 'error'\n        rec['exc_type'] = type(exc).__name__\n        rec['winerror'] = getattr(exc, 'winerror', None)\n        rec['errno'] = getattr(exc, 'errno', None)\n        rec['strerror'] = getattr(exc, 'strerror', None)\n        try:\n            rec['after'] = _capture(source, target)\n        except Exception as cap_exc:\n            rec['after'] = {'capture_error': True}\n            _note_degraded('capture_after', type(cap_exc).__name__)\n        _emit(rec)\n        raise\n    rec['outcome'] = 'ok'\n    try:\n        rec['after'] = _capture(source, target)\n    except Exception as exc:\n        rec['after'] = {'capture_error': True}\n        _note_degraded('capture_after', type(exc).__name__)\n    _emit(rec)\n    return result\n\n\ndef _install_wrapper():\n    os.replace = _observed_replace\n\n\ndef _restore_wrapper():\n    os.replace = _original_replace\n\n\ndef _exc_info(exc, phase):\n    \"\"\"从异常提取诊断字段；绝不抛。\"\"\"\n    return {\n        'phase': phase,\n        'type': type(exc).__name__,\n        'winerror': getattr(exc, 'winerror', None),\n        'errno': getattr(exc, 'errno', None),\n        'strerror': getattr(exc, 'strerror', None),\n    }\n\n\ndef _file_sha256(path):\n    try:\n        return hashlib.sha256(Path(path).read_bytes()).hexdigest()\n    except Exception:\n        return None\n\n\ndef _run_one(case_cls, test_name, round_idx):\n    \"\"\"跑一个历史用例；返回 (ok, error, fixture_temp, cleanup)。\n\n    失败（含 setUp 部分失败）原位保留原始 fixture：不调用 tearDown、不复制、\n    不重试，并 detach TemporaryDirectory 终结器防止 GC/退出时清理，现场留在\n    任务 TEMP；成功路径 tearDown 异常记为 cleanup 降级（fail-closed），不掩盖\n    测试结果。\n    \"\"\"\n    _CTX['round'] = round_idx\n    _CTX['test'] = test_name\n    case = case_cls(methodName=test_name)\n    t0 = time.monotonic()\n    error = None\n    cleanup = 'ok'\n    preserve = False\n    try:\n        case.setUp()\n    except BaseException as exc:\n        error = _exc_info(exc, 'setUp')\n        preserve = True\n        cleanup = 'skipped_preserve'\n    else:\n        try:\n            getattr(case, test_name)()\n        except BaseException as exc:\n            error = _exc_info(exc, 'test')\n            preserve = True\n            cleanup = 'skipped_preserve'\n    tmp = getattr(case, '_tmp', None)\n    fixture_temp = str(tmp.name) if tmp is not None else None\n    if preserve:\n        # 原位保留失败 fixture：阻止 TemporaryDirectory 终结器在 GC/退出时清理。\n        try:\n            fin = getattr(tmp, '_finalizer', None)\n            if fin is not None:\n                fin.detach()\n        except Exception as detach_exc:\n            _note_degraded('fixture_preserve', type(detach_exc).__name__)\n    else:\n        try:\n            case.tearDown()\n        except BaseException as exc:\n            cleanup = _exc_info(exc, 'tearDown')\n            _note_degraded('cleanup', cleanup)\n    duration = time.monotonic() - t0\n    _emit({\n        'kind': 'round',\n        'round': round_idx,\n        'test': test_name,\n        'outcome': 'error' if error else 'ok',\n        'duration': duration,\n        'error': error,\n        'fixture_temp': fixture_temp,\n        'cleanup': cleanup,\n    })\n    return (error is None), error, fixture_temp, cleanup\n\n\ndef _run_batch(case_cls, start):\n    \"\"\"跑有界批次；返回 (failures, rounds_run, tests_run, stop_reason)。\"\"\"\n    failures = []\n    rounds_run = 0\n    tests_run = 0\n    stop_reason = 'no_failure'\n    for round_idx in range(1, MAX_ROUNDS + 1):\n        if time.monotonic() - start >= WALL_LIMIT_SECONDS:\n            stop_reason = 'wall_limit'\n            break\n        for test_name in TEST_NAMES:\n            if time.monotonic() - start >= WALL_LIMIT_SECONDS:\n                stop_reason = 'wall_limit'\n                break\n            ok, error, fixture_temp, cleanup = _run_one(\n                case_cls, test_name, round_idx)\n            tests_run += 1\n            if not ok:\n                failures.append({\n                    'round': round_idx,\n                    'test': test_name,\n                    'error': error,\n                    'fixture_temp': fixture_temp,\n                    'cleanup': cleanup,\n                })\n                stop_reason = 'first_failure'\n                break\n        rounds_run += 1\n        if stop_reason == 'first_failure':\n            break\n    else:\n        stop_reason = ('round_limit' if rounds_run >= MAX_ROUNDS\n                       else 'no_failure')\n    return failures, rounds_run, tests_run, stop_reason\n\n\ndef _build_summary(repo_root, failures, rounds_run, tests_run, stop_reason,\n                   wall, inputs, degraded):\n    degraded = list(degraded)\n    if failures:\n        conclusion = 'failure_observed_see_output_log'\n    elif degraded:\n        conclusion = 'evidence_degraded_root_cause_unknown'\n    else:\n        conclusion = 'not_reproduced_root_cause_unknown'\n    return {\n        'scope': 'R-publication bounded diagnostic',\n        'repo_root': str(repo_root),\n        'conclusion': conclusion,\n        'stop_reason': stop_reason,\n        'rounds_run': rounds_run,\n        'tests_run': tests_run,\n        'failures': failures,\n        'diagnostic_degraded': bool(degraded),\n        'degraded_events': degraded,\n        'wall_seconds': wall,\n        'max_rounds': MAX_ROUNDS,\n        'wall_limit_seconds': WALL_LIMIT_SECONDS,\n        'inputs_sha256': inputs,\n        'output_log': str(OUTPUT_LOG),\n        'task_temp': str(TASK_TEMP),\n    }\n\n\ndef main(argv):\n    if len(argv) >= 2:\n        repo_root = Path(argv[1]).resolve()\n    else:\n        repo_root = Path.cwd().resolve()\n    if not (repo_root / 'agent_coop').is_dir():\n        print(f'not a repo root: {repo_root}', file=sys.stderr)\n        return 2\n    sys.path.insert(0, str(repo_root))\n    from tests.test_runner import RunnerTests\n\n    inputs = {\n        'agent_coop/store.py': _file_sha256(repo_root / 'agent_coop/store.py'),\n        'agent_coop/runner.py': _file_sha256(repo_root / 'agent_coop/runner.py'),\n        'agent_coop/paths.py': _file_sha256(repo_root / 'agent_coop/paths.py'),\n        'tests/test_runner.py': _file_sha256(repo_root / 'tests/test_runner.py'),\n    }\n\n    TASK_TEMP.mkdir(parents=True, exist_ok=True)\n    _install_wrapper()\n    tempfile.tempdir = str(TASK_TEMP)\n    start = time.monotonic()\n    try:\n        failures, rounds_run, tests_run, stop_reason = _run_batch(\n            RunnerTests, start)\n    finally:\n        _restore_wrapper()\n        tempfile.tempdir = _original_tempdir\n        wall = time.monotonic() - start\n\n    if _log_handle is not None:\n        try:\n            _log_handle.close()\n        except Exception as exc:\n            _note_degraded('log_close', type(exc).__name__)\n\n    summary = _build_summary(\n        repo_root, failures, rounds_run, tests_run, stop_reason, wall,\n        inputs, _degraded)\n    try:\n        SUMMARY_FILE.write_text(\n            json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True)\n            + '\\n', encoding='utf-8')\n    except Exception as exc:\n        _note_degraded('summary_write', type(exc).__name__)\n        summary = _build_summary(\n            repo_root, failures, rounds_run, tests_run, stop_reason, wall,\n            inputs, _degraded)\n\n    print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))\n    return 1 if (failures or _degraded) else 0\n\n\nif __name__ == '__main__':\n    sys.exit(main(sys.argv))\n"
+      }
+    },
+    {
+      "id": "call_00_Cah0cWKF9k1Ss6qNH2xd1607",
+      "name": "Read",
+      "input": {
+        "file_path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py"
+      }
+    },
+    {
+      "id": "call_00_3YxoxCX3bXDn2vkw03IX3927",
+      "name": "Grep",
+      "input": {
+        "pattern": "shutil|FIXTURE_DIR|_preserve_fixture|failed-fixtures",
+        "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py",
+        "output_mode": "content",
+        "-n": true
+      }
+    },
+    {
+      "id": "call_00_rFHNZXGZesC3CeCvlvMK0180",
+      "name": "Edit",
+      "input": {
+        "file_path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py",
+        "old_string": "规模说明（软目标 40 行、硬上限 80 行，均未超硬上限）：\n- _observed_replace（约 43 行）：单一职责 = 包装一次 os.replace 并采集发布阶段\n  前后证据；before/after/error 三种采集与结果透传属同一观测点，拆分反而散开。\n- _run_one（约 52 行）：单一职责 = 驱动一个历史用例的 setUp/测试/tearDown 完整\n  生命周期，并原位保留失败 fixture、记录 cleanup 降级；分支属同一生命周期。\n- main（约 44 行）：单一职责 = 装配与还原（路径校验/输入摘要/tempdir 替换/包装/\n  还原/日志关闭/摘要写出/退出码），各步是顺序编排而非混合业务逻辑。",
+        "new_string": "规模说明（软目标 40 行、硬上限 80 行，均未超硬上限）：\n- _observed_replace（46 行）：单一职责 = 包装一次 os.replace 并采集发布阶段\n  前后证据；before/after/error 三种采集与结果透传属同一观测点，拆分反而散开。\n- _run_one（56 行）：单一职责 = 驱动一个历史用例的 setUp/测试/tearDown 完整\n  生命周期，并原位保留失败 fixture、记录 cleanup 降级；分支属同一生命周期。\n- main（51 行）：单一职责 = 装配与还原（路径校验/输入摘要/tempdir 替换/包装/\n  还原/日志关闭/摘要写出/退出码），各步是顺序编排而非混合业务逻辑。"
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 53
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

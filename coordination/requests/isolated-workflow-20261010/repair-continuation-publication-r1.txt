@@ -1,0 +1,29 @@
+修复完成，仅改写了 `diagnose_publication.py` 一个 TEMP 文件，未触碰仓库、Store/Runner/测试，未运行 harness。
+
+## 真实改动（对照 GLM B20 / Kimi B13 的五项阻断）
+
+1. **fixture 锚定任务 TEMP**：新增 `TASK_TEMP = DIAG_DIR / 'task-temp'`；`main` 里临时设置 `tempfile.tempdir = str(TASK_TEMP)` 再跑批次，`finally` 还原 `_original_tempdir`（模块加载时快照）。原 `RunnerTests.setUp` 的 `TemporaryDirectory()` 因此落在任务目录内。
+2. **失败原位保留原始 fixture**：删除 `_preserve_fixture`（原 copytree 复制）与 `shutil` 导入。`_run_one` 改为失败（含 setUp 部分失败）时 `preserve=True`，跳过 `tearDown`，并 `detach` `TemporaryDirectory._finalizer` 防止 GC/退出时清理原现场；不复制、不重试、不移动出任务。
+3. **fail-closed**：新增 `_note_degraded` 与 `_degraded` 列表。emit 写失败、`_capture` before/after 失败、cleanup 失败、fixture detach 失败、log_close/summary 写失败均记 `diagnostic_degraded`；摘要增 `diagnostic_degraded`/`degraded_events`，退出码 `1 if (failures or _degraded) else 0`。`_observed_replace` 仍对 os.replace 返回值/异常透明透传、`raise` 原异常、无重试。
+4. **内部截止 vs 外部看护**：模块 docstring 明示 `WALL_LIMIT_SECONDS` 仅在用例间检查、不硬中断单用例，外部有界进程看护由发包人按 PID/创建时间负责，二者分开，不宣称 120 秒已硬保证。
+5. **规模内聚说明**：docstring 列明三个超软目标函数的具体单一职责（`_observed_replace` 46 行、`_run_one` 56 行、`main` 51 行，均 <80 硬上限）。
+
+## 复用
+
+- 复用原两个历史用例 `RunnerTests` 两方法，未复制验证权威；未重算旧的 20 轮×2 无观测循环。
+- 复用 `_process_handle_count`/`_path_attrs`/`_stage_of`/`_capture` 等原观测逻辑原样保留，仅 `_observed_replace` 增加降级标记。
+- 新增 `_exc_info` 提取异常字段（setUp/test/tearDown 三处复用），替代原三份重复 dict。
+
+## 规模/内聚
+
+- 总 425 物理行；函数均未超 80 硬上限。三个超 40 软目标的函数内聚说明已写入模块 docstring（单一观测点 / 单用例生命周期 / 单一装配编排）。
+
+## 未测范围与风险（不把测试/执行自报为通过）
+
+- **未运行 harness**，不宣称复现、不宣称关闭 GLM B11/Kimi B09；历史根因仍 unknown。
+- `_finalizer.detach()` 依赖 CPython `TemporaryDirectory` 私有属性，已用 `getattr` 兜底并把失败记降级；非 CPython 解释器下行为未验证。
+- 失败 fixture 原位保留依赖成功 detach；若 detach 失败会记 `fixture_preserve` 降级但现场可能被 GC 清理，属可见降级而非静默。
+- 句柄计数仍是进程级总数（不枚举外部私有句柄），范围未扩大；外部持有者证据仍待发包人外部句柄工具补充。
+- 未做 `git diff --check`、未执行语法/运行验证；TEMP 文件不在仓库内，不涉及仓库链接/锚点检查。
+
+未变更：Store、Runner、paths、tests/test_runner.py 均未改；未 commit、未写 memory/settings、未换工具。待固定 hash 后经 R2 批准，由根执行验证。

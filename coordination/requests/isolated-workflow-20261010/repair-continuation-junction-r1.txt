@@ -1,0 +1,33 @@
+修复完成。改动如下。
+
+## 真实改动（仅 `tests/test_runtime.py`）
+
+1. **删除复制的 `remove_link` helper**（原 27–35 行，共 9 行 + 2 空行）。该函数逐字复制自 `tests/test_paths.py:28-36` / `tests/test_archive.py:28-36`，且 `except OSError: continue` 广捕获会静默吞掉真实清理失败（如 WinError 之外的权限错误）。
+
+2. **直接复用标准库清理原语，落回既有平台分支**：把原先 if/else 之后的 `self.addCleanup(remove_link, junction)` 删除，改为在既有 `sys.platform == 'win32'` 分支内注册正确原语：
+   - win32（`mklink /J` 目录 junction）：`self.addCleanup(os.rmdir, junction)`
+   - 其余平台（`symlink_to(..., target_is_directory=True)` 目录符号链接）：`self.addCleanup(os.unlink, junction)`
+
+## 复用情况
+
+- 复用标准库 `os.rmdir` / `os.unlink` 原语（零新增、零复制 helper）。
+- 复用测试方法内已有的 `sys.platform` 分支结构，仅在分支内各加一行 `addCleanup`，未引入 `test_paths.remove_link` 的 import，也未新增模块级/方法级 helper。
+
+## 规模与内聚
+
+- 文件 474 → 464 行，远低于 500 硬限。
+- 删掉一个模块级 helper；清理逻辑由「一个广捕获函数」收敛为「每条平台分支一行标准库原语」，无新抽象、无泛化。
+
+## 保留项（未改动）
+
+- LIFO：`addCleanup` 仍在测试方法内注册，先删 link 再删 `_tmp` 根，顺序不变。
+- 逃逸拒绝、外目标 sentinel `untouched`、child 未执行 `marker` 断言、失败路径清理（`assertRaisesRegex` 抛出后 addCleanup 仍执行）均未触碰。
+- 未 skip、未改任何断言、无无关重构。
+
+## 未测范围与风险
+
+- **未运行测试**：受本任务限制（无 Shell/子 agent、不测试/不运行诊断），未执行 `python -m unittest tests.test_runtime`，不将任何结果自报为通过。
+- 本机为 Windows：`os.rmdir`（junction 分支）与 POSIX `os.unlink`（符号链接分支）均未实跑，POSIX 路径状态 **unknown**。
+- 风险：采用零容错直连原语（连 FileNotFoundError 也不吞），比“最多容忍 FileNotFoundError”更严格。由于 `addCleanup` 仅在链接创建成功后才注册，正常路径不会触发 FileNotFoundError；若未来某处提前移除该链接，清理会以错误显性暴露而非静默通过——这正是本 finding 要求的“实际清理失败必须显现”。
+
+未自审自签；原两席 R2 独立审核、根独立验证均不在本次执行范围内。

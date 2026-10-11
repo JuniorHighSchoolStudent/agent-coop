@@ -1,0 +1,48 @@
+{
+  "scope": "Observed native write calls and exact post-author files; not global host side effect audit",
+  "packages": [
+    {
+      "writes": [
+        {
+          "path": "D:/project/agent-coop-continuation-fix-junction/tests/test_runtime.py",
+          "id": "call_00_oia6pfT9gNu7ATyjDZHr4049",
+          "tool": "Edit"
+        },
+        {
+          "path": "D:/project/agent-coop-continuation-fix-junction/tests/test_runtime.py",
+          "id": "call_00_eLCYxFCNPx0jlsc3qmPt3014",
+          "tool": "Edit"
+        }
+      ],
+      "status": [],
+      "package": "junction",
+      "sha256": "280812373e8b0fcae3255b2854177eff8d1c780ba6a66807f78508137495ded2",
+      "path": "D:\\project\\agent-coop-continuation-fix-junction\\tests\\test_runtime.py",
+      "root": "D:\\project\\agent-coop-continuation-fix-junction",
+      "reparse": false,
+      "head": "e5b9873d9455115dcc0a5045314337ffb721a031"
+    },
+    {
+      "writes": [
+        {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py",
+          "id": "call_00_r50WIkJr5tRVZg0nKqyW2226",
+          "tool": "Write"
+        },
+        {
+          "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication.py",
+          "id": "call_00_rFHNZXGZesC3CeCvlvMK0180",
+          "tool": "Edit"
+        }
+      ],
+      "status": [],
+      "package": "publication",
+      "sha256": "fd3fcf135f9ffac634b5610ce44d327ee256dcd79975d7305d16036c1c3d0438",
+      "path": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\publication-diagnostic-20261011\\diagnose_publication.py",
+      "root": "D:\\project\\agent-coop-continuation-fix-publication",
+      "reparse": false,
+      "head": "632345652dada9a642ad89a90a51a918797c8f4b"
+    }
+  ],
+  "captured_utc": "2026-10-11T00:15:37.7278653+00:00"
+}

@@ -1,0 +1,425 @@
+"""R-publication 有界诊断 harness（仅本 TEMP 文件，不改仓库产品/测试）。
+
+复用两个历史用例（tests.test_runner.RunnerTests）：
+- test_pause_persists_and_stops_after_current_step
+- test_run_publishes_projections
+
+观察当前 Python 进程发布阶段的 os.replace 前后：
+- 发布阶段：按目标文件名派生（STATUS / state.json / outbox/<rev>.json）
+- 源/目标属性：存在性、类型、大小、mtime/ctime、inode、NT file_attributes
+- 本进程句柄计数：ctypes GetProcessHandleCount（仅计数，不枚举句柄）
+- 失败时：exc_type / winerror / errno / strerror
+
+边界（与已审计划一致）：
+- 仅诊断，不改产品/测试；临时包装 os.replace 并临时设置 tempfile.tempdir，
+  finally 均恢复；不改变返回/异常/重试行为，观测代码自身绝不抛异常。
+- 所有原 RunnerTests 临时 fixture 锚定到本任务 TEMP（DIAG_DIR/task-temp）：
+  tempfile.tempdir 临时指向该目录，使 setUp 的 TemporaryDirectory 落在任务
+  目录内，finally 还原 tempfile.tempdir；每轮 setUp 各自独立 mkdtemp 子目录。
+- 失败（含 setUp 部分失败）原位保留原始 fixture：不复制、不调用 tearDown 删除
+  原现场、不重试，并 detach TemporaryDirectory 终结器防止 GC/退出时清理；
+  原始 fixture 不移出任务目录，输出仅此任务 TEMP。
+- 观测/emit/summary 写失败、cleanup 失败均记录 diagnostic_degraded，最终独立
+  非零退出 fail-closed；被测返回/异常仍透明透传，观测层不加重试、不吞被测异常。
+- 首失败或超限即停：最多 MAX_ROUNDS 轮 x 2 用例，或 WALL_LIMIT_SECONDS 秒墙钟。
+  WALL_LIMIT_SECONDS 是内部循环截止（仅在用例之间检查，不硬中断单个用例）；
+  外部有界进程看护由发包人按 PID/创建时间终止进程树负责，与内部截止分开。
+- 不枚举其他进程私有句柄、不装驱动、不改系统安全设置。
+- 未复现保持历史根因 unknown，本文件不宣称根因。
+
+运行：python diagnose_publication.py <repo_root>
+输出写于本文件同目录（DIAG_DIR）：
+- diagnose_publication-output.jsonl（逐事件）
+- diagnose_publication-summary.json（最终摘要，含 diagnostic_degraded）
+- task-temp/（每轮 fixture；失败 fixture 原位保留于其内）
+
+规模说明（软目标 40 行、硬上限 80 行，均未超硬上限）：
+- _observed_replace（46 行）：单一职责 = 包装一次 os.replace 并采集发布阶段
+  前后证据；before/after/error 三种采集与结果透传属同一观测点，拆分反而散开。
+- _run_one（56 行）：单一职责 = 驱动一个历史用例的 setUp/测试/tearDown 完整
+  生命周期，并原位保留失败 fixture、记录 cleanup 降级；分支属同一生命周期。
+- main（51 行）：单一职责 = 装配与还原（路径校验/输入摘要/tempdir 替换/包装/
+  还原/日志关闭/摘要写出/退出码），各步是顺序编排而非混合业务逻辑。
+"""
+import hashlib
+import json
+import os
+import sys
+import tempfile
+import time
+from pathlib import Path
+
+MAX_ROUNDS = 30
+WALL_LIMIT_SECONDS = 120.0
+TEST_NAMES = (
+    'test_pause_persists_and_stops_after_current_step',
+    'test_run_publishes_projections',
+)
+
+DIAG_DIR = Path(__file__).resolve().parent
+OUTPUT_LOG = DIAG_DIR / 'diagnose_publication-output.jsonl'
+SUMMARY_FILE = DIAG_DIR / 'diagnose_publication-summary.json'
+TASK_TEMP = DIAG_DIR / 'task-temp'
+
+_original_replace = os.replace
+_original_tempdir = tempfile.tempdir
+_CTX = {'round': 0, 'test': None}
+_log_handle = None
+_degraded = []
+
+
+def _note_degraded(reason, detail=None):
+    """记录诊断层降级事件；自身绝不抛异常。"""
+    try:
+        _degraded.append({'reason': reason, 'detail': detail})
+    except Exception:
+        pass
+
+
+def _process_handle_count():
+    """当前进程句柄总数（仅计数，不枚举句柄、不触碰其他进程）。"""
+    if os.name != 'nt':
+        return None
+    try:
+        import ctypes
+        from ctypes import wintypes
+        k32 = ctypes.WinDLL('kernel32', use_last_error=True)
+        k32.GetCurrentProcess.restype = wintypes.HANDLE
+        k32.GetProcessHandleCount.argtypes = (
+            wintypes.HANDLE, ctypes.POINTER(wintypes.DWORD))
+        k32.GetProcessHandleCount.restype = wintypes.BOOL
+        count = wintypes.DWORD()
+        if k32.GetProcessHandleCount(
+                k32.GetCurrentProcess(), ctypes.byref(count)):
+            return int(count.value)
+        return None
+    except Exception:
+        return None
+
+
+def _path_attrs(path):
+    """源/目标属性；任何异常都降级为字典，绝不抛出。"""
+    if path is None:
+        return None
+    p = Path(path)
+    try:
+        st = os.lstat(p)
+    except OSError as exc:
+        return {
+            'exists': False,
+            'error': type(exc).__name__,
+            'errno': getattr(exc, 'errno', None),
+            'winerror': getattr(exc, 'winerror', None),
+        }
+    info = {
+        'exists': True,
+        'size': st.st_size,
+        'mtime_ns': st.st_mtime_ns,
+        'ctime_ns': getattr(st, 'st_ctime_ns', None),
+        'inode': getattr(st, 'st_ino', None),
+    }
+    try:
+        if os.path.isdir(p):
+            info['type'] = 'dir'
+        elif os.path.islink(p):
+            info['type'] = 'link'
+        else:
+            info['type'] = 'file'
+    except OSError:
+        info['type'] = 'unknown'
+    if os.name == 'nt':
+        info['file_attributes'] = getattr(st, 'st_file_attributes', None)
+    return info
+
+
+def _stage_of(target):
+    """按目标文件名派生发布阶段；非发布目标返回 None。"""
+    try:
+        name = target.name
+    except AttributeError:
+        return None
+    if name == 'STATUS':
+        return 'STATUS'
+    if name == 'state.json':
+        return 'state.json'
+    try:
+        if target.parent.name == 'outbox':
+            return 'outbox/' + name
+    except AttributeError:
+        return None
+    return None
+
+
+def _capture(source, target):
+    return {
+        'source': _path_attrs(source) if source is not None else None,
+        'target': _path_attrs(target),
+        'handle_count': _process_handle_count(),
+    }
+
+
+def _emit(record):
+    """追加一条 JSONL 事件；写失败记录降级，不干扰被测代码。"""
+    global _log_handle
+    try:
+        if _log_handle is None:
+            DIAG_DIR.mkdir(parents=True, exist_ok=True)
+            _log_handle = open(OUTPUT_LOG, 'a', encoding='utf-8')
+        _log_handle.write(
+            json.dumps(record, ensure_ascii=False, sort_keys=True) + '\n')
+        _log_handle.flush()
+    except Exception as exc:
+        _note_degraded('emit_write', type(exc).__name__)
+
+
+def _observed_replace(src, dst, *args, **kwargs):
+    """包装 os.replace：仅观测发布目标，行为与异常完全透传。"""
+    try:
+        target = Path(os.fsdecode(os.fspath(dst)))
+        source = Path(os.fsdecode(os.fspath(src)))
+    except Exception:
+        return _original_replace(src, dst, *args, **kwargs)
+    stage = _stage_of(target)
+    if stage is None:
+        return _original_replace(src, dst, *args, **kwargs)
+    rec = {
+        'kind': 'replace',
+        'round': _CTX['round'],
+        'test': _CTX['test'],
+        'stage': stage,
+        'source': str(source),
+        'target': str(target),
+    }
+    try:
+        rec['before'] = _capture(source, target)
+    except Exception as exc:
+        rec['before'] = {'capture_error': True}
+        _note_degraded('capture_before', type(exc).__name__)
+    try:
+        result = _original_replace(src, dst, *args, **kwargs)
+    except BaseException as exc:
+        rec['outcome'] = 'error'
+        rec['exc_type'] = type(exc).__name__
+        rec['winerror'] = getattr(exc, 'winerror', None)
+        rec['errno'] = getattr(exc, 'errno', None)
+        rec['strerror'] = getattr(exc, 'strerror', None)
+        try:
+            rec['after'] = _capture(source, target)
+        except Exception as cap_exc:
+            rec['after'] = {'capture_error': True}
+            _note_degraded('capture_after', type(cap_exc).__name__)
+        _emit(rec)
+        raise
+    rec['outcome'] = 'ok'
+    try:
+        rec['after'] = _capture(source, target)
+    except Exception as exc:
+        rec['after'] = {'capture_error': True}
+        _note_degraded('capture_after', type(exc).__name__)
+    _emit(rec)
+    return result
+
+
+def _install_wrapper():
+    os.replace = _observed_replace
+
+
+def _restore_wrapper():
+    os.replace = _original_replace
+
+
+def _exc_info(exc, phase):
+    """从异常提取诊断字段；绝不抛。"""
+    return {
+        'phase': phase,
+        'type': type(exc).__name__,
+        'winerror': getattr(exc, 'winerror', None),
+        'errno': getattr(exc, 'errno', None),
+        'strerror': getattr(exc, 'strerror', None),
+    }
+
+
+def _file_sha256(path):
+    try:
+        return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    except Exception:
+        return None
+
+
+def _run_one(case_cls, test_name, round_idx):
+    """跑一个历史用例；返回 (ok, error, fixture_temp, cleanup)。
+
+    失败（含 setUp 部分失败）原位保留原始 fixture：不调用 tearDown、不复制、
+    不重试，并 detach TemporaryDirectory 终结器防止 GC/退出时清理，现场留在
+    任务 TEMP；成功路径 tearDown 异常记为 cleanup 降级（fail-closed），不掩盖
+    测试结果。
+    """
+    _CTX['round'] = round_idx
+    _CTX['test'] = test_name
+    case = case_cls(methodName=test_name)
+    t0 = time.monotonic()
+    error = None
+    cleanup = 'ok'
+    preserve = False
+    try:
+        case.setUp()
+    except BaseException as exc:
+        error = _exc_info(exc, 'setUp')
+        preserve = True
+        cleanup = 'skipped_preserve'
+    else:
+        try:
+            getattr(case, test_name)()
+        except BaseException as exc:
+            error = _exc_info(exc, 'test')
+            preserve = True
+            cleanup = 'skipped_preserve'
+    tmp = getattr(case, '_tmp', None)
+    fixture_temp = str(tmp.name) if tmp is not None else None
+    if preserve:
+        # 原位保留失败 fixture：阻止 TemporaryDirectory 终结器在 GC/退出时清理。
+        try:
+            fin = getattr(tmp, '_finalizer', None)
+            if fin is not None:
+                fin.detach()
+        except Exception as detach_exc:
+            _note_degraded('fixture_preserve', type(detach_exc).__name__)
+    else:
+        try:
+            case.tearDown()
+        except BaseException as exc:
+            cleanup = _exc_info(exc, 'tearDown')
+            _note_degraded('cleanup', cleanup)
+    duration = time.monotonic() - t0
+    _emit({
+        'kind': 'round',
+        'round': round_idx,
+        'test': test_name,
+        'outcome': 'error' if error else 'ok',
+        'duration': duration,
+        'error': error,
+        'fixture_temp': fixture_temp,
+        'cleanup': cleanup,
+    })
+    return (error is None), error, fixture_temp, cleanup
+
+
+def _run_batch(case_cls, start):
+    """跑有界批次；返回 (failures, rounds_run, tests_run, stop_reason)。"""
+    failures = []
+    rounds_run = 0
+    tests_run = 0
+    stop_reason = 'no_failure'
+    for round_idx in range(1, MAX_ROUNDS + 1):
+        if time.monotonic() - start >= WALL_LIMIT_SECONDS:
+            stop_reason = 'wall_limit'
+            break
+        for test_name in TEST_NAMES:
+            if time.monotonic() - start >= WALL_LIMIT_SECONDS:
+                stop_reason = 'wall_limit'
+                break
+            ok, error, fixture_temp, cleanup = _run_one(
+                case_cls, test_name, round_idx)
+            tests_run += 1
+            if not ok:
+                failures.append({
+                    'round': round_idx,
+                    'test': test_name,
+                    'error': error,
+                    'fixture_temp': fixture_temp,
+                    'cleanup': cleanup,
+                })
+                stop_reason = 'first_failure'
+                break
+        rounds_run += 1
+        if stop_reason == 'first_failure':
+            break
+    else:
+        stop_reason = ('round_limit' if rounds_run >= MAX_ROUNDS
+                       else 'no_failure')
+    return failures, rounds_run, tests_run, stop_reason
+
+
+def _build_summary(repo_root, failures, rounds_run, tests_run, stop_reason,
+                   wall, inputs, degraded):
+    degraded = list(degraded)
+    if failures:
+        conclusion = 'failure_observed_see_output_log'
+    elif degraded:
+        conclusion = 'evidence_degraded_root_cause_unknown'
+    else:
+        conclusion = 'not_reproduced_root_cause_unknown'
+    return {
+        'scope': 'R-publication bounded diagnostic',
+        'repo_root': str(repo_root),
+        'conclusion': conclusion,
+        'stop_reason': stop_reason,
+        'rounds_run': rounds_run,
+        'tests_run': tests_run,
+        'failures': failures,
+        'diagnostic_degraded': bool(degraded),
+        'degraded_events': degraded,
+        'wall_seconds': wall,
+        'max_rounds': MAX_ROUNDS,
+        'wall_limit_seconds': WALL_LIMIT_SECONDS,
+        'inputs_sha256': inputs,
+        'output_log': str(OUTPUT_LOG),
+        'task_temp': str(TASK_TEMP),
+    }
+
+
+def main(argv):
+    if len(argv) >= 2:
+        repo_root = Path(argv[1]).resolve()
+    else:
+        repo_root = Path.cwd().resolve()
+    if not (repo_root / 'agent_coop').is_dir():
+        print(f'not a repo root: {repo_root}', file=sys.stderr)
+        return 2
+    sys.path.insert(0, str(repo_root))
+    from tests.test_runner import RunnerTests
+
+    inputs = {
+        'agent_coop/store.py': _file_sha256(repo_root / 'agent_coop/store.py'),
+        'agent_coop/runner.py': _file_sha256(repo_root / 'agent_coop/runner.py'),
+        'agent_coop/paths.py': _file_sha256(repo_root / 'agent_coop/paths.py'),
+        'tests/test_runner.py': _file_sha256(repo_root / 'tests/test_runner.py'),
+    }
+
+    TASK_TEMP.mkdir(parents=True, exist_ok=True)
+    _install_wrapper()
+    tempfile.tempdir = str(TASK_TEMP)
+    start = time.monotonic()
+    try:
+        failures, rounds_run, tests_run, stop_reason = _run_batch(
+            RunnerTests, start)
+    finally:
+        _restore_wrapper()
+        tempfile.tempdir = _original_tempdir
+        wall = time.monotonic() - start
+
+    if _log_handle is not None:
+        try:
+            _log_handle.close()
+        except Exception as exc:
+            _note_degraded('log_close', type(exc).__name__)
+
+    summary = _build_summary(
+        repo_root, failures, rounds_run, tests_run, stop_reason, wall,
+        inputs, _degraded)
+    try:
+        SUMMARY_FILE.write_text(
+            json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True)
+            + '\n', encoding='utf-8')
+    except Exception as exc:
+        _note_degraded('summary_write', type(exc).__name__)
+        summary = _build_summary(
+            repo_root, failures, rounds_run, tests_run, stop_reason, wall,
+            inputs, _degraded)
+
+    print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
+    return 1 if (failures or _degraded) else 0
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))
