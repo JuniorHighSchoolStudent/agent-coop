@@ -42,6 +42,8 @@ CodeBuddy必须拒绝矛盾init、重复/未知/悬挂工具、错误次序、�
 
 dialect由受审adapter/runtime摘要绑定能力参数；不得由caller任选更宽阈值。按implementation-contract §6.1，`development_dialect.implementation_file`独立定位实际方言文件，R2启动前实测它及原executable/entry/适用agent_file；claim.runtime_digest按合同规定的四项摘要计算。CodeBuddy的Node、CLI entry和headless dist不同，不能互相代替或擅自改启动entry。复用B的源/投影等价接口，预检不另造投影。超过已知单行上限、必读范围无法表示、摘要不符、缺必需原件均在启动前拒绝。请求20 turn仍固定；每响应5–8个Read、模型速度与推理余量不是硬保证，必须明确假设，不能据此宣布必定完成。检查包含为最终结构化交付预留的预算，不能把全部轮数都分给读取。
 
+S2完整Windows启动容量沿合同§6.1：D生成完整columnar prompt，R2用真实profile/adapter构造含exe的argv，W唯一windows_command_line序列化，F的assess_windows_command_line仅计UTF16 units+NUL和摘要。原prompt及仅compact字典列表均已超限，不以body长度推断可启动；native最终prompt独立测量，新candidate不借旧25315/25319尺寸。D按确定性columnar规则保持全部行的7个原值并严格反解核对，本次80×7仅为回归fixture，F规范read_plan不变；不新增stdin传输。
+
 预检仅判输入可执行性，不是阅读覆盖证明。GOV09材料预算与并发容量是两种事实：前者在纯预检，后者由同一Store原子预留。没有账号查询、探针模型或自动重试。
 
 ### 2.3 原子派发预留
@@ -72,13 +74,15 @@ D的公开初始化、批注册、bootstrap导入和prompt渲染API直接沿合�
 
 本切片选择Windows10+/Server2016+的明确实现，POSIX原路径保持既有合同；未验证平台显示unsupported，不能静默退回较弱看护。新增 `win_process.py` 只提供Windows进程容器，不理解policy、Store或角色。
 
-公开建议 `spawn_contained(argv, cwd, env) -> ContainedProcess`：暴露供runtime复用的stdout/stderr、pid、poll/wait，以及resume、terminate_tree、tree_empty、close。对象持有process/thread/匿名Job句柄；创建时间随原生进程句柄记录，PID仅用于审计，不靠重新按PID搜索对象再杀。
+公开 `windows_command_line(argv) -> str`唯一维护Windows argv转义，argv包括完整executable/entry/flags/prompt；序列化唯一复用subprocess.list2cmdline并有真实argv往返验证。公开建议 `spawn_contained(argv, cwd, env, *, expected_command_line_sha256) -> ContainedProcess`：暴露供runtime复用的stdout/stderr、pid、poll/wait，以及resume、terminate_tree、tree_empty、close。对象持有准确executable/argv对应的CreateProcessW返回process/thread/匿名Job句柄；wrapper后代conhost不是目标创建证据，不触发on_created/started_suspended。创建时间随原生进程句柄记录，PID仅用于审计，不靠重新按PID搜索对象再杀。
 
-1. 先创建不可继承的匿名Job，配置KILL_ON_JOB_CLOSE，不允许breakaway；准备准确白名单env、显式executable/cwd和标准流句柄白名单。
+1. 用同一windows_command_line生成实际CreateProcessW字符串，核F前检摘要一致、UTF16含NUL长度不超边界且无embedded NUL；失败在创建目标进程前返回。随后创建不可继承的匿名Job，配置KILL_ON_JOB_CLOSE，不允许breakaway；准备准确白名单env、显式executable/cwd和标准流句柄白名单。
 2. 使用CreateProcessW和STARTUPINFOEX的JOB_LIST，在创建时关联Job；同时CREATE_SUSPENDED、CREATE_NO_WINDOW、CREATE_UNICODE_ENVIRONMENT。启动失败立即保留原因并释放所有已取得句柄，不能改走裸Popen。
 3. 持有进程和初始线程句柄，完成输出读取器与单调deadline准备，经on_created确认Store启动身份持久化后ResumeThread；准备或记录失败则终止Job并等待退出，不让目标CLI运行。恢复失败也终止Job，按已记录启动事实保留used和准确失败原因。
 4. 监督以整个Job是否仍有活动进程为边界。父进程exit0但子进程仍在运行、管道尚未结束，不算成功；同一deadline内等待，超时/超输出/读取失败终止Job并有界等待empty。
 5. 控制者正常关闭或异常退出时，最后一个Job句柄关闭触发整体终止；Job句柄不能被子进程继承。保留执行失败、终止失败和管道未收束的不同结果；unknown不得作成功。
+
+S2的StandardOutputEncoding异常独立保留，根因以[result](result.md)所链准确原件与后续FirstChance调查结论为准，不仅由argv过长推断；R2验证配置失败时点与原始字节收集/明确解码，W只承接标准流句柄。无模型反例覆盖中文/emoji输出、无效字节和启动配置错误。目标创建/恢复/native init/model请求分层举证，conhost存在但目标失败、挂起成功但恢复失败、运行而无native init均不能归为模型成功。
 
 日志目录和stdout/stderr以独占方式在创建目标进程前打开，收集过程中按总字节上限增量保留已接收流；正常失败保留原始片段和分类。控制者骤停可能留下不完整流，必须标明partial/unknown并结合Store未终结claim对账，不能把部分日志称为完整模型终态，也不能用新调用覆盖它。
 
@@ -132,6 +136,8 @@ Job/句柄继承/父退出/控制者退出/timeout/输出上限/真实env及argv
 保留必要消费者C2为真实使用包：X及其依赖先完成对应内容审核与监督准入，dispatcher_next通过已受审的Python公共Runner动作API派发C2作者，C2把该API接入最终CLI。该操作使用已批准的准确API调用与输入，不增建传输wrapper或调度脚本。如此不要求尚未实现的CLI启动自身作者，也不人为增加canary。该依赖安排未获批准时保持阻断；正式审核调用不能替代实际作者写集和有效交付闭环。
 
 真实C2作者动作及有效交付证明入口被消费；四路并发能力另用四个真实受控Python进程证明，不为凑并发模型证据强开无任务调用。若验收策略要求真实四作者并行，应由根在实际四个独立就绪包和预算内安排，不能用测试进程替代该更强声明。
+
+S2容量/编码/辅助进程观察是原GOV09/F/D/R2与GOV06/W/R2的追加失败输入，和S1四必修共同进入已有独立关闭链；容量恢复不能替编码或看护问题关闭。
 
 本轮尚未发生的修复派发不能伪造发生，但GOV06–09的代码、反例及适用实际使用必须齐备后才可关闭。报告通过不自动赋予merge、push、live或生产任务权限；本批不实现生产OS任务、全局memory、账号代理、跨项目容量服务或完整Scheduler。
 

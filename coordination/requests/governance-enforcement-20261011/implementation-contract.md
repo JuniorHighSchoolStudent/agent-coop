@@ -149,6 +149,12 @@ dialect是准确profile引用的已审配置：`schema=development-dialect/1`、
 
 C新增只读公开API `prepare_development_read_plan(stage, role_id, index_path, policy_path, policy_sha256)`：严格装载/核pin、当前policy必读不变量和准确源，调用F，返回ReadinessReport。准备结果只表示材料readiness，不是阶段eligible。reviewer准备允许本阶段尚未产生的reviewer/监督意见及未来supervision bundle缺席；不允许缺其要读的源、accept必需作者交付或上游准入。supervisor准备必须先按evaluate_review_evidence核全部必需reviewer有效，并由C重算完整bundle及投影，只允许该supervisor自身最终意见尚不存在。author dispatch准备核有效prior plan，允许该作者未来final缺席。所有角色均严格核源/schema/pin，不能以准备态忽略其他缺陷；不写index或Store。D消费此read_plan生成prompt；C/F均不生成另一份prompt。源从16增至18时旧计划失效，源18/计划18/prompt16虽各自hash正确仍须拒绝。此接口供真实计划审核材料准备及后继开发动作共用，不另建脚本。
 
+S2补充：材料可读不等于能通过Windows启动传输。D先生成最终完整prompt，R2沿现有adapter/profile生成准确argv，再由W唯一纯函数`windows_command_line(argv)`得到实际命令行；argv必须包括argv[0]完整executable、entry、所有flags及完整prompt。W是唯一Windows quoting owner，本切片复用Python subprocess.list2cmdline，F/D/R2不得另写转义编码器。F新增纯函数`assess_windows_command_line(command_line)`，返回decision（eligible/blocked）、utf16_units_with_nul、limit_utf16_units=32767、command_line_sha256（该字符串UTF-8字节SHA-256）、findings；仅对W的准确字符串计UTF-16 code units并加终止NUL的1单位，不用UTF-8字节数或Unicode码点len代替，embedded NUL拒绝。R2在spawn前消费此结果；命令行连终止NUL超过32767即blocked。[CreateProcessW官方边界](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessw)仅适用于该直接启动路径，有更窄的受审launcher限制仍须核验，不借它担保任意shell。
+
+W的`spawn_contained(argv,cwd,env,*,expected_command_line_sha256)`复用同一windows_command_line入口，并在CreateProcessW前核实实际使用字符串与预检摘要相等、长度及NUL有效；不重新走不同拼接或shell编码路径。完整prompt/argv在这两次核对间变化即拒绝；报告保留长度/摘要/限制和版本，不展开秘密。native最终监督prompt同样独立核完整argv，不能拿作者/CodeBuddy长度、body或模板估算代替。F只计量不序列化argv，W只处理进程参数不解释治理角色，D仍唯一渲染prompt。
+
+本次S2原prompt34681/34682 UTF16、参数下界35005/35009及只去缩进后完整命令行33032/33036均是失败回归，不能放行；§6.4的保真columnar测量只证明该批准确输入可容，新candidate须重新生成全部派生原件并重新核完整命令行，不借旧尺寸。反例包括prompt单独可容而完整argv超限、引号/反斜杠扩张、emoji双UTF16单位、embedded NUL、32766单位命令行加NUL与再多1单位的边界。拒绝须发生在spawn前，不产生目标进程started事实；恢复还须read_plan反解逐值不变及无模型argv往返精确。
+
 ### 6.2 执行、看护与状态
 
 开发执行继续使用现有runtime/adapter/environment边界，增量接入独立cwd与受控evidence_root；不要求业务开发树伪造sample marker，也不删除sample原有保护。对外开发调用拟为`runtime.invoke_development(profile, prompt, cwd, evidence_root, attempt_id, session_id)`，具体最小扩展由运行时提案固定。它必须真实消费准确profile/runtime/write-set/session及预算，不只是写一份watchdog参数。
@@ -181,9 +187,13 @@ C新增只读公开API `prepare_development_read_plan(stage, role_id, index_path
 
 claim单次预算来自已批准profile；并发及显式配置的成本额度由同一Store控制。总调用限额为null时不比较总次数上限，但每次仍记录reserved/used并核暂停、资源和准确准入，不能把“不限审核轮次”当“不限单次执行”。尚未结束的调用继续占用资源，不因超时文字或父进程已退出便释放。action_id/attempt_id重复必须幂等返回原定位或冲突拒绝，不能二次启动。
 
+S2观察到wrapper后代conhost不等于目标runtime/CLI已启动。process_identity只能来自本次准确executable/argv对应的CreateProcessW返回进程/线程句柄及包含身份；wrapper/conhost等辅助进程观察不触发目标on_created或started_suspended。即使目标runtime进程创建成功，也不证明CLI完成初始化、原生握手、模型请求或provider计费；各层需各自原件，无证据保持unknown。必须回归“wrapper/conhost存在但目标创建失败”“目标挂起已建而resume失败”“目标运行但无native init”，不可合成success或以子孙数量证明模型调用。
+
 runtime通过受控`on_created(process_identity)`回调执行上述Store记录，顺序必须是contained+suspended创建→看护/日志就绪→持久化启动身份→resume。创建失败不计真实启动，保留claim失败；记录失败立即终止尚未运行的受管树，不能先resume后补记录。创建及记录成功但resume失败，used保留并记录resume_failed，不退回额度暗中重试；实际是否有模型/provider活动单列unknown或具证据的未发生，不把calls_used冒充供应商计费。控制者在记录/恢复窗口崩溃须靠包含边界终止或由原claim对账，不能静默释放未知进程资源。`invoke_development`因此增加具名参数`on_created`，只允许动作owner传入此生命周期回调，不执行调用者任意模型代码。
 
 `evidence_root`必须是显式批准的请求证据根，与cwd和permissions.root分开；仅准许在该根下按不可混淆attempt_id创建专属目录，拒绝路径逃逸、已有冲突、原始reparse/symlink链。检查顺序沿既有paths/adapters canonical规则，不能先resolve后隐藏reparse；证据目录不授予模型源码写权，也不继承sample marker假设。日志路径启动前独占，运行中保留增量/partial字节及原hash，异常不能覆盖旧stdout/stderr或删失败事实；读取/清理各自沿既有权限入口。
+
+S2 wrapper的StandardOutputEncoding错误独立保留，不能因同时发现argv超限就归因于长度，也不能修短prompt便关闭编码缺陷。R2沿既有原始字节收集/明确解码边界验证启动参数、stdout/stderr配置与实际异常时点；W只提供准确标准流句柄/原始流，不复制PowerShell wrapper。无模型回归覆盖配置失败、中文/emoji往返及无效字节留原流；启动失败不能写成目标运行，未知根因保持未决，并在原GOV06/GOV09证据链分别定位，不新增台账。
 
 ### 6.4 唯一Store的开发配置来源与写集owner
 
@@ -207,7 +217,11 @@ profile定义真实可执行入口、模型、工具、环境、精确permission
 
 此次候选从author_bindings删除prompt_body_artifact_id，所有角色统一由policy.role_bindings[role_id].prompt_body_artifact_ids[stage]定位；作者profile重复引用须与policy同值，不能形成两份可不同的权限来源。此为明确schema修订，旧含author body字段的batch-config不得静默当新候选通过。
 
-prompt正文来源唯一为上述role/stage映射的UTF-8 bytes，不手工维护第二份必读表；D纯函数改为`render_development_prompt(body_bytes, context, read_plan)`。输出固定为一行canonical JSON context、两个换行、规范read_plan JSON（sort_keys=True/indent=2/ensure_ascii=False/allow_nan=False）、两个换行、原body bytes。context准确含schema=development-prompt-context/1、request_id、batch_id、package_id（非作者为null）、role_id、stage（plan/dispatch/accept）、subject_digest、policy_digest、evidence_bundle_digest（监督为准确bundle，其余null）。read_plan来自C/F本角色本阶段重算结果；body不得再含独立维护的必读范围表。与旧renderer相比，这是明确接口变化，原prompt不能默默沿用。
+prompt正文来源唯一为上述role/stage映射的UTF-8 bytes，不手工维护第二份必读表；D纯函数改为`render_development_prompt(body_bytes, context, read_plan)`。输出固定为一行canonical JSON context、两个换行、read_plan的确定性columnar JSON（sort_keys=True/separators=(',',':')/ensure_ascii=False/allow_nan=False）、两个换行、原body bytes。context准确含schema=development-prompt-context/1、request_id、batch_id、package_id（非作者为null）、role_id、stage（plan/dispatch/accept）、subject_digest、policy_digest、evidence_bundle_digest（监督为准确bundle，其余null）。read_plan来自C/F本角色本阶段重算结果；body不得再含独立维护的必读范围表。与旧renderer相比，这是明确接口变化，原prompt不能默默沿用。
+
+columnar仅改变prompt中的传输表示，不改F规范read_plan对象。准确对象为`{columns,rows}`；columns固定顺序为`[artifact_id,source_sha256,path,read_sha256,offset,limit,projection_id]`，rows逐行按原read_plan顺序取全部7个原值。拒绝多/少/重排/重复列、缺字段、行长非7、额外字段、重复JSON键、类型变化和非法数值；反解后必须与F原plan类型敏感逐值相等，不省略null、范围、路径或完整hash。D唯一实现该表示并回核；不得手改展示件或用摘要代字段。context/body UTF-8原字节保持，完整prompt随准确候选重新pin。
+
+S2独立无模型测量中80×7全部原值保持，原plan canonical SHA为`eef5610061aa620d873144ee93ee7720c0cb689d7590bf92dcc575511257063a`；wire22212 UTF16、完整prompt24225/24226、包含exe/正确转义/NUL的subprocess.list2cmdline长度25279/25283，另用always-quote保守测量25315/25319，argv往返准确；根已独立复算前一组及全部原值。此为旧S2输入的表示可行性证据，不是下一候选准入或产品已实现；每个后继实际输入均重算§6.1完整容量。不得因此省略读取要求、缩hash/path、引入stdin新传输或复用旧prompt摘要。
 
 body不含自己的最终hash或可变候选摘要；实际完整prompt在动作前沿请求证据出口冻结并由action/invocation绑定，D从准确context/read_plan/body重算逐字节一致性。源变化、计划漏项、旧source hash或实际prompt范围缺17–18均启动前阻断。生成表不证明实际读取，B仍逐席重算Read正文。D是唯一渲染owner；C只装载/核证据并提供F计划及launch_evidence，A/B比较实际绑定/覆盖，不另生prompt。bootstrap尚无产品时明确人工准备并独立反向核表；产品可用后的下一适用审核及B4作者实际消费该能力。
 

@@ -1,15 +1,27 @@
 # 开发治理修复当前状态
 
-范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**修订下一轮方案，S1失败仍未关闭，尚未派发产品作者**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。截至2026-10-11，本请求实际使用4次CodeBuddy、0次native；四次均已结束；用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
+范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**S2双席启动失败，准入已撤回；无模型诊断及后继合同修订完成，待重新冻结送审，尚未派发产品作者**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。截至2026-10-11，确认4次CodeBuddy模型调用、0次native，另有2次S2 launcher失败，未观察到模型初始化；计费未知，不能把launcher记录当作模型成功启动。相关进程均已结束。用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
 
 ## 当前结论与下一动作
 
 GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓真实使用和独立关闭。当前只完成调查、实施候选和两轮实际设计审核；没有产品修复完成，不以文档、临时看护或尾部PASS代替交付。
 
 - main保持`9a4855a39121f2483e1630082bc36533a2165a5e`。治理工作在`codex/governance-enforcement-20261011`；原用户工作树、`.workbuddy`及旧证据保留，本轮未合入main或push。
-- 原冻结S1候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`留在独立送审树和Git历史；轮次与四项必修要求已于`9092a8b`提交，后继送审前仍在核准[实施合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)、[分批派发计划](dispatch-sequence.md)：13包、4个完整接收批次，首批N1/A/R1/W四路，N2等待N1有效交付。五个首批作者树只完成隔离准备，没有作者运行。
+- 原冻结S1候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`和S2候选`f1b5f967238290fbe3a1945da5e8cea20f634096`保留在独立送审树与Git历史；轮次与四项必修要求已于`9092a8b`提交。当前核准[实施合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)、[分批派发计划](dispatch-sequence.md)：13包、4个完整接收批次，首批N1/A/R1/W四路，N2等待N1有效交付。五个首批作者树只完成隔离准备，没有作者运行。
 - Codex负责调查、合同、证据、验证和集成；dispatcher_next唯一正式发包；实际CodeBuddy + deepseek-v4-pro实现/修复，CodeBuddy + GLM/Kimi独立交叉审核，native Kimi独立监督。默认执行容量4可配；Claude暂停。
-- 下一动作是审阅[S1最小修订提案](s1-correction-proposal.md)，处理读取计划派生、会话声明、严格final及看护身份回归。用户最新指示已取消固定轮次，原追加2票问题不再待答复；[范围补充](scope-amendment.md)保留原话，[当前路线](../../../docs/roadmap.md)维护有效团队约束。旧52/54总次数不是新的隐藏上限；实际消耗保留，单次运行与资源约束继续执行。下一轮四项必达为漏读、无效审核输出、看护漏管及策略自读缺口；需要有效双席意见和native监督后才派作者。
+- 下一动作是依据S2无模型诊断和完整参数容量修订，重新冻结后继候选、独立核准实际输入，再继续双席审核。[S1最小修订提案](s1-correction-proposal.md)中的读取计划派生、会话声明、严格final及看护身份回归仍须完成。用户最新指示已取消固定轮次，原追加2票问题不再待答复；[范围补充](scope-amendment.md)保留原话，[当前路线](../../../docs/roadmap.md)维护有效团队约束。旧52/54总次数不是新的隐藏上限；实际消耗保留，单次运行与资源约束继续执行。下一轮四项必达为漏读、无效审核输出、看护漏管及策略自读缺口；需要有效双席意见和native监督后才派作者。
+
+## S2启动失败与准入撤回
+
+[S2准入原件](s2-admission.md)绑定候选`f1b5f967238290fbe3a1945da5e8cea20f634096`；该原件记录历史授权，本段撤回其后续启动效力，不改写失败前原件。2026-10-11T05:21:18Z双席wrapper启动后分别于0.8886/0.8706秒exit1，仅观察到conhost后代，没有node、原生init或终态，两份CLI输出均为0字节；因此没有有效审核票，也不启动native监督或作者。
+
+实际报错为`StandardOutputEncoding is only supported when standard output is redirected`，位置为既有`run-review.ps1:119`。另独立确认完整prompt分别34681/34682个UTF-16代码单元，仅argv元素与分隔符下界已达35005/35009，超过Windows命令行容量；尚未包含可执行文件、引号转义和NUL。不能将该独立容量阻断直接宣称为实际报错的已证根因。根此前核对了来源与读取表，但漏做操作系统传输容量检查，原准入不代表完整预检已通过。
+
+失败摘要与传输静态证据原件留在本机`C:/Users/june/AppData/Local/Temp/agent-coop-governance-s2-run-20261011/`：`s2-launch-failure-summary.json` SHA-256 `c0612e3464e9762b265f96d5fda41891c7be58f4324f45250218b714f0063b02`，`s2-transport-static-evidence.json` SHA-256 `5edcdd3a2b6738e41d1699744f4bb2e702dd2069dd9e3be4c68854d0787ccc1e`。保留冻结S2输入与原始调用记录；TEMP不是长期备份。
+
+无模型诊断已复现异常遮蔽：PowerShell 7.6.5/.NET 10.0.11下，父进程重定向开/关均为短参数成功、34681字符长参数失败；直接.NET启动显示Win32Exception 206。另一次同形PowerShell调用的FirstChance原件记录先206、再StandardOutputEncoding异常，根已读取核对。该记录是后续诊断，不是S2现场曾捕获内层206；现场错误与独立容量证据均保留。诊断原件位于本机`C:/Users/june/AppData/Local/Temp/agent-coop-governance-s2-startup-diagnosis-20261011/firstchance-long.json`。无需复制PowerShell启动器到产品；完整参数容量预检及原始启动异常分层由现有运行时路径承接。
+
+运行时调查员和根分别验证：仅去缩进仍超限；保真columnar表保留80行全部7字段，反解与原计划一致，context/body原字节不变；根以subprocess.list2cmdline重算含exe/转义/NUL长度25279/25283。只是旧S2输入表示可行性的无模型证明，不是新候选准入。合同审计员已将表示、最终容量核验及回归写入既有合同。S2容量拒绝归GOV-09/F/D/R2，conhost存在不能证明目标CLI启动归GOV-06/W/R2。只在后继候选与完整输入重新核验后继续；不截断材料、不静默切stdin，也不以固定轮数终止目标。
 
 ## S1实际证据与拒绝原因
 
@@ -52,4 +64,4 @@ watcher虽在04:23:02.4412225Z先于wrapper ready，但GetProcess.StartTime的10
 
 旧开发批次的代码、测试及main合入事实保留；其流程例外与监督充分性继续由本请求复核。前批接收凭据循环、CLI/实际Read实现摘要混淆、启动记录接口和CLI写集漂移已在候选中修订，仍不是产品已修。
 
-本轮未改产品或测试，没有新产品测试结果。根独立复核16个调用原件hash及两份完整终态的严格JSON失败；本次用户纠正后的文档检查521条相对路径、62项设计验收编号无失败，Git空白检查通过。归档字节一致性和文档检查是行政核验，不能充当独立模型审核。当前完整raw仅本机留存；没有异机备份、生产live、OS定时器、远端上传或清理许可。
+本轮未改产品或测试，没有新产品测试结果。根独立复核16个调用原件hash及两份完整终态的严格JSON失败；本次后继修订文档检查525条相对路径、62项设计验收编号无失败，Git空白检查通过。归档字节一致性和文档检查是行政核验，不能充当独立模型审核。当前完整raw仅本机留存；没有异机备份、生产live、OS定时器、远端上传或清理许可。
