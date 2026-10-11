@@ -8,17 +8,17 @@
 
 当前产品组合候选为632345652dada9a642ad89a90a51a918797c8f4b；两个CodeBuddy代码包已汇集供审核、尚未接收；诊断脚本未执行。最新准确统一验证为144项、142通过/2跳过、exit0，历史139项/2错误原件继续保留。旧两轮停止点因用户本次明确继续而由[后继有界计划](continuation-plan-20261011.md)承接，不抹除历史偏离、失败和成本。
 
-| 阶段 | 当前事实与下一准入 |
+| 当前工作 | 准确状态与责任 |
 |---|---|
-| 并行调查 | 日志目录复用与junction重复清理均已实测确认；P1历史发布异常根因仍unknown。详见[运行调查](investigation-runtime-20261011-causal.json)及后继计划 |
-| S0/S1审核 | 原席支持三包范围、日志/2合同和一次argv修正。首次probe-01正例失败保留，不算能力通过；参数静态原因已定位 |
-| probe-02及结果确认 | 两正例成功、七负例真实权限拒绝、文件字节核对满足；两原席接受受信宿主上的限定bootstrap开发profile。不是产品adapter修复或OS沙箱 |
-| 原生Kimi计划监督 | 已完成并通过，仅限本次计划准备；各包启动前准确路径/写集/身份/版本条件仍须逐项核验 |
-| 三包实现与组合接收 | 三个实际deepseek-v4-pro作者已全部退出；局部验收已完成，下一步冻结准确组合候选、原席内容复审、最终native监督；不预支G1、main或live |
+| 内容R1审核 | 两原席将审核准确6323456组合候选；统一verify已完成，不再显示为待冻结 |
+| R-log | 实际作者交付与25项局部验证完成，等待原席按/2合同关闭对应finding |
+| R-junction | 28项局部验证通过，但重复helper及吞全部OSError偏离仍开放；由原席给最小复修意见 |
+| R-publication | 脚本已真实写入指定TEMP并核nlink1，运行边界存在缺陷，因此未执行；由原席裁定复修，历史根因仍unknown |
+| 接收与live | 产品权限B18/B11仍待范围对齐；原席复审、最终native监督与接收均未完成，不预支G1/main/live |
 
 分包与唯一写集：R-log仅checks.py/test_gates.py，执行[验证日志集合/2合同](interface-log-invocations-20261011.md)；R-junction仅test_runtime.py，修生命周期并保留逃逸/哨兵/未执行证据；R-publication仅TEMP具名harness，最多30轮×2项或120秒，首失败停止，不改Store/Runner、不加重试，未复现保持unknown。实际作者均由专门发包人正式派出，不由集成者补写。
 
-## 本批审核与能力证据
+## 本批已完成前置与证据导航
 
 - S0：[GLM原票](review-continuation-s0-glm.txt)/[调用](review-continuation-s0-glm-calls.json)、[Kimi原票](review-continuation-s0-kimi.txt)/[调用](review-continuation-s0-kimi-calls.json)。GLM自行关闭B10b；两席接受绑定原候选及未变符号的软目标内聚说明，不是永久豁免。
 - 首次探针：[原件](permission-probe-s1-20261011.txt)/[逐格元数据](permission-probe-s1-20261011-metadata.json)，P1精确Edit拒绝，P2/N1–N7未执行。静态原因见[规则解析链](permission-s1-static-investigation.json)；作者关于allowlist的推断不代替根因证据。
@@ -28,13 +28,13 @@
 
 常备限制：每包逐文件绝对allow=批准写集、全祖先非reparse、已有目标link_count1，准确CLI版本/身份绑定，事后核对写集，越界即收回。T1执行能力、hook先行allow、CLI/session/scoped-hook、真实宿主memory全域隔离、未测路径别名仍unknown；宿主无hook配置不是已证前提。CLI报告num_turns（probe-01为13、probe-02为31）与请求12分别保留，不声称硬轮数保证；N7拒绝的内部decisionReason未动态观测。静态[hook证据](permission-hook-static-evidence-20261011.json)不扩大实测结论。
 
-产品未决项：GLM B13/B14/B02及Kimi B06待代码修复与原席关闭；GLM B11/Kimi B09根因unknown；GLM B18/Kimi B11是产品adapters+sample权限及写集来源缺陷，须后继跨包对齐，不混入本批已审三包。bootstrap探针不代关产品finding。后继只读[写集权威调查](product-permission-scope-investigation-20261011.json)与[范围方案提案](product-permission-scope-proposal-20261011.md)已准备，尚未审核、不是派发许可；它们不扩大当前三个包。浏览器JS、云CI、live四角色均未验证。
+产品未决项：GLM B13/B02及Kimi B06的日志子项已有候选修复和验证，待原席关闭；GLM B14及Kimi B06的junction子项因新交付偏离仍待审核；GLM B11/Kimi B09根因unknown；GLM B18/Kimi B11是产品adapters+sample权限及写集来源缺陷，须后继跨包对齐，不混入本批已审三包。bootstrap探针不代关产品finding。后继只读[写集权威调查](product-permission-scope-investigation-20261011.json)与[范围方案提案](product-permission-scope-proposal-20261011.md)已准备，尚未审核、不是派发许可；它们不扩大当前三个包。浏览器JS、云CI、live四角色均未验证。
 
 预算：经S1两席明确批准，本后继批次最多18次CodeBuddy/2次native；当前已发11次CodeBuddy、native1次。新增的3次仅用于修正探针及两席确认，现已使用；不转换未用额度，不追加第三探针。原失败和全部审核计成本。三个作者已全部正常退出；R-log25项/R-junction28项局部验证通过，诊断脚本因执行边界问题未运行。准确组合候选与统一verify已冻结，下一步仅准入两原席各一次首轮内容审核，不自动派修。
 
 [原生Kimi计划监督原票](supervision-continuation-plan.txt)、[调用](supervision-continuation-plan-calls.json)及[准确输入索引](supervision-continuation-plan-input-index.json)已归档。422.360秒、35次tool与35次result、exit0，实际session_a75b547a-13c5-4740-b07f-f3d4ccc93704，runtime0.43.0、模型unknown；PASS仅表示准备充分，不是产品接收。启动条件：逐包独立admission（不改prepared历史），四个memory子进程环境值、node/bin/dist/wrapper四摘要人工复核；显式Gate=continuation-author/Round=1避免历史回执前缀冲突；每包启动前重新核路径与已有文件摘要。人工版本核查和600秒看护不冒充wrapper自动门禁。
 
-R-publication跨盘且cwd外的精确允许Write尚未正向实证，保持unknown；首次拒绝即停止，禁止加add-dir或扩大allow。脚本首次创建后核nlink1与完整写集。R-log/R-junction均为cwd内目标，沿已测规则；p7/p3只是旧wrapper传输seat别名，真实owner仍P6 checks/P2 test_runtime。三个作者交付与局部实测已完成，详见[集成检查线索](integration-observations-continuation-r1.md)及其原件链接。junction helper复制/吞异常与诊断TEMP/失败现场/证据失效问题仍待原席裁定；没有原席finding前不派修，根不补写。
+计划监督时，R-publication跨盘且cwd外的正向Write尚未实证；后续本次作者已真实成功写入指定harness，并核nlink1及精确写集。该次成功不扩成所有cwd外路径能力，也不证明harness执行边界正确；没有加add-dir或扩大allow。R-log/R-junction均为cwd内目标，沿已测规则；p7/p3只是旧wrapper传输seat别名，真实owner仍P6 checks/P2 test_runtime。三个作者交付与局部实测已完成，详见[集成检查线索](integration-observations-continuation-r1.md)及其原件链接。junction helper复制/吞异常与诊断TEMP/失败现场/证据失效问题仍待原席裁定；没有原席finding前不派修，根不补写。
 准确组合候选632345652dada9a642ad89a90a51a918797c8f4b已在独立clean detached树完成唯一验证：[输出](verification-continuation-r1-output.txt)、[元数据](verification-continuation-r1-metadata.json)、[前清单](verification-continuation-r1-before.json)/[后清单](verification-continuation-r1-after.json)。144项、142通过/2跳过、exit0，33.451秒；43文件清单前后同SHA cfe7774e8453f065a23efe895b8127ffd18043f3704c709875358d7e7a22635e，无硬规模失败，8个软目标。两skip仍为Windows创建文件symlink权限不足（WinError1314），junction回归真实通过；302本地链接机械有效，不代表浏览器JS、远端、锚点或云CI。test_runtime已变为474行，不能把旧未变符号豁免自动延伸；helper复制与吞异常继续交原席。
 
 本检查点只准入原GLM/Kimi各一次内容R1，原session、原cwd切到上述准确候选，最新行政状态按本入口冻结送审。审核须逐项处理两个未决交付偏离及既有产品finding，测试通过不代替scope审核。诊断脚本没有执行，历史P1根因未被新结果关闭。
