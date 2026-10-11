@@ -1,11 +1,34 @@
 # 开发治理修复当前状态
 
-范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**S6双席正文覆盖与完整意见已独立核验：GLM pass、Kimi changes_requested/GOV-06；native已返回blocked/GOV-06，但620.319秒越界，不能作预算合规准入；限定修补仍须由真实执行者承担，限定两文件修补已获fresh native明确支持并签发准确激活许可，真实deepseek作者已写入两份授权文件，但535.340秒停止且无完整final，交付partial；看护再次漏过480秒收口，原许可不得重用；B1仍阻断**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。CodeBuddy累计确认9次模型调用（本次新增1次实际修补作者）；native累计已启动3次：第一次blocked终态但超时，第二次限定行政监督214.568秒结束仍blocked，第三次准确派单复核166.495秒结束，明确support/repair_allowed=true；另有S2两次launcher失败、S3及S4各两次目标Node已启动后看护中止，均未观察到原生模型初始化，后端活动/计费未知。S6已知owner/watcher/wrapper/CLI退出，tree_empty仍unknown。用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
+范围：本仓开发失效的产品修复；维护者：Codex集成者。当前为行政修补部分交付、恢复评估未完成及流水线修订待审，尚无有效作者final，产品作者仍未放行。最新状态仅见下一节；历史准入、失败、意见及其效力保留在后文。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。
 
 ## 当前结论与下一动作
 
-GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓真实使用和独立关闭。当前已取得S6有效的正负审核意见和完整读取证据；没有产品修复完成，不以文档、临时看护或单席PASS代替交付。
+- 实际在途：作者0、模型审核0、native监督0。本次恢复评估已因480秒超时结束、没有有效监督结论，不准作者或原样重试。上一CodeBuddy作者改了两文件但无final；21项局部checker已通过，剩余诊断缺陷未关闭。原activated许可已消耗，不能复用。
+- 本次宿主唤醒推进了无模型实证：2026-10-11T09:01:25Z运行现有路径及run_bounded测试，15/15通过、无skip，20.032秒、exit0；准确原件`C:/Users/june/AppData/Local/Temp/agent-coop-runtime-existing-tests-20261011T090125Z/execution.json` SHA `a94446fc85b0b6b6e293bced6f23b0aae648815f55b73198a9158160c5f2767b`。源码未变，根回读完整命令和输出；不当产品关闭或作者调用证据。
+- dispatcher_next已用现有create_root创建`D:/ac-repair-bounded`，两份partial源码按原hash复制到workspace，无代码修补。作者草稿和只读native材料已冻结并独立核验：作者14块767行，native40块2593行；未获新作者准入。
+- 下一动作：对本次超时原流核实际读取/终态；准确缺陷继续交原owner，不新增Codex看护实现。现成run_bounded本次确实在约480秒终止已知进程，但父先退持pipe、控制者崩溃、延迟落盘和tree_empty未知仍未关闭。新作者许可须有效监督后另签，修后GLM/Kimi双审与native均保留。
+- 本回合用户提供的AGENTS文本明确替换此前AGENTS指令，已在新隔离根精确物化；磁盘旧长版只作历史来源，不据其被替换条款新增门禁。其他用户角色约束、准确绑定和有效独立审核条件仍保留；不改写冻结旧票，不把用户文本中的阶段描述当实测工具不存在的证明。
+- 用户最新要求四角色流水协作。两路独立调查确认人为整批屏障及产品Runner串行缺口；[流水线修订提案](pipeline-amendment.md)选择固定单包接收、真实DAG、角色统一claim及完成即补发，仍由原A/C/S/D/X/C2承接。当前仅后继设计待审，未改旧合同生效状态；原S6票和本次40块恢复输入都不覆盖它。集成者负责合同归并，唯一发包人准备新范围双席/native审查，执行者仍为CodeBuddy。
 
+### 本次准确只读恢复准入
+
+[恢复候选说明](bounded-recovery-admission.md)保留准备状态原件；本段与`D:/ac-repair-bounded/evidence/native/activated-review.json`构成本次实际限定签发，activation SHA `0d258aa07b84daca716441cdfc35f1ff4e1a5befef6afb0d7e576676fc392b0d`。仅一次fresh只读native，不准作者、重试、resume或产品B1。绑定native PREPARATION `19dfd0c3f570784ef309ac68b09e917fede91b9bd038f7e11e53b401c998e7bd`、plan `c7d5680df6326e3729ce83f63964b2191cfef94341e3fc9f848ad2b9070a0d7a`、prompt `a627dd7976658c162ed2899a1b87e5e538ac9f02f9b959913d31ca3fbe6a0012`；作者PREPARATION `8622c60e546722f0018c6343743fc26c62afd7219a407ee6b053d925b14fbcf2`仍prepared。
+
+独立核验40块2593行准确源/区间及prompt、作者可读投影全值还原、两模型argv4474/8778 UTF16及Python627逐token往返；根再核33来源副本、10 runtime pins及全部准备文件，日志目录未存在。准备阶段38项漏README/runtime-adapters已被技术核验挡住，补全文并按用户阅读顺序重排；Python操作参数加入-B。旧准备留在新根archives，不计为已满足必读。此遗漏继续归GOV-09的启动前检查反例，不宣称产品已自动拒绝。
+
+本次已于2026-10-11T09:19:20.4895013Z实际ready，原Python52484/直接native47220均显式持柄，根核实际native完整命令hash逐字等计划。480参考09:27:20Z、540外侧收口09:28:20Z、600绝对截止09:29:20Z；准确原件`D:/ac-repair-bounded/.runtime/native-operator-1`，模型raw仅收流后在`.runtime/native-evaluation-1`落盘，当前不预填初始化、session或有效意见。
+
+运行安排：现有API收流480秒/8MiB，外侧ready先记录并持有原Python/native身份，观察目标20秒；根并行核时点，最迟ready+540秒人工收口仍活已绑定对象，为原600秒内确认已知终态留余量。该安排不是全树/硬实时保证；迟到、缺有效意见或终止unknown不获得下游效力，旧原件不改。准备核验不能代实际原生身份、完整正文或监督同意。
+
+实际终态：native47220于09:27:20.8644231Z、Python52484于09:27:20.8939226Z均exit1；相对ready约480.40秒，Python原错误为`RuntimeError: timeout exceeded`。已有API触发停止，operator_stop_issued=false；两原句柄退出后有效并已Dispose，tree_empty=null。终态原件为`D:/ac-repair-bounded/.runtime/native-operator-1/terminal.json`；stdout原流342613字节，未取得有效final，不签新作者许可。观察期间至少一次27.4715秒间隔超过20秒目标，不能写成全程看护达标；本次已知目标在540/600边界前退出不证明所有生命周期场景受控。
+
+独立收尾核验：原流50行均合法JSON，42个Read与42返回一一配对；40/40必读块2593/2593行均逐行匹配准确源，missing与source hash errors为空。额外两Read为GLM/Kimi coverage截断后的同源补读，不声称每次单独返回都完整。无assistant正文final或session.resume_hint；仅观察版本0.43.0，actual session/model/provider均unknown。raw SHA `a34ab9f83b2247f965be0ab42cedd21749831bd41c77d74e4c59923331e36416`，terminal SHA `6c700f61514e7eb2d5cead13cb31fdd28fff83b075cd396f2ac85aa307dc9a3a`。32次观察中4个间隔超过20秒，最大27.471515秒；完整读取不等于完成判断，不能推断模型内部为何未产出结论。
+
+流水线文档交叉审核已修正：D真实依赖准入、不可变组合树锁外验证、暂停/启动许可竞态、公平队列及逻辑动作与attempt幂等边界。独立审查支持将提案交接到准确schema修订；这是Codex技术调查意见，不是GLM/Kimi或native正式票。文档检查566个本地链接、62个验收ID无失败；当前没有流水线新增实现或回归通过结论。
+## 历史检查点与未决责任证据
+
+以下保留各检查点的原范围、实际结果及后继处置；“当时/启动时”的状态不替代上方当前人数及下一动作。GOV-01–09及GOV-S0-I01仍须产品实现、失败/恢复回归、本仓真实使用及独立关闭。
 - main保持`9a4855a39121f2483e1630082bc36533a2165a5e`。治理工作在`codex/governance-enforcement-20261011`；原用户工作树、`.workbuddy`及旧证据保留，本轮未合入main或push。
 - 原冻结S1候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`和S2候选`f1b5f967238290fbe3a1945da5e8cea20f634096`保留在独立送审树与Git历史；轮次与四项必修要求已于`9092a8b`提交。当前冻结送审候选[实施合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)、[分批派发计划](dispatch-sequence.md)：13包、4个完整接收批次，首批N1/A/R1/W四路，N2等待N1有效交付。五个首批作者树已实际fast-forward至本次候选ed527d8并保持clean，没有作者运行。
 - Codex负责调查、合同、证据、验证和集成；dispatcher_next唯一正式发包；实际CodeBuddy + deepseek-v4-pro实现/修复，CodeBuddy + GLM/Kimi独立交叉审核，native Kimi独立监督。默认执行容量4可配；Claude暂停。
