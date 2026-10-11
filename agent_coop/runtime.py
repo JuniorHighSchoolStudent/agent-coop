@@ -267,11 +267,20 @@ def _build_env(environment):
     set_values = environment['set']
     if not isinstance(set_values, dict):
         raise ValueError('environment.set must be an object')
+    set_seen = set()
     for key, value in set_values.items():
         if not isinstance(key, str) or not key:
             raise ValueError('environment.set keys must be non-empty strings')
         if not isinstance(value, str):
             raise ValueError('environment.set values must be strings')
+        folded = key.casefold()
+        if folded in seen and seen[folded] != key:
+            raise ValueError(
+                f'set key case-conflicts with inherit name: {key}')
+        if folded in set_seen:
+            raise ValueError(
+                f'duplicate or case-ambiguous set key: {key}')
+        set_seen.add(folded)
     env = {}
     for name in inherit:
         if name in os.environ:

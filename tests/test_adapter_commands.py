@@ -6,7 +6,11 @@ setting-sources none、禁止 acceptEdits/泛化、schema/scope/root 与工具�
 一致性、文件规则字符拒绝、Kimi 只读 agent-file。
 """
 import os
+import subprocess
+import sys
+import tempfile
 import unittest
+from pathlib import Path
 
 from agent_coop import adapters
 from tests.test_runtime import CODEBUDDY_SET, INHERIT
@@ -167,12 +171,18 @@ class AdapterCommandTests(unittest.TestCase):
                     adapters.command(profile, 'hi', 's')
 
     def test_permissions_schema_must_be_integer_one(self):
-        for bad in (True, False, 2, 0, '1', None):
+        for bad in (True, False, 2, 0, '1', None, 1.0, 2.0):
             with self.subTest(schema=bad):
                 profile = _codebuddy_profile()
                 profile['permissions']['schema'] = bad
                 with self.assertRaisesRegex(ValueError, 'schema'):
                     adapters.command(profile, 'hi', 's')
+
+    def test_permissions_reject_unknown_key(self):
+        profile = _codebuddy_profile()
+        profile['permissions']['extra'] = 1
+        with self.assertRaisesRegex(ValueError, 'permissions'):
+            adapters.command(profile, 'hi', 's')
 
     def test_permissions_scope_must_match(self):
         profile = _codebuddy_profile()
@@ -219,6 +229,39 @@ class AdapterCommandTests(unittest.TestCase):
         profile['permissions']['write_files'] = [_feature()]
         with self.assertRaisesRegex(ValueError, 'write_files'):
             adapters.command(profile, 'hi', 's')
+
+    def test_kimi_rejects_write_files_even_with_write_tools(self):
+        profile = _kimi_profile(tools=['Read', 'Glob', 'Grep', 'Write', 'Edit'])
+        profile['permissions']['write_files'] = [_feature()]
+        with self.assertRaisesRegex(ValueError, 'write_files'):
+            adapters.command(profile, 'hi', 's')
+
+    def test_canonical_path_matches_sample_representation(self):
+        from agent_coop import sample
+        for path in (os.getcwd(), _root(), _feature()):
+            with self.subTest(path=path):
+                self.assertEqual(adapters.canonical_path(path),
+                                 sample.canonical_path(path))
+
+    def test_canonical_path_rejects_reparse_chain(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            outside = base / 'outside'
+            outside.mkdir()
+            link = base / 'link'
+            if sys.platform == 'win32':
+                proc = subprocess.run(
+                    ['cmd', '/c', 'mklink', '/J', str(link), str(outside)],
+                    capture_output=True, text=True)
+                if proc.returncode != 0:
+                    self.skipTest(f'mklink /J unavailable: {proc.stderr.strip()}')
+            else:
+                try:
+                    link.symlink_to(outside, target_is_directory=True)
+                except OSError as exc:
+                    self.skipTest(f'symlink unavailable: {exc}')
+            with self.assertRaisesRegex(ValueError, 'symlink or junction'):
+                adapters.canonical_path(link / 'inner' / 'file.py')
 
 
 if __name__ == '__main__':

@@ -82,19 +82,18 @@ class InvokeTests(SubprocessTests):
         )
         keys = ['AGENT_COOP_INHERITED', 'AGENT_COOP_SECRET',
                 'CODEBUDDY_DISABLE_AUTO_MEMORY', 'PATH']
-        os.environ['AGENT_COOP_INHERITED'] = 'keep'
-        os.environ['AGENT_COOP_SECRET'] = 'leak'
-        os.environ['CODEBUDDY_DISABLE_AUTO_MEMORY'] = '0'
-        self.addCleanup(os.environ.pop, 'AGENT_COOP_INHERITED', None)
-        self.addCleanup(os.environ.pop, 'AGENT_COOP_SECRET', None)
-        self.addCleanup(os.environ.pop, 'CODEBUDDY_DISABLE_AUTO_MEMORY', None)
-        env = {
-            'PATH': os.environ.get('PATH', ''),
-            'AGENT_COOP_INHERITED': 'keep',
-            'CODEBUDDY_DISABLE_AUTO_MEMORY': '1',
-        }
-        result = self._run_bounded(
-            [sys.executable, str(script), json.dumps(keys)], env=env)
+        with mock.patch.dict(os.environ, {
+                'AGENT_COOP_INHERITED': 'keep',
+                'AGENT_COOP_SECRET': 'leak',
+                'CODEBUDDY_DISABLE_AUTO_MEMORY': '0',
+        }):
+            env = {
+                'PATH': os.environ.get('PATH', ''),
+                'AGENT_COOP_INHERITED': 'keep',
+                'CODEBUDDY_DISABLE_AUTO_MEMORY': '1',
+            }
+            result = self._run_bounded(
+                [sys.executable, str(script), json.dumps(keys)], env=env)
         dumped = json.loads(result['stdout'])
         self.assertEqual(dumped['AGENT_COOP_INHERITED'], 'keep')
         self.assertIsNone(dumped['AGENT_COOP_SECRET'])
@@ -111,13 +110,13 @@ class InvokeTests(SubprocessTests):
         self.assertEqual(dict(os.environ), before)
 
     def test_env_none_inherits_parent_environment(self):
-        os.environ['AGENT_COOP_PARENT_ONLY'] = 'present'
-        self.addCleanup(os.environ.pop, 'AGENT_COOP_PARENT_ONLY', None)
-        script = self._write_script(
-            'import os, sys\n'
-            'print(os.environ.get("AGENT_COOP_PARENT_ONLY", "missing"))\n'
-        )
-        result = self._run_bounded([sys.executable, str(script)])
+        with mock.patch.dict(os.environ, {'AGENT_COOP_PARENT_ONLY': 'present'}):
+            script = self._write_script(
+                'import os, sys\n'
+                'sys.stdout.write(os.environ.get("AGENT_COOP_PARENT_ONLY", '
+                '"missing"))\n'
+            )
+            result = self._run_bounded([sys.executable, str(script)])
         self.assertEqual(result['stdout'], 'present')
 
     def test_build_env_copies_inherit_applies_set_and_excludes_noninherit(self):
@@ -140,7 +139,7 @@ class InvokeTests(SubprocessTests):
 
     def test_build_env_applies_codebuddy_four_value_set(self):
         from agent_coop.runtime import _build_env
-        environment = {'inherit': ['PATH'], 'set': CODEBUDDY_SET}
+        environment = {'inherit': ['PATH', 'SYSTEMROOT'], 'set': CODEBUDDY_SET}
         with mock.patch.dict(os.environ, {
                 'CODEBUDDY_DISABLE_AUTO_MEMORY': '0',
                 'CODEBUDDY_CODE_DISABLE_AUTO_MEMORY': '0',
@@ -178,6 +177,24 @@ class InvokeTests(SubprocessTests):
             with self.subTest(value=value):
                 with self.assertRaisesRegex(ValueError, 'set'):
                     _build_env({'inherit': [], 'set': {'K': value}})
+
+    def test_build_env_rejects_case_ambiguous_set_keys(self):
+        from agent_coop.runtime import _build_env
+        cases = [
+            ({'inherit': [], 'set': {'CODE': '1', 'code': '1'}}, 'set'),
+            ({'inherit': ['PATH'], 'set': {'Path': 'x'}}, 'inherit'),
+        ]
+        for environment, pattern in cases:
+            with self.subTest(environment=environment):
+                with self.assertRaisesRegex(ValueError, pattern):
+                    _build_env(environment)
+
+    def test_build_env_allows_exact_same_name_set_override(self):
+        from agent_coop.runtime import _build_env
+        environment = {'inherit': ['PATH', 'SYSTEMROOT'],
+                       'set': {'PATH': 'custom'}}
+        env = _build_env(environment)
+        self.assertEqual(env['PATH'], 'custom')
 
     def test_invoke_rejects_cwd_mismatch_before_launch(self):
         from agent_coop import adapters

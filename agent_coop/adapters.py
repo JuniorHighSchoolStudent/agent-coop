@@ -8,17 +8,21 @@ _FORBIDDEN_RULE_CHARS = frozenset('*?[](){},!')
 
 
 def canonical_path(path):
-    """权限字段与 cwd 的规范字符串：Path.resolve(strict=False).as_posix()；
-    Windows 仅接受本地盘符绝对路径且盘符统一大写，拒绝 UNC 与设备路径。"""
-    resolved = Path(path).resolve(strict=False)
+    """原始 reparse 检查后以 resolve(strict=False).as_posix() 作为规范字符串。
+
+    Windows 仅接受本地盘符绝对路径，盘符统一大写，拒绝 UNC 与设备路径；
+    其余组件拼写保留 resolve 返回原样，不整体 lower/casefold。
+    """
+    from .paths import _reject_reparse_chain
+    target = Path(path).absolute()
+    _reject_reparse_chain(target)
+    resolved = target.resolve(strict=False)
     if os.name == 'nt':
         drive = resolved.drive
-        if not (len(drive) == 2 and drive[1] == ':' and drive[0].isalpha()):
-            raise ValueError('only local drive-letter absolute paths are allowed')
-        text = resolved.as_posix()
-        if text[:1].isalpha() and text[1:2] == ':':
-            text = text[:1].upper() + text[1:]
-        return text
+        if len(drive) != 2 or drive[1] != ':' or not drive[0].isalpha():
+            raise ValueError(
+                'only local drive-letter absolute Windows paths are supported')
+        return drive[0].upper() + ':' + resolved.as_posix()[2:]
     return resolved.as_posix()
 
 
@@ -43,8 +47,13 @@ def _validate_permissions(profile):
     permissions = profile.get('permissions')
     if not isinstance(permissions, dict):
         raise ValueError('permissions are required')
+    if set(permissions) != {'schema', 'scope', 'root', 'write_files',
+                            'environment'}:
+        raise ValueError(
+            'permissions must contain exactly schema, scope, root, '
+            'write_files, environment')
     schema = permissions.get('schema')
-    if isinstance(schema, bool) or schema != 1:
+    if isinstance(schema, bool) or not isinstance(schema, int) or schema != 1:
         raise ValueError('permissions.schema must be the integer 1')
     if permissions.get('scope') != PERMISSION_SCOPE:
         raise ValueError(f'permissions.scope must be {PERMISSION_SCOPE}')
@@ -112,6 +121,8 @@ def _codebuddy_command(profile, prompt, session_id):
 
 def _kimi_command(profile, prompt):
     _validate_permissions(profile)
+    if profile['permissions']['write_files']:
+        raise ValueError('kimi adapter cannot express write_files')
     return [
         profile['executable'],
         profile['entry'],
