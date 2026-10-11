@@ -14,7 +14,7 @@ CodeBuddy对象包含：adapter=`codebuddy`、executable=Node绝对路径、entr
 
 ## 显式启动、暂停和续作
 
-在本仓根目录执行，以下目录为占位路径，须选择尚不存在或为空的隔离目录：
+以下为接口用法；只有当前结果明确具备live准入时才可执行会调用模型的run，静态接收不自动放行。目录为占位路径，须选择尚不存在或为空的隔离目录：
 
 ```powershell
 python -m agent_coop verify
