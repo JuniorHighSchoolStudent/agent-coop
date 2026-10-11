@@ -1,0 +1,160 @@
+{
+  "status": "prepared_only_waiting_root_admission",
+  "administrative_commit": "4fa2fe9146888187bbe3d3f7bec49edece3bb1ff",
+  "product_commit": "fe2e1b6b03cde7763f6f2c974d909edf6c2ce708",
+  "verify_first_direct_full_reads": [
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/product-permission-c2-output.txt",
+      "sha256": "ab5010b1878d42f96f070b7cc6a30bbc37d2a9aa5986fca748601e61ada53c29",
+      "lines": 221
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/product-permission-c2-metadata.json",
+      "sha256": "d25c93fe9a8d6e8fea9bf078fc0c4a295ca6f5c6b21ba0a2b07efc33a0cef1cb",
+      "lines": 12
+    }
+  ],
+  "then_full_packet_reads": [
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-01.txt",
+      "sha256": "f82205cd10814d1c1166e259b160ce20d4ccef72edbed6d78e65016cd74585c5",
+      "bytes": 16082,
+      "lines": 218,
+      "contains": [
+        "review-product-permission-c2-glm.txt",
+        "review-product-permission-c2-kimi.txt",
+        "product-permission-author-b-failure.json",
+        "product-permission-repair-b-failure.json",
+        "cell-P1-native.json"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-02.txt",
+      "sha256": "404eb1fbee25f3596fd1a11e38d7dc47dab54ba5b4ad6f6168ff6414b11ebae6",
+      "bytes": 14869,
+      "lines": 324,
+      "contains": [
+        "cell-P2-native.json",
+        "cell-N1-native.json",
+        "cell-N2-native.json",
+        "cell-N3-native.json",
+        "cell-N4-native.json"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-03.txt",
+      "sha256": "4e71663b522f48ab9a8110bb3f54bc88597141da201da6238ea1964cb4af3970",
+      "bytes": 13116,
+      "lines": 272,
+      "contains": [
+        "cell-N5-native.json",
+        "cell-N6-native.json",
+        "cell-N7-native.json",
+        "fixture-baseline.json"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-04.txt",
+      "sha256": "1078d79484ba2ae6e531a4becb2e974df631f8d5c5138ce22fd24947fdc466a1",
+      "bytes": 13194,
+      "lines": 211,
+      "contains": [
+        "fixture-after.json",
+        "expected-STATUS",
+        "actual-STATUS-after",
+        "initial-STATUS",
+        "execution-completion.json",
+        "watch-020809228.json",
+        "product-permission-matrix-n4-method.md"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-05.txt",
+      "sha256": "5cb4f7acf811d769e66c01c43ef3d812ce35934935cc3daec75e1b1aca5e433a",
+      "bytes": 16302,
+      "lines": 534,
+      "contains": [
+        "state-before-reservation.pretty.json",
+        "expected-after-reservation.pretty.json"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-06.txt",
+      "sha256": "c63bd3ed9aa8f6a89911be6a0dc84760daa82aace89a2b2a5b14357c77cd90c7",
+      "bytes": 15864,
+      "lines": 480,
+      "contains": [
+        "actual-state-after.pretty.json",
+        "observed-argv-token-projection.json",
+        "observed-prompt-multiline.txt"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-07.txt",
+      "sha256": "ec16a584d04a834aaada80518116c32cc994fcd717f731eecdbf5ae9b3bda6f0",
+      "bytes": 13946,
+      "lines": 333,
+      "contains": [
+        "matrix-confirm-coverage-readable.json",
+        "projection-index.json",
+        "derived-implement-profile.json"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-08.txt",
+      "sha256": "52f2c3dfca43d2bf85c3f72519c321f3f640b12af73a543510582a163869b2cb",
+      "bytes": 16517,
+      "lines": 404,
+      "contains": [
+        "preparation-metadata.json",
+        "preparation-error.json",
+        "dispatch-receipt.json [projection]"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-09.txt",
+      "sha256": "93756bb6531fba29705c01f39046ed9206f2747a2f99cc795851cdf33c82033b",
+      "bytes": 14326,
+      "lines": 442,
+      "contains": [
+        "cli-final-raw.json [projection]",
+        "matrix-result-summary.json"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-10.txt",
+      "sha256": "8ba988821d3ef8289bde6043d07003b7d1a914278938497bfe59f68a8eef7a5a",
+      "bytes": 15722,
+      "lines": 335,
+      "contains": [
+        "review-product-permission-matrix-glm.txt",
+        "review-product-permission-matrix-kimi.txt",
+        "review-product-permission-matrix-factual-corrections.json"
+      ]
+    },
+    {
+      "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-11.txt",
+      "sha256": "34b50f4ed6303ef65235bd74a52efce95ef81eb14b5a605f30865ecffab9f8ef",
+      "bytes": 10801,
+      "lines": 113,
+      "contains": [
+        "result.md [current prefix]",
+        "review-call-facts [selected fields]"
+      ]
+    }
+  ],
+  "source_map": {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/source-map.json",
+    "sha256": "60af615d615f124cf8bab8e9e29a18afea64c6b5d42ac6bea308ce2eff9c20c0"
+  },
+  "projection_equivalence": "All S0/S1/actual pretty JSON typed values canonical-equal to original Git blobs; prompt exact observed argv token; token projection reconstructs observed argv. Native must inspect readable values. Not original bytes and no independent I/O or process env sampling.",
+  "coverage_full_original": "coordination/requests/isolated-workflow-20261010/review-product-permission-matrix-reading-coverage.json",
+  "guard": "resume existing session only; no new model/provider/profile; print implicit auto unchanged fact, readonly durable guard; 600s dispatcher external PID creation watchdog",
+  "budget": {
+    "codebuddy_used": 15,
+    "codebuddy_limit": 15,
+    "native_before": 1,
+    "native_after_if_admitted": 2,
+    "native_limit": 2
+  }
+}

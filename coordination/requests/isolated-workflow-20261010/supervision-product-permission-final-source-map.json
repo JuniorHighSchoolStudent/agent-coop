@@ -1,0 +1,502 @@
+[
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-01.txt",
+    "sha256": "f82205cd10814d1c1166e259b160ce20d4ccef72edbed6d78e65016cd74585c5",
+    "bytes": 16082,
+    "lines": 218,
+    "contains": [
+      "review-product-permission-c2-glm.txt",
+      "review-product-permission-c2-kimi.txt",
+      "product-permission-author-b-failure.json",
+      "product-permission-repair-b-failure.json",
+      "cell-P1-native.json"
+    ],
+    "source_map": [
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/review-product-permission-c2-glm.txt",
+        "sha256": "bdc8a583205efd58f7258aaf839e55a3481ef4d383727443ec3f38b3f9150627",
+        "kind": "original",
+        "packet_lines": [
+          3,
+          33
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/review-product-permission-c2-kimi.txt",
+        "sha256": "66f583c076c813202d8d560389a67795194a6e17c7da2fb4c28ae1df09a7faba",
+        "kind": "original",
+        "packet_lines": [
+          37,
+          68
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-author-b-failure.json",
+        "sha256": "1a678f9df9438e5473a59b7b89198014fefa9a426a450b375c8c3cca4cdea819",
+        "kind": "original",
+        "packet_lines": [
+          72,
+          120
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-repair-b-failure.json",
+        "sha256": "5aa8d4759e1985bcff2f7fe1c912e73c75875c1fe2772069fd4406156c4200ea",
+        "kind": "original",
+        "packet_lines": [
+          125,
+          173
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-P1-native.json",
+        "sha256": "7de14df61db2771fd32bb7f76266cd2d6891df99d5d030445beefeaadb122b05",
+        "kind": "original",
+        "packet_lines": [
+          178,
+          216
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-02.txt",
+    "sha256": "404eb1fbee25f3596fd1a11e38d7dc47dab54ba5b4ad6f6168ff6414b11ebae6",
+    "bytes": 14869,
+    "lines": 324,
+    "contains": [
+      "cell-P2-native.json",
+      "cell-N1-native.json",
+      "cell-N2-native.json",
+      "cell-N3-native.json",
+      "cell-N4-native.json"
+    ],
+    "source_map": [
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-P2-native.json",
+        "sha256": "a6f67263e6b85e9513cea7bee3809dd44b13d2034cdad1d12d92572ad611265d",
+        "kind": "original",
+        "packet_lines": [
+          3,
+          69
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N1-native.json",
+        "sha256": "cdd49093462e2263a6a4711b61dde758e9c51b1b8000f5db618810f1c5e7ced8",
+        "kind": "original",
+        "packet_lines": [
+          74,
+          139
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N2-native.json",
+        "sha256": "3af84860bac0f1c7e3f19323d0beb803a721fa65a37e47bd50fe7ca5ffadcc37",
+        "kind": "original",
+        "packet_lines": [
+          144,
+          182
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N3-native.json",
+        "sha256": "00cf27c3f5608285843b57149764fbd7925365718abffda48d0f37dba05bad81",
+        "kind": "original",
+        "packet_lines": [
+          187,
+          252
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N4-native.json",
+        "sha256": "e3969df5478f1b1a66d174ea3cecb7f18ad86df954ce8ba7022f7dcfb97bbe84",
+        "kind": "original",
+        "packet_lines": [
+          257,
+          322
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-03.txt",
+    "sha256": "4e71663b522f48ab9a8110bb3f54bc88597141da201da6238ea1964cb4af3970",
+    "bytes": 13116,
+    "lines": 272,
+    "contains": [
+      "cell-N5-native.json",
+      "cell-N6-native.json",
+      "cell-N7-native.json",
+      "fixture-baseline.json"
+    ],
+    "source_map": [
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N5-native.json",
+        "sha256": "0b468f7bf2a6dd149d33112179b3a8719b89dc7ac0b6d7f880425498cf382c31",
+        "kind": "original",
+        "packet_lines": [
+          3,
+          68
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N6-native.json",
+        "sha256": "62de5e50f19804f5ad0db2d3a7085a86dc8faac7106dc2978fb4867f02fb3788",
+        "kind": "original",
+        "packet_lines": [
+          73,
+          138
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cell-N7-native.json",
+        "sha256": "ff7bf15e308747d2713fc1e96e1313d1f2c916431ab9a176a262e58cf3126824",
+        "kind": "original",
+        "packet_lines": [
+          143,
+          208
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/fixture-baseline.json",
+        "sha256": "636714d6eceec9c2ff799b59a601d5bd6528cf49f19abf3c2acb9ca84a27972e",
+        "kind": "original",
+        "packet_lines": [
+          213,
+          270
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-04.txt",
+    "sha256": "1078d79484ba2ae6e531a4becb2e974df631f8d5c5138ce22fd24947fdc466a1",
+    "bytes": 13194,
+    "lines": 211,
+    "contains": [
+      "fixture-after.json",
+      "expected-STATUS",
+      "actual-STATUS-after",
+      "initial-STATUS",
+      "execution-completion.json",
+      "watch-020809228.json",
+      "product-permission-matrix-n4-method.md"
+    ],
+    "source_map": [
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/fixture-after.json",
+        "sha256": "fcd4c505089453ce1a7ab4fc83d9e485d44cbbfa6bc064cb2524f58450a60c47",
+        "kind": "original",
+        "packet_lines": [
+          3,
+          76
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/expected-STATUS",
+        "sha256": "d14c9e8a55610bde6826c4ffbd6ff68f4f30c655f9d7d68cdab3bb4315835c6c",
+        "kind": "original",
+        "packet_lines": [
+          81,
+          95
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-STATUS-after",
+        "sha256": "d14c9e8a55610bde6826c4ffbd6ff68f4f30c655f9d7d68cdab3bb4315835c6c",
+        "kind": "original",
+        "packet_lines": [
+          100,
+          114
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/initial-STATUS",
+        "sha256": "b5ac1f183f0f5a86936f6f0cce66648a12772d3c910e8984389149029b091029",
+        "kind": "original",
+        "packet_lines": [
+          119,
+          133
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/execution-completion.json",
+        "sha256": "9d867d9d84bbed11c7bd672d0e5d63b8ee8a611ae2a56276360f7df3d8b9bb0d",
+        "kind": "original",
+        "packet_lines": [
+          138,
+          151
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/watch-020809228.json",
+        "sha256": "01a0a4474baf1d8edd776a372927d8190a03e2910ed4cf3d1eddb26510b29aaa",
+        "kind": "original",
+        "packet_lines": [
+          156,
+          166
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-n4-method.md",
+        "sha256": "0fcb61ecbec462b791043612208dcf44b021ef651aaf8eaf5d1419e4f29e269f",
+        "kind": "original",
+        "packet_lines": [
+          171,
+          209
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-05.txt",
+    "sha256": "5cb4f7acf811d769e66c01c43ef3d812ce35934935cc3daec75e1b1aca5e433a",
+    "bytes": 16302,
+    "lines": 534,
+    "contains": [
+      "state-before-reservation.pretty.json",
+      "expected-after-reservation.pretty.json"
+    ],
+    "source_map": [
+      {
+        "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/state-before-reservation.pretty.json",
+        "sha256": "44b01e33df51efe3dfd7c2a51cc4b149a611cfe48238814dcc4bbc5bf8dc2dc6",
+        "kind": "readable_projection_not_original_bytes",
+        "packet_lines": [
+          3,
+          265
+        ]
+      },
+      {
+        "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/expected-after-reservation.pretty.json",
+        "sha256": "702ca7b02b95619f613fd928e0c01c55fcf8cab9242f5b78da637cc4cc3b01f6",
+        "kind": "readable_projection_not_original_bytes",
+        "packet_lines": [
+          270,
+          532
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-06.txt",
+    "sha256": "c63bd3ed9aa8f6a89911be6a0dc84760daa82aace89a2b2a5b14357c77cd90c7",
+    "bytes": 15864,
+    "lines": 480,
+    "contains": [
+      "actual-state-after.pretty.json",
+      "observed-argv-token-projection.json",
+      "observed-prompt-multiline.txt"
+    ],
+    "source_map": [
+      {
+        "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/actual-state-after.pretty.json",
+        "sha256": "702ca7b02b95619f613fd928e0c01c55fcf8cab9242f5b78da637cc4cc3b01f6",
+        "kind": "readable_projection_not_original_bytes",
+        "packet_lines": [
+          3,
+          265
+        ]
+      },
+      {
+        "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/observed-argv-token-projection.json",
+        "sha256": "0802fe285f63539900d0b65543ecbb91373765d38f58559cd526cbd837bbfa4d",
+        "kind": "readable_projection_not_original_bytes",
+        "packet_lines": [
+          270,
+          429
+        ]
+      },
+      {
+        "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/observed-prompt-multiline.txt",
+        "sha256": "cef510f27c41f4d98585cf6fc1a300bb413ab222f97aec272e29d34c41ee325a",
+        "kind": "readable_projection_not_original_bytes",
+        "packet_lines": [
+          434,
+          478
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-07.txt",
+    "sha256": "ec16a584d04a834aaada80518116c32cc994fcd717f731eecdbf5ae9b3bda6f0",
+    "bytes": 13946,
+    "lines": 333,
+    "contains": [
+      "matrix-confirm-coverage-readable.json",
+      "projection-index.json",
+      "derived-implement-profile.json"
+    ],
+    "source_map": [
+      {
+        "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/matrix-confirm-coverage-readable.json",
+        "sha256": "9a206e5848bc25e4e6ad6f7055636fc21f9b670b0c7340aeaf16c4444cabeddc",
+        "kind": "readable_projection_not_original_bytes",
+        "packet_lines": [
+          3,
+          213
+        ]
+      },
+      {
+        "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/projection-index.json",
+        "sha256": "57a72618c8c01c3f1a1ecfd20b562f4df98c85249d183b32d1714d2533e35fa7",
+        "kind": "projection_equivalence_metadata",
+        "packet_lines": [
+          218,
+          275
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/derived-implement-profile.json",
+        "sha256": "b8add5daf385f7d6ede977ff8c550e9f190cd6870f4762e0bb468c95adcb4311",
+        "kind": "original",
+        "packet_lines": [
+          280,
+          331
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-08.txt",
+    "sha256": "52f2c3dfca43d2bf85c3f72519c321f3f640b12af73a543510582a163869b2cb",
+    "bytes": 16517,
+    "lines": 404,
+    "contains": [
+      "preparation-metadata.json",
+      "preparation-error.json",
+      "dispatch-receipt.json [projection]"
+    ],
+    "source_map": [
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/preparation-metadata.json",
+        "sha256": "38c907f2ab2ea3b1b9eb983aba3293c56c192958154bc95e12cc555dd86d2b0c",
+        "kind": "original",
+        "packet_lines": [
+          3,
+          224
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/preparation-error.json",
+        "sha256": "6de026201dab35ef574aaf7161215941060e87a67417fb6361e065d30bc51867",
+        "kind": "original",
+        "packet_lines": [
+          229,
+          235
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/dispatch-receipt.json [projection]",
+        "sha256": "5da167d4b3e5b29987fc703895fbc7daeedf228281cce8113b4069f4098ed31c",
+        "kind": "parsed_string_projection; original_sha256=97a1a0e9ce32e5889fde353db265e88b456e618d8719093d8eca29d5f3be4f00",
+        "packet_lines": [
+          240,
+          402
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-09.txt",
+    "sha256": "93756bb6531fba29705c01f39046ed9206f2747a2f99cc795851cdf33c82033b",
+    "bytes": 14326,
+    "lines": 442,
+    "contains": [
+      "cli-final-raw.json [projection]",
+      "matrix-result-summary.json"
+    ],
+    "source_map": [
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/cli-final-raw.json [projection]",
+        "sha256": "9d9652b463cf3b9dac629d31497441787f5bbdab9ae9521b67669e4836b3b0c8",
+        "kind": "parsed_string_projection; original_sha256=05b0d38124665138e3ffc371e850cb32c0037d3eb775b4654346c8f28109dff2",
+        "packet_lines": [
+          3,
+          118
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/matrix-result-summary.json",
+        "sha256": "bc3e7678152ce8de669b9eceaf2774c8c30f534111a98f21d9b728975fc3b28b",
+        "kind": "original",
+        "packet_lines": [
+          123,
+          440
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-10.txt",
+    "sha256": "8ba988821d3ef8289bde6043d07003b7d1a914278938497bfe59f68a8eef7a5a",
+    "bytes": 15722,
+    "lines": 335,
+    "contains": [
+      "review-product-permission-matrix-glm.txt",
+      "review-product-permission-matrix-kimi.txt",
+      "review-product-permission-matrix-factual-corrections.json"
+    ],
+    "source_map": [
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/review-product-permission-matrix-glm.txt",
+        "sha256": "8843f8c134e9a9525a8a67a24c3a2218ca50a04b0e90507683dbab6d3182583c",
+        "kind": "original",
+        "packet_lines": [
+          3,
+          29
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/review-product-permission-matrix-kimi.txt",
+        "sha256": "424fabfa5b18eadd0846859dc82a07957c6110d61fd2dfab2bfdd859b4892721",
+        "kind": "original",
+        "packet_lines": [
+          33,
+          61
+        ]
+      },
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/review-product-permission-matrix-factual-corrections.json",
+        "sha256": "0760e259bea01d5c1c571b8879ea07c81fb3e8af466f1af3e5e98f730da7ecdb",
+        "kind": "original",
+        "packet_lines": [
+          65,
+          333
+        ]
+      }
+    ]
+  },
+  {
+    "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-final/packet-11.txt",
+    "sha256": "34b50f4ed6303ef65235bd74a52efce95ef81eb14b5a605f30865ecffab9f8ef",
+    "bytes": 10801,
+    "lines": 113,
+    "contains": [
+      "result.md [current prefix]",
+      "review-call-facts [selected fields]"
+    ],
+    "source_map": [
+      {
+        "source": "coordination/requests/isolated-workflow-20261010/result.md [current prefix]",
+        "sha256": "c872b3a71abb46620c27fa90fe62fbd9efd9d02b399e3e33fa0329e1bb332db6",
+        "kind": "original_prefix; full_blob_sha256=87d4e792a9bad424afa0990debf33b1f4319ba510389dc753e73b7ae756d9b45",
+        "packet_lines": [
+          3,
+          25
+        ]
+      },
+      {
+        "source": "review-call-facts [selected fields]",
+        "sha256": "5e7698356060e553123ef5ff962819d21560a119bb4958876f7c1c10c8feb1d5",
+        "kind": "derived selected identity/completion fields; not full argv reading",
+        "packet_lines": [
+          30,
+          111
+        ]
+      }
+    ]
+  }
+]
