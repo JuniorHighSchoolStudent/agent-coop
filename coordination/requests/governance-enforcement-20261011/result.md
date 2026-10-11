@@ -1,6 +1,6 @@
 # 开发治理修复当前状态
 
-范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**S4恢复准备通过，已授予准确双席只读启动准入；尚无新有效票或产品作者派发**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。截至2026-10-11，确认4次CodeBuddy模型调用、0次native；另有S2两次launcher失败、S3两次目标Node已启动后看护中止，均未观察到原生模型初始化，后端活动/计费未知。S3全部15个登记进程已确认退出，扫描间未绑定后代仍属unknown，不能宣称整个树已获包含证明。用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
+范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**S4实际启动后再次因辅助候选身份复查失败停止，后续启动准入撤回；没有新有效票或产品作者派发**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。截至2026-10-11，确认4次CodeBuddy模型调用、0次native；另有S2两次launcher失败、S3及S4各两次目标Node已启动后看护中止，均未观察到原生模型初始化，后端活动/计费未知。S4的14个登记进程及watcher已确认退出，扫描间未绑定后代仍属unknown，不能宣称整个树已获包含证明。用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
 
 ## 当前结论与下一动作
 
@@ -9,9 +9,17 @@ GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓�
 - main保持`9a4855a39121f2483e1630082bc36533a2165a5e`。治理工作在`codex/governance-enforcement-20261011`；原用户工作树、`.workbuddy`及旧证据保留，本轮未合入main或push。
 - 原冻结S1候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`和S2候选`f1b5f967238290fbe3a1945da5e8cea20f634096`保留在独立送审树与Git历史；轮次与四项必修要求已于`9092a8b`提交。当前核准[实施合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)、[分批派发计划](dispatch-sequence.md)：13包、4个完整接收批次，首批N1/A/R1/W四路，N2等待N1有效交付。五个首批作者树只完成隔离准备，没有作者运行。
 - Codex负责调查、合同、证据、验证和集成；dispatcher_next唯一正式发包；实际CodeBuddy + deepseek-v4-pro实现/修复，CodeBuddy + GLM/Kimi独立交叉审核，native Kimi独立监督。默认执行容量4可配；Claude暂停。
-- 看护恢复与准确S4准备已完成，下一动作由唯一发包人按[S4新准入](s4-admission.md)启动双席；不得使用已撤回的[S3准入](s3-admission.md)原样重跑。候选ec64819及唯一governance-s3输入作为历史保留，容量与读取计划核验仍只证明准备事实。[S1最小修订提案](s1-correction-proposal.md)中的读取计划派生、会话声明、严格final及看护身份回归仍须完成。用户最新指示已取消固定轮次，原追加2票问题不再待答复；[范围补充](scope-amendment.md)保留原话，[当前路线](../../../docs/roadmap.md)维护有效团队约束。旧52/54总次数不是新的隐藏上限；实际消耗保留，单次运行与资源约束继续执行。下一轮四项必达为漏读、无效审核输出、看护漏管及策略自读缺口；需要有效双席意见和native监督后才派作者。
+- S4已真实启动但失败，现转入既有Job组件复用调查，后续依新准确准入；不得使用已撤回的[S3准入](s3-admission.md)原样重跑。候选ec64819及唯一governance-s3输入作为历史保留，容量与读取计划核验仍只证明准备事实。[S1最小修订提案](s1-correction-proposal.md)中的读取计划派生、会话声明、严格final及看护身份回归仍须完成。用户最新指示已取消固定轮次，原追加2票问题不再待答复；[范围补充](scope-amendment.md)保留原话，[当前路线](../../../docs/roadmap.md)维护有效团队约束。旧52/54总次数不是新的隐藏上限；实际消耗保留，单次运行与资源约束继续执行。下一轮四项必达为漏读、无效审核输出、看护漏管及策略自读缺口；需要有效双席意见和native监督后才派作者。
 
-最新派发检查点：新候选`d17fd560dfb83d8557809da8216b5a3087548e38`及唯一S4输入已独立核来源、范围、列式计划与完整参数；[S4准确准入](s4-admission.md)仅允许唯一发包人启动双席只读审核。恢复片段15分支无模型验证、完整watcher接线限定复核均完成，产品W/R2仍未实现。100块/席有执行容量不确定性，超限或缺读仍拒绝；未实际启动不得记新模型调用。S3准入继续撤回，作者须等有效双席及native监督。
+最新派发检查点：候选`d17fd560dfb83d8557809da8216b5a3087548e38`及唯一S4输入已实际派发，现[S4原准入](s4-admission.md)后续启动效力撤回，不原样重试。15分支无模型验证和完整watcher接线复核未覆盖此次真实辅助进程复查失败；产品W/R2仍未实现。下一动作由发包人验证现成Windows Job组件的无模型复用，调查员核现场证据边界，合同审计员核旧bootstrap出口；不继续逐次放宽轮询异常，不启动native或作者。
+
+## S4实际结果与停止点
+
+watcher于2026-10-11T06:40:49.6859408Z ready，PID40980；两wrapper随后启动，GLM目标node23688、Kimi40684均已绑定。两份实际invocation加exe共20参数，发包人逐值核与planned相等。两席分别在8.9061958/9.9490421秒停止，wrapper exit -1；raw/stdout及stderr均0字节，无init、实际model/session、final或Read。没有有效票，不能把目标进程启动计为已确认模型调用。
+
+两席末事件为`fresh CIM candidate identity / microsecond projection`，候选分别是bash.exe PID32504/parent45824与PID11988/parent4600；保存了snapshot creation、API及InvalidOperationException。但该复合判据未保存fresh count/identity与held ticks，无法区分复查缺席、字段变化或创建时间不一致；短寿进程只是待验证解释，不能据此回填根因。此缺口继续归GOV-06，不以已取得API名称宣称诊断充分。cleanup记录14个已知对象exited/disposed且errors为空；发包人另查这14个PID及watcher均不存在，仍不证明未观察后代清空。
+
+准确本机原件位于`C:/Users/june/AppData/Local/Temp/agent-coop-governance-s4-run-20261011/`：GLM/Kimi watch-completion SHA-256分别`9f37cf4cf8298906ec23ca9b3118ef9cd1f90ca84f432c0bf6241f5d69fa1d61`、`5de35ae2a759bce92c0cdcc4dd31c175082243844bbbddebf1d0ff4ad158d51b`；cleanup为`e209ff14a26cb73ae9f00c95f9e8ce2d7c040b7ca03714afc3cff8c26c19d3b4`。保留冻结输入、失败准备和实际运行原件；本机TEMP不是长期备份。后继调用须有针对本次失败的恢复证据与新准入，不能沿S4原许可续跑。
 
 ## 宿主自动继续入口
 
