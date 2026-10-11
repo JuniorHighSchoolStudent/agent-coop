@@ -23,11 +23,21 @@ S3 watcher于2026-10-11T05:42:42.6897501Z ready，早于两wrapper。根独立�
 
 watcher分别于6.2743377/5.6561078秒输出`descendant disappeared before identity could be bound`并停止两席。该文字由`run-admitted-s3.ps1:56`的ArgumentException捕获产生；现场未保存失败候选PID、名称、父PID、创建身份、原异常或发生API，无法判定具体哪一步、哪一个候选失败。正常短寿辅助进程退出只是可能解释，不能作为已证根因；已有目标node失联也不是原件所证明的事实。此诊断缺口沿GOV-06/W/R2承接，不能通过忽略异常、按PID猜身份或放宽判据关闭。
 
-两席原生stdout及stderr均0字节、无init、无实际模型/session、无final、0/90 Read；没有有效票。全部15个已绑定对象持句柄至退出，发包人另查其PID已不存在；未绑定/扫描间脱链后代仍unknown。native、作者和后继模型调用均未启动，S3原准入的后续启动效力由本结果撤回，不改写原件。
+两席原生stdout及stderr均0字节、无init、无实际模型/session、无final、0/90 Read；没有有效票。原记录列出15个已绑定对象，发包人另查其PID已不存在；后续发现原句柄有效性表达式存在假阳性，因此不能仅按原记录宣称全部对象持续持有有效句柄。未绑定/扫描间脱链后代仍unknown。native、作者和后继模型调用均未启动，S3原准入的后续启动效力由本结果撤回，不改写原件。
 
 本机原件位于`C:/Users/june/AppData/Local/Temp/agent-coop-governance-s3-run-20261011/`。根核`watch-completion-glm.json` SHA-256 `f7dd7c4a774cb0f2704c2228e87adbf1aa340fefac4b90e7fdc1e04de11da5d9`、`watch-completion-kimi.json` SHA-256 `5824fcc1a3a98784ac8ed85769aa1370a1eeb43c3f3e729ae7bd0b383de2a80b`及实际参数。各调用原件保留，不生成审核receipt，不把本机TEMP当长期备份。
 
 行政限制另记：写入S2无模型诊断汇总`diagnosis.json`曾被自动审批拒绝，工具只返回`blocked by policy`、未给细因；该文件未生成且没有重试或换路径生成替代品。既有诊断原件直接进入S3准确输入，不能引用不存在的汇总。
+
+### S3后续无模型调查与恢复边界
+
+2026-10-11三方继续调查确认两个缺陷：原宽catch把整段操作中的ArgumentException均归为后代消失；PowerShell 7.6.5的`.SafeHandle`属性读取失败可返回null，而`-not $null.IsClosed`实测为true。显式`get_SafeHandle()`暴露真实异常。自有短寿node自然退出的正反例证明上述行为，没有模型调用或产品改动；它们不能还原S3缺失的候选身份与实际失败API。
+
+准确原件位于同一S3运行目录：`watch-argumentexception-api-repro.json`及`watch-property-getter-repro.json`，后者SHA-256为`86995a8ec3110cc9a96b8837a627c41f01d8a2408d84f9197a8f816119b15920`。GOV-06/W/R2承接显式getter、非null/invalid/closed句柄检查及分API异常保真，仍须产品回归和独立关闭。
+
+恢复沿旧bootstrap的受限人工看护入口：唯一发包人准备同强度行政修正，独立无模型核验后，集成者按新候选、读取材料、完整参数和看护版本另立只读准入。仅准确证明未绑定候选的GetProcessById not-found，且目标早已准确绑定、原身份及有效句柄持续保持，才可记录候选unknown并继续；首次目标未绑定、权限错误、未知异常、身份冲突或已绑定身份丢失仍停止。旧S3不追认，产品atomic Job验收不豁免；有效双席和native监督仍先于作者。
+
+另发现CodeBuddy安装中已有Windows Job绑定与现成原生测试，是W的复用调查输入；本次未动态验证，也未确认S3实际安装成功，不能作为已包含证据。当前本地片段及分支检查属于行政恢复准备，不是产品W实现、正式审核票或新调用准入。
 
 ## S2启动失败与准入撤回
 

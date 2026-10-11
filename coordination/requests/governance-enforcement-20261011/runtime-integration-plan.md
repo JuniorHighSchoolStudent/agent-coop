@@ -88,6 +88,10 @@ S3新增GOV06/W/R2诊断验收：目标node已创建与后续辅助进程发现/
 
 在既有日志/outcome/violations出口保留失败API、异常原文、当时已观察身份及显式unknown；W负责原句柄/包含事实，R2负责生命周期阶段与原流关联。无模型测试须覆盖目标创建后发现失败、身份绑定查询异常、已知进程全退而未知后代未证清空、空流无原生终态，并区分诊断完整与真实树终止。不得靠忽略异常、宽松PID/时间匹配或把未知辅助进程视为已退取得PASS；恢复仍核准确原身份与包含/终止证据，不新建watcher或诊断台账。
 
+追加S3真实getter反例：PowerShell属性访问静默null仍可使`-not handle.IsClosed`为true；旧retained字段不能单独证明原句柄有效。W/R2须覆盖null、invalid、closed与类型错误，保留实际句柄获取API/异常和创建身份，不能凭缓存StartTime或Process对象通过。GetProcessById not-found、显式get_SafeHandle失败及其他ArgumentException分别诊断，不将后续复现冒认S3唯一根因。另覆盖过期CIM快照、同源身份冲突及创建时间显示精度差异，禁止以任意时间容差接受旧身份。准确原件及历史限制由[result](result.md)链接，产品继续stdlib/ctypes原子Job方案，宿主私有组件不成为隐式依赖。
+
+产品形成前的同强度行政恢复严格沿[实施合同§6.2](implementation-contract.md#62-执行看护与状态)：只修既有临时watcher取值/诊断和已绑定目标之外的未绑定候选分类，独立核最小差异及正负例后重新冻结只读准入。无模型测试至少区分已绑定目标有效时的辅助not-found、目标未绑定、原句柄无效、权限/未知异常、过期快照与身份冲突；仅首类在准确复查后记unknown并继续持柄看护。该路径不实现或验收W/R2，不复活S3原票，不豁免双席/native，也不把未知后代清空记为成功。
+
 日志目录和stdout/stderr以独占方式在创建目标进程前打开，收集过程中按总字节上限增量保留已接收流；正常失败保留原始片段和分类。控制者骤停可能留下不完整流，必须标明partial/unknown并结合Store未终结claim对账，不能把部分日志称为完整模型终态，也不能用新调用覆盖它。
 
 方案依据与限制：微软说明Job默认涵盖CreateProcess创建的子进程，关闭最后句柄可终止Job及嵌套Job；但其他进程代理/WMI创建的进程不因此自动纳入。此方案是对受控CLI及其正常子进程树的生命周期管理，不是恶意逃逸或OS权限沙箱。[Job Objects](https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects)

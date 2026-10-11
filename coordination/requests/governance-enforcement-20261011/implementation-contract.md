@@ -165,6 +165,10 @@ S3诊断回归沿GOV-06/W/R2承接，准确原件、撤回准入及当前状态�
 
 W/R2须在既有日志、outcome及violations证据出口区分目标创建、目标绑定、原句柄/创建身份、包含状态及辅助后代发现失败，不增加新接口或台账。异常保留原文、发生API和当时已观察到的进程身份/父子关系；未获得的PID、名称、parentPID或创建身份明确unknown，不用错误分类文案补造。无模型回归覆盖目标已创建而辅助发现失败、身份查询/绑定阶段抛错、已观察进程退出但未观察后代unknown、原流为空而无原生终态；各自应能定位失败API与已知/未知身份，不能将所有ArgumentException归成“已退出”。恢复必须有准确原身份/包含边界及可核树终态；放宽PID匹配、吞掉异常或将未观察项忽略后报PASS均拒绝。诊断充分性与实际包含/终止成功分别举证，运维文案改善不替产品回归及独立关闭。
 
+S3后续无模型原件`watch-property-getter-repro.json`证明PowerShell 7.6.5/.NET 10.0.11中，已退出Process的`.SafeHandle`可静默返回null，而显式`get_SafeHandle()`抛出InvalidOperationException；`-not $null.IsClosed`仍为true。旧`handle_retained`布尔值不能独立证明有效持柄，15个登记对象的退出观察也不能补成每个句柄均已有效持有；这不反推S3每个实际句柄都为null。`watch-argumentexception-api-repro.json`另证实GetProcessById的not-found与无关ArgumentException可落入同一宽catch，不能据后续复现倒填S3缺失的具体失败API。原件及当前结论沿[result](result.md)。W/R2回归须拒绝null/错误类型/invalid/closed句柄被写成retained，分别保存GetProcessById、显式句柄获取、创建身份查询的实际失败点和异常；缓存StartTime或持有Process对象不替代有效原句柄。产品W继续使用受审stdlib/ctypes原生句柄与原子Job方案，不依赖宿主CodeBuddy私有组件。
+
+受限行政恢复沿[旧合同](contract.md)的bootstrap人工核对及[S0准入](s0-admission.md)的先ready、准确身份、单次deadline规则，只允许修正既有临时watcher的诊断/属性取值和候选分类，不授予作者或产品接收权限。仅当目标已经准确绑定且原句柄仍有效，正PID的**从未绑定辅助候选**在具体GetProcessById处得到可核not-found、同源CIM复查亦不存在时，才可记该候选unknown并继续看护已绑定对象；不能声称其身份已绑定或整树清空。保留快照PID/name/parentPID/CreationDate、查询时点、精确API与异常。存活候选必须核快照与fresh CIM的同源身份字段一致，再按明确的微秒精度投影关联原Process创建时间；过期快照、身份冲突、权限/未知错误、null或失效句柄、已绑定对象失联、首次目标发现失败仍停止，禁止秒级容差及宽catch吞错。扫描间生灭/脱链后代unknown的既有bootstrap限制不升级为产品包含证明。集成者/发包人可准备最小差异和无模型反例，独立交叉核后以准确新版本重新准入只读审核；撤回的S3不恢复有效。变更上述停止条件或其他旧门禁须先走旧授权的独立审核，不借行政修正自签放宽。后继必读材料必须包含S3原终态/原观察、上述诊断、准确恢复差异与正负例；片段测试通过不等于已安装、正式票或GOV-06关闭。
+
 派发动作复用现有Runner/Store，拟`Runner.dispatch_development(action)`在内部装载原件并重算A/B/容量，不接收调用者填好的PASS/Observation。`Store.claim_dispatch(expected_revision, claim)`在同一现有DB事务内核revision、输入、预算和资源并记录claim；claim绑定request/attempt、subject/policy/profile/runtime/write-set/session及预算，不能先启动再补claim。不能沿现有整轮run.lock阻塞所有独立作者；并发资源与同写集互斥由同一Store准确事实控制，默认CodeBuddy容量4是可配置团队值。
 
 动作启动前须再次核对claim仍有效；输入、暂停、预算或资源变化令许可失效。故障后先核真实进程与原件，再决定终止/承接/明确新attempt，不能自动重跑未知存活调用。产品接收动作同样在内部重算当前accept，不直接消费旧报告；输出/发布失败沿现有事务及发布恢复，不能因此重新执行模型。状态投影取同一Store/request原件，不增加development-status.json或第二PASS数据库。
