@@ -6,7 +6,7 @@
 
 - 2026-10-10：用户授权新建独立仓库；通用设计从交易系统草案提取。
 - 仓库初始化包含 README、统一 agent 入口、设计、扩展约定和拟议配置示例。
-- Scheduler、Web、CLI/MCP、插件、知识检索和 RuntimeAdapter 均未实现。
+- 初始化为设计仓；后继隔离样例的实现、接收与未完成范围统一见下方当前切片入口，不将样例等同完整平台。
 
 ## 当前开发团队与调用约束（2026-10-10）
 
@@ -28,9 +28,11 @@
 - Kimi Code 与 CodeBuddy 的 `kimi-k3-2` 是不同 runtime/session，分别核验能力和实际模型身份；当前 Kimi Code 使用宿主已配置的默认 profile，调用时记录可观测的模型信息，未知保持 unknown，不静默替换。监督并发 1、单次最长 10 分钟，由 Codex 手工看护和在超时后停止本次调用；CLI 未提供 turns/token 硬限时明确记为未实施，不宣称产品预算门禁已实现。
 - 当前分配仅适用于本仓，不继承 ABM owner。
 
-## 当前产品切片：隔离纵向样例（G0已接收，离线实现中）
+## 当前产品切片：隔离纵向样例
 
-用户于2026-10-10授权继续实现，并选定仅隔离样例跑通多agent、归档、本机副本与清理。Codex集成，CodeBuddy实现/双席评审、原生Kimi监督。当前为 [复用裁定](../coordination/requests/isolated-workflow-20261010/reuse-decision.md) 与 [具体计划](../coordination/requests/isolated-workflow-20261010/implementation-plan.md) 的G0已接收，证据见[接收记录](../coordination/requests/isolated-workflow-20261010/result-g0.md)；当前进入测试先行的离线实现，尚未通过G1或实跑。用户再次明确全部实现交给CodeBuddy + deepseek-v4-pro，Codex停止直接编码，职责纠偏与草稿接管见[交接记录](../coordination/requests/isolated-workflow-20261010/role-correction.md)。当前实现责任人与阻断统一见[交付记录](../coordination/requests/isolated-workflow-20261010/result.md)。计划先验证只读/模拟层，再经G1审核开放有界实跑；不宣称完整P1/P2/P3已交付，不启用OS定时任务。
+用户于2026-10-10选定仅隔离样例跑通多agent、归档、本机副本与清理。Codex集成和专门发包，实际CodeBuddy + deepseek-v4-pro实现、双独立CodeBuddy评审席与原生Kimi监督；角色纠偏及草稿接管见[交接记录](../coordination/requests/isolated-workflow-20261010/role-correction.md)。[复用裁定](../coordination/requests/isolated-workflow-20261010/reuse-decision.md)、[具体计划](../coordination/requests/isolated-workflow-20261010/implementation-plan.md)及[G0接收](../coordination/requests/isolated-workflow-20261010/result-g0.md)保留为阶段依据。
+
+准确候选、静态范围接收、实际验证、历史根因unknown及live权限阻断只在[当前交付记录](../coordination/requests/isolated-workflow-20261010/result.md)维护。本切片的后继是固定样例权限合同及分包审核；静态接收不自动开放live，不宣称完整P1/P2/P3已交付，不启用OS定时任务。后继合同与实现须继续经专门发包、独立原席评审和监督。
 
 最近交付的接收与 Git 集成证据见下方历史入口；本节只维护有效下一步，不复制回执或另建状态台账。
 
@@ -58,7 +60,7 @@
 | P4 插件与通用流程设计 | 多角色推荐与多方评审、插件管理、Desktop/项目接收、离线改进评测 | 两类不同项目使用同一通用模板；评审与发布版本可追溯 |
 | P5 可选受控优化 | 有预算的试用、效果对照、激活与撤回 | 无实证改善不晋级；不扩大权限 |
 
-P0 复用裁定、能力证据与隔离样例的具体计划已形成候选，见上方当前切片。G0 接收前不写产品源码；接收后按该计划先验证只读/离线层，经 G1 后开放隔离样例实跑。
+P0复用裁定、能力证据、具体计划及后继交付统一见上方当前切片。各阶段按准确候选审核；静态验收与隔离样例live准入分开举证，不因一项通过自动越过另一项门禁。
 
 2026-10-10 用户授权的隔离纵向样例在限定范围内承接 runner、执行适配与只读 Web；它不代表上述完整产品切片均已完成。先选型/计划审核、再离线验证、再受审实跑的依赖顺序保持有效。
 

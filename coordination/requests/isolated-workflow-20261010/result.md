@@ -1,6 +1,6 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：本批作者、两轮原席审核、准确验证与唯一诊断均完成，待最终原生Kimi监督；未接收/合入/main/live。本文件是唯一当前状态入口，历史原件中的旧待办不代表当前派发许可。
+范围：本请求整体交付；维护者：Codex集成者；状态：本批作者、两轮原席审核、准确验证、唯一诊断及最终原生Kimi监督均完成；Codex已接收准确候选的静态隔离样例范围，未合入main、未开放live。本文件是唯一当前状态入口，历史原件中的旧待办不代表当前派发许可。
 
 ## 当前状态（2026-10-11）
 
@@ -11,9 +11,9 @@
 | R-log | GLM B02/B13、Kimi B06已由原席关闭；checks按/2合同为每调用原子分配独立日志目录 |
 | R-junction | 旧GLM B14及新GLM B19/Kimi B12均由原席关闭；删除重复helper，平台标准库清理错误显式上抛 |
 | R-publication | 新GLM B20/Kimi B13修复已由原席关闭；唯一获准诊断30轮60例未复现；历史GLM B11/Kimi B09仍open/unknown |
-| 内容审核 | 原GLM静态G1本席PASS，原Kimi静态内容阻断解除；整体接收须等最终native监督 |
+| 内容审核 | 原GLM静态G1本席PASS，原Kimi静态内容阻断解除；最终native事实核查PASS后，根已完成静态范围接收 |
 | 产品权限与live | GLM B18/Kimi B11仍open；方案方向支持，合同与实现待后继批次；产品CLI真实权限和live均未验证/未准入 |
-| 最终监督 | native计划监督已完成；同一原session最终监督待启动，只查证事实，不代关原席finding |
+| 最终监督 | 计划与最终native监督均完成；实际原session恢复成功，最终20Read/222.013秒/PASS，不代关原席finding |
 
 准确候选独立clean detached统一验证：[输出](verification-continuation-r2-output.txt)/[元数据](verification-continuation-r2-metadata.json)/[前清单](verification-continuation-r2-before.json)/[后清单](verification-continuation-r2-after.json)。144项=142通过/2跳过，exit0，33.52612秒；43文件前后SHA62697fa6367ce3598ae7fbb98103915a879f67fdd541f7bf773f75ed7685980a。两skip为Windows文件symlink权限WinError1314，junction实际通过；无硬规模失败，软目标内聚说明由原席按revision接受。POSIX、browser JS、云CI、live四角色未验证；本地链接机械检查不等于锚点/远端/浏览器验证。
 
@@ -29,11 +29,19 @@
 - 末轮[GLM原票](review-continuation-content-r2-glm.txt)/[调用](review-continuation-content-r2-glm-calls.json)126.351秒/6Read/0错误，[Kimi原票](review-continuation-content-r2-kimi.txt)/[调用](review-continuation-content-r2-kimi-calls.json)151.515秒/5Read/0错误；各自关闭本轮修复finding。读取覆盖校正：两票相关“verify原件实读”表述未由本次Read记录支持，相关结果来自索引/集成观察和已归档根验证；不改原票，最终native必须直接核查verify metadata/output，不把自述当独立读取证据。
 - 双席显式同意“准确hash重审→唯一诊断→最终native查证”，Kimi自行放宽旧双席结果票条件；结局规则于836f80a先提交再执行。实际[诊断记录与原件入口](diagnostic-execution-20261011.md)：固定Python3.12.14/-B、无输出种子、非reparse/nlink1、120秒PID/创建时间外部看护；实际7.2909479秒/exit0，30轮60例、1260replace均ok，无degraded，输入与前后manifest一致，未复现。没有失败，保留失败fixture/降级/超时分支未动态触发；历史根因继续unknown，不重跑、不改Store/Runner。
 
+## 静态范围接收（2026-10-11）
+
+Codex集成者依据双原席R2及[最终native原票](supervision-continuation-final.txt)/[实际调用](supervision-continuation-final-calls.json)/[准确输入索引](supervision-continuation-final-input-index.json)，接收准确产品ed65079e6fd2cd3afc09ec871817cfb11c621b76的**静态隔离样例范围**。该接收关闭本批交付流程，不是生产/完整平台接收，也不解除live权限门禁。代码仍在候选分支，main保持6d99eeef4124c02b409dbbfa44385dafaac246cc；原用户树63ef230保留。没有push、main合入或live运行。
+
+最终native于原cwd沿实际session_a75b547a-13c5-4740-b07f-f3d4ccc93704成功恢复，runtime0.43.0，模型/provider未知；222.013秒、20次Read/20结果、exit0、PASS限事实核查，无新阻断。直接读取完整verify输出及metadata、诊断真实stdout/summary/前置/进程/输入摘要链，补足[两原席读取覆盖](review-continuation-r2-reading-coverage.json)限制；原JSONL仅读[4行定点摘录](diagnostic-event-excerpts-20261011.txt)，不称整读。独立调查agent另对本机完整JSONL计数、4inputs与准确Git blobs作只读交叉核查，与摘要一致。
+
+原票微小口径更正保持可见且不改原件：native称before清单“45项”，实际为45文本行/43个文件；称本次Read/Glob，实际调用记录仅20Read。上述不改变其直接读取的原件和结论。失败现场保留、诊断降级与超时终止分支没有动态触发，历史根因B11/B09仍unknown。当前result与roadmap仅作接收事实更新；后继文档行政提交不冒称已重跑完整verify，测试证据严格绑定ed65079。
+
 ## 剩余门禁与后继边界
 
-当前预算已实际发17/18次CodeBuddy、1/2次native；本批只剩一次最终native监督，无新作者/自动续审许可，未用1次CodeBuddy不转换成新功能。原两席原模型/session/cwd全程绑定；20turn/600秒及探针12turn/300秒为本次调用请求/人工看护，CLI实际num_turns与请求不同已保留，不声称产品硬轮数门禁。
+当前预算已实际发17/18次CodeBuddy、2/2次native；全部调用已结束，本批发包停止，无新作者/自动续审许可，未用1次CodeBuddy不转换成新功能。原两席原模型/session/cwd全程绑定；20turn/600秒及探针12turn/300秒为本次调用请求/人工看护，CLI实际num_turns与请求不同已保留，不声称产品硬轮数门禁。
 
-最终native沿原cwd及session恢复；[恢复静态调查](native-kimi-resume-investigation-20261011.md)不等于实际resume。print内部forceAuto与旧permission_bypass:false（无显式bypass参数）不同，只读范围依durable工具profile/执行guard；select_tools加载schema不授予新权限。当前实际恢复未执行，私有session active状态未读，runtime模型保持unknown。
+最终native沿原cwd及session恢复；[恢复静态调查](native-kimi-resume-investigation-20261011.md)不等于实际resume。print内部forceAuto与旧permission_bypass:false（无显式bypass参数）不同，只读范围依durable工具profile/执行guard；select_tools加载schema不授予新权限。最终调用实际resume_hint确认原session，20次Read/20结果、exit0；私有session文件未读，runtime模型保持unknown。
 
 权限profile实测限于bootstrap精确文件矩阵。逐文件allow、既有目标link_count1、祖先非reparse、四memory子进程环境值及准确node/bin/dist/wrapper人工核查用于本批作者；p7/p3仅旧传输别名，owner仍P6 checks/P2 test_runtime。R-publication本次cwd外精确Write已真实成功，不扩成所有路径能力。T1、hook先行allow、CLI/session/scoped-hook、真实宿主memory全域隔离及未测别名仍unknown；[hook静态证据](permission-hook-static-evidence-20261011.json)不扩大实测结论。
 

@@ -1,0 +1,179 @@
+{
+  "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+  "administrative_commit": "de8b972c39680fb439d81676349bebd0e5abc57c",
+  "cwd": "D:/project/agent-coop-g1-review",
+  "requested_native_session": "session_a75b547a-13c5-4740-b07f-f3d4ccc93704",
+  "files": [
+    {
+      "name": "result.md",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/result.md",
+      "bytes": 29649,
+      "sha256": "70c28f442582fe0247e9b262158b6eeb70867ad7d1848170b3494032f142382c"
+    },
+    {
+      "name": "review-continuation-content-r2-glm.txt",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/review-continuation-content-r2-glm.txt",
+      "bytes": 5963,
+      "sha256": "4df36e4f3d336d531caf25ab4d901cf5158ffc99e504fd8b8aa7f72b0cfc75d4"
+    },
+    {
+      "name": "review-continuation-content-r2-kimi.txt",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/review-continuation-content-r2-kimi.txt",
+      "bytes": 4826,
+      "sha256": "714764786af072424bc65abc4f9205598be0f7600f3ff06b19bbb9642d3d1609"
+    },
+    {
+      "name": "verification-continuation-r2-metadata.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/verification-continuation-r2-metadata.json",
+      "bytes": 608,
+      "sha256": "20b95616cbe8b6adefaddaf2eccee2f46b1d38ec6740f7a017765e380c5fced4"
+    },
+    {
+      "name": "verification-continuation-r2-output.txt",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/verification-continuation-r2-output.txt",
+      "bytes": 20187,
+      "sha256": "cc99e0c5d80ecb1b3898550f8f18eb746e890073bb52ae2a30f48ebe769e5bea"
+    },
+    {
+      "name": "verification-continuation-r2-before.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/verification-continuation-r2-before.json",
+      "bytes": 4415,
+      "sha256": "62697fa6367ce3598ae7fbb98103915a879f67fdd541f7bf773f75ed7685980a"
+    },
+    {
+      "name": "verification-continuation-r2-after.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/verification-continuation-r2-after.json",
+      "bytes": 4415,
+      "sha256": "62697fa6367ce3598ae7fbb98103915a879f67fdd541f7bf773f75ed7685980a"
+    },
+    {
+      "name": "diagnostic-execution-20261011.md",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-20261011.md",
+      "bytes": 2948,
+      "sha256": "d6f662b35422192b6bf084a8b2da505b1b73ee06d4800bdbb17874330cd1f89c"
+    },
+    {
+      "name": "diagnostic-execution-preflight-20261011.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-preflight-20261011.json",
+      "bytes": 779,
+      "sha256": "f0bdb204a71e46737011623a79703dd9a6ab2f20aabba929545f8f7b08a5cf27"
+    },
+    {
+      "name": "diagnostic-execution-process-20261011.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-process-20261011.json",
+      "bytes": 498,
+      "sha256": "9dcc9362c05f6e0c113d1902c996cc6f8ab6febf7bc92dac918a2937fbe0ecc4"
+    },
+    {
+      "name": "diagnostic-execution-metadata-20261011.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-metadata-20261011.json",
+      "bytes": 1014,
+      "sha256": "a3568acbcb636fe0f4c6735079bbf93d305368bb8462911d50f6e6fecbe57926"
+    },
+    {
+      "name": "diagnostic-execution-summary-20261011.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-summary-20261011.json",
+      "bytes": 1134,
+      "sha256": "4a6602bcf9251bfa72dcbb138463bcca3e30ffb622f64e9dc214319e18bf0ae4"
+    },
+    {
+      "name": "diagnostic-execution-audit-20261011.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-audit-20261011.json",
+      "bytes": 1442,
+      "sha256": "db16f594d5426f8cafd4c97f1b5c2be5d3dc800fd51348ef47cca1be252ea765"
+    },
+    {
+      "name": "diagnostic-execution-before-20261011.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-before-20261011.json",
+      "bytes": 4415,
+      "sha256": "62697fa6367ce3598ae7fbb98103915a879f67fdd541f7bf773f75ed7685980a"
+    },
+    {
+      "name": "diagnostic-execution-after-20261011.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-after-20261011.json",
+      "bytes": 4415,
+      "sha256": "62697fa6367ce3598ae7fbb98103915a879f67fdd541f7bf773f75ed7685980a"
+    },
+    {
+      "name": "diagnostic-execution-python-20261011.txt",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-execution-python-20261011.txt",
+      "bytes": 236,
+      "sha256": "a917ef80ab76c0496ccd14844435db9e4519baeeb5c063e66643bd4344087b2a"
+    },
+    {
+      "name": "diagnostic-publication-candidate-r2.txt",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/diagnostic-publication-candidate-r2.txt",
+      "bytes": 15192,
+      "sha256": "fd3fcf135f9ffac634b5610ce44d327ee256dcd79975d7305d16036c1c3d0438"
+    },
+    {
+      "name": "native-kimi-resume-investigation-20261011.md",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/native-kimi-resume-investigation-20261011.md",
+      "bytes": 1686,
+      "sha256": "fd7c9914de5280b07b11dfc0f8c48a933686d222052348f6d8ea1c4eb3ace7e9"
+    },
+    {
+      "name": "native-kimi-resume-static-evidence-20261011.json",
+      "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/native-kimi-resume-static-evidence-20261011.json",
+      "bytes": 14501,
+      "sha256": "39ffe46b15ca345d2feb3370f4329d7badf9f0ccad8a70fc7463f2d9409f914b"
+    },
+    {
+      "name": "review-reading-coverage.json",
+      "source": "selected native-call fields from exact archived R2 call originals",
+      "bytes": 3205,
+      "sha256": "cfec365f8b4337ba5986889961f0281c8693dcfa9bd9b5fc45f1d2d8a695c658"
+    },
+    {
+      "name": "diagnostic-raw-event-excerpts.txt",
+      "source": "verbatim selected lines of indexed host JSONL; full host original retained",
+      "bytes": 3954,
+      "sha256": "0a26b2eaa5b908766265da790c90109bdb13f182bfc38269053fd22b8d7533cb"
+    },
+    {
+      "name": "native-final-resume-preflight.json",
+      "source": "host preflight only; no native model call",
+      "bytes": 1184,
+      "sha256": "614cc273b15eb59cba6cdfcae43129da697f8c9faca75dc4bba022e0d8f5af86"
+    },
+    {
+      "name": "read-first.txt",
+      "source": "navigation pinned to final admin/product",
+      "bytes": 660,
+      "sha256": "e2df6012c2aa7e7035eb3283ab345568e2b09d6f32ef71cb4b4e782358caf569"
+    }
+  ],
+  "host_originals": [
+    {
+      "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/diagnostic-execution-stdout-20261011.txt",
+      "bytes": 1134,
+      "sha256": "4a6602bcf9251bfa72dcbb138463bcca3e30ffb622f64e9dc214319e18bf0ae4",
+      "line_count": 22
+    },
+    {
+      "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/diagnostic-execution-stderr-20261011.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "line_count": 0
+    },
+    {
+      "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication-output.jsonl",
+      "bytes": 1427467,
+      "sha256": "33b889444eeb86b5548b3b36254035c0b7d1db2594a2b0ba391931de90afa134",
+      "line_count": 1320
+    },
+    {
+      "path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/publication-diagnostic-20261011/diagnose_publication-summary.json",
+      "bytes": 1134,
+      "sha256": "4a6602bcf9251bfa72dcbb138463bcca3e30ffb622f64e9dc214319e18bf0ae4",
+      "line_count": 22
+    }
+  ],
+  "codebuddy_issued": 17,
+  "codebuddy_budget": 18,
+  "native_issued_before_this": 1,
+  "native_budget": 2,
+  "no_further_model_call_authorization": true,
+  "model": "unknown",
+  "product_manifest_sha256": "62697fa6367ce3598ae7fbb98103915a879f67fdd541f7bf773f75ed7685980a"
+}

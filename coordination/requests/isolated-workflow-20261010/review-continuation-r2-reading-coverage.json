@@ -1,0 +1,53 @@
+[
+  {
+    "seat": "glm",
+    "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/review-continuation-content-r2-glm-calls.json",
+    "sha256": "bb74899fd9c2c8a19060ef366c48ce02c2c6fdc456211efb977c835a8afd50cc",
+    "actual_model": "glm-5.3",
+    "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "completion": {
+      "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T00:20:23.3061347+00:00",
+      "wall_seconds": 126.3505556,
+      "final_head": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+      "final_status": []
+    },
+    "tool_errors": [],
+    "actual_native_read_paths": [
+      "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\input-index.json",
+      "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\read-first.txt",
+      "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\product-delta.patch",
+      "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\integration-observations-continuation-r2.md",
+      "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\diagnostic-publication-candidate-r2.txt",
+      "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\continuation-content-r2\\glm\\repair-write-scope-audit-20261011.json"
+    ],
+    "direct_verify_raw_read_observed": false,
+    "qualification": "reviewer verify facts rely on integration observations/index/prompt, not direct R2 raw verify reads; original votes preserved verbatim"
+  },
+  {
+    "seat": "kimi",
+    "source": "de8b972c39680fb439d81676349bebd0e5abc57c:coordination/requests/isolated-workflow-20261010/review-continuation-content-r2-kimi-calls.json",
+    "sha256": "53cbd0bc096fe79422bd604a40a11e924d8f2964b61c934ca2f13f751ecb279f",
+    "actual_model": "kimi-k3-2",
+    "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "completion": {
+      "candidate": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+      "exit_code": 0,
+      "finished_at": "2026-10-11T00:20:48.4695428+00:00",
+      "wall_seconds": 151.5150415,
+      "final_head": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+      "final_status": []
+    },
+    "tool_errors": [],
+    "actual_native_read_paths": [
+      "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/input-index.json",
+      "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/read-first.txt",
+      "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/integration-observations-continuation-r2.md",
+      "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/product-delta.patch",
+      "D:/project/agent-coop-g1-review/coordination/.runtime/continuation-content-r2/kimi/diagnostic-publication-candidate-r2.txt"
+    ],
+    "direct_verify_raw_read_observed": false,
+    "qualification": "reviewer verify facts rely on integration observations/index/prompt, not direct R2 raw verify reads; original votes preserved verbatim"
+  }
+]

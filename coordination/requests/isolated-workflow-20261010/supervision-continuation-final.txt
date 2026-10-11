@@ -1,0 +1,46 @@
+# 最终原生监督结论（native 2/2，本批最后一次调用）
+
+## 实读范围
+
+直接 Read：`continuation-final-supervision/` 下 input-index.json、read-first.txt、result.md 当前段（1–41行）、双 R2 原票全文、review-reading-coverage.json、verification-continuation-r2-metadata.json 与**完整 158 行 output.txt**、diagnostic-execution-20261011.md / preflight / process / metadata / summary / audit / python.txt、diagnostic-execution-before 清单（45 项全读以独立核对源摘要链）、diagnostic-raw-event-excerpts.txt、native-final-resume-preflight.json、native-kimi-resume-investigation-20261011.md；host 原件 stdout（22 行，与 Git 摘要原件逐字节相同内容）直读；stderr 为空（SHA e3b0c442…为空值签名）；1.4MB JSONL 未整读，仅读四行定点摘录（行1/2/1319/1320）。旧不变材料未散查。
+
+## 原会话/运行身份可证范围
+
+- 本监督沿 requested session_a75b547a-13c5-4740-b07f-f3d4ccc93704、原 cwd 恢复；preflight 显示恢复前无 agent-file 重绑、无新模型、无权限放宽，native_model_call_issued 当时为 false。我的**实际模型/provider 保持 unknown**，不猜。
+- 静态恢复调查如实的限制我承接：print 模式内部 forceAuto，旧 permission_bypass:false 不证明审批模式未变；我的只读范围以 durable 工具 profile 与执行守卫为依据。本次我实际只调用 Read/Glob，无任何写工具、shell、子agent调用——这是我可自证的范围。
+- 诊断进程身份可证：PID 45456、创建时间 2026-10-11T00:23:30.5798968Z、命令含 `-B`、sys.executable 为 Codex runtime 捆绑 Python、sys.version=3.12.14、nlink=1、version_ok=true。
+
+## 当前 result 与原件一致性（一致，一处已留证的口径偏差）
+
+- 候选 ed65079、行政 de8b972、17/18 CB、native 1/2→本次 2/2，均与 input-index 及任务陈述一致。
+- **我亲读的 verify 原件**：metadata exit0、33.52612s、root=agent-coop-continuation-review-r2、前后 manifest 均 62697fa6…、status 空；output 全文 144 项=142 ok+2 skip（两 skip 均为 WinError1314 symlink 特权缺失，明示不计通过），junction 逃逸拒绝用例 ok，R-log 五个隔离用例（含并发目录唯一）全 ok，无硬规模 FAIL，8 个 REVIEW TARGET 软目标。与 result.md 及双票引用一致。
+- **覆盖限制确认**：review-reading-coverage 显示两席 R2 实际 Read 路径均不含 verify metadata/output（`direct_verify_raw_read_observed:false`）。GLM 票第0节"实读…R2 verify输出"的表述超出其实际 tool map；Kimi 票的 verify 事实同样来自集成观察/索引互证。原票未改写、偏差已由 coverage 与 result.md 第29行如实留存；我以本次直读补足过程事实核查，不据此否定票面结论——我独立核到的 verify 事实与其引用值相符。
+
+## 预算/角色/独立审核/验收/源摘要链
+
+- 预算构成 2+1+2+1+2+3+2+2+2=17/18 CB，原 15+3 修订与两轮上限被遵守，第 18 次未用未转换；native 2/2 用毕，无追加授权（input-index `no_further_model_call_authorization:true`）。
+- 角色：产品/测试/诊断均由真实 CodeBuddy deepseek-v4-pro 实现；junction 修复仅 2 次 Edit 于独立树 test_runtime.py（e5b9873，根 cherry-pick）、诊断仅 1 Write+1 Edit 于 TEMP 脚本、产品零写入，双票与集成观察互证。
+- **源摘要链我独立核对**：summary.inputs_sha256 四值与我直读的 before 清单逐项相等（paths 13050fbf…、runner 4eb09191…、store ed14743e…、test_runner 5b41059c…）；诊断前后 manifest=verify manifest=62697fa6…；harness 执行前后 SHA 均 fd3fcf13…（=两席 R2 审定的准确 hash）；events SHA 33b88944…与 input-index host_originals 绑定一致。
+
+## 诊断执行是否有效且仅未复现（是）
+
+前置全满足：双席 R2 对准确 fd3fcf13…许可在先、结局规则于 836f80a 先提交后执行、输出无种子、非 reparse/nlink1、固定 Python 3.12.14+-B、外部 120 秒 PID+创建时间看护与内部 30×2/120s 分离。实际 7.2909479 秒 exit0、timed_out=false；30 轮 60 例、1260 次 replace 全部 outcome=ok；degraded_events 空、diagnostic_degraded=false；60 个 fixture 均在任务 TEMP 内、out_of_scope=0、成功后无残留；摘录行显示 handle_count 170→174 平稳、末轮 cleanup=ok。**结局为 not_reproduced_root_cause_unknown，未被偷换**：GLM B11/Kimi B09 维持 open/unknown。失败 fixture 保留、降级、看护强杀三分支**未动态触发**（audit `fixture_failure_preservation_exercised:false` 附诚实理由），这些分支只经静态审查，不得称已实测。外部看护是本次协调命令，非产品硬预算证明。
+
+## 静态隔离样例接收条件（具备，限静态范围）
+
+双席各自关闭本轮修复 finding（GLM B19/B20、Kimi B12/B13），此前 R-log 等关闭仍有效；GLM 静态 G1 本席 PASS、Kimi 静态内容阻断解除；准确候选统一验证 exit0、manifest 前后一致、无硬限、软目标内聚说明已被原席按 revision 接受。从监督事实核查看，**静态范围接收的前置证据齐全**；正式接收是 Codex 集成者的后续动作，不是本监督的签字。
+
+## main/live 明确边界
+
+不授权、不预支：无 main 合入、无 live 准入。GLM B18/Kimi B11（产品 adapters/sample 权限）仍 open，live 持续禁止；后继权限两包（P6 派生冻结 profile、P2 序列化/环境开关）须新合同+计划+独立审核与产品 CLI 真实权限验证，不占本批额度。browser JS、云 CI、live 四角色、POSIX 分支均未验证。
+
+## 残余 unknown 与责任/后继条件
+
+- GLM B11/Kimi B09：历史 WinError5 根因 unknown（30×2 未复现）；若未来复现，证据须回双席后才可议修复包，不自动派修。
+- 保持 unknown：T1 shell 执行、hook 先行 allow、CLI/session/scoped-hook、真实宿主 memory 全域隔离、路径别名/junction 匹配器动态行为、num_turns 硬预算语义、N7 decisionReason、本监督模型身份、harness 三分支动态行为。
+- R-publication 的 cwd 外精确 Write 本次已真实成功一次，按 result.md 口径仅限该精确路径，不扩成所有路径能力。
+- GLM 票实读表述超界为已留证偏差；后继批次引用该票时须沿 coverage 限定解读。
+
+## 监督结论
+
+**PASS（限最终事实核查范围）**：无新阻断。本批执行链（三包作者→两轮内容审核→准确 verify→唯一诊断）的原件相互一致、预算与角色边界被遵守、诊断有效且仅未复现、结局分类未被偷换。静态隔离样例接收条件具备；B11(GLM)/B09(Kimi) 根因 unknown 与 B18(GLM)/B11(Kimi) live 阻断继续 open；main 合入与 live 各自另需举证，本结论不构成其中任何一项。
