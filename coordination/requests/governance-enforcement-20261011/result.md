@@ -1,17 +1,29 @@
 # 开发治理修复当前状态
 
-范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**S5两席实际初始化并结束，但必读材料在cwd外导致权限拒绝，0/142必需读取完成；撤回S5后续启动效力，准备仅修正材料位置的S6**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。截至本检查点，确认6次CodeBuddy模型调用、0次native；另有S2两次launcher失败、S3及S4各两次目标Node已启动后看护中止，均未观察到原生模型初始化，后端活动/计费未知。S5已知owner/watcher/wrapper/CLI退出，tree_empty仍unknown。用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
+范围：本仓开发失效的产品修复；维护者：Codex集成者；状态：**S6双席正文覆盖与完整意见已独立核验：GLM pass、Kimi changes_requested/GOV-06；native已返回blocked/GOV-06，但620.319秒越界，不能作预算合规准入；限定修补仍须由真实执行者承担**。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。截至S6双席结束确认8次CodeBuddy模型调用；后继native实际调用1次，返回blocked终态但单次超时；另有S2两次launcher失败、S3及S4各两次目标Node已启动后看护中止，均未观察到原生模型初始化，后端活动/计费未知。S6已知owner/watcher/wrapper/CLI退出，tree_empty仍unknown。用户已取消固定审核轮数，后继调用须按修正原因、准确候选及原独立门禁推进。
 
 ## 当前结论与下一动作
 
-GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓真实使用和独立关闭。当前只完成调查、实施候选和两轮实际设计审核；没有产品修复完成，不以文档、临时看护或尾部PASS代替交付。
+GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓真实使用和独立关闭。当前已取得S6有效的正负审核意见和完整读取证据；没有产品修复完成，不以文档、临时看护或单席PASS代替交付。
 
 - main保持`9a4855a39121f2483e1630082bc36533a2165a5e`。治理工作在`codex/governance-enforcement-20261011`；原用户工作树、`.workbuddy`及旧证据保留，本轮未合入main或push。
-- 原冻结S1候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`和S2候选`f1b5f967238290fbe3a1945da5e8cea20f634096`保留在独立送审树与Git历史；轮次与四项必修要求已于`9092a8b`提交。当前核准[实施合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)、[分批派发计划](dispatch-sequence.md)：13包、4个完整接收批次，首批N1/A/R1/W四路，N2等待N1有效交付。五个首批作者树只完成隔离准备，没有作者运行。
+- 原冻结S1候选`dc37ae62a0aa8b40e0d881a364a6ddd190c0e146`和S2候选`f1b5f967238290fbe3a1945da5e8cea20f634096`保留在独立送审树与Git历史；轮次与四项必修要求已于`9092a8b`提交。当前冻结送审候选[实施合同](implementation-contract.md)、[运行时计划](runtime-integration-plan.md)、[分批派发计划](dispatch-sequence.md)：13包、4个完整接收批次，首批N1/A/R1/W四路，N2等待N1有效交付。五个首批作者树已实际fast-forward至本次候选ed527d8并保持clean，没有作者运行。
 - Codex负责调查、合同、证据、验证和集成；dispatcher_next唯一正式发包；实际CodeBuddy + deepseek-v4-pro实现/修复，CodeBuddy + GLM/Kimi独立交叉审核，native Kimi独立监督。默认执行容量4可配；Claude暂停。
-- S4已真实启动但失败，现转入既有Job组件复用调查，后续依新准确准入；不得使用已撤回的[S3准入](s3-admission.md)原样重跑。候选ec64819及唯一governance-s3输入作为历史保留，容量与读取计划核验仍只证明准备事实。[S1最小修订提案](s1-correction-proposal.md)中的读取计划派生、会话声明、严格final及看护身份回归仍须完成。用户最新指示已取消固定轮次，原追加2票问题不再待答复；[范围补充](scope-amendment.md)保留原话，[当前路线](../../../docs/roadmap.md)维护有效团队约束。旧52/54总次数不是新的隐藏上限；实际消耗保留，单次运行与资源约束继续执行。下一轮四项必达为漏读、无效审核输出、看护漏管及策略自读缺口；需要有效双席意见和native监督后才派作者。
+- S3/S4历史失败见下，当前动作以S6检查点为准；不得使用已撤回的[S3准入](s3-admission.md)原样重跑。候选ec64819及唯一governance-s3输入作为历史保留，容量与读取计划核验仍只证明准备事实。[S1最小修订提案](s1-correction-proposal.md)中的读取计划派生、会话声明、严格final及看护身份回归仍须完成。用户最新指示已取消固定轮次，原追加2票问题不再待答复；[范围补充](scope-amendment.md)保留原话，[当前路线](../../../docs/roadmap.md)维护有效团队约束。旧52/54总次数不是新的隐藏上限；实际消耗保留，单次运行与资源约束继续执行。下一轮四项必达为漏读、无效审核输出、看护漏管及策略自读缺口；需要有效双席意见和native监督后才派作者。
 
-最新派发检查点：同一候选`ed527d872b6fc130583d99b223cc0db3f60ef888`已完成S6配置恢复，clean cwd `D:/ac6`及真实材料子树`D:/ac6/dist`；原129artifact/142读取区间/16conditions保留，无reparse、不放宽权限、不新增看护逻辑。完整argv31446/31450单位已独立核，[S6准确准入](s6-admission.md)已交dispatcher_next实际执行。S5准入后续效力仍撤回。native和作者尚未准入，产品W/R2仍未实现；当前实际并行实现者0，四个结构就绪包被审核/监督上游阻断，不能以三名Codex协调人员冒充开发并行。
+最新派发检查点：同一候选`ed527d872b6fc130583d99b223cc0db3f60ef888`已实际完成[S6双席](s6-admission.md)。每席142唯一Read与142结果配对，127来源9430必读行按返回正文逐行匹配；完整final严格JSON及自身两条件/身份/版本绑定有效。GLM pass，Kimi changes_requested/GOV-06。S6双席已结束；后继native监督已结束且超出单次截止，S5后续效力仍撤回。包含两份有效意见的native监督包及当前用户约束补充已完成，[原生监督准入](s6-native-admission.md)已交唯一发包人实际执行；意见有效不等于都通过；不得因负面票而排除监督。产品W/R2未实现，实际并行实现者0；四个结构就绪包仍受未决GOV-06与监督前置约束。
+
+2026-10-11T07:44:29.4049505Z进入手工看护，原绝对截止07:54:29.4049505Z；wrapper记录07:54:50.241435Z退出0、wall620.3194562秒，已超过截止约20.8秒。native完整final为blocked/GOV-06，要求具名CodeBuddy修复后fresh双审/native，不能据此开放B1；该意见保留但不当预算合规准入。实际session为session_31ce87b2-1b76-4805-a659-950d5c742415，版本0.43.0，model/provider保持unknown。07:54:00.301675Z最后在途手工观测仍alive，截止未按时停止是新的看护偏差，沿GOV-06/R2及GOV-S0-I01承接，不由Codex补执行逻辑。原件目录本机TEMP/agent-coop-governance-s6-native-20261011；读取覆盖正在独立核验。发包人已记录manual-terminal：target于07:54:50.2089551Z、wrapper于07:54:50.3185491Z自然退出0；原句柄处置前有效、Dispose后closed，stop_issued=false，tree_empty=null。发包人说明07:54:00后发生上下文切换/压缩，07:56:47恢复时已错过停止；该原因不豁免预算。后继人工看护在480秒主动收口，为600秒总界留处置余量；切换前先停止在途调用，仍不宣称硬实时自动看护。当前实际实现0、审核0、监督已返回终态；不能把协调活动当代码推进。后继只审限定修补范围及准入，不原样重跑157块全案。
+
+[两文件行政修复工作包](administrative-repair-package.md)已准备，真实作者指定CodeBuddy + deepseek-v4-pro；该草稿尚未准入、未派发，不授权B1或由Codex实现。
+
+### S6意见与待监督分歧
+
+GLM raw SHA `196acc00862fc8bbe25878aafad8e966de5860125d3c58f7d1a5746dc6d13b5e`、完整final SHA `2376de2cecd8351c335076cae7170e8d60d6a4cabf18b56dbba6e87b9725853c`；Kimi raw SHA `697ceb23c38b3e3461f5ec1f666b46c611fe853d364425f4a21754c8e12ce369`、完整final SHA `9b2f435db76f01980797aa1bd3416e2450297261dbdbda8e39daf12425035030`。完整hash和实际调用原件以本机`C:/Users/june/AppData/Local/Temp/agent-coop-governance-s6-run-20261011/`两席目录为准。可读无损final与逐项coverage为`D:/ac6/dist/n/gf.json`、`kf.json`、`gc.json`、`kc.json`；两个coverage SHA分别`e33f03968644e6e776c9a13d95f7476c5425bb1b60e1a50441f37aebdebd49c8`、`2efb23bf2732a4e7d90f13933d240e41595dc788ba25d377d49526ca8ee37a43`。
+
+Kimi指出r3 Resolve-UnboundSnapshotCandidate只在比较成功后保存fresh CIM/held ticks，失败操作数仍缺。当前Job watcher对直接CLI target仍调用该函数，不能把它整体称为未执行历史代码。GLM原票自报131读取块及14检查分支有误，独立原件分别证明142块/15分支；Kimi自报127 rows也不当142块的替代。原票保留，摘要差异交监督，不自行改票或以计数误述伪造缺读。任何行为修补由实际执行者承担；限定行政修复与B1产品作者必须分开具名准入。
+
+独立合同核验确认：implementation §3要求全部必需审核者完成后构造bundle并监督，合法changes_requested是有效负面意见，不要求先双PASS；native可审议分歧及有限修复路径，但不能代原Kimi关闭其阻断，native PASS也不消除产品派发阻断。将有效负面意见误当不能监督的状态属于本次流程问题，随GOV-05/I01承接。最新用户角色约束须向监督显式传达，不伪装为S6双席已经审核的新产品规范。
 
 ### 用户纠正：临时修补越权与协调空转
 
@@ -20,6 +32,8 @@ GOV-01–09及GOV-S0-I01均须经过产品实现、失败/恢复回归、本仓�
 本次偏差沿既有finding承接，不另建台账，也不修改已经冻结的S5输入：GOV-06/W/R2承接看护故障与执行者修复；GOV-08/D/X承接角色、写集、工作包和修复派发绑定，行政/临时标签不能绕过作者权限；GOV-S0-I01及GOV-09承接监督漏管和准备活动膨胀。必须分别显示实际运行的实现、评审、监督和协调数量，记录ready包未派发的具体依赖/责任人；有协调活动不等于功能进展。新增产品判据须进入后继受控合同及独立审核，当前只是开放需求，不能声称S5已覆盖或产品已修复。
 
 只读审计定位到具体合同缺口：角色段仅限制“产品/测试”，而行政恢复段允许协调者准备watcher差异。后继修订按是否改变可执行行为划界，TEMP位置或“准备”标签不构成豁免；GOV-01/03由A/C/D/X承接受管动作的作者、原件和写集核验，GOV-05/08由S/X/C2区分结构就绪、获准、reserved、进程创建、原生init与终态。监督必须给出可执行修复提案的owner、写集、前置和验收，不以再加一轮审核代替处置。产品只约束它管理的动作，不宣称禁止宿主任意shell修改。
+
+阶段边界：B1立即按用户指令执行人工角色约束，协调者只操作既有命令、绑定参数/路径和核验；任何行为修补交执行者。B3受审动作包落实作者/产物/写集绑定和真实状态，B4消费同源状态及真实派发验证。不能反过来要求尚未实现的B3自动门禁先完成才派B1四个独立基础包；其原有效双席和native前置仍保留。上述产品增补进入对应后继批的准确设计，不提前宣称已获审或已实现。
 
 ## S5实际读取权限失败
 
@@ -35,7 +49,7 @@ watcher于2026-10-11T06:40:49.6859408Z ready，PID40980；两wrapper随后启动
 
 准确本机原件位于`C:/Users/june/AppData/Local/Temp/agent-coop-governance-s4-run-20261011/`：GLM/Kimi watch-completion SHA-256分别`9f37cf4cf8298906ec23ca9b3118ef9cd1f90ca84f432c0bf6241f5d69fa1d61`、`5de35ae2a759bce92c0cdcc4dd31c175082243844bbbddebf1d0ff4ad158d51b`；cleanup为`e209ff14a26cb73ae9f00c95f9e8ce2d7c040b7ca03714afc3cff8c26c19d3b4`。保留冻结输入、失败准备和实际运行原件；本机TEMP不是长期备份。后继调用须有针对本次失败的恢复证据与新准入，不能沿S4原许可续跑。
 
-后续成熟组件调查：现成`windows-job.native-test.cjs`在本机实际10/10通过、exit0，覆盖正常/强制退出、父先退、嵌套Job、Worker、IPC、PTY及Git Bash前后台子孙；没有模型调用或包/产品改动。原件目录`C:/Users/june/AppData/Local/Temp/agent-coop-governance-native-job-20261011/`，测试stdout SHA-256 `ceb88836fa10bed1cf92bfc3175bc10fbab108e6312da527846ff5e0a510c5d9`。直接binding建立Job返回true且self membership为true；独立兄弟Job的动态查询返回false，支持该固定组件的限定成员语义，但native源码未随包提供，不能宣称源码级验证。`no-orphans.install()`会降级warn/false，不作为严格准入入口。候选行政恢复采用每席独立owner直接严格核binding后承载watcher，具体方案与新准入仍待完成；产品W不依赖宿主私有组件，不把这些测试当GOV-06产品关闭。
+后续成熟组件调查：现成`windows-job.native-test.cjs`在本机实际10/10通过、exit0，覆盖正常/强制退出、父先退、嵌套Job、Worker、IPC、PTY及Git Bash前后台子孙；没有模型调用或包/产品改动。原件目录`C:/Users/june/AppData/Local/Temp/agent-coop-governance-native-job-20261011/`，测试stdout SHA-256 `ceb88836fa10bed1cf92bfc3175bc10fbab108e6312da527846ff5e0a510c5d9`。直接binding建立Job返回true且self membership为true；独立兄弟Job的动态查询返回false，支持该固定组件的限定成员语义，但native源码未随包提供，不能宣称源码级验证。`no-orphans.install()`会降级warn/false，不作为严格准入入口。候选行政恢复采用每席独立owner直接严格核binding后承载watcher，当时尚待新准入，后继S5已实际使用该载体，当前S6只恢复材料读域配置；产品W不依赖宿主私有组件，不把这些测试当GOV-06产品关闭。
 
 ## 宿主自动继续入口
 
@@ -63,7 +77,7 @@ watcher分别于6.2743377/5.6561078秒输出`descendant disappeared before ident
 
 恢复沿旧bootstrap的受限人工看护入口：唯一发包人准备同强度行政修正，独立无模型核验后，集成者按新候选、读取材料、完整参数和看护版本另立只读准入。仅准确证明未绑定候选的GetProcessById not-found，且目标早已准确绑定、原身份及有效句柄持续保持，才可记录候选unknown并继续；首次目标未绑定、权限错误、未知异常、身份冲突或已绑定身份丢失仍停止。旧S3不追认，产品atomic Job验收不豁免；有效双席和native监督仍先于作者。
 
-另发现CodeBuddy安装中已有Windows Job绑定与现成原生测试，是W的复用调查输入；本次未动态验证，也未确认S3实际安装成功，不能作为已包含证据。当前本地片段及分支检查属于行政恢复准备，不是产品W实现、正式审核票或新调用准入。
+另发现CodeBuddy安装中已有Windows Job绑定与现成原生测试，是W的复用调查输入；S3调查当时未动态验证，也未确认S3实际安装成功，不能作为已包含证据。当前本地片段及分支检查属于行政恢复准备，不是产品W实现、正式审核票或新调用准入。
 
 ## S2启动失败与准入撤回
 

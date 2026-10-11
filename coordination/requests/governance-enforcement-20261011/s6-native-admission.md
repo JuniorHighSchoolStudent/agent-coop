@@ -1,0 +1,17 @@
+# S6原生监督及用户角色纠正准入
+
+范围：独立Kimi Code只读监督，审议S6有效正负意见及有限行政修复路径；维护者：Codex集成者；时间：2026-10-11。仅dispatcher_next执行一次fresh调用；不准入B1产品作者，不代原审核席关闭GOV-06。
+
+候选`ed527d872b6fc130583d99b223cc0db3f60ef888`，cwd `D:/ac6`。subject `da7fc751c398ea5a3ca834d82f7933e617f320265ebdc3036ac3617dd8d9cca0`、policy `1d87e542821b66e247b5e6d026ad4c42abf357ea3eb01c5dca6a57ea2443a17c`保持。两席各142Read/127来源9430行已逐返回正文独立核；GLM pass与Kimi changes_requested/GOV-06均为有效意见。按实施合同§3，监督依赖完整有效意见而非双PASS；最终eligibility仍被Kimi阻断。
+
+准确本机输入目录`D:/ac6/dist/n`：bundle `b.json`字节SHA `50e9707bb4853349568267d35cd50b7957101582501294f28a6e5dda87ef30cc`，canonical digest `ad40dd72aca4429857659a0b02a15500f207371038300be9aec7db35c49d7872`；后继`index.json` SHA `6d0cb760aec76e52fd0436352511f1927aa5e748abc53175b54c1ea9b2c50803`。两份final完整256码点分片可逆，coverage完整127项；原subject未修改。157块保留原142块并增加原票、coverage、invocation及bundle全文，不用摘要替代。
+
+实际prompt为`prompt-user-supplement.txt`，SHA `494abaf5b05ab54a4cf9f4db264e25b85f3cda0a80a0304cbca4cd203333cd73`。准确8项argv见`planned-native-user-supplement.json`，SHA `444566968bb186724677a103e6ebd91f3c137f4a8204def1eec979c4e05cd8cf`。根独立复算完整Windows命令含exe/转义/NUL为32748 UTF-16单位、余19，往返逐元素一致；任何参数变化须重核。
+
+行政补充明确偏离原renderer完整body字节：在原prompt末尾添加81 UTF-16单位，原文为“用户补充：‘看护的连续修补 也是应该派发给执行者啊’‘这也是开发的问题需要在产品中解决’。请审议仅限行政诊断修复的执行者派包路径；不准入产品作者，不代关原阻断。”准确标点与首换行以pin住的prompt原字节为准。来源为当前用户指令，作用是收紧实现actor；未塞入原subject/policy/bundle，也不声称S6双席已审这一后继补充或产品严格v2检查已支持它。监督直接接收该用户约束，不以未知旧记忆替代。
+
+复用既有fresh wrapper `C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-supervision-g1.ps1`，SHA `ef260838f90da38f2c540f2601f22cc343ade513d2ed0f415de81df08e2a7c77`；agent文件SHA `5d6e863c325e95763f7b6492be35638f33224a9b138181589ed8ee39c918ab0d`、native入口SHA `5b300a573d306f879361eb7a2baec3a19448ea94eadca28001408b19c42eeb69`，Node固定同S6。禁止Resume，requested_session=null；实际session/model从原生事件记录，model不可见保持unknown。只读profile及工具不变，不兼任作者或必需CodeBuddy审核席。
+
+看护复用roadmap既有native人工安排：并发1，单次600秒，stdout+stderr上限8MiB。dispatcher先在宿主交互PowerShell中进入手工看护，记录ready与原wrapper对象、显式有效SafeHandle及创建身份；随后核直接native目标原身份并持柄。每次手工检查不晚于30秒，临近截止提前检查，到界按原持有对象停止并核已知退出；不写新watcher或适配器。任何持柄失败、身份漂移或关键终止unknown停止依赖动作。工具session ID不冒充OS句柄；没有原子Job、控制者崩溃或全树退出保证，不声称硬实时自动看护。
+
+native CLI无已验证turn/token硬限及Read容量：不套CodeBuddy20响应上限，也不保证157块能在600秒内完成；读取截断/缺口如实blocked，不延时、不补造覆盖。最终必须保留完整原生终态及准确主体、policy、bundle、实际读取与独立意见。监督可以提出CodeBuddy承担诊断片段和既有回归的有限修复方案，任何后继实际写入仍须另一个准确具名修复包及准入；此调用不自行授权实现或关闭产品finding。
