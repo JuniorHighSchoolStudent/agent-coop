@@ -131,6 +131,26 @@ N2拥有旧测试fixture迁移，其他包不得复制其测试类。新测试�
 
 每包统一交付步骤：先提交对应最小反例和实际实现，由根运行该包的 `python -B -m unittest tests.<对应模块> -v`；失败交回原作者，不由根补源码。合体停止全部writer后只运行同一个 `python -B -m agent_coop verify`，修复影响再针对性复验。作者声明文件/函数软目标、职责和消费者；超硬上限或无final即阻断依赖包，不延长20 turn或隐式补调用。
 
+### 4.1 流水线后继按owner顺序拆片
+
+状态：用户新增监控闭环需求后的待审实施拆分，不属于57eddd8冻结的M/T基础包作者准入；不改变在途输入。原13包写集owner保留，新增M/T由[基础合同](flow-foundation-contract.md)维护。此处为S/D/X接线次序的唯一工作包拆分入口，准确schema差异仍须归并implementation-contract后受审。
+
+| 小片 | 前置及交付 | 必须验收 |
+|---|---|---|
+| S1 全角色claim | S单写store.py/dispatch_claims.py及原专属测试；统一作者、审核、监督、提案动作的逻辑身份、预算和资源事务 | 并发领取同动作不重复；暂停启动边界；未知存活不释放；共享账号不拆账 |
+| D1 全角色装载 | D原写集；真实C/F及S1，模板node/role/profile/body生成准确动作 | 非作者不获得作者写权；错误角色/版本零启动；职责结构消费T，实际意见仍消费A/B/C |
+| X1 单动作执行 | X原写集；D1/S1/R2 | claim后安全创建与终结；CAS冲突不重复spawn；不持全局锁跨模型调用 |
+| S2 事件与就绪转换 | S在S1后顺序修改原写集；同事务保存终态、已核阶段证据及后继待办，提供同revision快照 | 退出0或缺final不解锁审核；双席有效意见齐备可准备监督且保留负面票；重复/乱序事件与发布失败不重跑 |
+| D2 提案材料 | D在D1后；消费M原因和T声明校验，准确ChangeProposal保留父包义务/finding/依赖 | 拆包不扩大权限或丢验收；语义判断可选择诊断而非拆包；新提案必须受审 |
+| S3 受审版本应用 | S在S2后；消费D2及A/B/C核验 | RunAmendment与就绪项CAS原子提交；漂移不半应用；旧writer未知不重派同写集；不用新ID清预算/阻断 |
+| M-Q 队列观察 | M同owner在M后顺序续片；只依赖S2准确快照，可与D2/S3并行 | ready可派却零作者、审核积压、reserved未启动、暂停、过期/unknown分别识别；不重算资源算法或新建队列 |
+| X2 持续补发 | X在X1后；S2/D1可先形成固定定义的流水，再接D2/S3/M-Q组成调整闭环 | 快包先审不等慢包；局部返修不堵无关包；事件去重与暂停恢复对账；队首资源不足不饿死其他可运行包 |
+| C2 用户入口 | 原唯一CLI owner；已独立接收X动作链 | 状态/why/暂停/继续消费同一后端；真实必要工作通过产品派发，非另造canary |
+
+这里只按依赖拆分，不引入整表串行屏障。同owner同文件禁止并行写；跨owner若前置已准确接收可继续。S2后M-Q不用等S3，X2固定定义流水不用等动态拆包全部完成；完整用户目标仍需动态变更链及真实使用全部举证。
+
+实施合同后继必须准确变更：development-action的node_id/role_id与治理阶段定位、requested/actual session分离；claim的逻辑动作身份；store-config的执行者并行配置与真实账号限制分离；author_bindings改为受审node/role动作绑定；作者写集与只读角色权限分别校验；batch_dependencies改为真实单包依赖。旧v1草稿不能按新语义静默解释，未冻结新字段前不派S/D/X作者。
+
 ## 5. 必需负例和实际使用
 
 | 范围 | 必须拒绝/保持失败的反例 | 有效正例与真实证据 |
@@ -154,3 +174,39 @@ S2容量/编码/辅助进程观察是原GOV09/F/D/R2与GOV06/W/R2的追加失败
 本轮尚未发生的修复派发不能伪造发生，但GOV06–09的代码、反例及适用实际使用必须齐备后才可关闭。报告通过不自动赋予merge、push、live或生产任务权限；本批不实现生产OS任务、全局memory、账号代理、跨项目容量服务或完整Scheduler。
 
 S1四项缺陷沿合同第9节必修：F/C/D解决源与计划正确而prompt漏行，N1/B/A/C拒绝两份真实无效审核输出且不采尾部PASS，W/R2防原句柄生命周期漏管，A/C/F/D/B确保当前policy完整必读及无自引用摘要。恢复fixture与失败原件均留存；后继真实审核消费C/F/B产品入口，B4必要作者消费D/X/W/R2，再由独立双席/native核对后关闭。json-schema隐式续跑/不同structured_output字段不纳入本次能力，不作为无效输出的捷径。
+
+### 5.1 复用取舍与本轮实施边界
+
+状态：用户要求减少重复建设后的实施补充草案；不修改57eddd8在途审核输入，不冒已安装依赖或已完成实现。初始[P0取舍](../isolated-workflow-20261010/reuse-decision.md)只决定隔离样例底座，不是今后禁止第三方库的政策。当前15个产品Python模块只导入stdlib及本仓模块，没有第三方依赖清单或vendor代码；调用现成CodeBuddy/Kimi CLI是工具复用，OMA/Symphony/DSH与gstack是机制/职责参考，不能称吸收其实现代码。
+
+| 能力/owner | 复用与自研边界 | 本包核验 |
+|---|---|---|
+| T 阶段合同 | DAG环检测优先直接调用Python3.12 `graphlib.TopologicalSorter.prepare`/`CycleError`；本仓只维护声明类型、引用和覆盖语义 | 先拒重复节点/未知依赖；有环拒绝，错误排序确定；不自行重写拓扑算法，也不将图算法当Scheduler |
+| M 观察判断 | 使用既有`store.canonical_digest`；本仓特有unknown/stale、时钟域与原因转换保持纯函数 | 精确类型和值先检查，输入不变；不新增摘要工具或监控框架 |
+| S/D/X 状态与派发 | 扩展同一SQLite Store事务/events/publish，消费已有runtime与A/B/C/F；不能并存第二队列/状态权威 | 库有能力不代表本仓已接入；独立核事务、恢复、角色与权限边界 |
+| N/B/C 审核证据 | 复用stdlib JSON解析与同一NativeTrace；本仓保留模型原生身份、读取原文与候选绑定判断 | 不复制parser；通用schema库不能替代真实来源和有效意见判断 |
+| W/R2 生命周期 | 新受审候选：pywin32 b312承担已有Job创建/配置/查询/终止及句柄封装；仅STARTUPINFOEX/JOB_LIST/HANDLE_LIST创建边界保留薄ctypes | 不用普通CreateProcess冒充创建时Job归属；尚未安装或运行验证，不擅改§3当前候选。替换底座须以固定依赖/许可和真实生命周期反例受审，宿主私有addon不作隐式依赖 |
+
+graphlib会自动添加未声明前驱、合并重复依赖，故外围拒绝规则不可交给库默认行为：建图前按既有合同校验，不能先dict化吞掉重复；CycleError转为DEPENDENCY_CYCLE violation，不外抛为schema ValueError；具体异常文字不进入稳定合同。[Python官方文档](https://docs.python.org/3.12/library/graphlib.html)。该选择不改变T外部输入/输出或新增第三方依赖，仍须写进准确作者实施材料和交付说明。
+
+对后续schema、调度、OS接入等通用能力，发包材料沿既有复用取舍入口列出库名/固定版本或commit/许可、实际可替代接口、为何采用或拒绝、剩余自研与测试；不另建选型台账。仅在具体包改变底座前核验，不把广泛重选框架设为所有独立包的前置。当前未选择或安装jsonschema、外部工作流引擎或OS调度库，不能在作者中隐式新增。
+
+W复用调查固定pywin32 b312 commit `2a277cb5552756c2b4d42b524dc36d25e0bb6354`：[win32job实现](https://github.com/mhammond/pywin32/blob/2a277cb5552756c2b4d42b524dc36d25e0bb6354/win32/src/win32job.i)已有所需Job API；[win32process实现](https://github.com/mhammond/pywin32/blob/2a277cb5552756c2b4d42b524dc36d25e0bb6354/win32/src/win32process.i)的公共CreateProcess接受普通PySTARTUPINFO，不能直接表达本项目所需扩展属性。因此优先复用Job/句柄部分，剩余薄适配明确唯一句柄owner；采纳前仍需wheel版本/摘要/宿主兼容和子进程回归。保留[win32 BSD式三条款及发行物完整许可](https://github.com/mhammond/pywin32/blob/2a277cb5552756c2b4d42b524dc36d25e0bb6354/win32/License.txt)，不称MIT、不复制源码后丢通知。此后继选择不阻M/T。
+
+R1追加项目受管目录验收：沿design§5.1现有coordination_root唯一配置派生工作树/证据/状态，默认注册主项目目录，不引入同义workspace_root或第二Store。R1负责纯路径解析及归属/reparse/越界守卫，D负责配置与新cwd/权限绑定，S保存同一状态，F/R2核完整新argv；不得为短路径退回盘根。保留sample create_root的空目录/marker语义，不对已有coordination目录调用它冒通用初始化；兼容既有样例由独立合同测试证明。路径变更必须在这些包派发前进入准确材料，不由集成者补产品代码。
+
+### 5.2 首次在本项目使用的交付预期
+
+这里定义按依赖触发的交付节点，不填无证据日期；当前均未完成。集成者在[result](result.md)维护对应候选/剩余依赖/实际作者与下一节点，监督者核原件。模块独立接收后就消费其已证能力，不等全部工作包完结才尝试使用。
+
+当前可用入口仅为隔离样例：在仓库目录以可用Python3.12+执行`-B -m agent_coop --help`，实际列出init/run/status/pause/resume/serve/verify；init要求准确profiles文件，不支持把任意现有项目目录直接接入。2026-10-11本机裸python命中WindowsApps占位符而失败，使用本机已固定Python3.12.14绝对路径调用help才exit0。因此后续操作说明须给出已验证解释器/工作目录/配置来源，不能只贴未验证的python命令；这次未安装依赖或改变PATH。CLI帮助可运行不代表模型流程或通用项目接入已可用。
+
+| 节点与前置 | 首次消费本请求的真实工作 | 替换步骤及验收证据 |
+|---|---|---|
+| U1 M/T独立接收 | T校验本请求后继workflow/roles配置；M消费既有采集/装载owner提供的、符合合同的真实attempt观察，缺测保持unknown | 替换人工结构检查与已有观察原因判断；留下输入来源/版本、实际调用结果和独立核对。M不支持队列时不得伪造attempt检测零作者 |
+| U2 A/B/C/F及原生解析接收 | 后续首个必要GLM/Kimi送审使用产品必读计划/预检；返回原流由产品核覆盖和完整final | 退出重复手工逐行核验，保留人工独立审查判断；须同时拒绝已知漏读和无效终态反例。不用旧报告冒当新入口产物 |
+| U3 X1与D1/S1/R2接收 | 唯一发包人调用已审Runner API启动已有必要C2作者包 | 替换该次临时启动；保存真实claim、原生身份、stdout/stderr、终态、有效交付、双席/native独立意见。C2接入CLI后用户可使用正式入口 |
+| U4 S2/X2及M-Q接收 | 在本请求真实独立就绪包中完成边开发边审、返修与补发；作者默认4路可配，不为凑数新增任务 | 快包先审、无关包继续、暂停后不新发、恢复不重复；显示队列/运行/等待原因及准确版本。实际四路作者声明须有四路模型证据 |
+| U5 D2/S3调整链接收 | 对真实瓶颈形成提案，经独立审核/监督后应用并继续派发 | 证明拆包不丢验收、失败不清账、旧在途不被新配置覆盖；这是完整监控调整闭环的验收，不能由U1单测替代 |
+
+本轮使用范围仍为已授权隔离样例及本请求开发；归档/备份/清理只能处理该范围的证据与fixture，先校验本机备份读回再执行批准清单，不能扩展到其他项目或生产目录。未来业务项目须由各自ProjectAdapter和原项目权威给出完成语义；gstack职责模板不代表ABM或交易规则已接入。本表不是已可执行命令清单，U3前现有sample CLI不宣传为通用项目开发入口。

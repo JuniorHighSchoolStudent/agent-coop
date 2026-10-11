@@ -269,3 +269,64 @@ body不含自己的最终hash或可变候选摘要；实际完整prompt在动作
 四项均属本请求必修，不能仅更新文档后关闭。漏读由F/C/D生成并核计划到prompt，B核实际正文；无效审核输出由N1保留全文、B严格解析、A/C阻断；看护漏管由W/R2原句柄包含与真实生命周期修复；策略自读缺口由A/C最低集合＋F/D派生＋B实际覆盖闭合。每项必须具有本次真实失败fixture、明确恢复正例及独立双席/native关闭证据，且在本项目后继真实审核/必要C2作者链消费已交付产品。S1原失败票不变成有效票。
 
 N2冻结旧测试409行及W复杂度风险须在具体交付按既有300/500、40/80审查，不能用去注释或无语义拆分绕过；native agent_file启动前复用runtime._verify_hashes并验证缺失/变字节阻断，当前存在不是未来启动证明。准确源映射已存在的runtime-plan改名不得误报丢源，C继续按原件ID/path/hash核验。这些验收仍使用既有13包，不新增相似调度器、台账或未审写集。
+
+## 10. 全角色流水接线后继接口草案
+
+状态：未准入、未实现，须独立审核后才能派发本节实现；不修改§6历史接口，不改变已冻结`57eddd8`的M/T材料、作者树或在途调用。S1/D1/X1是原S/D/X各自的顺序小片，不是新角色或新调度器；写集仍为原Store/dispatch_claims、development、Runner及各自已声明测试。M/T及完整流水线的边界见[基础合同](flow-foundation-contract.md)和[流水线提案](pipeline-amendment.md)。
+
+### 10.1 共同约束与版本
+
+本节采用新的`development-action/2`、`development-batch-config/2`、`development-store-config/2`、`development-outcome/2`。未明确改变的字段类型和拒绝未知键规则逐值继承§6；新schema不得接收旧字段别名。旧v1和S6行政原件只能沿既有适用范围核验，不根据内容猜测升级，也不因只改schema标签获得新权限。
+下文`ID`为非空字符串，`SHA`为64位小写十六进制，`N`为非负精确int，`P`为正精确int，bool/float不作整数。`Ref`为§6的ArtifactRef，不采用M/T只有ID/hash的短Ref；凡引用M/T模板，D须从已pin索引补足路径并核ID/hash，不改变其原件。
+审核阶段`review_stage`仅为plan/dispatch/accept，指本次动作所针对的治理证据阶段及该角色正文键；`node_id`是受审workflow节点ID，`role_id`是可配置协作角色ID，slot由workflow解析。三者不能互换：例如模板review槽位执行的是模型dispatch动作，其review_stage可以为accept，不能据此直接执行接收。
+
+### 10.2 全角色节点绑定与容量
+
+`development-batch-config/2`准确字段为schema、request_id、batch_id、model_call_limit、workflow（Ref）、roles（Ref）、node_bindings；不再接收author_bindings。workflow/roles引用T的准确输入原件，作为本单包subject内固定artifacts；不把运行中队列、意见或未来接收结果写入配置摘要。
+node_bindings是node_id→binding的非空映射，必须恰好覆盖该workflow.stages的节点。每个binding准确为`{role_id, review_stage, profile_artifact_id, cwd, account_group_id, extra_resource_keys, access, session_request}`；前三个ID字段及cwd/账户/资源沿§6类型，extra_resource_keys可空、唯一；review_stage沿上段。
+access仅为`read_only`或`package_write`；session_request仅为`explicit_fresh`或`implicit_fresh`。本片不支持resume；后继resume须另有准确许可与接口，不能把已有session当fresh。
+binding.role_id必须等于workflow节点slot经workflow_bindings解析的角色；profile_artifact_id必须与policy.role_bindings[role_id].profile_artifact_id及roles[role_id].profile_ref的准确ID/hash相同。角色、profile、cwd、账户任一缺失或冲突拒绝；不能从模型名/slot文字补默认值。
+角色prompt仍唯一来自policy.role_bindings[role_id].prompt_body_artifact_ids[review_stage]，不增加第二正文配置。review_stage不授予任何前置豁免；A须核本动作适用条件及阶段证据，D不能仅凭有正文就放行。
+`development-store-config/2`在§6原顶层字段增加`executor_parallelism:P`、`global_parallelism:P|null`、`role_parallelism:{role_id:P}`，并按下段替换account_groups每项结构。executor_parallelism是本地作者并发配置，配置准备的默认值4，可由用户调整；只累计policy中kind=author的在途claim，不是全角色总上限或服务商账号上限。global_parallelism的null表示未设置本地团队总限额，role_parallelism可为空，仅显式列出的角色有限额；均不表示服务容量已验证为无限，不能默认给每个审核/监督角色固定1个实例。
+v2的account_groups仍为非空ID映射，每项准确为`{model_call_limit:N|null, local_parallelism:P|null, service_limit, unknown_limit_policy}`；删除无来源的capacity字段。service_limit精确为`{status, capacity:P|null, evidence_ref:Ref|null}`：status为verified/unknown/stale；verified必须有非null capacity及证据，unknown/stale的capacity必须null，证据可为null。证据必须支持该账号适用范围内的限制，成功跑过若干并发只证明该次成功，不证明服务最大容量。不同模型/角色共享同账号的claim统一计数。
+unknown_limit_policy仅为hold或use_local_limit：账号限制unknown/stale时，hold阻止该账号新claim并报告capacity_unknown；use_local_limit仅在local_parallelism非null且authority_ref明确批准按该本地限额承担未验证服务限制的不确定性时允许，仍显示服务限制unknown/stale。缺该授权或local_parallelism为null均阻断，不能取executor默认4充当账号额度，也不臆造1路兜底。verified时仍同时执行显式本地限额和已证服务约束；所有适用约束与资源互斥取交集。
+本地限额和服务证据分别冻结进config_digest；S只证明受本Store管理的claim不超适用限额，不将本地claim数冒充供应商全账号实时用量。已知外部占用/服务限流或证据失效必须沿原观测/对账入口处理，未知外部用量不补零，不承诺远端不会拒绝。unknown_limit_policy不豁免运行时能力、权限或身份unknown门禁。
+最小兼容：§6的v1 account_groups.capacity及“容量4”原文保留为旧候选，不静默映射为v2已证服务限制；迁移须按原授权证据将其归为明确本地配置或verified服务证据，无法区分则unknown。v2不接收旧max_parallel/role_capacities字段；同一成本model_call_limit仍沿§6记账，与并发配置分离。此处承接运行时计划§4.1的执行者配置/真实账号限制分离，不新增真实账号上限。
+初始化仍拒覆DB，注册仍是同request的不可变追加；容量/绑定修改不提供裸Store.update出口。旧配置迁移与容量降低期间的在途处置不在S1自动实施，见10.7待决项。
+
+### 10.3 动作及会话身份
+
+`development-action/2`准确字段为schema、action_id、request_id、batch_id、kind、expected_revision、subject_digest、index、policy、policy_digest、package_id、node_id、role_id、review_stage、attempt_id、requested_session_id、prompt、profile、evidence_root；删除v1的session_id，不允许caller提交actual_session_id。
+kind仅dispatch/accept。dispatch的package_id为本固定单包ID；node_id/role_id/attempt_id非空，review_stage有效，prompt/profile为非null Ref；其余字段沿§6并匹配已注册节点、准确subject和原件。D不能接受caller自由组合一个未注册节点。
+accept的package_id/node_id/role_id/review_stage/attempt_id/requested_session_id/prompt/profile全部为null；仍由Runner重算该固定单包的全部接收条件，不执行模型、不以某个reviewer节点意见直接接收。
+explicit_fresh要求requested_session_id为非空ID，精确argv中存在已审方言要求的唯一fresh session selector；implicit_fresh要求其为null，精确argv不得有session/resume选择器且满足该方言fresh必要参数。两者都须有固定profile能力证据；null不代表跳过会话独立性。
+actual_session_id只能来自N1/N2核过的原生流，非空ID或null；未知时保持null。显式请求与实际值不等即身份冲突；fresh实际会话若与本Store已记录其他attempt会话相同，保留原始outcome并标违规，不能覆盖旧身份或计为独立有效意见。
+`development-outcome/2`在§6的全部字段上增加`actual_session_id`和`session_evidence`（Ref或null）；actual非null时session_evidence必非null，引用产生该身份的已冻结raw；实际提取和原件hash由R2/N1/N2证明，不接受调用者自报。未知actual不阻止失败原件落盘，但不得满足要求实际身份的接收条件。
+S1在finish事务登记已证实际会话及碰撞事实；本片不宣称在原生init出现瞬间已完成跨进程会话隔离。启动前只核请求身份唯一和fresh能力，启动后最终独立性仍由A/B判断；实时会话绑定回调若被要求，须先冻结R2/S新增接口。
+
+### 10.4 逻辑动作键与原子claim
+
+dispatch的logical_key由D对`[request_id,batch_id,subject_digest,node_id,role_id,review_stage]`作既有规范摘要，Store以已注册配置重算；action_id、attempt_id、requested_session_id、expected_revision不参与该键，避免换ID绕过重复动作。
+§6内部claim删除session_id，增加node_id/role_id/review_stage/logical_key/requested_session_id，其余字段保留。S1以logical_key、attempt_id、非null请求会话及原资源分别校唯一；隐式fresh的null不是一个共享会话锁，也不能伪造session字符串填充。
+同逻辑键且相同绑定的重放返回原claim/attempt定位，不新增预算、进程或派发；同键不同attempt/profile/prompt/index等绑定拒绝冲突。相同action_id被用于不同键也拒绝。CAS revision冲突只能重新核同一动作，不得因此生成新attempt启动。
+本片只提供每个固定逻辑动作的一次受管执行及幂等定位；失败后的显式后继attempt授权转换尚不在该接口中，不能靠换action_id绕过。该限制不形成review/repair次数上限；继续修复须先由后继状态转换合同承接，而非临时移除幂等。
+claim→contained+suspended→mark_dispatch_started→resume→finish的顺序沿§6；全角色统一reserved/used计数。退出码、有效final、接收、供应商计费和整树清空分别举证；unknown在途资源不因角色是只读而释放。
+
+### 10.5 权限与材料装载
+
+package_write仅允许当前policy中具作者身份且对本包获写权的角色，规范化profile.permissions.write_files须逐值等于本包allowed_paths；写入资源由D派生，caller不得删减。未赋权角色即使slot叫produce也拒绝。
+read_only要求profile.permissions.write_files为空、工具与运行时实际只读能力符合原合同；reviewer/supervisor在本片必须read_only。其cwd可以是本包固定只读材料/候选树，但必须等于已注册cwd及profile.permissions.root，源字节/hash固定，不能读正在变化的作者工作树冒准确候选。
+environment白名单、runtime/方言hash、权限root、完整prompt/read_plan和Windows容量预检仍走原R1/R2/F/C，不允许D为审核临时扩大权限、加入未批准目录或使用bypass。只读不占作者文件写锁，不占作者专属executor_parallelism；但仍计入同账号、显式配置的全局/角色限额及资源，不能因只读漏账。
+D1沿既有公开装载入口生成动作和内部claim，C/A内部判定需要的动作上下文为`{node_id,role_id,review_stage}`，必须由已注册binding导出并与action比对；不向用户开放预填PASS/NativeObservation。A/C需正式支持此上下文后，才能核非作者dispatch，不能复用旧“目标包作者”分支假称全角色已支持。
+
+### 10.6 小片依赖与验收
+
+S1独占原S写集实现v2配置/注册/全角色claim/计数与终态会话登记；D1独占原D写集消费A/C/F及真实S1；X1独占原X写集消费D1/S1/R2，实现一个已准入动作的安全启动与终结。不先加第二poll loop、队列库或模板Scheduler；同owner后继S2/D2/X2顺序交付。
+必要回归：默认4仅约束作者，第5作者受限而审核在其余明确约束允许时仍可启动；用户调executor_parallelism生效；同账户跨角色统一计数；unknown服务限制不变成无限/已满，hold拒绝、具名授权且有local限额才允许use_local_limit；4次并发成功不得自动写成verified最大值；非作者写权限拒绝；同逻辑键更换attempt拒绝；重复终态不重复计费；native fresh null不占伪共享session；显式请求/实际会话冲突；未知actual留证但不计有效票；错误node/role/review_stage/body零spawn；暂停后不resume；启动记录CAS冲突不重复创建进程。
+组合验收必须调用真实A/C/F/R2而非caller PASS；用自有受控进程证明顺序和失败保真，再由既有批准流程选择必要真实模型工作dogfood。M/T单测、S1事务测试及X1单动作成功均不能宣称队列流水或调整闭环完成。
+
+### 10.7 明确未决及后继承接
+
+本节字段是可审核草案，以下必须在对应实现派发前具体冻结：A/C对每类node的准入前置/未来意见允许缺席边界；显式返修后继attempt的授权和旧claim终态转换；v1已有DB迁移及容量变更。未知不放行，不要求为此改动已冻结M/T。
+S2将完成事实、有效交付及后继就绪在同Store内原子衔接；D2组织ChangeProposal，S3核独立批准后CAS应用RunAmendment；M-Q消费S2的一致队列快照；X2统一消费事件并即时补发。具体queue/amendment schema不由本节暗设，须各片独立准入且仍是本请求必需交付，不能移为远期可选。
+完整验收保持：快包双审不等慢包、双意见齐备才监督、返修只影响本包及真实依赖、暂停/重复事件/未知进程不越界、受审调整后实际补发。不得把S6旧意见、v1动作或M/T结构valid作为本节实现或接收证明。

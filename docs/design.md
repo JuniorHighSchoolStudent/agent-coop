@@ -205,6 +205,12 @@ Git 策略：配置、模板、README 跟踪；高频 STATUS/current、运行库
 
 多 worktree 共用一个显式 `coordination_root`，默认是注册的项目主目录下 `coordination/`；业务树记录/展示指向该根的引用，不启动独立副本。coordinator 的授权写根仅增加该协作目录，不因此允许业务 agent 写主树源码。启动前核对 project_id、仓库身份、owner 与占用；Git 克隆或复制旧状态不能继承旧主机的 lease。首版限单主机本地文件系统，不把 SQLite/锁放在网络共享上。
 
+工作包目录同样从这个已注册根派生，默认使用`<coordination_root>/.runtime/workspaces/<package-key>/`，隔离Git工作树为其`workspace/`；调用证据与准备材料分别归该协作根的`.runtime/evidence/`及受管调用根的`evidence/`。状态仍唯一位于本节state.sqlite及其投影，不为每个包建立第二状态库。包目录可以含受管runtime日志，不代表拥有独立Scheduler。目录键由注册工作身份生成并拒绝越界，不能直接把任意模型文本当路径。
+
+`coordination_root`由项目配置指定，未指定时按注册项目主目录解析，不能依据当前worktree的cwd漂移。不另加含义相同的workspace_root配置；外部位置只能来自明确项目配置和权限，不能由临时发包脚本自动选盘符根、系统临时目录或junction短路径。自定义位置须核真实路径、项目归属、权限和有效Git忽略策略；长路径应由既有参数/材料预检报错，不能静默搬到其他盘根规避。
+
+迁移前核旧writer、Git/WIP及被忽略原件、目标冲突与占用；Git工作树通过Git原生命令迁移，迁移后核HEAD、状态与注册。原评审中的路径、输入摘要及批准原件不改写；新调用按新cwd、权限、read-plan和完整argv重新绑定。历史证据归集采用逐文件校验及来源映射，旧副本在引用和保留条件核实前不删除。此为默认路径合同；当前bootstrap目录的人工迁移不等于R1/D已自动强制执行。
+
 ### 5.2 交流与归档合同
 
 通用产品的交流、问题链与归档/清理合同。复用 §5.1 的事务发布与投影、§7.5 监督意见、§7.7 握手、§9.1 经验闭环，不另建聊天总线、issues 状态库或归档服务；本节是合同，尚无自动采集/备份/清理实现。社区来源和本地取舍见 [研究记录](../coordination/requests/communication-archive-20261010/research.md)。

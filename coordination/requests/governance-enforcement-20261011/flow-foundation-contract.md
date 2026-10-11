@@ -43,6 +43,7 @@ M/T 无相互实现依赖，接口冻结并独立准入后可先派这两个就�
 
 `policy` 精确为 `{schema:'flow-monitor-policy/1', policy_ref:Ref, runtime_idle_ms:P, progress_idle_ms:P, evidence_max_age_ms:P, observation_max_age_ms:P}`。阈值必须来自已审配置，不提供暗设默认值；这些诊断阈值不替代 runtime 单次硬截止或资源准入。
 `previous` 为 null 或 `{clock_epoch:ID, sampled_ms:N, policy_ref:Ref, active_reasons:[reason...]}`；active_reasons明确可空，reason见第4节，key唯一且须按本次工作/attempt/候选重算一致，policy_ref须等于本次policy_ref。同epoch的sampled_ms不得倒退；这是同Store上次报告的投影，不是第二状态库。
+上述跨字段约束与observation表内时间/状态约束均属于无效输入：policy_ref不等、同epoch时本次sampled_ms小于previous.sampled_ms、旧reason的key不能按本次工作/attempt/候选及其kind/subject_id重算一致，统一以ValueError拒绝，不返回部分报告，也不按unknown吞掉；先完成输入校验，再应用跨epoch分类优先级。普通reason的subject_id须等于本次attempt_id；blocked_overdue旧原因允许blocker已不在本次列表，保留未决，不将消失当闭合。previous不携带完整工作身份，空原因列表无法由M自证工作归属；S必须按同work_ref/attempt_id/subject_digest取投影，M不承诺该源真实性校验。政策变化须由S具名对账建立新基线，不能改写旧policy_ref或以清空previous隐式消除未闭合原因。
 observation 内非 null 单调时间全部属于声明的 clock_epoch；上游不能将重启前时钟值改标签复用。纯函数只能验证结构/顺序，不能证明实际采集来源。
 
 ## 4. M 输出和精确分类
@@ -89,7 +90,7 @@ coverage_mapping为按 stage_id排序的列表，每项 `{stage_id:ID, role_id:I
 
 ## 7. 必须执行的有意义测试
 
-M：同值输入确定且深拷贝比较无入参修改；healthy→healthy且previous.active_reasons为空；阈值恰等/前后边界；长工具/权限等待；有流无产物进展；缺值unknown；跨epoch不误闭合；旧采样不生成退出/释放；观察重复与开闭再开；同attempt已退出后alive冲突；建议不含自动派发；严格int/未知键/坏Ref拒绝。
+M：同值输入确定且深拷贝比较无入参修改；healthy→healthy且previous.active_reasons为空；policy_ref不等、同epoch采样倒退、异工作/attempt/候选旧key及不符attempt的普通subject_id以ValueError拒绝；异epoch不跨域比较时间但仍检查policy/key；空原因投影归属只能由S保证；阈值恰等/前后边界；长工具/权限等待；有流无产物进展；缺值unknown；跨epoch不误闭合；旧采样不生成退出/释放；观察重复与开闭再开；同attempt已退出后alive冲突；建议不含自动派发；严格int/未知键/坏Ref拒绝。
 T：非预设角色和职责可成立；一个角色多slot、两个角色同profile声明不冒实际独立；缺覆盖/未知slot/悬空依赖/环/独立性自指；必需覆盖跨多个stage全AND；无源码、文件或进程I/O；无入参修改；同值确定；错误类型与未知字段拒绝。
 两包各用表驱动fixture覆盖正反例，遵循AGENTS规模标准；不得用压缩行凑指标。复用现有 unittest 命令入口，分别运行 `python -B -m unittest -v tests.test_monitor` 与 `tests.test_stage_contracts`；作者记录真实结果，不以计划命令冒测试通过。
 

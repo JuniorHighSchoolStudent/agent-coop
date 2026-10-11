@@ -1,15 +1,45 @@
 # 开发治理修复当前状态
 
-范围：本仓开发失效的产品修复；维护者：Codex集成者。当前为行政修补部分交付、恢复评估未完成及流水线修订待审，尚无有效作者final，产品作者仍未放行。最新状态仅见下一节；历史准入、失败、意见及其效力保留在后文。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。
+范围：本仓开发失效的产品修复；维护者：Codex集成者。当前T准备独立监督、M合同修订待复核；项目目录纠偏已迁两个作者树，产品作者仍未放行，旧行政修补未关闭。最新状态仅见下一节；历史准入、失败、意见及其效力保留在后文。来源：[用户请求](request.md)及[全部问题产品落地要求](scope-amendment.md)。
 
 ## 当前结论与下一动作
 
-- 实际在途：作者0、模型审核0、native监督0。本次恢复评估已因480秒超时结束、没有有效监督结论，不准作者或原样重试。上一CodeBuddy作者改了两文件但无final；21项局部checker已通过，剩余诊断缺陷未关闭。原activated许可已消耗，不能复用。
+- 实际在途（本轮双席终态核验检查点）：产品作者0、模型审核0、native监督0。M/T两席均自然结束，独立原流核验已确认完整意见、身份及每席25块1127行实读：GLM要求局部修改M、Kimi为pass，不能记成双通过。T独立准备作者/监督材料，M合同小修待复核；详见下方准确设计审核记录。此前恢复评估因480秒超时结束、没有有效监督结论，不准作者或原样重试。上一CodeBuddy作者改了两文件但无final；21项局部checker已通过，剩余诊断缺陷未关闭。原activated许可已消耗，不能复用。
 - 本次宿主唤醒推进了无模型实证：2026-10-11T09:01:25Z运行现有路径及run_bounded测试，15/15通过、无skip，20.032秒、exit0；准确原件`C:/Users/june/AppData/Local/Temp/agent-coop-runtime-existing-tests-20261011T090125Z/execution.json` SHA `a94446fc85b0b6b6e293bced6f23b0aae648815f55b73198a9158160c5f2767b`。源码未变，根回读完整命令和输出；不当产品关闭或作者调用证据。
 - dispatcher_next已用现有create_root创建`D:/ac-repair-bounded`，两份partial源码按原hash复制到workspace，无代码修补。作者草稿和只读native材料已冻结并独立核验：作者14块767行，native40块2593行；未获新作者准入。
-- 下一动作：超时原流已独立核完，40块2593行完整但无final；不原样重试。根据用户继续补齐能力的指令，冻结M/T纯模块准确接口和监控/职责后继设计，由唯一发包人准备fresh GLM/Kimi只读双审，随后native监督；只有准确通过后另签作者许可。行政修补未关闭及runtime未知照实保留，不把读取完整冒监督同意，不新增Codex看护实现。
+- 下一动作：T按不受M局部finding阻断的范围，由唯一发包人准备准确T作者/native材料，M修订previous失败语义后独立复核。只有对应准确准入后另签作者许可。行政修补未关闭及runtime未知照实保留，不把读取完整冒监督同意，不新增Codex看护实现。
 - 本回合用户提供的AGENTS文本明确替换此前AGENTS指令，已在新隔离根精确物化；磁盘旧长版只作历史来源，不据其被替换条款新增门禁。其他用户角色约束、准确绑定和有效独立审核条件仍保留；不改写冻结旧票，不把用户文本中的阶段描述当实测工具不存在的证明。
 - 用户最新要求补齐监控驱动的拆包、受审调整与自动补发，并核业务阶段职责。已确认design §4.2参考gstack的阶段职责已文档接收但未产品化，当前固定样例四角色不能代产品/工程/QA等职责完成。[流水线修订提案](pipeline-amendment.md)补充闭环与职责映射，新增M确定性观察/T阶段合同两个无副作用独立作者包；完整闭环仍由原A/C/S/D/X/C2接线。当前为后继设计待审，不复用S6或40块恢复输入的票。默认4路是执行者并行配置，不是本账号真实总上限或固定团队人数。
+
+### M/T准确设计审核准备
+
+候选`57eddd8dc33e871f4663c4fd04b4bf964a5d2a61`已冻结[基础合同](flow-foundation-contract.md)；M/T各两文件、无相互实现依赖。独立技术检查纠正了previous空原因列表歧义；M-Q队列观察及S/D/X真实接线是本请求必需后继，不能用M/T完成替代。后继顺序拆片见[运行时计划§4.1](runtime-integration-plan.md#41-流水线后继按owner顺序拆片)，该更新尚未进入57eddd8正式材料。
+
+迁移前准备检查点（现址见下方目录纠偏）：只读树`D:/acf`及两作者子工作树`D:/acfm/workspace`、`D:/acft/workspace`均固定57eddd8。作者根由现有create_root创建，子工作树不冒样例初始化；当前用户74行AGENTS在各根准确物化。基线f210d15源码统一verify实际201项、199通过/2skip、35.012秒、exit0；57eddd8仅文档变化，不称新模块通过。两真实根各调用一次现有run_bounded执行无模型打印，均exit0，原流在各`.runtime/no-model-root-check`；仅证明此布局可调用，不证明作者/全树生命周期。
+
+双席准备位于`D:/acf/dist/flow`，19原件、每席25块1127行、完整argv7751/7756 UTF16。PREPARATION SHA `7d92cae52f9a54d3a016b64b3b027ecf3e8379dbde9bd969d2659b8e02c29d05`；根实核源副本、必读范围/hash、policy与输入pins、只读权限。实际准备不等模型已读；正式模型准入与终态另记。新意见为本准确M/T范围的具名bootstrap设计意见，不冒旧S6 development-final/2或产品自动接收。
+
+根于2026-10-11T10:00:43.751334Z签发一次两席只读准入：`D:/acf/dist/flow/activated-review.json` SHA `81edcd98e6b358813f9a89933e824b0fd29b140848636b23b5d5bbaeb382716e`，绑定上述PREPARATION及planned-owner-launch `4c7049ab8c293593cae9522b1226a16168d48ea5e6e928321ab4ee3a5eedb1d0`。独立材料核验通过，每席20响应/600秒/8MiB；只允许两fresh只读调用，不授权作者、重试或resume。唯一发包人负责实际启动与持续观察；本记录不预填模型已启动或意见有效。
+
+实际运行：GLM owner48100于10:01:26.605Z启动，Kimi owner50616于10:01:26.625Z启动；watcher ready先于wrapper。原生init分别为10:01:31.859Z的glm-5.3/session `agent-coop-flow-glm-20261011-106dfa15`及10:01:32.481Z的kimi-k3-2/session `agent-coop-flow-kimi-20261011-602e2402`，cwd均为`D:/acf`。原件位于`C:/Users/june/AppData/Local/Temp/agent-coop-flow-review-run-20261011/{glm,kimi}`，唯一发包人持原句柄观察；600秒从owner启动计算，不因GO重置。实际Read不等完整覆盖或审核通过，终态另核。
+
+两席终态：GLM owner于10:06:01.871Z自然exit0，Kimi于10:07:42.271Z自然exit0，分别约275.27/375.65秒；原owner句柄已释放，wrapper和CLI已观察退出，tree_empty仍unknown。raw分别SHA `6c8d30084c75f385e4be174ee967b935fdbe68575bed065681cf5d7970bc6bf4`、`83826e094baa1e54df7f707be451d7a4b315fa8b248f4b046007dc4ce4e5319c`。完整result JSON为GLM changes_requested、Kimi pass：GLM MT-F01只阻M接口冻结/作者，要求明确previous跨字段失败语义；T不受此finding阻断。原票原文分别在各run目录receipt.txt，SHA `54dfdfb59fdcfca0e7b05535d25f6c1f397eca890175dc576d58f1205011950e`、`94cc13f78bebb60243747478d7410b4d692436a8a410aef8c60f9f9637703d78`。独立逐行覆盖及尾部元数据核验已完成，见下方独立逐流核验及两份independent-verification原件，不依据审核者自报代替实际核验。
+
+集成者已对照合同核实MT-F01：共用规则原本只明确类型/键异常，未覆盖previous策略、同epoch采样倒退和重算key不符的失败语义。新M草案明确ValueError及相应负例，空原因时工作归属仍由S保证，不虚增M来源核验能力；未修改冻结57eddd8原件，不自签finding关闭。T作者内部复用graphlib不改变原外部合同；缺省requires能力语义仍按GLM建议保留后继核验，不扩大T批准含义。
+
+独立逐流核验：GLM64条/Kimi61条均合法JSON；各自唯一完整result与最终assistant正文一致，严格JSON无重复键，准确candidate/role/session/policy/input_digest绑定一致。每席25个Read与25个成功返回唯一配对，指定区间1127行逐行匹配19份冻结源；原票对材料/区间数量的文字误述保留，以实核覆盖为准。两席result后均只有一条与首次除timestamp外完全相同的system/init，无后续模型/工具正文；现bootstrap规则不把同值尾随元数据判无效，原件不裁剪，N1后继保留该方言反例。每席均5组实际模型响应，assistant流块和CLI num_turns分别不等响应轮次，不据61/58错误判断超过20。它们是本准确范围的具名设计意见，不是native监督、作者许可或产品接收。
+
+用户新增复用与本项目使用要求：独立源码调查确认当前产品仅stdlib/SQLite及外部CLI调用；OMA/Symphony/DSH/gstack是来源研究与机制借鉴，无第三方包安装或上游源码复制。复用取舍与分阶段真实消费补入[运行时计划§5.1–5.2](runtime-integration-plan.md#51-复用取舍与本轮实施边界)，仍为后继待审内容，不改57eddd8在途材料，不把计划记成已用。
+
+### 项目受管目录纠偏
+
+用户要求工作包/状态工作树默认在项目指定目录管理。已有design§5.1的coordination_root是唯一根，本轮实际散落盘根/TEMP未遵守项目管理预期；新合同补工作树与证据派生规则，R1/D/F/S/R2承接自动校验，未宣称产品现已强制。保留现coordination_root名称，不新增同义配置。
+
+独立盘点迁移前43个Git工作树，其中5个在D盘根；另有非Git sample-root与TEMP历史材料。先暂停新模型调用、核M/T无writer且clean@57eddd8，再以现有create_root和git worktree move迁移两个未启动作者树：M为`D:/project/agent-coop/coordination/.runtime/workspaces/flow-m/workspace`，T为相邻`flow-t/workspace`。两root各自当前用户AGENTS精确保留；迁移后HEAD仍57eddd8、git clean，主项目只保留原.workbuddy未跟踪项，受管路径由既有忽略规则覆盖。旧D:/acfm、D:/acft父根仅余历史材料，尚未删除；另外3个盘根注册树及其他历史目录仍待逐项归集，不能称全部整理完成。
+
+两新root已实际调用现run_bounded执行无模型print123，均exit0、stderr空，stdout SHA `01f9bf4bb49ac52d7d7a7d61f79e51c2cba94c5f75e034143ea614f0d87b929c`；各root的`.runtime/managed-root-check/result.json`及原流为证，只证明迁移后布局/API可用。唯一发包人在T新root/evidence准备新profile/cwd/权限/read-plan/完整argv与原件，不沿用旧路径许可，也不为缩短命令退回盘根。
+
+本轮双席运行原件54文件已逐文件SHA校等复制到`D:/project/agent-coop/coordination/.runtime/evidence/governance-enforcement-20261011/flow-design-r1`，其source-map.json保原路径和摘要，旧副本未删、历史调用路径未改。两独核报告在该目录各席的independent-verification.json，标明行政原流核验而非模型批准；此副本归集不等异机备份或清理许可。旧T/M草稿及已用D:/acf材料保持历史，不再用其路径创建新调用。
 
 ### 本次准确只读恢复准入
 
