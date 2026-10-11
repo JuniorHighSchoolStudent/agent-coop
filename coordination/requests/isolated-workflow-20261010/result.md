@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-- **已接收，待本地主线合入验证**：根在原双席C2、矩阵限定确认及最终native监督后，接收准确产品候选fe2e1b6b03cde7763f6f2c974d909edf6c2ce708的静态内容和指定TEMP九格CLI文件权限证据。上一main为f0223b3；本次合入另行记录，不冒称已完成。
+- **已接收并合入本地main，合入后验证通过**：根在原双席C2、矩阵限定确认及最终native监督后，接收准确产品候选fe2e1b6b03cde7763f6f2c974d909edf6c2ce708的静态内容和指定TEMP九格CLI文件权限证据。main已从f0223b3快进到f861416；该主线准确版本统一verify为201项=199通过/2既有权限跳过、exit0、34.614秒，45文件前后摘要59527766一致，工作树clean。当前后继提交仅归档该结果；未push。
 - **角色按设定执行**：dispatcher_next唯一正式发包；产品/测试/修复由实际CodeBuddy deepseek-v4-pro完成，两个独立写集并行。Codex只调查、合同文档、证据、验证和集成。原CodeBuddy glm-5.3与kimi-k3-2独立交叉审核；原生Kimi独立监督，runtime0.43.0、model/provider unknown。默认容量4可配置，实际就绪数不等于容量上限。
 - **验证**：准确fe2e独立clean树统一verify为201项=199通过/2既有Windows symlink权限跳过、exit0；旧144项无丢失或重复。产品矩阵只有一次sample.dispatch→runtime.invoke真实调用，actual deepseek-v4-pro、请求/实际session一致、parser正常、exit0；P1/P2成功，N1–N7均有明确原生Write权限拒绝及相应字节证据。N4实际完整状态等于预计算S1，STATUS等于dispatch前生成的expected。
 - **原席关闭**：GLM B21–B26、Kimi B14/B15代码项由各原席C2关闭；GLM B18/Kimi B11由本人限定确认关闭，仅绑定fe2e、指定Windows TEMP fixture、CLI工具过滤层。监督核事实，不代签关闭。
@@ -27,7 +27,7 @@ C2原票：[GLM](review-product-permission-c2-glm.txt)/[调用](review-product-p
 
 ## 下一步
 
-当前仅执行用户已授权的本地主线合入和合入后统一验证。下一批工作包是提案，尚未派发：派发职责owner调查B两次耗尽及有效final交付、缩小工作包；四角色受控live另立有界计划并先满足残余条件；历史发布异常无新证据不重复诊断。复用既有入口，不另建调度器、不延用本批例外或额度。
+本批接收、授权main合入及合入后统一验证均已结束。主线[输出](product-permission-main-verification-output.txt)/[metadata](product-permission-main-verification-metadata.json)/[前清单](product-permission-main-verification-before.json)/[后清单](product-permission-main-verification-after.json)已归档。原用户工作区仍为63ef230及原有未跟踪.workbuddy/，作者/评审工作树和TEMP原件保留；未执行清理或远端推送。下一批工作包是提案，尚未派发：派发职责owner调查B两次耗尽及有效final交付、缩小工作包；四角色受控live另立有界计划并先满足残余条件；历史发布异常无新证据不重复诊断。复用既有入口，不另建调度器、不延用本批例外或额度。
 ## 本批过程检查点（历史追溯，不作为当前派发许可）
 
 用户最新明确授权“按照项目设定合入main，然后多agent检查设计状态、拆包派开发，必须多方审核交叉认证”。本地主线已完成合入与验证，见本页主线原件；新协调树D:/project/agent-coop-product-permission、分支codex/product-permission-20261011，基线main f0223b34e0204dde667ea8dff2d80beb3d3b1a3c。旧作者与会话工作树保留，不代表仍有写权。

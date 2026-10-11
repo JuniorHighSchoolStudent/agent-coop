@@ -1,0 +1,18 @@
+{
+  "candidate": "f861416d2cfaa2d919f2b6f7aa28be65be533e54",
+  "product": "fe2e1b6b03cde7763f6f2c974d909edf6c2ce708",
+  "base": "f0223b34e0204dde667ea8dff2d80beb3d3b1a3c",
+  "root": "D:\\project\\agent-coop-integration",
+  "branch": "main",
+  "merge_mode": "fast-forward",
+  "started_at": "2026-10-11T02:31:47.3886039+00:00",
+  "finished_at": "2026-10-11T02:32:22.0028285+00:00",
+  "wall_seconds": 34.6142246,
+  "command": "python -B -m agent_coop verify",
+  "exit_code": 0,
+  "before_sha256": "5952776635e8d9e475ecf9eb5bf2b353d7681422a418f5f78a98a741229c6880",
+  "after_sha256": "5952776635e8d9e475ecf9eb5bf2b353d7681422a418f5f78a98a741229c6880",
+  "output_sha256": "23efe061e847e587003abdcb67164995a953dcfb3af27202347f217c18292b62",
+  "status": [],
+  "push_performed": false
+}
