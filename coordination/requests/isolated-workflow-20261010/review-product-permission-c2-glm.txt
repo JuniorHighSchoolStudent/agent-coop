@@ -1,0 +1,31 @@
+# C2末轮内容审核（GLM原席 · glm-5.3 · 只读 · 候选fe2e1b6/行政caccde0）
+
+## 0. 实读范围
+**完整读取**（首行至末行，无截尾/Grep替代）：c2-output.txt全222行（201=199pass/2既有symlink skip、exit0、unittest 34.247s、无硬限FAIL、REVIEW TARGET全清单、395链接）与c2-metadata.json全（独立clean树、`python -B -m agent_coop verify`、exit0、前后manifest SHA 59527766…相同）。六个source文件中sample.py/adapters.py(1-141)/runtime.py(关键段)/test_runtime_invoke.py(全文重点段)直接实读；test_sample/test_adapter_commands经repair-delta.patch逐块实读（diff完整覆盖两文件变更）；integration-c2、A有效final、B二次失败原件、matrix-prepared全文；本席C1票在session内。未读：discovery/before/after json、calls summaries、write audits（依集成证词+数目核算186+15=201自洽）。未读他席本轮票。
+
+## 1. 本人finding逐项处置（全部经直接源码+diff+完整verify证据）
+- **g1-glm-B21 CLOSED**：sample.py:136/:168 `type(...) is not int`严格拒bool/float/str/None；adapters.py:56 `isinstance(bool) or not isinstance(int)`。反例：test_permissions/test_config_schema_rejects_bool_float_str_none（预留前、零计数、无invoke）＋adapter侧1.0/2.0扩充——全绿。
+- **g1-glm-B22 CLOSED**：adapters.py:50-54五键精确集合；:124-125 kimi非空write_files拒绝（"cannot express"）；test_permissions_reject_unknown_key、test_kimi_rejects_write_files_even_with_write_tools、test_canonical_path_matches_sample_representation（三路径表示等价）全绿。
+- **g1-glm-B23 CLOSED**：runtime.py:270-283 set键casefold对inherit跨层冲突与set自身变体均拒、精确同名合法覆盖保留；两反例＋override正例全绿。
+- **g1-glm-B24 CLOSED**：test_runtime_invoke改`mock.patch.dict`（宿主原值自动完整恢复），不再裸set/pop。
+- **g1-glm-B25 CLOSED**：env=None子进程改`sys.stdout.write`（未改产品stdout）；四值fixture补`'SYSTEMROOT'`（未放宽合同）；两项在完整verify中转绿，组合exit0。
+- **g1-glm-B26 CLOSED**：sample.py:151-163角色↔adapter绑定、supervise model=None/其余非空str、tools精确集合等式；9个新反例（含supervise→codebuddy+CB_SET+model一致篡改、profile整体互换、+Bash/+Task/缺Read）全部预留前零计数无invoke——C1裁定的两缺口完整闭合。
+- 附加：adapters.canonical_path补原始reparse先验＋拒reparse测试，超出我C1最低要求，表示等价测试锁定双实现不漂移——接受。
+- **g1-glm-B18 OPEN维持**：静态代码链已合同合规，但其关闭条件是产品真实CLI权限证据（矩阵）＋限定结果确认，**不得以静态绿代关**。**B11 OPEN/unknown不变**。
+
+## 2. B二次失败与交付门禁裁定
+**g1-glm-B27（新增，过程记录，不可本批关闭）**：B第二次修复（fresh session agent-coop-pp-p2-b-repair-20261011，206.5s/30工具/0工具错误）仍`error_during_execution`/`Max turns (20) exceeded`（num_turns80），**无有效final、无作者软目标说明——C1设定的有效交付条件未满足**。裁定：①**交付门禁：未满足，具名阻断**——B在本批的“作者有效交付”不成立，root不补签、绿测试/完成文件不冒充final，此事实永久记录；②**内容接收：不因缺final阻断**——内容席验收依据为独立实读源码/diff/完整verify原件（本轮已穷尽），非作者自报；与首批P1先例（超时无final、代码经独立审核接收、交付事实如实保留）一致。B27随B18处置一并载明，不消耗额度、不触发第三作者/修复。
+
+## 3. 软目标裁定
+- A（有作者说明）：sample 311（`_validate_permission`34行，权限+角色绑定同属派发前单一核验簇）、test_sample 463（写集强制单文件、subTest表驱动）——**接受**。
+- B（无作者说明，本席代行结构裁定并如实记录为“席定”非作者结论）：runtime 318（新增均合同要求的env/cwd校验，进程边界单一owner）；`_build_env` 46行>40软——验证-构造为同一合同不变量，拆分将割裂“校验后即构造”的原子性，**接受**；test_runtime 409（本轮未修改，沿C1）。无硬超限；不以行数代SOLID，以上基于逐行实读。
+
+## 4. 结论（分项）
+- **源码内容**：本席**PASS**——B21–B26全部关闭，交叉全链（sample派生→dispatch重验→command序列化→_build_env→Popen前cwd/哈希拒绝）经实读+201项组合verify（exit0、manifest恒等、原144项保留无重复、新增15反例）证实。
+- **交付**：A有效final✓；B未完成（B27记录，见上）。
+- **静态接收（本席意见）**：**支持对fe2e1b6的产品权限静态范围接收**——以B27交付记录、软目标席定说明、未知清单为附件；最终接收仍需双席C2＋native最终监督，main/live不预支。
+- **矩阵prepared/N4**：prepared清单合规（initialize→dispatch→invoke单调用、无Runner/开发wrapper、全新TEMP、逐格真实证据、停止条件）。**N4裁定：接受“unverified为默认”**——dispatch预留合法自增revision并重写STATUS，初始化hash非模型前基线；不得手改投影、换入口或编新harness求基线；矩阵结论中N4只能记unverified，不得计为已证拒绝。矩阵**不由本票自动授权**：本席内容批准构成我侧前置；须Kimi席C2同批＋根一次准入后方可执行（N4预声明unverified或发包人另提合同内基线方案交限定确认审核）。
+- **未验证/unknown**：真实产品CLI权限（矩阵未跑）、四角色live、POSIX、browser JS、云CI、hook先行allow/真实memory/TOCTOU/alias、B11历史根因——全部保留，不以静态结论当live准入。
+
+## 5. 预算与停止
+本票后双席C2=**12/15 CB、1/2 native**；剩余3次仅：矩阵1＋每席一次限定结果确认2，不挪作第三作者/第三修复/补结论，不自动resume。若Kimi席C2阻断，保持具名阻断与原件，矩阵不跑，B18/B27/B11原状保留。本席两轮内容额度用尽，此为末轮；交根归档。

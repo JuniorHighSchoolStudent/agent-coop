@@ -1,0 +1,161 @@
+[
+  {
+    "seat": "glm",
+    "candidate": "caccde0977d4b4c96767d4985541c477487197d1",
+    "actual_model": "glm-5.3",
+    "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "native_reads": [
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\input-index.json"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-c2-output.txt",
+        "limit": 210
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-c2-output.txt",
+        "offset": 209
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-c2-metadata.json"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\source\\agent_coop\\sample.py"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\source\\agent_coop\\adapters.py",
+        "limit": 140
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\source\\agent_coop\\runtime.py",
+        "limit": 120,
+        "offset": 220
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\source\\tests\\test_runtime_invoke.py",
+        "limit": 130,
+        "offset": 75
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\repair-delta.patch"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-integration-c2.md"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-repair-b-failure.json"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-repair-a.txt"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\matrix-operations-prepared-status-aware.md"
+      }
+    ],
+    "verify_output_complete": true,
+    "verify_metadata_complete": true,
+    "verify_order": "index then complete output and metadata before code",
+    "source_coverage": [
+      "sample full",
+      "adapters limit140",
+      "runtime offset220 limit120",
+      "test_runtime_invoke offset75 limit130",
+      "test_sample/test_adapter_commands changed hunks via complete repair-delta, not full source Read"
+    ],
+    "prior_context": "Own C1 vote and unchanged contract/plan reused; no fresh Read",
+    "not_directly_read": [
+      "before.json",
+      "after.json",
+      "discovery.json",
+      "repair calls summaries",
+      "repair write audits"
+    ],
+    "limitations": [
+      "Source readings partial as tool parameters show; prior C1 reads and diff do not become a new full-six-source read.",
+      "Both observed full verification output and metadata; old-class discovery preservation derives from metadata/integration rather than direct discovery JSON.",
+      "B valid author final remains absent; reviewer closure/opinions do not create one.",
+      "N4 baseline suggestion is not implementation or evidence; no product matrix was run."
+    ]
+  },
+  {
+    "seat": "kimi",
+    "candidate": "caccde0977d4b4c96767d4985541c477487197d1",
+    "actual_model": "kimi-k3-2",
+    "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "native_reads": [
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/input-index.json"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/product-permission-c2-output.txt"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/product-permission-c2-metadata.json"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/product-permission-integration-c2.md"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/product-permission-repair-b-failure.json"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/product-permission-repair-a.txt"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/source/agent_coop/adapters.py"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/source/agent_coop/runtime.py"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/source/agent_coop/sample.py"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/source/tests/test_sample.py",
+        "offset": 330
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/source/tests/test_sample.py",
+        "limit": 168,
+        "offset": 163
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/source/tests/test_adapter_commands.py",
+        "limit": 100,
+        "offset": 130
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/source/tests/test_runtime_invoke.py",
+        "limit": 135,
+        "offset": 75
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/kimi/matrix-operations-prepared-status-aware.md"
+      }
+    ],
+    "verify_output_complete": true,
+    "verify_metadata_complete": true,
+    "verify_order": "index then complete output and metadata before code",
+    "source_coverage": [
+      "sample/adapters/runtime full",
+      "test_sample offset330 and offset163 limit168; beginning not reread",
+      "test_adapter_commands offset130 limit100; two new canonical test bodies not directly read",
+      "test_runtime_invoke offset75 limit135; remainder not reread",
+      "repair-delta not read"
+    ],
+    "prior_context": "Own C1 vote and unchanged contract/plan reused; no fresh Read",
+    "not_directly_read": [
+      "before.json",
+      "after.json",
+      "discovery.json",
+      "repair calls summaries",
+      "repair write audits"
+    ],
+    "limitations": [
+      "Source readings partial as tool parameters show; prior C1 reads and diff do not become a new full-six-source read.",
+      "Both observed full verification output and metadata; old-class discovery preservation derives from metadata/integration rather than direct discovery JSON.",
+      "B valid author final remains absent; reviewer closure/opinions do not create one.",
+      "N4 baseline suggestion is not implementation or evidence; no product matrix was run."
+    ]
+  }
+]

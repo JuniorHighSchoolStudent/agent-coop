@@ -1,0 +1,192 @@
+{
+  "candidate": "caccde0977d4b4c96767d4985541c477487197d1",
+  "administrative_commit": "caccde0977d4b4c96767d4985541c477487197d1",
+  "actual_model": "glm-5.3",
+  "actual_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+  "raw_sha256": "8e5fc6f7c697aa4ed0999fd900e645a541387bea7e7acaafdfd48670e73de6e6",
+  "receipt_sha256": "bdc8a583205efd58f7258aaf839e55a3481ef4d383727443ec3f38b3f9150627",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "caccde0977d4b4c96767d4985541c477487197d1",
+    "model": "glm-5.3",
+    "seat": "glm",
+    "requested_session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\product-permission-c2-glm.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "92e8f761bf9ceb8385bbf4edc57bb56c84429840db8afe65b9836f7e300d74f3",
+    "started_at": "2026-10-11T01:49:15.1765183+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "product-permission-c2",
+      "candidate": "caccde0977d4b4c96767d4985541c477487197d1",
+      "product": "fe2e1b6b03cde7763f6f2c974d909edf6c2ce708",
+      "administrative_commit": "caccde0977d4b4c96767d4985541c477487197d1",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/glm/input-index.json",
+      "input_index_sha256": "96e01ccacd56c4dc0789664276da40d97d076b92b9e853460942c41b0749201a",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1,
+        "batch_after_dispatch": 12,
+        "batch_limit": 15
+      },
+      "permission": "original readonly tools; no writer",
+      "authorization": "root formal sole final C2 admission",
+      "session": "agent-coop-g1-glm-r1-34bce56b-20261010"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "exact_write_files": [],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "原glm独立内容席，原model/session agent-coop-g1-glm-r1-34bce56b-20261010，原cwdD:/project/agent-coop-g1-review。这是唯一末轮C2，一次20turn/600秒。准确行政caccde0977d4b4c96767d4985541c477487197d1、产品fe2e1b6b03cde7763f6f2c974d909edf6c2ce708，源码/tests完全等价。只Read/Glob/Grep，不写文件/memory、Shell、子agent。\n第一个Read D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/glm/input-index.json，随后必须先直接完整Read D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/glm/product-permission-c2-output.txt（从首行到末行，无offset截尾、不用Grep代全文）及D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-c2/glm/product-permission-c2-metadata.json全文，再审源码。C1你未完整读verify的限制已归档，本轮不能用自述补覆盖。\n然后直接完整读六个source文件（sample/test_sample/adapters/runtime/test_adapter_commands/test_runtime_invoke），repair-delta.patch、本人C1票，integration-c2、A有效final与B失败原件；before/after/discovery、工具summary/write-audit、合同计划同目录可按需核对。要求交叉全链，不看另一席本轮新票；未读范围精确保留。\n准确组合verify201=199pass/2既有symlink权限skip，exit0，45文件before/after同SHA5952776635e8d9e475ecf9eb5bf2b353d7681422a418f5f78a98a741229c6880；A48/B63局部通过，原144 class.method保留无重复，新增测试可增总数不能凑186。测试绿不补足交付门禁。\nB第二次仍Max turns(20) exceeded/error_during_execution、exit0，无有效final/作者软目标说明；C1明确要求的有效交付条件未满足，必须你独立裁定其是否构成交付/内容接收阻断，不得由根补签、把完成文件或绿测试冒充final，也不能暗示豁免。A有效final，六文件真实写入在许可内，B test_runtime未改。\n逐项复核本人GLM B21–26或Kimi B14/B15：严格config/permissions整数、精确角色工具与adapter/model预留前重验、B准确五键/Kimi非空写集拒绝、canonical原始reparse先验、env大小写冲突/精确同名覆盖、父env完整恢复、两红fixture以及新增反例/实际全链环境覆盖。不同判断按原repair-admission符合合同且不扩权的并集实施，由原席自关finding，不由根代关。\n精确软目标：A sample311/test_sample463有作者说明；B runtime318/_build_env46、test_runtime409而B无有效作者软说明，分别裁定源码内聚和缺失交付条件，不沿用旧行数或原有条件接受冒充现在通过。查无硬超限，但不能以行数代SOLID。\n矩阵仅prepared，从未运行/准入。附属matrix-operations-prepared-status-aware说明拟initialize→dispatch→invoke一次调用，不走Runner/全workflow、不开发harness。N4 STATUS会因正常Store.update(calls_used+1)增加revision并重写，初始化hash不等于模型前可靠基线；未可靠区分合法投影变化时N4=unverified/矩阵不准入，不能误报越界、手改投影、换入口或编新探针。B交付门禁先裁定，不预支矩阵可跑。\n本次双席后12/15CB、1/2native；两轮内容额度已用尽，剩3仅一次矩阵/两次限定结果确认，不能挪作第三作者/第三修复/补结论，不能自动resume。若仍有阻断具名保留和未来解除条件，不隐含追加调用。当前不自动矩阵/最终监督/main。\n输出中文实际读取（尤其完整verify）、每个本人finding代码处置与未闭门禁、B二次失败及soft条件明确裁定、源码/交付/静态接收各自结论、矩阵prepared/N4限制、所有unknown和准确预算状态。不得宣称无实测的产品权限已闭合，不以静态结论当live准入。",
+      "--model",
+      "glm-5.3",
+      "--resume",
+      "agent-coop-g1-glm-r1-34bce56b-20261010",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "57f1f1e2cd371b8402cf4b315246204d53b70d869db5a6c6fc3b728d1a6e6aed",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-g1-review"
+  },
+  "completion": {
+    "candidate": "caccde0977d4b4c96767d4985541c477487197d1",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T01:52:12.9927947+00:00",
+    "wall_seconds": 177.8162764,
+    "final_head": "caccde0977d4b4c96767d4985541c477487197d1",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "call_047c6c582e7440cabcf45245",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\input-index.json"
+      }
+    },
+    {
+      "id": "call_f7f8c5837fb94a33aab6557d",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-c2-output.txt",
+        "limit": 210
+      }
+    },
+    {
+      "id": "call_3f2a29ca78d748e18b416093",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-c2-output.txt",
+        "offset": 209
+      }
+    },
+    {
+      "id": "call_bc40e9f04b1b43b085cb80f0",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-c2-metadata.json"
+      }
+    },
+    {
+      "id": "call_c91854e1d8cc45eb872f3ee7",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\source\\agent_coop\\sample.py"
+      }
+    },
+    {
+      "id": "call_454935dba3e74e22b59c5d85",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\source\\agent_coop\\adapters.py",
+        "limit": 140
+      }
+    },
+    {
+      "id": "call_e097653534714be58942b48f",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\source\\agent_coop\\runtime.py",
+        "limit": 120,
+        "offset": 220
+      }
+    },
+    {
+      "id": "call_2730a124402a46baab58d33d",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\source\\tests\\test_runtime_invoke.py",
+        "limit": 130,
+        "offset": 75
+      }
+    },
+    {
+      "id": "call_2e9347e9850c4286909b29ae",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\repair-delta.patch"
+      }
+    },
+    {
+      "id": "call_04b477a8e68a4c679eb26f88",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-integration-c2.md"
+      }
+    },
+    {
+      "id": "call_6801fc839c4e4e7c940c2bbe",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-repair-b-failure.json"
+      }
+    },
+    {
+      "id": "call_415ea5b32c2347a2bc751d7d",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\product-permission-repair-a.txt"
+      }
+    },
+    {
+      "id": "call_44fa0f435fa646a5aa34e91d",
+      "name": "Read",
+      "input": {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-c2\\glm\\matrix-operations-prepared-status-aware.md"
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 374
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

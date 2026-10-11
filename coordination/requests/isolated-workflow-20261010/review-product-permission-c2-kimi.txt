@@ -1,0 +1,32 @@
+# 产品权限C2末轮复审 · 席B（原kimi-k3-2 session，非作者）
+
+**实读**：input-index；**c2-output.txt全文（1–222行逐行，含201项全绿、软目标清单）**；c2-metadata全文（exit0、前后manifest同SHA5952…）；integration-c2、repair-a.txt（A有效final）、repair-b-failure.json（B二次error_during_execution/Max turns）；source全六文件（sample/adapters/runtime全文，test_sample全两段，test_adapter_commands C1头部+本轮130-230，test_runtime_invoke C1全文+本轮变更段75-210）；matrix-operations-prepared全文。精确未读：repair-delta.patch未独立全读（改后状态已在源码级直核，强于diff）；test_adapter_commands新增两canonical测试函数体未逐行（以全绿输出+adapters源码直读佐证）。合同/计划同hash未重读。未看他席票。
+
+## 本人finding逐项处置
+
+**g1-kimi-B14（A）→ closed全部子项**
+- B14a：sample.py:136 `type(...) is not int`严格化（config侧:168同严）；反例True/False/1.0/2.0/'1'/None两测试全绿✓。
+- B14b：:159-163角色tools精确集合比对；+Bash/+Task/缺Read三反例绿✓。
+- B14c：:151-158角色↔adapter绑定+model约束（supervise=kimi/None，其余codebuddy/非空str）；整profile调换、adapter替换、model越界五反例绿✓。全部拒绝发生在预留前（invoke未调用、calls_used==0断言在码）✓。
+
+**g1-kimi-B15（B）→ 内容closed（交付门禁见下）**
+- B15a：adapters.py:50-54准确五键集合；unknown-key反例绿✓。
+- B15b：:56严格整数（含1.0/2.0反例）✓。
+- B15c：:16-19恢复"原始reparse先验→resolve"合同次序，与sample同构；canonical两新测试绿✓。
+- B15d：runtime.py:270-283 set内casefold查重+跨inherit/set大小写变体拒绝+精确同名覆盖合法；三测试绿✓。
+- B15e：fixture补SYSTEMROOT(:142)、CRLF改子脚本stdout.write（未动产品）、父env改`mock.patch.dict`完整恢复——三处全绿✓。
+- 附加加固：`_kimi_command`拒绝非空write_files（adapters.py:124-125），与中立职责一致✓。
+
+## B二次失败的独立裁定
+
+B第二次仍error_during_execution/Max turns(20) exceeded、exit0、无有效final、无作者软目标说明。**裁定：B不构成有效作者交付，该门禁形式未满足**；不得由根补签、不得以完成文件/绿测试冒充final、不暗示豁免。但内容已经本席逐行独立核验修复正确。处置（预算12/15、无第三修复轮的现实下）：①B15内容关闭依据是**本席独立复审**而非作者交付；②软目标由本席自评替代：runtime318=进程边界内聚簇、_build_env46=单一验证构造函数（<80硬限）可接受；③该偏离具名记录为**一次性、绑定fe2e1b6的流程例外**：随最终native监督与批次结案报告携带，解除条件=这些文件任何后继修改必须有有效作者final；不设先例、不自动豁免其他包。A侧final有效、软说明（sample311/test_sample463含逼近硬限风险自述）接受。
+
+## 结论分层
+
+- **源码内容**：B14/B15全部修复正确、反例有意义、迁移/写集/前置次序合规；组合verify我全文核：201=199pass/2既有symlink skip、exit0、manifest前后一致、原144 class.method保留无重复。
+- **交付**：A有效；B门禁未满足（上述具名例外）。
+- **静态接收（本席范围）**：支持产品权限静态内容接收fe2e1b6，携带B交付例外+B09=unknown+B11待产品矩阵证据；不构成live/main/矩阵已执行。
+- **矩阵**：仍**不准入**。prepared清单严谨（单次initialize→dispatch→invoke、不走Runner/全workflow、不开发harness、逐格证据与停止规则齐备）。N4裁定：dispatch预留合法自增revision重写STATUS，初始化hash确实不能当模型前基线——**准入前须书面固定基线方法**（建议：调用后以SQLite快照重建STATUS投影逐字节比对，区分合法投影与模型写入，仅用既有API）；方法未定则N4=unverified且矩阵整体不准入。禁手改投影/换入口/新探针。
+- **预算**：本轮后12/15CB、1/2native；两轮内容额度用尽，余3=矩阵1+限定结果确认2，不得挪作第三作者/修复/结论轮；不自动resume。矩阵若行，须先C2双批准（本票为本人一票）+N4方法固定+B例外携带；最终native核事实不代关finding。
+
+**unknown保留**：hook先行allow/真实memory全域/TOCTOU/特殊FS别名、POSIX、browser JS、云CI、四角色live、Shell执行能力（无入口=未测）。无实测前B18/B11不闭合。
