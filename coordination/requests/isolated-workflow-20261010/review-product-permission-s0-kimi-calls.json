@@ -1,0 +1,142 @@
+{
+  "candidate": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+  "administrative_commit": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+  "actual_model": "kimi-k3-2",
+  "actual_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+  "raw_sha256": "a74b52057e326ca018ee8dec537940f32a6196fdbb1dfbb5fad5e8da6bbc1a2a",
+  "receipt_sha256": "c41a41cb28747bdf033ad62a8d748831fe336d435672c7745f681eac6e1b6d4d",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-g1-review",
+    "candidate": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+    "model": "kimi-k3-2",
+    "seat": "kimi",
+    "requested_session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "resume": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\product-permission-s0-kimi.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "8193a2bceb8ff872fef31206254e308c6efe2bac512f81447a8e4d7ab7aa825b",
+    "started_at": "2026-10-11T00:50:40.5842317+00:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "phase": "product-permission-s0",
+      "candidate": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+      "administrative_commit": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+      "input_index": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/input-index.json",
+      "input_index_sha256": "9160513b3b7927be30e7950ad1f8699c49ed82ca25479c873dd898747a0ea13d",
+      "process_environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_seat": 1,
+        "new_batch_limit_proposed": 15
+      },
+      "permission": "existing read-only tool selection; legacy comma allow not claimed valid",
+      "authorization": "root explicit S0 admission; updated c7cdf48 before launch",
+      "session": "agent-coop-g1-kimi-r1-34bce56b-20261010"
+    },
+    "purpose": "review",
+    "permission_mode": "default",
+    "exact_write_files": [],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "你是原独立kimi审核席，沿原session agent-coop-g1-kimi-r1-34bce56b-20261010、原cwd D:/project/agent-coop-g1-review。本轮产品权限设计S0，一次max-turns20/600秒。准确候选c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4，产品基线f0223b34e0204dde667ea8dff2d80beb3d3b1a3c，代码仍ed65079；只Read/Glob/Grep，无写文件/全局memory、无shell、无子agent。\n先读D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/input-index.json与read-first.txt，再按清单完整审contract/plan/investigation/document-delta及本人原R1/R2；源码可直接读cwd。两席必须交叉审全部合同，不能只审主分工，也不看另一席本轮意见。\n明确裁定：config.schema2、permissions/1准确字段/旧配置拒绝/深复制/dispatch语义与摘要重验/拒绝前计数与invoke副作用；P6唯一授权派生/P2只序列化和进程执行，path checked/硬链接/规则字符/cwd边界；实际环境白名单从空字典构造+CodeBuddy四值，Kimi set为空，非模型run_bounded env=None兼容，认证失败不扩名单。代码当前缺口仍在，不把bootstrap实测等同产品能力。\nA唯一写集sample/test_sample/test_flow/test_cli；B唯一写集adapters/runtime/test_runtime/test_adapter_commands/test_runtime_invoke，AdapterCommandTests整体迁移并删原，InvokeTests必要时整体迁移并复用fixture；大小/职责/测试discovery不退化。既有A→B串行是默认，本轮显式申请合同冻结后A/B独立树并行；请明确“批准并行”或“仍串行”和必要前置，任一不准则串行，默认容量4未改。\n必须明确审核新预算最多15CB/2native：S0双2+必要时一次合同修订双2+作者2+C1双2+最多两finding作者2+C2双2+产品矩阵1+必要时双席限定矩阵结果确认2；基本9。原发包11提案仅历史，旧批17/18不结转。两轮内容上限，限定结果确认不可产生第三代码修复轮，无失败补调；本次发出后已用2/15、0/2native。\n产品矩阵只一次真实deepseek，须准确候选获双席内容准入，sample.initialize→runtime.invoke，P1Write/P2Read后Edit与N1–N7按计划逐格，实际tool_use/result和字节hash，不用开发wrapper替代；本轮不执行。未调用/前提失败不算通过，Shell无入口不称实测；真实memory/hook/TOCTOU/全域沙箱未知保留，四角色完整live不预支。请核门槛/计数/修复后C2与结果确认顺序是否严谨且预算足够。\n同时审document-delta所有DS-01至DS-06：DS06将ABM selector硬要求泛化为项目GateAdapter能力、Claude指定替补泛化为具权限集成者，是合同改义，须明确接受/拒绝及理由，不只视事实纠错；Claude仍暂停。isolated-pilot run旁live禁提示包含最新c7cdf48一行。README/AGENTS/design当前事实不应冒称完整Scheduler或云CI已实现。\n中文给实读、逐项合同裁定、具名finding（若有）、精确最小修订、并行/串行、15/2预算、产品验证门槛、DS06及其他文档、条件与整体S0结论。不得预支writer/native/live/B18或B11关闭。S0后根归档，发包人不得自动发native/作者；不要另提无限续审。",
+      "--model",
+      "kimi-k3-2",
+      "--resume",
+      "agent-coop-g1-kimi-r1-34bce56b-20261010",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "bb85871c84bf84abec9d1caaeedc92cf189ab09757e7e8e06a75c20d18281bdc",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-g1-review"
+  },
+  "completion": {
+    "candidate": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T00:53:57.2009428+00:00",
+    "wall_seconds": 196.6167111,
+    "final_head": "c7cdf48c0f1c434e6a3cd945b15eb413c1ebcad4",
+    "final_status": []
+  },
+  "native_tool_calls": [
+    {
+      "id": "Read_74_621e7d16",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/input-index.json"
+      }
+    },
+    {
+      "id": "Read_75_37a24927",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/read-first.txt"
+      }
+    },
+    {
+      "id": "Read_76_c4367acb",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/product-permission-contract-20261011.md"
+      }
+    },
+    {
+      "id": "Read_77_1e18e789",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/product-permission-plan-20261011.md"
+      }
+    },
+    {
+      "id": "Read_78_6c64e99c",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/document-delta.patch"
+      }
+    },
+    {
+      "id": "Read_79_d19de4c9",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/product-permission-investigation-20261011.md"
+      }
+    },
+    {
+      "id": "Read_80_c2d9b325",
+      "name": "Read",
+      "input": {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/result.md",
+        "limit": 55
+      }
+    }
+  ],
+  "tool_errors": [],
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 242
+  },
+  "init_tools_is_catalog_not_effective_allowlist": true
+}

@@ -1,0 +1,33 @@
+# 产品权限设计S0 · 席B（原kimi-k3-2 session，非作者）
+
+**实读**：input-index、read-first、contract全文、plan全文、investigation、document-delta.patch全文、result.md当前段（含DS-04与静态接收事实）；产品代码ed65079与本人R1/R2已核一致（adapters acceptEdits+逗号allow、runtime无env继承全环境、sample无permissions字段——缺口属实，不因bootstrap实测抹除）。未读他席本轮票；dispatch-proposal(11次）按指示仅作历史，以plan的15/2为准。
+
+## 合同逐项裁定：全部支持，无合同级阻断
+
+- **schema2/permissions/1**：准确键集合（schema整数1拒bool、scope固定、root规范绝对、write_files、environment{inherit,set}）严谨；输入禁带permissions即拒、initialize深复制唯一生成点、不留可变引用✓；旧配置不迁移不补宽、摘要正确但语义非法仍拒✓。
+- **dispatch语义**：validate_binding→schema/语义/路径校验→**之后才**calls_used++与invoke；拒绝前无计数增长、无invoke副作用（合同明示）✓；冻结根移动/缺权限/未知字段/额外写集/工具不一致均拒✓。
+- **路径**：paths.checked复用+st_nlink=1+普通文件/去重/绝对/根内/拒大小写与点段歧义；规则语法归adapter；TOCTOU不声明✓。
+- **环境**：16名固定inherit白名单入摘要、PATH/SYSTEMROOT必需、CodeBuddy set=四固定值/Kimi set为空、runtime从空字典构造、不改os.environ、非模型run_bounded env=None兼容、认证失败保持失败不扩名单✓——兑现design§6白名单，未采用降级方案。
+- **adapter**：command验结构与工具/写集一致、invoke核对permissions.root==cwd再Popen；argv沿探针实证序列化（独立token、dontAsk、none、空MCP、显式deny、禁acceptEdits/泛化/bypass/回退）；规则文本拒绝控制字符/通配/括号/花括号/逗号/感叹号✓。Kimi消费冻结只读权限+显式环境、agent-file摘要不变✓。
+- **分层**：P6唯一授权派生、P2仅序列化与进程执行、无第二授权计算器✓。测试分类（P6注入/深复制/版本/非法值/无计数无invoke；P2逐token argv、只读无写、cwd不符、真实子进程环境过滤、父环境不变、ImportError不算合格拒绝）有意义；AdapterCommandTests整体迁移删原、InvokeTests必要时整体迁移复用fixture import，写集预准入、规模门槛明示✓。
+
+## 并行/串行：**批准并行**（前置：任一缺失即回串行）
+
+①合同在S0后按准确hash冻结，任何变更走最多一次合同修订双席复核；②两包严格按合同字段集实现（冻结schema即共享fixture权威）；③交接类失败在局部验证标"依赖待合"不得冒称通过；④写集实测不相交（A=sample/test_sample/test_flow/test_cli；B=adapters/runtime/test_runtime/test_adapter_commands/test_runtime_invoke）✓；⑤组合verify+C1门槛不变。默认容量4不改、本批实际最多2路✓。
+
+## 预算：**批准15 CodeBuddy/2 native**
+
+分项核算2+2+2+2+2+2+1+2=15、基本路径9✓；两轮内容上限、限定结果确认不产生第三代码修复轮、无失败补调、旧批17/18不结转✓；合同修订复核限一次且须记录新候选/finding/预算影响✓。
+
+## 产品矩阵门槛：支持
+
+准确候选+双席内容准入前置；唯一样本路径sample.initialize→runtime.invoke（禁开发wrapper）；P1/P2/N1–N7逐格真实tool_use/result+种子前后hash；未调用/前提失败/身份不明逐格记未测不得补过；Shell无入口记未测；600秒/8MiB/20turn固定预算、全新TEMP根、失败不扩权不重试；memory/hook/TOCTOU/沙箱unknown如实携带；C1→（修复）→C2→矩阵→限定结果确认→native最终顺序严谨、预算覆盖✓；不预支四角色live。
+
+## 文档DS-01–06裁定
+
+- **DS-01/02/03/04/05：接受**——README/AGENTS/design/runtime-adapters/roadmap/isolated-pilot消除"无实现/无门禁"过时断言但不夸大成熟度；verify命令≠实际运行、云CI须运行证据；result仅改可维护导航标题、冻结原票不动；环境白名单差距由合同兑现不掩盖。advisory：isolated-pilot的live禁提示采用指向当前结果的指针而非字面hash——可接受（result.md维护准确候选），避免字面hash再过时。
+- **DS-06（合同改义，两项均接受并给理由）**：①§7.4 ABM selector硬要求→项目GateAdapter受支持增量能力、ABM仅为实例：**接受**——内核不得依赖业务项目内部（AGENTS边界/SSOT），且新增"无增量能力如实申报、不虚构命中"，受影响范围重验义务未放松；②§7.5 Claude指定替补安排→具权限集成者+团队配置绑定runtime：**接受**——Claude经用户声明暂停，把唯一替补安排权硬编码给已暂停runtime是潜在死锁；独立性条件、不自动升级reviewer、缺席不记通过全部保留，不等于恢复Claude。两项均不降低监督/验收严格度。
+
+## 结论
+
+**S0整体支持**：合同、计划、并行（附前置）、15/2预算、矩阵门槛、DS-01–06均获本席批准。本人finding：B11保持**open**（待产品矩阵真实证据处置，不预支关闭）；B09=unknown照常携带；B18归GLM。writer仍冻结至native计划监督通过；本票不构成内容接收/矩阵通过/live/main授权；S0后根归档，发包人不得自动发native/作者。无新增finding、无无限续审安排。

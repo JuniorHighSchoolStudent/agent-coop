@@ -1,0 +1,37 @@
+# 产品权限设计S0审核（GLM原席 · glm-5.3 · 只读）
+
+## 0. 实读范围
+input-index.json、read-first.txt、contract/plan/investigation/dispatch-proposal四份全文、document-delta.patch全文（AGENTS/README/design/runtime-adapters/roadmap/isolated-pilot六文件）、result.md当前段（1–46行）。源码依据本人R1/R2对ed65079的实读（adapters.py:23-38单token allow+acceptEdits、runtime.py Popen无env、sample.py无权限派生——三缺口仍在，与调查PP-01/02/03一致）；本席R1/R2原票在session内。未读：dispatch-static json、他席本轮意见。另：result.md:39对本席R2“verify原件实读”表述的读取覆盖纠正确认属实——本人R2实际依赖集成线索与索引而未直接Read该输出，接受更正、不改原票，结论未受影响（native已直核原件）。
+
+## 1. 合同逐项裁定（全部核对）
+- **config.schema2**：✓状态schema不变、配置schema升2；旧schema拒绝不迁移不补宽；implementation_digest联动失效保留；输入profile带permissions即拒绝，不另立用户授权owner。
+- **permissions/1字段**：✓五字段（schema=1严格拒bool/未知、scope固定、root=新隔离根规范绝对路径、write_files仅implement=feature.py其余空、environment=inherit+set）准确冻结；深复制、无runtime重算补齐、无第二派生点。
+- **dispatch语义**：✓先validate_binding→再schema2+逐份权限/工具/冻结值校验→**然后才**calls_used与invoke；拒绝时无计数增长、无invoke副作用；摘要合法但语义非法、根复制/移动（经invoke的root↔cwd核对）、缺字段/未知字段/超集均拒绝；可计算期望用于比较但不写回。
+- **分层**：✓P6唯一授权派生、P2仅序列化与进程执行；复用paths.checked+硬链接（现存写目标须普通文件且st_nlink=1，不存在可创建、现存目录/硬链拒绝）、规则元字符（控制符/*?[](){}!逗号）拒绝、cwd=root边界；adapter不知角色/业务文件，无第二授权计算器。
+- **环境**：✓白名单从空字典构造+仅复制名单内宿主存在值；16名 inherit 单一有序表入config摘要；PATH/Windows SYSTEMROOT非空必需否则启动前拒绝；CodeBuddy set=四memory值、Kimi set=空；run_bounded可选env=None保持非模型验证器原语义（不注入CB字段）；不改父进程os.environ；认证缺变量=失败/unknown不扩名单——满足design§6白名单，未以“全继承+覆盖”降级。
+- **bootstrap≠产品**：✓合同明示不重跑探针冒充产品证据、代码缺口待A/B修复、B18/B11不因bootstrap关闭。
+
+**裁定：合同获本人支持，无阻断性修订需求。**advisory三条（非finding，C1须验）：①root↔cwd比较的规范化细节（大小写/尾分隔符）留实现，C1须见显式反例测试；②白名单对CodeBuddy CLI实际认证 sufficiency 未测——矩阵若因环境失败是合法证据，不得据此扩名单；③测试迁移后discovery唯一性证明须入C1。
+
+## 2. 并行/串行裁定
+**本人批准A/B并行**，前置具名：①接口权威=本候选c7cdf48c所载合同字节，B只依合同不依A实现；②写集严格不相交（A：sample/test_sample/test_flow/test_cli；B：adapters/runtime/test_runtime/test_adapter_commands/test_runtime_invoke）；③组合C1仍审同一精确候选全链（sample→profile→adapter→Popen），漂移按finding修复不重派；④任一席不批或合同发生修订→自动回退A→B串行。因原串行是Kimi席条件，**并行仅在Kimi席本轮亦明示批准时生效**，否则默认串行不变。容量4未改、不为凑数增包。
+
+## 3. 预算15/2裁定
+**核准。**分项自洽：S0双2＋必要时一次合同修订双2＋作者2＋C1双2＋最多两finding作者2＋C2双2＋矩阵1＋必要时双席限定结果确认2=上限15；基本路径9（C2兼结果确认）；native 2（N0+N1）。旧17/18与2/2不结转、从0计。两轮内容上限、限定确认不产生第三代码修复轮、修复改变V协议则V不运行、合同再审仅一次后保持阻断——无无限循环、无失败补调。本次S0双席后已用2/15、0/2 native，与计划一致。
+
+## 4. 产品验证门槛裁定
+**核准且严谨。**关键点逐项：仅准确候选双席内容准入后执行一次；走产品sample.initialize→runtime.invoke，禁开发wrapper；预算沿validate_profiles固定600秒/8MiB/20turn（不悄改12/300，发包提案第7点已正确处理）；P1 Write/P2 Read后Edit与N1–N7格子完整（含同根.runtime、evidence/STATUS种子、邻接根、前缀、../）；逐格真实tool_use/result+前后hash+argv/env名称与覆盖一致性（不记值）；未调用/前提失败/身份未知/异常终态=未测/失败；Shell无入口记未测不称实测拒绝；失败不扩权不重试；C2已用于修复内容时每席最多一次限定结果确认只看矩阵证据与B18/B11处置；B18/B11仅原席依产品证据自关。真实memory/hook/TOCTOU/全域沙箱/POSIX/云CI未知保留，四角色live不预支。顺序（C1→修复→组合重验→矩阵→C2/确认→N1）闭合，预算足够。
+
+## 5. 文档DS-01–DS-06裁定
+- **DS-01–03、DS-05**（事实纠正）：**接受**。README/design/AGENTS/runtime-adapters现状改口准确（“隔离样例已有实现…不等于完整平台交付”、“局部command/invoke不视为全部通用API已交付”、“云CI须实际运行证据”）；无冒称完整Scheduler或云CI已实现；isolation-pilot的run旁live禁提示（“只有当前结果明确具备live准入才可执行会调用模型的run，静态接收不自动放行”）与result.md当前段（live仍阻断、候选c7cdf48c待审）一致。
+- **DS-04**：**接受**——仅历史导航标题纠偏，冻结原票未改写（result.md:34-40原件链接完整保留）。
+- **DS-06（合同改义，分别裁定）**：**两处均接受，附理由**：
+  - §7.4 ABM selector硬要求→GateAdapter/项目原验证入口能力：原文使通用内核硬依赖特定业务项目，与AGENTS边界规则（ABM属各自项目适配器与原项目权威）及reuse-decision裁定自相矛盾；修订后ABM为项目实例、保留“只重验受影响范围”与“无增量能力如实申报不虚构命中”语义。属纠正架构不一致的正当改义。
+  - §7.5 Claude指定替补→具权限集成者+团队配置绑定runtime：移除通用合同中硬编码宿主名，保留独立性条件与“不得自动升普通reviewer为监督、缺席不记通过”；Claude暂停仍在现状记录中延续。不构成任何当前替补授权。
+  - 条件：DS-06作为设计修订须双席S0+native计划监督共同认可方生效（本票为GLM侧认可）；不授权任何live/替班行为。
+
+## 6. 诊断与历史状态备注
+result.md:40记录诊断已按双席“重审→唯一执行→native查证”执行（固定Python3.12.14/-B、无种子、外部看护、30轮60例1260replace全ok、7.29秒exit0、无degraded）——与本席R2预commit结局规则一致：**未复现→B11维持open/unknown**，失败分支未动态触发不影响该结论。无行动需求。
+
+## 7. 整体S0结论
+**支持**：权限合同、实施计划、A/B写集、15/2预算、产品矩阵门槛、DS-01–06全部获本人批准（DS-06附上述条件；并行附第2节前置并须Kimi席同批）。本票为设计S0意见：不派发writer、不预支native/作者/live，B18/B11维持open，S0后由根归档、发包人依两席S0+native计划监督按序启动；无新具名finding、无隐含续审。

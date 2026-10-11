@@ -1,0 +1,65 @@
+[
+  {
+    "seat": "glm",
+    "model": "glm-5.3",
+    "session": "agent-coop-g1-glm-r1-34bce56b-20261010",
+    "native_reads": [
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0\\glm\\input-index.json"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0\\glm\\read-first.txt"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0\\glm\\product-permission-contract-20261011.md"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0\\glm\\product-permission-plan-20261011.md"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0\\glm\\product-permission-investigation-20261011.md"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0\\glm\\product-permission-dispatch-proposal-20261011.md"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0\\glm\\document-delta.patch"
+      },
+      {
+        "file_path": "d:\\project\\agent-coop-g1-review\\coordination\\.runtime\\product-permission-s0\\glm\\result.md",
+        "limit": 45
+      }
+    ],
+    "limitations": "No new source-file Read in this S0; code reasoning relies on prior session evidence and current frozen investigation. No direct new Read of own prior R1/R2 votes; inherited session used. GLM read historical dispatcher proposal; Kimi did not."
+  },
+  {
+    "seat": "kimi",
+    "model": "kimi-k3-2",
+    "session": "agent-coop-g1-kimi-r1-34bce56b-20261010",
+    "native_reads": [
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/input-index.json"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/read-first.txt"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/product-permission-contract-20261011.md"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/product-permission-plan-20261011.md"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/document-delta.patch"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/product-permission-investigation-20261011.md"
+      },
+      {
+        "file_path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-s0/kimi/result.md",
+        "limit": 55
+      }
+    ],
+    "limitations": "No new source-file Read in this S0; code reasoning relies on prior session evidence and current frozen investigation. No direct new Read of own prior R1/R2 votes; inherited session used. GLM read historical dispatcher proposal; Kimi did not."
+  }
+]

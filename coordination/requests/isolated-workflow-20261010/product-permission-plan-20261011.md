@@ -20,6 +20,8 @@
 
 先按原两席既定A→B串行作为默认。新合同字段冻结后，两包写集不相交、可各用同一冻结schema测试fixture独立实现，向S0明确申请A/B并行；**只有双席明确允许才变更**。若任一席要求原顺序，A冻结后B开始；不为填满4路伪造无依赖任务。默认CodeBuddy容量4可配置，审核共享额度；本轮就绪调用实际最多2路。tests/test_runtime写权已由旧junction作者释放。
 
+S0原票已支持c7cdf48的附条件并行；本次路径/计数澄清改变合同输入，因此不得直接沿用该许可。唯一预算内双席修订复核须再次明确批准新合同及并行；否则保持A→B。B须更新SubprocessTests._profile的CodeBuddy/Kimi合法permissions与环境fixture，迁移InvokeTests时复用无测试方法的原基类，禁止复制helper或重复发现旧测试。
+
 A/B均在独立干净worktree、准确基线与精确文件allow下执行，已有目标摘要/祖先非reparse/nlink1、CLI版本摘要与四环境开关按已审开发profile重验。未创建的新文件须核父目录，创建后核nlink及hash。作者不shell、不commit、不改共享文档；根独立跑验证、freeze/cherry-pick，不能补写实现/测试。修复仍需原席finding→发包人→CodeBuddy→原席复审。
 
 ## 可执行步骤与验收
@@ -31,6 +33,7 @@ A/B均在独立干净worktree、准确基线与精确文件allow下执行，已�
 - [ ] 组合：全部writer停止，准确候选独立checkout一次python -m agent_coop verify，保存前后manifest、真实错误/skip/规模及环境测试结果；只有输入变更/失败才重复。
 - [ ] C1：原两席分别实审相同组合候选与完整验证原件，交叉核sample→profile→adapter→Popen链及全部DS问题。每项finding具名，明确是否许可准确版本产品权限矩阵。
 - [ ] 若有finding：每包最多一次同写集CodeBuddy修复；根重验受影响范围/准确组合，再原席C2内容复审。不得由根就地修补。
+- 顺序硬条件：有修复时必须C1→修复→组合重验→双席C2批准准确新内容→矩阵→限定结果确认；禁止将矩阵放在修复后的C2之前。无修复时才是C1双批准→矩阵→C2结果确认。S0 GLM票中的顺序简写不修改原件，以本次双席修订复核明确裁定为准。
 - [ ] 产品矩阵：只有两席均准入准确candidate才执行，使用产品sample.initialize派生profile与runtime.invoke，不用开发wrapper替代产品命令。唯一模型调用deepseek-v4-pro，实际600秒/8MiB/20turn沿固定预算，独立全新TEMP根，不重跑；无隐含四角色完整live运行。详细格子与结果处理见下节。
 - [ ] 原席产品证据确认：若C1无需修复，矩阵后C2同时承担结果核对与finding关闭；若C2已用于修复内容，则最多一次每席限定结果确认（不允许新代码修复或第三内容轮），只能审核矩阵逐格证据与B18/B11处置。
 - [ ] native最终监督：直接读取源码验证/产品矩阵真实证据及双票，不按自述读取覆盖；根随后记录准确范围接收或阻断。新候选合入main需仍符合用户授权与项目接收门禁，不把旧main合入当新候选通过。

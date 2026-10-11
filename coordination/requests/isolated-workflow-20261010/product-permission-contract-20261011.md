@@ -26,6 +26,10 @@ config仍只有原config_digest及implementation_digest负责绑定。运行前s
 
 路径在派发前即时核查：复用paths.checked拒绝根外、祖先与目标reparse/symlink/junction；已存在的写目标必须普通文件且st_nlink=1，不存在允许创建，现存目录或硬链接拒绝。所有写目标去重、绝对、位于冻结根内，不接受大小写/点段歧义绕过比较；规则语法检查归adapter。此检查不是TOCTOU防护声明。
 
+两包共同采用的字段表示：经过上述原始路径reparse检查后，以当前平台Path.resolve(strict=False).as_posix()作为规范字符串；Windows仅接受本地盘符绝对路径，盘符统一大写，拒绝UNC及设备路径。保留resolve返回的其余组件拼写，不自行全路径lower/casefold。冻结字段必须逐字符等于该表示，不接受反斜线、点段、尾分隔符或非规范盘符作为另一种冻结表示；根盘本身的必需斜线不删除。sample派生root以及固定workspace/feature.py均遵循此约定；adapter验字段表示，invoke把实际cwd转成同一表示再逐字符比较。大小写或其他别名不能借比较放宽写集；当前合同不宣称覆盖特殊文件系统别名。不得先resolve再省略原始路径的reparse检查。
+
+调用计数沿现有保守预算预留语义：上文“无新增调用计数”只适用于sample在预算预留之前的绑定、配置、业务权限及路径校验。通过这些检查后calls_used预留一次，之后invoke中的CLI规则语法、cwd、宿主必需环境或启动失败不回退计数；预留不等于实际模型调用或进程启动成功。P2不得为了零计数引入第二个sample授权计算器，P6不得假报预留已经调用模型；测试须分别证明预留前拒绝不计数、预留后启动前拒绝保留计数且无Popen。
+
 ## 子进程环境数据合同
 
 sample派生的inherit名单固定为下列名称（单一有序列表，进入config摘要）：APPDATA、COMSPEC、HOME、HOMEDRIVE、HOMEPATH、LANG、LC_ALL、LOCALAPPDATA、PATH、PATHEXT、SYSTEMROOT、TEMP、TMP、TZ、USERPROFILE、WINDIR。只复制这份名单中宿主存在的值；未列变量不传递，包括NODE_OPTIONS、PYTHONPATH及任意伪造secret变量。PATH非空必需；Windows另需SYSTEMROOT非空，缺失即启动前拒绝。其他缺失项省略，不生成凭据，不扫描账号文件，不打印环境值。
@@ -44,7 +48,7 @@ adapter只知道字段/工具/CLI语法，不知道implement/review角色及固�
 
 ## 测试与失败分类
 
-P6：raw profile权限注入拒绝、输入深复制、schema1/未知版本/缺字段/非法值、冻结root改变、额外目标/硬链接/reparse、config摘要正确但语义非法、拒绝前无计数增长/无invoke。沿用暂停/恢复、gate摘要与归档保留链测试，不另造Store fixture体系。
+P6：raw profile权限注入拒绝、输入深复制、schema1/未知版本/缺字段/非法值、冻结root改变、额外目标/硬链接/reparse、config摘要正确但语义非法、预留前拒绝无计数增长/无invoke，以及invoke启动前失败后保留预留计数。schema2校验留在sample.dispatch，不扩大gates.validate_binding对既有合成Store fixture的要求。沿用暂停/恢复、gate摘要与归档保留链测试，不另造Store fixture体系。
 
 P2：完整argv逐token核对、准确多文件规则与只读无写、语法字符/相对路径拒绝、cwd不匹配拒绝、runtime真实子进程验证过滤和覆盖、父环境不变、缺必需环境拒绝。保持超时进程树、哈希重验、错误留证、日志拒覆盖、身份解析与junction回归。不得把ImportError/语法错误当作合格拒绝。
 
