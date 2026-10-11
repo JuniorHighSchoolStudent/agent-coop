@@ -1,6 +1,6 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：本批作者、两轮原席审核、准确验证、唯一诊断及最终原生Kimi监督均完成；Codex已接收准确候选的静态隔离样例范围，未合入main、未开放live。本文件是唯一当前状态入口，历史原件中的旧待办不代表当前派发许可。
+范围：本请求整体交付；维护者：Codex集成者；状态：本批作者、两轮原席审核、准确验证、唯一诊断及最终原生Kimi监督均完成；Codex已接收准确候选的静态隔离样例范围，已按用户2026-10-11后继指令合入本地main，未开放live。本文件是唯一当前状态入口，历史原件中的旧待办不代表当前派发许可。
 
 ## 当前状态（2026-10-11）
 
@@ -31,7 +31,7 @@
 
 ## 静态范围接收（2026-10-11）
 
-Codex集成者依据双原席R2及[最终native原票](supervision-continuation-final.txt)/[实际调用](supervision-continuation-final-calls.json)/[准确输入索引](supervision-continuation-final-input-index.json)，接收准确产品ed65079e6fd2cd3afc09ec871817cfb11c621b76的**静态隔离样例范围**。该接收关闭本批交付流程，不是生产/完整平台接收，也不解除live权限门禁。代码仍在候选分支，main保持6d99eeef4124c02b409dbbfa44385dafaac246cc；原用户树63ef230保留。没有push、main合入或live运行。
+Codex集成者依据双原席R2及[最终native原票](supervision-continuation-final.txt)/[实际调用](supervision-continuation-final-calls.json)/[准确输入索引](supervision-continuation-final-input-index.json)，接收准确产品ed65079e6fd2cd3afc09ec871817cfb11c621b76的**静态隔离样例范围**。该接收关闭本批交付流程，不是生产/完整平台接收，也不解除live权限门禁。本次静态接收后，用户明确授权合入main并继续开发；本地main已从6d99eeef4124c02b409dbbfa44385dafaac246cc快进到f44d4114253471b0426cd8d720114e69d652e5bb，原用户树63ef230保留。没有push或live运行。
 
 最终native于原cwd沿实际session_a75b547a-13c5-4740-b07f-f3d4ccc93704成功恢复，runtime0.43.0，模型/provider未知；222.013秒、20次Read/20结果、exit0、PASS限事实核查，无新阻断。直接读取完整verify输出及metadata、诊断真实stdout/summary/前置/进程/输入摘要链，补足[两原席读取覆盖](review-continuation-r2-reading-coverage.json)限制；原JSONL仅读[4行定点摘录](diagnostic-event-excerpts-20261011.txt)，不称整读。独立调查agent另对本机完整JSONL计数、4inputs与准确Git blobs作只读交叉核查，与摘要一致。
 
@@ -46,6 +46,11 @@ Codex集成者依据双原席R2及[最终native原票](supervision-continuation-
 权限profile实测限于bootstrap精确文件矩阵。逐文件allow、既有目标link_count1、祖先非reparse、四memory子进程环境值及准确node/bin/dist/wrapper人工核查用于本批作者；p7/p3仅旧传输别名，owner仍P6 checks/P2 test_runtime。R-publication本次cwd外精确Write已真实成功，不扩成所有路径能力。T1、hook先行allow、CLI/session/scoped-hook、真实宿主memory全域隔离及未测别名仍unknown；[hook静态证据](permission-hook-static-evidence-20261011.json)不扩大实测结论。
 
 产品权限后继[写集权威调查](product-permission-scope-investigation-20261011.json)/[方案提案](product-permission-scope-proposal-20261011.md)获两席方向支持：P6 sample派生冻结profile，P2 adapters序列化/runtime四环境开关，须版本化合同、后继计划/监督和独立产品CLI验证；不占本批finding修复额度，bootstrap不代关B18/B11。无定时器、生产清理、远端上传/push或全局记忆写入。原用户树、main与旧候选保留；本机备份只称local_only，不冒称异机备份。
+
+
+## 本地主线合入（用户后继授权）
+
+合入后在main准确f44d411执行唯一统一验证：[输出](main-merge-verification-20261011-output.txt)/[元数据](main-merge-verification-20261011-metadata.json)/[前清单](main-merge-verification-20261011-before.json)/[后清单](main-merge-verification-20261011-after.json)，144项/142通过/2既有权限跳过、exit0，前后摘要一致，main工作树clean。远端fetch已核对，未push；受审工作树、原件及会话目录保留供后继交叉认证。新批次沿本请求当前入口继续，不重开旧批次额度，不把本次main合入当成live权限放行。
 
 以下为2026-10-10冻结历史，包含当时的状态和停止决定；有效待办以本页当前段为准。
 ## 2026-10-10已冻结过程与结论
