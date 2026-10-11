@@ -1,0 +1,35 @@
+# 产品权限批次计划监督结论（本批 native 1/2，唯一一次）
+
+## 实际读取
+
+直读 `coordination/.runtime/product-permission-plan-supervision/` 全部 14 份索引文件：新合同全文（57行）、新计划全文（55行）、调查、result.md 当前段（1–70行）、四份原票（S0 首轮 GLM/Kimi + 修订复核 GLM/Kimi）、两份 reading-coverage、review-call-facts（305行，含四条调用的真实 argv/身份/逐次 Read 记录）、document-delta.patch 全文（201行）、author-packages-prepared.json、launch-preflight.json。未重读旧批次不变巨包；上一批 ed65079 清单哈希沿本人上批直读记录比对。
+
+## 身份、输入版本与独立性（核实一致）
+
+- 四条审核调用均 exit0、0 工具错误、墙钟 98–197 秒 <600；actual_model 分别为 glm-5.3 / kimi-k3-2，沿原独立审核 session（agent-coop-g1-glm/kimi-r1-34bce56b-20261010）resume，root 均原 cwd，非作者身份成立。
+- 版本链：S0 首轮绑定准确 c7cdf48，修订复核绑定准确 5f9d430，行政归档 6de047fb；launch-preflight 记 `contract_unchanged:true`。关键字节证明：修订 GLM 票引述新合同 SHA 557c4072…、新计划 26544dd8…，与本批 input-index 中 6de047fb 版本逐字相同——双席批准的合同/计划字节与当前归档一致，无漂移。
+- 覆盖与自述相符：首轮两席直接读 contract/plan/investigation/document-delta/result 当前段（GLM 多读历史 11 次提案，Kimi 未读，票面表述各自吻合）；修订轮两席直读 revision-delta+新合同+新计划全文，result 变更经 delta 读取，本人旧票沿会话——均未冒称新读源码或旧票。coverage 的 limitations 如实记录。
+- 注意点（非阻断）：document-delta.patch 仅含六份文档（AGENTS/README/design/runtime-adapters/roadmap/isolated-pilot），不含 result.md 自身变更；DS-04 的 result 历史标题修订由两席直接 Read result 当前段覆盖，证据链完整。
+
+## owner 与并行（成立）
+
+合同分层：P6 sample 唯一权限派生点（深复制、schema2/permissions1 五字段、dispatch 先 validate_binding 再校验后预留计数）、P2 adapter 仅序列化+runtime 仅进程/环境、无第二授权计算器；写集 A 四文件（sample/test_sample/test_flow/test_cli）、B 五文件（adapters/runtime/test_runtime/test_adapter_commands/test_runtime_invoke），严格不相交，与 prepared 逐字一致；AdapterCommandTests 整体迁移删原、InvokeTests 必要时整体迁移继承原无测试方法基类、禁复制 helper/重复发现。并行：GLM 对 5f9d430 批准并行且以"Kimi 席同批"为生效条件，Kimi 本轮亦明示批准——条件闭合，A/B 并行成立；合同再修订或任一条件缺失即自动回退 A→B 串行。容量默认 4 可配，本批实际峰值 2。
+
+## 预算计数与顺序（自洽）
+
+已用 4/15 CB（S0 双 2 + 唯一修订复核双 2），本次 native 1/2；修订额度已用尽。无代码修复路径实际 11/15（作者2+C1双2+C2兼结果确认双2+矩阵1=7 剩余），result.md 第17行对"基本路径9"的澄清准确。顺序硬条件（plan 第36行）与任务要求逐字一致：有修复必须 C1→修复→组合重验→双席 C2 批准准确新内容→矩阵→限定结果确认；无修复才是 C1 双批准→矩阵→C2 结果确认；限定确认不产生第三代码修复轮。产品矩阵为一次真实 deepseek-v4-pro 经 sample.initialize→runtime.invoke（禁开发 wrapper 冒充）、600秒/8MiB/20turn、全新 TEMP 根、P1/P2/N1–N7 格子完整，不预支四角色 live。
+
+## DS06 独立裁定：两项改义均认可
+
+对照 delta 原文核实：①§7.4 "沿用 ABM selector" 改为 "复用 ProjectAdapter/GateAdapter 指向的项目原验证入口及其受支持增量选择能力；ABM selector 是项目实例，不能成为通用内核依赖；没有增量能力如实申报，不虚构复用命中"——消除了通用内核对一个业务项目的硬依赖，与 AGENTS 边界规则自洽，且未放松"只重验受影响范围"义务，属正当纠偏。②§7.5 "Claude Code 可安排替补" 改为 "具权限集成者可沿项目原通道安排符合独立性条件且可用的具名替补，具体 runtime 由团队配置绑定"——独立性条件、"不得自动升普通 reviewer 为监督"、"缺席不记通过"全部保留，Claude 暂停现状不变（result 第11行"Claude继续暂停"），不构成任何当前替补授权。两项均不降低监督/验收严格度，我予以认可。其余 DS-01–05 为事实纠错，措辞均未夸大完整平台、云 CI 或 live 能力。
+
+## 当前状态与残余条件
+
+- 作者未启动：prepared 仅元数据（proposed_root_exists=false ×2、status 明示 no worktree/no author call），launch_blockers 含 native 计划批准与 root admission；wrapper 摘要 4fb60e86…及 node/bin/dist/kimi main.mjs 摘要与上批 preflight 一致，wrapper 仍不自动执行版本门禁，launch 前须人工再核并对候选/工作树/文件摘要重绑——prepared 不是 admission。
+- 保持 open/unknown：GLM B18/Kimi B11（产品权限，待产品矩阵真实证据由原席处置）；历史 WinError5 根因 unknown；alias/junction 匹配器动态行为、真实 memory 全域、hook 先行 allow、TOCTOU、产品 CLI 权限均未测；Kimi 对 resolve 大小写/特殊别名的说明为评审推断，coverage 已具名不作新增实证；环境白名单对真实 CodeBuddy 认证的 sufficiency 未测，矩阵若因环境失败是合法证据、不得扩名单。
+- 本人上批最终监督的两处口径偏差（"45项"实为45行/43文件、"Read/Glob"实际该次仅20 Read）已在 result 第52行如实留证，不影响当时结论，此处确认收到更正。
+- C1 残余核验条件（来自两席，非新阻断）：迁移后 discovery 唯一性证明、root↔cwd 与写集比较的反例测试按新规范表示落实、同一组 canonical 示例向量供两包避免拼写漂移（Kimi advisory）。
+
+## 计划监督结论
+
+**PASS（限计划准入范围）**：无阻断。合同 5f9d430 字节冻结、双席两轮（首轮+唯一修订复核）真实独立批准、并行条件闭合、预算与顺序硬条件自洽、DS06 获本监督独立认可、作者未启动且 admission 前置完备。本批准不等于内容接收、产品矩阵通过、live 或新候选 main 合入，不代原席关闭 B18/B11。writer 仍冻结：须根先确认本票及输入原件完整，再由 dispatcher 对准确候选/工作树/文件摘要/CLI 版本逐一重绑生成独立 admission 后方可启动 A/B；不自动启动作者。

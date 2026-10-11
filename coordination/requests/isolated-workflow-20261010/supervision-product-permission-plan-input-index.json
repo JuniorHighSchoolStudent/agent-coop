@@ -1,0 +1,154 @@
+{
+  "phase": "product-permission-plan-supervision",
+  "candidate": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+  "contractRevision": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+  "product": "ed65079e6fd2cd3afc09ec871817cfb11c621b76",
+  "files": [
+    {
+      "name": "product-permission-contract-20261011.md",
+      "bytes": 9702,
+      "sha256": "557c4072ea23d43b048da6ff50d5a0cbc75f0f5dede0648584ffa055b41ceba5",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/product-permission-contract-20261011.md"
+      },
+      "required": true
+    },
+    {
+      "name": "product-permission-plan-20261011.md",
+      "bytes": 9465,
+      "sha256": "26544dd8d070c434674bc8b6c61e7d474e1d3f942d5013b5ba1061603f218859",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/product-permission-plan-20261011.md"
+      },
+      "required": true
+    },
+    {
+      "name": "product-permission-investigation-20261011.md",
+      "bytes": 2516,
+      "sha256": "0d50f7579d48033ce847d5153fe7af5eeb266e126ca2da099953141c0e1e9ae7",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/product-permission-investigation-20261011.md"
+      },
+      "required": true
+    },
+    {
+      "name": "result.md",
+      "bytes": 36575,
+      "sha256": "7122314cedf0161b9fed28e0bd19eb85f8e65620584a64af1930e6d30b3e5a8c",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/result.md"
+      },
+      "required": true
+    },
+    {
+      "name": "review-product-permission-s0-reading-coverage.json",
+      "bytes": 3194,
+      "sha256": "87a8ec9ec07d23cbb269b873df1b688fcc73c5fc0a3dea3f5fedad3b35adf392",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/review-product-permission-s0-reading-coverage.json"
+      },
+      "required": true
+    },
+    {
+      "name": "review-product-permission-s0-revision-reading-coverage.json",
+      "bytes": 2477,
+      "sha256": "f826a2044cb22b34dd22d9c23ec9ca3dd9f446a379dce86bec2dd173ee5e2d2f",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/review-product-permission-s0-revision-reading-coverage.json"
+      },
+      "required": true
+    },
+    {
+      "name": "review-product-permission-s0-glm.txt",
+      "bytes": 7658,
+      "sha256": "ff6573861a6bbedfab2bc7d7694b0f45ad5accc6318516a2f9d6cb6c2d9c6a19",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/review-product-permission-s0-glm.txt"
+      },
+      "required": true
+    },
+    {
+      "name": "review-product-permission-s0-kimi.txt",
+      "bytes": 5509,
+      "sha256": "c41a41cb28747bdf033ad62a8d748831fe336d435672c7745f681eac6e1b6d4d",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/review-product-permission-s0-kimi.txt"
+      },
+      "required": true
+    },
+    {
+      "name": "review-product-permission-s0-revision-glm.txt",
+      "bytes": 5242,
+      "sha256": "bf703afb6656f031807e2fc0e98c044c8b9a0f05ab15890f8158034e9bf88128",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/review-product-permission-s0-revision-glm.txt"
+      },
+      "required": true
+    },
+    {
+      "name": "review-product-permission-s0-revision-kimi.txt",
+      "bytes": 4764,
+      "sha256": "4ebc8af44a2ea4c1878eaf0300aa7f4cf2239a5738273cfdc3351a1d4b8c3d79",
+      "source": {
+        "commit": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+        "path": "coordination/requests/isolated-workflow-20261010/review-product-permission-s0-revision-kimi.txt"
+      },
+      "required": true
+    },
+    {
+      "name": "document-delta.patch",
+      "bytes": 19762,
+      "sha256": "23cdc000c5359be2e342bcebcee558a7210e50847b38514f6d17ffd3472d2415",
+      "source": {
+        "base": "f0223b34e0204dde667ea8dff2d80beb3d3b1a3c",
+        "candidate": "6de047fb27575c2d2baa33db68b494c24ed1d208"
+      },
+      "required": true
+    },
+    {
+      "name": "review-call-facts.json",
+      "bytes": 12559,
+      "sha256": "87895e0fedc12ab626ad700c13b4dfcfec972967c69cb3f7e6e00156540a9a58",
+      "source": {
+        "kind": "selected fields of public Git call originals; source hashes included"
+      },
+      "required": true
+    },
+    {
+      "name": "author-packages-prepared.json",
+      "bytes": 3718,
+      "sha256": "8f8f48b9ca1c97a3cf4b93495e768230e2547d4791e149bc7b13e83182077918",
+      "source": {
+        "kind": "dispatcher proposal metadata only; no worktrees/authors launched"
+      },
+      "required": true
+    },
+    {
+      "name": "launch-preflight.json",
+      "bytes": 1790,
+      "sha256": "d0c8ed19442a68ac89e680a83f3398f654bfc58f5512421f5e789957f941d653",
+      "source": {
+        "kind": "current dispatcher preflight observations"
+      },
+      "required": true
+    },
+    {
+      "name": "read-first.txt",
+      "bytes": 687,
+      "sha256": "745cce09863b77ed22e3968032dec48a77046bb2aeaf5f67463e53267c11df4d",
+      "source": {
+        "kind": "dispatcher navigation"
+      },
+      "required": true
+    }
+  ]
+}

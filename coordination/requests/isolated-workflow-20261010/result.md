@@ -1,6 +1,6 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：上一批静态样例已接收并合入本地main；用户授权的产品权限与设计状态后继批次已完成多agent调查，合同/计划S0双CodeBuddy已完成首轮，原两席已批准三处合同澄清与并行，待native计划监督，尚未派作者，live仍阻断。本文件是唯一当前状态入口，历史原件中的旧待办不代表当前派发许可。
+范围：本请求整体交付；维护者：Codex集成者；状态：上一批静态样例已接收并合入本地main；用户授权的产品权限与设计状态后继批次已完成多agent调查，合同/计划S0双CodeBuddy已完成首轮，原两席已批准三处合同澄清与并行，native计划监督已通过，A/B待专门发包人启动，尚未派作者，live仍阻断。本文件是唯一当前状态入口，历史原件中的旧待办不代表当前派发许可。
 
 ## 当前工作：产品权限与状态后继批次
 
@@ -10,12 +10,15 @@
 
 拟定A=P6样例派生/绑定，B=P2 CLI与子进程环境；各唯一写集在计划，默认原票A→B，双席明确允许新冻结接口并行才并行。CodeBuddy默认容量4可配、就绪数和同文件互斥决定实际并发，不隐藏设成2。实际实现均CodeBuddy deepseek-v4-pro，Codex只维护合同/证据/验证与集成，dispatcher_next唯一正式发包人。GLM glm-5.3、CodeBuddy kimi-k3-2为独立非作者原席，native Kimi原会话计划/最终监督；Claude继续暂停。
 
-新预算候选最大15次CodeBuddy/2次native，详细分项/条件见计划；旧批17/18和2/2已结束，不结转。当前新批实际4/15次CodeBuddy、0/2次native；首轮于2026-10-11 08:50:40两席真实并行启动，actual init分别glm-5.3/kimi-k3-2，均沿原独立审核session及原cwd，准确候选c7cdf48。先前Codex调查不是正式审核票，材料冻结不能称审核已启动。产品权限矩阵需准确候选双席准入，不能以bootstrap替代；未做完整四角色产品live。DS事实修正和通用合同修订同时送审但分别裁定，历史原票不重写。
+新预算候选最大15次CodeBuddy/2次native，详细分项/条件见计划；旧批17/18和2/2已结束，不结转。当前新批实际4/15次CodeBuddy、1/2次native；首轮于2026-10-11 08:50:40两席真实并行启动，actual init分别glm-5.3/kimi-k3-2，均沿原独立审核session及原cwd，准确候选c7cdf48。先前Codex调查不是正式审核票，材料冻结不能称审核已启动。产品权限矩阵需准确候选双席准入，不能以bootstrap替代；未做完整四角色产品live。DS事实修正和通用合同修订同时送审但分别裁定，历史原票不重写。
 
 首轮S0原件：[GLM](review-product-permission-s0-glm.txt)/[调用](review-product-permission-s0-glm-calls.json)、[Kimi](review-product-permission-s0-kimi.txt)/[调用](review-product-permission-s0-kimi-calls.json)、[实际读取覆盖](review-product-permission-s0-reading-coverage.json)。分别184.724秒/8 Read、196.617秒/7 Read，exit0，准确原模型/会话；两席支持15/2预算、DS-01–06和附条件并行。当前首轮已结束，不再处于运行中。两席实读合同/计划/调查/文档差异及当前结果段，本轮未重读源码或本人旧原票，不把设计审核冒称新代码逐行审核。
 
 独立调查发现路径规范表示与预留计数边界需跨包一致；另GLM原票顺序简写有“修复后矩阵先于C2”的歧义。合同/计划修订明确三点，原票不重写；将使用预算内唯一双席修订复核，准确新合同获双席批准及native计划监督前不发作者。B18/B11继续open。修订复核实际于08:57:50启动，准确输入5f9d430，使用本批第3/4次CodeBuddy调用；双席已结束并批准。本次已经使用S0修订额度，因此无代码修复时实际路径为11次；计划所称9次仅为未用合同修订的基本路径，不是本次剩余额度。
-修订S0原件：[GLM](review-product-permission-s0-revision-glm.txt)/[调用](review-product-permission-s0-revision-glm-calls.json)、[Kimi](review-product-permission-s0-revision-kimi.txt)/[调用](review-product-permission-s0-revision-kimi-calls.json)、[读取覆盖](review-product-permission-s0-revision-reading-coverage.json)。GLM98.421秒、Kimi155.802秒，各4 Read/0错误/exit0；均批准准确5f9d430的合同、并行与先C2后矩阵硬条件，无新finding。修订额度已用尽，合同不再变更。Kimi关于Windows resolve大小写与特殊别名的说明为评审推断，无新动态证据；不扩成已测别名保证。Codex已核对原票与读取范围，准入原native会话计划监督；writer仍待监督通过。
+修订S0原件：[GLM](review-product-permission-s0-revision-glm.txt)/[调用](review-product-permission-s0-revision-glm-calls.json)、[Kimi](review-product-permission-s0-revision-kimi.txt)/[调用](review-product-permission-s0-revision-kimi-calls.json)、[读取覆盖](review-product-permission-s0-revision-reading-coverage.json)。GLM98.421秒、Kimi155.802秒，各4 Read/0错误/exit0；均批准准确5f9d430的合同、并行与先C2后矩阵硬条件，无新finding。修订额度已用尽，合同不再变更。Kimi关于Windows resolve大小写与特殊别名的说明为评审推断，无新动态证据；不扩成已测别名保证。Codex已核对原票与读取范围，原native计划监督实际于09:04:00启动，runtime0.43.0，准确输入6de047f，model/provider仍unknown，600秒上限；actual resume_hint已确认原session，监督已通过，原件见下。
+native计划[原票](supervision-product-permission-plan.txt)/[调用](supervision-product-permission-plan-calls.json)/[索引](supervision-product-permission-plan-input-index.json)/[读取覆盖](supervision-product-permission-plan-reading-coverage.json)：252.470秒、16 Read/16结果、exit0，原session恢复确认，0.43.0、model/provider unknown；PASS限计划准入、DS06两改义认可。原票称review-call-facts含真实argv，实际直接读的是argv摘要及身份/读取映射，未直接读完整argv，此限制不掩盖；DS04历史标题变更未在本次result前70行中直接展示，监督对其覆盖的概括不当作原行实读，根已核Git差异。原票保持不变，不扩张本次监督证明范围。
+
+根已核对双席及native原件与准确输入，授权dispatcher_next以本提交为行政基线重验CLI摘要、独立worktree及精确A/B写集后并行启动两个deepseek-v4-pro作者；合同/计划仍为5f9d430字节，不改协议。产品代码/测试仍未修改。作者启动后计数为6/15，目前仍4/15；不得把该条件预记为实际调用。内容交付后必须根组合验证及原GLM/Kimi双席C1，修复依finding重派，Codex不代写。live、产品矩阵及新候选main接收仍未准入。
 ## 已接收静态实现（2026-10-11）
 
 上一静态批次的准确产品候选为 **ed65079e6fd2cd3afc09ec871817cfb11c621b76**。专门发包人dispatcher_next承担正式派发，CodeBuddy + deepseek-v4-pro为实际产品/测试/诊断作者；Codex仅调查、协调、文档、验证与受审集成，没有代写本批产品代码。CodeBuddy实现容量默认4、用户可配、与评审共享；先前3个就绪包并行，随后2个独立finding修复并行，无在途writer。

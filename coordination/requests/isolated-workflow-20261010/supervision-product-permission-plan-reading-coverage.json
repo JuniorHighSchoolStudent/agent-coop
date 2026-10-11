@@ -1,0 +1,125 @@
+{
+  "candidate": "6de047fb27575c2d2baa33db68b494c24ed1d208",
+  "actual_meta": [
+    {
+      "role": "meta",
+      "type": "system.version",
+      "version": "0.43.0"
+    },
+    {
+      "role": "meta",
+      "type": "session.resume_hint",
+      "session_id": "session_a75b547a-13c5-4740-b07f-f3d4ccc93704",
+      "command": "kimi -r session_a75b547a-13c5-4740-b07f-f3d4ccc93704",
+      "content": "To resume this session: kimi -r session_a75b547a-13c5-4740-b07f-f3d4ccc93704"
+    }
+  ],
+  "model": "unknown",
+  "provider": "unknown",
+  "native_reads": [
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/input-index.json"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/read-first.txt"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/product-permission-contract-20261011.md"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/product-permission-plan-20261011.md"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/review-product-permission-s0-glm.txt"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/review-product-permission-s0-kimi.txt"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/review-product-permission-s0-revision-glm.txt"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/review-product-permission-s0-revision-kimi.txt"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/review-product-permission-s0-reading-coverage.json"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/review-product-permission-s0-revision-reading-coverage.json"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/review-call-facts.json"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/author-packages-prepared.json"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/launch-preflight.json"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/product-permission-investigation-20261011.md"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/document-delta.patch"
+      }
+    },
+    {
+      "tool": "Read",
+      "arguments": {
+        "n_lines": 70,
+        "path": "D:/project/agent-coop-g1-review/coordination/.runtime/product-permission-plan-supervision/result.md"
+      }
+    }
+  ],
+  "native_results": 16,
+  "coverage": "All 14 substantive packet files plus read-first and index were directly Read; result limited to first70 lines.",
+  "limitations": [
+    "review-call-facts.json is a selected-field derivative with exact Git source hashes and argv SHA; it does not contain full actual argv. No direct Read of full original -calls.json occurred this turn.",
+    "Reviewer statements on alias behavior remain inference; no new filesystem probe.",
+    "Prepared author paths/write-sets are proposals only; author worktrees and fresh launch admission not created."
+  ]
+}
