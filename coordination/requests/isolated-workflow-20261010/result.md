@@ -7,8 +7,8 @@
 - 本地main已接收上一静态样例，准确f0223b3；无push。后继协调分支codex/product-permission-20261011，产品候选fe2e1b6尚未接收，完整产品live仍阻断。
 - 原GLM glm-5.3与CodeBuddy kimi-k3-2已完成S0、C1和C2交叉审核；native Kimi计划监督通过，model/provider仍unknown。原GLM B21–B26、原Kimi B14/B15的代码缺陷已由各原席C2关闭；新增GLM B27记录B作者有效交付未满足，本批不关闭。
 - 当前动作：两个唯一修复已停止，A正常交付，B再次Max turns失败且无有效final。准确组合fe2e1b6的201项验证为199通过/2既有skip，exit0；原双席C2已完成，准确caccde0/产品fe2e1b6，原模型/会话均确认，两席均支持附记录的静态内容接收。不以测试绿补B交付票。Codex仅合同、证据、验证与集成；容量默认4可配，本轮两次唯一修复已结束、修复额度耗尽。
-- 本批实际用量13/15 CodeBuddy、1/2 native；唯一产品矩阵已结束，实际deepseek-v4-pro/session匹配、产品parser正常返回、exit0，71.859秒。P1/P2成功，N1–N7均有明确原生权限拒绝；不等于原席已接收。每包唯一修复已结束，不允许第三内容修复轮。定时器/生产清理/全局记忆/远端上传未执行。
-- 下一门禁：原GLM/Kimi各一次限定矩阵结果确认，再native最终监督；仍不准入新候选main/live。GLM B18/Kimi B11待本人裁定，B27本批保留，历史WinError5根因unknown。实际num_turns55而请求20，外部文件看护前约61秒空档，均提交原席独立裁定，不宣称轮数硬限或全程看护。
+- 本批实际用量15/15 CodeBuddy、1/2 native；原GLM/Kimi限定结果确认已于2026-10-11 10:13:26+08并行启动，准确57504fa；GLM实际原模型/会话已确认，Kimi进程启动且init待确认。唯一产品矩阵已结束，实际deepseek-v4-pro/session匹配、产品parser正常返回、exit0，71.859秒。P1/P2成功，N1–N7均有明确原生权限拒绝；不等于原席已接收。每包唯一修复已结束，不允许第三内容修复轮。定时器/生产清理/全局记忆/远端上传未执行。
+- 下一门禁：等待正在执行的原GLM/Kimi限定矩阵结果确认，再native最终监督；仍不准入新候选main/live。GLM B18/Kimi B11待本人裁定，B27本批保留，历史WinError5根因unknown。实际num_turns55而请求20，外部文件看护前约61秒空档，均提交原席独立裁定，不宣称轮数硬限或全程看护。
 - 权威材料：[冻结权限合同](product-permission-contract-20261011.md)、[有界计划](product-permission-plan-20261011.md)、[C1组合证据](product-permission-integration-c1.md)、[C2组合证据](product-permission-integration-c2.md)、[具名修复准入](product-permission-repair-admission-c1.md)。当前过程与原票入口保留如下。
 修复原件：[A票](product-permission-repair-a.txt)/[A调用](product-permission-repair-a-calls-summary.json)/[A写集](product-permission-repair-a-write-audit.json)、[B失败](product-permission-repair-b-failure.json)/[B调用](product-permission-repair-b-calls-summary.json)/[B写集](product-permission-repair-b-write-audit.json)。根[A局部48项](product-permission-repair-a-local-tests.txt)/[B局部63项](product-permission-repair-b-local-tests.txt)通过，准确组合[完整verify](product-permission-c2-output.txt)/[metadata](product-permission-c2-metadata.json)/[前](product-permission-c2-before.json)/[后](product-permission-c2-after.json)/[发现清单](product-permission-c2-discovery.json)已留存；旧144项无丢失或重复。B没有final/内聚说明，根不代写。
 
