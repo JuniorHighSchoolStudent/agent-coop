@@ -241,6 +241,126 @@ class SamplePermissionTests(unittest.TestCase):
             invoke.assert_not_called()
         self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
 
+    def test_permissions_schema_rejects_bool_float_str_none(self):
+        from unittest.mock import patch
+        self._initialize()
+        for bad in (True, False, 1.0, 2.0, '1', None):
+            with self.subTest(schema=bad):
+                state = self._tampered_state(
+                    lambda config, v=bad:
+                    config['profiles']['implement']['permissions'].update(schema=v))
+                with patch('agent_coop.runtime.invoke') as invoke:
+                    with self.assertRaisesRegex(ValueError, 'permissions schema must be 1'):
+                        self.sample.dispatch(self.root, state, 'implement', 'prompt')
+                    invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
+    def test_config_schema_rejects_bool_float_str_none(self):
+        from unittest.mock import patch
+        self._initialize()
+        for bad in (True, False, 1.0, 2.0, '2', None):
+            with self.subTest(schema=bad):
+                state = self._tampered_state(
+                    lambda config, v=bad: config.update(schema=v))
+                with patch('agent_coop.runtime.invoke') as invoke:
+                    with self.assertRaisesRegex(ValueError, 'schema 2 required'):
+                        self.sample.dispatch(self.root, state, 'implement', 'prompt')
+                    invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
+    def test_extra_tool_rejected_before_reservation(self):
+        from unittest.mock import patch
+        self._initialize()
+        for extra in ('Bash', 'Task'):
+            with self.subTest(extra=extra):
+                state = self._tampered_state(
+                    lambda config, e=extra:
+                    config['profiles']['review_a']['tools'].append(e))
+                with patch('agent_coop.runtime.invoke') as invoke:
+                    with self.assertRaisesRegex(ValueError, 'profile tools differ from role policy'):
+                        self.sample.dispatch(self.root, state, 'review_a', 'prompt')
+                    invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
+    def test_missing_tool_rejected_before_reservation(self):
+        from unittest.mock import patch
+        self._initialize()
+        state = self._tampered_state(
+            lambda config: config['profiles']['implement']['tools'].remove('Read'))
+        with patch('agent_coop.runtime.invoke') as invoke:
+            with self.assertRaisesRegex(ValueError, 'profile tools differ from role policy'):
+                self.sample.dispatch(self.root, state, 'implement', 'prompt')
+            invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
+    def test_supervise_profile_swapped_to_review_rejected(self):
+        from unittest.mock import patch
+        self._initialize()
+        state = self._tampered_state(
+            lambda config: config['profiles'].update(
+                review_a=copy.deepcopy(config['profiles']['supervise'])))
+        with patch('agent_coop.runtime.invoke') as invoke:
+            with self.assertRaisesRegex(ValueError, 'fixed pilot role requires codebuddy'):
+                self.sample.dispatch(self.root, state, 'review_a', 'prompt')
+            invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
+    def test_supervise_adapter_replacement_rejected(self):
+        from unittest.mock import patch
+        self._initialize()
+
+        def tamper(config):
+            profile = config['profiles']['supervise']
+            profile.update(adapter='codebuddy', model='fixture')
+            profile['permissions']['environment']['set'] = dict(CODEBUDDY_SET)
+
+        state = self._tampered_state(tamper)
+        with patch('agent_coop.runtime.invoke') as invoke:
+            with self.assertRaisesRegex(ValueError, 'fixed pilot role requires kimi'):
+                self.sample.dispatch(self.root, state, 'supervise', 'prompt')
+            invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
+    def test_review_adapter_replacement_rejected(self):
+        from unittest.mock import patch
+        self._initialize()
+
+        def tamper(config):
+            profile = config['profiles']['review_a']
+            profile.update(adapter='kimi', model=None)
+            profile['permissions']['environment']['set'] = {}
+
+        state = self._tampered_state(tamper)
+        with patch('agent_coop.runtime.invoke') as invoke:
+            with self.assertRaisesRegex(ValueError, 'fixed pilot role requires codebuddy'):
+                self.sample.dispatch(self.root, state, 'review_a', 'prompt')
+            invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
+    def test_supervise_model_must_be_none_rejected(self):
+        from unittest.mock import patch
+        self._initialize()
+        state = self._tampered_state(
+            lambda config: config['profiles']['supervise'].update(model='fixture'))
+        with patch('agent_coop.runtime.invoke') as invoke:
+            with self.assertRaisesRegex(ValueError, 'model null'):
+                self.sample.dispatch(self.root, state, 'supervise', 'prompt')
+            invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
+    def test_codebuddy_model_must_be_nonempty_rejected(self):
+        from unittest.mock import patch
+        self._initialize()
+        for bad in ('', None):
+            with self.subTest(model=bad):
+                state = self._tampered_state(
+                    lambda config, v=bad: config['profiles']['implement'].update(model=v))
+                with patch('agent_coop.runtime.invoke') as invoke:
+                    with self.assertRaisesRegex(ValueError, 'explicit model required'):
+                        self.sample.dispatch(self.root, state, 'implement', 'prompt')
+                    invoke.assert_not_called()
+        self.assertEqual(self.Store(self.root).read()['calls_used'], 0)
+
     def test_missing_permissions_rejected(self):
         from unittest.mock import patch
         self._initialize()

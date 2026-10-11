@@ -133,7 +133,7 @@ def _validate_permission(root, role, profile):
         raise ValueError(f'missing permissions: {role}')
     if set(permissions) != {'schema', 'scope', 'root', 'write_files', 'environment'}:
         raise ValueError(f'unexpected permissions fields: {role}')
-    if permissions['schema'] != 1:
+    if type(permissions['schema']) is not int or permissions['schema'] != 1:
         raise ValueError(f'permissions schema must be 1: {role}')
     if permissions['scope'] != PERMISSION_SCOPE:
         raise ValueError(f'permissions scope must be fixed: {role}')
@@ -148,17 +148,24 @@ def _validate_permission(root, role, profile):
         raise ValueError(f'permissions environment inherit differs: {role}')
     if environment['set'] != _expected_environment_set(profile):
         raise ValueError(f'permissions environment set differs: {role}')
-    tools = list(profile.get('tools') or [])
+    required_adapter = 'kimi' if role == 'supervise' else 'codebuddy'
+    if profile.get('adapter') != required_adapter:
+        raise ValueError(f'fixed pilot role requires {required_adapter}: {role}')
+    if role == 'supervise':
+        if profile.get('model') is not None:
+            raise ValueError('native Kimi pilot profile must be read-only supervisor/model null')
+    elif not isinstance(profile.get('model'), str) or not profile.get('model'):
+        raise ValueError('explicit model required')
+    expected = ['Read', 'Glob', 'Grep']
     if role == 'implement':
-        if 'Write' not in tools or 'Edit' not in tools:
-            raise ValueError(f'implement tools must include Write/Edit: {role}')
-    elif 'Write' in tools or 'Edit' in tools:
-        raise ValueError(f'read-only role must not have write tools: {role}')
+        expected += ['Write', 'Edit']
+    if set(profile.get('tools') or []) != set(expected):
+        raise ValueError(f'profile tools differ from role policy: {role}')
 
 
 def _validate_permissions(root, state):
     config = state['config']
-    if config.get('schema') != 2:
+    if type(config.get('schema')) is not int or config.get('schema') != 2:
         raise ValueError('config schema 2 required')
     profiles = config.get('profiles')
     if not isinstance(profiles, dict) or set(profiles) != set(ROLES):
