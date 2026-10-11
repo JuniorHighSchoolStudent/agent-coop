@@ -32,6 +32,22 @@ class CliTests(unittest.TestCase):
             self.assertFalse(root.exists())
             self.assertIn('profiles', result.stderr)
 
+    def test_init_rejects_supplied_permissions_before_root_creation(self):
+        from agent_coop.sample import ROLES
+        with tempfile.TemporaryDirectory() as directory:
+            profiles = Path(directory) / 'profiles.json'
+            injected = {role: {'permissions': {'schema': 1}} for role in ROLES}
+            profiles.write_text(json.dumps(injected), encoding='utf-8')
+            root = Path(directory) / 'sample'
+            result = subprocess.run(
+                [sys.executable, '-m', 'agent_coop', 'init', str(root),
+                 '--profiles', str(profiles)],
+                capture_output=True, text=True, timeout=10,
+            )
+            self.assertEqual(result.returncode, 2, result.stderr)
+            self.assertFalse(root.exists())
+            self.assertIn('permissions', result.stderr)
+
     def test_self_reported_readonly_profile_cannot_load_shell_agent(self):
         from agent_coop.sample import ROLES, validate_profiles
         with tempfile.TemporaryDirectory() as directory:

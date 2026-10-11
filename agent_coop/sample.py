@@ -1,5 +1,6 @@
 """固定样例组合；角色来自配置，所有派发经过同一 Runner。"""
 import json
+import os
 import time
 import uuid
 from pathlib import Path
@@ -9,6 +10,32 @@ STEPS = ('implement', 'verify', 'review_a', 'review_b', 'supervise',
 ROLES = ('implement', 'review_a', 'review_b', 'supervise')
 POLICY = {'id': 'isolated-sample', 'revision': 1, 'retention_seconds': 0,
           'targets': ['scratch/fixture.log'], 'scope': 'local_only'}
+PERMISSION_SCOPE = 'cli_tool_filter_not_os_sandbox'
+_INHERIT_NAMES = ('APPDATA', 'COMSPEC', 'HOME', 'HOMEDRIVE', 'HOMEPATH',
+                  'LANG', 'LC_ALL', 'LOCALAPPDATA', 'PATH', 'PATHEXT',
+                  'SYSTEMROOT', 'TEMP', 'TMP', 'TZ', 'USERPROFILE', 'WINDIR')
+_CODEBUDDY_SET = {'CODEBUDDY_DISABLE_AUTO_MEMORY': '1',
+                  'CODEBUDDY_CODE_DISABLE_AUTO_MEMORY': '1',
+                  'CODEBUDDY_MEMORY_EXTRACTION_ENABLED': '0',
+                  'CODEBUDDY_MEMORY_EXTRACTION_DISABLED': '1'}
+
+
+def canonical_path(path):
+    """原始 reparse 检查后以 resolve(strict=False).as_posix() 作为规范字符串。
+
+    Windows 仅接受本地盘符绝对路径，盘符统一大写，拒绝 UNC 与设备路径；
+    其余组件拼写保留 resolve 返回原样，不整体 lower/casefold。
+    """
+    from .paths import _reject_reparse_chain
+    target = Path(path).absolute()
+    _reject_reparse_chain(target)
+    resolved = target.resolve(strict=False)
+    if os.name == 'nt':
+        drive = resolved.drive
+        if len(drive) != 2 or drive[1] != ':' or not drive[0].isalpha():
+            raise ValueError('only local drive-letter absolute Windows paths are supported')
+        return drive[0].upper() + ':' + resolved.as_posix()[2:]
+    return resolved.as_posix()
 
 
 def validate_profiles(profiles):
@@ -16,6 +43,8 @@ def validate_profiles(profiles):
         raise ValueError('profiles must contain implement, review_a, review_b, supervise')
     from .paths import digest
     for role, profile in profiles.items():
+        if 'permissions' in profile:
+            raise ValueError(f'profile permissions must not be supplied: {role}')
         required_adapter = 'kimi' if role == 'supervise' else 'codebuddy'
         if profile.get('adapter') != required_adapter:
             raise ValueError(f'fixed pilot role requires {required_adapter}: {role}')
@@ -46,13 +75,33 @@ def validate_profiles(profiles):
             raise ValueError('explicit model required')
 
 
+def _derive_permissions(root, role, profile):
+    set_values = {} if profile['adapter'] == 'kimi' else dict(_CODEBUDDY_SET)
+    write_files = ([canonical_path(root / 'workspace' / 'feature.py')]
+                   if role == 'implement' else [])
+    return {'schema': 1, 'scope': PERMISSION_SCOPE, 'root': canonical_path(root),
+            'write_files': write_files,
+            'environment': {'inherit': list(_INHERIT_NAMES), 'set': set_values}}
+
+
+def _derive_profiles(root, profiles):
+    import copy
+    derived = {}
+    for role in ROLES:
+        profile = copy.deepcopy(profiles[role])
+        profile['permissions'] = _derive_permissions(root, role, profile)
+        derived[role] = profile
+    return derived
+
+
 def initialize(path, profiles):
     validate_profiles(profiles)
     from .gates import implementation_digest
     from .paths import create_root
     from .store import Store
     root = create_root(path)
-    config = {'schema': 1, 'mode': 'live', 'profiles': profiles, 'policy': POLICY,
+    config = {'schema': 2, 'mode': 'live',
+              'profiles': _derive_profiles(root, profiles), 'policy': POLICY,
               'model_call_limit': 4, 'implementation_digest': implementation_digest()}
     Store(root).initialize(config, list(STEPS))
     (root / 'scratch' / 'fixture.log').write_text('Generated isolated sample only.\n', encoding='utf-8')
@@ -68,12 +117,89 @@ def record(root, name, value):
     return {'path': f'evidence/{name}.json', 'sha256': digest(path)}
 
 
+def _expected_write_files(root, role):
+    if role == 'implement':
+        return [canonical_path(root / 'workspace' / 'feature.py')]
+    return []
+
+
+def _expected_environment_set(profile):
+    return {} if profile.get('adapter') == 'kimi' else dict(_CODEBUDDY_SET)
+
+
+def _validate_permission(root, role, profile):
+    permissions = profile.get('permissions')
+    if not isinstance(permissions, dict):
+        raise ValueError(f'missing permissions: {role}')
+    if set(permissions) != {'schema', 'scope', 'root', 'write_files', 'environment'}:
+        raise ValueError(f'unexpected permissions fields: {role}')
+    if permissions['schema'] != 1:
+        raise ValueError(f'permissions schema must be 1: {role}')
+    if permissions['scope'] != PERMISSION_SCOPE:
+        raise ValueError(f'permissions scope must be fixed: {role}')
+    if permissions['root'] != canonical_path(root):
+        raise ValueError(f'permissions root moved: {role}')
+    if permissions['write_files'] != _expected_write_files(root, role):
+        raise ValueError(f'permissions write_files differ: {role}')
+    environment = permissions['environment']
+    if not isinstance(environment, dict) or set(environment) != {'inherit', 'set'}:
+        raise ValueError(f'permissions environment must be inherit,set: {role}')
+    if environment['inherit'] != list(_INHERIT_NAMES):
+        raise ValueError(f'permissions environment inherit differs: {role}')
+    if environment['set'] != _expected_environment_set(profile):
+        raise ValueError(f'permissions environment set differs: {role}')
+    tools = list(profile.get('tools') or [])
+    if role == 'implement':
+        if 'Write' not in tools or 'Edit' not in tools:
+            raise ValueError(f'implement tools must include Write/Edit: {role}')
+    elif 'Write' in tools or 'Edit' in tools:
+        raise ValueError(f'read-only role must not have write tools: {role}')
+
+
+def _validate_permissions(root, state):
+    config = state['config']
+    if config.get('schema') != 2:
+        raise ValueError('config schema 2 required')
+    profiles = config.get('profiles')
+    if not isinstance(profiles, dict) or set(profiles) != set(ROLES):
+        raise ValueError('profiles must contain implement, review_a, review_b, supervise')
+    for role in ROLES:
+        _validate_permission(root, role, profiles[role])
+
+
+def _validate_write_target(root, text):
+    from .paths import _reject_reparse_chain
+    target = Path(text)
+    if not target.is_absolute():
+        raise ValueError('write target must be absolute')
+    if not target.is_relative_to(Path(root).resolve(strict=False)):
+        raise ValueError('write target outside isolation root')
+    _reject_reparse_chain(target)
+    if target.exists():
+        if not target.is_file():
+            raise ValueError('write target exists and is not a regular file')
+        if target.stat().st_nlink != 1:
+            raise ValueError('write target has multiple hard links')
+
+
+def _validate_write_targets(root, state):
+    for role in ROLES:
+        permissions = state['config']['profiles'][role]['permissions']
+        write_files = permissions['write_files']
+        if len(set(write_files)) != len(write_files):
+            raise ValueError(f'duplicate write targets: {role}')
+        for text in write_files:
+            _validate_write_target(root, text)
+
+
 def dispatch(root, state, role, prompt):
     from .gates import validate_binding
     from .runtime import invoke
     from .paths import checked
     from .store import Store
     validate_binding(state)
+    _validate_permissions(root, state)
+    _validate_write_targets(root, state)
     latest = Store(root).read()
     if latest['calls_used'] >= latest['config']['model_call_limit']:
         raise ValueError('model call budget exhausted')
