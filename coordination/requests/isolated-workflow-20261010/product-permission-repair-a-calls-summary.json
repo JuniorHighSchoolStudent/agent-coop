@@ -1,0 +1,221 @@
+{
+  "tool_errors": [],
+  "source_sha256": "391c396b5198c51546d8331e0380c47f7e354458a095013c8a8fe3d0286c03d7",
+  "candidate": "bc86bb7e902c39bf50850373c33416d1b2266c1d",
+  "result": {
+    "subtype": "success",
+    "is_error": false,
+    "num_turns": 47
+  },
+  "native_tool_call_map": [
+    {
+      "id": "call_00_DGCGghwbXIB8SaeuyyIq7447",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/coordination/requests/isolated-workflow-20261010/product-permission-repair-admission-c1.md"
+    },
+    {
+      "id": "call_01_TxXoLeFDWVp9IitFXxwQ8753",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/coordination/requests/isolated-workflow-20261010/review-product-permission-c1-glm.txt"
+    },
+    {
+      "id": "call_02_1vFhXwmIsYbZfbdKof7k7747",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/coordination/requests/isolated-workflow-20261010/review-product-permission-c1-kimi.txt"
+    },
+    {
+      "id": "call_00_Hx2jPAvcDJjMMuoNtlMJ3002",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_01_VuVZyIDBNJQE9jdf6Bvp0786",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py"
+    },
+    {
+      "id": "call_00_yO5EUKaDxPIKUpSbp4yg1793",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/gates.py"
+    },
+    {
+      "id": "call_01_vc1Mj8dDgiag5eY4HSPl0882",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/store.py"
+    },
+    {
+      "id": "call_00_j0JLC4Mn7w0qYqjaTbRM2670",
+      "name": "Edit",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_00_ET_SPSvkMYBrr8rMGdpNb0s9540",
+      "name": "Edit",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_00_ET_h2x8oOxXG9t62982o4DJ1358",
+      "name": "Edit",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_00_qMMQP046BeU2rQvzZrBL6425",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_00_57WG5QaTsCnDn2lnhtew6413",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py"
+    },
+    {
+      "id": "call_00_lXWDoOcteraR1sCCA0oB3898",
+      "name": "Edit",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py"
+    },
+    {
+      "id": "call_00_BdsfCDtZbqAIoYRJnrrj1810",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py"
+    },
+    {
+      "id": "call_00_p0F2uhKLR2vIBFjgEyCE8972",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py"
+    },
+    {
+      "id": "call_01_T4iJCbDgUgKRJNoRfMyX3434",
+      "name": "Read",
+      "path": "D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py"
+    }
+  ],
+  "omission": "Full tool input source bodies remain only in TEMP original; mapping is not the original metadata.",
+  "invocation": {
+    "root": "D:\\project\\agent-coop-pp-a-repair-20261011",
+    "candidate": "bc86bb7e902c39bf50850373c33416d1b2266c1d",
+    "model": "deepseek-v4-pro",
+    "seat": "p7",
+    "requested_session": "agent-coop-pp-p6-a-repair-20261011",
+    "resume": "",
+    "round": "1",
+    "prompt": "C:\\Users\\june\\AppData\\Local\\Temp\\agent-coop-isolated-workflow-20261010\\product-permission-repair-a.prompt.txt",
+    "additional_read_directory": "",
+    "prompt_sha256": "48005c3da9e2c277e7d5c465b093b446564bc888f46364c31d120af766b670cd",
+    "started_at": "2026-10-11T09:38:21.6076907+08:00",
+    "max_turns": 20,
+    "tools": "Read,Glob,Grep,Write,Edit",
+    "handoff_manifest": "",
+    "admission_evidence": {
+      "status": "admitted after dual confirmation and native plan supervision",
+      "candidate": "bc86bb7e902c39bf50850373c33416d1b2266c1d",
+      "root": "D:/project/agent-coop-pp-a-repair-20261011",
+      "session": "agent-coop-pp-p6-a-repair-20261011",
+      "package": "PP-A-repair",
+      "owner": "P6",
+      "wrapper_seat_alias": "p7",
+      "write_files": [
+        "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py",
+        "D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py"
+      ],
+      "existing_files": [
+        {
+          "path": "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py",
+          "sha256": "cf8c2de308dcf79af7bb15730f04b038f66f0c877f0d41ca1fa7fae202cc1d41"
+        },
+        {
+          "path": "D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py",
+          "sha256": "7466372620cc68cdd493c868299b8d8e0a05a644b64bc1c1fc1614fd34836fd3"
+        }
+      ],
+      "environment": {
+        "CODEBUDDY_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_CODE_DISABLE_AUTO_MEMORY": "1",
+        "CODEBUDDY_MEMORY_EXTRACTION_ENABLED": "0",
+        "CODEBUDDY_MEMORY_EXTRACTION_DISABLED": "1"
+      },
+      "authorization": "root formal bc86bb7 finding-bound admission after original C1 dual votes; unique fresh repair, no resume",
+      "contract_revision": "5f9d4309dcdda3cb94b217e82c6006acc719f7db",
+      "budget": {
+        "max_turns": 20,
+        "wall_seconds": 600,
+        "calls_for_package": 1,
+        "batch_after_two_repairs": 10,
+        "batch_limit": 15,
+        "native_used": 1,
+        "native_limit": 2
+      },
+      "runtime_preflight": {
+        "observed_at": "2026-10-11T01:38:20.667Z",
+        "version": "2.164.0",
+        "node_version": "v24.14.0",
+        "sha256": {
+          "C:/Program Files/nodejs/node.exe": "63c259c81e5d472b5f11c8d506070130cb04a1ecf84b80377a34ed6ec9048088",
+          "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy": "426186a82e36466d5be485f335ced1b0d664539c53b72a5f10ba3a267e60dab6",
+          "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/dist/codebuddy-headless.js": "f9affe2aed036a3a3ee8486b82e77b176a2a4b21f7bed721074c1c1e4a312e65",
+          "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/run-review.ps1": "4fb60e86ff3db7ee2ce9593e80427bfcca78f9755ffd325f7ac0f75f1d7ddaed"
+        }
+      }
+    },
+    "purpose": "repair",
+    "permission_mode": "dontAsk",
+    "exact_write_files": [
+      "D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py",
+      "D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py"
+    ],
+    "strict_mcp_empty": true,
+    "wall_clock_watchdog": "dispatcher 600s; not enforced by this wrapper",
+    "actual_argv": [
+      "C:/Users/june/AppData/Roaming/npm/node_modules/@tencent-ai/codebuddy-code/bin/codebuddy",
+      "-p",
+      "PP-A唯一finding修复，owner P6，真实deepseek-v4-pro，fresh session agent-coop-pp-p6-a-repair-20261011，cwd D:/project/agent-coop-pp-a-repair-20261011，准确基线bc86bb7e902c39bf50850373c33416d1b2266c1d。一次20turn/600秒，无隐藏补调。先直接读coordination/requests/isolated-workflow-20261010/product-permission-repair-admission-c1.md、两席review-product-permission-c1-{glm,kimi}.txt中本包finding及必要受审合同条款，再读本包源码/测试实施；不重复读取未变历史巨包，给实现与有效final留足本次预算。\n唯一可写：D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py、D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py。原开发profile精确路径，不能Shell/PowerShell/Bash、运行测试/模型、commit/子agent、改合同/共享文档/其他源码/全局memory或配置。测试仍由你编写、根独立运行。旧p7/p3只是wrapper别名。\nA最小范围：GLM B21(A)/B26、Kimi B14a–c。config.schema==2与permissions.schema==1均严格整数，拒bool/float/str/None；预留前重验每个角色完整tools集合及角色adapter/model（supervise=kimi且model None，其余codebuddy且非空str），防重算config_digest后的非法语义。新增/收紧测试须用合法重算摘要的反例：True/1.0/2.0、增加Bash/Task或缺Read、合法supervise Kimi profile换到review角色，以及相反角色adapter/model替换；拒绝时calls_used=0且invoke未调用。固定政策由sample持有，不改gates/Store；复用现测试fixture、不得重复授权计算器。\n两席不同判断按准入采用合同内更严格验收并集，不能自行删掉任何finding或扩写集。合同5f9字节不变；规范表示仍先检查原始reparse，再resolve(strict=False).as_posix，Windows盘符大写、其他组件resolve拼写；禁止把resolve当沙箱。所有异常反例证明目标原因，ImportError/语法错不算拒绝通过；不能删原测试/改skip/降低断言求绿。\n源码/测试目标300硬500、函数目标40硬80；完成后按实际文件/符号给超软内聚理由与风险，不压行/删注释凑数、不自批硬例外。必要小范围重构仅在批准文件内且保持唯一owner。保留原测试class.method与迁移不重复。\n最终中文有效final：列真实修改/每项本人finding对应修复与反例/准确消费者与复用/软目标内聚说明/未验证项，明确未运行测试。不得声称C2/产品矩阵/live通过，不代审核关闭finding。任何权限错误立即停留证据，不求扩权；此次失败仍消耗唯一修复调用，不自动resume。",
+      "--model",
+      "deepseek-v4-pro",
+      "--session-id",
+      "agent-coop-pp-p6-a-repair-20261011",
+      "--tools",
+      "Read,Glob,Grep,Write,Edit",
+      "--allowedTools",
+      "Read",
+      "Glob",
+      "Grep",
+      "Write(D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py)",
+      "Edit(D:/project/agent-coop-pp-a-repair-20261011/agent_coop/sample.py)",
+      "Write(D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py)",
+      "Edit(D:/project/agent-coop-pp-a-repair-20261011/tests/test_sample.py)",
+      "--disallowedTools",
+      "Bash",
+      "PowerShell",
+      "--permission-mode",
+      "dontAsk",
+      "--setting-sources",
+      "none",
+      "--no-session-persistence",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--max-turns",
+      "20",
+      "--output-format",
+      "stream-json",
+      "--verbose"
+    ],
+    "actual_argv_sha256": "34af5b49c8be8f6ff55420bb1d42cc2d460e4607805ee5aca46ecfcfd1e71f75",
+    "argv_hash_encoding": "UTF-8 PowerShell ConvertTo-Json -Compress array, no newline",
+    "baseline_root": "D:\\project\\agent-coop-pp-a-repair-20261011"
+  },
+  "actual_model": "deepseek-v4-pro",
+  "source_path": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/repair-product-permission-repair-p7-r1.actual-metadata.json",
+  "raw_sha256": "69bbfecfa3d644f885f7ba19eecd75844f263b2b3fb4ecf82d144bdfeffa8adf",
+  "actual_session": "agent-coop-pp-p6-a-repair-20261011",
+  "completion": {
+    "candidate": "bc86bb7e902c39bf50850373c33416d1b2266c1d",
+    "exit_code": 0,
+    "finished_at": "2026-10-11T09:42:14.4036281+08:00",
+    "wall_seconds": 232.7959374,
+    "final_head": "bc86bb7e902c39bf50850373c33416d1b2266c1d",
+    "final_status": [
+      " M agent_coop/sample.py",
+      " M tests/test_sample.py"
+    ]
+  }
+}

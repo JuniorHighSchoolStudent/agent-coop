@@ -1,0 +1,46 @@
+实现与测试已完成。以下是有效 final。
+
+## 真实修改
+
+仅两文件，未运行任何测试/模型/shell，未改合同、gates、Store 或其他源码。
+
+**`agent_coop/sample.py`（唯一政策 owner）**
+1. `_validate_permission` 中 `permissions['schema'] != 1` → `type(permissions['schema']) is not int or permissions['schema'] != 1`（`sample.py:136`），严格整数拒 bool/float/str/None。
+2. `_validate_permissions` 中 `config.get('schema') != 2` → `type(...) is not int or ... != 2`（`sample.py:168`），同上。
+3. `_validate_permission` 尾部（`sample.py:151-163`）：删除只查 Write/Edit 有无的旧逻辑，改为
+   - 角色↔adapter 绑定：`supervise→kimi`，其余 `codebuddy`，不符抛 `fixed pilot role requires {adapter}`；
+   - model 绑定：`supervise` 须 `model is None`，其余须非空 `str`；
+   - 完整 tools 集合精确等于角色期望集（`set(tools) == set(expected)`），不符抛 `profile tools differ from role policy`。
+
+`canonical_path`（先 `_reject_reparse_chain` 后 `resolve(strict=False).as_posix()`、盘符大写）保持不变。
+
+**`tests/test_sample.py`（复用 `_build_profiles`/`_tampered_state`/`CODEBUDDY_SET`，未复制授权计算器）** 新增 9 个 `SamplePermissionTests` 方法，全部 `invoke.assert_not_called()` + `calls_used==0`。
+
+## 每项 finding 对应修复与反例
+
+| Finding | 修复点 | 反例测试（均合法重算摘要） |
+|---|---|---|
+| GLM B21(A) / Kimi B14a | `sample.py:136` 严格 `type is int` | `test_permissions_schema_rejects_bool_float_str_none`：True/False/1.0/2.0/'1'/None |
+| GLM B21(A)（config 侧） | `sample.py:168` | `test_config_schema_rejects_bool_float_str_none`：True/False/1.0/2.0/'2'/None |
+| GLM B26① / Kimi B14b | `sample.py:162` tools 精确集合 | `test_extra_tool_rejected_before_reservation`（+Bash/+Task）、`test_missing_tool_rejected_before_reservation`（缺 Read） |
+| GLM B26② / Kimi B14c（adapter） | `sample.py:151-153` | `test_supervise_profile_swapped_to_review_rejected`（合法 supervise kimi 整体换到 review_a）、`test_supervise_adapter_replacement_rejected`（supervise→codebuddy+CB_SET+model 一致篡改）、`test_review_adapter_replacement_rejected`（review_a→kimi+空 set） |
+| GLM B26② / Kimi B14c（model） | `sample.py:154-158` | `test_supervise_model_must_be_none_rejected`（model='fixture'）、`test_codebuddy_model_must_be_nonempty_rejected`（''/None） |
+
+原测试 class.method 与 12 项反例、fixture 全保留，未删/未改 skip/未降断言。
+
+## 准确消费者与复用
+
+- 消费者：`dispatch`（`sample.py:195`）经 `_validate_permissions → _validate_permission` 在预算预留前重验；`initialize` 的 `validate_profiles` 保持不变。
+- 复用：`_tampered_state`（`canonical_digest` 重算）、`_build_profiles`、`CODEBUDDY_SET`、`Store` 读取，未新建第二个摘要/授权计算器；政策仍由 `sample.py` 单一持有。
+
+## 软目标内聚说明与风险
+
+- `sample.py` 约 311 行（目标 300/硬 500，软超约 11 行）；`_validate_permission` 34 行、`_validate_permissions` 9 行，均 ≤40。软超源于 `_validate_permission` 内权限+角色绑定同属“派发前身份与权限核验”单一变化原因的高内聚簇，未压行/删注释。
+- `test_sample.py` 约 463 行（目标 300/硬 500，软超约 163 行）；新增 9 方法均 ≤18 行，采用 subTest 表驱动收紧反例，写集仍被强制收敛在单文件（合同要求的独立拒绝原因数量使然）。风险：文件行数持续逼近硬限，后续若再加拒绝反例需评估拆分，但本轮不机械拆以免破坏单文件写集约束与 fixture 复用。
+- 无文件/符号触及硬上限（500/80），不需硬例外。
+
+## 未验证项
+
+- **未运行任何测试**，不声称 `python -m agent_coop verify` 或组合 verify 转绿、不声称 C2/产品矩阵/live 通过；验证由根独立运行。
+- 未实际执行 `subprocess.Popen` 哨兵路径（测试用 mock，未运行）。
+- 不代审核关闭任何 finding，C1 中 B21/B26/B14a–c 的关闭权在原双席 C2。

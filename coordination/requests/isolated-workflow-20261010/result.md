@@ -1,8 +1,19 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；状态：上一批静态样例已接收并合入本地main；用户授权的产品权限与设计状态后继批次已完成多agent调查，合同/计划S0双CodeBuddy已完成首轮，原两席已批准三处合同澄清与并行，native计划监督已通过，作者已停止，A交付/B轮数耗尽未完成，组合验证失败，原双席C1均要求修改，具名修复待派，live仍阻断。本文件是唯一当前状态入口，历史原件中的旧待办不代表当前派发许可。
+范围：本请求整体交付；维护者：Codex集成者；本节是唯一当前状态入口。下方过程检查点和原件保留其当时语义，不据此猜测最新许可。
 
-## 当前工作：产品权限与状态后继批次
+## 当前状态
+
+- 本地main已接收上一静态样例，准确f0223b3；无push。后继协调分支codex/product-permission-20261011，产品候选fe2e1b6尚未接收，完整产品live仍阻断。
+- 原GLM glm-5.3与CodeBuddy kimi-k3-2已完成S0及C1交叉审核；native Kimi计划监督通过，model/provider仍unknown。C1双方CHANGES_REQUESTED，GLM B21–B26、Kimi B14/B15未关闭。
+- 当前动作：两个唯一修复已停止，A正常交付，B再次Max turns失败且无有效final。准确组合fe2e1b6的201项验证为199通过/2既有skip，exit0；仅准入C2内容复审，不以测试绿补B交付票。Codex仅合同、证据、验证与集成；容量默认4可配，本轮就绪修复2包。
+- 本批实际用量10/15 CodeBuddy、1/2 native；每包唯一修复已发，不允许第三内容修复轮。产品矩阵未调用，定时器/生产清理/全局记忆/远端上传未执行。
+- 下一门禁：原双席C2按准确源码/验证原件裁定各finding及B缺失交付票。只有验证通过及C2双批准才准唯一隔离权限矩阵；当前不准入新候选main/live。历史WinError5根因unknown；旧GLM B18/Kimi B11产品权限仍open。
+- 权威材料：[冻结权限合同](product-permission-contract-20261011.md)、[有界计划](product-permission-plan-20261011.md)、[C1组合证据](product-permission-integration-c1.md)、[C2组合证据](product-permission-integration-c2.md)、[具名修复准入](product-permission-repair-admission-c1.md)。当前过程与原票入口保留如下。
+修复原件：[A票](product-permission-repair-a.txt)/[A调用](product-permission-repair-a-calls-summary.json)/[A写集](product-permission-repair-a-write-audit.json)、[B失败](product-permission-repair-b-failure.json)/[B调用](product-permission-repair-b-calls-summary.json)/[B写集](product-permission-repair-b-write-audit.json)。根[A局部48项](product-permission-repair-a-local-tests.txt)/[B局部63项](product-permission-repair-b-local-tests.txt)通过，准确组合[完整verify](product-permission-c2-output.txt)/[metadata](product-permission-c2-metadata.json)/[前](product-permission-c2-before.json)/[后](product-permission-c2-after.json)/[发现清单](product-permission-c2-discovery.json)已留存；旧144项无丢失或重复。B没有final/内聚说明，根不代写。
+
+产品矩阵仍未运行。另须区分正常预算预留引发STATUS revision更新与模型写入，不能把初始化和结束时的STATUS不同误算越权；没有可靠的调用前基线则该格unverified，当前不准入执行。
+## 本批过程检查点（历史追溯，不作为当前派发许可）
 
 用户最新明确授权“按照项目设定合入main，然后多agent检查设计状态、拆包派开发，必须多方审核交叉认证”。本地主线已完成合入与验证，见本页主线原件；新协调树D:/project/agent-coop-product-permission、分支codex/product-permission-20261011，基线main f0223b34e0204dde667ea8dff2d80beb3d3b1a3c。旧作者与会话工作树保留，不代表仍有写权。
 
@@ -10,7 +21,7 @@
 
 A=P6样例派生/绑定，B=P2 CLI与子进程环境；各唯一写集在计划，准确5f9d430已获双席重新允许并行。CodeBuddy默认容量4可配、就绪数和同文件互斥决定实际并发，不隐藏设成2。实际实现均CodeBuddy deepseek-v4-pro，Codex只维护合同/证据/验证与集成，dispatcher_next唯一正式发包人。GLM glm-5.3、CodeBuddy kimi-k3-2为独立非作者原席，native Kimi原会话计划/最终监督；Claude继续暂停。
 
-获准新预算最大15次CodeBuddy/2次native，详细分项/条件见计划；旧批17/18和2/2已结束，不结转。当前新批实际8/15次CodeBuddy、1/2次native；首轮于2026-10-11 08:50:40两席真实并行启动，actual init分别glm-5.3/kimi-k3-2，均沿原独立审核session及原cwd，准确候选c7cdf48。先前Codex调查不是正式审核票，材料冻结不能称审核已启动。产品权限矩阵需准确候选双席准入，不能以bootstrap替代；未做完整四角色产品live。DS事实修正和通用合同修订同时送审但分别裁定，历史原票不重写。
+获准新预算最大15次CodeBuddy/2次native，详细分项/条件见计划；旧批17/18和2/2已结束，不结转。当前新批实际10/15次CodeBuddy、1/2次native；首轮于2026-10-11 08:50:40两席真实并行启动，actual init分别glm-5.3/kimi-k3-2，均沿原独立审核session及原cwd，准确候选c7cdf48。先前Codex调查不是正式审核票，材料冻结不能称审核已启动。产品权限矩阵需准确候选双席准入，不能以bootstrap替代；未做完整四角色产品live。DS事实修正和通用合同修订同时送审但分别裁定，历史原票不重写。
 
 首轮S0原件：[GLM](review-product-permission-s0-glm.txt)/[调用](review-product-permission-s0-glm-calls.json)、[Kimi](review-product-permission-s0-kimi.txt)/[调用](review-product-permission-s0-kimi-calls.json)、[实际读取覆盖](review-product-permission-s0-reading-coverage.json)。分别184.724秒/8 Read、196.617秒/7 Read，exit0，准确原模型/会话；两席支持15/2预算、DS-01–06和附条件并行。当前首轮已结束，不再处于运行中。两席实读合同/计划/调查/文档差异及当前结果段，本轮未重读源码或本人旧原票，不把设计审核冒称新代码逐行审核。
 
@@ -30,7 +41,7 @@ native计划[原票](supervision-product-permission-plan.txt)/[调用](supervisi
 
 读取限制：GLM8源码全文，Kimi7源码全文+test_cli定点；GLM只读verify尾部，Kimi只Grep红项/汇总并读metadata；两席均未直接读完整verify/before/after/discovery/作者调用审计。C1原票不能称独立全量验证证明；C2须先直读准确新verify完整输出与metadata，再核源码修复，最终native核对实际覆盖。
 
-当前仍8/15CB、1/2native，两个修复尚未启动；新版本仅在验证通过及C2双批准后才准矩阵，live未准入。旧C1现场保留，不自动resume轮数耗尽的B会话。
+两个修复已于09:38:21实际启动，actual init均deepseek-v4-pro，fresh sessions agent-coop-pp-p6-a-repair-20261011 / agent-coop-pp-p2-b-repair-20261011，准确bc86bb7，600秒上限；当前10/15CB、1/2native；新版本仅在验证通过及C2双批准后才准矩阵，live未准入。旧C1现场保留，不自动resume轮数耗尽的B会话。
 ## 已接收静态实现（2026-10-11）
 
 上一静态批次的准确产品候选为 **ed65079e6fd2cd3afc09ec871817cfb11c621b76**。专门发包人dispatcher_next承担正式派发，CodeBuddy + deepseek-v4-pro为实际产品/测试/诊断作者；Codex仅调查、协调、文档、验证与受审集成，没有代写本批产品代码。CodeBuddy实现容量默认4、用户可配、与评审共享；该批3个就绪包并行，随后2个独立finding修复并行；该批writer已全部结束。

@@ -1,0 +1,49 @@
+{
+  "type": "result",
+  "subtype": "error_during_execution",
+  "is_error": true,
+  "uuid": "01a1289f-9046-7599-8d3d-7a14097d8c8b",
+  "session_id": "agent-coop-pp-p2-b-repair-20261011",
+  "duration_ms": 200077,
+  "duration_api_ms": 199406,
+  "num_turns": 80,
+  "total_cost_usd": 0,
+  "usage": {
+    "input_tokens": 1078970,
+    "output_tokens": 21470,
+    "cache_creation_input_tokens": 48698,
+    "cache_read_input_tokens": 1030272,
+    "cache_creation": null,
+    "server_tool_use": null,
+    "service_tier": null
+  },
+  "permission_denials": [],
+  "errors": [
+    "Max turns (20) exceeded"
+  ],
+  "modelUsage": {
+    "deepseek-v4-pro": {
+      "inputTokens": 0,
+      "outputTokens": 4522,
+      "cacheReadInputTokens": 621312,
+      "cacheCreationInputTokens": 8401,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000
+    }
+  },
+  "_meta": {
+    "codebuddy.ai/contextUsed": 69551,
+    "codebuddy.ai/usageByCategory": {
+      "systemPrompt": 2525,
+      "conversation": 34636,
+      "tools": 32359,
+      "mcp": 0,
+      "skills": 31,
+      "version": 1
+    },
+    "traceparent": "00-173ef363da1f2c63d4aa0633d75fbbb3-5a13f946fcf3ccff-01",
+    "baggage": "codebuddy.session_id=agent-coop-pp-p2-b-repair-20261011,codebuddy.conversation_request_id=01a1289c82837145a6a8638887f03929"
+  },
+  "_requestId": "01a1289c82837145a6a8638887f03929",
+  "__timestamp": "2026-10-11T01:41:48.240Z"
+}
