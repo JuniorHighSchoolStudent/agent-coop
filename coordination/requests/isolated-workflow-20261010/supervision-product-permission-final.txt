@@ -1,0 +1,38 @@
+# 最终监督结论（产品权限批 native 2/2，最后一次调用）
+
+## 实际已读与投影/原件区别
+
+直读：input-index、c2-metadata（12行）与 **c2-output 全 221 行**、packet-01 至 11 全部全文（含 C2 双票、B 两次失败原件、九格 cell 原生 JSON、fixture 前后、STATUS 三件、completion/watch/N4 方法、S0/S1/actual pretty、argv token 投影、prompt 全文、coverage 投影、projection-index、derived profile、preparation metadata/error、receipt 与 cli-final 投影、矩阵结果摘要、矩阵双票、事实勘误、result 当前前缀、call-facts 选段）。无截断分段需求，均为完整读取。
+
+投影与原件的区别如实承接：S0/S1/actual pretty 是类型敏感值等价投影（indent=2），非原字节，原件 SHA 与等价性在 projection-index；argv 为 CIM 活进程 CommandLine 观察经 CommandLineToArgvW 的逐 token 投影（roundtrip 与事后重建均相等），**CIM 原始长行仅 SHA 引用、我不称全部原行可读**；receipt/cli-final 的 result 是字符串解析投影，原 final 中模型自报 ids=[] 保留、真实 id 由九格 raw 独立映射。这些投影使我能读到双席被截断的长行内容，覆盖面超过两席确认轮实际所见。
+
+## 事实核查（全部通过）
+
+- **verify**：201=199pass/2 既有 symlink WinError1314 skip、exit0、`-B`、前后 manifest 均 59527766…、候选 fe2e1b6、34.7s；旧 144 项保留无重复，新增 AdapterCommandTests/SamplePermissionTests/test_runtime_invoke 齐全，含"依赖待合"如实标注；12 个软目标无硬超限。不扩 POSIX/云 CI/完整 workflow。
+- **九格**：逐一核原生 tool_use/tool_result——P1 Write 成功、P2 Read（见 P1 字节）+Edit 成功；N1–N7 均明确 non-interactive 权限拒绝，N7 词法 `../` 原样保留于 input；N1/N3/N5/N6/N7 种子前后 SHA 不变、N2 仍未出现、feature.py 为 P2 终态、nlink=1。身份：两 init 事件与 receipt 均 actual=requested=deepseek-v4-pro、session/cwd/dontAsk 一致；实际 argv（CIM 观察）逐 token 合合同：逗号单 token tools、独立 allow 规则仅 feature.py Write/Edit、Bash/PowerShell 分列 deny、none、严格空 MCP、max-turns 20、无 acceptEdits/bypass。
+- **N4**：书面方法先于执行固定；S0(0/0)→S1(1/1) 预冻结、dispatch 前根外生成 expected-STATUS；我核到 expected==actual STATUS（均 d14c9e8a）、S_actual==S1（pretty 均 702ca7b0、原件均 9fb9cc9c）、原生 Write 拒绝在流内；completion 的 not_yet_evaluated 未改写。捕获先 STATUS 后 Store.read 由运维命令序列证明，无逐 I/O 追踪——限定结论成立，不扩为瞬时监视/OS 隔离。
+- **缺口裁定**：num_turns 55/请求 20 仅请求参数差异、硬轮数上限未证（turn_hard_cap_not_proven），不阻断九格但阻断"轮数硬门禁已验证"表述；外部文件看护前约 61 秒空档、仅后段约 12 秒 16 次采样——九格证据根基是原生流+字节锚定，不依赖连续看护，故不阻断限定矩阵，但任何"全程看护/运行期无其他文件活动"的更广宣称不成立；init 目录各 61 项 ≠ 能力，实际仅 7Read/8Write/1Edit；env 18=14 个宿主存在的 inherit（HOME/TZ 缺）+4 set，无进程内独立 env 采样；准备期 _build_env 误传参错误原样留证、零模型调用。
+- **身份链**：C2 双席（caccde0，177.8s/295.2s）与矩阵确认双席（57504fa，176.4s/241.9s）均 actual glm-5.3/kimi-k3-2、原独立 session、exit0、final_status 空。准备 manifest 31 个产品/测试/CI 文件 working==git blob（区别于 C2 含文档 45 文件）；双席"43/55/14"等错误已由勘误件更正为 31/61/15，原票未改。
+
+## B27 与精确一次性例外
+
+我直接读了 B 两次失败原件：均 `error_during_execution`/"Max turns (20) exceeded"、is_error、无有效 final、无作者软目标说明（初次 num_turns84/502s，修复 num_turns80/200s）。裁定支持两席口径：**B 作者有效交付门禁未满足，GLM B27 永久记录、本批不关闭；绿测试与完成文件不得冒充 final**。内容接收依据是双席对源码/diff/完整 verify 的独立实读，非作者自报——与首批 P1 先例一致。Kimi 的一次性例外表述充分明确：仅绑定 fe2e1b6 本 revision、后继任何对这些文件的修改必须有有效作者 final、不设先例、不扩给后继包/live；GLM 以 B27 记录独立承接。该例外可携带，但必须在接收记录中原样载明。
+
+## 剩余 unknown 与下一批建议
+
+保持：历史 GLM B11/Kimi B09 发布根因 unknown（本批不重复诊断）；真实宿主 memory 全域、hook 先行 allow、TOCTOU、特殊别名、POSIX、Shell 执行能力、超时/超输出分支、num_turns 硬语义、完整四角色 live 均未证，**live 继续禁止**；矩阵为单 fixture 单会话单次、外部看护非全程。默认容量 4 可配，本批实际为相依审核双席+独立作者分包，不称四路都实跑。下一批仅建议（本批不派发）：派发 owner 调查 B 两次耗尽与有效 final 交付、缩小工作包；四角色受控 live 另立有界计划并先满足权限残余/监督/接收条件；历史发布无新证据不重复诊断，复用既有入口。
+
+## 预算与当前状态一致性（一致）
+
+15/15 CodeBuddy 用尽（S0双2+修订双2+A/B作者2+C1双2+修复2+C2双2+矩阵1+确认双2），无第三内容修复轮、无补调；本次后 native 2/2 用尽，无余量。result 当前段与原件一致，勘误（18=14+4、31 文件、61 目录项、15/15 而非 14/15）均已记录且原票不改写。双席覆盖限制（长行截断、GLM 漏读归档索引前段、各自 C2 沿会话未重读）由真实 coverage 揭示而非自述，我已用等价投影直读补足。
+
+## 结论
+
+**PASS（限最终事实核查范围）**。分项明确：
+
+1. **静态内容接收**：支持根对准确 fe2e1b6 的静态范围接收，必须携带 B27 交付未满足记录、席定软目标说明（非作者说明）与全部 unknown 清单。
+2. **矩阵接收**：支持根对"指定 TEMP 九格、CLI 工具过滤层、fe2e1b6"这一限定范围矩阵证据的接收；GLM B18/Kimi B11 的限定关闭为原席裁定，我核其范围与证据相符，不代签。
+3. **main 条件**：用户已授权下，根可按项目门禁将本准确候选合 main，但接收/合入记录必须绑定 fe2e1b6 精确候选与上述附件；本票本身不是合入行为，也不把旧 main 合入当新候选通过。
+4. **live 禁令**：完整四角色 live 未准入，继续阻断。
+
+无新监督阻断，不循环追加。本票不替原席签 finding、不更改原票；监督职责到此结束。

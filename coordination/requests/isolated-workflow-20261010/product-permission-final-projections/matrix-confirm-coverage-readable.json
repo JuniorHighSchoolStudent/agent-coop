@@ -1,0 +1,211 @@
+{
+  "original_full_coverage": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-matrix-confirm-reading-coverage.json",
+  "original_sha256": "6121a6bbbac2550620a4caf04aedebd8b2cdfb3872590e47f249e514e8041e65",
+  "method": "actual returned numbered lines compared with frozen packet text; not reviewer self-report",
+  "results": [
+    {
+      "seat": "glm",
+      "all_nine_cell_tool_evidence_full_visible": true,
+      "own_c2_direct_read": false,
+      "own_c2_limit": "prior same-session context only",
+      "actual_read_count": 12,
+      "incomplete_originals": [
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-argv-comparison.json",
+          "source_sha256": "1a9b1f9200b019c07cf5c0254df02e5891f83133ff9d7879497ff678d8c0aeda",
+          "packet": "packet-03.txt",
+          "source_packet_line_range": [
+            50,
+            135
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            58,
+            98
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-process-observation.json",
+          "source_sha256": "0b72fb683e9bf57e8db8be8eab2ff960f9cf310ff4b404f0483b8a051653bbe4",
+          "packet": "packet-04.txt",
+          "source_packet_line_range": [
+            3,
+            19
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            16
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-state-after.json",
+          "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+          "packet": "packet-04.txt",
+          "source_packet_line_range": [
+            23,
+            23
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            23
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/argv-template.json",
+          "source_sha256": "06884e1521848f8824fbdb24d7705ced6a722f0eefb2cc8d87f1f21e08a82406",
+          "packet": "packet-04.txt",
+          "source_packet_line_range": [
+            27,
+            69
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            34
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/expected-after-reservation.json",
+          "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+          "packet": "packet-06.txt",
+          "source_packet_line_range": [
+            3,
+            3
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            3
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/preparation-metadata.json",
+          "source_sha256": "38c907f2ab2ea3b1b9eb983aba3293c56c192958154bc95e12cc555dd86d2b0c",
+          "packet": "packet-08.txt",
+          "source_packet_line_range": [
+            3,
+            225
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            181
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/result-file-index.json",
+          "source_sha256": "33686f2a6c74fdbb690eb869e30bfdd021940fba7741e5484fa8c55ed5cb1a45",
+          "packet": "packet-09.txt",
+          "source_packet_line_range": [
+            3,
+            168
+          ],
+          "missing_range": [
+            3,
+            129
+          ],
+          "truncated_or_different_lines": []
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/state-before-reservation.json",
+          "source_sha256": "ce0ea4ee35f014223b8f2a39427fe013f2e603f2642693d6046235e4ac46d9e3",
+          "packet": "packet-09.txt",
+          "source_packet_line_range": [
+            172,
+            172
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            172
+          ]
+        }
+      ]
+    },
+    {
+      "seat": "kimi",
+      "all_nine_cell_tool_evidence_full_visible": true,
+      "own_c2_direct_read": false,
+      "own_c2_limit": "prior same-session context only",
+      "actual_read_count": 11,
+      "incomplete_originals": [
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-argv-comparison.json",
+          "source_sha256": "1a9b1f9200b019c07cf5c0254df02e5891f83133ff9d7879497ff678d8c0aeda",
+          "packet": "packet-03.txt",
+          "source_packet_line_range": [
+            50,
+            135
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            58,
+            98
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-process-observation.json",
+          "source_sha256": "0b72fb683e9bf57e8db8be8eab2ff960f9cf310ff4b404f0483b8a051653bbe4",
+          "packet": "packet-04.txt",
+          "source_packet_line_range": [
+            3,
+            19
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            16
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/actual-state-after.json",
+          "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+          "packet": "packet-04.txt",
+          "source_packet_line_range": [
+            23,
+            23
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            23
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/argv-template.json",
+          "source_sha256": "06884e1521848f8824fbdb24d7705ced6a722f0eefb2cc8d87f1f21e08a82406",
+          "packet": "packet-04.txt",
+          "source_packet_line_range": [
+            27,
+            69
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            34
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/expected-after-reservation.json",
+          "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+          "packet": "packet-06.txt",
+          "source_packet_line_range": [
+            3,
+            3
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            3
+          ]
+        },
+        {
+          "source_path": "coordination/requests/isolated-workflow-20261010/product-permission-matrix-evidence/state-before-reservation.json",
+          "source_sha256": "ce0ea4ee35f014223b8f2a39427fe013f2e603f2642693d6046235e4ac46d9e3",
+          "packet": "packet-09.txt",
+          "source_packet_line_range": [
+            172,
+            172
+          ],
+          "missing_range": null,
+          "truncated_or_different_lines": [
+            172
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": "Both saw nine complete native cell tool_evidence. Long JSON state/prompt/commandline lines truncated; GLM also partial file-index/preparation lines. Kimi no truncation claim is inaccurate. Original tickets unchanged."
+}

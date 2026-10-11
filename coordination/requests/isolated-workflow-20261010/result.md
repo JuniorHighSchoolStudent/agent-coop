@@ -1,26 +1,33 @@
 # 隔离样例当前交付记录
 
-范围：本请求整体交付；维护者：Codex集成者；本节是唯一当前状态入口。下方过程检查点和原件保留其当时语义，不据此猜测最新许可。
+范围：本请求整体交付；维护者：Codex集成者。本节是唯一当前状态入口；历史检查点不作为当前派发许可。
 
 ## 当前状态
 
-- 本地main已接收上一静态样例，准确f0223b3；无push。后继协调分支codex/product-permission-20261011，产品候选fe2e1b6尚未接收，完整产品live仍阻断。
-- 原GLM glm-5.3与CodeBuddy kimi-k3-2已完成S0、C1和C2交叉审核；native Kimi计划监督通过，model/provider仍unknown。原GLM B21–B26、原Kimi B14/B15的代码缺陷已由各原席C2关闭；新增GLM B27记录B作者有效交付未满足，本批不关闭。
-- 当前动作：两个唯一修复已停止，A正常交付，B再次Max turns失败且无有效final。准确组合fe2e1b6的201项验证为199通过/2既有skip，exit0；原双席C2已完成，准确caccde0/产品fe2e1b6，原模型/会话均确认，两席均支持附记录的静态内容接收。不以测试绿补B交付票。Codex仅合同、证据、验证与集成；容量默认4可配，本轮两次唯一修复已结束、修复额度耗尽。
-- 本批实际用量15/15 CodeBuddy、1/2 native；原GLM/Kimi限定结果确认已结束，准确57504fa；两席actual init确认原glm-5.3/kimi-k3-2、原独立session与cwd，176.430秒/12Read及241.868秒/11Read，均exit0。唯一产品矩阵已结束，实际deepseek-v4-pro/session匹配、产品parser正常返回、exit0，71.859秒。P1/P2成功，N1–N7均有明确原生权限拒绝；原双席已接受指定九格证据，根最终接收仍待监督。每包唯一修复已结束，不允许第三内容修复轮。定时器/生产清理/全局记忆/远端上传未执行。
-- 下一门禁：根已准入最后一次native监督，准确4fa2fe9，索引SHA022e4c7e5b6aeb685148cdc8d057ef44b7afcb6e2710a7b48b43bcb1f82e54db、prompt SHAa69787bf27d2f37d334af68484be745e529c688a516c00d1e33f502d3a52c2be，实际启动计数另据回执；仍不准入新候选main/live。GLM B18/Kimi B11已由各原席在准确fe2e指定TEMP/CLI工具过滤范围关闭，B27本批保留，历史WinError5根因unknown。两席均裁定num_turns55/请求20及外部文件看护前约61秒空档不阻断指定九格证据；不宣称轮数硬限、全程看护或更广权限保证。
-- 权威材料：[冻结权限合同](product-permission-contract-20261011.md)、[有界计划](product-permission-plan-20261011.md)、[C1组合证据](product-permission-integration-c1.md)、[C2组合证据](product-permission-integration-c2.md)、[具名修复准入](product-permission-repair-admission-c1.md)。当前过程与原票入口保留如下。
-修复原件：[A票](product-permission-repair-a.txt)/[A调用](product-permission-repair-a-calls-summary.json)/[A写集](product-permission-repair-a-write-audit.json)、[B失败](product-permission-repair-b-failure.json)/[B调用](product-permission-repair-b-calls-summary.json)/[B写集](product-permission-repair-b-write-audit.json)。根[A局部48项](product-permission-repair-a-local-tests.txt)/[B局部63项](product-permission-repair-b-local-tests.txt)通过，准确组合[完整verify](product-permission-c2-output.txt)/[metadata](product-permission-c2-metadata.json)/[前](product-permission-c2-before.json)/[后](product-permission-c2-after.json)/[发现清单](product-permission-c2-discovery.json)已留存；旧144项无丢失或重复。B没有final/内聚说明，根不代写。
+- **已接收，待本地主线合入验证**：根在原双席C2、矩阵限定确认及最终native监督后，接收准确产品候选fe2e1b6b03cde7763f6f2c974d909edf6c2ce708的静态内容和指定TEMP九格CLI文件权限证据。上一main为f0223b3；本次合入另行记录，不冒称已完成。
+- **角色按设定执行**：dispatcher_next唯一正式发包；产品/测试/修复由实际CodeBuddy deepseek-v4-pro完成，两个独立写集并行。Codex只调查、合同文档、证据、验证和集成。原CodeBuddy glm-5.3与kimi-k3-2独立交叉审核；原生Kimi独立监督，runtime0.43.0、model/provider unknown。默认容量4可配置，实际就绪数不等于容量上限。
+- **验证**：准确fe2e独立clean树统一verify为201项=199通过/2既有Windows symlink权限跳过、exit0；旧144项无丢失或重复。产品矩阵只有一次sample.dispatch→runtime.invoke真实调用，actual deepseek-v4-pro、请求/实际session一致、parser正常、exit0；P1/P2成功，N1–N7均有明确原生Write权限拒绝及相应字节证据。N4实际完整状态等于预计算S1，STATUS等于dispatch前生成的expected。
+- **原席关闭**：GLM B21–B26、Kimi B14/B15代码项由各原席C2关闭；GLM B18/Kimi B11由本人限定确认关闭，仅绑定fe2e、指定Windows TEMP fixture、CLI工具过滤层。监督核事实，不代签关闭。
+- **B27保留**：B两次Max turns失败、无有效作者final/软目标说明，作者交付门禁未满足，本批不关闭、不改成作者成功。接收依据为双席独立内容审核与验证；B软目标是审核席结构裁定，非作者说明。一次性流程例外只绑定fe2e；这些文件的后继修改必须有有效作者final，不设先例、不扩给其他包或live。
+- **调用已全部停止**：本批15/15 CodeBuddy、2/2 native用尽，无第三修复、补结论或矩阵重跑。最终native224.331秒、14Read/14结果、exit0，实际resume_hint确认原session；无新监督阻断。完整四角色live、定时任务、生产清理、全局记忆与远端上传均未执行或准入。
 
-产品矩阵已结束，[九格原生证据及结果](product-permission-matrix-evidence/matrix-result-summary.json)、[完整归档索引](product-permission-matrix-evidence/result-file-index.json)、[fixture前后](product-permission-matrix-evidence/fixture-after.json)已保真归档。须区分正常预算预留引发STATUS revision更新与模型写入，不能把初始化和结束时的STATUS不同误算越权；现已静态核对可用既有Store生成器在根外产生预期S1投影，并在调用后先捕获真实STATUS、再仅读SQLite完整比对；[N4书面方法](product-permission-matrix-n4-method.md)已由根与独立runtime调查按准确源码核对；具体输入已核对并于本检查点准入一次执行，准备metadata SHA256为38c907f2ab2ea3b1b9eb983aba3293c56c192958154bc95e12cc555dd86d2b0c，prompt SHA256为cef510f27c41f4d98585cf6fc1a300bb413ab222f97aec272e29d34c41ee325a；TEMP parent为agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345。只用sample.dispatch与真实产品env，600秒/8MiB/20turn、无重试；先捕获STATUS再只读状态严格比对。准备参数错误原件保留，不计模型调用。N4实际STATUS与预存expected字节相等，SQLite完整序列化状态等于S1；真实Read/Write拒绝原件另存，不重写completion中当时not_yet_evaluated字段。捕获先STATUS后Store.read由实际运维命令证明，无独立逐I/O追踪。模型final自报tool_use_ids为空，原件保留，九格id由原始流独立映射。init目录不是实际已调用能力；本次只有7 Read/8 Write/1 Edit。原始全CLI流留TEMP，Git只必要无敏感工具片段/回执/摘要。
-C2原件：[GLM](review-product-permission-c2-glm.txt)/[调用](review-product-permission-c2-glm-calls.json)、[Kimi](review-product-permission-c2-kimi.txt)/[调用](review-product-permission-c2-kimi-calls.json)、[读取覆盖](review-product-permission-c2-reading-coverage.json)。177.816秒/13 Read与295.178秒/14 Read，均exit0/0工具错误；两席均实读完整222行verify和metadata。源码/测试局部及diff覆盖如原件，不夸大为均逐行全读六文件。
+## 接收证据与限制
 
-两席分项支持准确fe2e1b6的静态内容接收，并保持B有效作者交付未满足；Kimi给出仅绑定本revision、后继修改须有效final的具名流程例外，GLM独立认可源码接收且B27永久记录。根仅承接这一静态范围意见交最终native核对，不将B失败改写为成功、不代关B27、不将例外扩给后继包或live。B软目标由独立审核席具名裁定，明确不是作者说明。
-矩阵确认原件：[GLM](review-product-permission-matrix-glm.txt)/[调用](review-product-permission-matrix-glm-calls.json)、[Kimi](review-product-permission-matrix-kimi.txt)/[调用](review-product-permission-matrix-kimi-calls.json)、[实际读取覆盖](review-product-permission-matrix-reading-coverage.json)/[事实勘误](review-product-permission-matrix-factual-corrections.json)。九格tool_use/result全文确已读；两席若干长行状态与argv被Read截断，GLM还未读归档索引前段，不能采信“全部全文/无截断”自述。本人C2依原session上下文，未重新直接打开。
+合同/实施边界：[冻结合同](product-permission-contract-20261011.md)、[有界计划](product-permission-plan-20261011.md)、[C2组合](product-permission-integration-c2.md)。代码验证：[完整输出](product-permission-c2-output.txt)/[metadata](product-permission-c2-metadata.json)/[前](product-permission-c2-before.json)/[后](product-permission-c2-after.json)/[发现清单](product-permission-c2-discovery.json)。A[有效交付](product-permission-repair-a.txt)，B[第二次失败](product-permission-repair-b-failure.json)/[实际调用](product-permission-repair-b-calls-summary.json)；初次失败亦保留于本请求。
 
-原票保留不改：环境准备名称18=14个存在的inherit+4个set，HOME/TZ缺省；并非进程内环境独立采样。准备manifest实际31个产品/测试/CI文件（不同于C2含文档45文件）；两init各61目录项；num_turns含义未独立确认；双确认实际并发后15/15，不是GLM所述14/15。最终native须读取必要长行的等价可读投影及原件SHA，再判断这些覆盖限制是否影响接收。
+C2原票：[GLM](review-product-permission-c2-glm.txt)/[调用](review-product-permission-c2-glm-calls.json)、[Kimi](review-product-permission-c2-kimi.txt)/[调用](review-product-permission-c2-kimi-calls.json)、[读取覆盖](review-product-permission-c2-reading-coverage.json)。两席确实读取完整verify，源码及测试覆盖按原件，不夸大为六文件均逐行全读。
 
-下一批建议（仅提案，本批不派发）：先由派发职责owner调查B两次耗尽和有效final交付，缩小工作包；四角色受控live须另立有界计划且先满足权限残余/监督/接收条件；历史发布异常继续unknown，无新证据不重复诊断。复用现有入口，不建第二调度器，不延用本批例外或额度。
+矩阵：[结果摘要](product-permission-matrix-evidence/matrix-result-summary.json)/[原件索引](product-permission-matrix-evidence/result-file-index.json)/[fixture前后](product-permission-matrix-evidence/fixture-after.json)/[N4方法](product-permission-matrix-n4-method.md)。确认原票：[GLM](review-product-permission-matrix-glm.txt)/[调用](review-product-permission-matrix-glm-calls.json)、[Kimi](review-product-permission-matrix-kimi.txt)/[调用](review-product-permission-matrix-kimi-calls.json)、[读取覆盖](review-product-permission-matrix-reading-coverage.json)/[勘误](review-product-permission-matrix-factual-corrections.json)。全CLI流留TEMP；Git保留必要非敏感工具片段、回执和摘要，不是异机备份。
+
+最终监督：[原票](supervision-product-permission-final.txt)/[调用](supervision-product-permission-final-calls.json)/[输入索引](supervision-product-permission-final-input-index.json)/[来源映射](supervision-product-permission-final-source-map.json)/[实际读取覆盖](supervision-product-permission-final-reading-coverage.json)/[等价投影](product-permission-final-projections/projection-index.json)。绑定行政4fa2fe9/产品fe2e，14文件及39包内成员完整可见；CRLF显示差异只用于覆盖比较，不改变原件字节。补读S0/S1/actual及argv等价展开内容，明确不是原字节直接读取；CIM原长行、旧全量机械coverage和review完整argv未直接重读。verify实际221物理行，旧222是工具尾空行口径。
+
+原票不重写，事实更正已核：环境准备名称18=14 inherit+4 set，缺HOME/TZ；无子进程内独立env采样。准备manifest31产品/测试/CI文件，不同于C2含文档45文件；init各61目录项不是实际能力；实际仅7Read/8Write/1Edit。双确认同时已发15/15，非14/15；num_turns55相对请求20的含义未知，不证明20轮硬门禁。外部文件看护前约61秒空档，仅后段16次采样，不能宣称全程看护。N4先捕获STATUS后Store.read由实际运维命令举证，无逐I/O追踪。模型自报工具id为空仍保留，真实id来自原始流映射；completion当时not_yet_evaluated未倒填。B第二次CLI duration约200.077秒、外部wall206.517秒分别沿原件，不混用。
+
+历史GLM B11/Kimi B09发布异常根因仍unknown。单fixture单次矩阵不覆盖OS沙箱、真实宿主memory/hook、TOCTOU/特殊别名、POSIX、Shell执行能力、超时/超输出分支、浏览器JS、云CI或完整四角色live。原双席及监督均接受指定九格证据，同时保留这些边界。
+
+## 下一步
+
+当前仅执行用户已授权的本地主线合入和合入后统一验证。下一批工作包是提案，尚未派发：派发职责owner调查B两次耗尽及有效final交付、缩小工作包；四角色受控live另立有界计划并先满足残余条件；历史发布异常无新证据不重复诊断。复用既有入口，不另建调度器、不延用本批例外或额度。
 ## 本批过程检查点（历史追溯，不作为当前派发许可）
 
 用户最新明确授权“按照项目设定合入main，然后多agent检查设计状态、拆包派开发，必须多方审核交叉认证”。本地主线已完成合入与验证，见本页主线原件；新协调树D:/project/agent-coop-product-permission、分支codex/product-permission-20261011，基线main f0223b34e0204dde667ea8dff2d80beb3d3b1a3c。旧作者与会话工作树保留，不代表仍有写权。

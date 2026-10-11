@@ -1,0 +1,58 @@
+{
+  "status": "prepared_only_not_native_admission",
+  "product": "fe2e1b6b03cde7763f6f2c974d909edf6c2ce708",
+  "records": [
+    {
+      "source": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/audit/state-before-reservation.json",
+      "source_sha256": "ce0ea4ee35f014223b8f2a39427fe013f2e603f2642693d6046235e4ac46d9e3",
+      "projection": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/state-before-reservation.pretty.json",
+      "projection_sha256": "44b01e33df51efe3dfd7c2a51cc4b149a611cfe48238814dcc4bbc5bf8dc2dc6",
+      "transformation": "JSON parse then indent=2; preserves exact typed JSON value; not original bytes",
+      "typed_canonical_equivalence": true
+    },
+    {
+      "source": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/audit/expected-after-reservation.json",
+      "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+      "projection": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/expected-after-reservation.pretty.json",
+      "projection_sha256": "702ca7b02b95619f613fd928e0c01c55fcf8cab9242f5b78da637cc4cc3b01f6",
+      "transformation": "JSON parse then indent=2; preserves exact typed JSON value; not original bytes",
+      "typed_canonical_equivalence": true
+    },
+    {
+      "source": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/audit/actual-state-after.json",
+      "source_sha256": "9fb9cc9c33117f92104d41eead14760825fcf8cd1e495220a7917a0de75b8049",
+      "projection": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/actual-state-after.pretty.json",
+      "projection_sha256": "702ca7b02b95619f613fd928e0c01c55fcf8cab9242f5b78da637cc4cc3b01f6",
+      "transformation": "JSON parse then indent=2; preserves exact typed JSON value; not original bytes",
+      "typed_canonical_equivalence": true
+    },
+    {
+      "source": "C:/Users/june/AppData/Local/Temp/agent-coop-product-matrix-0f9954ef648748d5ac686ddf4fa52345/audit/actual-argv-comparison.json",
+      "source_sha256": "1a9b1f9200b019c07cf5c0254df02e5891f83133ff9d7879497ff678d8c0aeda",
+      "projection": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/observed-argv-token-projection.json",
+      "projection_sha256": "0802fe285f63539900d0b65543ecbb91373765d38f58559cd526cbd837bbfa4d",
+      "prompt_projection": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/observed-prompt-multiline.txt",
+      "prompt_sha256": "cef510f27c41f4d98585cf6fc1a300bb413ab222f97aec272e29d34c41ee325a",
+      "argv_roundtrip_exact": true
+    },
+    {
+      "source": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-matrix-confirm-reading-coverage.json",
+      "source_sha256": "6121a6bbbac2550620a4caf04aedebd8b2cdfb3872590e47f249e514e8041e65",
+      "projection": "C:/Users/june/AppData/Local/Temp/agent-coop-isolated-workflow-20261010/product-permission-final-prepared/matrix-confirm-coverage-readable.json",
+      "projection_sha256": "9a206e5848bc25e4e6ad6f7055636fc21f9b670b0c7340aeaf16c4444cabeddc",
+      "transformation": "loss-aware compact mapping; full mechanical coverage remains available, not a replacement original"
+    }
+  ],
+  "state_comparison": {
+    "s0_calls_revision": [
+      0,
+      0
+    ],
+    "s1_calls_revision": [
+      1,
+      1
+    ],
+    "actual_value_equals_s1": true
+  },
+  "future_freeze": "Root will supply final administrative commit; source original hashes must match its Git blobs before dispatch."
+}
